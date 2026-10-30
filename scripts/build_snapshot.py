@@ -17,7 +17,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timedelta, timezone
 
 GROUPS = {
-    "Stromnetze": "NEX.PA GEV HUBB ETN NVT ABB PWR EMR PH WCC POWL GNRC ROK PRY.MI",
+    "Stromnetze": "NEX.PA GEV HUBB ETN NVT ABBN.SW PWR EMR PH WCC POWL GNRC ROK PRY.MI",
     "Rechenzentren": "VRT EQIX DLR ANET DELL SMCI HPE CRDO GLW CSCO AVGO NVDA AMD",
     "Halbleiter": "MU AMAT ASML LRCX KLAC TSM QCOM ADI MPWR ONTO TER SNDK",
     "Energie": "CEG NRG VST NEE DUK SO EXC EIX BE FSLR OKLO CCJ BWXT",
@@ -67,7 +67,7 @@ def fetch_yahoo(symbol):
     raise RuntimeError(last)
 
 def fetch_stooq(symbol):
-    if symbol.endswith(".PA") or symbol.endswith(".MI"):
+    if symbol.endswith(".PA") or symbol.endswith(".MI") or symbol.endswith(".SW"):
         raise RuntimeError("Stooq fallback unavailable for this exchange")
     stooq_symbol=symbol.lower()+".us"
     today=datetime.now(timezone.utc).date()
