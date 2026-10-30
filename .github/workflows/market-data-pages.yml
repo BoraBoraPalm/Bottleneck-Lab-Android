@@ -19,7 +19,7 @@ concurrency:
 jobs:
   refresh-and-deploy:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -31,7 +31,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Retrieve quote history and relevant RSS headlines
-        run: python scripts/build_snapshot.py
+        run: python scripts/v4_pipeline.py
       - name: Upload data as diagnostic artifact
         if: always()
         uses: actions/upload-artifact@v4
