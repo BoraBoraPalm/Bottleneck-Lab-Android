@@ -145,7 +145,7 @@ def financial_sec_lookup(rows, previous):
         cik=available[row["ticker"]]
         url=f"https://data.sec.gov/api/xbrl/companyfacts/CIK{int(cik):010d}.json"
         try:
-            req_body=read_url(url,timeout=15)
+            req_body=read_url(url,timeout=15,max_bytes=18_000_000)
             filing=json.loads(req_body)
             us=filing.get("facts",{}).get("us-gaap",{})
             def annual(tags):
