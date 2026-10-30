@@ -1,0 +1,50 @@
+name: Refresh data and publish Bottleneck Lab
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '22 */6 * * *'
+  push:
+    branches: [master]
+    paths:
+      - 'docs/**'
+      - 'scripts/**'
+      - '.github/workflows/market-data-pages.yml'
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: bottleneck-pages
+  cancel-in-progress: false
+jobs:
+  refresh-and-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Configure Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Retrieve quote history and relevant RSS headlines
+        run: python scripts/build_snapshot.py
+      - name: Upload data as diagnostic artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Bottleneck-Lab-Market-Snapshot
+          path: docs/snapshot.json
+          if-no-files-found: warn
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+      - name: Upload website
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: ./docs
+      - name: Deploy website
+        id: deployment
+        uses: actions/deploy-pages@v4
