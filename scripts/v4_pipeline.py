@@ -31,7 +31,7 @@ GLOBAL_SEEDS = {
 }
 CURATED = {symbol: group for group, symbols in GROUPS.items() for symbol in symbols.split()}
 CURATED.update({symbol: group for group, symbols in GLOBAL_SEEDS.items() for symbol in symbols.split()})
-SKIP_WORDS = re.compile(r"\b(warrant|right\b|rights\b|preferred|preference shares|depositary shares|units? representing|notes due|exchange.traded|bond|etf|etn|nextshares|closed.end fund|mutual fund|subscription rights|contingent capital|redeemable units|trust certificates)\b",re.I)
+SKIP_WORDS = re.compile(r"\b(warrants?|right\b|rights\b|preferred|preference shares|depositary shares|units? representing|notes due|exchange.traded|bond|etf|etn|nextshares|closed.end fund|mutual fund|subscription rights|contingent capital|redeemable units|trust certificates)\b",re.I)
 SYMBOL = re.compile(r"^[A-Z][A-Z0-9]{0,5}(?:[.-][A-Z0-9]{1,3})?$")
 def parse_directory(url, Nasdaq):
     text = read_url(url, timeout=20).decode("utf-8-sig", errors="replace")
