@@ -15,6 +15,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timedelta, timezone
 from build_snapshot import GROUPS, quote, fetch_news, read_url
 from fx_eur import latest_eur_rates, add_eur_prices
+from tr_at_universe import apply_tr_filter
 
 PAGES = "https://boraborapalm.github.io/Bottleneck-Lab-Android/snapshot.json"
 NASDAQ = "https://www.nasdaqtrader.com/dynamic/SymDir/nasdaqlisted.txt"
@@ -231,6 +232,7 @@ def main():
         raise SystemExit("EUR conversion rates unavailable; keeping last published snapshot: "+str(ex))
     converted,fx_missing=add_eur_prices(stocks,fx_rates)
     if bench:add_eur_prices([bench],fx_rates)
+    tr_status=apply_tr_filter(stocks)
     if converted<max(20,int(len(stocks)*0.85)):
         raise SystemExit("Insufficient EUR reference coverage; keeping last successful deployment")
     now=datetime.now(timezone.utc)
@@ -239,6 +241,7 @@ def main():
         "version":4,
         "display_currency":"EUR",
         "eur_display_method":"Dated Frankfurter reference exchange rates, not executable Trade Republic bid/ask",
+        "tr_at_verification":tr_status,
         "eur_converted_count":converted,
         "eur_fx_missing_currencies":fx_missing,
         "fx_source":"https://frankfurter.dev/",
