@@ -30,13 +30,13 @@ UNIVERSE = {s: theme for theme, symbols in GROUPS.items() for s in symbols.split
 # Yahoo may limit requests. Stooq (where coverage exists) is a fallback for daily OHLC.
 HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; BottleneckLabResearch/0.3)",
            "Accept": "application/json,text/csv,application/xml,text/xml,*/*"}
-def read_url(url, timeout=12):
+def read_url(url, timeout=12, max_bytes=3_000_000):
     req = urllib.request.Request(url, headers=HEADERS)
     with urllib.request.urlopen(req, timeout=timeout) as response:
         if response.status != 200:
             raise RuntimeError("HTTP " + str(response.status))
-        body=response.read(3_000_000)
-        if len(body)>=3_000_000:
+        body=response.read(max_bytes+1)
+        if len(body)>max_bytes:
             raise RuntimeError("Response too large")
     return body
 
