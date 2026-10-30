@@ -15,7 +15,7 @@
 </main><script>
 const $=id=>document.getElementById(id), esc=v=>String(v??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch])), num=(n,d=2)=>Number.isFinite(n)?n.toLocaleString('de-DE',{minimumFractionDigits:d,maximumFractionDigits:d}):'–';
 let data=null, selected='', tab='top';
-const ccy=x=>({EUR:'€',USD:'(n,x)=>num(n,2)+' '+ccy(x),config=()=>({buy:+$('buy').value,stop:+$('stop').value,risk:+$('risk').value});
+const ccy=x=>({EUR:'€',USD:'$',CHF:'CHF',GBP:'£',SEK:'SEK',JPY:'¥',KRW:'₩',TWD:'NT$',AUD:'A$',DKK:'kr',CNY:'¥'}[x.currency]||x.currency||''),money=(n,x)=>num(n,2)+' '+ccy(x),config=()=>({buy:+$('buy').value,stop:+$('stop').value,risk:+$('risk').value});
 const levels=x=>{const c=config();return {buy:x.close-c.buy*x.atr,stop:x.close-(c.buy+c.stop)*x.atr}};
 function switchTab(t){tab=t;document.querySelectorAll('.tabs button').forEach(b=>b.classList.toggle('active',b.dataset.tab===t));document.querySelectorAll('section[id^="tab-"]').forEach(el=>el.hidden=el.id!=='tab-'+t)}
 function card(x,i){let lv=levels(x);return '<button class="stock" data-ticker="'+esc(x.ticker)+'"><div class="row"><span class="symbol">'+esc(x.ticker)+'</span><span class="score">'+num(x.score,0)+'/100</span></div><div class="row"><span class="small muted">'+esc(x.theme)+'</span><span class="price">'+money(x.close,x)+'</span></div><div class="row small muted"><span>Buy ≤ '+money(lv.buy,x)+'</span><span>Stop '+money(lv.stop,x)+'</span></div><div class="bars"><div style="width:'+Math.min(100,Math.max(0,x.score))+'%"></div></div></button>'}
