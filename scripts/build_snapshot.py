@@ -58,7 +58,7 @@ def fetch_yahoo(symbol):
                 try:
                     c=float(quote["close"][i]); h=float(quote["high"][i]); l=float(quote["low"][i])
                     if all(math.isfinite(k) and k>0 for k in (c,h,l)):
-                        bars.append((datetime.fromtimestamp(epoch,timezone.utc).strftime("%Y-%m-%d"),h,l,c))
+                        bars.append((datetime.fromtimestamp(epoch,timezone.utc).strftime("%Y-%m-%d"),h,l,c,float(quote.get("volume",[None]*len(ts))[i] or 0)))
                 except (TypeError,ValueError,IndexError,KeyError):
                     continue
             return bars, r.get("meta",{}).get("currency","USD"),"Yahoo Finance"
@@ -80,7 +80,7 @@ def fetch_stooq(symbol):
         try:
             d=row["Date"]; h=float(row["High"]); l=float(row["Low"]); c=float(row["Close"])
             if c>0 and h>0 and l>0 and all(math.isfinite(v) for v in (h,l,c)):
-                bars.append((d,h,l,c))
+                bars.append((d,h,l,c,float(row.get("Volume") or 0)))
         except (TypeError,ValueError,KeyError):
             continue
     return bars,"USD","Stooq (daily CSV)"
@@ -104,9 +104,11 @@ def quote(symbol,theme):
             vol=atr/price
             # Heuristic price-only score, NOT a validated forward-return estimator.
             score=round(max(0,min(100,50+180*mom-80*vol)),1)
+            turnovers=[b[3]*b[4] for b in bars[-20:] if len(b)>4 and b[4]>0 and math.isfinite(b[4])]
+            avg_turnover=round(sum(turnovers)/len(turnovers),0) if len(turnovers)>=12 and currency=="USD" else None
             return {"ticker":symbol,"theme":theme,"close":round(price,4),"price_date":dates[-1],
                     "currency":currency,"source":source,"atr":round(atr,4),"momentum":round(mom,6),
-                    "score":score},None
+                    "score":score,"avg_dollar_turnover_20d":avg_turnover},None
         except Exception as e:
             errors.append(load.__name__+": "+str(e)[:140])
     return None,symbol+": "+"; ".join(errors)
