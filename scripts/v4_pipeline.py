@@ -24,7 +24,7 @@ MAX_WORKERS = int(os.getenv("BTL_WORKERS", "7"))
 MAX_AGE = timedelta(days=8)
 SECS_PER_FETCH = 0.25
 GLOBAL_SEEDS = {
-    "Europäische Industrie": "SAP.DE SIE.DE RHM.DE ENR.DE SU.PA AIR.PA SCHN.PA BN.PA ABBN.SW ATCO-A.ST",
+    "Europäische Industrie": "SAP.DE SIE.DE RHM.DE ENR.DE SU.PA AIR.PA BN.PA ABBN.SW ATCO-A.ST",
     "Globale Halbleiter": "ASML.AS ASM.AS IFX.DE 6501.T 8035.T 6857.T 005930.KS 000660.KS 2330.TW",
     "Internationale Rohstoffe": "BHP.AX RIO.AX FMG.AX GLEN.L",
     "Globale Energie & Infrastruktur": "ORSTED.CO 9501.T 9503.T 600900.SS"
