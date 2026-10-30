@@ -26,3 +26,17 @@ Once a deployment succeeds the expected URL is `https://boraborapalm.github.io/B
 A URL must not be considered active until a successful `deploy-pages` run and a browser check confirm it.
 
 **Limits:** The initial 92-stock curated universe is not an exhaustive stock discovery engine. Scores are computed from return momentum and price volatility only. Earnings/fundamental history, economic bottleneck probability forecasts, fair values, expected returns and strategy validation are NOT yet included. News titles indicate coverage, not proof of a bottleneck. No brokerage integration or trading orders.
+
+## Version 4: Exchange-wide discovery (beta)
+
+**How it works**: GitHub Actions imports Nasdaq's official `nasdaqlisted.txt` and `otherlisted.txt` symbol directories, removes test listings, ETFs and obvious non-common-share securities, and adds a curated list of international companies. All eligible known symbols are candidates, but only a rotating slice receives a full price-history request per job. Previously successful data are retained up to 8 days by fetching the last publicly published site snapshot. It is not a complete daily scan of every global stock.
+
+**Ranked coverage**: The dashboard displays (a) discovered universe size, (b) tickers with valid recent quotes, (c) the batch selected for the last run, (d) SEC-fundamentals coverage. Newly discovered USD stocks must have a last price of at least 5 USD and 20-day average dollar turnover of at least 5 million USD before qualifying for the Top 10. This is only a liquidity safeguard; it is not an audited valuation or an expected-return model.
+
+**Fundamentals**: A rotating small subset of US companies is checked against SEC EDGAR companyfacts for annual revenue, year-over-year revenue growth, operating cashflow and net income, with fiscal-period and filing dates. Values are shown separately and **not used to claim a backtested fundamental score**. International companies and many US listings will have no SEC facts.
+
+**Economic bottlenecks**: Keyword RSS links provide context only. This version does **not** yet forecast future shortages or quantify stock-specific causal exposure. Historical fundamental/shortage data and walk-forward validation are needed before a predictive strategy is possible.
+
+**How to use**: Open https://boraborapalm.github.io/Bottleneck-Lab-Android/ on Android, press **Snapshot laden** to reload the published dataset; for a new external data download use the GitHub Actions workflow. The scheduled workflow is approximately every six hours. Ranking data may be several days old (per-ticker `price_date` and `last_checked_at` should be inspected), and quote vendors are unofficial.
+
+**Verification**: CI runs offline Python unit tests and a JavaScript syntax/control check before retrieving prices and publishing. If validation fails, the existing published site remains untouched. Treat data-provider outages and incomplete coverage as normal limitations.
