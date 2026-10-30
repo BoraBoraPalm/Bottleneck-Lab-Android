@@ -14,6 +14,7 @@ import urllib.parse
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timedelta, timezone
 from build_snapshot import GROUPS, quote, fetch_news, read_url
+from fx_eur import latest_eur_rates, add_eur_prices
 
 PAGES = "https://boraborapalm.github.io/Bottleneck-Lab-Android/snapshot.json"
 NASDAQ = "https://www.nasdaqtrader.com/dynamic/SymDir/nasdaqlisted.txt"
@@ -222,10 +223,26 @@ def main():
     stocks=sorted(rows.values(),key=lambda r:(not r.get("eligible_for_ranking",False),-r["score"],r["ticker"]))
     bench,bench_error=quote("SPY","Benchmark")
     if bench_error:errors.append("SPY "+bench_error)
+    # FX is a dated reference rate, not the EUR quote obtainable at Trade Republic.
+    # Refuse to publish a misleading EUR-only dashboard when reference FX fails.
+    try:
+        fx_rates=latest_eur_rates()
+    except Exception as ex:
+        raise SystemExit("EUR conversion rates unavailable; keeping last published snapshot: "+str(ex))
+    converted,fx_missing=add_eur_prices(stocks,fx_rates)
+    if bench:add_eur_prices([bench],fx_rates)
+    if converted<max(20,int(len(stocks)*0.85)):
+        raise SystemExit("Insufficient EUR reference coverage; keeping last successful deployment")
     now=datetime.now(timezone.utc)
     newly_discovered=sum(1 for x in stocks if x["ticker"] not in CURATED)
     out={
         "version":4,
+        "display_currency":"EUR",
+        "eur_display_method":"Dated Frankfurter reference exchange rates, not executable Trade Republic bid/ask",
+        "eur_converted_count":converted,
+        "eur_fx_missing_currencies":fx_missing,
+        "fx_source":"https://frankfurter.dev/",
+        "fx_dates_by_currency":{cc:obj["fx_date"] for cc,obj in fx_rates.items()},
         "generated_at":now.isoformat().replace("+00:00","Z"),
         "universe_size":len(known),
         "universe_region":"Primarily US Nasdaq/NYSE listings, plus curated international additions",
@@ -240,7 +257,7 @@ def main():
         "ranking_liquidity_screen":"USD shares: price >= $5 and ADV20 >= $5m; curated non-USD: price >= 5 local units, liquidity not USD-verified",
         "model":"Unvalidated 60-day momentum/ATR heuristic; SEC annual fundamental facts are shown separately and NOT used to rank stocks",
         "stocks":stocks,"benchmark":bench,"news":fetch_news(),"errors":errors[:120],
-        "sources":["Nasdaq Trader exchange symbol directories","Yahoo Finance unofficial daily chart","Stooq unofficial fallback","SEC EDGAR where available","Google News RSS"]
+        "sources":["Nasdaq Trader exchange symbol directories","Yahoo Finance unofficial daily chart","Stooq unofficial fallback","SEC EDGAR where available","Google News RSS","Frankfurter reference FX: official providers"]
     }
     os.makedirs("docs",exist_ok=True)
     with open("docs/snapshot.json","w",encoding="utf-8") as f:
