@@ -28,6 +28,10 @@ def latest_eur_rates(fetch=read_url, today=None):
         if not isinstance(curr,str) or len(curr)!=3 or not math.isfinite(rate) or rate<=0:continue
         if dated>today or today-dated>timedelta(days=CACHE_MAX_DAYS):continue
         result[curr]={"eur_per_unit":1/rate,"fx_date":dated.isoformat(),"source":"Frankfurter official-provider reference FX"}
+    # UK equity prices are frequently quoted in GBp (pence), not GBP (pounds).
+    if "GBP" in result:
+        gbp=result["GBP"]
+        result["GBp"]={"eur_per_unit":gbp["eur_per_unit"]/100,"fx_date":gbp["fx_date"],"source":"UK pence (1/100 GBP)"}
     if len(result)<20:
         raise ValueError("Too few valid rates: "+str(len(result)))
     return result
