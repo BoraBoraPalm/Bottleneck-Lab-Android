@@ -19,7 +19,7 @@ PAGES = "https://boraborapalm.github.io/Bottleneck-Lab-Android/snapshot.json"
 NASDAQ = "https://www.nasdaqtrader.com/dynamic/SymDir/nasdaqlisted.txt"
 OTHER = "https://www.nasdaqtrader.com/dynamic/SymDir/otherlisted.txt"
 SEC_TICKERS = "https://www.sec.gov/files/company_tickers.json"
-PROBE_PER_RUN = int(os.getenv("BTL_NEW_PER_RUN", "165"))
+PROBE_PER_RUN = int(os.getenv("BTL_NEW_PER_RUN", "205"))
 MAX_WORKERS = int(os.getenv("BTL_WORKERS", "7"))
 MAX_AGE = timedelta(days=8)
 SECS_PER_FETCH = 0.25
@@ -29,7 +29,6 @@ GLOBAL_SEEDS = {
     "Internationale Rohstoffe": "BHP.AX RIO.AX FMG.AX GLEN.L",
     "Globale Energie & Infrastruktur": "ORSTED.CO 9501.T 9503.T 600900.SS"
 }
-CURATED = {s: g for g,v in GROUPS.items() for s in []}  # rebuilt below
 CURATED = {symbol: group for group, symbols in GROUPS.items() for symbol in symbols.split()}
 CURATED.update({symbol: group for group, symbols in GLOBAL_SEEDS.items() for symbol in symbols.split()})
 SKIP_WORDS = re.compile(r"\b(warrant|right\b|rights\b|preferred|preference shares|depositary shares|units? representing|notes due|exchange.traded|bond|etf|etn|nextshares|closed.end fund|mutual fund|subscription rights|contingent capital|redeemable units|trust certificates)\b",re.I)
@@ -213,9 +212,14 @@ def main():
     rows={k:v for k,v in rows.items() if seconds_ago(v.get("last_checked_at"))<8*86400}
     if len(rows)<15:
         raise SystemExit("Less than 15 valid recent price records; refusing misleading publication.")
+    # Conservative liquidity screen for newly discovered US listings; not proof of investment suitability.
+    for v in rows.values():
+        adv=v.get("avg_dollar_turnover_20d")
+        is_us=v.get("currency")=="USD"
+        v["eligible_for_ranking"]=bool(v.get("close",0)>=5 and ((is_us and adv is not None and adv>=5000000) or (not is_us and v["ticker"] in CURATED)))
     # Fundamentals collected for a rotating *subset* with proper filing dates.
     sec_count=financial_sec_lookup(rows,previous)
-    stocks=sorted(rows.values(),key=lambda r:(-r["score"],r["ticker"]))
+    stocks=sorted(rows.values(),key=lambda r:(not r.get("eligible_for_ranking",False),-r["score"],r["ticker"]))
     bench,bench_error=quote("SPY","Benchmark")
     if bench_error:errors.append("SPY "+bench_error)
     now=datetime.now(timezone.utc)
@@ -232,6 +236,8 @@ def main():
         "success_this_run":done,
         "new_discovery_count":newly_discovered,
         "fundamental_coverage":sum(1 for x in stocks if x.get("fundamentals")),
+        "ranking_eligible_count":sum(1 for x in stocks if x.get("eligible_for_ranking")),
+        "ranking_liquidity_screen":"USD shares: price >= $5 and ADV20 >= $5m; curated non-USD: price >= 5 local units, liquidity not USD-verified",
         "model":"Unvalidated 60-day momentum/ATR heuristic; SEC annual fundamental facts are shown separately and NOT used to rank stocks",
         "stocks":stocks,"benchmark":bench,"news":fetch_news(),"errors":errors[:120],
         "sources":["Nasdaq Trader exchange symbol directories","Yahoo Finance unofficial daily chart","Stooq unofficial fallback","SEC EDGAR where available","Google News RSS"]
