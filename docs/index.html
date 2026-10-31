@@ -43,6 +43,16 @@ input:focus-visible,select:focus-visible,button:focus-visible,summary:focus-visi
 .chip{font-size:11px;border-radius:40px;border:1px solid #46606c;color:#c9dce5;padding:4px 8px;white-space:nowrap}
 .chip.ok{color:#9be6d9;border-color:#418d80}
 .chip.unknown{color:#cbd5dc}
+.chip.action-buy{background:#17423b;color:#a2f2d5;border-color:#3b8f77}
+.chip.action-sell,.chip.action-crash{background:#583436;color:#ffd0c7;border-color:#aa6360}
+.chip.action-wait{background:#35333e;color:#efddb9;border-color:#736b61}
+.actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}
+.market{padding:11px 13px;border-radius:10px;border:1px solid #45656d;background:#1a353f;font-size:12px;margin-bottom:12px}
+.market.risky{background:#392a2c;border-color:#83514b;color:#ffd2c6}
+.market.unknown{background:#27323d;border-color:#4e6071}
+.decision{grid-column:1/-1;border-top:1px solid #365064;padding:11px 0 0;font-size:12px;line-height:1.6}
+.decision strong{display:block;color:#e4edf6}
+
 .notice{padding:11px 12px;background:#29302d;border-left:3px solid var(--warn);border-radius:7px;font-size:12px;margin:10px 0;color:#e9dac5}
 #results{display:grid;grid-template-columns:1fr;gap:9px;margin:13px 0 0}
 .stock{background:#192c3f;border:1px solid #385166;border-radius:12px;overflow:hidden;min-width:0}
@@ -92,6 +102,7 @@ h1{font-size:27px}
   <button class="btn secondary" id="reload" type="button">↻ Aktualisieren</button>
 </div>
 <div id="status" class="status" aria-live="polite">Marktdaten werden geladen …</div>
+<div id="marketStatus" class="market unknown" aria-live="polite">Prüfe Weltmarkt-Trend …</div>
 
 <div class="summary" aria-label="Marktabdeckung">
   <div class="stat"><b id="universe">–</b><span>Entdeckte Ticker</span></div>
@@ -104,7 +115,7 @@ h1{font-size:27px}
     <div class="full"><label class="field" for="search">Aktie suchen</label><input id="search" type="search" placeholder="Name oder Börsenticker" autocomplete="off"></div>
     <div><label class="field" for="region">Region</label><select id="region"><option value="Alle">Weltweit</option></select></div>
     <div><label class="field" for="scope">Ansicht</label>
-      <select id="scope"><option value="selection">Auswahl</option><option value="all">Alle geprüften</option></select>
+      <select id="scope"><option value="selection">Auswahl</option><option value="entry">Einstieg prüfen</option><option value="exit">Ausstieg prüfen</option><option value="crash">Kurssturz</option><option value="all">Alle geprüften</option></select>
     </div>
   </div>
   <label class="switch" for="trOnly">
@@ -114,14 +125,17 @@ h1{font-size:27px}
   <div id="count" class="small muted" aria-live="polite"></div>
   <div id="results" aria-label="Aktienkandidaten"></div>
   <div id="empty" class="notice" hidden>Für diese Filter sind derzeit keine ausreichend geprüften Aktien vorhanden. Probiere eine andere Region, die Ansicht „Alle geprüften“ oder deaktiviere den Trade-Republic-Filter.</div>
-  <div class="explain"><strong>Hinweis:</strong> Die Auswahl sortiert nach historischer Kursstärke von Monat 12 bis Monat 2 und begrenzt die Zahl je Region. Das ist eine Forschungsheuristik, keine nachgewiesene Renditeprognose. Die Kurse sind EUR-Referenzwerte, keine ausführbaren Trade-Republic-Angebote.</div>
+  <div class="explain"><strong>Hinweis:</strong> Einstiegs- und Ausstiegsprüfungen sind feste, transparente Kursregeln – keine statistisch bestätigten Kauf-/Verkaufsempfehlungen. Die Auswahl sortiert nach historischer Kursstärke von Monat 12 bis Monat 2 und begrenzt die Zahl je Region. Das ist eine Forschungsheuristik, keine nachgewiesene Renditeprognose. Die Kurse sind EUR-Referenzwerte, keine ausführbaren Trade-Republic-Angebote.</div>
 </section>
 
 <details class="disclosure">
   <summary>Wie wird ausgewählt? Was ist belegt?</summary>
   <div class="disclosure-body">
     <p><strong>Einheitliche Regel:</strong> Kursentwicklung von ungefähr 12 bis 2 Monaten vor dem Stichtag. Die jüngsten rund 42 Handelstage bleiben unberücksichtigt. Ein Titel erscheint nur mit aktuellem Kurs, EUR-Referenzwechselkurs und durchschnittlich mindestens 2 Mio. € täglichem Börsenumsatz über 20 Handelstage (und Kurs mindestens 2 €).</p>
-    <p><strong>Warum nicht mehr das alte Modell?</strong> Das frühere 60-Tage-Ranking samt ATR-Kauf- und Stop-Marken hat im bisherigen historischen Test keinen belastbaren Mehrwert belegt. Darum zeigt die App keine scheinpräzisen Kauf-/Verkaufsgrenzen mehr.</p>
+    <p><strong>Wann Einstieg prüfen?</strong> Nur bei positivem 12–2-Monats-Momentum, Kurs oberhalb des 200-Tage-Durchschnitts, ohne größere laufende Korrektur und nur bei nicht negativem globalen Marktfilter (ACWI). Signale gelten erst nach dem letzten Tagesschluss; eine mögliche Limitorder kann frühestens am nächsten Handelstag zu einem tatsächlich verfügbaren Brokerkurs geprüft werden.</p>
+<p><strong>Wann Ausstieg prüfen?</strong> Für eine bereits gehaltene Position bei Schlusskurs unter dem 200-Tage-Durchschnitt oder bei starkem Kursrückgang. „Kurssturz“ bedeutet ein Rückgang von mindestens 15 % über 21 Handelstage oder von mindestens 25 % gegenüber dem Hoch der letzten 252 Handelstage; frühere Warnung schon bei 8 %/15 %. Keine Ausführung oder Überwachung durch die App.</p>
+<p><strong>Orientierung statt Stop-Garantie:</strong> Die angezeigte Risiko-Referenz liegt 2,5 ATR(14) unter dem letzten Kurs, ausschließlich als <em>hypothetischer Plan für einen neuen Einstieg</em>. Sie ist kein echter Broker-Stop und nicht der Stop einer bestehenden Position. Bei Kurslücken kann auch eine aktive Stop-Order wesentlich schlechter ausgeführt werden. Diese Parameter sind nicht als Outperformance-Strategie validiert.</p>
+<p><strong>Warum nicht das alte Modell?</strong> Das frühere 60-Tage-Ranking und die automatischen ATR-Limits zeigten im bisherigen Test keinen belastbaren Mehrwert. Daher gibt es keine vermeintlich optimalen Kauf-/Stop-Preise und keine Gewinnwahrscheinlichkeiten.</p>
     <p><strong>Wissenschaft:</strong> Mittelfristiges Momentum ist in langfristiger akademischer Literatur untersucht. Unsere konkrete weltweite Aktienauswahl ist jedoch nicht überlebensbiasfrei oder vollständig außerhalb der Stichprobe validiert. Insbesondere sind die historischen US-Faktorportfolios kein Nachweis für die hier angezeigten Einzelaktien.</p>
     <p><strong>Wichtig:</strong> Das globale Verzeichnis enthält mehr Aktien als täglich abgefragt werden können. Firmen ohne Kursdaten fehlen. Internationale Bilanzzahlen sind nicht flächendeckend vergleichbar, daher gibt es derzeit kein vermeintlich vollständiges weltweites Quality-/Value-Ranking.</p>
     <p><strong>Trade Republic:</strong> Ein ISIN-Treffer in der österreichischen Instrumentenliste belegt nicht, dass eine Order heute möglich ist. Auch Geld-/Briefspanne, Gebühren, österreichische Steuer und tatsächliche Liquidität können abweichen.</p>
@@ -154,7 +168,11 @@ function dataRows(){
     &&(!trOnly||x.tr_at_listed===true)
     &&(!needle||(x.ticker+" "+(x.name||"")).toLocaleLowerCase("de-AT").includes(needle)));
   base.sort((a,b)=>b.momentum_12_2-a.momentum_12_2||a.ticker.localeCompare(b.ticker));
-  if($("scope").value==="selection"&&!needle){
+  const view=$("scope").value;
+  if(view==="entry")base=base.filter(x=>x.entry_review==="entry_review");
+  if(view==="exit")base=base.filter(x=>(x.exit_review||"").startsWith("review_exit"));
+  if(view==="crash")base=base.filter(x=>x.crash_warning===true);
+  if(view==="selection"&&!needle){
     const perRegion=new Map(),candidates=[];
     for(const s of base){
       const reg=regionOf(s);
@@ -182,9 +200,30 @@ function makeCard(s){
   const flags=add(bottom,"span",null,"marks");
   add(flags,"span",s.tr_at_listed===true?"TR-AT ISIN ✓":"TR-AT offen",
       "chip "+(s.tr_at_listed===true?"ok":"unknown"));
+  const actions=add(head,"div",null,"actions");
+  const entryText={
+    entry_review:"Einstieg prüfen",avoid_crash:"Kurssturz: kein Neukauf",
+    wait_downtrend:"Abwarten: Abwärtstrend",wait_momentum:"Abwarten: Momentum",
+    wait_correction:"Abwarten: Korrektur",wait_market:"Abwarten: Gesamtmarkt",
+    market_unverified:"Gesamtmarkt ungeprüft",stale_quote:"Kurs veraltet",
+    insufficient_data:"Einstieg: Daten fehlen"
+  };
+  const exitText={
+    review_exit_crash:"Bei Bestand: Ausstieg prüfen (Crash)",
+    review_exit_trend:"Bei Bestand: Ausstieg prüfen",
+    hold_review:"Bei Bestand: halten/prüfen",
+    insufficient_data:"Ausstieg: Daten fehlen"
+  };
+  add(actions,"span",entryText[s.entry_review]||"Einstieg ungeprüft",
+      "chip "+(s.entry_review==="entry_review"?"action-buy":s.entry_review==="avoid_crash"?"action-crash":"action-wait"));
+  add(actions,"span",exitText[s.exit_review]||"Ausstieg ungeprüft",
+      "chip "+((s.exit_review||"").startsWith("review_exit")?"action-sell":"unknown"));
   const detail=add(article,"div",null,"details");
   const items=[
     ["Kursdatum",s.price_date||"unbekannt"],
+    ["Abstand zum 200-Tage-Trend",Number.isFinite(s.sma200_ratio)?fmt(s.sma200_ratio*100,1)+" %":"Daten fehlen"],
+    ["Letzte 21 Handelstage",Number.isFinite(s.return_21d)?fmt(s.return_21d*100,1)+" %":"Daten fehlen"],
+    ["Rückgang vom 252-Tage-Hoch",Number.isFinite(s.drawdown_252d)?fmt(s.drawdown_252d*100,1)+" %":"Daten fehlen"],
     ["EUR-Wechselkursdatum",s.fx_date||"unbekannt"],
     ["Börsenumsatz Ø 20 Tage",eur(s.avg_turnover_20d_eur)+"/Tag"],
     ["Originalkurs",fmt(s.close,2)+" "+(s.currency||"")],
@@ -193,11 +232,16 @@ function makeCard(s){
     ["Börse",s.exchange||"unbekannt"]
   ];
   if(s.tr_at_listed===true && s.tr_isin)items.push(["Trade Republic ISIN",s.tr_isin]);
+  if(Number.isFinite(s.entry_reference_eur))items.push(["Orientierung für neue Kauf-Limitprüfung",eur(s.entry_reference_eur)]);
+  if(Number.isFinite(s.risk_reference_eur))items.push(["Hypothetische 2,5-ATR-Risikoschwelle",eur(s.risk_reference_eur)]);
   for(const [name,val] of items){
     const col=add(detail,"div",null,"detail");
     add(col,"small",name);
     add(col,"strong",val);
   }
+  const explanation=add(detail,"div",null,"decision");
+  add(explanation,"strong","Einstieg frühestens am nächsten Handelstag, wenn das Signal nach dem Tagesschluss noch gilt.");
+  add(explanation,"span","Vor einer Order tatsächlichen EUR-Brokerkurs prüfen. Die Risiko-Referenz ist nur für einen hypothetischen Neueinstieg am letzten Referenzkurs gedacht. Kein persönlicher Positions-Stop, keine Echtzeit-Überwachung oder automatische Verkaufsorder.");
   return article;
 }
 function render(){
@@ -235,6 +279,16 @@ async function load(){
     $("status").textContent="Kursstand: "+(Number.isFinite(timestamp)?new Date(timestamp).toLocaleString("de-AT"):"unbekannt")
       +(old?" · Achtung: Daten älter als 48 Stunden":"")+" · kein Echtzeitfeed";
     updateRegions(data);
+    const market=data.market_context||{};
+    const label=market.risk==="crash"?"Weltmarkt-Warnung: deutlicher Rückgang":
+      market.risk==="downtrend"?"Weltmarkt-Warnung: unter 200-Tage-Trend":
+      market.risk==="normal"?"Weltmarkt-Filter: oberhalb des 200-Tage-Trends":
+      "Weltmarkt-Filter derzeit nicht verifizierbar";
+    $("marketStatus").className="market "+(market.risk==="crash"||market.risk==="downtrend"?"risky":market.risk==="normal"?"":"unknown");
+    $("marketStatus").textContent=label+
+      (Number.isFinite(market.trend200_pct)?" · Abstand zum Trend: "+fmt(market.trend200_pct,1)+" %":"")+
+      (market.date?" · ACWI-Referenzdatum "+market.date:"")+
+      " · ACWI ist nur ein globaler ETF-Marktindikator.";
     render();
   }catch(err){
     $("status").textContent="Marktdaten derzeit nicht verfügbar: "+err.message+". Keine erfundenen Kurse.";
