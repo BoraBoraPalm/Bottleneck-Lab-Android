@@ -17,6 +17,29 @@ class SimpleMarketTest(unittest.TestCase):
         prices[-43]=115
         self.assertAlmostEqual(q.momentum_12_2(prices),.15,places=5)
 
+    def test_adjusted_momentum_ignores_share_split(self):
+        today=datetime.now(timezone.utc).date()
+        bars=[]
+        for i in range(320):
+            raw=100. if i<300 else 10.  # 10:1 split would fake a -90% move
+            adj=10.  # adjusted close has removed mechanical price changes
+            day=(today-timedelta(days=320-i)).isoformat()
+            bars.append((day,raw*1.01,raw*.99,raw,100000,adj))
+        with patch.object(q,"fetch_yahoo",return_value=(bars,"USD","Yahoo Finance")):
+            result,error=q.quote("SPLIT","Global")
+        self.assertIsNone(error)
+        self.assertAlmostEqual(result["momentum_12_2"],0,places=6)
+        self.assertEqual(result["momentum_basis"],"Yahoo adjusted daily closes")
+
+    def test_missing_adjustments_cannot_supply_momentum(self):
+        current=datetime.now(timezone.utc)
+        sample={"ticker":"AAA","close":100.,"currency":"USD",
+                "avg_local_turnover_20d":50000000,"momentum_12_2":5.0,
+                "price_date":current.date().isoformat(),"source":"Yahoo Finance",
+                "last_checked_at":current.isoformat()}
+        original=m.cached_quotes({"stocks":[sample]},{"AAA":{}})
+        self.assertIsNone(original["AAA"]["momentum_12_2"])
+
     def test_no_incorrect_stooq_fallback_for_foreign_symbol(self):
         with self.assertRaises(RuntimeError):
             q.fetch_stooq("7203.T")
