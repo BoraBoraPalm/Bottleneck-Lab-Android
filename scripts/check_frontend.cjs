@@ -6,8 +6,8 @@ function exactly(pattern,count,name){
 }
 exactly(/<html(?:\s[^>]*)?>/gi,1,"HTML opening");
 exactly(/<\/html>/gi,1,"HTML closing");
-exactly(/<script(?:\s[^>]*)?>/gi,1,"JS opening");
-exactly(/<\/script>/gi,1,"JS closing");
+exactly(/<script(?:\s[^>]*)?>/gi,2,"JS opening (widget and inline)");
+exactly(/<\/script>/gi,2,"JS closing (widget and inline)");
 if(!/<\/html>\s*$/i.test(html))throw new Error("Code leaked after </html>");
 const match=html.match(/<script>([\s\S]*?)<\/script>/i);
 if(!match)throw new Error("Missing inline script");
@@ -70,3 +70,34 @@ assert.equal(tied.get("B").score,50);
 assert.equal(vm.runInContext('mixedRanks(sample,[])',context).size,0);
 assert.equal(vm.runInContext('mixedRanks(sample,["invented"])',context).size,0);
 console.log("Strategy checkbox mixer: solo momentum, equal-weight combinations, missing-data exclusion and ties verified.");
+
+
+// Chart must remain lazy: fetched after <details> is opened, never at app start.
+if(!html.includes('<script src="chart-widget.js"></script>')||
+   !match[1].includes('article.addEventListener("toggle"')||
+   !match[1].includes('StockCharts.create(chartHost,s,')||
+   !match[1].includes('showTradeLevels:()=>$("showTradeLevels").checked')){
+  throw Error("Lazy price chart or optional trade lines are not correctly connected");
+}
+const charts=require("../docs/chart-widget.js");
+assert.deepEqual(Object.keys(charts.periods),["1M","3M","6M","1J","3J","5J","MAX"]);
+const pts=[
+ ["2025-01-01",100],["2025-05-01",105],["2025-09-01",92],
+ ["2025-11-01",103],["2025-12-01",110],["2026-01-01",120]
+];
+assert.equal(charts.selectPoints(pts,"MAX").length,6);
+assert.equal(charts.selectPoints(pts,"3M").length,3);
+assert.equal(charts.selectPoints(pts,"1M").length,1);
+const raw=charts.checkedData({version:1,ticker:"TEST",asof:"2026-01-01",
+  currency:"JPY",points:pts},"TEST");
+const fxStock={ticker:"TEST",close:120,eur_per_unit:.006,price_date:"2026-01-01",
+  model_buy_limit_eur:.66,model_initial_stop_eur:.54};
+assert.equal(charts.modelLines(fxStock,raw,false).length,0);
+const lines=charts.modelLines(fxStock,raw,true);
+assert.equal(lines.length,2);
+assert.ok(Math.abs(lines[0].value-110)<1e-6,"EUR buy must match JPY price axis");
+assert.ok(Math.abs(lines[1].value-90)<1e-6,"EUR stop must match JPY price axis");
+assert.equal(charts.modelLines({...fxStock,price_date:"2025-12-01"},raw,true).length,0,
+  "Never draw buy/stop lines on out-of-date unrelated chart");
+assert.throws(()=>charts.checkedData({...raw,points:pts.slice().reverse()},"TEST"));
+console.log("Lazy chart: 3M selection, 1M–MAX range, JPY/EUR guides, stale-date rejection tested.");
