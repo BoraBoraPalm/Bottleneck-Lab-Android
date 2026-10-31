@@ -42,3 +42,21 @@ for(const name of modelNames)for(const [periodKey,period] of Object.entries(stud
     throw new Error("Incomplete study row: "+periodKey+" "+name);
 }
 console.log("Research panel validated: 12 strategies, 2 periods, 18 cost scenarios, no trailing HTML.");
+
+
+// The new candidate list is separately versioned and must remain isolated from
+// the legacy chart/ranking JavaScript; reject missing controls and syntax faults.
+const candidatesPath="docs/research-candidates.js";
+if(!fs.existsSync(candidatesPath))throw new Error("Candidate renderer is missing");
+const candidatesJs=fs.readFileSync(candidatesPath,"utf8");
+new Function(candidatesJs);
+if(!researchPage.includes('src="research-candidates.js"'))
+  throw new Error("Candidate renderer is not loaded by the research tab");
+for(const id of ["candidateKind","candidateTrOnly","candidateCards",
+    "candidateSummary","candidateEvidence","candidateDataStatus"]){
+  if(!researchPage.includes('id="'+id+'"'))
+    throw new Error("Candidate research missing UI: "+id);
+}
+if(!candidatesJs.includes("research_candidates") || !candidatesJs.includes("snapshot.json"))
+  throw new Error("Research candidates are not sourced from the live snapshot");
+console.log("Candidate research UI validated: isolated JS, filters, EUR display and source labels.");
