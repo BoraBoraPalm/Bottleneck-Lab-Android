@@ -134,6 +134,15 @@ def assign_decision(stock,market_context=None):
     # Strictly a reference ceiling: no buy at a higher limit than last close,
     # next-day executable EUR quote must be checked in the broker.
     stock["entry_reference_eur"]=round(price,4)
+    for native,converted in (
+       ("sma200_native","sma200_level_eur"),
+       ("crash_21_level_native","crash_21_level_eur"),
+       ("crash_peak_level_native","crash_peak_level_eur")
+    ):
+        level=stock.get(native)
+        if isinstance(level,(int,float)) and math.isfinite(level) and level>0:
+            stock[converted]=round(level*fx,4)
+
 
 def market_risk_from_quote(market_quote):
     if not market_quote or not isinstance(market_quote,dict):
