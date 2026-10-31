@@ -106,10 +106,12 @@ def quote(symbol,theme):
             # Heuristic price-only score, NOT a validated forward-return estimator.
             score=round(max(0,min(100,50+180*mom-80*vol)),1)
             turnovers=[b[3]*b[4] for b in bars[-20:] if len(b)>4 and b[4]>0 and math.isfinite(b[4])]
-            avg_turnover=round(sum(turnovers)/len(turnovers),0) if len(turnovers)>=12 and currency=="USD" else None
+            avg_local_turnover=round(sum(turnovers)/len(turnovers),0) if len(turnovers)>=12 else None
+            avg_turnover=avg_local_turnover if currency=="USD" else None
             return {"ticker":symbol,"theme":theme,"close":round(price,4),"price_date":dates[-1],
                     "currency":currency,"source":source,"atr":round(atr,4),"momentum":round(mom,6),
                     "score":score,"avg_dollar_turnover_20d":avg_turnover,
+                    "avg_local_turnover_20d":avg_local_turnover,
                     "momentum_12_2":momentum_12_2(closes)},None
         except Exception as e:
             errors.append(load.__name__+": "+str(e)[:140])
