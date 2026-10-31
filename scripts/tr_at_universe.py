@@ -98,7 +98,9 @@ def apply_tr_filter(stocks, fetch=read_url):
         row["tr_verification"]="unverified"
         row.pop("tr_isin",None)
         if pdf_isins is None or ids is None:continue
-        isin=candidate_isins(row.get("ticker",""),ids)
+        isin=(row.get("reference_isin") or "").upper()
+        if not ISIN.fullmatch(isin):
+            isin=candidate_isins(row.get("ticker",""),ids)
         if not isin:continue
         row["tr_isin"]=isin
         if isin in pdf_isins:
