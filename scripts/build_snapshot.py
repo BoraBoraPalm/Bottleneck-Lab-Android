@@ -12,6 +12,7 @@ import urllib.request
 
 from datetime import datetime, timedelta, timezone
 from trade_guidance import price_context
+from chart_history import chart_payload
 
 CURATED_THEMES = {
     "Stromnetze": "NEX.PA GEV HUBB ETN NVT ABBN.SW PWR EMR PH WCC POWL GNRC ROK PRY.MI",
@@ -42,7 +43,7 @@ def fetch_yahoo(symbol):
     for host in ("query1.finance.yahoo.com", "query2.finance.yahoo.com"):
         try:
             s=urllib.parse.quote(symbol, safe="")
-            url=f"https://{host}/v8/finance/chart/{s}?range=2y&interval=1d"
+            url=f"https://{host}/v8/finance/chart/{s}?range=10y&interval=1d"
             result=json.loads(read_url(url))
             chart=result["chart"]
             if chart.get("error"):
@@ -120,11 +121,13 @@ def quote(symbol,theme):
             avg_local_turnover=round(sum(turnovers)/len(turnovers),0) if len(turnovers)>=12 else None
             avg_turnover=avg_local_turnover if currency=="USD" else None
             context=price_context(bars) if source=="Yahoo Finance" else {}
+            chart=chart_payload(symbol,bars,currency,source)
             return {"ticker":symbol,"theme":theme,"close":round(price,6),"price_date":dates[-1],
                     "currency":currency,"source":source,"bars_count":len(bars),
                     "avg_dollar_turnover_20d":avg_turnover,
                     "avg_local_turnover_20d":avg_local_turnover,
                     "momentum_12_2":momentum_12_2(adjusted),
+                    "chart_history":chart,
                     "momentum_basis":"Yahoo adjusted daily closes" if source=="Yahoo Finance" else "not verified",
                     **context},None
         except Exception as e:
