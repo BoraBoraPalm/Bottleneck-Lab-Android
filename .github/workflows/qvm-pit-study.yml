@@ -25,7 +25,9 @@ jobs:
           python -m unittest discover -s tests -p 'test_multifactor.py' -v
           python -m unittest discover -s research -p 'test_*.py' -v
       - name: Historical SEC as-filed factor study (universe is survivor-biased)
-        run: python -u research/evaluate_qvm_pit.py | tee research/qvm_pit_output.log
+        run: |
+          set -o pipefail
+          python -u research/evaluate_qvm_pit.py | tee research/qvm_pit_output.log
       - name: Preserve fully auditable research results
         if: always()
         uses: actions/upload-artifact@v4
