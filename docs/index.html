@@ -162,6 +162,10 @@ h1{font-size:27px}
     <input id="trOnly" type="checkbox">
     Nur Trade Republic Österreich (ISIN-Treffer)
   </label>
+  <label class="switch" for="showTradeLevels">
+    <input id="showTradeLevels" type="checkbox">
+    Kauf-Limit &amp; Stop-Loss anzeigen (optionale Modellwerte)
+  </label>
   <div id="count" class="small muted" aria-live="polite"></div>
   <div id="results" aria-label="Aktienkandidaten"></div>
   <div id="empty" class="notice" hidden>Für diese Filter sind derzeit keine ausreichend geprüften Aktien vorhanden. Probiere eine andere Region, die Ansicht „Alle geprüften“ oder deaktiviere den Trade-Republic-Filter.</div>
@@ -174,7 +178,7 @@ h1{font-size:27px}
     <p><strong>Faktoren kombiniert:</strong> Kursentwicklung von ungefähr 12 bis 2 Monaten vor dem Stichtag (Momentum), 200-Tage-Durchschnittsabstand (Trend) und umgekehrte relative ATR(14)-Schwankung (ruhigere Kurse). Jeder ausgewählte Faktor wird in eine Rangzahl von 0 bis 100 umgerechnet und dann gleichgewichtet gemittelt. Bei nur einer Auswahl entscheidet ausschließlich dieser Faktor. Dies ist eine transparente Heuristik, <strong>kein backgetestetes Mehrfaktormodell</strong>. Unsere frühere Trend-/ATR-Kombination zeigte keinen verlässlich höheren Gewinn.</p><p><strong>Handelbarkeit:</strong> Ein Titel erscheint nur mit aktuellem Kurs, EUR-Referenzwechselkurs und durchschnittlich mindestens 2 Mio. € täglichem Börsenumsatz über 20 Handelstage (Kurs mindestens 2 €). Auch bei anderen Faktorwahlen benötigt der derzeitige Datensatz vollständige Momentumhistorie.</p>
     <p><strong>Wann Einstieg prüfen?</strong> Nur bei positivem 12–2-Monats-Momentum, Kurs oberhalb des 200-Tage-Durchschnitts, ohne größere laufende Korrektur und nur bei nicht negativem globalen Marktfilter (ACWI). Signale gelten erst nach dem letzten Tagesschluss; eine mögliche Limitorder kann frühestens am nächsten Handelstag zu einem tatsächlich verfügbaren Brokerkurs geprüft werden.</p>
 <p><strong>Wann Ausstieg prüfen?</strong> Für eine bereits gehaltene Position bei Schlusskurs unter dem 200-Tage-Durchschnitt oder bei starkem Kursrückgang. „Kurssturz“ bedeutet ein Rückgang von mindestens 15 % über 21 Handelstage oder von mindestens 25 % gegenüber dem Hoch der letzten 252 Handelstage; frühere Warnung schon bei 8 %/15 %. Keine Ausführung oder Überwachung durch die App.</p>
-<p><strong>Kauf-Limit und Stop-Loss:</strong> Direkt auf jeder Aktienkarte stehen zwei konkrete EUR-Modellwerte wie früher: <strong>Kauf-Limit = letzter Schlusskurs − 1 × ATR(14)</strong> und <strong>initialer Stop-Loss = dieses Kauf-Limit − 2,5 × ATR(14)</strong>. Das ist nur eine unverbindliche Beispielrechnung für einen möglichen <em>Neueinstieg</em>, nicht der Stop einer bestehenden Position und kein nachweislich optimales Limit. Bei Trendbruch, Kurssturz oder fehlendem Gesamtmarktsignal besteht weiterhin kein Einstiegssignal. Vor der Order Ausführungskurs und Ordertyp im Broker prüfen; Kurslücken können einen Stop erheblich unterschreiten.</p>
+<p><strong>Kauf-Limit und Stop-Loss:</strong> Über den optionalen Schalter erscheinen auf jeder Aktienkarte zwei konkrete EUR-Modellwerte wie früher: <strong>Kauf-Limit = letzter Schlusskurs − 1 × ATR(14)</strong> und <strong>initialer Stop-Loss = dieses Kauf-Limit − 2,5 × ATR(14)</strong>. Das ist nur eine unverbindliche Beispielrechnung für einen möglichen <em>Neueinstieg</em>, nicht der Stop einer bestehenden Position und kein nachweislich optimales Limit. Bei Trendbruch, Kurssturz oder fehlendem Gesamtmarktsignal besteht weiterhin kein Einstiegssignal. Vor der Order Ausführungskurs und Ordertyp im Broker prüfen; Kurslücken können einen Stop erheblich unterschreiten.</p>
 <p><strong>Warum nicht das alte Modell?</strong> Das frühere 60-Tage-Ranking und die automatischen ATR-Limits zeigten im bisherigen Test keinen belastbaren Mehrwert. Daher gibt es keine vermeintlich optimalen Kauf-/Stop-Preise und keine Gewinnwahrscheinlichkeiten.</p>
     <p><strong>Wissenschaft:</strong> Mittelfristiges Momentum ist in langfristiger akademischer Literatur untersucht. Unsere konkrete weltweite Aktienauswahl ist jedoch nicht überlebensbiasfrei oder vollständig außerhalb der Stichprobe validiert. Insbesondere sind die historischen US-Faktorportfolios kein Nachweis für die hier angezeigten Einzelaktien.</p>
     <p><strong>Wichtig:</strong> Das globale Verzeichnis enthält mehr Aktien als täglich abgefragt werden können. Firmen ohne Kursdaten fehlen. Internationale Bilanzzahlen sind nicht flächendeckend vergleichbar, daher gibt es derzeit kein vermeintlich vollständiges weltweites Quality-/Value-Ranking.</p>
@@ -306,19 +310,21 @@ function makeCard(s,mix){
       "chip "+(s.entry_review==="entry_review"?"action-buy":s.entry_review==="avoid_crash"?"action-crash":"action-wait"));
   add(actions,"span",exitText[s.exit_review]||"Ausstieg ungeprüft",
       "chip "+((s.exit_review||"").startsWith("review_exit")?"action-sell":"unknown"));
-  const levels=add(head,"div",null,"trade-levels");
-  const buyBox=add(levels,"div",null,"trade-box");
-  add(buyBox,"small","Kauf-Limit · Modellwert");
-  add(buyBox,"strong",eur(s.model_buy_limit_eur));
-  const stopBox=add(levels,"div",null,"trade-box stop");
-  add(stopBox,"small","Stop-Loss · Modellwert");
-  add(stopBox,"strong",eur(s.model_initial_stop_eur));
-  add(head,"div",Number.isFinite(s.model_buy_limit_eur)&&Number.isFinite(s.model_initial_stop_eur)
-    ? (s.entry_review==="entry_review"
-        ? "Nur rechnerische Marken (1× ATR Kaufabschlag, 2,5× ATR darunter Stop). Im Broker prüfen."
-        : "Derzeit kein Einstiegssignal – diese Marken sind nur rechnerische Beispiele.")
-    : "Keine belastbaren Marken berechenbar; die historischen Tagesdaten reichen nicht aus.",
-    "trade-footnote");
+  if($("showTradeLevels").checked){
+    const levels=add(head,"div",null,"trade-levels");
+    const buyBox=add(levels,"div",null,"trade-box");
+    add(buyBox,"small","Kauf-Limit · Modellwert");
+    add(buyBox,"strong",eur(s.model_buy_limit_eur));
+    const stopBox=add(levels,"div",null,"trade-box stop");
+    add(stopBox,"small","Stop-Loss · Modellwert");
+    add(stopBox,"strong",eur(s.model_initial_stop_eur));
+    add(head,"div",Number.isFinite(s.model_buy_limit_eur)&&Number.isFinite(s.model_initial_stop_eur)
+      ? (s.entry_review==="entry_review"
+          ? "Nur rechnerische Marken (1× ATR Kaufabschlag, 2,5× ATR darunter Stop). Im Broker prüfen."
+          : "Derzeit kein Einstiegssignal – diese Marken sind nur rechnerische Beispiele.")
+      : "Keine belastbaren Marken berechenbar; die historischen Tagesdaten reichen nicht aus.",
+      "trade-footnote");
+  }
   const detail=add(article,"div",null,"details");
   const items=[
     ["Kursdatum",s.price_date||"unbekannt"],
@@ -344,7 +350,7 @@ function makeCard(s,mix){
   }
   const explanation=add(detail,"div",null,"decision");
   add(explanation,"strong","Einstieg frühestens am nächsten Handelstag, wenn das Signal nach dem Tagesschluss noch gilt.");
-  add(explanation,"span","Ausstieg bei Bestand prüfen, wenn ein späterer Tagesschluss unter der aktuell berechneten 200-Tage-Trendgrenze liegt oder die Crash-Marken erreicht werden. Vor einer Order tatsächlichen EUR-Brokerkurs prüfen. Die sichtbaren Kauf-/Stop-Modellwerte ergeben sich aus 1× ATR unter dem Schlusskurs und 2,5× ATR unter diesem hypothetischen Kauf-Limit. Keine statistisch validierten optimalen Grenzen, kein persönlicher Positions-Stop, keine Echtzeit-Überwachung oder automatische Verkaufsorder.");
+  add(explanation,"span","Ausstieg bei Bestand prüfen, wenn ein späterer Tagesschluss unter der aktuell berechneten 200-Tage-Trendgrenze liegt oder die Crash-Marken erreicht werden. Vor einer Order tatsächlichen EUR-Brokerkurs prüfen. Die optional einblendbaren Kauf-/Stop-Modellwerte ergeben sich aus 1× ATR unter dem Schlusskurs und 2,5× ATR unter diesem hypothetischen Kauf-Limit. Keine statistisch validierten optimalen Grenzen, kein persönlicher Positions-Stop, keine Echtzeit-Überwachung oder automatische Verkaufsorder.");
   return article;
 }
 function render(){
@@ -403,7 +409,7 @@ async function load(){
     if(!snapshot){$("empty").hidden=false;$("results").replaceChildren()}
   }finally{if(run===lastRequest)$("reload").disabled=false}
 }
-for(const id of ["region","scope","trOnly","search"]){
+for(const id of ["region","scope","trOnly","showTradeLevels","search"]){
   $(id).addEventListener(id==="search"?"input":"change",render);
 }
 for(const input of document.querySelectorAll("#strategyChoices input[data-factor]")){
