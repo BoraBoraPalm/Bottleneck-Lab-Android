@@ -18,6 +18,7 @@ from fx_eur import latest_eur_rates, add_eur_prices
 from tr_at_universe import apply_tr_filter
 from multifactor import sec_fundamentals, assign_multifactor
 from research_candidates import current_candidates
+from global_universe import discover_global,grouped_batch,region_of,REGIONS,SOURCE as GLOBAL_SOURCE
 
 PAGES = "https://boraborapalm.github.io/Bottleneck-Lab-Android/snapshot.json"
 NASDAQ = "https://www.nasdaqtrader.com/dynamic/SymDir/nasdaqlisted.txt"
@@ -31,7 +32,11 @@ GLOBAL_SEEDS = {
     "Europäische Industrie": "SAP.DE SIE.DE RHM.DE ENR.DE SU.PA AIR.PA BN.PA ABBN.SW ATCO-A.ST",
     "Globale Halbleiter": "ASML.AS ASM.AS IFX.DE 6501.T 8035.T 6857.T 005930.KS 000660.KS 2330.TW",
     "Internationale Rohstoffe": "BHP.AX RIO.AX FMG.AX GLEN.L",
-    "Globale Energie & Infrastruktur": "ORSTED.CO 9501.T 9503.T 600900.SS"
+    "Globale Energie & Infrastruktur": "ORSTED.CO 9501.T 9503.T 600900.SS",
+    "Globaler Markt – Europa": "NESN.SW NOVN.SW ROG.SW MC.PA OR.PA DTE.DE VOW3.DE NOVO-B.CO ASML.AS AZN.L LSEG.L ULVR.L",
+    "Globaler Markt – Asien": "7203.T 6758.T 9984.T 6861.T 0700.HK 9988.HK 3690.HK 600519.SS 601318.SS 300750.SZ RELIANCE.NS TCS.NS INFY.NS HDFCBANK.NS 035420.KS 005930.KS 2330.TW",
+    "Globaler Markt – Amerika": "SHOP.TO CNQ.TO CP.TO CSU.TO TD.TO RY.TO VALE3.SA PETR4.SA ITUB4.SA WMT.MX",
+    "Globaler Markt – Pazifik & Afrika": "CBA.AX CSL.AX WES.AX BHP.AX RIO.AX D05.SI BBCA.JK NPN.JO"
 }
 CURATED = {symbol: group for group, symbols in GROUPS.items() for symbol in symbols.split()}
 CURATED.update({symbol: group for group, symbols in GLOBAL_SEEDS.items() for symbol in symbols.split()})
@@ -72,10 +77,26 @@ def previous_snapshot():
 def discover(previous):
     found={}
     failures=[]
+    coverage={"source":GLOBAL_SOURCE,"status":"unavailable","mapped_symbol_count":0}
+    try:
+        global_found,coverage=discover_global()
+        found.update(global_found)
+        coverage["status"]="ok"
+        print("Global exchange discovery:",coverage["listed_stocks"],"raw shares,",len(global_found),"mapped Yahoo symbols",flush=True)
+    except Exception as ex:
+        failures.append("Global discovery: "+type(ex).__name__+": "+str(ex)[:120])
+        print("Global directory unavailable, retaining US/curated fallback",str(ex)[:160],flush=True)
     for source, nasdaq in ((NASDAQ,True),(OTHER,False)):
         try:
             part=parse_directory(source,nasdaq)
-            found.update(part)
+            # Official Nasdaq Trader US directories outrank third-party identifiers
+            # for ticker/company names, while global metadata is preserved.
+            for ticker,meta in part.items():
+                if ticker in found:
+                    current=found[ticker]
+                    current["name"]=meta["name"]
+                    current["exchange"]=meta["exchange"]
+                else:found[ticker]=meta
             print("Discovery",source,len(part))
         except Exception as e:
             failures.append("Discovery "+source+": "+str(e)[:120])
@@ -83,13 +104,21 @@ def discover(previous):
     for ticker,group in CURATED.items():
         found.setdefault(ticker,{"name":ticker,"exchange":"Curated global listing"})
         found[ticker]["curated_theme"]=group
+        if not found[ticker].get("region"):
+            from global_universe import region_of as _region
+            # A curated non-US listing has a venue-based region fallback
+            # only; do not invent issuer country when unknown.
+            suffix=ticker.rsplit(".",1)[-1] if "." in ticker else ""
+            venue_region={"DE":"Europa","PA":"Europa","MI":"Europa","SW":"Europa","AS":"Europa","CO":"Europa","ST":"Europa","L":"Europa","T":"Asien","KS":"Asien","TW":"Asien","HK":"Asien","SS":"Asien","SZ":"Asien","NS":"Asien","TO":"Nordamerika","SA":"Lateinamerika","AX":"Ozeanien","SI":"Asien","JK":"Asien","JO":"Afrika","MX":"Lateinamerika"}
+            found[ticker]["region"]=venue_region.get(suffix,"Nordamerika")
+            found[ticker]["region_source"]="listing_venue_heuristic"
     # In case exchange directories fail, keep known older discovered names.
     if len(found)<400:
         for old in previous.get("stocks",[]):
             t=old.get("ticker")
             if t and SYMBOL.fullmatch(t) and t not in found:
                 found[t]={"name":old.get("name",t),"exchange":"Previous snapshot"}
-    return found,failures
+    return found,failures,coverage
 
 def pick_batch(known, previous):
     now=datetime.now(timezone.utc)
@@ -97,11 +126,9 @@ def pick_batch(known, previous):
     # Curated are included every run, preventing disappearing baseline.
     curated=list(CURATED)
     rest=sorted(t for t in known if t not in CURATED)
-    # Deterministic 6-hour rotary selector, traverses every eligible exchange symbol
-    # in roughly ceil(N / PROBE_PER_RUN) cycles, not the whole market each refresh.
+    # Region-balanced rotating sampling, not biased toward US alphabetical tickers.
     slot=int(now.timestamp()//21600)
-    begin=(slot*PROBE_PER_RUN)%max(1,len(rest))
-    candidates=(rest+rest)[begin:begin+min(PROBE_PER_RUN,len(rest))]
+    candidates=grouped_batch(known,CURATED,slot,PROBE_PER_RUN)[len(curated):]
     # Revisit previously successful discoveries without flooding APIs.
     prior_ranked=sorted((v for k,v in prior.items() if k not in CURATED),
         key=lambda r:-float(r.get("score") or 0))
@@ -165,7 +192,7 @@ def financial_sec_lookup(rows, previous):
 
 def main():
     start=time.monotonic(); previous=previous_snapshot()
-    known,discovery_errors=discover(previous)
+    known,discovery_errors,global_coverage=discover(previous)
     requested,previous_rows=pick_batch(known,previous)
     cache=carry_fresh(previous,known)
     errors=list(discovery_errors)
@@ -180,6 +207,8 @@ def main():
                 if row:
                     row["name"]=known[ticker].get("name",ticker)
                     row["exchange"]=known[ticker].get("exchange")
+                    for label in ("country","country_code","region","stock_sector","listing_key","reference_isin","reference_source","reference_url"):
+                        if known[ticker].get(label):row[label]=known[ticker][label]
                     row["theme_source"]="Curated" if ticker in CURATED else "Unknown"
                     row["last_checked_at"]=checked
                     cache[ticker]=row
@@ -189,6 +218,12 @@ def main():
             except Exception as e:
                 errors.append(ticker+": "+str(e)[:120])
     rows=dict(cache)
+    # Refresh issuer and venue geography for previously cached quotes.
+    for symbol,row in rows.items():
+        meta=known.get(symbol,{})
+        for key in ("country","country_code","region","stock_sector","listing_key","reference_isin","reference_source","reference_url"):
+            if meta.get(key):row[key]=meta[key]
+        if not row.get("region"):row["region"]="Unbekannt"
     # Require recently valid prices; no stale titles presented as up-to-date.
     rows={k:v for k,v in rows.items() if seconds_ago(v.get("last_checked_at"))<8*86400}
     if len(rows)<15:
@@ -214,6 +249,17 @@ def main():
         raise SystemExit("EUR conversion rates unavailable; keeping last published snapshot: "+str(ex))
     converted,fx_missing=add_eur_prices(stocks,fx_rates)
     if bench:add_eur_prices([bench],fx_rates)
+    # Globally comparable liquidity must use native trading currency times
+    # 20-day price-volume, converted to EUR. Unknown turnover is NOT zero.
+    for stock in stocks:
+        base=stock.get("avg_local_turnover_20d")
+        fx=stock.get("eur_per_unit")
+        if base is not None and fx is not None:
+            stock["avg_turnover_20d_eur"]=round(float(base)*float(fx),2)
+            stock["eligible_global_ranking"]=bool(stock["reference_close_eur"]>=2 and stock["avg_turnover_20d_eur"]>=2_000_000)
+        else:
+            stock["avg_turnover_20d_eur"]=None
+            stock["eligible_global_ranking"]=False
     tr_status=apply_tr_filter(stocks)
     if converted<max(20,int(len(stocks)*0.85)):
         raise SystemExit("Insufficient EUR reference coverage; keeping last successful deployment")
@@ -223,6 +269,10 @@ def main():
     candidates=current_candidates(stocks,news_items,now.isoformat().replace("+00:00","Z"))
     print("Research candidates QM",candidates["quality_momentum_coverage"],"QVM",candidates["qvm_coverage"],"sector hypotheses",candidates["thematic_hypothesis_coverage"],flush=True)
     newly_discovered=sum(1 for x in stocks if x["ticker"] not in CURATED)
+    from collections import Counter
+    regional_known=dict(Counter((x.get("region") or "Unbekannt") for x in known.values()))
+    regional_quotes=dict(Counter((x.get("region") or "Unbekannt") for x in stocks))
+    regional_eligible=dict(Counter((x.get("region") or "Unbekannt") for x in stocks if x.get("eligible_global_ranking")))
     out={
         "version":5,
         "multifactor_model":multi_status,
@@ -237,8 +287,13 @@ def main():
         "fx_dates_by_currency":{cc:obj["fx_date"] for cc,obj in fx_rates.items()},
         "generated_at":now.isoformat().replace("+00:00","Z"),
         "universe_size":len(known),
-        "universe_region":"Primarily US Nasdaq/NYSE listings, plus curated international additions",
-        "discovery_sources":[NASDAQ,OTHER],
+        "universe_region":"Global primary listings across mapped exchanges, verified quotes obtained gradually by geographic rotation",
+        "global_discovery":global_coverage,
+        "global_region_universe_counts":regional_known,
+        "global_region_quote_counts":regional_quotes,
+        "global_region_liquid_counts":regional_eligible,
+        "global_quote_ready_count":sum(bool(s.get("eligible_global_ranking")) for s in stocks),
+        "discovery_sources":[NASDAQ,OTHER,GLOBAL_SOURCE],
         "snapshot_coverage_pct":round(len(stocks)/max(1,len(known))*100,1),
         "scanned_tickers":len(stocks),
         "checked_this_run":len(requested),
@@ -247,7 +302,7 @@ def main():
         "fundamental_coverage":sum(1 for x in stocks if x.get("fundamentals")),
         "momentum_12_2_coverage":sum(1 for x in stocks if x.get("momentum_12_2") is not None),
         "ranking_eligible_count":sum(1 for x in stocks if x.get("eligible_for_ranking")),
-        "ranking_liquidity_screen":"USD shares: price >= $5 and ADV20 >= $5m; curated non-USD: price >= 5 local units, liquidity not USD-verified",
+        "ranking_liquidity_screen":"Legacy USD shares: price >= $5 and ADV20 >= $5m; new global watchlist: EUR share >=2 and 20d EUR traded value >=2m; missing volume fails closed",
         "model":"Baseline Top 10 = unvalidated legacy 60-day momentum/ATR; separate experimental Q/V/M preview, no independent Q/V/M outcome backtest",
         "stocks":stocks,"benchmark":bench,"news":news_items,"errors":errors[:120],
         "sources":["Nasdaq Trader exchange symbol directories","Yahoo Finance unofficial daily chart","Stooq unofficial fallback","SEC EDGAR where available","Google News RSS","Frankfurter reference FX: official providers"]
