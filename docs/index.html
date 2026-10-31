@@ -391,6 +391,17 @@ function makeCard(s,mix){
     add(col,"small",name);
     add(col,"strong",val);
   }
+  if(s.fundamentals && Number.isFinite(s.sander_score)){
+    const origin=add(detail,"div",null,"decision");
+    add(origin,"strong","Fundamentalquelle: "+(s.fundamentals.source||"SEC-XBRL"));
+    if((s.fundamentals.source||"").includes("TGMCharts")){
+      const link=add(origin,"a","Datenbereitstellung durch TGMCharts · SEC-EDGAR-XBRL");
+      link.href="https://tgmcharts.com/";
+      link.target="_blank";
+      link.rel="noopener noreferrer";
+    }
+    add(origin,"div","Recherchemöglichkeit nach Kursrückgang, keine Kaufempfehlung: Geschäftsmodell, Verschuldung und tatsächliche Bewertung zusätzlich selbst prüfen.");
+  }
   const explanation=add(detail,"div",null,"decision");
   add(explanation,"strong","Einstieg frühestens am nächsten Handelstag, wenn das Signal nach dem Tagesschluss noch gilt.");
   add(explanation,"span","Ausstieg bei Bestand prüfen, wenn ein späterer Tagesschluss unter der aktuell berechneten 200-Tage-Trendgrenze liegt oder die Crash-Marken erreicht werden. Vor einer Order tatsächlichen EUR-Brokerkurs prüfen. Die optional einblendbaren Kauf-/Stop-Modellwerte ergeben sich aus 1× ATR unter dem Schlusskurs und 2,5× ATR unter diesem hypothetischen Kauf-Limit. Keine statistisch validierten optimalen Grenzen, kein persönlicher Positions-Stop, keine Echtzeit-Überwachung oder automatische Verkaufsorder.");
