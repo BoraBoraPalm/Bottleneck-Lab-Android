@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Weltweite Aktienmärkte — Bottleneck Lab</title>
+<style>
+:root{color-scheme:dark;--bg:#122338;--edge:#32485b;--muted:#abc1cf;--good:#77ddbd;--warning:#e7bb80}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;overflow-x:hidden}
+body{background:transparent;color:#eff5fa;font:14px/1.5 system-ui,-apple-system,sans-serif}
+h2{font-size:18px;margin:0 0 8px}
+h3{font-size:15px;margin:0 0 6px}
+.card{border:1px solid var(--edge);background:#172538;padding:15px;border-radius:14px;margin-bottom:12px}
+.desc{font-size:12px;color:var(--muted)}
+.note{background:#302a24;border-left:3px solid #dfb375;border-radius:6px;padding:10px;font-size:12px;margin:8px 0}
+.controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:12px 0}
+label{font-size:12px;display:block;color:var(--muted)}
+select{width:100%;min-width:0;min-height:42px;padding:8px;font:inherit;background:#0d1c2b;color:white;border:1px solid #526879;border-radius:9px}
+.check{display:flex;gap:7px;align-items:center;color:#eff5fa;margin:4px 0}
+.check input{width:18px;height:18px;accent-color:#58c9ba}
+.tablewrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:12px}
+th,td{padding:9px 6px;border-bottom:1px solid #31475b;text-align:right}
+th:first-child,td:first-child{text-align:left}
+th{color:var(--muted)}
+.regionstats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.regionstat{background:#203247;border-radius:8px;padding:10px}
+.regionstat b{font-size:19px;font-variant-numeric:tabular-nums;display:block}
+.regionstat small{font-size:11px;color:var(--muted)}
+.stock{display:block;width:100%;color:inherit;text-align:left;background:#1b3041;border:1px solid #3d5669;border-radius:11px;padding:12px;margin:9px 0}
+.stockname{display:flex;gap:8px;justify-content:space-between;align-items:start}
+.stockname strong{overflow-wrap:anywhere}
+.stockname span{color:var(--good);font-weight:700;white-space:nowrap}
+.detail{font-size:12px;color:var(--muted);margin-top:6px}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin-top:8px}
+.price{font-size:16px;color:#eff5fa;font-weight:700}
+a{color:#8de1d2}
+@media(min-width:760px){.regionstats{grid-template-columns:repeat(4,minmax(0,1fr))}.stocklist{display:grid;grid-template-columns:1fr 1fr;gap:8px}.stock{margin:0}.controls{grid-template-columns:repeat(4,minmax(0,1fr))}}
+</style></head><body>
+<div class="card">
+  <h2>Weltweiter Aktien-Screener</h2>
+  <p class="desc">Internationale Börsennotierungen werden aus einem weltweiten, identitätsgeprüften Aktienverzeichnis entdeckt. Nur erfolgreich abgefragte Tageskurse zählen als überprüft. Der Kurs- und Liquiditätsscan wächst mit jeder Aktualisierung – die Zahl entdeckter Unternehmen ist nicht die Zahl aktuell analysierter Aktien.</p>
+  <div class="note"><b>Wichtige Abgrenzung:</b> Die weltweite Aktienentdeckung und das 12–2-Monats-Momentum funktionieren auch ohne US-SEC-Bilanzdaten. Internationale Quality-/Value-Bilanzen werden derzeit <b>noch nicht</b> gleichwertig bewertet. Historische Faktorstudien im Forschungsreiter verwenden weiterhin US-Portfolios.</div>
+  <div id="state" class="desc" role="status">Lade globale Daten …</div>
+  <div class="regionstats" id="regions" style="margin-top:10px"></div>
+</div>
+<div class="card">
+  <h3>Internationale Aktienkandidaten</h3>
+  <p class="desc">Auswahl anhand des beobachteten 12–2-Monats-Momentums. Keine validierte Renditeprognose; kein firmenspezifischer Engpass-Score.</p>
+  <div class="controls">
+    <div><label for="region">Region</label><select id="region" disabled><option value="Alle">Alle Regionen</option></select></div>
+    <div><label for="sort">Sortierung</label><select id="sort"><option value="momentum">12–2-Monats-Momentum</option><option value="dollar">EUR-Handelsumsatz</option><option value="symbol">Ticker</option></select></div>
+    <div><label class="check"><input type="checkbox" id="liquid" checked>EUR-Liquidität geprüft</label></div>
+    <div><label class="check"><input type="checkbox" id="tr">Nur TR-AT (ISIN)</label></div>
+  </div>
+  <div class="desc" id="count"></div>
+  <div class="stocklist" id="stocks" style="margin-top:12px"></div>
+  <div class="note">Der Liquiditätsfilter verlangt einen indikativ nach EUR umgerechneten Preis von mindestens 2 € und einen durchschnittlichen täglichen 20-Handelstage-Umsatz von mindestens 2 Mio. €. Fehlen Volumen, Wechselkurs oder Momentum, wird die Aktie nicht als geprüfter Kandidat dargestellt. Der TR-Filter bestätigt eine ISIN in der österreichischen Wertpapierliste, keine sofort ausführbare Order. Die Kurse sind keine aktuellen Broker-Geld-/Briefkurse.</div>
+</div>
+<div class="card">
+  <h3>Globale Datenbasis und Grenzen</h3>
+  <div id="dataStatus" class="desc"></div>
+  <p class="desc">Geografische Region bezieht sich auf das Herkunftsland des Emittenten, falls bekannt. Der tatsächliche Börsenplatz kann abweichen (z. B. US-ADRs). Bei fehlender Referenz wird eine Kuratierungs-/Börsenplatz-Heuristik verwendet, sonst „Unbekannt“.</p>
+  <p class="desc">Datenquellen: <a href="https://github.com/adanos-software/free-ticker-database" target="_blank" rel="noopener">Adanos globales Aktienverzeichnis</a>, Nasdaq Trader (USA), Yahoo Finance/Stooq (Tageskurse), Frankfurter (Referenzwechselkurse), <a href="https://assets.traderepublic.com/assets/files/AT/Instrument_Universe_AT_en.pdf" target="_blank" rel="noopener">Trade Republic AT-Wertpapierliste</a>.</p>
+</div>
+<script>
+'use strict';
+const $=id=>document.getElementById(id);
+const num=(n,d=0)=>Number.isFinite(n)?n.toLocaleString('de-AT',{minimumFractionDigits:d,maximumFractionDigits:d}):'–';
+const euro=n=>Number.isFinite(n)?num(n,2)+' €':'–';
+const REGIONS=['Europa','Asien','Nordamerika','Lateinamerika','Ozeanien','Naher Osten','Afrika','Unbekannt'];
+let data=null;
+const append=(p,tag,str,cls)=>{const e=document.createElement(tag);if(str!==null&&str!==undefined)e.textContent=String(str);if(cls)e.className=cls;p.append(e);return e};
+const resizing=()=>{if(window.parent!==window)window.parent.postMessage({bottleneckGlobalHeight:Math.ceil(document.documentElement.scrollHeight)},location.origin==='null'?'*':location.origin)};
+function region_stats(d){
+  const all=d.global_region_universe_counts||{};
+  const quotes=d.global_region_quote_counts||{};
+  const eligible=d.global_region_liquid_counts||{};
+  $('regions').replaceChildren();
+  for(const r of REGIONS){
+    if(!all[r]&&!quotes[r])continue;
+    const item=append($('regions'),'div',null,'regionstat');
+    append(item,'small',r);
+    append(item,'b',num(quotes[r]||0)+' / '+num(all[r]||0));
+    append(item,'small','Kurse / entdeckte Ticker · '+num(eligible[r]||0)+' mit EUR-Liquidität');
+  }
+}
+function chosen(r){
+  const reg=$('region').value;
+  if(reg!=='Alle'&&(r.region||'Unbekannt')!==reg)return false;
+  if($('tr').checked&&r.tr_at_listed!==true)return false;
+  if(!Number.isFinite(r.close)||!Number.isFinite(r.eur_per_unit)||r.eur_per_unit<=0)return false;
+  if(!Number.isFinite(r.momentum_12_2))return false;
+  if($('liquid').checked&&r.eligible_global_ranking!==true)return false;
+  const dated=Date.parse(r.price_date||'');
+  if(!Number.isFinite(dated)||Date.now()-dated>14*86400000)return false;
+  return true;
+}
+function render(){
+  if(!data)return;
+  const ranks=(data.stocks||[]).filter(chosen);
+  const sort=$('sort').value;
+  ranks.sort((a,b)=>sort==='dollar'?(b.avg_turnover_20d_eur||0)-(a.avg_turnover_20d_eur||0):sort==='symbol'?a.ticker.localeCompare(b.ticker):
+    b.momentum_12_2-a.momentum_12_2);
+  const sample=ranks.slice(0,25);
+  const stockElement=$('stocks');stockElement.replaceChildren();
+  $('count').textContent='Erfüllen die gewählten Bedingungen: '+num(ranks.length)+' · zunächst die ersten '+num(sample.length)+' angezeigt. Die Trefferzahl ist nicht die Anzahl aller weltweit handelbaren Aktien.';
+  if(!sample.length)append(stockElement,'div','Noch keine Aktien mit ausreichender Datenlage und den gewählten Filtern. Alternativ Liquiditäts- oder TR-Filter deaktivieren.','note');
+  for(const s of sample){
+    const card=append(stockElement,'article',null,'stock');
+    const head=append(card,'div',null,'stockname');
+    append(head,'strong',s.ticker+' · '+(s.name||''));
+    append(head,'span',num(s.momentum_12_2*100,1)+' %');
+    append(card,'div',(s.region||'Unbekannt')+' · '+(s.country||s.country_code||'')+' · '+(s.exchange||'')+(s.stock_sector?' · '+s.stock_sector:''),'detail');
+    const two=append(card,'div',null,'two');
+    append(two,'div','EUR-Referenzkurs','detail');
+    append(two,'div','Volumen 20T (EUR/Tag)','detail');
+    append(two,'div',euro(s.close*s.eur_per_unit),'price');
+    append(two,'div',euro(s.avg_turnover_20d_eur),'price');
+    append(card,'div','Kursdatum '+(s.price_date||'?')+' · FX '+(s.fx_date||'?')+' · '+(s.tr_at_listed?'TR AT ISIN bestätigt':'TR AT nicht bestätigt'),'detail');
+    append(card,'div','Kursquelle: '+(s.source||'unbekannt')+' · Die Momentum-Rendite ist ein historisches Signal, keine Prognose.','detail');
+  }
+  resizing();
+}
+async function load(){
+  try{
+    const r=await fetch('snapshot.json?world='+Date.now(),{cache:'no-store'});
+    if(!r.ok)throw Error('HTTP '+r.status);
+    const d=await r.json();
+    if(!Array.isArray(d.stocks))throw Error('kein Aktienbestand');
+    data=d;
+    const regions=(d.global_region_universe_counts)||{};
+    const option=$('region');
+    for(const reg of REGIONS){
+      if(!regions[reg]&&!d.global_region_quote_counts?.[reg])continue;
+      const o=document.createElement('option');o.value=reg;o.textContent=reg;option.append(o);
+    }
+    option.disabled=false;
+    const global=d.global_discovery||{};
+    $('state').textContent='Aktueller Datenstand '+new Date(d.generated_at).toLocaleString('de-AT')+
+      ' · '+num(d.universe_size)+' bekannte Ticker · '+num(d.stocks.length)+' Aktien mit Kursdaten · '+num(d.global_quote_ready_count||0)+' mit global vergleichbarer EUR-Liquidität.';
+    $('dataStatus').textContent='Verzeichnis '+(global.status==='ok'?'erfolgreich geladen':'nicht verfügbar, nur US- und kuratierte Daten')+
+      ' · '+num(global.listed_stocks||0)+' Roh-Aktieneinträge · '+num(global.mapped_symbol_count||0)+' zuordenbare Börsensymbole · '+
+      num(global.unsupported_exchange_stock_count||0)+' wegen derzeit nicht sicher abbildbarer Börsenplätze ausgeschlossen. '+
+      'Börsen- und regionale Kursdaten werden abschnittsweise abgefragt; die Abdeckung steigt nicht zwangsläufig in allen Regionen gleich schnell.';
+    region_stats(d);
+    for(const id of ['region','sort'])$(id).onchange=render;
+    for(const id of ['liquid','tr'])$(id).onchange=render;
+    render();
+  }catch(e){$('state').textContent='Globale Daten können nicht abgerufen werden: '+e.message;resizing();}
+}
+if('ResizeObserver' in window)new ResizeObserver(resizing).observe(document.body);
+load();
+</script></body></html>
