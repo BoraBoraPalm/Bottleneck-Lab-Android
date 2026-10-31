@@ -31,7 +31,7 @@ class SandScreenTest(unittest.TestCase):
         f=s.fundamental_quality(company(),asof=date(2026,10,31))
         self.assertTrue(f["quality_ok"])
         self.assertAlmostEqual(f["revenue_growth_yoy"],.10)
-        self.assertAlmostEqual(f["profit_margin"],18/110)
+        self.assertAlmostEqual(f["profit_margin"],18/110,places=5)
         self.assertEqual(f["fy_end"],"2025-09-30")
         self.assertEqual(f["filed"],"2025-11-04")
         self.assertTrue(s.sander_screen(share(),f)>0)
@@ -129,7 +129,8 @@ class SandScreenTest(unittest.TestCase):
 
     def test_broken_provider_does_not_leak_fake_candidates(self):
         stocks=[share()]
-        with patch.object(s,"ticker_map",side_effect=RuntimeError("blocked")):
+        with patch.object(s,"ticker_map",side_effect=RuntimeError("blocked")),\
+             patch.object(s,"tgm_annual_quality",side_effect=RuntimeError("also blocked")):
             result=s.enrich_stocks(stocks,{"stocks":[]},maximum=3)
         self.assertEqual(result["qualified_candidates"],0)
         self.assertIsNone(stocks[0]["sander_score"])
