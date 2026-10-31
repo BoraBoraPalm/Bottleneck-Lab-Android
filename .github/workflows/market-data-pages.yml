@@ -8,6 +8,7 @@ on:
     paths:
       - 'docs/**'
       - 'scripts/**'
+      - 'tests/**'
       - '.github/workflows/market-data-pages.yml'
 permissions:
   contents: read
