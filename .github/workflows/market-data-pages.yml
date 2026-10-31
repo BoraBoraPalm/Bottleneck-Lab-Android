@@ -37,7 +37,7 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_*.py' -v
       - name: Validate mobile frontend JavaScript
         run: node scripts/check_frontend.cjs
-      - name: Retrieve quote history and relevant RSS headlines
+      - name: Refresh worldwide quotes, EUR FX and TR ISINs
         run: python scripts/market_pipeline.py
       - name: Upload data as diagnostic artifact
         if: always()
