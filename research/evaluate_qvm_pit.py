@@ -72,9 +72,17 @@ def collect():
         and x.get("eligible_for_ranking")]
     names=list(dict.fromkeys(x["ticker"] for x in sorted(pilot,key=lambda s:s["ticker"])))[:MAX_UNIVERSE]
     if len(names)<15:raise RuntimeError("Too few current QVM stocks for meaningful diagnostic")
-    cikmap_raw=json.loads(b.download(SEC_TICKERS,timeout=20,max_bytes=450000))
-    cikmap={x["ticker"].upper():x["cik_str"] for x in cikmap_raw.values()}
+    # The published source URLs already contain the CIK, avoiding a redundant
+    # SEC map request. Never infer a CIK from a ticker or company name.
+    cikmap={}
+    for row in pilot:
+        if row["ticker"] not in names:continue
+        source=(row.get("fundamentals") or {}).get("source_url","")
+        match=__import__("re").search(r"/CIK(\d{10})\.json$",source)
+        if match:cikmap[row["ticker"]]=int(match.group(1))
+    print("CIK mappings from recorded SEC source",len(cikmap),"of",len(names),flush=True)
     names=[x for x in names if x in cikmap]
+    b.HTTP_HEADERS["User-Agent"]="BottleneckLabResearch/0.6 (+https://github.com/BoraBoraPalm/Bottleneck-Lab-Android)"
     data={}
     failures={}
     def get(t):
@@ -82,12 +90,16 @@ def collect():
         if not bars:return t,None,None,err
         if t=="SPY":return t,bars,None,None
         url=f"https://data.sec.gov/api/xbrl/companyfacts/CIK{int(cikmap[t]):010d}.json"
-        try:
-            sec=json.loads(b.download(url,timeout=22,max_bytes=20000000))
-            return t,bars,sec,None
-        except Exception as e:
-            return t,None,None,str(e)[:140]
-    with ThreadPoolExecutor(max_workers=6) as pool:
+        issue=None
+        for attempt in range(3):
+            try:
+                sec=json.loads(b.download(url,timeout=25,max_bytes=20000000))
+                return t,bars,sec,None
+            except Exception as e:
+                issue=e
+                time.sleep(2*(attempt+1))
+        return t,None,None,str(issue)[:140]
+    with ThreadPoolExecutor(max_workers=3) as pool:
         tasks=[pool.submit(get,t) for t in names+["SPY"]]
         for fut in as_completed(tasks):
             t,bars,sec,error=fut.result()
