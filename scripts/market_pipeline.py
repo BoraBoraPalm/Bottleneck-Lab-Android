@@ -112,7 +112,7 @@ def discover(old):
 CACHE_FIELDS=(
   "ticker","close","currency","price_date","source","bars_count","momentum_12_2","momentum_basis",
   "avg_dollar_turnover_20d","avg_local_turnover_20d","last_checked_at",
-  "sma200_ratio","sma200_native","return_21d","drawdown_252d",
+  "sma200_ratio","sma200_native","crash_21_level_native","crash_peak_level_native","return_21d","drawdown_252d",
   "atr14_native","crash_warning","correction_warning",
   "risk_reference_native","context_basis"
 )
