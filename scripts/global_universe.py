@@ -24,6 +24,9 @@ VENUES={
     "NASDAQ_STO":".ST","NASDAQ_CPH":".CO","NASDAQ_HEL":".HE",
     "BME":".MC","BIST":".IS","BVL":".LM","WSE":".WA",
     "SGX":".SI","NZX":".NZ","JSE":".JO","TASE":".TA",
+    "STO":".ST","HEL":".HE","CPH":".CO","OSL":".OL",
+    "BORSA ITALIANA":".MI","BURSA":".KL","ATHEX":".AT",
+    "TADAWUL":".SAU","QSE":".QA","BVMT":".TN",
     "BMV":".MX","BVC":".CL","BCBA":".BA","IDX":".JK",
     "SET":".BK","MYX":".KL","PSE":".PS","HOSE":".VN"
 }
