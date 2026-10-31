@@ -17,6 +17,7 @@ from build_snapshot import GROUPS, quote, fetch_news, read_url
 from fx_eur import latest_eur_rates, add_eur_prices
 from tr_at_universe import apply_tr_filter
 from multifactor import sec_fundamentals, assign_multifactor
+from research_candidates import current_candidates
 
 PAGES = "https://boraborapalm.github.io/Bottleneck-Lab-Android/snapshot.json"
 NASDAQ = "https://www.nasdaqtrader.com/dynamic/SymDir/nasdaqlisted.txt"
@@ -217,10 +218,15 @@ def main():
     if converted<max(20,int(len(stocks)*0.85)):
         raise SystemExit("Insufficient EUR reference coverage; keeping last successful deployment")
     now=datetime.now(timezone.utc)
+    # Candidate watchlists are independent of the legacy trading ranking.
+    news_items=fetch_news()
+    candidates=current_candidates(stocks,news_items,now.isoformat().replace("+00:00","Z"))
+    print("Research candidates QM",candidates["quality_momentum_coverage"],"QVM",candidates["qvm_coverage"],"sector hypotheses",candidates["thematic_hypothesis_coverage"],flush=True)
     newly_discovered=sum(1 for x in stocks if x["ticker"] not in CURATED)
     out={
         "version":5,
         "multifactor_model":multi_status,
+        "research_candidates":candidates,
         "multifactor_preview_only":True,
         "display_currency":"EUR",
         "eur_display_method":"Dated Frankfurter reference exchange rates, not executable Trade Republic bid/ask",
@@ -243,7 +249,7 @@ def main():
         "ranking_eligible_count":sum(1 for x in stocks if x.get("eligible_for_ranking")),
         "ranking_liquidity_screen":"USD shares: price >= $5 and ADV20 >= $5m; curated non-USD: price >= 5 local units, liquidity not USD-verified",
         "model":"Baseline Top 10 = unvalidated legacy 60-day momentum/ATR; separate experimental Q/V/M preview, no independent Q/V/M outcome backtest",
-        "stocks":stocks,"benchmark":bench,"news":fetch_news(),"errors":errors[:120],
+        "stocks":stocks,"benchmark":bench,"news":news_items,"errors":errors[:120],
         "sources":["Nasdaq Trader exchange symbol directories","Yahoo Finance unofficial daily chart","Stooq unofficial fallback","SEC EDGAR where available","Google News RSS","Frankfurter reference FX: official providers"]
     }
     os.makedirs("docs",exist_ok=True)
