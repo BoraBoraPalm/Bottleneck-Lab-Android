@@ -28,7 +28,7 @@ def pick(t="TEST",close=100,atr=2):
 class PortfolioResearchTest(unittest.TestCase):
     def test_signal_lags_252_and_42_not_one_month(self):
         dates,h=sample_data(c=100)
-        for j in range(40,315):
+        for j in range(0,315):
             h["bars"][dates[j]][3]=100+j*.4
             h["bars"][dates[j]][6]=100+j*.4
             h["bars"][dates[j]][0]=100+j*.4
