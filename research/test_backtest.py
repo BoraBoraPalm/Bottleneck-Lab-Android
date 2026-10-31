@@ -68,6 +68,14 @@ class BacktestInvariants(unittest.TestCase):
         self.assertLessEqual(tr["sell_eur"],tr["buy_eur"])
         self.assertLessEqual(tr["pnl_eur"],-2)
 
+    def test_exposure_matched_benchmark_pays_two_euro_fees(self):
+        days=self.days[:22]
+        bars=[[100,101,99,100,100000,100] for _ in days]
+        benchmark={"bars":bars,"index":{d:i for i,d in enumerate(days)}}
+        model_trade={"buy_date":days[3],"exit_date":days[17],"spent":1000.}
+        pnl=b.exposure_matched_spy_trade(model_trade,benchmark,self.fx,slip=0)
+        self.assertAlmostEqual(pnl,-2,places=6)
+
     def test_fees_always_both_sides(self):
         days=self.days[:22]
         bars=[[100,101,99,100,100000,100] for _ in days]
