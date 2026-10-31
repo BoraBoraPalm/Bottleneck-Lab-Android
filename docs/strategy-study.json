@@ -1,0 +1,583 @@
+{
+  "title": "Bottleneck Lab — wissenschaftliche Faktorstrategien",
+  "studyRun": "https://github.com/BoraBoraPalm/Bottleneck-Lab-Android/actions/runs/41190413013",
+  "dataSource": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html",
+  "methodologySource": "https://github.com/BoraBoraPalm/Bottleneck-Lab-Android/blob/master/research/robust_factors_1965_2026.py",
+  "basis": "Historisch rekonstituierte US-Faktorportfolios, Monatsrenditen, heute revidierte CRSP-Daten",
+  "periods": {
+    "usd_full": {
+      "label": "USD · 1965–2026",
+      "months": 741,
+      "range": "01/1965–09/2026",
+      "currency": "USD",
+      "model": {
+        "Market": {
+          "cagr": 10.726,
+          "volatility": 15.547,
+          "maxDrawdown": -50.306,
+          "annualExcess": 0,
+          "p": 1,
+          "correctedP": 1,
+          "confidence95": [
+            0,
+            0
+          ],
+          "outperformance3y": 0,
+          "outperformance5y": 0,
+          "outperformance10y": 0
+        },
+        "Large Value": {
+          "cagr": 11.762,
+          "volatility": 17.6,
+          "maxDrawdown": -62.428,
+          "annualExcess": 1.289,
+          "p": 0.311412,
+          "correctedP": 1,
+          "confidence95": [
+            -1.302,
+            3.669
+          ],
+          "outperformance3y": 56.94,
+          "outperformance5y": 57.04,
+          "outperformance10y": 62.7
+        },
+        "Large Quality": {
+          "cagr": 10.786,
+          "volatility": 15.26,
+          "maxDrawdown": -48.646,
+          "annualExcess": 0.006,
+          "p": 0.991569,
+          "correctedP": 1,
+          "confidence95": [
+            -0.951,
+            1.11
+          ],
+          "outperformance3y": 53.82,
+          "outperformance5y": 56.45,
+          "outperformance10y": 62.06
+        },
+        "Large Conservative Investment": {
+          "cagr": 11.48,
+          "volatility": 15.219,
+          "maxDrawdown": -50.084,
+          "annualExcess": 0.626,
+          "p": 0.436259,
+          "correctedP": 1,
+          "confidence95": [
+            -0.925,
+            2.249
+          ],
+          "outperformance3y": 54.53,
+          "outperformance5y": 60.7,
+          "outperformance10y": 67.52
+        },
+        "Momentum Winners": {
+          "cagr": 15.927,
+          "volatility": 21.852,
+          "maxDrawdown": -51.661,
+          "annualExcess": 5.813,
+          "p": 0.000229,
+          "correctedP": 0.002519,
+          "confidence95": [
+            2.781,
+            9.117
+          ],
+          "outperformance3y": 72.95,
+          "outperformance5y": 76.25,
+          "outperformance10y": 79.9
+        },
+        "Equal Q+V+M": {
+          "cagr": 13.164,
+          "volatility": 16.625,
+          "maxDrawdown": -51.161,
+          "annualExcess": 2.369,
+          "p": 0.000034,
+          "correctedP": 0.000374,
+          "confidence95": [
+            1.218,
+            3.521
+          ],
+          "outperformance3y": 77.34,
+          "outperformance5y": 77.27,
+          "outperformance10y": 75.72
+        },
+        "50% Market + QVM": {
+          "cagr": 11.964,
+          "volatility": 15.953,
+          "maxDrawdown": -50.701,
+          "annualExcess": 1.185,
+          "p": 0.000034,
+          "correctedP": 0.000374,
+          "confidence95": [
+            0.649,
+            1.787
+          ],
+          "outperformance3y": 77.62,
+          "outperformance5y": 77.86,
+          "outperformance10y": 75.72
+        },
+        "50% Market + Quality/Value": {
+          "cagr": 11.104,
+          "volatility": 15.427,
+          "maxDrawdown": -50.889,
+          "annualExcess": 0.324,
+          "p": 0.311251,
+          "correctedP": 1,
+          "confidence95": [
+            -0.258,
+            0.983
+          ],
+          "outperformance3y": 58.78,
+          "outperformance5y": 63.34,
+          "outperformance10y": 66.72
+        },
+        "50% Market + Quality/Momentum": {
+          "cagr": 12.197,
+          "volatility": 16.331,
+          "maxDrawdown": -48.203,
+          "annualExcess": 1.455,
+          "p": 0.000238,
+          "correctedP": 0.002618,
+          "confidence95": [
+            0.664,
+            2.272
+          ],
+          "outperformance3y": 79.18,
+          "outperformance5y": 83.43,
+          "outperformance10y": 91.8
+        },
+        "50% Market + Quality/Value/Conservative": {
+          "cagr": 11.128,
+          "volatility": 15.268,
+          "maxDrawdown": -50.641,
+          "annualExcess": 0.32,
+          "p": 0.282992,
+          "correctedP": 1,
+          "confidence95": [
+            -0.236,
+            0.946
+          ],
+          "outperformance3y": 57.51,
+          "outperformance5y": 63.2,
+          "outperformance10y": 70.1
+        },
+        "80% Market + Momentum": {
+          "cagr": 11.884,
+          "volatility": 16.259,
+          "maxDrawdown": -50.35,
+          "annualExcess": 1.163,
+          "p": 0.000228,
+          "correctedP": 0.002508,
+          "confidence95": [
+            0.558,
+            1.762
+          ],
+          "outperformance3y": 75.78,
+          "outperformance5y": 79.33,
+          "outperformance10y": 85.21
+        },
+        "80% Market + Quality": {
+          "cagr": 10.75,
+          "volatility": 15.418,
+          "maxDrawdown": -48.564,
+          "annualExcess": 0.001,
+          "p": 0.990556,
+          "correctedP": 1,
+          "confidence95": [
+            -0.199,
+            0.212
+          ],
+          "outperformance3y": 54.11,
+          "outperformance5y": 58.5,
+          "outperformance10y": 64.47
+        }
+      }
+    },
+    "eur_2000": {
+      "label": "EUR · 2000–2026",
+      "months": 320,
+      "range": "02/2000–09/2026",
+      "currency": "EUR",
+      "model": {
+        "Market": {
+          "cagr": 8.117,
+          "volatility": 15.53,
+          "maxDrawdown": -58.255,
+          "annualExcess": 0,
+          "p": 1,
+          "correctedP": 1,
+          "confidence95": [
+            0,
+            0
+          ],
+          "outperformance3y": 0,
+          "outperformance5y": 0,
+          "outperformance10y": 0
+        },
+        "Large Value": {
+          "cagr": 8.487,
+          "volatility": 19.723,
+          "maxDrawdown": -64.659,
+          "annualExcess": 1.111,
+          "p": 0.656954,
+          "correctedP": 1,
+          "confidence95": [
+            -3.574,
+            6.184
+          ],
+          "outperformance3y": 38.6,
+          "outperformance5y": 27.2,
+          "outperformance10y": 6.47
+        },
+        "Large Quality": {
+          "cagr": 8.813,
+          "volatility": 14.511,
+          "maxDrawdown": -50.909,
+          "annualExcess": 0.487,
+          "p": 0.57081,
+          "correctedP": 1,
+          "confidence95": [
+            -1.178,
+            2.155
+          ],
+          "outperformance3y": 59.3,
+          "outperformance5y": 64.37,
+          "outperformance10y": 85.57
+        },
+        "Large Conservative Investment": {
+          "cagr": 9.135,
+          "volatility": 15.318,
+          "maxDrawdown": -46.963,
+          "annualExcess": 0.902,
+          "p": 0.494663,
+          "correctedP": 1,
+          "confidence95": [
+            -1.537,
+            3.594
+          ],
+          "outperformance3y": 34.04,
+          "outperformance5y": 35.63,
+          "outperformance10y": 15.92
+        },
+        "Momentum Winners": {
+          "cagr": 9.319,
+          "volatility": 22.07,
+          "maxDrawdown": -59.537,
+          "annualExcess": 2.315,
+          "p": 0.337322,
+          "correctedP": 1,
+          "confidence95": [
+            -2.61,
+            7.372
+          ],
+          "outperformance3y": 54.39,
+          "outperformance5y": 52.11,
+          "outperformance10y": 42.29
+        },
+        "Equal Q+V+M": {
+          "cagr": 9.359,
+          "volatility": 16.536,
+          "maxDrawdown": -52.557,
+          "annualExcess": 1.304,
+          "p": 0.183738,
+          "correctedP": 1,
+          "confidence95": [
+            -0.669,
+            3.401
+          ],
+          "outperformance3y": 49.82,
+          "outperformance5y": 41.38,
+          "outperformance10y": 24.88
+        },
+        "50% Market + QVM": {
+          "cagr": 8.769,
+          "volatility": 15.853,
+          "maxDrawdown": -55.347,
+          "annualExcess": 0.653,
+          "p": 0.183597,
+          "correctedP": 1,
+          "confidence95": [
+            -0.328,
+            1.645
+          ],
+          "outperformance3y": 50.53,
+          "outperformance5y": 42.53,
+          "outperformance10y": 24.88
+        },
+        "50% Market + Quality/Value": {
+          "cagr": 8.536,
+          "volatility": 15.596,
+          "maxDrawdown": -55.792,
+          "annualExcess": 0.4,
+          "p": 0.531604,
+          "correctedP": 1,
+          "confidence95": [
+            -0.748,
+            1.826
+          ],
+          "outperformance3y": 38.95,
+          "outperformance5y": 36.78,
+          "outperformance10y": 14.93
+        },
+        "50% Market + Quality/Momentum": {
+          "cagr": 8.813,
+          "volatility": 15.915,
+          "maxDrawdown": -55.463,
+          "annualExcess": 0.701,
+          "p": 0.25455,
+          "correctedP": 1,
+          "confidence95": [
+            -0.561,
+            2.042
+          ],
+          "outperformance3y": 65.96,
+          "outperformance5y": 71.26,
+          "outperformance10y": 77.61
+        },
+        "50% Market + Quality/Value/Conservative": {
+          "cagr": 8.596,
+          "volatility": 15.359,
+          "maxDrawdown": -54.35,
+          "annualExcess": 0.417,
+          "p": 0.475755,
+          "correctedP": 1,
+          "confidence95": [
+            -0.564,
+            1.646
+          ],
+          "outperformance3y": 35.09,
+          "outperformance5y": 33.33,
+          "outperformance10y": 15.92
+        },
+        "80% Market + Momentum": {
+          "cagr": 8.527,
+          "volatility": 16.073,
+          "maxDrawdown": -57.702,
+          "annualExcess": 0.463,
+          "p": 0.337182,
+          "correctedP": 1,
+          "confidence95": [
+            -0.573,
+            1.417
+          ],
+          "outperformance3y": 60,
+          "outperformance5y": 59.77,
+          "outperformance10y": 57.21
+        },
+        "80% Market + Quality": {
+          "cagr": 8.271,
+          "volatility": 15.243,
+          "maxDrawdown": -56.585,
+          "annualExcess": 0.098,
+          "p": 0.570278,
+          "correctedP": 1,
+          "confidence95": [
+            -0.234,
+            0.43
+          ],
+          "outperformance3y": 59.3,
+          "outperformance5y": 65.13,
+          "outperformance10y": 88.06
+        }
+      }
+    }
+  },
+  "costs": {
+    "assumption": "Hypothetischer Abschlag von 1 % pro Jahr auf Faktoranteile, nicht tatsächliche TR-Ordergebühren.",
+    "headwindsQvm": [
+      {
+        "window": "USD full after 1965",
+        "costPct": 0,
+        "months": 741,
+        "qvmCagr": 14.301,
+        "marketCagr": 10.726
+      },
+      {
+        "window": "USD full after 1965",
+        "costPct": 1,
+        "months": 741,
+        "qvmCagr": 13.164,
+        "marketCagr": 10.726
+      },
+      {
+        "window": "USD full after 1965",
+        "costPct": 2,
+        "months": 741,
+        "qvmCagr": 12.036,
+        "marketCagr": 10.726
+      },
+      {
+        "window": "USD 1965–1999",
+        "costPct": 0,
+        "months": 420,
+        "qvmCagr": 17.034,
+        "marketCagr": 12.466
+      },
+      {
+        "window": "USD 1965–1999",
+        "costPct": 1,
+        "months": 420,
+        "qvmCagr": 15.869,
+        "marketCagr": 12.466
+      },
+      {
+        "window": "USD 1965–1999",
+        "costPct": 2,
+        "months": 420,
+        "qvmCagr": 14.715,
+        "marketCagr": 12.466
+      },
+      {
+        "window": "USD 2000–2014",
+        "costPct": 0,
+        "months": 180,
+        "qvmCagr": 6.748,
+        "marketCagr": 4.717
+      },
+      {
+        "window": "USD 2000–2014",
+        "costPct": 1,
+        "months": 180,
+        "qvmCagr": 5.685,
+        "marketCagr": 4.717
+      },
+      {
+        "window": "USD 2000–2014",
+        "costPct": 2,
+        "months": 180,
+        "qvmCagr": 4.633,
+        "marketCagr": 4.717
+      },
+      {
+        "window": "USD 2015–2026",
+        "costPct": 0,
+        "months": 141,
+        "qvmCagr": 16.249,
+        "marketCagr": 13.505
+      },
+      {
+        "window": "USD 2015–2026",
+        "costPct": 1,
+        "months": 141,
+        "qvmCagr": 15.092,
+        "marketCagr": 13.505
+      },
+      {
+        "window": "USD 2015–2026",
+        "costPct": 2,
+        "months": 141,
+        "qvmCagr": 13.945,
+        "marketCagr": 13.505
+      },
+      {
+        "window": "EUR 2000–2026",
+        "costPct": 0,
+        "months": 320,
+        "qvmCagr": 10.458,
+        "marketCagr": 8.117
+      },
+      {
+        "window": "EUR 2000–2026",
+        "costPct": 1,
+        "months": 320,
+        "qvmCagr": 9.359,
+        "marketCagr": 8.117
+      },
+      {
+        "window": "EUR 2000–2026",
+        "costPct": 2,
+        "months": 320,
+        "qvmCagr": 8.269,
+        "marketCagr": 8.117
+      },
+      {
+        "window": "EUR 2015–2026",
+        "costPct": 0,
+        "months": 141,
+        "qvmCagr": 16.931,
+        "marketCagr": 14.17
+      },
+      {
+        "window": "EUR 2015–2026",
+        "costPct": 1,
+        "months": 141,
+        "qvmCagr": 15.767,
+        "marketCagr": 14.17
+      },
+      {
+        "window": "EUR 2015–2026",
+        "costPct": 2,
+        "months": 141,
+        "qvmCagr": 14.613,
+        "marketCagr": 14.17
+      }
+    ]
+  },
+  "labels": {
+    "Market": "Breiter US-Markt",
+    "Large Value": "Large Value",
+    "Large Quality": "Large Quality",
+    "Large Conservative Investment": "Konservatives Investieren",
+    "Momentum Winners": "Momentum-Gewinner",
+    "Equal Q+V+M": "Gleichgewichtet Quality/Value/Momentum",
+    "50% Market + QVM": "50 % Markt + Quality/Value/Momentum",
+    "50% Market + Quality/Value": "50 % Markt + Quality/Value",
+    "50% Market + Quality/Momentum": "50 % Markt + Quality/Momentum",
+    "50% Market + Quality/Value/Conservative": "50 % Markt + Quality/Value/Investitionen",
+    "80% Market + Momentum": "80 % Markt + Momentum",
+    "80% Market + Quality": "80 % Markt + Quality"
+  },
+  "weights": {
+    "Market": {
+      "market": 100
+    },
+    "Large Value": {
+      "value": 100
+    },
+    "Large Quality": {
+      "quality": 100
+    },
+    "Large Conservative Investment": {
+      "conservative": 100
+    },
+    "Momentum Winners": {
+      "momentum": 100
+    },
+    "Equal Q+V+M": {
+      "quality": 33.33,
+      "value": 33.33,
+      "momentum": 33.34
+    },
+    "50% Market + QVM": {
+      "market": 50,
+      "quality": 16.67,
+      "value": 16.67,
+      "momentum": 16.66
+    },
+    "50% Market + Quality/Value": {
+      "market": 50,
+      "quality": 25,
+      "value": 25
+    },
+    "50% Market + Quality/Momentum": {
+      "market": 50,
+      "quality": 25,
+      "momentum": 25
+    },
+    "50% Market + Quality/Value/Conservative": {
+      "market": 50,
+      "quality": 16.67,
+      "value": 16.67,
+      "conservative": 16.66
+    },
+    "80% Market + Momentum": {
+      "market": 80,
+      "momentum": 20
+    },
+    "80% Market + Quality": {
+      "market": 80,
+      "quality": 20
+    }
+  },
+  "disclaimer": "Die Faktorportfolios sind akademische, nicht direkt handelbare Indizes. Keine Aussage über tatsächliche Trade-Republic-Ausführung, persönliche Steuern oder künftige Outperformance."
+}
