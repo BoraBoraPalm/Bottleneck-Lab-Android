@@ -88,6 +88,45 @@ class SandScreenTest(unittest.TestCase):
         self.assertEqual(result["qualified_candidates"],1)
         self.assertEqual(result["with_verified_fundamentals"],1)
 
+    def test_public_xbrl_relay_verified_annual_cashflow_and_income(self):
+        a={"symbol":"AAPL","period":"annual","rows":[
+            {"form":"10-K","fiscalPeriod":"FY","periodEnd":"2025-09-30",
+             "filed":"2025-11-04","metrics":{"revenue":110,"netIncome":18}},
+            {"form":"10-K","fiscalPeriod":"FY","periodEnd":"2024-09-30",
+             "filed":"2024-11-04","metrics":{"revenue":100,"netIncome":16}}]}
+        b={"symbol":"AAPL","period":"annual","rows":[
+            {"form":"10-K","fiscalPeriod":"FY","periodEnd":"2025-09-30",
+             "filed":"2025-11-04","metrics":{"operatingCashFlow":22}}]}
+        def example(url,**kwargs):
+            return a if "income-statement" in url else b
+        with patch.object(s,"get_json",side_effect=example):
+            result=s.tgm_annual_quality("AAPL")
+        self.assertTrue(result["quality_ok"])
+        self.assertEqual(result["fy_end"],"2025-09-30")
+        self.assertEqual(result["source"],"TGMCharts (SEC EDGAR 10-K XBRL)")
+        self.assertEqual(result["revenue_growth_yoy"],.1)
+
+    def test_relay_missing_cashflow_remains_unverified(self):
+        a={"symbol":"AAPL","period":"annual","rows":[
+            {"form":"10-K","fiscalPeriod":"FY","periodEnd":"2025-09-30",
+             "filed":"2025-11-04","metrics":{"revenue":110,"netIncome":18}},
+            {"form":"10-K","fiscalPeriod":"FY","periodEnd":"2024-09-30",
+             "filed":"2024-11-04","metrics":{"revenue":100,"netIncome":16}}]}
+        b={"symbol":"AAPL","period":"annual","rows":[
+            {"form":"10-K","fiscalPeriod":"FY","periodEnd":"2025-09-30",
+             "filed":"2025-11-04","metrics":{"operatingCashFlow":None}}]}
+        with patch.object(s,"get_json",side_effect=lambda url,**k:a if "income-statement" in url else b):
+            self.assertIsNone(s.tgm_annual_quality("AAPL"))
+
+    def test_relay_used_when_sec_access_denied(self):
+        stocks=[share()]
+        verified=s.fundamental_quality(company(),asof=date(2026,10,31))
+        with patch.object(s,"ticker_map",side_effect=RuntimeError("SEC 403")),\
+             patch.object(s,"tgm_annual_quality",return_value=verified):
+            result=s.enrich_stocks(stocks,{"stocks":[]},maximum=3)
+        self.assertEqual(result["qualified_candidates"],1)
+        self.assertGreater(stocks[0]["sander_score"],0)
+
     def test_broken_provider_does_not_leak_fake_candidates(self):
         stocks=[share()]
         with patch.object(s,"ticker_map",side_effect=RuntimeError("blocked")):
