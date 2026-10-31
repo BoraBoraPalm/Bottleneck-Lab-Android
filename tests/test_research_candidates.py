@@ -100,6 +100,22 @@ class CandidatesTest(unittest.TestCase):
         self.assertEqual(out["quality_momentum_coverage"],0)
         self.assertEqual(out["qvm_coverage"],0)
 
+    def test_non_us_global_ticker_can_overlap_with_thematic_list(self):
+        rows=[]
+        for i in range(1,18):
+            rr=company(i,region="Lateinamerika",country="Brazil",currency="BRL",
+                       eligible_global_ranking=True,theme="Rohstoffe",
+                       theme_source="Curated")
+            rr.pop("multifactor")
+            rr["fundamentals"]=None
+            rows.append(rr)
+        out=rc.current_candidates(rows,[],TODAY)
+        self.assertTrue(out["lists"]["global_momentum"])
+        overlap=out["lists"]["overlap"]
+        self.assertTrue(overlap)
+        self.assertTrue(any("global_momentum" in r["appears_in"] and
+                            "bottleneck_hypotheses" in r["appears_in"] for r in overlap))
+
     def test_global_liquidity_and_fx_required(self):
         rows=[company(i,region="Asien",currency="INR",eligible_global_ranking=True) for i in range(1,20)]
         rows[0]["eur_per_unit"]=None
