@@ -143,7 +143,7 @@ def requested_batch(known,cache):
     extra=sorted((s for s in cache.values() if s.get("momentum_12_2") is not None),
                  key=lambda x:-float(x["momentum_12_2"]))[:15]
     missing_risk=sorted((s["ticker"] for s in cache.values()
-        if s.get("momentum_12_2") is not None and s.get("context_basis")!="Yahoo adjusted OHLC"))[:60]
+        if s.get("momentum_12_2") is not None and not str(s.get("context_basis") or "").startswith("Yahoo adjusted OHLC")))[:60]
     return list(dict.fromkeys(core+[x["ticker"] for x in extra]+missing_risk))
 
 def enrich(meta,raw,ticker):
