@@ -53,6 +53,21 @@ class BacktestInvariants(unittest.TestCase):
         self.assertEqual(executed["exit_reason"],"stop_gap")
         self.assertLess(executed["sell_eur"],87*.9)
 
+    def test_entry_gap_below_stop_cannot_lock_in_impossible_profit(self):
+        days=self.days[:22]
+        bars=[[100,101,99,100,100000,100] for _ in days]
+        # Previous close=100, ATR=2, buy limit=98, stop=93;
+        # next open gaps to 85 USD, so buy and stop should never
+        # yield a sale above the 85 USD executed entry.
+        bars[1]=[85,87,80,82,100000,82]
+        hist={"bars":bars,"index":{d:i for i,d in enumerate(days)}}
+        signal=(60,"T",100.,2.,.1,10000000.)
+        tr=b.trade(signal,0,days,hist,self.fx,1000,slip=0)
+        self.assertEqual(tr["buy_date"],days[1])
+        self.assertEqual(tr["exit_date"],days[1])
+        self.assertLessEqual(tr["sell_eur"],tr["buy_eur"])
+        self.assertLessEqual(tr["pnl_eur"],-2)
+
     def test_fees_always_both_sides(self):
         days=self.days[:22]
         bars=[[100,101,99,100,100000,100] for _ in days]
