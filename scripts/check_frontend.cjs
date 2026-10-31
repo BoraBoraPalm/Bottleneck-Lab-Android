@@ -60,3 +60,20 @@ for(const id of ["candidateKind","candidateTrOnly","candidateCards",
 if(!candidatesJs.includes("research_candidates") || !candidatesJs.includes("snapshot.json"))
   throw new Error("Research candidates are not sourced from the live snapshot");
 console.log("Candidate research UI validated: isolated JS, filters, EUR display and source labels.");
+
+
+const globalPage=fs.readFileSync("docs/global.html","utf8");
+const globalScript=globalPage.match(/<script>([\s\S]*?)<\/script>/);
+if(!globalScript||!/html>\s*$/i.test(globalPage))throw new Error("Broken global page or trailing code");
+if((globalPage.match(/<script>/g)||[]).length!==1)throw new Error("Global page duplicated script");
+new Function(globalScript[1]);
+for(const id of ["region","sort","liquid","tr","regions","stocks","dataStatus"]){
+  if(!globalPage.includes('id="'+id+'"'))throw new Error("Missing global control "+id);
+}
+if(!file.includes('data-tab="world"')||!file.includes('id="tab-world"')||!file.includes('id="worldFrame"')){
+  throw new Error("Global tab not included in host app");
+}
+if(!globalPage.includes("global_region_universe_counts")||!globalPage.includes("eligible_global_ranking")){
+  throw new Error("Global market widget ignores real regional coverage and EUR liquidity screen");
+}
+console.log("Global screener isolated and validated.");
