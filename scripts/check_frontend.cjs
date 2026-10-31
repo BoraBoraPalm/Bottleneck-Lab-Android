@@ -1,79 +1,23 @@
-const fs = require("node:fs");
-const file = fs.readFileSync("docs/index.html", "utf8");
-const opening = (file.match(/<script(?:\s[^>]*)?>/gi) || []).length;
-const closing = (file.match(/<\/script\s*>/gi) || []).length;
-const htmlOpen = (file.match(/<html(?:\s[^>]*)?>/gi) || []).length;
-const htmlClose = (file.match(/<\/html\s*>/gi) || []).length;
-if (opening !== 1 || closing !== 1) throw new Error("Expected exactly one script block, found " + opening + " opening and " + closing + " closing tags");
-if (htmlOpen !== 1 || htmlClose !== 1) throw new Error("Expected exactly one complete HTML document");
-if (!/<\/html\s*>\s*$/i.test(file)) throw new Error("Stray content after </html>: possible duplicated script displayed as webpage text");
-const block = file.match(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script\s*>/i);
-if (!block) throw new Error("Frontend JavaScript not found");
-new Function(block[1]);
-for (const id of ["coverage","top","listCount","search","table","news","refresh","status","detail","trOnly"]) {
-  if (!file.includes('id="'+id+'"')) throw new Error("Missing UI element: " + id);
+const fs=require("node:fs");
+const html=fs.readFileSync("docs/index.html","utf8");
+function exactly(pattern,count,name){
+  const n=(html.match(pattern)||[]).length;
+  if(n!==count)throw new Error(name+": expected "+count+", found "+n);
 }
-console.log("Frontend verified: single script, complete HTML, no trailing source, required controls present.");
-
-
-// Isolated research tab: keep original app's single inline script untouched.
-const researchPage=fs.readFileSync("docs/strategies.html","utf8");
-const inner=(researchPage.match(/<script>([\s\S]*?)<\/script>/gi)||[]);
-if (inner.length!==1 || !/<\/html>\s*$/i.test(researchPage))
-  throw new Error("Research tab has duplicate script or trailing code");
-const researchJs=researchPage.match(/<script>([\s\S]*?)<\/script>/i);
-new Function(researchJs[1]);
-if (!file.includes('data-tab="strategies"')||!file.includes('id="tab-strategies"')||!file.includes('id="strategiesFrame"'))
-  throw new Error("Research tab not linked in main app");
-if (!researchPage.includes('strategy-study.json'))throw new Error("Research JSON not linked");
-const study=JSON.parse(fs.readFileSync("docs/strategy-study.json","utf8"));
-const modelNames=Object.keys(study.periods.eur_2000.model);
-if(modelNames.length!==12)throw new Error("Expected 12 strategies including benchmark");
-if(Object.keys(study.periods.usd_full.model).length!==12)throw new Error("Missing USD strategy rows");
-if(study.costs.headwindsQvm.length!==18)throw new Error("Missing cost sensitivity windows");
-for(const [name,parts] of Object.entries(study.weights)){
-  const sum=Object.values(parts).reduce((a,b)=>a+b,0);
-  if(Math.abs(sum-100)>0.1)throw new Error("Weights do not total 100 for "+name);
+exactly(/<html(?:\s[^>]*)?>/gi,1,"HTML opening");
+exactly(/<\/html>/gi,1,"HTML closing");
+exactly(/<script(?:\s[^>]*)?>/gi,1,"JS opening");
+exactly(/<\/script>/gi,1,"JS closing");
+if(!/<\/html>\s*$/i.test(html))throw new Error("Code leaked after </html>");
+const match=html.match(/<script>([\s\S]*?)<\/script>/i);
+if(!match)throw new Error("Missing inline script");
+new Function(match[1]);
+for(const id of ["universe","quoted","eligible","search","region","scope","trOnly",
+  "count","results","empty","status","reload"]){
+  if(!html.includes('id="'+id+'"'))throw new Error("UI control missing: "+id);
 }
-for(const name of modelNames)for(const [periodKey,period] of Object.entries(study.periods)){
-  const row=period.model[name];
-  if(!row||!Number.isFinite(row.cagr)||!Number.isFinite(row.maxDrawdown)
-     ||!Number.isFinite(row.correctedP)||!Number.isFinite(row.outperformance5y))
-    throw new Error("Incomplete study row: "+periodKey+" "+name);
-}
-console.log("Research panel validated: 12 strategies, 2 periods, 18 cost scenarios, no trailing HTML.");
-
-
-// The new candidate list is separately versioned and must remain isolated from
-// the legacy chart/ranking JavaScript; reject missing controls and syntax faults.
-const candidatesPath="docs/research-candidates.js";
-if(!fs.existsSync(candidatesPath))throw new Error("Candidate renderer is missing");
-const candidatesJs=fs.readFileSync(candidatesPath,"utf8");
-new Function(candidatesJs);
-if(!researchPage.includes('src="research-candidates.js"'))
-  throw new Error("Candidate renderer is not loaded by the research tab");
-for(const id of ["candidateKind","candidateTrOnly","candidateCards",
-    "candidateSummary","candidateEvidence","candidateDataStatus"]){
-  if(!researchPage.includes('id="'+id+'"'))
-    throw new Error("Candidate research missing UI: "+id);
-}
-if(!candidatesJs.includes("research_candidates") || !candidatesJs.includes("snapshot.json"))
-  throw new Error("Research candidates are not sourced from the live snapshot");
-console.log("Candidate research UI validated: isolated JS, filters, EUR display and source labels.");
-
-
-const globalPage=fs.readFileSync("docs/global.html","utf8");
-const globalScript=globalPage.match(/<script>([\s\S]*?)<\/script>/);
-if(!globalScript||!/html>\s*$/i.test(globalPage))throw new Error("Broken global page or trailing code");
-if((globalPage.match(/<script>/g)||[]).length!==1)throw new Error("Global page duplicated script");
-new Function(globalScript[1]);
-for(const id of ["region","sort","liquid","tr","regions","stocks","dataStatus"]){
-  if(!globalPage.includes('id="'+id+'"'))throw new Error("Missing global control "+id);
-}
-if(!file.includes('data-tab="world"')||!file.includes('id="tab-world"')||!file.includes('id="worldFrame"')){
-  throw new Error("Global tab not included in host app");
-}
-if(!globalPage.includes("global_region_universe_counts")||!globalPage.includes("eligible_global_ranking")){
-  throw new Error("Global market widget ignores real regional coverage and EUR liquidity screen");
-}
-console.log("Global screener isolated and validated.");
+if(html.includes("<iframe")||html.includes('data-tab=')||html.includes("ATR-Stop")||html.includes("strategie-study.json"))
+  throw new Error("Retired tab/iframe/trade-model UI accidentally restored");
+if(!html.includes("reference_close_eur")||!html.includes("momentum_12_2"))
+  throw new Error("Research app missing EUR reference price or momentum");
+console.log("Simple global mobile app: valid JavaScript, one HTML document, no deprecated tabs or trailing code.");
