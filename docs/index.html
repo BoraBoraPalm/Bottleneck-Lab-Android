@@ -169,9 +169,13 @@ h1{font-size:27px}
         <input type="checkbox" id="factorTrend" data-factor="trend">
         <span><strong>200-Tage-Trend</strong><span>Abstand zur Trendlinie · kein nachgewiesener Zusatzgewinn</span></span>
       </label>
+      <label class="strategy-choice" for="factorSander">
+        <input type="checkbox" id="factorSander" data-factor="sander">
+        <span><strong>Hoch-Tief-Mut · Sander-inspiriert</strong><span>Qualitätsunternehmen nach deutlichem Kursrückgang · SEC-Fundamentaldaten</span></span>
+      </label>
     </div>
     <div id="strategySummary" class="strategy-summary" role="status">12–2-Monats-Momentum aktiv. Jede zusätzliche Auswahl wird gleichgewichtet kombiniert.</div>
-    <div class="small muted">Quality und Value sind noch nicht weltweit zuverlässig verfügbar. Deshalb werden dafür keine künstlichen Scores erzeugt. Die Strategiekombination ändert nur die Rangfolge; Kauf-/Verkaufswarnungen bleiben eigene Regeln.</div>
+    <div class="small muted">Qualitätsprüfung über echte SEC-Geschäftsberichte: bisher hauptsächlich US-Unternehmen. Nur Aktien mit verifizierten Daten können beim Sander-Filter erscheinen. Die Strategiekombination ist nicht als renditesteigernd validiert; Kauf-/Verkaufswarnungen bleiben eigene Regeln.</div>
   </div>
   <label class="switch" for="trOnly">
     <input id="trOnly" type="checkbox">
@@ -184,13 +188,14 @@ h1{font-size:27px}
   <div id="count" class="small muted" aria-live="polite"></div>
   <div id="results" aria-label="Aktienkandidaten"></div>
   <div id="empty" class="notice" hidden>Für diese Filter sind derzeit keine ausreichend geprüften Aktien vorhanden. Probiere eine andere Region, die Ansicht „Alle geprüften“ oder deaktiviere den Trade-Republic-Filter.</div>
-  <div class="explain"><strong>Hinweis:</strong> Bei mehreren aktivierten Faktoren werden gleichgewichtete Rangprozente (0–100) zu einem gemeinsamen Score kombiniert. Fehlen notwendige Daten, wird die Aktie aus diesem Ranking ausgeschlossen – nicht künstlich aufgefüllt. Standardmäßig bleibt ausschließlich das 12–2-Monats-Momentum aktiv; die historische Mehr-Rendite einer Kombination ist nicht belegt. Kauf-/Ausstiegswarnungen sind separate, nicht validierte Kursregeln. EUR-Kurse sind keine ausführbaren Trade-Republic-Angebote.</div>
+  <div class="explain"><strong>Hinweis:</strong> Bei mehreren aktivierten Faktoren werden gleichgewichtete Rangprozente (0–100) zu einem gemeinsamen Score kombiniert. Bei der Sander-Option müssen Gewinn, operativer Cashflow und Umsatzentwicklung aus einem Geschäftsbericht überprüfbar sein und ein deutlicher Kursrückgang vorliegen. Fehlen Daten, wird die Aktie ausgeschlossen – nicht künstlich aufgefüllt. Standardmäßig bleibt ausschließlich das 12–2-Monats-Momentum aktiv; die historische Mehr-Rendite einer Kombination ist nicht belegt. Kauf-/Ausstiegswarnungen sind separate, nicht validierte Kursregeln. EUR-Kurse sind keine ausführbaren Trade-Republic-Angebote.</div>
 </section>
 
 <details class="disclosure">
   <summary>Wie wird ausgewählt? Was ist belegt?</summary>
   <div class="disclosure-body">
     <p><strong>Faktoren kombiniert:</strong> Kursentwicklung von ungefähr 12 bis 2 Monaten vor dem Stichtag (Momentum), 200-Tage-Durchschnittsabstand (Trend) und umgekehrte relative ATR(14)-Schwankung (ruhigere Kurse). Jeder ausgewählte Faktor wird in eine Rangzahl von 0 bis 100 umgerechnet und dann gleichgewichtet gemittelt. Bei nur einer Auswahl entscheidet ausschließlich dieser Faktor. Dies ist eine transparente Heuristik, <strong>kein backgetestetes Mehrfaktormodell</strong>. Unsere frühere Trend-/ATR-Kombination zeigte keinen verlässlich höheren Gewinn.</p><p><strong>Handelbarkeit:</strong> Ein Titel erscheint nur mit aktuellem Kurs, EUR-Referenzwechselkurs und durchschnittlich mindestens 2 Mio. € täglichem Börsenumsatz über 20 Handelstage (Kurs mindestens 2 €). Auch bei anderen Faktorwahlen benötigt der derzeitige Datensatz vollständige Momentumhistorie.</p>
+    <p><strong>Sander-inspirierter Kandidatenfilter:</strong> Die originale Hoch-Tief-Mut-Strategie von Beate Sander kombiniert breite Streuung, langfristiges Halten, Käufe überzeugender Unternehmen nach Kursrückgängen und gelegentliche Teilverkäufe. Wir automatisieren <strong>nur eine vereinfachte Vorauswahl</strong>, nicht ihre vollständige Strategie. Anforderungen: 15–55 % unter dem 252-Handelstage-Hoch, positiver Jahresgewinn, positiver operativer Cashflow, mindestens 3 % Nettomarge und Umsatzwachstum gegenüber dem vorigen Geschäftsjahr von mindestens −10 %. Der experimentelle Score gewichtet Kursrückgang zu 50 %, Gewinnmarge zu 25 % und Umsatzentwicklung zu 25 %. Finanzdaten kommen aus eingereichten US-SEC-10-K-Geschäftsberichten; deren Abdeckung ist nicht weltweit vollständig. Ein starker Rückgang bedeutet <strong>nicht automatisch eine günstige Unternehmensbewertung</strong>. KGV, Verschuldung, Dividendenausschüttungen, Langfristdepot und Teilverkäufe sind nicht modelliert. Auch mit mehreren Strategien ist keinerlei Überrendite belegt.</p>
     <p><strong>Wann Einstieg prüfen?</strong> Nur bei positivem 12–2-Monats-Momentum, Kurs oberhalb des 200-Tage-Durchschnitts, ohne größere laufende Korrektur und nur bei nicht negativem globalen Marktfilter (ACWI). Signale gelten erst nach dem letzten Tagesschluss; eine mögliche Limitorder kann frühestens am nächsten Handelstag zu einem tatsächlich verfügbaren Brokerkurs geprüft werden.</p>
 <p><strong>Wann Ausstieg prüfen?</strong> Für eine bereits gehaltene Position bei Schlusskurs unter dem 200-Tage-Durchschnitt oder bei starkem Kursrückgang. „Kurssturz“ bedeutet ein Rückgang von mindestens 15 % über 21 Handelstage oder von mindestens 25 % gegenüber dem Hoch der letzten 252 Handelstage; frühere Warnung schon bei 8 %/15 %. Keine Ausführung oder Überwachung durch die App.</p>
 <p><strong>Kauf-Limit und Stop-Loss:</strong> Über den optionalen Schalter erscheinen auf jeder Aktienkarte zwei konkrete EUR-Modellwerte wie früher: <strong>Kauf-Limit = letzter Schlusskurs − 1 × ATR(14)</strong> und <strong>initialer Stop-Loss = dieses Kauf-Limit − 2,5 × ATR(14)</strong>. Das ist nur eine unverbindliche Beispielrechnung für einen möglichen <em>Neueinstieg</em>, nicht der Stop einer bestehenden Position und kein nachweislich optimales Limit. Bei Trendbruch, Kurssturz oder fehlendem Gesamtmarktsignal besteht weiterhin kein Einstiegssignal. Vor der Order Ausführungskurs und Ordertyp im Broker prüfen; Kurslücken können einen Stop erheblich unterschreiten.</p>
@@ -227,7 +232,9 @@ const FACTORS={
   lowRisk:{label:"Geringe Schwankung",value:s=>
     Number.isFinite(s.atr14_native)&&Number.isFinite(s.close)&&s.close>0
     &&s.atr14_native>0?-s.atr14_native/s.close:null},
-  trend:{label:"Trend 200T",value:s=>s.sma200_ratio}
+  trend:{label:"Trend 200T",value:s=>s.sma200_ratio},
+  sander:{label:"Sander: Qualität + Rücksetzer",value:s=>
+    Number.isFinite(s.sander_score)?s.sander_score:null}
 };
 function percentileRanks(rows,extract){
   // Tied observations receive their average rank. Higher is always better.
@@ -370,6 +377,15 @@ function makeCard(s,mix){
   ];
   if(s.tr_at_listed===true && s.tr_isin)items.push(["Trade Republic ISIN",s.tr_isin]);
   if(Number.isFinite(s.entry_reference_eur))items.push(["Letzter Referenzkurs für Orderprüfung",eur(s.entry_reference_eur)]);
+  if(s.fundamentals && Number.isFinite(s.sander_score)){
+    const f=s.fundamentals;
+    items.push(["Sander-inspirierte Vorauswahl",fmt(s.sander_score,1)+"/100 · experimentell"]);
+    items.push(["Kursrückgang vom 252-Tage-Hoch",fmt(-s.drawdown_252d*100,1)+" %"]);
+    items.push(["Umsatzentwicklung (Geschäftsjahr)",fmt(f.revenue_growth_yoy*100,1)+" %"]);
+    items.push(["Nettogewinnmarge (Geschäftsjahr)",fmt(f.profit_margin*100,1)+" %"]);
+    items.push(["Operativer Cashflow",fmt(f.operating_cashflow/1000000,1)+" Mio. USD"]);
+    items.push(["SEC-Bilanzstichtag / Bericht eingereicht",f.fy_end+" / "+f.filed]);
+  }
   for(const [name,val] of items){
     const col=add(detail,"div",null,"detail");
     add(col,"small",name);
@@ -384,10 +400,14 @@ function render(){
   if(!snapshot)return;
   const {shown,total,limit,scores}=dataRows();
   const active=activeFactors();
-  $("strategySummary").textContent=active.length===1
+  const sanderCount=snapshot.sander_research_status?.qualified_candidates||0;
+  $("strategySummary").textContent=(active.length===1
      ? FACTORS[active[0]].label+" ausgewählt · Rangfolge nach einem Faktor."
      : active.length+" Faktoren gleichgewichtet kombiniert: "+
-         active.map(key=>FACTORS[key].label).join(" + ")+". Nicht als Gesamtstrategie validiert.";
+         active.map(key=>FACTORS[key].label).join(" + ")+". Nicht als Gesamtstrategie validiert.")
+     +(active.includes("sander")
+       ?" · Aktuell "+fmt(sanderCount)+" SEC-verifizierte Sander-Vorauswahlkandidaten im Datenbestand (regionale und weitere Filter können die Treffer reduzieren)."
+       :"");
   $("count").textContent=fmt(total)+" passende Titel · "+
     fmt(shown.length)+" angezeigt"+(limit?" (max. 4 pro Region)":" (max. 75)");
   const el=$("results");
@@ -401,6 +421,14 @@ function render(){
     el.appendChild(card);
   }
   $("empty").hidden=shown.length>0;
+  $("empty").textContent=active.includes("sander")
+    ? ("Keine verifizierten Sander-inspirierten Kandidaten für diese Filter. "+
+       "Es werden ausschließlich Aktien mit SEC-10-K-Geschäftsbericht, positivem Gewinn und Cashflow "+
+       "sowie 15–55 % Rückgang vom Jahreshoch berücksichtigt. "+
+       "Die Datenabdeckung ist vorerst überwiegend US-beschränkt; weitere Unternehmensberichte "+
+       "werden bei den nächsten Aktualisierungen geprüft. "+
+       "Wähle gegebenenfalls Weltweit, „Auswahl“, und entferne den Trade-Republic-Filter.")
+    : "Für diese Filter sind derzeit keine ausreichend geprüften Aktien vorhanden. Probiere eine andere Region, die Ansicht „Alle geprüften“ oder deaktiviere den Trade-Republic-Filter.";
 }
 function updateRegions(d){
   const options=Object.keys(d.regions_universe||{});
