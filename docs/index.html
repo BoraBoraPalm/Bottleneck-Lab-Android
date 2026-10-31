@@ -114,7 +114,7 @@ h1{font-size:27px}
   <div id="count" class="small muted" aria-live="polite"></div>
   <div id="results" aria-label="Aktienkandidaten"></div>
   <div id="empty" class="notice" hidden>Für diese Filter sind derzeit keine ausreichend geprüften Aktien vorhanden. Probiere eine andere Region, die Ansicht „Alle geprüften“ oder deaktiviere den Trade-Republic-Filter.</div>
-  <div class="explain">**Hinweis:** Die Auswahl sortiert nach historischer Kursstärke von Monat 12 bis Monat 2 und begrenzt die Zahl je Region. Das ist eine Forschungsheuristik, keine nachgewiesene Renditeprognose. Die Kurse sind EUR-Referenzwerte, keine ausführbaren Trade-Republic-Angebote.</div>
+  <div class="explain"><strong>Hinweis:</strong> Die Auswahl sortiert nach historischer Kursstärke von Monat 12 bis Monat 2 und begrenzt die Zahl je Region. Das ist eine Forschungsheuristik, keine nachgewiesene Renditeprognose. Die Kurse sind EUR-Referenzwerte, keine ausführbaren Trade-Republic-Angebote.</div>
 </section>
 
 <details class="disclosure">
@@ -189,6 +189,7 @@ function makeCard(s){
     ["Börsenumsatz Ø 20 Tage",eur(s.avg_turnover_20d_eur)+"/Tag"],
     ["Originalkurs",fmt(s.close,2)+" "+(s.currency||"")],
     ["Kursquelle",s.source||"unbekannt"],
+    ["Momentum-Berechnung",s.momentum_basis||"nicht verifiziert"],
     ["Börse",s.exchange||"unbekannt"]
   ];
   if(s.tr_at_listed===true && s.tr_isin)items.push(["Trade Republic ISIN",s.tr_isin]);
