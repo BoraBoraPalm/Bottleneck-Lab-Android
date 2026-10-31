@@ -171,9 +171,17 @@ def current_candidates(stocks,news,generated_at,required_min=MIN_QM_COMPANIES):
             "url":url,
             "published":str(entry.get("published") or "")[:60]
         })
-    theme=[r for r in valid
+    # Include curated thematic shares from international exchanges as well as
+    # the SEC/US cohort. Foreign candidates require real EUR FX and EUR turnover,
+    # rather than being excluded just for lacking USD/SEC filings.
+    theme=[r for r in stocks
            if r.get("theme_source")=="Curated" and r.get("theme") in THEME_GROUP
-           and number(r.get("momentum_12_2")) is not None]
+           and number(r.get("momentum_12_2")) is not None
+           and (suitable(r,today) or
+                (r.get("eligible_global_ranking") is True
+                 and number(r.get("eur_per_unit")) is not None
+                 and day(r.get("price_date")) is not None
+                 and 0<=(today-day(r["price_date"])).days<=7))]
     theme.sort(key=lambda r:(-r["momentum_12_2"],r["ticker"]))
     # Global price-only research candidates: no SEC reporting dependency.
     # Cap regional concentration to prevent US-only lists from an international pool.
