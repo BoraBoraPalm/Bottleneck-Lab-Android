@@ -141,7 +141,9 @@ def current_candidates(stocks,news,generated_at,required_min=MIN_QM_COMPANIES):
            and day(r["multifactor"].get("filing_date"))<=today
            and r["multifactor"].get("filing_date")==r["fundamentals"].get("filed")
     }
-    by_ticker={r["ticker"]:r for r in valid}
+    # Lookup must cover *all* quote-validated world candidates as well as
+    # SEC/USA, otherwise cross-region overlaps raise KeyError for e.g. Brazil.
+    by_ticker={r["ticker"]:r for r in stocks}
     qm_order=sorted(qm,key=lambda t:(-qm[t]["score"],t))
     qvm_order=sorted(qvm,key=lambda t:(-qvm[t]["score"],t))
     qm_top=qm_order[:MAX_ITEMS] if cohort>=required_min else []
