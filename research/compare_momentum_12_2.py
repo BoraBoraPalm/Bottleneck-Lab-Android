@@ -106,7 +106,7 @@ def main():
     end=min(len(days)-b.MAX_HORIZON,len(days))
     elig=[i for i in range(end) if days[i]<=b.LAST_SIGNAL.isoformat()]
     selected=sorted(random.Random(SEED).sample(elig,RANDOM_COUNT))
-    chron=list(range(0,end,b.MAX_HORIZON))
+    chron=[i for i in range(0,end,b.MAX_HORIZON) if days[i]<=b.LAST_SIGNAL.isoformat()]
     all_idx=sorted(set(selected+chron))
     ranks={days[i]:rank_day(days[i],histories) for i in all_idx}
     fx,nfx=b.fx_history()
