@@ -90,6 +90,21 @@ input:focus-visible,select:focus-visible,button:focus-visible,summary:focus-visi
 .detail{padding-top:11px;min-width:0}
 .detail small{display:block;color:var(--muted);font-size:11px}
 .detail strong{display:block;margin-top:3px;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
+.chart-panel{padding:14px;border-top:1px solid #365064;background:#142739;min-width:0}
+.chart-title{font-size:14px;font-weight:750;margin-bottom:8px}
+.chart-periods{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:12px}
+.chart-period{border:1px solid #45677a;background:#1a3548;color:#d8e9ed;border-radius:7px;
+padding:6px 10px;min-height:34px;font-size:12px;font-weight:720;cursor:pointer;flex:1 1 auto}
+.chart-period.active{background:#267367;border-color:#75c6ae;color:#fff}
+.chart-period:focus-visible{outline:2px solid #8ae9d1;outline-offset:1px}
+.chart-output{min-height:50px;color:#b6c9d5;font-size:12px}
+.price-chart{display:block;width:100%;height:auto;min-width:0;touch-action:pan-y}
+.chart-point{font-size:12px;color:#e3f0f4;min-height:22px;margin-top:4px;font-variant-numeric:tabular-nums}
+.chart-legends{display:flex;flex-direction:column;gap:5px;margin-top:7px}
+.chart-legend{font-size:11px;color:#cddce3;display:flex;align-items:center;gap:7px}
+.chart-swatch{display:inline-block;width:19px;height:3px;border-radius:2px;flex-shrink:0}
+.chart-note{font-size:10px;color:#a9bece;margin-top:10px;line-height:1.5}
+
 .disclosure{background:#142335;border:1px solid var(--edge);border-radius:12px;padding:0 14px;margin-top:18px}
 .disclosure summary{cursor:pointer;min-height:53px;display:flex;align-items:center;font-weight:700;font-size:13px}
 .disclosure-body{border-top:1px solid var(--edge);padding:12px 0 14px;color:#b8cbd7;font-size:12px}
@@ -181,6 +196,7 @@ h1{font-size:27px}
 <p><strong>Kauf-Limit und Stop-Loss:</strong> Über den optionalen Schalter erscheinen auf jeder Aktienkarte zwei konkrete EUR-Modellwerte wie früher: <strong>Kauf-Limit = letzter Schlusskurs − 1 × ATR(14)</strong> und <strong>initialer Stop-Loss = dieses Kauf-Limit − 2,5 × ATR(14)</strong>. Das ist nur eine unverbindliche Beispielrechnung für einen möglichen <em>Neueinstieg</em>, nicht der Stop einer bestehenden Position und kein nachweislich optimales Limit. Bei Trendbruch, Kurssturz oder fehlendem Gesamtmarktsignal besteht weiterhin kein Einstiegssignal. Vor der Order Ausführungskurs und Ordertyp im Broker prüfen; Kurslücken können einen Stop erheblich unterschreiten.</p>
 <p><strong>Warum nicht das alte Modell?</strong> Das frühere 60-Tage-Ranking und die automatischen ATR-Limits zeigten im bisherigen Test keinen belastbaren Mehrwert. Daher gibt es keine vermeintlich optimalen Kauf-/Stop-Preise und keine Gewinnwahrscheinlichkeiten.</p>
     <p><strong>Wissenschaft:</strong> Mittelfristiges Momentum ist in langfristiger akademischer Literatur untersucht. Unsere konkrete weltweite Aktienauswahl ist jedoch nicht überlebensbiasfrei oder vollständig außerhalb der Stichprobe validiert. Insbesondere sind die historischen US-Faktorportfolios kein Nachweis für die hier angezeigten Einzelaktien.</p>
+    <p><strong>Kursdiagramme:</strong> Beim Aufklappen einer Aktie lädt die App nach Bedarf eine eigene historische Kursreihe (Standard 3M; umschaltbar 1M, 3M, 6M, 1J, 3J, 5J und MAX bis zu zehn Jahren). Die angezeigten Kurse sind split-/dividendenbereinigte Schlusskurse, auf den letzten tatsächlichen Schlusskurs skaliert. Die horizontale Kauf-Limit- und Stop-Loss-Linie erscheint nur bei aktiviertem Modellwerte-Schalter; für Aktien in Fremdwährung wird sie mit dem <em>aktuellen Referenzwechselkurs</em> in die lokale Kursachse umgerechnet. Kein historischer EUR-Kurs und keine Broker-Order. Bei fehlender Historie zeigt die App einen Hinweis statt erfundener Daten.</p>
     <p><strong>Wichtig:</strong> Das globale Verzeichnis enthält mehr Aktien als täglich abgefragt werden können. Firmen ohne Kursdaten fehlen. Internationale Bilanzzahlen sind nicht flächendeckend vergleichbar, daher gibt es derzeit kein vermeintlich vollständiges weltweites Quality-/Value-Ranking.</p>
     <p><strong>Trade Republic:</strong> Ein ISIN-Treffer in der österreichischen Instrumentenliste belegt nicht, dass eine Order heute möglich ist. Auch Geld-/Briefspanne, Gebühren, österreichische Steuer und tatsächliche Liquidität können abweichen.</p>
     <p class="muted">Quellen: <a href="https://github.com/adanos-software/free-ticker-database" target="_blank" rel="noopener noreferrer">weltweites Aktienverzeichnis</a>, Yahoo/Stooq (tägliche Börsenkurse), Frankfurter (FX) und <a href="https://assets.traderepublic.com/assets/files/AT/Instrument_Universe_AT_en.pdf" target="_blank" rel="noopener noreferrer">Trade Republic AT</a>.</p>
@@ -188,6 +204,7 @@ h1{font-size:27px}
 </details>
 <div class="footer">Bottleneck Lab · Stand der Daten siehe oben · keine Anlageberatung</div>
 </main>
+<script src="chart-widget.js"></script>
 <script>
 "use strict";
 const $=id=>document.getElementById(id);
@@ -325,6 +342,16 @@ function makeCard(s,mix){
       : "Keine belastbaren Marken berechenbar; die historischen Tagesdaten reichen nicht aus.",
       "trade-footnote");
   }
+  const chartHost=add(article,"section",null,"chart-panel");
+  chartHost.setAttribute("aria-label","Historischer Kursverlauf "+s.ticker);
+  let chartInstance=null;
+  article.addEventListener("toggle",()=>{
+    if(article.open&&!chartInstance&&typeof StockCharts!=="undefined"){
+      chartInstance=StockCharts.create(chartHost,s,{
+        showTradeLevels:()=>$("showTradeLevels").checked
+      });
+    }
+  });
   const detail=add(article,"div",null,"details");
   const items=[
     ["Kursdatum",s.price_date||"unbekannt"],
@@ -363,8 +390,16 @@ function render(){
          active.map(key=>FACTORS[key].label).join(" + ")+". Nicht als Gesamtstrategie validiert.";
   $("count").textContent=fmt(total)+" passende Titel · "+
     fmt(shown.length)+" angezeigt"+(limit?" (max. 4 pro Region)":" (max. 75)");
-  const el=$("results");el.replaceChildren();
-  for(const stock of shown)el.appendChild(makeCard(stock,scores.get(stock.ticker)));
+  const el=$("results");
+  const openTickers=new Set(Array.from(el.querySelectorAll("details.stock[open]"),
+    node=>node.dataset.ticker));
+  el.replaceChildren();
+  for(const stock of shown){
+    const card=makeCard(stock,scores.get(stock.ticker));
+    card.dataset.ticker=stock.ticker;
+    if(openTickers.has(stock.ticker))card.open=true;
+    el.appendChild(card);
+  }
   $("empty").hidden=shown.length>0;
 }
 function updateRegions(d){
