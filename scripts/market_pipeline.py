@@ -21,6 +21,7 @@ from fx_eur import latest_eur_rates, add_eur_prices
 from global_universe import discover_global, grouped_batch, SOURCE
 from tr_at_universe import apply_tr_filter
 from trade_guidance import assign_decision,market_risk_from_quote
+from chart_history import chart_is_current,write_chart,chart_count
 
 PAGES="https://boraborapalm.github.io/Bottleneck-Lab-Android/snapshot.json"
 NASDAQ="https://www.nasdaqtrader.com/dynamic/SymDir/nasdaqlisted.txt"
@@ -144,7 +145,16 @@ def requested_batch(known,cache):
                  key=lambda x:-float(x["momentum_12_2"]))[:15]
     missing_risk=sorted((s["ticker"] for s in cache.values()
         if s.get("momentum_12_2") is not None and not str(s.get("context_basis") or "").startswith("Yahoo adjusted OHLC")))[:60]
-    return list(dict.fromkeys(core+[x["ticker"] for x in extra]+missing_risk))
+    # Prioritize attractive researched symbols lacking static history.
+    # They will get charts without re-fetching all 43k directory entries.
+    missing_charts=sorted(
+        (s for s in cache.values()
+         if isinstance(s.get("momentum_12_2"),(int,float))
+         and not chart_is_current(s["ticker"],s.get("price_date"))),
+        key=lambda s:-s["momentum_12_2"])[:85]
+    return list(dict.fromkeys(
+        core+[x["ticker"] for x in extra]+missing_risk+
+        [x["ticker"] for x in missing_charts]))
 
 def enrich(meta,raw,ticker):
     row=dict(raw)
@@ -177,6 +187,7 @@ def main():
     targets=requested_batch(known,cache)
     checked=datetime.now(timezone.utc).isoformat().replace("+00:00","Z")
     success=0
+    charts_written=0
     with ThreadPoolExecutor(max_workers=WORKERS) as pool:
         futs={pool.submit(quote,t,SEED_NAMES.get(t) or CURATED.get(t) or "Global"):t for t in targets}
         for fut in as_completed(futs):
@@ -184,6 +195,12 @@ def main():
             try:r,error=fut.result()
             except Exception as ex:r,error=None,str(ex)
             if r:
+                chart=r.pop("chart_history",None)
+                if chart:
+                    try:
+                        charts_written+=int(write_chart(chart))
+                    except (OSError,ValueError) as exc:
+                        if len(errors)<30:errors.append("Chart "+t+": "+str(exc)[:100])
                 r["last_checked_at"]=checked
                 cache[t]=r
                 success+=1
@@ -215,13 +232,17 @@ def main():
             and isinstance(momentum,(int,float)) and math.isfinite(momentum))
     for stock in stocks:
         assign_decision(stock,market_context)
+        stock["chart_available"]=chart_is_current(stock["ticker"],stock.get("price_date"))
     tr=apply_tr_filter(stocks)
     stocks.sort(key=lambda s:(not s["eligible_global_ranking"],-(s.get("momentum_12_2") or -999),s["ticker"]))
     counts=Counter(s.get("region") or "Unbekannt" for s in known.values())
     have=Counter(s.get("region") or "Unbekannt" for s in stocks)
     eligible=Counter(s.get("region") or "Unbekannt" for s in stocks if s["eligible_global_ranking"])
     output={
-        "version":7,
+        "version":8,
+        "chart_data_info":{"on_demand":True,"files":chart_count(),"written_this_run":charts_written,
+                           "default_period":"3M","max_history":"up to 10y",
+                           "reference_currency":"original listing currency"},
         "market_context":market_context,
         "trade_review_method":"200-session SMA, 12-2 momentum, 21/252-session correction and illustrative 2.5x adjusted ATR fresh-entry reference. Monthly review; NOT historically validated as a complete live-trading rule.",
         "generated_at":now.isoformat().replace("+00:00","Z"),
@@ -253,7 +274,8 @@ def main():
     print("WORLD_READY="+json.dumps({
         "known":len(known),"quotes":len(stocks),"eligible":output["eligible_count"],
         "highlights":len(output["highlights"]),"regions_quoted":dict(have),
-        "TR_verified":tr["verified"],"errors":len(errors),
+        "TR_verified":tr["verified"],"chart_files":chart_count(),
+        "charts_updated":charts_written,"errors":len(errors),
         "duration_s":round(time.monotonic()-started,1)
     }),flush=True)
 if __name__=="__main__":main()
