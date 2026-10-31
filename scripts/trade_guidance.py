@@ -134,6 +134,24 @@ def assign_decision(stock,market_context=None):
     # Strictly a reference ceiling: no buy at a higher limit than last close,
     # next-day executable EUR quote must be checked in the broker.
     stock["entry_reference_eur"]=round(price,4)
+    # Historical-style display: 1 x daily ATR below the last close as the
+    # hypothetical limit; the initial protective level is another 2.5 x ATR
+    # below that limit. These are illustrations, NOT proven optimal levels.
+    # Never calculate them from a stale quote or unverifiable price history.
+    native_close=stock.get("close")
+    native_atr=stock.get("atr14_native")
+    if (entry!="stale_quote" and isinstance(native_close,(int,float))
+            and isinstance(native_atr,(int,float))
+            and math.isfinite(native_close) and math.isfinite(native_atr)
+            and native_close>0 and native_atr>0
+            and stock.get("context_basis")=="Yahoo adjusted OHLC"):
+        buy=native_close-native_atr
+        stop=buy-2.5*native_atr
+        if stop>0 and buy>0:
+            stock["model_buy_limit_eur"]=round(buy*fx,4)
+            stock["model_initial_stop_eur"]=round(stop*fx,4)
+            stock["model_limit_rule"]="Last close - 1 ATR(14); initial stop = limit - 2.5 ATR(14)"
+
     for native,converted in (
        ("sma200_native","sma200_level_eur"),
        ("crash_21_level_native","crash_21_level_eur"),
