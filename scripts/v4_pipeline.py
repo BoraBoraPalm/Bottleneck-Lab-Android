@@ -141,7 +141,7 @@ def financial_sec_lookup(rows, previous):
     previous_sec={r.get("ticker"):r.get("fundamentals") for r in previous.get("stocks",[]) if r.get("fundamentals")}
     for row in rows.values():
         f=previous_sec.get(row["ticker"])
-        if isinstance(f,dict) and seconds_ago(f.get("retrieved_at"))<14*86400:
+        if isinstance(f,dict) and f.get("assets_usd") and f.get("diluted_shares") and seconds_ago(f.get("retrieved_at"))<14*86400:
             row["fundamentals"]=f
     eligible=sorted((x for x in rows.values()
         if x.get("ticker") in available and x.get("currency")=="USD"
