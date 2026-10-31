@@ -228,7 +228,10 @@ def trade(signal,signal_idx,days,h,fx,stake,slip=SLIP_RATE):
             # Gap exit only makes sense for subsequent days; on buy day set worst
             # modeled stop if stop reached; avoids impossible pre-entry sells.
             if low<=stop:
-                px=min(open_,stop) if d!=fill["buy_date"] else stop
+                # A gap-open below the stop cannot be sold at a higher stop.
+                # If purchase and stop occur the same day, conservatively execute
+                # at the worse of the stop and the executed entry price.
+                px=min(open_,stop) if d!=fill["buy_date"] else min(raw_buy,stop)
                 sell_eur=px*(1-slip)*fx(d)
                 proceeds=quantity*sell_eur-FEE_EUR_PER_SIDE
                 out={**fill,"ticker":ticker,"signal_date":days[signal_idx],
