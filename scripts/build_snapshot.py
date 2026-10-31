@@ -12,6 +12,7 @@ import time
 import urllib.error
 import urllib.parse
 import urllib.request
+from multifactor import momentum_12_2
 import xml.etree.ElementTree as ET
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timedelta, timezone
@@ -45,7 +46,7 @@ def fetch_yahoo(symbol):
     for host in ("query1.finance.yahoo.com", "query2.finance.yahoo.com"):
         try:
             s=urllib.parse.quote(symbol, safe="")
-            url=f"https://{host}/v8/finance/chart/{s}?range=1y&interval=1d"
+            url=f"https://{host}/v8/finance/chart/{s}?range=2y&interval=1d"
             result=json.loads(read_url(url))
             chart=result["chart"]
             if chart.get("error"):
@@ -71,7 +72,7 @@ def fetch_stooq(symbol):
         raise RuntimeError("Stooq fallback unavailable for this exchange")
     stooq_symbol=symbol.lower()+".us"
     today=datetime.now(timezone.utc).date()
-    beg=today-timedelta(days=395)
+    beg=today-timedelta(days=790)
     params=urllib.parse.urlencode({"s":stooq_symbol,"d1":beg.strftime("%Y%m%d"),"d2":today.strftime("%Y%m%d"),"i":"d"})
     url="https://stooq.com/q/d/l/?"+params
     content=read_url(url).decode("utf-8-sig",errors="replace")
@@ -108,7 +109,8 @@ def quote(symbol,theme):
             avg_turnover=round(sum(turnovers)/len(turnovers),0) if len(turnovers)>=12 and currency=="USD" else None
             return {"ticker":symbol,"theme":theme,"close":round(price,4),"price_date":dates[-1],
                     "currency":currency,"source":source,"atr":round(atr,4),"momentum":round(mom,6),
-                    "score":score,"avg_dollar_turnover_20d":avg_turnover},None
+                    "score":score,"avg_dollar_turnover_20d":avg_turnover,
+                    "momentum_12_2":momentum_12_2(closes)},None
         except Exception as e:
             errors.append(load.__name__+": "+str(e)[:140])
     return None,symbol+": "+"; ".join(errors)
