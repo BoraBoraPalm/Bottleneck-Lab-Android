@@ -20,6 +20,7 @@ from build_snapshot import CURATED, read_url, quote
 from fx_eur import latest_eur_rates, add_eur_prices
 from global_universe import discover_global, grouped_batch, SOURCE
 from tr_at_universe import apply_tr_filter
+from trade_guidance import assign_decision,market_risk_from_quote
 
 PAGES="https://boraborapalm.github.io/Bottleneck-Lab-Android/snapshot.json"
 NASDAQ="https://www.nasdaqtrader.com/dynamic/SymDir/nasdaqlisted.txt"
@@ -110,7 +111,10 @@ def discover(old):
 
 CACHE_FIELDS=(
   "ticker","close","currency","price_date","source","bars_count","momentum_12_2","momentum_basis",
-  "avg_dollar_turnover_20d","avg_local_turnover_20d","last_checked_at"
+  "avg_dollar_turnover_20d","avg_local_turnover_20d","last_checked_at",
+  "sma200_ratio","sma200_native","return_21d","drawdown_252d",
+  "atr14_native","crash_warning","correction_warning",
+  "risk_reference_native","context_basis"
 )
 def cached_quotes(old,known):
     existing={}
@@ -138,7 +142,9 @@ def requested_batch(known,cache):
     # fresh dates, not because any evidence proves an alpha forecast.
     extra=sorted((s for s in cache.values() if s.get("momentum_12_2") is not None),
                  key=lambda x:-float(x["momentum_12_2"]))[:15]
-    return list(dict.fromkeys(core+[x["ticker"] for x in extra]))
+    missing_risk=sorted((s["ticker"] for s in cache.values()
+        if s.get("momentum_12_2") is not None and s.get("context_basis")!="Yahoo adjusted OHLC"))[:60]
+    return list(dict.fromkeys(core+[x["ticker"] for x in extra]+missing_risk))
 
 def enrich(meta,raw,ticker):
     row=dict(raw)
@@ -183,6 +189,11 @@ def main():
                 success+=1
             elif error and len(errors)<30:errors.append(t+": "+str(error)[:135])
     if len(cache)<25:raise RuntimeError("Fewer than 25 valid quotes; refusing publication")
+    # ACWI is an observable global-ETF proxy for broad stock-market stress;
+    # do not add it to the stock universe or imply it is the total world market.
+    market_quote,market_error=quote("ACWI","Global market context")
+    market_context=market_risk_from_quote(market_quote)
+    if market_error:errors.append("Market context ACWI: "+str(market_error)[:140])
     fx=latest_eur_rates()
     stocks=[enrich(known,v,t) for t,v in cache.items()]
     n_fx,missing=add_eur_prices(stocks,fx)
@@ -202,13 +213,17 @@ def main():
         s["eligible_global_ranking"]=bool(valid_fx and recent and eur>=2
             and s["avg_turnover_20d_eur"]>=2000000
             and isinstance(momentum,(int,float)) and math.isfinite(momentum))
+    for stock in stocks:
+        assign_decision(stock,market_context)
     tr=apply_tr_filter(stocks)
     stocks.sort(key=lambda s:(not s["eligible_global_ranking"],-(s.get("momentum_12_2") or -999),s["ticker"]))
     counts=Counter(s.get("region") or "Unbekannt" for s in known.values())
     have=Counter(s.get("region") or "Unbekannt" for s in stocks)
     eligible=Counter(s.get("region") or "Unbekannt" for s in stocks if s["eligible_global_ranking"])
     output={
-        "version":6,
+        "version":7,
+        "market_context":market_context,
+        "trade_review_method":"200-session SMA, 12-2 momentum, 21/252-session correction and illustrative 2.5x adjusted ATR fresh-entry reference. Monthly review; NOT historically validated as a complete live-trading rule.",
         "generated_at":now.isoformat().replace("+00:00","Z"),
         "display_currency":"EUR",
         "method":"Worldwide 12–2-month historical momentum watchlist; not a validated investment recommendation",
@@ -223,6 +238,8 @@ def main():
         "regions_eligible":dict(eligible),
         "eligible_count":sum(s["eligible_global_ranking"] for s in stocks),
         "highlights":group_highlights(stocks),
+        "entry_review_count":sum(s.get("entry_review")=="entry_review" and s["eligible_global_ranking"] for s in stocks),
+        "exit_review_count":sum(s.get("exit_review","").startswith("review_exit") and s["eligible_global_ranking"] for s in stocks),
         "fx_missing_currencies":missing,
         "tr_at_verification":tr,
         "stocks":stocks,
