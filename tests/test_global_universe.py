@@ -5,7 +5,7 @@ from unittest.mock import patch
 from datetime import datetime, timezone
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/"scripts"))
 import global_universe as g
-import v4_pipeline as v4
+import market_pipeline as v4
 
 HEAD=["listing_key","ticker","exchange","name","asset_type","stock_sector",
       "etf_category","country","country_code","isin","aliases","instrument_group_key","scope_reason"]
@@ -87,7 +87,7 @@ class WorldCoverageTest(unittest.TestCase):
         # No external calls — fallback still retains US and curated names.
         with patch.object(v4,"discover_global",side_effect=RuntimeError("offline")), \
              patch.object(v4,"parse_directory",side_effect=RuntimeError("offline")):
-            found,errors,cov=v4.discover({})
+            found,cov,errors=v4.discover({})
         self.assertIn("MU",found)
         self.assertIn("7203.T",found)
         self.assertEqual(cov["status"],"unavailable")
