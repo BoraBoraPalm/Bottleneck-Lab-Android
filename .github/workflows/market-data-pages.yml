@@ -1,4 +1,4 @@
-name: Refresh data and publish Bottleneck Lab
+name: Bottleneck Lab · Simplified Global Snapshot
 on:
   workflow_dispatch:
   schedule:
@@ -33,12 +33,12 @@ jobs:
           python-version: '3.12'
       - name: Install PDF parser for official AT instrument universe
         run: python -m pip install 'pypdf>=5,<7'
-      - name: Validate v4 market data logic (offline tests)
+      - name: Validate global market and EUR data (offline tests)
         run: python -m unittest discover -s tests -p 'test_*.py' -v
       - name: Validate mobile frontend JavaScript
         run: node scripts/check_frontend.cjs
       - name: Retrieve quote history and relevant RSS headlines
-        run: python scripts/v4_pipeline.py
+        run: python scripts/market_pipeline.py
       - name: Upload data as diagnostic artifact
         if: always()
         uses: actions/upload-artifact@v4
