@@ -158,7 +158,7 @@ def signals_on(ticker,hist,index,day):
     if day not in index:return None
     i=index[day]
     if i<60:return None
-    keys=hist["dates"];bars=hist["bars"]
+    bars=hist
     # No future data requirement beyond the signal itself.
     v=bars[i];prev60=bars[i-60]
     c=v[3];momentum=c/prev60[3]-1
