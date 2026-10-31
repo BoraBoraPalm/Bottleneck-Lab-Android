@@ -47,6 +47,14 @@ input:focus-visible,select:focus-visible,button:focus-visible,summary:focus-visi
 .chip.action-sell,.chip.action-crash{background:#583436;color:#ffd0c7;border-color:#aa6360}
 .chip.action-wait{background:#35333e;color:#efddb9;border-color:#736b61}
 .actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}
+.trade-levels{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:11px}
+.trade-box{background:#203b41;border:1px solid #3b7169;border-radius:9px;padding:9px 11px;min-width:0}
+.trade-box.stop{background:#3a303b;border-color:#745761}
+.trade-box small{display:block;font-size:11px;line-height:1.3;color:#c9d8de;font-weight:600}
+.trade-box strong{display:block;font-size:21px;line-height:1.3;color:#b3f5e1;margin-top:3px;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.trade-box.stop strong{color:#ffd6d1}
+.trade-footnote{font-size:11px;color:var(--muted);margin-top:6px;line-height:1.45}
+
 .market{padding:11px 13px;border-radius:10px;border:1px solid #45656d;background:#1a353f;font-size:12px;margin-bottom:12px}
 .market.risky{background:#392a2c;border-color:#83514b;color:#ffd2c6}
 .market.unknown{background:#27323d;border-color:#4e6071}
@@ -134,7 +142,7 @@ h1{font-size:27px}
     <p><strong>Einheitliche Regel:</strong> Kursentwicklung von ungefähr 12 bis 2 Monaten vor dem Stichtag. Die jüngsten rund 42 Handelstage bleiben unberücksichtigt. Ein Titel erscheint nur mit aktuellem Kurs, EUR-Referenzwechselkurs und durchschnittlich mindestens 2 Mio. € täglichem Börsenumsatz über 20 Handelstage (und Kurs mindestens 2 €).</p>
     <p><strong>Wann Einstieg prüfen?</strong> Nur bei positivem 12–2-Monats-Momentum, Kurs oberhalb des 200-Tage-Durchschnitts, ohne größere laufende Korrektur und nur bei nicht negativem globalen Marktfilter (ACWI). Signale gelten erst nach dem letzten Tagesschluss; eine mögliche Limitorder kann frühestens am nächsten Handelstag zu einem tatsächlich verfügbaren Brokerkurs geprüft werden.</p>
 <p><strong>Wann Ausstieg prüfen?</strong> Für eine bereits gehaltene Position bei Schlusskurs unter dem 200-Tage-Durchschnitt oder bei starkem Kursrückgang. „Kurssturz“ bedeutet ein Rückgang von mindestens 15 % über 21 Handelstage oder von mindestens 25 % gegenüber dem Hoch der letzten 252 Handelstage; frühere Warnung schon bei 8 %/15 %. Keine Ausführung oder Überwachung durch die App.</p>
-<p><strong>Orientierung statt Stop-Garantie:</strong> Die angezeigte Risiko-Referenz liegt 2,5 ATR(14) unter dem letzten Kurs, ausschließlich als <em>hypothetischer Plan für einen neuen Einstieg</em>. Sie ist kein echter Broker-Stop und nicht der Stop einer bestehenden Position. Bei Kurslücken kann auch eine aktive Stop-Order wesentlich schlechter ausgeführt werden. Diese Parameter sind nicht als Outperformance-Strategie validiert.</p>
+<p><strong>Kauf-Limit und Stop-Loss:</strong> Direkt auf jeder Aktienkarte stehen zwei konkrete EUR-Modellwerte wie früher: <strong>Kauf-Limit = letzter Schlusskurs − 1 × ATR(14)</strong> und <strong>initialer Stop-Loss = dieses Kauf-Limit − 2,5 × ATR(14)</strong>. Das ist nur eine unverbindliche Beispielrechnung für einen möglichen <em>Neueinstieg</em>, nicht der Stop einer bestehenden Position und kein nachweislich optimales Limit. Bei Trendbruch, Kurssturz oder fehlendem Gesamtmarktsignal besteht weiterhin kein Einstiegssignal. Vor der Order Ausführungskurs und Ordertyp im Broker prüfen; Kurslücken können einen Stop erheblich unterschreiten.</p>
 <p><strong>Warum nicht das alte Modell?</strong> Das frühere 60-Tage-Ranking und die automatischen ATR-Limits zeigten im bisherigen Test keinen belastbaren Mehrwert. Daher gibt es keine vermeintlich optimalen Kauf-/Stop-Preise und keine Gewinnwahrscheinlichkeiten.</p>
     <p><strong>Wissenschaft:</strong> Mittelfristiges Momentum ist in langfristiger akademischer Literatur untersucht. Unsere konkrete weltweite Aktienauswahl ist jedoch nicht überlebensbiasfrei oder vollständig außerhalb der Stichprobe validiert. Insbesondere sind die historischen US-Faktorportfolios kein Nachweis für die hier angezeigten Einzelaktien.</p>
     <p><strong>Wichtig:</strong> Das globale Verzeichnis enthält mehr Aktien als täglich abgefragt werden können. Firmen ohne Kursdaten fehlen. Internationale Bilanzzahlen sind nicht flächendeckend vergleichbar, daher gibt es derzeit kein vermeintlich vollständiges weltweites Quality-/Value-Ranking.</p>
@@ -218,6 +226,19 @@ function makeCard(s){
       "chip "+(s.entry_review==="entry_review"?"action-buy":s.entry_review==="avoid_crash"?"action-crash":"action-wait"));
   add(actions,"span",exitText[s.exit_review]||"Ausstieg ungeprüft",
       "chip "+((s.exit_review||"").startsWith("review_exit")?"action-sell":"unknown"));
+  const levels=add(head,"div",null,"trade-levels");
+  const buyBox=add(levels,"div",null,"trade-box");
+  add(buyBox,"small","Kauf-Limit · Modellwert");
+  add(buyBox,"strong",eur(s.model_buy_limit_eur));
+  const stopBox=add(levels,"div",null,"trade-box stop");
+  add(stopBox,"small","Stop-Loss · Modellwert");
+  add(stopBox,"strong",eur(s.model_initial_stop_eur));
+  add(head,"div",Number.isFinite(s.model_buy_limit_eur)&&Number.isFinite(s.model_initial_stop_eur)
+    ? (s.entry_review==="entry_review"
+        ? "Nur rechnerische Marken (1× ATR Kaufabschlag, 2,5× ATR darunter Stop). Im Broker prüfen."
+        : "Derzeit kein Einstiegssignal – diese Marken sind nur rechnerische Beispiele.")
+    : "Keine belastbaren Marken berechenbar; die historischen Tagesdaten reichen nicht aus.",
+    "trade-footnote");
   const detail=add(article,"div",null,"details");
   const items=[
     ["Kursdatum",s.price_date||"unbekannt"],
@@ -235,8 +256,7 @@ function makeCard(s){
     ["Börse",s.exchange||"unbekannt"]
   ];
   if(s.tr_at_listed===true && s.tr_isin)items.push(["Trade Republic ISIN",s.tr_isin]);
-  if(Number.isFinite(s.entry_reference_eur))items.push(["Orientierung für neue Kauf-Limitprüfung",eur(s.entry_reference_eur)]);
-  if(Number.isFinite(s.risk_reference_eur))items.push(["Hypothetische 2,5-ATR-Risikoschwelle",eur(s.risk_reference_eur)]);
+  if(Number.isFinite(s.entry_reference_eur))items.push(["Letzter Referenzkurs für Orderprüfung",eur(s.entry_reference_eur)]);
   for(const [name,val] of items){
     const col=add(detail,"div",null,"detail");
     add(col,"small",name);
@@ -244,7 +264,7 @@ function makeCard(s){
   }
   const explanation=add(detail,"div",null,"decision");
   add(explanation,"strong","Einstieg frühestens am nächsten Handelstag, wenn das Signal nach dem Tagesschluss noch gilt.");
-  add(explanation,"span","Ausstieg bei Bestand prüfen, wenn ein späterer Tagesschluss unter der aktuell berechneten 200-Tage-Trendgrenze liegt oder die Crash-Marken erreicht werden. Vor einer Order tatsächlichen EUR-Brokerkurs prüfen. Die 2,5-ATR-Risiko-Referenz ist nur für einen hypothetischen Neueinstieg gedacht. Kein persönlicher Positions-Stop, keine Echtzeit-Überwachung oder automatische Verkaufsorder.");
+  add(explanation,"span","Ausstieg bei Bestand prüfen, wenn ein späterer Tagesschluss unter der aktuell berechneten 200-Tage-Trendgrenze liegt oder die Crash-Marken erreicht werden. Vor einer Order tatsächlichen EUR-Brokerkurs prüfen. Die sichtbaren Kauf-/Stop-Modellwerte ergeben sich aus 1× ATR unter dem Schlusskurs und 2,5× ATR unter diesem hypothetischen Kauf-Limit. Keine statistisch validierten optimalen Grenzen, kein persönlicher Positions-Stop, keine Echtzeit-Überwachung oder automatische Verkaufsorder.");
   return article;
 }
 function render(){
