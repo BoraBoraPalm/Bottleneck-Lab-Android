@@ -265,7 +265,7 @@ def trade(signal,signal_idx,days,h,fx,stake,slip=SLIP_RATE):
                 "return_on_allocated":(proceeds-fill["spent"])/stake}
     return None # Do not invent a sell price when a quoted ticker vanished.
 
-def benchmark_cohort(day_idx,days,h_spy,fx,capital,slip=SLIP_RATE):
+def benchmark_cohort(day_idx,days,h_spy,fx,capital,slip=SLIP_RATE,dividends=True):
     entry_day=days[day_idx+1];exit_day=days[day_idx+MAX_HORIZON]
     open_=h_spy["bars"][h_spy["index"][entry_day]][0]
     end_b=h_spy["bars"][h_spy["index"][exit_day]]
@@ -278,7 +278,7 @@ def benchmark_cohort(day_idx,days,h_spy,fx,capital,slip=SLIP_RATE):
     ent=h_spy["bars"][h_spy["index"][entry_day]]
     ratio_entry=ent[5]/ent[3] if ent[3]>0 else 1
     ratio_exit=end_b[5]/end_b[3] if end_b[3]>0 else 1
-    divmult=ratio_exit/ratio_entry
+    divmult=(ratio_exit/ratio_entry) if dividends else 1.0
     terminal_eur=qty*px*divmult*fx(exit_day)*(1-slip)-1
     profit=terminal_eur-(qty*buy+1)
     return profit,qty,divmult
@@ -294,9 +294,12 @@ def cohort(day_idx,days,ranks,hists,fx,capital,slip=SLIP_RATE):
         else:missing.append(t)
     pnl=sum(t["pnl_eur"] for t in trades)
     bench,_,_ = benchmark_cohort(day_idx,days,hists["SPY"],fx,capital,slip)
+    bench_price_only,_,_ = benchmark_cohort(day_idx,days,hists["SPY"],fx,capital,slip,dividends=False)
     return {"signal_date":d,"initial_eur":capital,"strategy_pnl_eur":pnl,
             "strategy_return_pct":pnl/capital*100,"benchmark_pnl_eur":bench,
             "benchmark_return_pct":bench/capital*100,"excess_return_pct":(pnl-bench)/capital*100,
+            "benchmark_price_only_return_pct":bench_price_only/capital*100,
+            "excess_vs_spy_price_only_pct":(pnl-bench_price_only)/capital*100,
             "selected":len(ranked),"filled":len(trades),"unfilled":len(missing),
             "trades":trades}
 
@@ -304,6 +307,7 @@ def pct(x):return round(x,4)
 def summarize(cohorts):
     rets=[x["strategy_return_pct"] for x in cohorts]
     bench=[x["benchmark_return_pct"] for x in cohorts]
+    bench_price_only=[x["benchmark_price_only_return_pct"] for x in cohorts]
     excess=[x["excess_return_pct"] for x in cohorts]
     trades=[t for x in cohorts for t in x["trades"]]
     return {
@@ -312,6 +316,8 @@ def summarize(cohorts):
         "mean_20d_strategy_pct":pct(statistics.mean(rets)),
         "median_20d_strategy_pct":pct(statistics.median(rets)),
         "mean_20d_spy_pct":pct(statistics.mean(bench)),
+        "mean_20d_spy_price_only_pct":pct(statistics.mean(bench_price_only)),
+        "mean_20d_excess_vs_spy_price_only_pct":pct(statistics.mean([x["excess_vs_spy_price_only_pct"] for x in cohorts])),
         "mean_20d_excess_pct":pct(statistics.mean(excess)),
         "strategy_positive_cohorts_pct":pct(100*sum(x>0 for x in rets)/len(rets)),
         "trades_won_pct":pct(100*sum(t["pnl_eur"]>0 for t in trades)/max(1,len(trades))),
@@ -343,7 +349,7 @@ def capital_path(days,ranks,hists,fx):
     # Non-overlap: new cohort starts every 20 sessions, invest up to 10 positions
     # per cohort; final profits/cash released before next cohort.
     first=next(i for i,d in enumerate(days) if d>=START.isoformat())
-    capital=10000.;benchmark_cap=10000.
+    capital=10000.;benchmark_cap=10000.;benchmark_price_only_cap=10000.
     rows=[];all_trades=[]
     for i in range(first,len(days)-MAX_HORIZON,MAX_HORIZON):
         d=days[i]
@@ -352,11 +358,15 @@ def capital_path(days,ranks,hists,fx):
         # benchmark returns percentage for same calendar period, but calculated
         # on benchmark_cap, avoids sharing strategy capital between portfolios.
         b_pnl,_,_=benchmark_cohort(i,days,hists["SPY"],fx,benchmark_cap)
+        b_price_pnl,_,_=benchmark_cohort(i,days,hists["SPY"],fx,benchmark_price_only_cap,dividends=False)
         capital+=group["strategy_pnl_eur"]
         benchmark_cap+=b_pnl
+        benchmark_price_only_cap+=b_price_pnl
         all_trades.extend(group["trades"])
         rows.append({"date":d,"strategy_equity_eur":pct(capital),
-            "benchmark_equity_eur":pct(benchmark_cap),"strategy_period_return_pct":group["strategy_return_pct"],
+            "benchmark_equity_eur":pct(benchmark_cap),
+            "benchmark_price_only_equity_eur":pct(benchmark_price_only_cap),
+            "strategy_period_return_pct":group["strategy_return_pct"],
             "benchmark_period_return_pct":pct(b_pnl/(benchmark_cap-b_pnl)*100),
             "fills":len(group["trades"]),"selected":group["selected"]})
     peak=10000
@@ -378,6 +388,9 @@ def capital_path(days,ranks,hists,fx):
         "spy_final_eur":pct(benchmark_cap),
         "spy_pnl_eur":pct(benchmark_cap-10000),
         "spy_total_return_pct":pct((benchmark_cap/10000-1)*100),
+        "spy_price_only_final_eur":pct(benchmark_price_only_cap),
+        "spy_price_only_pnl_eur":pct(benchmark_price_only_cap-10000),
+        "spy_price_only_total_return_pct":pct((benchmark_price_only_cap/10000-1)*100),
         "n_nonoverlapping_periods":len(rows),
         "trade_count":len(all_trades),
         "total_commissions_eur":pct(2*len(all_trades)),
@@ -453,7 +466,7 @@ def main():
     }
     with open(OUT/"report.json","w",encoding="utf-8") as f:json.dump(data,f,ensure_ascii=False,indent=2)
     group_rows=[]
-    keys=["signal_date","initial_eur","strategy_pnl_eur","strategy_return_pct","benchmark_pnl_eur","benchmark_return_pct","excess_return_pct","selected","filled","unfilled"]
+    keys=["signal_date","initial_eur","strategy_pnl_eur","strategy_return_pct","benchmark_pnl_eur","benchmark_return_pct","benchmark_price_only_return_pct","excess_return_pct","excess_vs_spy_price_only_pct","selected","filled","unfilled"]
     for c in cohorts:group_rows.append({k:round(v,4) if isinstance(v,float) else v for k,v in c.items() if k!="trades"})
     csv_save(OUT/"random_320_cohorts.csv",group_rows,keys)
     all_entries=[t for c in cohorts for t in c["trades"]]
