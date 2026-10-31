@@ -84,6 +84,38 @@ class GuidanceTest(unittest.TestCase):
         self.assertEqual(r["exit_review"],"insufficient_data")
         self.assertIsNone(g.market_risk_from_quote(None)["risk"])
 
+    def test_old_style_buy_limit_and_stop_are_distinct_eur_values(self):
+        adjusted=[100+i*.5 for i in range(300)]
+        context=g.price_context(bars_from_adjusted(adjusted))
+        close=adjusted[-1]
+        r=row(context,close=close,eur_per_unit=.82,
+              reference_close_eur=close*.82)
+        g.assign_decision(r,{"risk":"normal"})
+        buy=(close-context["atr14_native"])*.82
+        stop=(close-3.5*context["atr14_native"])*.82
+        self.assertAlmostEqual(r["model_buy_limit_eur"],buy,places=4)
+        self.assertAlmostEqual(r["model_initial_stop_eur"],stop,places=4)
+        self.assertLess(r["model_initial_stop_eur"],r["model_buy_limit_eur"])
+        self.assertLess(r["model_buy_limit_eur"],r["reference_close_eur"])
+        self.assertEqual(r["entry_review"],"entry_review")
+
+    def test_no_model_prices_for_stale_quotes(self):
+        adjusted=[100+i*.5 for i in range(300)]
+        context=g.price_context(bars_from_adjusted(adjusted))
+        r=row(context,close=adjusted[-1],price_date=(TODAY-timedelta(days=8)).isoformat())
+        g.assign_decision(r,{"risk":"normal"})
+        self.assertEqual(r["entry_review"],"stale_quote")
+        self.assertNotIn("model_buy_limit_eur",r)
+        self.assertNotIn("model_initial_stop_eur",r)
+
+    def test_no_model_prices_without_adjusted_ohlc(self):
+        adjusted=[100+i*.5 for i in range(300)]
+        context=g.price_context(bars_from_adjusted(adjusted))
+        r=row(context,close=adjusted[-1],context_basis="unverified OHLC")
+        g.assign_decision(r,{"risk":"normal"})
+        self.assertNotIn("model_buy_limit_eur",r)
+        self.assertNotIn("model_initial_stop_eur",r)
+
     def test_unknown_market_does_not_claim_buy(self):
         a=[100+i*.5 for i in range(300)]
         r=row(g.price_context(bars_from_adjusted(a)))
