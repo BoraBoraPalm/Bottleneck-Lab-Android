@@ -109,7 +109,7 @@ def discover(old):
     return known,details,errors
 
 CACHE_FIELDS=(
-  "ticker","close","currency","price_date","source","bars_count","momentum_12_2",
+  "ticker","close","currency","price_date","source","bars_count","momentum_12_2","momentum_basis",
   "avg_dollar_turnover_20d","avg_local_turnover_20d","last_checked_at"
 )
 def cached_quotes(old,known):
@@ -123,7 +123,12 @@ def cached_quotes(old,known):
             last=datetime.strptime(x["price_date"],DATE_FMT).replace(tzinfo=timezone.utc)
             if (datetime.now(timezone.utc)-last)>timedelta(days=11):continue
         except (TypeError,ValueError):continue
-        existing[x["ticker"]]={k:x[k] for k in CACHE_FIELDS if k in x}
+        cached={k:x[k] for k in CACHE_FIELDS if k in x}
+        # Old snapshot momentum used raw closes and can be corrupted by splits.
+        # Never carry it forward as if it had been computed from adjusted prices.
+        if cached.get("momentum_basis")!="Yahoo adjusted daily closes":
+            cached["momentum_12_2"]=None
+        existing[x["ticker"]]=cached
     return existing
 
 def requested_batch(known,cache):
