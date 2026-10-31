@@ -51,6 +51,30 @@ ul{padding-left:19px;margin:8px 0 0}
 li{margin:5px 0}
 #err{display:none}
 @media(min-width:720px){.kpis{grid-template-columns:repeat(4,1fr)}.barrow{grid-template-columns:210px 1fr 75px}.controls{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+/* Isolated current-stock watchlists; original research charts remain unchanged. */
+.research-list{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;margin-top:10px}
+.research-stock{border:1px solid #43596b;background:#182d3e;border-radius:11px;padding:13px;min-width:0;overflow-wrap:anywhere}
+.research-stock-title{display:flex;gap:8px;justify-content:space-between;align-items:start}
+.research-stock-title strong{display:block;font-size:14px;line-height:1.4}
+.research-small{font-size:11px;line-height:1.5}
+.research-tag{display:inline-block;color:#8ce2d2;background:#20474a;border:1px solid #3a7072;border-radius:11px;padding:3px 7px;font-size:10px;white-space:nowrap}
+.research-caution{color:#f0d2a0;background:#4a3c28;border-color:#6f5841}
+.research-flags{display:flex;gap:7px;flex-wrap:wrap;align-items:center;margin:9px 0}
+.research-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin:8px 0}
+.research-metric{border-radius:7px;padding:8px;background:#21354b;min-width:0}
+.research-metric small{display:block;font-size:10px;min-height:29px;line-height:1.2}
+.research-metric strong{display:block;font-size:14px;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
+.research-evidence{border-top:1px solid #3b4b5c;padding-top:8px;margin-top:9px}
+.research-evidence>div{margin:3px 0}
+.research-stock p{margin:7px 0}
+.research-controls{display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
+.research-switch{display:flex;gap:8px;align-items:center;margin:4px 0;color:var(--text);font-size:12px}
+.research-switch input{width:19px;height:19px;min-height:19px;flex:none;accent-color:var(--accent)}
+@media(min-width:680px){
+  .research-list{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .research-controls{grid-template-columns:minmax(0,2fr) minmax(0,1fr);align-items:end}
+}
 </style>
 </head>
 <body>
@@ -68,6 +92,35 @@ li{margin:5px 0}
       <div><label for="amount">Beispielkapital (€)</label><input type="number" id="amount" value="10000" min="100" max="100000000" step="1000" aria-label="Hypothetisches Beispielkapital"></div>
     </div>
     <small>Alle Zahlen stammen aus einem am 31.10.2026 abgeschlossenen Forschungsdurchlauf. Historische USD-Portfolios wurden für den EUR-Vergleich anhand historischer Referenzkurse umgerechnet. 1 % jährliche hypothetische Zusatzkosten auf Faktoranteile; keine österreichischen Steuern oder tatsächlichen TR-Gebühren enthalten.</small>
+  </div>
+
+
+  <div class="card" id="stockResearch">
+    <div class="pill">Aktuelle Kandidaten · experimentell</div>
+    <h2 style="margin-top:10px">Konkrete Aktien für die wissenschaftlichen Strategien</h2>
+    <p class="muted">Aktuelle Kandidaten aus dem Kurs-/SEC-Snapshot, getrennt von den langfristigen akademischen Portfolioergebnissen. Alle Werte sind unverbindliche Forschungs-Ranglisten, nicht validierte Kaufempfehlungen.</p>
+    <div class="research-controls">
+      <div>
+        <label for="candidateKind">Kandidatenliste</label>
+        <select id="candidateKind" disabled>
+          <option value="quality_momentum">Top 10 · Quality + Momentum</option>
+          <option value="quality_value_momentum">Top 10 · Quality + Value + Momentum</option>
+          <option value="bottleneck_hypotheses">Mögliche Engpass-Exposition (Hypothesen)</option>
+          <option value="overlap">Überschneidungen mehrerer Strategien</option>
+        </select>
+      </div>
+      <div>
+        <label class="research-switch" for="candidateTrOnly">
+          <input type="checkbox" id="candidateTrOnly" disabled>
+          Nur Trade Republic AT (ISIN bestätigt)
+        </label>
+      </div>
+    </div>
+    <div id="candidateDataStatus" class="muted research-small" role="status" style="margin-top:10px">Aktuelle Quellen und Kursdaten werden geprüft …</div>
+    <div id="candidateSummary" class="research-small" style="margin-top:5px"></div>
+    <div id="candidateEvidence" class="info">Faktoren werden nur aus verifizierbaren Kursen und veröffentlichten SEC-Jahreszahlen berechnet.</div>
+    <div id="candidateCards" class="research-list"></div>
+    <div class="warn">Die Kauf- und Stop-Marken sind nur eine Illustration der alten 1×/2,5×-ATR-Regeln; für diese Forschungsstrategien wurde kein Order-Backtest bestätigt. EUR-Kurse sind FX-umgerechnete Referenzkurse, nicht aktuelle Trade-Republic-Handelspreise. Der Broker-Filter bestätigt die ISIN in der österreichischen Liste, nicht die momentane Orderfähigkeit.</div>
   </div>
 
   <div class="card">
@@ -261,5 +314,6 @@ if('ResizeObserver' in window)new ResizeObserver(notifyHeight).observe(document.
 window.addEventListener('load',notifyHeight);
 start();
 </script>
+<script src="research-candidates.js" defer></script>
 </body>
 </html>
