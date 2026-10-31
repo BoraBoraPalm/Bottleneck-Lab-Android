@@ -48,13 +48,20 @@ def fetch_yahoo(symbol):
                 raise RuntimeError(str(chart["error"]))
             r=chart["result"][0]
             quote=r["indicators"]["quote"][0]
+            adjusted=r["indicators"].get("adjclose",[{}])[0].get("adjclose",[])
             ts=r["timestamp"]
             bars=[]
             for i,epoch in enumerate(ts):
                 try:
                     c=float(quote["close"][i]); h=float(quote["high"][i]); l=float(quote["low"][i])
                     if all(math.isfinite(k) and k>0 for k in (c,h,l)):
-                        bars.append((datetime.fromtimestamp(epoch,timezone.utc).strftime("%Y-%m-%d"),h,l,c,float(quote.get("volume",[None]*len(ts))[i] or 0)))
+                        adj=None
+                        if i<len(adjusted):
+                            try:
+                                aval=float(adjusted[i])
+                                if math.isfinite(aval) and aval>0:adj=aval
+                            except (TypeError,ValueError):pass
+                        bars.append((datetime.fromtimestamp(epoch,timezone.utc).strftime("%Y-%m-%d"),h,l,c,float(quote.get("volume",[None]*len(ts))[i] or 0),adj))
                 except (TypeError,ValueError,IndexError,KeyError):
                     continue
             return bars, r.get("meta",{}).get("currency","USD"),"Yahoo Finance"
@@ -79,7 +86,7 @@ def fetch_stooq(symbol):
                 bars.append((d,h,l,c,float(row.get("Volume") or 0)))
         except (TypeError,ValueError,KeyError):
             continue
-    return bars,"USD","Stooq US (daily CSV)"
+    return bars,"USD","Stooq US (unverified adjustment)"
 
 
 def momentum_12_2(closes):
@@ -90,7 +97,7 @@ def momentum_12_2(closes):
     """
     if len(closes)<253:return None
     old,new=closes[-253],closes[-43]
-    if not old or old<=0 or not math.isfinite(old) or not math.isfinite(new):return None
+    if not old or not new or old<=0 or new<=0 or not math.isfinite(old) or not math.isfinite(new):return None
     return round(new/old-1,7)
 
 def quote(symbol,theme):
@@ -106,6 +113,7 @@ def quote(symbol,theme):
             if (datetime.now(timezone.utc)-last_date).days>11:
                 raise RuntimeError("Stale quote from "+dates[-1])
             closes=[x[3] for x in bars]
+            adjusted=[x[5] if len(x)>5 else None for x in bars]
             price=closes[-1]
             turnovers=[b[3]*b[4] for b in bars[-20:] if len(b)>4 and b[4]>0 and math.isfinite(b[4])]
             avg_local_turnover=round(sum(turnovers)/len(turnovers),0) if len(turnovers)>=12 else None
@@ -114,7 +122,8 @@ def quote(symbol,theme):
                     "currency":currency,"source":source,"bars_count":len(bars),
                     "avg_dollar_turnover_20d":avg_turnover,
                     "avg_local_turnover_20d":avg_local_turnover,
-                    "momentum_12_2":momentum_12_2(closes)},None
+                    "momentum_12_2":momentum_12_2(adjusted),
+                    "momentum_basis":"Yahoo adjusted daily closes" if source=="Yahoo Finance" else "not verified"},None
         except Exception as e:
             errors.append(load.__name__+": "+str(e)[:140])
     return None,symbol+": "+"; ".join(errors)
