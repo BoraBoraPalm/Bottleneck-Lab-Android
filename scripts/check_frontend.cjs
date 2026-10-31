@@ -13,7 +13,7 @@ const match=html.match(/<script>([\s\S]*?)<\/script>/i);
 if(!match)throw new Error("Missing inline script");
 new Function(match[1]);
 for(const id of ["universe","quoted","eligible","search","region","scope","trOnly",
-  "count","results","empty","status","reload","factorMomentum","factorLowRisk","factorTrend","strategySummary","showTradeLevels"]){
+  "count","results","empty","status","reload","factorMomentum","factorLowRisk","factorTrend","factorSander","strategySummary","showTradeLevels"]){
   if(!html.includes('id="'+id+'"'))throw new Error("UI control missing: "+id);
 }
 if(html.includes("<iframe")||html.includes('data-tab=')||html.includes("ATR-Stop")||html.includes("strategie-study.json"))
@@ -69,6 +69,24 @@ assert.equal(tied.get("A").score,50);
 assert.equal(tied.get("B").score,50);
 assert.equal(vm.runInContext('mixedRanks(sample,[])',context).size,0);
 assert.equal(vm.runInContext('mixedRanks(sample,["invented"])',context).size,0);
+
+const sanderSample=[
+  {ticker:"QUALIFIED",momentum_12_2:-.2,atr14_native:3,close:100,sma200_ratio:-.15,
+   sander_score:80,drawdown_252d:-.30,fundamentals:{quality_ok:true}},
+  {ticker:"MISSING",momentum_12_2:.3,atr14_native:1,close:100,sma200_ratio:.15,
+   sander_score:null},
+  {ticker:"SECOND",momentum_12_2:.15,atr14_native:5,close:100,sma200_ratio:-.20,
+   sander_score:40,drawdown_252d:-.18,fundamentals:{quality_ok:true}}
+];
+context.sanderSample=sanderSample;
+const sanderOnly=vm.runInContext('mixedRanks(sanderSample,["sander"])',context);
+assert.equal(sanderOnly.size,2,"Only financially verified buy-the-dip stocks rank");
+assert.ok(sanderOnly.get("QUALIFIED").score>sanderOnly.get("SECOND").score);
+const sanderCombination=vm.runInContext('mixedRanks(sanderSample,["momentum","sander"])',context);
+assert.equal(sanderCombination.size,2,"Sander combined with momentum still excludes unchecked firms");
+assert.equal(sanderCombination.get("QUALIFIED").parts.length,2);
+assert.equal(sanderCombination.get("MISSING"),undefined);
+
 console.log("Strategy checkbox mixer: solo momentum, equal-weight combinations, missing-data exclusion and ties verified.");
 
 
