@@ -159,7 +159,7 @@ def fx_rates(currencies):
     iso=set()
     for cur in currencies:
         upper=cur.upper()
-        iso.add("GBP" if upper in ("GBX","GBP","GBPENCE","GBP.") else upper)
+        iso.add("GBP" if upper in ("GBX","GBP") else upper)
     iso.discard("EUR")
     currencies=sorted(iso)
     allowed=set("USD GBP CHF JPY CAD AUD HKD CNY INR KRW TWD BRL SEK DKK NOK SGD NZD ZAR MXN PLN ILS SAR TRY AED IDR MYR THB".split())
@@ -186,9 +186,10 @@ def fx_rates(currencies):
     if "USD" not in result:raise RuntimeError("USD/EUR historical FX missing")
     def rate(cur,day):
         if cur=="EUR":return 1.0
+        unit=cur
         cur=cur.upper()
-        factor=.01 if cur in ("GBX","GBp".upper()) else 1.0
-        if cur in ("GBX","GBP".lower().upper()): cur="GBP"
+        factor=.01 if unit=="GBp" or cur=="GBX" else 1.0
+        if cur=="GBX":cur="GBP"
         if cur not in result:return None
         keys,values=result[cur]
         i=bisect_right(keys,day)-1
@@ -306,9 +307,10 @@ def trade(signal,model,day_idx,calendar,history,rate,stake,slippage=SLIP):
     exit_price=None;exit_date=None;reason=None
     # Do not evaluate a post-close exit rule on the signal close itself.
     # For the day of purchase, evaluate stop pessimistically if breached.
-    for j in range(entry_j,end+1):
+    # Use the last actual local exchange session by the cohort deadline.
+    positions=[j for j in range(entry_j,end+1) if calendar[j] in dbar]
+    for j in positions:
         today=calendar[j]
-        if today not in dbar:continue
         b=dbar[today]
         if use_stop and b[2]<=stop:
             exit_price=min(buy_px,stop) if j==entry_j else min(b[0],stop)
@@ -322,7 +324,7 @@ def trade(signal,model,day_idx,calendar,history,rate,stake,slippage=SLIP):
                 if feat and (feat["crash"] or feat["trend"]<0):
                     exit_price=b[0];exit_date=today;reason="trend_crash_review_next_open"
                     break
-        if j==end:
+        if j==positions[-1]:
             exit_price=b[3];exit_date=today;reason="time"
     if exit_date is None:return None # no invented exit for discontinued quote
     fxsell=rate(d["currency"],exit_date)
