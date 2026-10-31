@@ -134,11 +134,12 @@ def current_candidates(stocks,news,generated_at,required_min=MIN_QM_COMPANIES):
     qm,cohort=qm_rank(valid,today)
     qvm={
         r["ticker"]:r["multifactor"] for r in valid
-        if isinstance(r.get("multifactor"),dict) and
+        if isinstance(r.get("multifactor"),dict) and quality_inputs(r,today) is not None and
            all(number(r["multifactor"].get(k)) is not None for k in
                ("score","momentum_score","quality_score","value_score"))
            and day(r["multifactor"].get("filing_date")) is not None
            and day(r["multifactor"].get("filing_date"))<=today
+           and r["multifactor"].get("filing_date")==r["fundamentals"].get("filed")
     }
     by_ticker={r["ticker"]:r for r in valid}
     qm_order=sorted(qm,key=lambda t:(-qm[t]["score"],t))
