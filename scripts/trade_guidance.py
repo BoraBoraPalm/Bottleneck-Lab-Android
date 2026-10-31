@@ -63,6 +63,8 @@ def price_context(bars):
     return {
         "sma200_ratio":round(last/sma-1,7),
         "sma200_native":round(sma/last*raw,6),
+        "crash_21_level_native":round(.85*prices[-22]/last*raw,6),
+        "crash_peak_level_native":round(.75*peak/last*raw,6),
         "return_21d":round(ret21,7),
         "drawdown_252d":round(drawdown,7),
         "atr14_native":round(atr_raw,6),
