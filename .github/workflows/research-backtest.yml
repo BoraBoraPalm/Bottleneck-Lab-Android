@@ -1,0 +1,38 @@
+name: Independent 5-Year Research Backtest
+on:
+  workflow_dispatch:
+  push:
+    branches: [master]
+    paths:
+      - 'research/**'
+      - '.github/workflows/research-backtest.yml'
+permissions:
+  contents: read
+concurrency:
+  group: five-year-independent-backtest
+  cancel-in-progress: true
+jobs:
+  backtest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 36
+    steps:
+      - name: Checkout research code
+        uses: actions/checkout@v4
+      - name: Python runtime
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Strict no-lookahead, stop and transaction-cost unit tests
+        run: python -m unittest discover -s research -p 'test_*.py' -v
+      - name: Get historical market data and independently backtest strategy
+        run: python -u research/backtest_5y.py | tee research/backtest_output.log
+      - name: Publish full audit artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Bottleneck-Lab-5-Year-Backtest-Full
+          path: |
+            research/results/
+            research/backtest_output.log
+          if-no-files-found: warn
+          retention-days: 90
