@@ -144,7 +144,7 @@ def assign_decision(stock,market_context=None):
             and isinstance(native_atr,(int,float))
             and math.isfinite(native_close) and math.isfinite(native_atr)
             and native_close>0 and native_atr>0
-            and stock.get("context_basis")=="Yahoo adjusted OHLC"):
+            and str(stock.get("context_basis") or "").startswith("Yahoo adjusted OHLC")):
         buy=native_close-native_atr
         stop=buy-2.5*native_atr
         if stop>0 and buy>0:
