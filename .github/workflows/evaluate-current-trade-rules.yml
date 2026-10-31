@@ -1,0 +1,41 @@
+name: Independent Global Trade Rules Evaluation (Research Only)
+on:
+  workflow_dispatch:
+  push:
+    branches: [master]
+    paths:
+      - 'research/evaluate_current_trade_rules.py'
+      - 'research/test_evaluate_current_trade_rules.py'
+      - '.github/workflows/evaluate-current-trade-rules.yml'
+permissions:
+  contents: read
+concurrency:
+  group: evaluate-current-trade-rules
+  cancel-in-progress: true
+jobs:
+  evaluate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - name: Check out read-only market signal implementation
+        uses: actions/checkout@v4
+      - name: Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Research safety and no-lookahead tests
+        run: python -m unittest discover -s research -p 'test_evaluate_current_trade_rules.py' -v
+      - name: Historical price, FX, EUR commission and global market backtest
+        run: |
+          set -o pipefail
+          python -u research/evaluate_current_trade_rules.py | tee research/current_trade_rules_output.log
+      - name: Save all research data, including errors
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Global-Trading-Rules-Research-2026
+          path: |
+            research/current_rules_results/
+            research/current_trade_rules_output.log
+          retention-days: 90
+          if-no-files-found: warn
