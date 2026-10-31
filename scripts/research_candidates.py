@@ -173,13 +173,38 @@ def current_candidates(stocks,news,generated_at,required_min=MIN_QM_COMPANIES):
            if r.get("theme_source")=="Curated" and r.get("theme") in THEME_GROUP
            and number(r.get("momentum_12_2")) is not None]
     theme.sort(key=lambda r:(-r["momentum_12_2"],r["ticker"]))
+    # Global price-only research candidates: no SEC reporting dependency.
+    # Cap regional concentration to prevent US-only lists from an international pool.
+    global_pool=[r for r in stocks
+          if r.get("eligible_global_ranking") is True
+          and r.get("region") not in ("Unbekannt",None)
+          and number(r.get("momentum_12_2")) is not None
+          and number(r.get("eur_per_unit")) is not None
+          and day(r.get("price_date")) is not None
+          and 0<=(today-day(r["price_date"])).days<=7]
+    global_pool.sort(key=lambda r:(-r["momentum_12_2"],r["ticker"]))
+    cap_per_region=4
+    region_taken={}
+    world_list=[]
+    for r in global_pool:
+        region=r.get("region")
+        if region_taken.get(region,0)>=cap_per_region:continue
+        obj=row_entry(r,100*r["momentum_12_2"])
+        obj["country"]=r.get("country") or ""
+        obj["region"]=region
+        obj["avg_turnover_20d_eur"]=r.get("avg_turnover_20d_eur")
+        obj["global_momentum_basis"]="12-2 month return, regional max four; NOT fundamental or expected-return score"
+        world_list.append(obj)
+        region_taken[region]=region_taken.get(region,0)+1
+        if len(world_list)>=20:break
     theme_list=[row_entry(r,100*r["momentum_12_2"],thematic=True,
                            news=theme_news.get(r["theme"],[]))
                  for r in theme[:MAX_ITEMS]]
 
     ranks={}
     for kind,names in (("quality_momentum",qm_top),("quality_value_momentum",qvm_top),
-                       ("bottleneck_hypotheses",[x["ticker"] for x in theme_list])):
+                       ("bottleneck_hypotheses",[x["ticker"] for x in theme_list]),
+                       ("global_momentum",[x["ticker"] for x in world_list])):
         for i,t in enumerate(names,1):ranks.setdefault(t,{})[kind]=i
     overlap=[]
     for ticker,entry in ranks.items():
@@ -195,12 +220,15 @@ def current_candidates(stocks,news,generated_at,required_min=MIN_QM_COMPANIES):
       "quality_momentum_coverage":cohort,
       "qvm_coverage":len(qvm),
       "thematic_hypothesis_coverage":len(theme),
+      "global_momentum_coverage":len(global_pool),
+      "global_momentum_regions":dict(region_taken),
       "max_per_list":MAX_ITEMS,
       "methodology":{
         "quality_momentum":"Equal 50/50 quality and 12-2 momentum percentiles, only if annual SEC data and 12-2 prices exist",
         "quality_value_momentum":"Existing QVM pilot 1/3 each; same market price and annual financial facts; restricted US SEC coverage",
         "bottleneck_hypotheses":"Hand-curated sector classification and rank by 12-2 momentum ONLY; RSS news is sector-wide context, NOT causal firm evidence",
-        "overlap":"Stocks present in at least two of the above top-10 research lists",
+        "global_momentum":"20 highest 12-2 returns with at most 4 per issuer region, only comparable EUR price/turnover; no quality/value international data",
+        "overlap":"Stocks present in at least two of the above research lists",
         "entry_exit":"Illustrative old ATR settings: buy=close-1 ATR, stop=buy-2.5 ATR; not validated for QVM",
         "sources":["Snapshot daily quotes","SEC EDGAR 10-K","Official TR Austria instrument list (ISIN match)","Thematic Google News RSS"],
         "performance_status":"No proven investable outperformance; sector hypotheses unverified"
@@ -209,6 +237,7 @@ def current_candidates(stocks,news,generated_at,required_min=MIN_QM_COMPANIES):
           "quality_momentum":qm_list,
           "quality_value_momentum":qvm_list,
           "bottleneck_hypotheses":theme_list,
+          "global_momentum":world_list,
           "overlap":overlap
       },
       "disclaimers":{
