@@ -1,0 +1,38 @@
+name: Exploratory Point-in-Time QVM Study
+on:
+  workflow_dispatch:
+  push:
+    branches: [master]
+    paths:
+      - 'research/evaluate_qvm_pit.py'
+      - '.github/workflows/qvm-pit-study.yml'
+permissions:
+  contents: read
+concurrency:
+  group: qvm-pit-research
+  cancel-in-progress: true
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    timeout-minutes: 32
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: SEC filing, no-lookahead and execution tests
+        run: |
+          python -m unittest discover -s tests -p 'test_multifactor.py' -v
+          python -m unittest discover -s research -p 'test_*.py' -v
+      - name: Historical SEC as-filed factor study (universe is survivor-biased)
+        run: python -u research/evaluate_qvm_pit.py | tee research/qvm_pit_output.log
+      - name: Preserve fully auditable research results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: QVM-Point-in-Time-Exploratory-Results
+          path: |
+            research/pit_results/
+            research/qvm_pit_output.log
+          if-no-files-found: warn
+          retention-days: 90
