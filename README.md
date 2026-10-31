@@ -19,6 +19,12 @@ Die App zeigt zusätzlich **Einstieg/Ausstieg prüfen** sowie **Kurssturz-Warnun
 
 Es werden **keine tatsächlichen Käufe, Stop-Loss-Orders oder künftige Renditen** prognostiziert. Die alte 60-Tage-Score- und ATR-Handelslogik ist entfernt, weil sie in den bisherigen Tests keinen belastbaren Vorteil gezeigt hat. Auch das neue Momentum-Screening ist **nicht als profitabel validiert**. Die akademischen Faktoruntersuchungen betrafen hauptsächlich US-Daten und sind kein Beweis für diese weltweite konkrete Aktienliste.
 
+## Kursdiagramme in jeder Aktienkarte
+
+Beim Aufklappen wird der Kursverlauf **erst dann** geladen (kein externer TradingView-Embed). Vorgaben: **3 Monate**, schnell umschaltbar zwischen **1M, 3M, 6M, 1J, 3J, 5J und MAX** (höchstens die letzten rund zehn Jahre, soweit Daten vom Anbieter verfügbar sind). Pro Symbol erzeugt die Kursdaten-Pipeline eine separate JSON-Datei unter `docs/charts/<Ticker>.json`; ein GitHub-Actions-Cache behält Kurshistorien aus vorherigen Aktualisierungen. Bei fehlenden Kursreihen erscheint eine klare Meldung. Das Chartangebot wächst daher mit den rotierenden Börsendaten-Aktualisierungen.
+
+Kauf-Limit- und Stop-Loss-Linien werden im Chart **nur bei aktiviertem Schalter „Kauf-Limit & Stop-Loss anzeigen“** eingeblendet. Da die Achse den Originalkurs der jeweiligen Börse zeigt, werden die vorhandenen EUR-Modellwerte mit dem **aktuellen Referenzwechselkurs** zurück in die Kurswährung umgerechnet; sie sind weder historische EUR-Kurse noch tatsächliche Broker-Orders. Die Chartreihe verwendet von Yahoo bezogene split-/dividendenbereinigte Schlusskurse, auf den letzten Originalschlusskurs skaliert. Die Modellgrenzen wurden in unseren bisherigen Tests nicht als gewinnsteigernd validiert.
+
 ## Stand der Daten und Grenzen
 
 Die Aktienverzeichnisse umfassen viele mehr Börsenticker, als in einem sechs Stunden laufenden Aktualisierungsfenster abgefragt werden. Der öffentliche GitHub-Workflow prüft regionale Ticker in rotierenden Teilmengen. `universe_size` bezeichnet daher nur gefundene Symbole; `scanned_tickers` nur solche mit brauchbaren historischen Kursabfragen, `eligible_count` nur solche mit den nötigen EUR-/Liquiditäts-/Momentumwerten.
