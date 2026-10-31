@@ -16,6 +16,7 @@ from datetime import datetime, timedelta, timezone
 from build_snapshot import GROUPS, quote, fetch_news, read_url
 from fx_eur import latest_eur_rates, add_eur_prices
 from tr_at_universe import apply_tr_filter
+from multifactor import sec_fundamentals, assign_multifactor
 
 PAGES = "https://boraborapalm.github.io/Bottleneck-Lab-Android/snapshot.json"
 NASDAQ = "https://www.nasdaqtrader.com/dynamic/SymDir/nasdaqlisted.txt"
@@ -124,63 +125,40 @@ def seconds_ago(x):
     except (ValueError,TypeError,AttributeError):return float("inf")
 
 def financial_sec_lookup(rows, previous):
-    """Current selected US companies only; as-filed annual figures, not point-in-time backtest history."""
-    limit=int(os.getenv("BTL_SEC_PER_RUN","10"))
-    available={}
+    """Incrementally build transparent, current SEC financial coverage.
+
+    No fabricated earnings estimates, enterprise values or analyst revisions.
+    Cached 10-K facts are reused only for a short interval. A new annual filing
+    may not appear until subsequent runs. SEC data are NOT a PIT backtest here.
+    """
+    limit=int(os.getenv("BTL_SEC_PER_RUN","28"))
     try:
         raw=json.loads(read_url(SEC_TICKERS,timeout=18))
         available={entry["ticker"].upper():entry["cik_str"] for entry in raw.values()}
     except Exception as e:
-        print("SEC ticker map unavailable",str(e)[:160])
+        print("SEC ticker list unavailable",str(e)[:160],flush=True)
         return 0
-    today=datetime.now(timezone.utc)
-    # Historical fundamentals carried from prior snapshot for 14 days.
     previous_sec={r.get("ticker"):r.get("fundamentals") for r in previous.get("stocks",[]) if r.get("fundamentals")}
     for row in rows.values():
         f=previous_sec.get(row["ticker"])
-        if f and seconds_ago(f.get("retrieved_at"))<14*86400:
+        if isinstance(f,dict) and seconds_ago(f.get("retrieved_at"))<14*86400:
             row["fundamentals"]=f
-    eligible=sorted((x for x in rows.values() if x.get("ticker") in available and not x.get("fundamentals")
-        and x.get("price_date")),key=lambda x:-x.get("score",0))[:limit]
+    eligible=sorted((x for x in rows.values()
+        if x.get("ticker") in available and x.get("currency")=="USD"
+        and x.get("eligible_for_ranking") and not x.get("fundamentals")),
+        key=lambda x:(-float(x.get("avg_dollar_turnover_20d") or 0),x["ticker"]))[:limit]
     successful=0
     for row in eligible:
         cik=available[row["ticker"]]
         url=f"https://data.sec.gov/api/xbrl/companyfacts/CIK{int(cik):010d}.json"
         try:
-            req_body=read_url(url,timeout=15,max_bytes=18_000_000)
-            filing=json.loads(req_body)
-            us=filing.get("facts",{}).get("us-gaap",{})
-            def annual(tags):
-                for name in tags:
-                    x=us.get(name,{}).get("units",{}).get("USD",[])
-                    values=[v for v in x if v.get("form")=="10-K" and v.get("fp")=="FY" and v.get("fy")
-                        and "start" in v and "end" in v and "filed" in v and v.get("val") is not None
-                        and 320 <= (datetime.fromisoformat(v["end"])-datetime.fromisoformat(v["start"])).days <= 380]
-                    if values:
-                        # choose most recent fiscal year-end; as-filed date for transparency
-                        best={}
-                        for v in values:
-                            key=v["end"]
-                            if key not in best or v["filed"]<best[key]["filed"]:
-                                best[key]=v
-                        ordered=sorted(best.values(),key=lambda r:r["end"],reverse=True)
-                        if ordered:return ordered
-                return []
-            rev=annual(("RevenueFromContractWithCustomerExcludingAssessedTax",
-                "Revenues","SalesRevenueNet","RevenueFromContractWithCustomerIncludingAssessedTax"))
-            cash=annual(("NetCashProvidedByUsedInOperatingActivities",))
-            net=annual(("NetIncomeLoss",))
-            if not rev and not cash and not net:continue
-            f={"source":"SEC EDGAR companyfacts","source_url":url,"retrieved_at":today.isoformat().replace("+00:00","Z")}
-            if rev:
-                current=rev[0];f["annual_revenue_usd"]=current["val"];f["fiscal_year_end"]=current["end"];f["filed"]=current["filed"]
-                if len(rev)>1 and rev[1]["val"]>0:
-                    f["annual_revenue_growth_pct"]=round((rev[0]["val"]/rev[1]["val"]-1)*100,2)
-            if cash:f["operating_cashflow_usd"]=cash[0]["val"]
-            if net:f["net_income_usd"]=net[0]["val"]
-            row["fundamentals"]=f;successful+=1
+            filing=json.loads(read_url(url,timeout=17,max_bytes=18_000_000))
+            facts=sec_fundamentals(filing)
+            if facts:
+                row["fundamentals"]=facts
+                successful+=1
         except Exception as e:
-            print("SEC facts unavailable",row["ticker"],str(e)[:100])
+            print("SEC facts unavailable",row["ticker"],type(e).__name__,str(e)[:100],flush=True)
         time.sleep(SECS_PER_FETCH)
     return successful
 
@@ -222,6 +200,9 @@ def main():
     # Fundamentals collected for a rotating *subset* with proper filing dates.
     sec_count=financial_sec_lookup(rows,previous)
     stocks=sorted(rows.values(),key=lambda r:(not r.get("eligible_for_ranking",False),-r["score"],r["ticker"]))
+    # Research preview only; keeps original proven-to-run price-only top-10 unchanged.
+    multi_status=assign_multifactor(stocks,min_eligible=8)
+    print("QVM pilot coverage:",multi_status["coverage"],"ranked:",multi_status["ranking_count"],flush=True)
     bench,bench_error=quote("SPY","Benchmark")
     if bench_error:errors.append("SPY "+bench_error)
     # FX is a dated reference rate, not the EUR quote obtainable at Trade Republic.
@@ -238,7 +219,9 @@ def main():
     now=datetime.now(timezone.utc)
     newly_discovered=sum(1 for x in stocks if x["ticker"] not in CURATED)
     out={
-        "version":4,
+        "version":5,
+        "multifactor_model":multi_status,
+        "multifactor_preview_only":True,
         "display_currency":"EUR",
         "eur_display_method":"Dated Frankfurter reference exchange rates, not executable Trade Republic bid/ask",
         "tr_at_verification":tr_status,
@@ -256,9 +239,10 @@ def main():
         "success_this_run":done,
         "new_discovery_count":newly_discovered,
         "fundamental_coverage":sum(1 for x in stocks if x.get("fundamentals")),
+        "momentum_12_2_coverage":sum(1 for x in stocks if x.get("momentum_12_2") is not None),
         "ranking_eligible_count":sum(1 for x in stocks if x.get("eligible_for_ranking")),
         "ranking_liquidity_screen":"USD shares: price >= $5 and ADV20 >= $5m; curated non-USD: price >= 5 local units, liquidity not USD-verified",
-        "model":"Unvalidated 60-day momentum/ATR heuristic; SEC annual fundamental facts are shown separately and NOT used to rank stocks",
+        "model":"Baseline Top 10 = unvalidated legacy 60-day momentum/ATR; separate experimental Q/V/M preview, no independent Q/V/M outcome backtest",
         "stocks":stocks,"benchmark":bench,"news":fetch_news(),"errors":errors[:120],
         "sources":["Nasdaq Trader exchange symbol directories","Yahoo Finance unofficial daily chart","Stooq unofficial fallback","SEC EDGAR where available","Google News RSS","Frankfurter reference FX: official providers"]
     }
