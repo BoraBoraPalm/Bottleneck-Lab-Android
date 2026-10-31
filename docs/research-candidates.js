@@ -13,6 +13,7 @@
   const choices = {
     quality_momentum:'Quality + Momentum',
     quality_value_momentum:'Quality + Value + Momentum',
+    global_momentum:'Weltweites 12–2-Monats-Momentum',
     bottleneck_hypotheses:'Engpass-Exposition (Hypothesen)',
     overlap:'Überschneidungen'
   };
@@ -53,9 +54,11 @@
     const heading=add(out,'div',null,'research-stock-title');
     const info=add(heading,'div');
     add(info,'strong',(i+1)+'. '+r.ticker+' · '+r.name);
-    add(info,'div',r.theme,'muted research-small');
+    add(info,'div',(r.region?r.region+' · ':'')+(r.country?r.country+' · ':'')+r.theme,'muted research-small');
     if(kind==='bottleneck_hypotheses'){
       add(heading,'span','Branchenhypothese','research-tag research-caution');
+    }else if(kind==='global_momentum'){
+      add(heading,'span',num(r.momentum_12_2_pct,1)+' %','research-tag');
     }else if(kind==='overlap'){
       add(heading,'span',Object.keys(r.appears_in||{}).length+' Strategien','research-tag');
     }else{
@@ -65,7 +68,10 @@
     add(flags,'span',r.tr_at_listed?'TR-AT-ISIN bestätigt':'TR-AT nicht bestätigt',
       r.tr_at_listed?'research-tag':'research-tag research-caution');
     if(r.tr_at_listed&&r.tr_isin)add(flags,'span','ISIN: '+r.tr_isin,'muted research-small');
-    const prices=add(out,'div',null,'research-metrics');
+    if(kind==='global_momentum'&&Number.isFinite(r.avg_turnover_20d_eur)){
+      add(out,'div','20-Tage-Umsatz (EUR/Tag): '+eur(r.avg_turnover_20d_eur),'muted research-small');
+    }
+  const prices=add(out,'div',null,'research-metrics');
     add(prices,'div',null,'research-metric').append(
       add(document.createDocumentFragment(),'small','EUR-Referenzkurs'),
       add(document.createDocumentFragment(),'strong',eur(r.close_eur)));
@@ -123,6 +129,7 @@
     const available=kind==='quality_momentum'?panel.quality_momentum_coverage:
       kind==='quality_value_momentum'?panel.qvm_coverage:
       kind==='bottleneck_hypotheses'?panel.thematic_hypothesis_coverage:
+      kind==='global_momentum'?panel.global_momentum_coverage:
       panel.lists.overlap.length;
     const broker=$('candidateTrOnly').checked?' · nur bestätigte TR-AT-ISIN':' · alle Kandidaten';
     $('candidateSummary').textContent=
@@ -132,6 +139,10 @@
       $('candidateEvidence').className='warn';
       $('candidateEvidence').textContent=
         'Engpass-Exposition ist eine ausdrücklich unbestätigte Branchenhypothese. Sortierung nur nach 12–2-Monats-Kursmomentum, nicht nach einer gemessenen Angebotsknappheit. Sektor-News belegen keinen firmenspezifischen Renditevorteil. Keine validierte Engpass-Rangliste.';
+    }else if(kind==='global_momentum'){
+      $('candidateEvidence').className='warn';
+      $('candidateEvidence').textContent=
+        'Weltweites 12–2-Monats-Kursmomentum, pro Emittentenregion maximal vier Titel. Preis und lokaler Handelsumsatz in EUR umgerechnet. Keine US-SEC-Bilanzvoraussetzung – aber auch kein international validierter Quality-/Value-Score und keine Garantie auf eine Überrendite.';
     }else if(kind==='overlap'){
       $('candidateEvidence').className='info';
       $('candidateEvidence').textContent=
