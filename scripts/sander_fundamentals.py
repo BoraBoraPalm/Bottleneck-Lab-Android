@@ -133,6 +133,72 @@ def download_fundamental(cik):
     if int(raw.get("cik",-1))!=cik:raise ValueError("SEC CIK mismatch")
     return fundamental_quality(raw)
 
+
+TGM_ROOT="https://tgmcharts.com/api/v1/statements/"
+
+def tgm_annual_quality(ticker):
+    """Alternative SEC-derived public 10-K filing statements, attributed.
+
+    No third-party estimates or inferred missing rows. When provider says
+    preparing/unavailable, we return no quality rating.
+    """
+    if not TICKER_RE.fullmatch(ticker):return None
+    def fetch(statement):
+        obj=get_json(TGM_ROOT+ticker+"/"+statement+"?period=annual&years=4",
+                     timeout=14,max_bytes=1800000)
+        if obj.get("symbol","").upper()!=ticker or obj.get("period")!="annual" or obj.get("status"):
+            return []
+        return obj.get("rows") if isinstance(obj.get("rows"),list) else []
+    income=fetch("income-statement")
+    cashflow=fetch("cash-flow")
+    if not income or not cashflow:return None
+    today=datetime.now(timezone.utc).date()
+    def verified_rows(rows):
+        out={}
+        for row in rows:
+            if not isinstance(row,dict) or row.get("form") not in CANONICAL_FORMS:
+                continue
+            if row.get("fiscalPeriod")!="FY":continue
+            try:
+                end=date.fromisoformat(row["periodEnd"])
+                filing=date.fromisoformat(row["filed"])
+                if filing>today or end>today or (today-filing).days>MAX_FILING_AGE_DAYS:
+                    continue
+            except (KeyError,TypeError,ValueError):continue
+            out[end.isoformat()]=row
+        return out
+    incomerows=verified_rows(income)
+    cashrows=verified_rows(cashflow)
+    for end in sorted(set(incomerows)&set(cashrows),reverse=True):
+        a=incomerows[end]
+        b=cashrows[end]
+        metrics=a.get("metrics") or {}
+        cm=b.get("metrics") or {}
+        rev=metrics.get("revenue")
+        net=metrics.get("netIncome")
+        cfo=cm.get("operatingCashFlow")
+        if not all(isinstance(v,(int,float)) and not isinstance(v,bool)
+                   and math.isfinite(v) for v in (rev,net,cfo)) or rev<=0:
+            continue
+        older=sorted((k for k in incomerows
+           if 300<=(date.fromisoformat(end)-date.fromisoformat(k)).days<=430
+           and isinstance((incomerows[k].get("metrics") or {}).get("revenue"),(int,float))
+           and (incomerows[k].get("metrics") or {}).get("revenue")>0),reverse=True)
+        if not older:continue
+        prior=incomerows[older[0]]["metrics"]["revenue"]
+        growth=rev/prior-1
+        margin=net/rev
+        if not (math.isfinite(growth) and math.isfinite(margin)):continue
+        return {"revenue":rev,"net_income":net,"operating_cashflow":cfo,
+            "revenue_growth_yoy":round(growth,6),"profit_margin":round(margin,6),
+            "fy_end":end,"base_year_end":older[0],
+            "filed":max(a["filed"],b["filed"]),
+            "quality_ok":net>0 and cfo>0 and margin>=MIN_PROFIT_MARGIN
+                       and growth>=MIN_GROWTH,
+            "source":"TGMCharts (SEC EDGAR 10-K XBRL)",
+            "cik":None}
+    return None
+
 def sander_screen(stock,fund):
     """Independent price dip + filed fundamentals; ZERO if no valid fundamentals."""
     if not isinstance(fund,dict) or fund.get("quality_ok") is not True:return None
@@ -191,17 +257,20 @@ def enrich_stocks(stocks,prior,maximum=DEFAULT_MAX):
         ticker=s["ticker"]
         if s.get("fundamentals") is not None:continue
         cik=lookup.get(ticker)
-        if cik is None:continue
         updated+=1
+        fund=None
         try:
-            fund=download_fundamental(cik)
-            if fund is not None:
-                fund["checked_at"]=today.isoformat()
-                s["fundamentals"]=fund
-                succeeded+=1
-            else:failed+=1
+            if cik is not None:fund=download_fundamental(cik)
         except Exception:
-            failed+=1
+            fund=None
+        if fund is None:
+            try:fund=tgm_annual_quality(ticker)
+            except Exception:fund=None
+        if fund is not None:
+            fund["checked_at"]=today.isoformat()
+            s["fundamentals"]=fund
+            succeeded+=1
+        else:failed+=1
     qualified=0
     with_fund=0
     for s in stocks:
@@ -221,10 +290,10 @@ def enrich_stocks(stocks,prior,maximum=DEFAULT_MAX):
             s["sander_score"]=sander_screen(s,fund)
             if s["sander_score"] is not None:qualified+=1
     return {"name":"Beate Sander-inspirierte Kursrückgang-/Qualitätsauswahl",
-        "source":"SEC EDGAR XBRL US-GAAP (10-K); US-listed SEC filers only",
+        "source":"SEC EDGAR XBRL US-GAAP, direct API or TGMCharts filing statement relay (10-K)",
         "method":"15–55% under 252-day high; positive net income and operating cash flow, >=3% net margin, >=-10% revenue YoY; 50% drawdown, 25% margin, 25% growth score",
         "checked_this_run":updated,"facts_downloaded":succeeded,"no_usable_facts":failed,
         "with_verified_fundamentals":with_fund,"qualified_candidates":qualified,
-        "status":"partial" if error else "ok",
+        "status":"partial" if error and qualified==0 else "ok",
         "warning":error,
-        "limitations":"Experimental approximation; SEC 10-K, often no non-US filings. No proven excess returns, valuation, dividends, sector coverage or point-in-time backtest."}
+        "limitations":"Experimental approximation; SEC 10-K, often no non-US filings. Third-party relay credited to TGMCharts. No proven excess returns, valuation, dividends, sector coverage or point-in-time backtest."}
