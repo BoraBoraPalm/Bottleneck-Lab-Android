@@ -1,12 +1,12 @@
 {
   "name": "Bottleneck Lab",
   "short_name": "Bottleneck",
-  "description": "Research-Dashboard für Aktien und wirtschaftliche Engpässe",
+  "description": "Weltweite Aktien-Beobachtungsliste mit EUR-Referenzkursen und regionalen Filtern",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#0b1320",
-  "theme_color": "#0c1622",
+  "background_color": "#0b1420",
+  "theme_color": "#0a1420",
   "icons": [
     {
       "src": "icon.svg",

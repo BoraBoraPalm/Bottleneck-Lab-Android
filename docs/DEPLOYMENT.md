@@ -1,16 +1,10 @@
-# Bottleneck Lab – Hosting
+# Veröffentlichung
 
-Die Website wird aus `docs/index.html` via GitHub Pages veröffentlicht. Der Datenabruf läuft in GitHub Actions und veröffentlicht die tatsächlichen letzten Tageskurse als `docs/snapshot.json` im Website-Artefakt.
+Die aktuelle App ist eine statische GitHub-Pages-Website mit einer einzigen Hauptansicht.
 
-## Einmalig aktivieren
-GitHub Repository → **Settings → Pages → Build and deployment → Source: GitHub Actions**.
-
-## Danach
-Github → Actions → **Refresh data and publish Bottleneck Lab** → **Run workflow**.
-
-Nach erfolgreichem Deployment:
-https://boraborapalm.github.io/Bottleneck-Lab-Android/
-
-Der Button **Snapshot laden** in der Website lädt lediglich den letzten veröffentlichten Datensatz; er startet keinen neuen GitHub-Workflow. Der Workflow ist zusätzlich viermal täglich terminiert. Dies ist kein echter Realtime-Feed.
-
-Ohne erfolgreiche Pages-Veröffentlichung existiert keine live erreichbare Website.
+- Startseite: https://boraborapalm.github.io/Bottleneck-Lab-Android/
+- Quelle: `docs/index.html`
+- Daten: `docs/snapshot.json` (wird in GitHub Actions erzeugt, nicht manuell eingecheckt)
+- Ablauf: **GitHub → Actions → Bottleneck Lab · Simplified Global Snapshot → Run workflow**
+- Automatisch alle sechs Stunden; die Schaltfläche „Aktualisieren“ lädt nur den zuletzt veröffentlichten Datenstand.
+- Kein Echtzeitfeed, keine Handelsorders. Historische Versionen sind über Git-History abrufbar.
