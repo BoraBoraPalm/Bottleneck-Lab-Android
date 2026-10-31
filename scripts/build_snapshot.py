@@ -11,6 +11,7 @@ import urllib.request
 
 
 from datetime import datetime, timedelta, timezone
+from trade_guidance import price_context
 
 CURATED_THEMES = {
     "Stromnetze": "NEX.PA GEV HUBB ETN NVT ABBN.SW PWR EMR PH WCC POWL GNRC ROK PRY.MI",
@@ -118,12 +119,14 @@ def quote(symbol,theme):
             turnovers=[b[3]*b[4] for b in bars[-20:] if len(b)>4 and b[4]>0 and math.isfinite(b[4])]
             avg_local_turnover=round(sum(turnovers)/len(turnovers),0) if len(turnovers)>=12 else None
             avg_turnover=avg_local_turnover if currency=="USD" else None
+            context=price_context(bars) if source=="Yahoo Finance" else {}
             return {"ticker":symbol,"theme":theme,"close":round(price,6),"price_date":dates[-1],
                     "currency":currency,"source":source,"bars_count":len(bars),
                     "avg_dollar_turnover_20d":avg_turnover,
                     "avg_local_turnover_20d":avg_local_turnover,
                     "momentum_12_2":momentum_12_2(adjusted),
-                    "momentum_basis":"Yahoo adjusted daily closes" if source=="Yahoo Finance" else "not verified"},None
+                    "momentum_basis":"Yahoo adjusted daily closes" if source=="Yahoo Finance" else "not verified",
+                    **context},None
         except Exception as e:
             errors.append(load.__name__+": "+str(e)[:140])
     return None,symbol+": "+"; ".join(errors)
