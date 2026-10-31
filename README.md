@@ -14,7 +14,9 @@ eine Liste, eine Suche, ein Regionsfilter und ein optionaler Trade-Republic-AT-F
 - „Auswahl“: bis zu 20 Momentum-Kandidaten mit höchstens vier je Region; „Alle geprüften“: bis zu 75 Treffer der Filter
 - Trade Republic Österreich: nur eindeutige ISIN-Treffer in der offiziellen Instrumentenliste (keine Echtzeit-Handelsfreigabe)
 
-Es werden **keine konkreten Käufe, Stop-Loss-Orders oder künftige Renditen** vorhergesagt. Die alte 60-Tage-Score- und ATR-Handelslogik ist entfernt, weil sie in den bisherigen Tests keinen belastbaren Vorteil gezeigt hat. Auch das neue Momentum-Screening ist **nicht als profitabel validiert**. Die akademischen Faktoruntersuchungen betrafen hauptsächlich US-Daten und sind kein Beweis für diese weltweite konkrete Aktienliste.
+Die App zeigt zusätzlich **Einstieg/Ausstieg prüfen** sowie **Kurssturz-Warnungen**: Ein möglicher Neueinstieg wird nur nach Tagesschluss bei positivem 12–2-Monats-Momentum, Kurs über dem 200-Tage-Durchschnitt und ohne deutliche Korrektur angezeigt; als Gesamtmarkt-Filter dient der US-notierte ACWI-ETF. Für bestehende Positionen empfiehlt die Anzeige eine **Prüfung** bei Kurs unter 200-Tage-Durchschnitt oder starken Rückgängen (mindestens 15 % in 21 Handelstagen oder 25 % unter dem 252-Tage-Hoch). Die Parameter sind vorab festgelegte Risiko-Heuristiken, **nicht** durch diesen konkreten Backtest nachgewiesen profitabel. Einstieg frühestens am folgenden Handelstag nach Prüfung echter Brokerkurse. EUR-Referenzkurs, 200-Tage-Trendgrenze, Crash-Schwellen und eine rein hypothetische 2,5-ATR-Risikoschwelle für *neue* Käufe erscheinen je Aktie. Keine automatisierte Überwachung oder Stop-Orders. Ein Stop schützt nicht zuverlässig vor Kurslücken.
+
+Es werden **keine tatsächlichen Käufe, Stop-Loss-Orders oder künftige Renditen** prognostiziert. Die alte 60-Tage-Score- und ATR-Handelslogik ist entfernt, weil sie in den bisherigen Tests keinen belastbaren Vorteil gezeigt hat. Auch das neue Momentum-Screening ist **nicht als profitabel validiert**. Die akademischen Faktoruntersuchungen betrafen hauptsächlich US-Daten und sind kein Beweis für diese weltweite konkrete Aktienliste.
 
 ## Stand der Daten und Grenzen
 
@@ -30,4 +32,4 @@ Die Offline-Tests prüfen geografische Symbolübersetzung, EUR-Konvertierung, di
 
 ## Alte Versionen
 
-Frühere Reiter, hypothetische ATR-Orders, Forschungs-Backtests, die frühere Android-APK und deren Quellcode bleiben durch die Git-Commit-Historie rekonstruierbar. Diese historischen, nicht ausreichend validierten Ansätze gehören bewusst **nicht** mehr zum aktuellen App-Build.
+Frühere Reiter, deren alte **nicht validierte** Kauf-/Stop-Signalmodelle, Forschungs-Backtests, die frühere Android-APK und deren Quellcode bleiben durch die Git-Commit-Historie rekonstruierbar. Diese historischen, nicht ausreichend validierten Ansätze gehören bewusst **nicht** mehr zum aktuellen App-Build.
