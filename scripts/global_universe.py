@@ -84,6 +84,7 @@ def ingest_global_csv(blob,minimum=2000):
         raise ValueError("Unexpected global reference schema: "+str(sorted(headers)))
     listed=Counter();unsupported=Counter();found={}
     collisions=0
+    ambiguous_symbols=set()
     known_keys=set()
     for row in records:
         if row.get("asset_type")!="Stock":continue
@@ -112,11 +113,13 @@ def ingest_global_csv(blob,minimum=2000):
            "reference_source":"Adanos primary listing dataset",
            "reference_url":SOURCE
         }
+        if converted in ambiguous_symbols:continue
         if converted in found:
             # Multiple venue keys mapping to one Yahoo symbol means that the
             # instrument identity is ambiguous. Never silently overwrite it.
             if found[converted].get("listing_key")!=identity:
                 collisions+=1
+                ambiguous_symbols.add(converted)
                 found.pop(converted,None)
             continue
         found[converted]=info
