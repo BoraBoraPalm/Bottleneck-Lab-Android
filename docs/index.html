@@ -30,6 +30,19 @@ a{color:#8bdecf;text-decoration-thickness:1px;text-underline-offset:3px}
 .stat span{font-size:11px;color:var(--muted);display:block;line-height:1.35}
 .controls{display:grid;grid-template-columns:1fr 1fr;gap:9px}
 .controls .full{grid-column:1/-1}
+.strategy-panel{margin-top:13px;padding:12px;border-radius:11px;background:#112838;border:1px solid #33596a}
+.strategy-panel h3{font-size:14px;margin:0 0 7px}
+.strategy-grid{display:grid;grid-template-columns:1fr;gap:6px}
+.strategy-choice{display:flex;gap:9px;align-items:flex-start;padding:10px;background:#193448;border:1px solid #3c5766;border-radius:9px;cursor:pointer;min-width:0}
+.strategy-choice input{width:20px;height:20px;min-width:20px;margin:2px 0 0;accent-color:var(--accent)}
+.strategy-choice strong{font-size:13px;display:block}
+.strategy-choice span{display:block;font-size:11px;color:var(--muted);line-height:1.45}
+.strategy-choice:has(input:checked){border-color:#63bcb0;background:#1c4147}
+.strategy-summary{font-size:12px;color:#c7e4e0;margin-top:9px;line-height:1.5}
+.strategy-score{font-size:12px;font-weight:700;color:#9ce8dd}
+.factor-detail{font-size:11px;color:var(--muted)}
+@media(min-width:650px){.strategy-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
 label.field{display:block;font-size:11px;color:var(--muted);margin-bottom:5px;font-weight:650}
 input[type="search"],select{width:100%;height:46px;min-width:0;background:#0e1e2d;border:1px solid #4c6578;border-radius:9px;color:var(--text);padding:0 11px;font:inherit}
 input[type="search"]::placeholder{color:#a4b5c0}
@@ -126,6 +139,25 @@ h1{font-size:27px}
       <select id="scope"><option value="selection">Auswahl</option><option value="entry">Einstieg prüfen</option><option value="exit">Ausstieg prüfen</option><option value="crash">Kurssturz</option><option value="all">Alle geprüften</option></select>
     </div>
   </div>
+  <div class="strategy-panel" aria-label="Faktoren kombinieren">
+    <h3>Strategien auswählen</h3>
+    <div class="strategy-grid" id="strategyChoices">
+      <label class="strategy-choice" for="factorMomentum">
+        <input type="checkbox" id="factorMomentum" data-factor="momentum" checked>
+        <span><strong>12–2-Monats-Momentum</strong><span>Wissenschaftlich untersuchter Faktor · Standard</span></span>
+      </label>
+      <label class="strategy-choice" for="factorLowRisk">
+        <input type="checkbox" id="factorLowRisk" data-factor="lowRisk">
+        <span><strong>Geringe Kursschwankung</strong><span>ATR(14) relativ zum Kurs · experimentell</span></span>
+      </label>
+      <label class="strategy-choice" for="factorTrend">
+        <input type="checkbox" id="factorTrend" data-factor="trend">
+        <span><strong>200-Tage-Trend</strong><span>Abstand zur Trendlinie · kein nachgewiesener Zusatzgewinn</span></span>
+      </label>
+    </div>
+    <div id="strategySummary" class="strategy-summary" role="status">12–2-Monats-Momentum aktiv. Jede zusätzliche Auswahl wird gleichgewichtet kombiniert.</div>
+    <div class="small muted">Quality und Value sind noch nicht weltweit zuverlässig verfügbar. Deshalb werden dafür keine künstlichen Scores erzeugt. Die Strategiekombination ändert nur die Rangfolge; Kauf-/Verkaufswarnungen bleiben eigene Regeln.</div>
+  </div>
   <label class="switch" for="trOnly">
     <input id="trOnly" type="checkbox">
     Nur Trade Republic Österreich (ISIN-Treffer)
@@ -133,13 +165,13 @@ h1{font-size:27px}
   <div id="count" class="small muted" aria-live="polite"></div>
   <div id="results" aria-label="Aktienkandidaten"></div>
   <div id="empty" class="notice" hidden>Für diese Filter sind derzeit keine ausreichend geprüften Aktien vorhanden. Probiere eine andere Region, die Ansicht „Alle geprüften“ oder deaktiviere den Trade-Republic-Filter.</div>
-  <div class="explain"><strong>Hinweis:</strong> Einstiegs- und Ausstiegsprüfungen sind feste, transparente Kursregeln – keine statistisch bestätigten Kauf-/Verkaufsempfehlungen. Die Auswahl sortiert nach historischer Kursstärke von Monat 12 bis Monat 2 und begrenzt die Zahl je Region. Das ist eine Forschungsheuristik, keine nachgewiesene Renditeprognose. Die Kurse sind EUR-Referenzwerte, keine ausführbaren Trade-Republic-Angebote.</div>
+  <div class="explain"><strong>Hinweis:</strong> Bei mehreren aktivierten Faktoren werden gleichgewichtete Rangprozente (0–100) zu einem gemeinsamen Score kombiniert. Fehlen notwendige Daten, wird die Aktie aus diesem Ranking ausgeschlossen – nicht künstlich aufgefüllt. Standardmäßig bleibt ausschließlich das 12–2-Monats-Momentum aktiv; die historische Mehr-Rendite einer Kombination ist nicht belegt. Kauf-/Ausstiegswarnungen sind separate, nicht validierte Kursregeln. EUR-Kurse sind keine ausführbaren Trade-Republic-Angebote.</div>
 </section>
 
 <details class="disclosure">
   <summary>Wie wird ausgewählt? Was ist belegt?</summary>
   <div class="disclosure-body">
-    <p><strong>Einheitliche Regel:</strong> Kursentwicklung von ungefähr 12 bis 2 Monaten vor dem Stichtag. Die jüngsten rund 42 Handelstage bleiben unberücksichtigt. Ein Titel erscheint nur mit aktuellem Kurs, EUR-Referenzwechselkurs und durchschnittlich mindestens 2 Mio. € täglichem Börsenumsatz über 20 Handelstage (und Kurs mindestens 2 €).</p>
+    <p><strong>Faktoren kombiniert:</strong> Kursentwicklung von ungefähr 12 bis 2 Monaten vor dem Stichtag (Momentum), 200-Tage-Durchschnittsabstand (Trend) und umgekehrte relative ATR(14)-Schwankung (ruhigere Kurse). Jeder ausgewählte Faktor wird in eine Rangzahl von 0 bis 100 umgerechnet und dann gleichgewichtet gemittelt. Bei nur einer Auswahl entscheidet ausschließlich dieser Faktor. Dies ist eine transparente Heuristik, <strong>kein backgetestetes Mehrfaktormodell</strong>. Unsere frühere Trend-/ATR-Kombination zeigte keinen verlässlich höheren Gewinn.</p><p><strong>Handelbarkeit:</strong> Ein Titel erscheint nur mit aktuellem Kurs, EUR-Referenzwechselkurs und durchschnittlich mindestens 2 Mio. € täglichem Börsenumsatz über 20 Handelstage (Kurs mindestens 2 €). Auch bei anderen Faktorwahlen benötigt der derzeitige Datensatz vollständige Momentumhistorie.</p>
     <p><strong>Wann Einstieg prüfen?</strong> Nur bei positivem 12–2-Monats-Momentum, Kurs oberhalb des 200-Tage-Durchschnitts, ohne größere laufende Korrektur und nur bei nicht negativem globalen Marktfilter (ACWI). Signale gelten erst nach dem letzten Tagesschluss; eine mögliche Limitorder kann frühestens am nächsten Handelstag zu einem tatsächlich verfügbaren Brokerkurs geprüft werden.</p>
 <p><strong>Wann Ausstieg prüfen?</strong> Für eine bereits gehaltene Position bei Schlusskurs unter dem 200-Tage-Durchschnitt oder bei starkem Kursrückgang. „Kurssturz“ bedeutet ein Rückgang von mindestens 15 % über 21 Handelstage oder von mindestens 25 % gegenüber dem Hoch der letzten 252 Handelstage; frühere Warnung schon bei 8 %/15 %. Keine Ausführung oder Überwachung durch die App.</p>
 <p><strong>Kauf-Limit und Stop-Loss:</strong> Direkt auf jeder Aktienkarte stehen zwei konkrete EUR-Modellwerte wie früher: <strong>Kauf-Limit = letzter Schlusskurs − 1 × ATR(14)</strong> und <strong>initialer Stop-Loss = dieses Kauf-Limit − 2,5 × ATR(14)</strong>. Das ist nur eine unverbindliche Beispielrechnung für einen möglichen <em>Neueinstieg</em>, nicht der Stop einer bestehenden Position und kein nachweislich optimales Limit. Bei Trendbruch, Kurssturz oder fehlendem Gesamtmarktsignal besteht weiterhin kein Einstiegssignal. Vor der Order Ausführungskurs und Ordertyp im Broker prüfen; Kurslücken können einen Stop erheblich unterschreiten.</p>
@@ -167,15 +199,60 @@ function isEligible(x){
     && Number.isFinite(x.avg_turnover_20d_eur);
 }
 function regionOf(x){return x.region||"Unbekannt"}
+
+// STRATEGY_MIX_START: stateless ranking functions; tested independently.
+const FACTORS={
+  momentum:{label:"Momentum 12–2",value:s=>s.momentum_12_2},
+  lowRisk:{label:"Geringe Schwankung",value:s=>
+    Number.isFinite(s.atr14_native)&&Number.isFinite(s.close)&&s.close>0
+    &&s.atr14_native>0?-s.atr14_native/s.close:null},
+  trend:{label:"Trend 200T",value:s=>s.sma200_ratio}
+};
+function percentileRanks(rows,extract){
+  // Tied observations receive their average rank. Higher is always better.
+  const known=rows.map((s,i)=>({i,v:extract(s)}))
+    .filter(x=>typeof x.v==="number"&&Number.isFinite(x.v));
+  known.sort((a,b)=>a.v-b.v||a.i-b.i);
+  const values=new Map();
+  let i=0;
+  while(i<known.length){
+    let j=i+1;
+    while(j<known.length&&known[j].v===known[i].v)j++;
+    const score=known.length===1?50:100*((i+j-1)/2)/(known.length-1);
+    for(let k=i;k<j;k++)values.set(known[k].i,score);
+    i=j;
+  }
+  return values;
+}
+function mixedRanks(rows,chosen){
+  if(!Array.isArray(chosen)||!chosen.length||
+      chosen.some(key=>!Object.prototype.hasOwnProperty.call(FACTORS,key)))return new Map();
+  const byFactor=chosen.map(key=>percentileRanks(rows,FACTORS[key].value));
+  const results=new Map();
+  rows.forEach((s,i)=>{
+    const parts=byFactor.map((map,k)=>({key:chosen[k],score:map.get(i)}));
+    if(parts.some(p=>p.score===undefined))return; // Never impute missing fundamentals.
+    results.set(s.ticker,{score:parts.reduce((sum,p)=>sum+p.score,0)/parts.length,parts});
+  });
+  return results;
+}
+// STRATEGY_MIX_END
+function activeFactors(){
+  return Array.from(document.querySelectorAll("#strategyChoices input[data-factor]:checked"),
+    x=>x.dataset.factor);
+}
+
 function dataRows(){
   const all=(snapshot?.stocks||[]).filter(isEligible);
+  const chosen=activeFactors();
+  const scores=mixedRanks(all,chosen);
   const needle=$("search").value.trim().toLocaleLowerCase("de-AT");
   const region=$("region").value;
   const trOnly=$("trOnly").checked;
-  let base=all.filter(x=>(region==="Alle"||regionOf(x)===region)
+  let base=all.filter(x=>scores.has(x.ticker)&&(region==="Alle"||regionOf(x)===region)
     &&(!trOnly||x.tr_at_listed===true)
     &&(!needle||(x.ticker+" "+(x.name||"")).toLocaleLowerCase("de-AT").includes(needle)));
-  base.sort((a,b)=>b.momentum_12_2-a.momentum_12_2||a.ticker.localeCompare(b.ticker));
+  base.sort((a,b)=>(scores.get(b.ticker).score-scores.get(a.ticker).score)||a.ticker.localeCompare(b.ticker));
   const view=$("scope").value;
   if(view==="entry")base=base.filter(x=>x.entry_review==="entry_review");
   if(view==="exit")base=base.filter(x=>(x.exit_review||"").startsWith("review_exit"));
@@ -189,11 +266,11 @@ function dataRows(){
       candidates.push(s);
       if(candidates.length>=20)break;
     }
-    return {shown:candidates,total:base.length,limit:true};
+    return {shown:candidates,total:base.length,limit:true,scores};
   }
-  return {shown:base.slice(0,75),total:base.length,limit:false};
+  return {shown:base.slice(0,75),total:base.length,limit:false,scores};
 }
-function makeCard(s){
+function makeCard(s,mix){
   const article=add(document.createDocumentFragment(),"details",null,"stock");
   const head=add(article,"summary");
   const top=add(head,"div",null,"stock-top");
@@ -204,7 +281,10 @@ function makeCard(s){
   add(left,"div",regionOf(s)+" · "+(s.country||s.country_code||s.exchange||"Börse unbekannt"),"stock-sub");
   add(top,"div",eur(s.reference_close_eur),"stock-price");
   const bottom=add(head,"div",null,"stock-bottom");
-  add(bottom,"span","12–2-Momentum: "+fmt(s.momentum_12_2*100,1)+" %","momentum");
+  add(bottom,"span","Kombinierter Rang: "+fmt(mix.score,1)+"/100","strategy-score");
+  add(head,"div","Faktoranteile: "+mix.parts.map(p=>FACTORS[p.key].label+
+    " "+fmt(p.score,0)+"/100").join(" · "),"factor-detail");
+  add(head,"div","12–2-Momentum: "+fmt(s.momentum_12_2*100,1)+" %","momentum");
   const flags=add(bottom,"span",null,"marks");
   add(flags,"span",s.tr_at_listed===true?"TR-AT ISIN ✓":"TR-AT offen",
       "chip "+(s.tr_at_listed===true?"ok":"unknown"));
@@ -269,11 +349,16 @@ function makeCard(s){
 }
 function render(){
   if(!snapshot)return;
-  const {shown,total,limit}=dataRows();
+  const {shown,total,limit,scores}=dataRows();
+  const active=activeFactors();
+  $("strategySummary").textContent=active.length===1
+     ? FACTORS[active[0]].label+" ausgewählt · Rangfolge nach einem Faktor."
+     : active.length+" Faktoren gleichgewichtet kombiniert: "+
+         active.map(key=>FACTORS[key].label).join(" + ")+". Nicht als Gesamtstrategie validiert.";
   $("count").textContent=fmt(total)+" passende Titel · "+
     fmt(shown.length)+" angezeigt"+(limit?" (max. 4 pro Region)":" (max. 75)");
   const el=$("results");el.replaceChildren();
-  for(const stock of shown)el.appendChild(makeCard(stock));
+  for(const stock of shown)el.appendChild(makeCard(stock,scores.get(stock.ticker)));
   $("empty").hidden=shown.length>0;
 }
 function updateRegions(d){
@@ -320,6 +405,12 @@ async function load(){
 }
 for(const id of ["region","scope","trOnly","search"]){
   $(id).addEventListener(id==="search"?"input":"change",render);
+}
+for(const input of document.querySelectorAll("#strategyChoices input[data-factor]")){
+  input.addEventListener("change",()=>{
+    if(activeFactors().length===0)input.checked=true; // at least one ranking factor
+    render();
+  });
 }
 $("reload").addEventListener("click",load);
 load();
