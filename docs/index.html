@@ -222,6 +222,9 @@ function makeCard(s){
   const items=[
     ["Kursdatum",s.price_date||"unbekannt"],
     ["Abstand zum 200-Tage-Trend",Number.isFinite(s.sma200_ratio)?fmt(s.sma200_ratio*100,1)+" %":"Daten fehlen"],
+    ["200-Tage-Trendgrenze (EUR)",eur(s.sma200_level_eur)],
+    ["Crash-Marke: 21-Tage-Verlust ≥15 %",eur(s.crash_21_level_eur)],
+    ["Crash-Marke: Rückgang vom Hoch ≥25 %",eur(s.crash_peak_level_eur)],
     ["Letzte 21 Handelstage",Number.isFinite(s.return_21d)?fmt(s.return_21d*100,1)+" %":"Daten fehlen"],
     ["Rückgang vom 252-Tage-Hoch",Number.isFinite(s.drawdown_252d)?fmt(s.drawdown_252d*100,1)+" %":"Daten fehlen"],
     ["EUR-Wechselkursdatum",s.fx_date||"unbekannt"],
@@ -241,7 +244,7 @@ function makeCard(s){
   }
   const explanation=add(detail,"div",null,"decision");
   add(explanation,"strong","Einstieg frühestens am nächsten Handelstag, wenn das Signal nach dem Tagesschluss noch gilt.");
-  add(explanation,"span","Vor einer Order tatsächlichen EUR-Brokerkurs prüfen. Die Risiko-Referenz ist nur für einen hypothetischen Neueinstieg am letzten Referenzkurs gedacht. Kein persönlicher Positions-Stop, keine Echtzeit-Überwachung oder automatische Verkaufsorder.");
+  add(explanation,"span","Ausstieg bei Bestand prüfen, wenn ein späterer Tagesschluss unter der aktuell berechneten 200-Tage-Trendgrenze liegt oder die Crash-Marken erreicht werden. Vor einer Order tatsächlichen EUR-Brokerkurs prüfen. Die 2,5-ATR-Risiko-Referenz ist nur für einen hypothetischen Neueinstieg gedacht. Kein persönlicher Positions-Stop, keine Echtzeit-Überwachung oder automatische Verkaufsorder.");
   return article;
 }
 function render(){
