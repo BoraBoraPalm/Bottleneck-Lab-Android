@@ -188,6 +188,7 @@ def precompute_signal_ranks(histories,calendar):
     for d in calendar:
         rows=[]
         for t,h in histories.items():
+            if t==BENCHMARK:continue
             x=signals_on(t,h["bars"],h["index"],d)
             if x:rows.append(x)
         rows.sort(key=lambda r:(-r[0],r[1]))
@@ -231,7 +232,7 @@ def trade(signal,signal_idx,days,h,fx,stake,slip=SLIP_RATE):
                 sell_eur=px*(1-slip)*fx(d)
                 proceeds=quantity*sell_eur-FEE_EUR_PER_SIDE
                 out={**fill,"ticker":ticker,"signal_date":days[signal_idx],
-                     "signal_score":score,"exit_date":d,"exit_reason":"stop",
+                     "signal_score":score,"exit_date":d,"exit_reason":("stop_gap" if d!=fill["buy_date"] and open_<stop else "stop"),
                      "stop_price_usd":stop,"limit_price_usd":limit,
                      "sell_eur":sell_eur,"sell_fee":FEE_EUR_PER_SIDE,
                      "proceeds":proceeds,"pnl_eur":proceeds-spent,
