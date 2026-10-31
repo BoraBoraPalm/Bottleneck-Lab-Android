@@ -22,6 +22,7 @@ from global_universe import discover_global, grouped_batch, SOURCE
 from tr_at_universe import apply_tr_filter
 from trade_guidance import assign_decision,market_risk_from_quote
 from chart_history import chart_is_current,write_chart,chart_count
+from sander_fundamentals import enrich_stocks as update_sander_fundamentals
 
 PAGES="https://boraborapalm.github.io/Bottleneck-Lab-Android/snapshot.json"
 NASDAQ="https://www.nasdaqtrader.com/dynamic/SymDir/nasdaqlisted.txt"
@@ -230,6 +231,7 @@ def main():
         s["eligible_global_ranking"]=bool(valid_fx and recent and eur>=2
             and s["avg_turnover_20d_eur"]>=2000000
             and isinstance(momentum,(int,float)) and math.isfinite(momentum))
+    sander_status=update_sander_fundamentals(stocks,old)
     for stock in stocks:
         assign_decision(stock,market_context)
         stock["chart_available"]=chart_is_current(stock["ticker"],stock.get("price_date"))
@@ -239,7 +241,8 @@ def main():
     have=Counter(s.get("region") or "Unbekannt" for s in stocks)
     eligible=Counter(s.get("region") or "Unbekannt" for s in stocks if s["eligible_global_ranking"])
     output={
-        "version":8,
+        "version":9,
+        "sander_research_status":sander_status,
         "chart_data_info":{"on_demand":True,"files":chart_count(),"written_this_run":charts_written,
                            "default_period":"3M","max_history":"up to 10y",
                            "reference_currency":"original listing currency"},
@@ -266,7 +269,8 @@ def main():
         "stocks":stocks,
         "errors":errors[:25],
         "sources":[SOURCE,NASDAQ,OTHER,"Yahoo Finance daily charts","Stooq US daily CSV",
-                   "Frankfurter reference FX","Trade Republic AT official instrument list"]
+                   "Frankfurter reference FX","SEC EDGAR 10-K XBRL annual fundamentals",
+                   "Trade Republic AT official instrument list"]
     }
     os.makedirs("docs",exist_ok=True)
     with open("docs/snapshot.json","w",encoding="utf-8") as f:
@@ -274,7 +278,8 @@ def main():
     print("WORLD_READY="+json.dumps({
         "known":len(known),"quotes":len(stocks),"eligible":output["eligible_count"],
         "highlights":len(output["highlights"]),"regions_quoted":dict(have),
-        "TR_verified":tr["verified"],"chart_files":chart_count(),
+        "TR_verified":tr["verified"],"sander_candidates":sander_status["qualified_candidates"],
+        "sander_fundamentals":sander_status["with_verified_fundamentals"],"chart_files":chart_count(),
         "charts_updated":charts_written,"errors":len(errors),
         "duration_s":round(time.monotonic()-started,1)
     }),flush=True)
