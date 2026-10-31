@@ -12,6 +12,7 @@ strategy. Rules intentionally simple, fixed and public:
   the most recent 14 true ranges on corporate-action adjusted OHLC.
 """
 import math
+from datetime import date,datetime,timezone
 
 CRASH_21=-0.15
 CRASH_PEAK=-0.25
@@ -93,6 +94,13 @@ def assign_decision(stock,market_context=None):
     crash=stock.get("crash_warning") is True
     correction=stock.get("correction_warning") is True
     bearish=trend<0
+    # A last close more than four calendar days old is not a current actionable
+    # review. This tolerates a normal weekend, but fails closed on stale feeds.
+    try:
+        signal_date=date.fromisoformat(stock.get("price_date",""))
+        days_old=(datetime.now(timezone.utc).date()-signal_date).days
+    except (TypeError,ValueError):
+        days_old=999
     market_risk=(market_context or {}).get("risk")
     if crash:
         entry="avoid_crash"
@@ -115,6 +123,9 @@ def assign_decision(stock,market_context=None):
     else:
         entry="entry_review"
         exit_status="hold_review"
+    if days_old<0 or days_old>4:
+        entry="stale_quote"
+        exit_status="insufficient_data"
     stock["entry_review"]=entry
     stock["exit_review"]=exit_status
     stock["risk_reference_eur"]=round(ref*fx,4)
@@ -126,6 +137,14 @@ def market_risk_from_quote(market_quote):
     if not market_quote or not isinstance(market_quote,dict):
         return {"risk":None,"name":"ACWI ETF – global stock market proxy",
                 "description":"No reliable international market trend available"}
+    try:
+        market_date=date.fromisoformat(market_quote.get("price_date",""))
+        age=(datetime.now(timezone.utc).date()-market_date).days
+    except (TypeError,ValueError):
+        age=999
+    if age<0 or age>4:
+        return {"risk":None,"name":"ACWI ETF – global stock market proxy",
+                "description":"Market close older than four days; no fresh global risk signal"}
     crash=market_quote.get("crash_warning")
     trend=market_quote.get("sma200_ratio")
     if not isinstance(trend,(int,float)) or crash is None:
