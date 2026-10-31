@@ -6,8 +6,8 @@ function exactly(pattern,count,name){
 }
 exactly(/<html(?:\s[^>]*)?>/gi,1,"HTML opening");
 exactly(/<\/html>/gi,1,"HTML closing");
-exactly(/<script(?:\s[^>]*)?>/gi,2,"JS opening (widget and inline)");
-exactly(/<\/script>/gi,2,"JS closing (widget and inline)");
+exactly(/<script(?:\s[^>]*)?>/gi,3,"JS opening (two widgets and inline)");
+exactly(/<\/script>/gi,3,"JS closing (two widgets and inline)");
 if(!/<\/html>\s*$/i.test(html))throw new Error("Code leaked after </html>");
 const match=html.match(/<script>([\s\S]*?)<\/script>/i);
 if(!match)throw new Error("Missing inline script");
@@ -119,3 +119,44 @@ assert.equal(charts.modelLines({...fxStock,price_date:"2025-12-01"},raw,true).le
   "Never draw buy/stop lines on out-of-date unrelated chart");
 assert.throws(()=>charts.checkedData({...raw,points:pts.slice().reverse()},"TEST"));
 console.log("Lazy chart: 3M selection, 1M–MAX range, JPY/EUR guides, stale-date rejection tested.");
+
+// Exercise the exact financial classifications shipped to the browser.
+const financials=require("../docs/fundamentals-widget.js");
+const today="2026-10-31T12:00:00Z";
+const financialStock={ticker:"EXAMPLE",name:"Example Manufacturing",fundamentals:{
+  fy_end:"2025-12-31",filed:"2026-02-15",currency:"USD",source:"SEC EDGAR",
+  revenue:100,net_income:20,operating_cashflow:25,free_cashflow:15,
+  revenue_growth_yoy:.12,net_income_growth_yoy:.18,profit_margin:.20,
+  operating_cashflow_margin:.25,free_cashflow_margin:.15,
+  equity:50,equity_ratio:.50,current_ratio:2,liabilities_to_equity:1
+}};
+const financialMetrics=stock=>financials.metrics(stock,{today});
+const byKey=(stock,key)=>financialMetrics(stock).find(m=>m.key===key);
+assert.equal(financialMetrics(financialStock).length,8);
+assert.ok(financialMetrics(financialStock).every(m=>m.state==="green"));
+assert.ok(financialMetrics({ticker:"MISSING"}).every(m=>m.state==="unknown"));
+assert.ok(financialMetrics({fundamentals:{...financialStock.fundamentals,
+  fy_end:"2024-01-01"}}).every(m=>m.state==="unknown"),"Old statements cannot have green financial badges");
+assert.ok(financialMetrics({fundamentals:{...financialStock.fundamentals,
+  filed:"2027-01-01"}}).every(m=>m.state==="unknown"&&m.text==="–"),"Future filings must not leak into cards");
+const financialRule=financials.rules.find(r=>r.key==="revenue_growth_yoy");
+for(const [value,expected] of [[.10,"green"],[0,"yellow"],[-.10,"orange"],[-.10001,"red"],
+  [null,"unknown"],[undefined,"unknown"],[NaN,"unknown"],[false,"unknown"]]){
+  assert.equal(financials.rating(value,financialRule),expected,"Growth boundary or missing-value classification");
+}
+const debtRule=financials.rules.find(r=>r.key==="liabilities_to_equity");
+for(const [value,expected] of [[0,"green"],[1,"green"],[2,"yellow"],[4,"orange"],[4.1,"red"]])
+  assert.equal(financials.rating(value,debtRule),expected);
+const withFund=changes=>({...financialStock,fundamentals:{...financialStock.fundamentals,...changes}});
+assert.equal(byKey(withFund({net_income:-20,net_income_growth_yoy:1}),"net_income_growth_yoy").state,"red",
+  "A company still losing money must not get green earnings growth");
+assert.equal(byKey(withFund({net_income:20,net_income_growth_yoy:null,earnings_comparison:"turnaround"}),"net_income_growth_yoy").state,"yellow");
+assert.equal(byKey(withFund({equity:-10,liabilities_to_equity:null}),"liabilities_to_equity").state,"red");
+assert.equal(byKey(withFund({free_cashflow:null,free_cashflow_margin:null}),"free_cashflow_margin").state,"unknown");
+assert.ok(financialMetrics({...financialStock,stock_sector:"Financial Services"})
+  .filter(m=>m.sensitive).every(m=>m.state==="unknown"&&m.label==="Branchenspezifisch"));
+assert.ok(html.includes('StockFundamentals.preview(head,s)')&&html.includes('StockFundamentals.render(article,s)'),
+  "Fundamental metrics must be connected to every stock, independent of the Sander filter");
+for(const colour of ["green","yellow","orange","red","unknown"])
+  assert.ok(html.includes(".fund-"+colour+"{"),"Missing financial colour style: "+colour);
+console.log("Fundamentals: 8 metrics, 4 colour bands, missing/stale data, losses, turnarounds and sector exceptions verified.");

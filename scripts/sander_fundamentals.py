@@ -11,12 +11,15 @@ import json
 import math
 import re
 from datetime import date,datetime,timezone
+from concurrent.futures import ThreadPoolExecutor
+from itertools import zip_longest
 from urllib.request import Request,urlopen
 
 TICKERS_URL="https://www.sec.gov/files/company_tickers.json"
 FACTS_BASE="https://data.sec.gov/api/xbrl/companyfacts/CIK"
 USER_AGENT="Bottleneck Lab nonprofit academic research (contact: bottleneck-lab@github.com)"
-DEFAULT_MAX=35
+DEFAULT_MAX=60
+SCHEMA_VERSION=2
 # Research heuristics, NOT rules personally specified by Beate Sander.
 MIN_DISCOUNT=.15
 MAX_DISCOUNT=.55
@@ -29,6 +32,14 @@ BASE_FIELDS=("Revenues","RevenueFromContractWithCustomerExcludingAssessedTax",
              "SalesRevenueGoodsNet","SalesRevenueServicesNet")
 PROFIT_FIELDS=("NetIncomeLoss","ProfitLoss")
 OPERATING_CASH_FIELDS=("NetCashProvidedByUsedInOperatingActivities",)
+BALANCE_FIELDS={
+    "assets":("Assets",),
+    "equity":("StockholdersEquity",),
+    "liabilities":("Liabilities",),
+    "current_assets":("AssetsCurrent",),
+    "current_liabilities":("LiabilitiesCurrent",),
+}
+CAPEX_FIELDS=("PaymentsToAcquirePropertyPlantAndEquipment",)
 CANONICAL_FORMS=("10-K","10-K/A")
 TICKER_RE=re.compile(r"^[A-Z][A-Z0-9-]{0,9}$")
 
@@ -55,25 +66,33 @@ def ticker_map():
     if len(result)<100:raise RuntimeError("SEC ticker map incomplete")
     return result
 
-def _financial_tag_series(facts,tags):
-    """Annual as-filed 10-K nonzero USD, frame-duration, latest amendment wins.
+def _financial_tag_series(facts,tags,asof=None,instant=False):
+    """Finite USD facts; annual durations or exact balance dates, latest filing wins.
 
     Keep a common fiscal-year-end per metric, without mixing one quarterly
     or year-to-date observation with annual numbers.
     """
     gaap=facts.get("facts",{}).get("us-gaap",{})
+    today=asof or datetime.now(timezone.utc).date()
     for tag in tags:
         concept=gaap.get(tag,{})
         observations=concept.get("units",{}).get("USD",[])
         found={}
         for row in observations:
             try:
-                if row.get("form") not in CANONICAL_FORMS or row.get("fp")!="FY":continue
-                start=date.fromisoformat(row["start"])
+                allowed=CANONICAL_FORMS+("10-Q","10-Q/A") if instant else CANONICAL_FORMS
+                if row.get("form") not in allowed:continue
+                if not instant and row.get("fp")!="FY":continue
                 end=date.fromisoformat(row["end"])
                 filed=date.fromisoformat(row["filed"])
-                duration=(end-start).days
-                if duration<335 or duration>385:continue
+                if filed>today or end>today:continue
+                if instant:
+                    if row.get("start"):continue
+                else:
+                    start=date.fromisoformat(row["start"])
+                    duration=(end-start).days
+                    if duration<335 or duration>385:continue
+                if isinstance(row["val"],bool):continue
                 value=float(row["val"])
                 if not math.isfinite(value):continue
                 key=end.isoformat()
@@ -87,42 +106,85 @@ def _financial_tag_series(facts,tags):
 
 def _recent_frame(facts,asof=None):
     today=asof or datetime.now(timezone.utc).date()
-    rev=_financial_tag_series(facts,BASE_FIELDS)
-    income=_financial_tag_series(facts,PROFIT_FIELDS)
-    cash=_financial_tag_series(facts,OPERATING_CASH_FIELDS)
-    shared=sorted(set(rev)&set(income)&set(cash),reverse=True)
-    for end in shared:
+    rev=_financial_tag_series(facts,BASE_FIELDS,today)
+    income=_financial_tag_series(facts,PROFIT_FIELDS,today)
+    cash=_financial_tag_series(facts,OPERATING_CASH_FIELDS,today)
+    for end in sorted(rev,reverse=True):
         d=date.fromisoformat(end)
         if d>today or (today-d).days>MAX_FILING_AGE_DAYS:continue
         # No future filings. In fact, for the CURRENT screen they must
         # have been submitted by evaluation time.
-        filings=(rev[end][0],income[end][0],cash[end][0])
+        filings=[series[end][0] for series in (rev,income,cash) if end in series]
         filed=max(filings)
         if filed>today or (today-filed).days>MAX_FILING_AGE_DAYS:continue
         revenue=rev[end][1]
-        net=income[end][1]
-        cfo=cash[end][1]
-        if revenue<=0:continue
+        net=income[end][1] if end in income else None
+        cfo=cash[end][1] if end in cash else None
+        if revenue<0:continue
         earlier=sorted((year for year in rev
             if 300<=(d-date.fromisoformat(year)).days<=430
             and rev[year][0]<=today and rev[year][1]>0),reverse=True)
-        if not earlier:continue
-        growth=revenue/rev[earlier[0]][1]-1
-        if not math.isfinite(growth) or abs(growth)>10:continue
-        return {"revenue":revenue,"net_income":net,"operating_cashflow":cfo,
-            "revenue_growth_yoy":round(growth,6),
-            "profit_margin":round(net/revenue,6),
+        prior=earlier[0] if earlier else None
+        annual={"revenue":revenue,"net_income":net,"operating_cashflow":cfo,
+            "prior_revenue":rev[prior][1] if prior else None,
+            "prior_net_income":income[prior][1] if prior in income else None,
             "fy_end":end,"filed":filed.isoformat(),
-            "base_year_end":earlier[0]}
+            "base_year_end":prior}
+        capex=_financial_tag_series(facts,CAPEX_FIELDS,today)
+        if end in capex:
+            annual["capex"]=capex[end][1]
+            filings.append(capex[end][0])
+        balance_filings=[]
+        for key,tags in BALANCE_FIELDS.items():
+            series=_financial_tag_series(facts,tags,today,instant=True)
+            if end in series:
+                annual[key]=series[end][1]
+                balance_filings.append(series[end][0])
+        if balance_filings:annual["balance_filed"]=max(balance_filings).isoformat()
+        annual["filed"]=max(filings+balance_filings).isoformat()
+        return _derived_metrics(annual)
     return None
+
+def _number(value):
+    return isinstance(value,(int,float)) and not isinstance(value,bool) and math.isfinite(value)
+
+def _ratio(numerator,denominator):
+    if not _number(numerator) or not _number(denominator) or denominator<=0:return None
+    result=numerator/denominator
+    return round(result,6) if math.isfinite(result) else None
+
+def _derived_metrics(annual):
+    """Keep verified partial reports useful; missing figures never become zero."""
+    revenue=annual.get("revenue")
+    net=annual.get("net_income")
+    cfo=annual.get("operating_cashflow")
+    prior=annual.get("prior_net_income")
+    growth=_ratio(revenue,annual.get("prior_revenue"))
+    annual["revenue_growth_yoy"]=round(growth-1,6) if growth is not None else None
+    annual["profit_margin"]=_ratio(net,revenue)
+    annual["operating_cashflow_margin"]=_ratio(cfo,revenue)
+    earnings_growth=_ratio(net,prior)
+    annual["net_income_growth_yoy"]=round(earnings_growth-1,6) if earnings_growth is not None else None
+    annual["earnings_comparison"]=("loss" if _number(net) and net<=0 else
+        "turnaround" if _number(net) and _number(prior) and prior<=0 else
+        "comparable" if earnings_growth is not None else "missing")
+    capex=annual.get("capex")
+    annual["free_cashflow"]=cfo-capex if _number(cfo) and _number(capex) and capex>=0 else None
+    annual["free_cashflow_margin"]=_ratio(annual["free_cashflow"],revenue)
+    annual["equity_ratio"]=_ratio(annual.get("equity"),annual.get("assets"))
+    annual["current_ratio"]=_ratio(annual.get("current_assets"),annual.get("current_liabilities"))
+    annual["liabilities_to_equity"]=_ratio(annual.get("liabilities"),annual.get("equity"))
+    annual["quality_ok"]=(
+        _number(net) and net>0 and _number(cfo) and cfo>0
+        and _number(annual["profit_margin"]) and annual["profit_margin"]>=MIN_PROFIT_MARGIN
+        and _number(annual["revenue_growth_yoy"]) and annual["revenue_growth_yoy"]>=MIN_GROWTH)
+    annual["currency"]="USD"
+    annual["schema_version"]=SCHEMA_VERSION
+    return annual
 
 def fundamental_quality(facts,asof=None):
     annual=_recent_frame(facts,asof)
     if not annual:return None
-    annual["quality_ok"]=(
-        annual["net_income"]>0 and annual["operating_cashflow"]>0
-        and annual["profit_margin"]>=MIN_PROFIT_MARGIN
-        and annual["revenue_growth_yoy"]>=MIN_GROWTH)
     annual["source"]="SEC EDGAR 10-K XBRL (US-GAAP)"
     annual["cik"]=int(facts.get("cik",0)) if str(facts.get("cik","")).isdigit() else None
     return annual
@@ -137,66 +199,76 @@ def download_fundamental(cik):
 TGM_ROOT="https://tgmcharts.com/api/v1/statements/"
 
 def tgm_annual_quality(ticker):
-    """Alternative SEC-derived public 10-K filing statements, attributed.
-
-    No third-party estimates or inferred missing rows. When provider says
-    preparing/unavailable, we return no quality rating.
-    """
+    """Attributed SEC-derived annual statements, including optional balance data."""
     if not TICKER_RE.fullmatch(ticker):return None
+    today=datetime.now(timezone.utc).date()
     def fetch(statement):
         obj=get_json(TGM_ROOT+ticker+"/"+statement+"?period=annual&years=4",
                      timeout=14,max_bytes=1800000)
-        if obj.get("symbol","").upper()!=ticker or obj.get("period")!="annual" or obj.get("status"):
-            return []
-        return obj.get("rows") if isinstance(obj.get("rows"),list) else []
-    income=fetch("income-statement")
-    cashflow=fetch("cash-flow")
-    if not income or not cashflow:return None
-    today=datetime.now(timezone.utc).date()
-    def verified_rows(rows):
+        if (obj.get("symbol","").upper()!=ticker or obj.get("period")!="annual"
+            or obj.get("currency")!="USD" or obj.get("status")):
+            return {},None
         out={}
-        for row in rows:
-            if not isinstance(row,dict) or row.get("form") not in CANONICAL_FORMS:
-                continue
-            if row.get("fiscalPeriod")!="FY":continue
+        for row in obj.get("rows") or []:
+            if not isinstance(row,dict):continue
+            allowed=CANONICAL_FORMS+("10-Q","10-Q/A") if statement=="balance-sheet" else CANONICAL_FORMS
+            if row.get("form") not in allowed or row.get("fiscalPeriod")!="FY":continue
             try:
                 end=date.fromisoformat(row["periodEnd"])
                 filing=date.fromisoformat(row["filed"])
-                if filing>today or end>today or (today-filing).days>MAX_FILING_AGE_DAYS:
-                    continue
+                if filing>today or end>today:continue
+                # Retain the previous year's evidence even when it is older
+                # than the maximum age of the CURRENT report.
+                if (today-end).days>MAX_FILING_AGE_DAYS+430:continue
+                if (today-filing).days>MAX_FILING_AGE_DAYS+430:continue
+                if statement!="balance-sheet":
+                    start=date.fromisoformat(row["periodStart"])
+                    if not 335<=(end-start).days<=385:continue
             except (KeyError,TypeError,ValueError):continue
-            out[end.isoformat()]=row
-        return out
-    incomerows=verified_rows(income)
-    cashrows=verified_rows(cashflow)
-    for end in sorted(set(incomerows)&set(cashrows),reverse=True):
+            old=out.get(end.isoformat())
+            if old is None or row["filed"]>old["filed"]:out[end.isoformat()]=row
+        return out,obj.get("cik")
+    def value(row,key):
+        v=(row.get("metrics") or {}).get(key)
+        provenance=(row.get("provenance") or {}).get(key)
+        if provenance:
+            try:
+                if date.fromisoformat(provenance["filed"])>today:return None
+            except (KeyError,TypeError,ValueError):return None
+        return v if _number(v) else None
+    incomerows,cik=fetch("income-statement")
+    if not incomerows:return None
+    try:cashrows,_=fetch("cash-flow")
+    except Exception:cashrows={}
+    try:balances,_=fetch("balance-sheet")
+    except Exception:balances={}
+    for end in sorted(incomerows,reverse=True):
+        if (today-date.fromisoformat(end)).days>MAX_FILING_AGE_DAYS:continue
         a=incomerows[end]
-        b=cashrows[end]
-        metrics=a.get("metrics") or {}
-        cm=b.get("metrics") or {}
-        rev=metrics.get("revenue")
-        net=metrics.get("netIncome")
-        cfo=cm.get("operatingCashFlow")
-        if not all(isinstance(v,(int,float)) and not isinstance(v,bool)
-                   and math.isfinite(v) for v in (rev,net,cfo)) or rev<=0:
-            continue
+        b=cashrows.get(end,{})
+        balance=balances.get(end,{})
+        rev=value(a,"revenue")
+        if rev is None or rev<0:continue
         older=sorted((k for k in incomerows
-           if 300<=(date.fromisoformat(end)-date.fromisoformat(k)).days<=430
-           and isinstance((incomerows[k].get("metrics") or {}).get("revenue"),(int,float))
-           and (incomerows[k].get("metrics") or {}).get("revenue")>0),reverse=True)
-        if not older:continue
-        prior=incomerows[older[0]]["metrics"]["revenue"]
-        growth=rev/prior-1
-        margin=net/rev
-        if not (math.isfinite(growth) and math.isfinite(margin)):continue
-        return {"revenue":rev,"net_income":net,"operating_cashflow":cfo,
-            "revenue_growth_yoy":round(growth,6),"profit_margin":round(margin,6),
-            "fy_end":end,"base_year_end":older[0],
-            "filed":max(a["filed"],b["filed"]),
-            "quality_ok":net>0 and cfo>0 and margin>=MIN_PROFIT_MARGIN
-                       and growth>=MIN_GROWTH,
+            if 300<=(date.fromisoformat(end)-date.fromisoformat(k)).days<=430
+            and value(incomerows[k],"revenue") is not None
+            and value(incomerows[k],"revenue")>0),reverse=True)
+        previous=incomerows[older[0]] if older else {}
+        annual={"revenue":rev,"net_income":value(a,"netIncome"),
+            "operating_cashflow":value(b,"operatingCashFlow"),
+            "prior_revenue":value(previous,"revenue"),
+            "prior_net_income":value(previous,"netIncome"),
+            "capex":value(b,"capitalExpenditure"),
+            "fy_end":end,"base_year_end":older[0] if older else None,
+            "filed":max(row["filed"] for row in (a,b,balance) if row),
             "source":"TGMCharts (SEC EDGAR 10-K XBRL)",
-            "cik":None}
+            "cik":int(cik) if str(cik).isdigit() else None}
+        if balance:annual["balance_filed"]=balance["filed"]
+        for key,provider_key in (("assets","totalAssets"),("equity","totalStockholdersEquity"),
+            ("liabilities","totalLiabilities"),("current_assets","totalCurrentAssets"),
+            ("current_liabilities","totalCurrentLiabilities")):
+            annual[key]=value(balance,provider_key)
+        return _derived_metrics(annual)
     return None
 
 def sander_screen(stock,fund):
@@ -218,82 +290,97 @@ def sander_screen(stock,fund):
     return round(.5*dip+.25*margin_score+.25*growth_score,4)
 
 def enrich_stocks(stocks,prior,maximum=DEFAULT_MAX):
-    """Update limited SEC queries, retain still-current cached filings.
+    """Rotate across ordinary stocks and dip candidates, preserving verified caches.
 
-    Returns status. SEC is independent of normal quote pipeline; errors must
-    never lead to fabricated eligible candidates.
+    A failed lookup is retried after two days rather than starving later symbols.
+    The data panel is independent of Sander eligibility and factor selection.
     """
-    old={s.get("ticker"):s.get("fundamentals") for s in prior.get("stocks",[])
-         if isinstance(s,dict) and isinstance(s.get("fundamentals"),dict)}
+    old={s.get("ticker"):s for s in prior.get("stocks",[]) if isinstance(s,dict)}
     today=datetime.now(timezone.utc).date()
     candidates=[s for s in stocks if s.get("eligible_global_ranking") is True
-                and isinstance(s.get("ticker"),str) and "." not in s["ticker"]
-                and isinstance(s.get("drawdown_252d"),(int,float))
-                and -.75<=s["drawdown_252d"]<=-.10]
-    candidates.sort(key=lambda s:(
-        0 if -.55<=s["drawdown_252d"]<=-.15 else 1,
-        abs(s["drawdown_252d"]+.30),
-        s["ticker"]))
-    try:lookup=ticker_map()
-    except Exception as e:
-        lookup={}
-        error="SEC mapping unavailable: "+str(e)[:120]
-    else:error=None
-    updated=0
-    succeeded=0
-    failed=0
+                and isinstance(s.get("ticker"),str) and TICKER_RE.fullmatch(s["ticker"])]
+    by_dip=sorted((s for s in candidates if _number(s.get("drawdown_252d"))
+        and -.55<=s["drawdown_252d"]<=-.15),
+        key=lambda s:(abs(s["drawdown_252d"]+.30),s["ticker"]))
+    by_momentum=sorted(candidates,key=lambda s:(
+        -s["momentum_12_2"] if _number(s.get("momentum_12_2")) else 999,s["ticker"]))
+    ordered=[]
+    seen=set()
+    for pair in zip_longest(by_momentum,by_dip):
+        for stock in pair:
+            if stock and stock["ticker"] not in seen:
+                ordered.append(stock)
+                seen.add(stock["ticker"])
     for stock in stocks:
-        ticker=stock.get("ticker")
-        cached=old.get(ticker)
+        previous=old.get(stock.get("ticker"),{})
+        cached=previous.get("fundamentals")
         if isinstance(cached,dict):
             try:
                 age=(today-date.fromisoformat(cached["checked_at"])).days
-                if age>=0 and age<=28:
-                    stock["fundamentals"]=cached
-            except (KeyError,ValueError,TypeError):
-                pass
-    for s in candidates:
-        if updated>=maximum:break
-        ticker=s["ticker"]
-        if s.get("fundamentals") is not None:continue
-        cik=lookup.get(ticker)
-        updated+=1
+                if 0<=age<=28:stock["fundamentals"]=cached
+            except (KeyError,ValueError,TypeError):pass
+        if previous.get("fundamentals_checked_at"):
+            stock["fundamentals_checked_at"]=previous["fundamentals_checked_at"]
+    targets=[]
+    for stock in ordered:
+        cached=stock.get("fundamentals") or {}
+        if cached.get("schema_version")==SCHEMA_VERSION:continue
+        try:
+            attempted=(today-date.fromisoformat(stock.get("fundamentals_checked_at", ""))).days
+            if 0<=attempted<2:continue
+        except (TypeError,ValueError):pass
+        targets.append(stock)
+        if len(targets)>=max(0,maximum):break
+    if maximum<=0:targets=[]
+    error=None
+    lookup={}
+    if targets:
+        try:lookup=ticker_map()
+        except Exception as e:error="SEC mapping unavailable: "+str(e)[:120]
+    def load(stock):
+        ticker=stock["ticker"]
         fund=None
+        cik=lookup.get(ticker)
         try:
             if cik is not None:fund=download_fundamental(cik)
-        except Exception:
-            fund=None
+        except Exception:pass
         if fund is None:
             try:fund=tgm_annual_quality(ticker)
-            except Exception:fund=None
-        if fund is not None:
-            fund["checked_at"]=today.isoformat()
-            s["fundamentals"]=fund
-            succeeded+=1
-        else:failed+=1
+            except Exception:pass
+        return fund
+    succeeded=0
+    # Three concurrent companies, each requesting sequentially; bounded API load.
+    with ThreadPoolExecutor(max_workers=3) as pool:
+        for stock,fund in zip(targets,pool.map(load,targets)):
+            stock["fundamentals_checked_at"]=today.isoformat()
+            if fund is not None:
+                fund["checked_at"]=today.isoformat()
+                stock["fundamentals"]=fund
+                succeeded+=1
     qualified=0
     with_fund=0
-    for s in stocks:
-        fund=s.get("fundamentals")
+    for stock in stocks:
+        fund=stock.get("fundamentals")
         if isinstance(fund,dict):
-            # Cached figures must still be fresh by SEC filing date.
             try:
                 filed=date.fromisoformat(fund["filed"])
-                if filed>today or (today-filed).days>MAX_FILING_AGE_DAYS:
-                    fund=None
+                end=date.fromisoformat(fund["fy_end"])
+                if (filed>today or end>today or (today-filed).days>MAX_FILING_AGE_DAYS
+                    or (today-end).days>MAX_FILING_AGE_DAYS):fund=None
             except (KeyError,TypeError,ValueError):fund=None
         if fund is None:
-            s.pop("fundamentals",None)
-            s["sander_score"]=None
+            stock.pop("fundamentals",None)
+            stock["sander_score"]=None
         else:
             with_fund+=1
-            s["sander_score"]=sander_screen(s,fund)
-            if s["sander_score"] is not None:qualified+=1
+            stock["sander_score"]=sander_screen(stock,fund)
+            if stock["sander_score"] is not None:qualified+=1
     return {"name":"Beate Sander-inspirierte Kursrückgang-/Qualitätsauswahl",
         "source":"SEC EDGAR XBRL US-GAAP, direct API or TGMCharts filing statement relay (10-K)",
         "method":"15–55% under 252-day high; positive net income and operating cash flow, >=3% net margin, >=-10% revenue YoY; 50% drawdown, 25% margin, 25% growth score",
-        "checked_this_run":updated,"facts_downloaded":succeeded,"no_usable_facts":failed,
+        "checked_this_run":len(targets),"facts_downloaded":succeeded,
+        "no_usable_facts":len(targets)-succeeded,
         "with_verified_fundamentals":with_fund,"qualified_candidates":qualified,
-        "status":"partial" if error and qualified==0 else "ok",
+        "status":"partial" if error and with_fund==0 else "ok",
         "warning":error,
         "limitations":"Experimental approximation; SEC 10-K, often no non-US filings. Third-party relay credited to TGMCharts. No proven excess returns, valuation, dividends, sector coverage or point-in-time backtest."}

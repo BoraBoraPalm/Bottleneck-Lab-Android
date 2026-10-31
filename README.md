@@ -23,9 +23,58 @@ Es werden **keine tatsächlichen Käufe, Stop-Loss-Orders oder künftige Rendite
 
 ## Hoch-Tief-Mut-Screen: Daten, Grenzen, Rechte
 
-Datenquelle: [SEC EDGAR CompanyFacts API](https://www.sec.gov/search-filings/edgar-application-programming-interfaces), XBRL und offizielle SEC-Ticker/CIK-Zuordnung. Jährliche 10-K-/10-K/A-Berichte werden auf **Fiskaljahr-Geschäftszahlen (335–385 Tage)** geprüft, mit echtem Filing-Datum, Geschäftsjahresende und vergleichbarer Einheit USD. Quartalsdaten, unbestätigte Drittanbieter-Schätzungen sowie Unternehmen ohne Finanznachweise fallen heraus. Um API-Grenzen einzuhalten, werden pro Aktualisierung nur bis zu 35 SEC-Unternehmen geprüft und Werte 28 Tage zwischengespeichert. Die Abdeckung wächst mit Datenaktualisierungen. Ist die SEC nicht erreichbar, werden keine erfundenen Fundamentalwerte ausgegeben.
+Datenquelle: [SEC EDGAR CompanyFacts API](https://www.sec.gov/search-filings/edgar-application-programming-interfaces), XBRL und offizielle SEC-Ticker/CIK-Zuordnung. Jährliche 10-K-/10-K/A-Berichte werden auf **Fiskaljahr-Geschäftszahlen (335–385 Tage)** geprüft, mit echtem Filing-Datum, Geschäftsjahresende und vergleichbarer Einheit USD. Quartalsdaten, unbestätigte Drittanbieter-Schätzungen sowie Unternehmen ohne Finanznachweise fallen heraus. Um API-Grenzen einzuhalten, werden pro Aktualisierung nur bis zu 60 SEC-Unternehmen geprüft und Werte 28 Tage zwischengespeichert. Die Abdeckung wächst mit Datenaktualisierungen. Ist die SEC nicht erreichbar, werden keine erfundenen Fundamentalwerte ausgegeben.
 
 **Beate Sander persönlich beschrieb** breite Diversifikation, langfristiges Halten, antizyklische Nachkäufe gut aufgestellter Unternehmen und gelegentliche Teilverkäufe. Interviews: [herCAREER](https://www.her-career.com/beate-sander-ich-koenne-ja-auch-auf-kreuzfahrten-unterwegs-sein-aber-ich-arbeite-lieber-so-viel-wie-eine-junge-startup-gruenderin/) und [Trading-Ideen](https://www.trading-ideen.de/wordpress/interview-mit-beate-sander/). Die Prozentgrenzen im Screener stammen **von uns**, nicht aus einer von Sander veröffentlichten festen Formel.
+
+## Fundamentaldaten mit vier Farbstufen
+
+Jede Aktienkarte zeigt unabhängig vom Strategie-Mix eine kompakte Vorschau für
+Umsatzwachstum, Nettomarge und operative Cashflow-Marge. Beim Aufklappen folgen
+acht Kennzahlen mit Wert, Textbewertung, Quelle und Geschäftsjahresende:
+
+| Kennzahl | Grün: sehr gut | Gelb: geht so | Orange: eher schwach | Rot: Vorsicht |
+| --- | --- | --- | --- | --- |
+| Umsatzwachstum zum Vorjahr | ≥10 % | ≥0 % bis <10 % | ≥−10 % bis <0 % | <−10 % |
+| Gewinnwachstum zum Vorjahr | ≥15 % | ≥0 % bis <15 % | ≥−20 % bis <0 % | <−20 % oder laufender Verlust |
+| Nettogewinnmarge | ≥15 % | ≥5 % bis <15 % | ≥0 % bis <5 % | <0 % |
+| Operative Cashflow-Marge | ≥15 % | ≥5 % bis <15 % | ≥0 % bis <5 % | <0 % |
+| Freie Cashflow-Marge | ≥10 % | ≥3 % bis <10 % | ≥0 % bis <3 % | <0 % |
+| Eigenkapitalquote | ≥40 % | ≥20 % bis <40 % | ≥10 % bis <20 % | <10 % |
+| Umlaufvermögen / kurzfristige Verbindlichkeiten | ≥2× | ≥1,2× bis <2× | ≥1× bis <1,2× | <1× |
+| Gesamte Verbindlichkeiten / Eigenkapital | ≤1× | >1× bis ≤2× | >2× bis ≤4× | >4× oder EK ≤0 |
+
+Die Grenzen sind **eigene grobe Orientierung**, keine wissenschaftlich validierte
+Aktienbewertung und kein Branchenvergleich. Die Farbe bewertet ausschließlich
+die jeweilige Kennzahl, weder den Aktienpreis noch einen Kauf. Banken,
+Versicherungen und REITs erhalten bei erkennbarer Branche keine Standardampel
+für Cashflow- und Bilanzquoten. Die Branchenzuordnung ist nicht vollständig.
+
+Gewinnwachstum wird nur bei positivem Vorjahresgewinn als Prozentwert berechnet.
+Ein Wechsel vom Verlust zum Gewinn ist eine gelb markierte „Gewinnwende“.
+Freier Cashflow = operativer Cashflow minus ausgewiesene Sachinvestitionen;
+fehlende Sachinvestitionen werden nicht als null angenommen. Bilanzdaten müssen
+zum gleichen Geschäftsjahresende passen; später erneut berichtete 10-Q-Bilanzwerte
+zu genau diesem Stichtag sind zulässig. Absolute Umsatz-, Gewinn- und
+Cashflowbeträge stehen in der Berichtswährung USD. KGV und Dividendenrendite
+werden mangels zuverlässig vergleichbarer Daten nicht erfunden.
+
+Fehlende Kennzahlen bleiben grau. Bei einem Geschäftsjahresende vor mehr als
+550 Tagen werden alle Farbbewertungen ausgesetzt; künftige oder ungeprüfte
+Berichtsdatierungen zeigen auch keine Zahlen. Teilweise verfügbare Jahreszahlen
+bleiben sichtbar, qualifizieren aber nur bei Erfüllung **aller** bisherigen
+Anforderungen für den unveränderten Sander-Filter.
+
+Die Datenabfrage rotiert über gewöhnliche Momentumaktien **und** Sander-Kandidaten,
+mit maximal 60 Unternehmensabfragen je Aktualisierung, höchstens drei parallel,
+28 Tagen Cache für verifizierte Daten und zwei Tagen Abstand nach erfolglosen
+Abfragen. Neue Bilanzfelder werden auch bei älteren Caches nachgeladen. Die
+aktuelle SEC-/TGMCharts-Quelle umfasst hauptsächlich US-Unternehmen; bei
+nicht abgedeckten internationalen Aktien steht ein ausdrücklicher Hinweis.
+
+Grundlagen und Definitionen: [SEC – Geschäftsberichte lesen](https://www.sec.gov/reportspubs/investor-publications/investorpubsbegfinstmtguidehtm.html)
+und [SEC – XBRL-APIs](https://www.sec.gov/search-filings/edgar-application-programming-interfaces).
+Die Farbgrenzen stammen von uns, nicht von der SEC oder Beate Sander.
 
 ## Kursdiagramme in jeder Aktienkarte
 

@@ -241,7 +241,11 @@ def main():
     have=Counter(s.get("region") or "Unbekannt" for s in stocks)
     eligible=Counter(s.get("region") or "Unbekannt" for s in stocks if s["eligible_global_ranking"])
     output={
-        "version":9,
+        "version":10,
+        "fundamentals_info":{"source":"SEC-XBRL annual USD statements; direct or TGMCharts",
+            "coverage":"Primarily US filers; verified partial reports remain partial",
+            "with_annual_data":sander_status["with_verified_fundamentals"],
+            "colour_method":"Own metric-level orientation thresholds, sector-dependent; no overall stock rating"},
         "sander_research_status":sander_status,
         "chart_data_info":{"on_demand":True,"files":chart_count(),"written_this_run":charts_written,
                            "default_period":"3M","max_history":"up to 10y",

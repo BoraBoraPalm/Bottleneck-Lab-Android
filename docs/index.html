@@ -90,6 +90,30 @@ input:focus-visible,select:focus-visible,button:focus-visible,summary:focus-visi
 .detail{padding-top:11px;min-width:0}
 .detail small{display:block;color:var(--muted);font-size:11px}
 .detail strong{display:block;margin-top:3px;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
+.fund-preview{display:flex;flex-wrap:wrap;gap:5px;margin-top:11px}
+.fund-pill{display:inline-block;font-size:10px;line-height:1.5;padding:3px 7px;border:1px solid;border-radius:7px;font-weight:650;max-width:100%;overflow-wrap:anywhere}
+.fund-green{background:#153c2c;border-color:#4eae78;color:#b4f2c9}
+.fund-yellow{background:#413912;border-color:#b9a445;color:#f6e9a0}
+.fund-orange{background:#4b2d17;border-color:#cd8543;color:#ffd1a4}
+.fund-red{background:#4a222c;border-color:#ce7884;color:#ffcad2}
+.fund-unknown{background:#213347;border-color:#53697b;color:#c4d2dd}
+.fund-panel{padding:14px;border-top:1px solid #365064;background:#132535;min-width:0}
+.fund-title{margin:0 0 9px;font-size:15px;line-height:1.4}
+.fund-legend{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px}
+.fund-date,.fund-source{font-size:11px;color:#b7cad7;line-height:1.6;overflow-wrap:anywhere}
+.fund-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:11px 0}
+.fund-tile{border-width:1px;border-style:solid;border-radius:10px;padding:10px;min-width:0}
+.fund-state{display:block;font-size:10px;font-weight:750;margin-bottom:6px}
+.fund-label{display:block;color:#e0eaf1;font-size:11px;line-height:1.4;min-height:31px}
+.fund-value{display:block;margin:5px 0;font-size:20px;line-height:1.25;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.fund-detail{display:block;color:#d2dce4;font-size:10px;line-height:1.45;overflow-wrap:anywhere}
+.fund-note{font-size:11px;color:#b4c8d6;line-height:1.6;margin:9px 0 0}
+.fund-empty{font-size:12px;color:#c9d7e1;line-height:1.6;margin:12px 0}
+.fund-help{margin-top:10px;border-top:1px solid #365064;font-size:11px;color:#c4d7e3}
+.fund-help>summary{cursor:pointer;min-height:44px;display:flex;align-items:center;font-weight:650}
+.fund-help>summary:before{content:"＋";margin-right:7px}
+.fund-help[open]>summary:before{content:"−"}
+.fund-help li{line-height:1.6}
 .chart-panel{padding:14px;border-top:1px solid #365064;background:#142739;min-width:0}
 .chart-title{font-size:14px;font-weight:750;margin-bottom:8px}
 .chart-periods{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:12px}
@@ -195,7 +219,7 @@ h1{font-size:27px}
   <summary>Wie wird ausgewählt? Was ist belegt?</summary>
   <div class="disclosure-body">
     <p><strong>Faktoren kombiniert:</strong> Kursentwicklung von ungefähr 12 bis 2 Monaten vor dem Stichtag (Momentum), 200-Tage-Durchschnittsabstand (Trend) und umgekehrte relative ATR(14)-Schwankung (ruhigere Kurse). Jeder ausgewählte Faktor wird in eine Rangzahl von 0 bis 100 umgerechnet und dann gleichgewichtet gemittelt. Bei nur einer Auswahl entscheidet ausschließlich dieser Faktor. Dies ist eine transparente Heuristik, <strong>kein backgetestetes Mehrfaktormodell</strong>. Unsere frühere Trend-/ATR-Kombination zeigte keinen verlässlich höheren Gewinn.</p><p><strong>Handelbarkeit:</strong> Ein Titel erscheint nur mit aktuellem Kurs, EUR-Referenzwechselkurs und durchschnittlich mindestens 2 Mio. € täglichem Börsenumsatz über 20 Handelstage (Kurs mindestens 2 €). Auch bei anderen Faktorwahlen benötigt der derzeitige Datensatz vollständige Momentumhistorie.</p>
-    <p><strong>Sander-inspirierter Kandidatenfilter:</strong> Die originale Hoch-Tief-Mut-Strategie von Beate Sander kombiniert breite Streuung, langfristiges Halten, Käufe überzeugender Unternehmen nach Kursrückgängen und gelegentliche Teilverkäufe. Wir automatisieren <strong>nur eine vereinfachte Vorauswahl</strong>, nicht ihre vollständige Strategie. Anforderungen: 15–55 % unter dem 252-Handelstage-Hoch, positiver Jahresgewinn, positiver operativer Cashflow, mindestens 3 % Nettomarge und Umsatzwachstum gegenüber dem vorigen Geschäftsjahr von mindestens −10 %. Der experimentelle Score gewichtet Kursrückgang zu 50 %, Gewinnmarge zu 25 % und Umsatzentwicklung zu 25 %. Finanzdaten kommen aus US-SEC-10-K-Geschäftsberichten, direkt oder über <a href="https://tgmcharts.com/" target="_blank" rel="noopener noreferrer">TGMCharts (SEC-XBRL-Daten)</a>. Deren Abdeckung ist nicht weltweit vollständig. Ein starker Rückgang bedeutet <strong>nicht automatisch eine günstige Unternehmensbewertung</strong>. KGV, Verschuldung, Dividendenausschüttungen, Langfristdepot und Teilverkäufe sind nicht modelliert. Auch mit mehreren Strategien ist keinerlei Überrendite belegt.</p>
+    <p><strong>Sander-inspirierter Kandidatenfilter:</strong> Die originale Hoch-Tief-Mut-Strategie von Beate Sander kombiniert breite Streuung, langfristiges Halten, Käufe überzeugender Unternehmen nach Kursrückgängen und gelegentliche Teilverkäufe. Wir automatisieren <strong>nur eine vereinfachte Vorauswahl</strong>, nicht ihre vollständige Strategie. Anforderungen: 15–55 % unter dem 252-Handelstage-Hoch, positiver Jahresgewinn, positiver operativer Cashflow, mindestens 3 % Nettomarge und Umsatzwachstum gegenüber dem vorigen Geschäftsjahr von mindestens −10 %. Der experimentelle Score gewichtet Kursrückgang zu 50 %, Gewinnmarge zu 25 % und Umsatzentwicklung zu 25 %. Finanzdaten kommen aus US-SEC-10-K-Geschäftsberichten, direkt oder über <a href="https://tgmcharts.com/" target="_blank" rel="noopener noreferrer">TGMCharts (SEC-XBRL-Daten)</a>. Deren Abdeckung ist nicht weltweit vollständig. Ein starker Rückgang bedeutet <strong>nicht automatisch eine günstige Unternehmensbewertung</strong>. KGV, Dividendenausschüttungen, Langfristdepot und Teilverkäufe sind nicht modelliert. Bilanzquoten werden separat als Fundamentaldaten angezeigt; sie ändern diesen Filter nicht. Auch mit mehreren Strategien ist keinerlei Überrendite belegt.</p>
     <p><strong>Wann Einstieg prüfen?</strong> Nur bei positivem 12–2-Monats-Momentum, Kurs oberhalb des 200-Tage-Durchschnitts, ohne größere laufende Korrektur und nur bei nicht negativem globalen Marktfilter (ACWI). Signale gelten erst nach dem letzten Tagesschluss; eine mögliche Limitorder kann frühestens am nächsten Handelstag zu einem tatsächlich verfügbaren Brokerkurs geprüft werden.</p>
 <p><strong>Wann Ausstieg prüfen?</strong> Für eine bereits gehaltene Position bei Schlusskurs unter dem 200-Tage-Durchschnitt oder bei starkem Kursrückgang. „Kurssturz“ bedeutet ein Rückgang von mindestens 15 % über 21 Handelstage oder von mindestens 25 % gegenüber dem Hoch der letzten 252 Handelstage; frühere Warnung schon bei 8 %/15 %. Keine Ausführung oder Überwachung durch die App.</p>
 <p><strong>Kauf-Limit und Stop-Loss:</strong> Über den optionalen Schalter erscheinen auf jeder Aktienkarte zwei konkrete EUR-Modellwerte wie früher: <strong>Kauf-Limit = letzter Schlusskurs − 1 × ATR(14)</strong> und <strong>initialer Stop-Loss = dieses Kauf-Limit − 2,5 × ATR(14)</strong>. Das ist nur eine unverbindliche Beispielrechnung für einen möglichen <em>Neueinstieg</em>, nicht der Stop einer bestehenden Position und kein nachweislich optimales Limit. Bei Trendbruch, Kurssturz oder fehlendem Gesamtmarktsignal besteht weiterhin kein Einstiegssignal. Vor der Order Ausführungskurs und Ordertyp im Broker prüfen; Kurslücken können einen Stop erheblich unterschreiten.</p>
@@ -210,6 +234,7 @@ h1{font-size:27px}
 <div class="footer">Bottleneck Lab · Stand der Daten siehe oben · keine Anlageberatung</div>
 </main>
 <script src="chart-widget.js"></script>
+<script src="fundamentals-widget.js?v=1"></script>
 <script>
 "use strict";
 const $=id=>document.getElementById(id);
@@ -334,6 +359,7 @@ function makeCard(s,mix){
       "chip "+(s.entry_review==="entry_review"?"action-buy":s.entry_review==="avoid_crash"?"action-crash":"action-wait"));
   add(actions,"span",exitText[s.exit_review]||"Ausstieg ungeprüft",
       "chip "+((s.exit_review||"").startsWith("review_exit")?"action-sell":"unknown"));
+  if(typeof StockFundamentals!=="undefined")StockFundamentals.preview(head,s);
   if($("showTradeLevels").checked){
     const levels=add(head,"div",null,"trade-levels");
     const buyBox=add(levels,"div",null,"trade-box");
@@ -349,6 +375,7 @@ function makeCard(s,mix){
       : "Keine belastbaren Marken berechenbar; die historischen Tagesdaten reichen nicht aus.",
       "trade-footnote");
   }
+  if(typeof StockFundamentals!=="undefined")StockFundamentals.render(article,s);
   const chartHost=add(article,"section",null,"chart-panel");
   chartHost.setAttribute("aria-label","Historischer Kursverlauf "+s.ticker);
   let chartInstance=null;
@@ -381,10 +408,6 @@ function makeCard(s,mix){
     const f=s.fundamentals;
     items.push(["Sander-inspirierte Vorauswahl",fmt(s.sander_score,1)+"/100 · experimentell"]);
     items.push(["Kursrückgang vom 252-Tage-Hoch",fmt(-s.drawdown_252d*100,1)+" %"]);
-    items.push(["Umsatzentwicklung (Geschäftsjahr)",fmt(f.revenue_growth_yoy*100,1)+" %"]);
-    items.push(["Nettogewinnmarge (Geschäftsjahr)",fmt(f.profit_margin*100,1)+" %"]);
-    items.push(["Operativer Cashflow",fmt(f.operating_cashflow/1000000,1)+" Mio. USD"]);
-    items.push(["SEC-Bilanzstichtag / Bericht eingereicht",f.fy_end+" / "+f.filed]);
   }
   for(const [name,val] of items){
     const col=add(detail,"div",null,"detail");
