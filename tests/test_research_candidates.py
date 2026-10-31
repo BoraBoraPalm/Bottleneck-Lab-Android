@@ -81,6 +81,33 @@ class CandidatesTest(unittest.TestCase):
         result=rc.current_candidates(rows,[],TODAY,required_min=2)
         self.assertFalse(any(x["ticker"] in {"X02","X03"} for xs in result["lists"].values() for x in xs))
 
+    def test_worldwide_momentum_without_sec_and_region_cap(self):
+        rows=[]
+        for i in range(1,34):
+            reg=("Asien" if i<=17 else "Europa" if i<=28 else "Nordamerika")
+            r=company(i,region=reg,country="Test",currency="JPY" if reg=="Asien" else "EUR",
+                      fundamentals=None,eligible_global_ranking=True,
+                      avg_turnover_20d_eur=10000000)
+            r.pop("multifactor")
+            rows.append(r)
+        out=rc.current_candidates(rows,[],TODAY)
+        global_rows=out["lists"]["global_momentum"]
+        self.assertEqual(len(global_rows),12)
+        self.assertTrue(all(r["global_momentum_basis"].startswith("12-2") for r in global_rows))
+        self.assertTrue(all(r["research_validated"] is False for r in global_rows))
+        from collections import Counter
+        self.assertTrue(all(n<=4 for n in Counter(x["region"] for x in global_rows).values()))
+        self.assertEqual(out["quality_momentum_coverage"],0)
+        self.assertEqual(out["qvm_coverage"],0)
+
+    def test_global_liquidity_and_fx_required(self):
+        rows=[company(i,region="Asien",currency="INR",eligible_global_ranking=True) for i in range(1,20)]
+        rows[0]["eur_per_unit"]=None
+        rows[1]["eligible_global_ranking"]=False
+        rows[2]["price_date"]="2026-10-01"
+        out=rc.current_candidates(rows,[],TODAY)
+        self.assertTrue(all(r["ticker"] not in {"X01","X02","X03"} for r in out["lists"]["global_momentum"]))
+
     def test_qm_independent_of_missing_value(self):
         rows=[company(i) for i in range(1,11)]
         for r in rows:r.pop("multifactor")
