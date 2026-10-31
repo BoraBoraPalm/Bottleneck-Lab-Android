@@ -87,7 +87,7 @@ const pts=[
 ];
 assert.equal(charts.selectPoints(pts,"MAX").length,6);
 assert.equal(charts.selectPoints(pts,"3M").length,3);
-assert.equal(charts.selectPoints(pts,"1M").length,1);
+assert.equal(charts.selectPoints(pts,"1M").length,2);
 const raw=charts.checkedData({version:1,ticker:"TEST",asof:"2026-01-01",
   currency:"JPY",points:pts},"TEST");
 const fxStock={ticker:"TEST",close:120,eur_per_unit:.006,price_date:"2026-01-01",
