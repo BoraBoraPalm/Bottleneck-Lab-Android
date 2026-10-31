@@ -283,6 +283,28 @@ def benchmark_cohort(day_idx,days,h_spy,fx,capital,slip=SLIP_RATE,dividends=True
     profit=terminal_eur-(qty*buy+1)
     return profit,qty,divmult
 
+def exposure_matched_spy_trade(t,h_spy,fx,slip=SLIP_RATE):
+    """Hypothetical SPY reference investing only each *filled* stock ticket's
+    actual EUR cash at the stock's buy date, unwound at its sell date.
+    Fractional index units remove high-price share-rounding bias; this is
+    an exposure-control diagnostic, NOT a broker-replicable SPY order.
+    If a stock stop executes intraday, benchmark close on that same date
+    approximates timing and is therefore an imperfect risk-matched comparison.
+    """
+    bd=t["buy_date"];ed=t["exit_date"]
+    if bd not in h_spy["index"] or ed not in h_spy["index"]:
+        raise RuntimeError("Matched benchmark trading day missing: "+bd+"/"+ed)
+    entry=h_spy["bars"][h_spy["index"][bd]]
+    exit_=h_spy["bars"][h_spy["index"][ed]]
+    cash=t["spent"]
+    buy=entry[0]*fx(bd)*(1+slip)
+    units=(cash-1)/buy
+    r1=entry[5]/entry[3]
+    r2=exit_[5]/exit_[3]
+    adj_factor=r2/r1
+    received=units*exit_[3]*adj_factor*fx(ed)*(1-slip)-1
+    return received-cash
+
 def cohort(day_idx,days,ranks,hists,fx,capital,slip=SLIP_RATE):
     d=days[day_idx]
     ranked=ranks[d]
@@ -293,11 +315,15 @@ def cohort(day_idx,days,ranks,hists,fx,capital,slip=SLIP_RATE):
         if tr:trades.append(tr)
         else:missing.append(t)
     pnl=sum(t["pnl_eur"] for t in trades)
+    matched_spy_pnl=sum(exposure_matched_spy_trade(t,hists["SPY"],fx,slip) for t in trades)
     bench,_,_ = benchmark_cohort(day_idx,days,hists["SPY"],fx,capital,slip)
     bench_price_only,_,_ = benchmark_cohort(day_idx,days,hists["SPY"],fx,capital,slip,dividends=False)
     return {"signal_date":d,"initial_eur":capital,"strategy_pnl_eur":pnl,
             "strategy_return_pct":pnl/capital*100,"benchmark_pnl_eur":bench,
             "benchmark_return_pct":bench/capital*100,"excess_return_pct":(pnl-bench)/capital*100,
+            "matched_spy_pnl_eur":matched_spy_pnl,
+            "matched_spy_return_pct":matched_spy_pnl/capital*100,
+            "matched_excess_pct":(pnl-matched_spy_pnl)/capital*100,
             "benchmark_price_only_return_pct":bench_price_only/capital*100,
             "excess_vs_spy_price_only_pct":(pnl-bench_price_only)/capital*100,
             "selected":len(ranked),"filled":len(trades),"unfilled":len(missing),
@@ -314,6 +340,8 @@ def summarize(cohorts):
         "n_decision_dates":len(cohorts),"sample_trades":len(trades),
         "limit_order_fill_rate_pct":pct(100*len(trades)/max(1,sum(c["selected"] for c in cohorts))),
         "mean_20d_strategy_pct":pct(statistics.mean(rets)),
+        "mean_20d_exposure_matched_spy_pct":pct(statistics.mean([x["matched_spy_return_pct"] for x in cohorts])),
+        "mean_20d_excess_vs_exposure_matched_spy_pct":pct(statistics.mean([x["matched_excess_pct"] for x in cohorts])),
         "median_20d_strategy_pct":pct(statistics.median(rets)),
         "mean_20d_spy_pct":pct(statistics.mean(bench)),
         "mean_20d_spy_price_only_pct":pct(statistics.mean(bench_price_only)),
@@ -349,12 +377,13 @@ def capital_path(days,ranks,hists,fx):
     # Non-overlap: new cohort starts every 20 sessions, invest up to 10 positions
     # per cohort; final profits/cash released before next cohort.
     first=next(i for i,d in enumerate(days) if d>=START.isoformat())
-    capital=10000.;benchmark_cap=10000.;benchmark_price_only_cap=10000.
+    capital=10000.;benchmark_cap=10000.;benchmark_price_only_cap=10000.;matched_spy_cap=10000.
     rows=[];all_trades=[]
     for i in range(first,len(days)-MAX_HORIZON,MAX_HORIZON):
         d=days[i]
         if date.fromisoformat(d)>LAST_SIGNAL:break
         group=cohort(i,days,ranks,hists,fx,capital)
+        matched_group=cohort(i,days,ranks,hists,fx,matched_spy_cap)
         # benchmark returns percentage for same calendar period, but calculated
         # on benchmark_cap, avoids sharing strategy capital between portfolios.
         b_pnl,_,_=benchmark_cohort(i,days,hists["SPY"],fx,benchmark_cap)
@@ -362,10 +391,12 @@ def capital_path(days,ranks,hists,fx):
         capital+=group["strategy_pnl_eur"]
         benchmark_cap+=b_pnl
         benchmark_price_only_cap+=b_price_pnl
+        matched_spy_cap+=matched_group["matched_spy_pnl_eur"]
         all_trades.extend(group["trades"])
         rows.append({"date":d,"strategy_equity_eur":pct(capital),
             "benchmark_equity_eur":pct(benchmark_cap),
             "benchmark_price_only_equity_eur":pct(benchmark_price_only_cap),
+            "exposure_matched_spy_equity_eur":pct(matched_spy_cap),
             "strategy_period_return_pct":group["strategy_return_pct"],
             "benchmark_period_return_pct":pct(b_pnl/(benchmark_cap-b_pnl)*100),
             "fills":len(group["trades"]),"selected":group["selected"]})
@@ -391,6 +422,9 @@ def capital_path(days,ranks,hists,fx):
         "spy_price_only_final_eur":pct(benchmark_price_only_cap),
         "spy_price_only_pnl_eur":pct(benchmark_price_only_cap-10000),
         "spy_price_only_total_return_pct":pct((benchmark_price_only_cap/10000-1)*100),
+        "exposure_matched_spy_final_eur":pct(matched_spy_cap),
+        "exposure_matched_spy_pnl_eur":pct(matched_spy_cap-10000),
+        "exposure_matched_spy_total_return_pct":pct((matched_spy_cap/10000-1)*100),
         "n_nonoverlapping_periods":len(rows),
         "trade_count":len(all_trades),
         "total_commissions_eur":pct(2*len(all_trades)),
@@ -457,6 +491,7 @@ def main():
       "transaction_costs_eur":{"buy":FEE_EUR_PER_SIDE,"sell":FEE_EUR_PER_SIDE},
       "adverse_slippage_per_side_pct":100*SLIP_RATE,
       "dividend_approach":"Individual-stock price-only P&L excludes dividends. SPY uses adjusted-close factor for approximate total-return benchmark; market price fills unadjusted.",
+      "exposure_matched_benchmark_assumptions":"SPY fractional units funded by each actual filled stock order cash; entry SPY open same buy date and exit SPY close same sell date, including SPY dividends, 1 EUR per side and FX+slippage. Imperfect for intraday stop timing.",
       "random_decision_date_results":sample_stats,
       "nonoverlapping_capital_path":portfolio,
       "sensitivity_random_dates":sensitivity,
@@ -466,7 +501,7 @@ def main():
     }
     with open(OUT/"report.json","w",encoding="utf-8") as f:json.dump(data,f,ensure_ascii=False,indent=2)
     group_rows=[]
-    keys=["signal_date","initial_eur","strategy_pnl_eur","strategy_return_pct","benchmark_pnl_eur","benchmark_return_pct","benchmark_price_only_return_pct","excess_return_pct","excess_vs_spy_price_only_pct","selected","filled","unfilled"]
+    keys=["signal_date","initial_eur","strategy_pnl_eur","strategy_return_pct","benchmark_pnl_eur","benchmark_return_pct","benchmark_price_only_return_pct","matched_spy_pnl_eur","matched_spy_return_pct","matched_excess_pct","excess_return_pct","excess_vs_spy_price_only_pct","selected","filled","unfilled"]
     for c in cohorts:group_rows.append({k:round(v,4) if isinstance(v,float) else v for k,v in c.items() if k!="trades"})
     csv_save(OUT/"random_320_cohorts.csv",group_rows,keys)
     all_entries=[t for c in cohorts for t in c["trades"]]
