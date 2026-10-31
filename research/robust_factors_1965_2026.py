@@ -16,9 +16,9 @@ from pathlib import Path
 ROOT="https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/"
 DATASETS=OrderedDict([
  ("FF5","F-F_Research_Data_5_Factors_2x3_CSV.zip"),
- ("VALUE","6_Portfolios_ME_BM_CSV.zip"),
- ("QUALITY","6_Portfolios_ME_OP_CSV.zip"),
- ("INVEST","6_Portfolios_ME_INV_CSV.zip"),
+ ("VALUE","6_Portfolios_2x3_CSV.zip"),
+ ("QUALITY","6_Portfolios_ME_OP_2x3_CSV.zip"),
+ ("INVEST","6_Portfolios_ME_INV_2x3_CSV.zip"),
  ("MOMENTUM","10_Portfolios_Prior_12_2_CSV.zip")
 ])
 FX_URL="https://api.frankfurter.dev/v2/rates?from=1999-01-01&to=2026-10-31&base=USD&quotes=EUR"
