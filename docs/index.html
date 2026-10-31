@@ -1,49 +1,249 @@
 <!doctype html>
-<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0c1622"><title>Bottleneck Lab · Live Screener</title><link rel="icon" href="icon.svg" type="image/svg+xml"><link rel="manifest" href="manifest.webmanifest">
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0a1420">
+<meta name="description" content="Weltweite Aktien beobachten: 12–2-Monats-Momentum, EUR-Kurse, Liquidität und Trade Republic AT.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<title>Bottleneck Lab · Aktien weltweit</title>
 <style>
-:root{color-scheme:dark;--bg:#0b1320;--card:#172538;--border:#304052;--txt:#eff4fa;--muted:#a4b7c8;--good:#70dcb9;--bad:#ffa6a9;--accent:#58c9ba}*{box-sizing:border-box}body{font:14px/1.55 system-ui,-apple-system,sans-serif;margin:0;color:var(--txt);background:linear-gradient(160deg,#15283a,#0b1320 48%);min-height:100vh}.container{max-width:1100px;margin:auto;padding:18px 14px 65px}h1{font-size:24px;letter-spacing:-.8px;margin:0}h2{font-size:17px;margin:0 0 8px}h3{font-size:15px;margin:10px 0}.muted{color:var(--muted)}.small{font-size:12px}.tiny{font-size:11px}.brand{display:flex;gap:10px;align-items:center;margin-bottom:14px}.logo{border-radius:13px;width:43px;height:43px;display:grid;place-items:center;background:#207b75;font-size:25px;font-weight:900}.card{border:1px solid var(--border);border-radius:16px;padding:16px;margin-bottom:12px;background:var(--card)}.top{display:flex;gap:8px;justify-content:space-between;align-items:center;flex-wrap:wrap}.btn{border:1px solid #3baca4;background:#25877f;color:white;border-radius:10px;padding:11px 14px;font:inherit;font-weight:700;min-height:43px;cursor:pointer}.btn.outline{background:transparent;border-color:#526779;color:#dbe8ec}select,input{background:#0c1b2a;border:1px solid #486070;padding:10px;color:white;border-radius:9px;min-height:42px;font:inherit}input[type=range]{width:100%;accent-color:var(--accent)}.tabs{display:flex;gap:7px;overflow:auto;margin:16px 0 12px}.tabs button{white-space:nowrap;background:#172a3b;color:#bed0da;border:1px solid #405369;border-radius:9px;padding:11px 12px;min-height:43px;font:inherit;cursor:pointer}.tabs button.active{background:#256b69;color:white;border-color:#4fb9a8}section[hidden]{display:none}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.metric{background:#203247;border-radius:10px;padding:12px}.metric strong{font-size:21px;display:block;font-variant-numeric:tabular-nums}.metric span{font-size:11px;color:var(--muted)}.stock{display:block;width:100%;border:1px solid #3a5365;border-radius:12px;margin:9px 0;padding:13px;background:#1a2d40;text-align:left;color:var(--txt);cursor:pointer}.symbol{font-weight:800;font-size:16px}.stock .price{font-size:18px;font-weight:700}.score{font-weight:800;color:var(--good)}.row{display:flex;justify-content:space-between;gap:10px}.info{border-left:3px solid #439d99;background:#18303c;padding:10px 12px;border-radius:7px;margin:10px 0;font-size:12px}.warning{border-left-color:#d0a465;background:#302a24}.tablebox{overflow-x:auto}table{border-collapse:collapse;width:100%;min-width:660px;font-size:12px}th,td{border-bottom:1px solid #354b5d;text-align:right;padding:10px 7px;white-space:nowrap}th:first-child,td:first-child{text-align:left}th{color:#adbdc9}.bad{color:var(--bad)}.good{color:var(--good)}.detail{padding:12px;border-radius:11px;background:#102836;margin:12px 0}.pill{color:#7ce0cd;font-size:11px;font-weight:700;background:#1d4045;border-radius:30px;padding:4px 9px}.fields{display:grid;grid-template-columns:1fr 1fr;gap:8px}.news{padding:10px 0;border-bottom:1px solid #34485a}.news a{color:#7bdbca;text-decoration:none}.bars{height:8px;background:#36465a;border-radius:6px;overflow:hidden}.bars>div{height:100%;background:#40baab}@media(min-width:720px){.container{padding:28px}.stocks{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}.grid{grid-template-columns:repeat(4,1fr)}}
-</style></head><body><main class="container">
-<header class="brand"><span class="logo">◈</span><div><h1>Bottleneck Lab v4 · EUR</h1><div class="small muted">Aktienentdeckung aus Börsenverzeichnissen · überprüfbare Quellen</div></div></header>
-<div class="card"><div class="top"><div><strong>Marktdaten-Snapshot</strong><div id="date" class="muted small">Noch kein Datenstand</div></div><button class="btn" id="refresh">↻ Snapshot laden</button></div><div class="info" id="status">GitHub Actions ruft die Daten regelmäßig ab. Dieser Knopf lädt den letzten verfügbaren Stand – kein Tick-by-Tick-Livefeed.</div></div>
-<div class="grid" style="margin-bottom:12px"><div class="metric"><span>Aktien mit geprüften Kursen</span><strong id="count">–</strong></div><div class="metric"><span>Bekanntes Aktienuniversum</span><strong id="universe">–</strong></div><div class="metric"><span>SPY in € (Richtwert)</span><strong id="spy">–</strong></div><div class="metric"><span>Aktualität</span><strong id="fresh">–</strong></div></div>
-<div class="card"><h2>Marktabdeckung</h2><div id="coverage" class="muted small">Daten werden geladen …</div></div><div class="card"><div class="top"><div><strong>Trade Republic Österreich</strong><div class="small muted">Nur Aktien mit eindeutigem ISIN-Treffer in der offiziellen AT-Wertpapierliste anzeigen</div></div><label style="display:flex;align-items:center;gap:8px;font-weight:700"><input id="trOnly" type="checkbox" style="width:24px;height:24px;accent-color:#58c9ba"> Nur TR</label></div><div id="trStatus" class="small muted" style="margin-top:9px">Abgleich wird geladen …</div><div class="small muted" style="margin-top:4px">Listenaufnahme ≠ aktuell ausführbarer Auftrag. Die tatsächliche Handelbarkeit und den EUR-Geld-/Briefkurs immer in Trade Republic prüfen. <a style="color:#7bdbca" href="https://assets.traderepublic.com/assets/files/AT/Instrument_Universe_AT_en.pdf" target="_blank" rel="noopener">Offizielle AT-Liste</a></div></div>
-<nav class="tabs"><button class="active" data-tab="top">Top 10</button><button data-tab="world">Weltweit</button><button data-tab="all">Alle Aktien</button><button data-tab="qvm">Multifaktor (Beta)</button><button data-tab="strategies">Strategien &amp; Forschung</button><button data-tab="news">Engpass-News</button><button data-tab="model">Modell</button></nav>
-<section id="tab-top"><div class="card"><h2>Aktuelle Top 10 in Euro</h2><div class="muted small">Top 10 mit Kurs-/Liquiditätsfilter: Bei USD-Titeln mindestens 5 USD Kurs und 5 Mio. USD durchschnittlicher Tagesumsatz. Kursmomentum/ATR, keine Renditeprognose.</div><div id="top" class="stocks"></div></div><div class="card" id="detail" hidden></div></section>
-<section id="tab-world" hidden><iframe id="worldFrame" title="Weltweiter Aktien-Screener mit Regionen, EUR-Liquidität und Trade Republic" src="global.html" loading="lazy" style="display:block;width:100%;height:1100px;min-height:700px;border:0;overflow:hidden;border-radius:14px" scrolling="no"></iframe></section>
-<section id="tab-all" hidden><div class="card"><h2>Aktienuniversum · EUR-Referenzkurse</h2><div class="muted small" id="listCount"></div><input style="width:100%;margin:10px 0" id="search" placeholder="Ticker oder Unternehmensname suchen …" aria-label="Aktien suchen"><div class="fields"><div><div class="small muted">Engpassbereich</div><select id="filter"><option value="alle">Alle Bereiche</option></select></div><div><div class="small muted">Sortierung</div><select id="sort"><option value="score">Modellscore</option><option value="mom">Momentum</option><option value="vol">Niedrige Volatilität</option><option value="symbol">Ticker</option></select></div></div><div class="tablebox" id="table" style="margin-top:12px"></div></div></section>
-<section id="tab-qvm" hidden><div class="card"><h2>Quality + Value + Momentum <span class="pill">Experimentell</span></h2>
-<div class="info warning"><strong>Keine validierte Kaufstrategie.</strong> Jede Aktie braucht aktuelle, veröffentlichte SEC-Jahresdaten und 12–2-Monats-Momentum. Score = Drittelgewichtung der drei Faktoren; relative Rangwerte ausschließlich innerhalb der tatsächlich erfassten Teilmenge. Kein Markt-Ranking und keine Branchenneutralität. Earnings-Revisions- und Engpassfaktoren sind noch nicht quantifiziert.</div>
-<div id="qvmStatus" class="small muted">Prüfe die verfügbare Datenabdeckung …</div><div id="qvm" class="stocks"></div>
-<div class="small muted">Stabile Risikostruktur als Ausgangspunkt: kein Einzelgewicht über 10 % bei zehn Positionen, aber Branchenkonzentration und historische Rendite noch nicht validiert. Handelskonditionen im Broker prüfen. Die normale Top 10 bleibt vorerst das bisherige Vergleichsmodell.</div></div></section>
-<section id="tab-strategies" hidden><iframe id="strategiesFrame" title="Wissenschaftliche Strategien und historische Faktorstudie" src="strategies.html" loading="lazy" style="display:block;width:100%;height:1200px;min-height:800px;border:0;overflow:hidden;border-radius:14px" scrolling="no"></iframe></section>
-<section id="tab-news" hidden><div class="card"><h2>Nachrichten zu möglichen Engpässen</h2><div class="info warning">Nachrichtenhäufigkeit misst Aufmerksamkeit und beweist weder Knappheit noch Renditevorteile.</div><div id="news">Noch keine Nachrichten abgerufen.</div></div></section>
-<section id="tab-model" hidden><div class="card"><h2>Einstellungen für Modellkurse (EUR)</h2><div class="info warning">In Euro dargestellte Kurse sind indikative Umrechnungen, nicht handelbare Trade-Republic-Quotes. Geld-/Briefspanne, Handelsplatz und Kurszeitpunkt beachten. Die Auswahl stammt primär aus US-Listings, dazu kommen internationale Titel. Nicht alle Aktien werden bei jedem Lauf geprüft. Die ursprüngliche Top 10 basiert weiterhin auf Kursdaten; die experimentelle Q/V/M-Liste steht im eigenen Tab und darf nicht als validierte Kaufempfehlung verstanden werden.</div><label>Kaufabschlag = ATR-Multiplikator: <strong id="buyLabel">1,0</strong></label><input id="buy" type="range" min="0.5" max="3" step="0.25" value="1"><label>Stop-Abstand = ATR-Multiplikator: <strong id="stopLabel">2,5</strong></label><input id="stop" type="range" min="1" max="5" step=".25" value="2.5"><label>Risikobudget in % des Depotwerts: <strong id="riskLabel">1,0 %</strong></label><input id="risk" type="range" min=".25" max="2" step=".25" value="1"><div class="info">Buy = Schlusskurs − Kaufmultiplikator × ATR(14). Stop = Buy − Stopmultiplikator × ATR(14). Positionsgröße aus dem Risikobudget. Bei Eröffnungslücken ist der Stop kein Verlustlimit. Keine Orders.</div><div class="small muted">Marktinformationen sind zeitverzögert, Anbieter können Kursabfragen blockieren. Fehlende Daten werden nicht geschätzt. Unterliegen dem Wechselkursrisiko.</div><a class="btn outline" style="display:inline-block;margin-top:10px;text-decoration:none" href="https://github.com/BoraBoraPalm/Bottleneck-Lab-Android/actions" target="_blank" rel="noopener">Datenabruf auf GitHub manuell starten</a></div></section>
-<footer class="small muted" style="padding:20px 0">Bottleneck Lab · Forschungsprototyp · Keine Anlageberatung · Keine Brokeranbindung · Quellen und Zeitstempel im Snapshot</footer>
-</main><script>
-const $=id=>document.getElementById(id), esc=v=>String(v??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch])), num=(n,d=2)=>Number.isFinite(n)?n.toLocaleString('de-DE',{minimumFractionDigits:d,maximumFractionDigits:d}):'–';
-let data=null, selected='', tab='top';
-const ccy=x=>({EUR:'€',USD:'$',CHF:'CHF',GBP:'£',SEK:'SEK',JPY:'¥',KRW:'₩',TWD:'NT$',AUD:'A$',DKK:'kr',CNY:'¥'}[x.currency]||x.currency||''),nativeMoney=(n,x)=>num(n,2)+' '+ccy(x),money=(n,x)=>Number.isFinite(x?.eur_per_unit)&&x.eur_per_unit>0&&Number.isFinite(n)?num(n*x.eur_per_unit,2)+' €':'EUR-Kurs fehlt',config=()=>({buy:+$('buy').value,stop:+$('stop').value,risk:+$('risk').value});
-const levels=x=>{const c=config();return {buy:x.close-c.buy*x.atr,stop:x.close-(c.buy+c.stop)*x.atr}};
-function switchTab(t){tab=t;document.querySelectorAll('.tabs button').forEach(b=>b.classList.toggle('active',b.dataset.tab===t));document.querySelectorAll('section[id^="tab-"]').forEach(el=>el.hidden=el.id!=='tab-'+t)}
-function card(x,i){let lv=levels(x);return '<button class="stock" data-ticker="'+esc(x.ticker)+'"><div class="row"><span class="symbol">'+esc(x.ticker)+'</span><span class="score">'+num(x.score,0)+'/100</span></div><div class="row"><span class="small muted">'+esc(x.name||x.theme)+'</span><span class="price">'+money(x.close,x)+'</span></div><div class="small muted">'+(x.tr_at_listed?'✓ TR-AT ISIN bestätigt':'TR-AT nicht bestätigt')+'</div><div class="row small muted"><span>Buy ≤ '+money(lv.buy,x)+'</span><span>Stop '+money(lv.stop,x)+'</span></div><div class="bars"><div style="width:'+Math.min(100,Math.max(0,x.score))+'%"></div></div></button>'}
-function detail(x){selected=x.ticker;const lv=levels(x);const risk=config().risk;const percent=100*(lv.buy-lv.stop)/lv.buy;const pos=Math.min(25,100*risk/percent);$('detail').hidden=false;$('detail').innerHTML='<div class="top"><h2>'+esc(x.ticker)+' · '+esc(x.theme)+'</h2><button class="btn outline" id="close">Schließen</button></div><div class="grid"><div class="metric"><span>Schlusskurs</span><strong>'+money(x.close,x)+'</strong></div><div class="metric"><span>Buy · Modell</span><strong class="good">'+money(lv.buy,x)+'</strong></div><div class="metric"><span>Stop · Modell</span><strong class="bad">'+money(lv.stop,x)+'</strong></div><div class="metric"><span>ATR14</span><strong>'+money(x.atr,x)+'</strong></div></div><p class="small muted">Kursdatum '+esc(x.price_date)+' · Originalkurs '+nativeMoney(x.close,x)+' · FX-Referenzdatum '+esc(x.fx_date||'fehlt')+' · Quelle '+esc(x.source)+' · 60-Tage-Momentum '+num(x.momentum*100,1)+' %</p><div class="info">Kein eindeutiger ISIN-Treffer in der offiziellen AT-Liste; Handelbarkeit ungeprüft.</div><div class="info">Modell-Positionswert: höchstens '+num(pos,1)+' % des Depots bei '+num(risk,2)+' % Stop-Risikobudget, vor Gebühren, Steuer und Slippage. Fundamentaldaten derzeit nicht verfügbar, deshalb kein Fundamental-Ranking.</div>';if(x.multifactor){const m=x.multifactor;$('detail').innerHTML+='<div class="detail"><h3>Q/V/M Pilot – kein validiertes Signal</h3><div class="grid"><div class="metric"><span>Momentum (12–2 Monate)</span><strong>'+num(m.momentum_score,1)+'</strong></div><div class="metric"><span>Quality</span><strong>'+num(m.quality_score,1)+'</strong></div><div class="metric"><span>Value</span><strong>'+num(m.value_score,1)+'</strong></div><div class="metric"><span>Gleichgewichteter Score</span><strong>'+num(m.score,1)+'</strong></div></div><p class="small muted">SEC-Anmelde-/Einreichungsdatum '+esc(m.filing_date)+' · relativ zu '+num(m.cohort_size,0)+' nur teilweise erfassten Aktien. Kapitalisierung aus Kurs × Aktienzahl des Jahresberichts näherungsweise. Keine unabhängige QVM-Backtestvalidierung.</p></div>'}if(x.fundamentals){const fin=x.fundamentals;const fmt=v=>Number.isFinite(v)?num(v/1e9,2)+' Mrd. USD':'–';$('detail').innerHTML+='<h3>SEC-Jahreszahlen (nicht Teil des Scores)</h3><div class="grid"><div class="metric"><span>Umsatz</span><strong>'+fmt(fin.annual_revenue_usd)+'</strong></div><div class="metric"><span>Wachstum gegenüber Vorjahr</span><strong>'+(Number.isFinite(fin.annual_revenue_growth_pct)?num(fin.annual_revenue_growth_pct,1)+' %':'–')+'</strong></div><div class="metric"><span>Operativer Cashflow</span><strong>'+fmt(fin.operating_cashflow_usd)+'</strong></div><div class="metric"><span>Jahresüberschuss</span><strong>'+fmt(fin.net_income_usd)+'</strong></div></div><p class="small muted">Geschäftsjahresende '+esc(fin.fiscal_year_end||'unbekannt')+', eingereicht '+esc(fin.filed||'unbekannt')+' · <a target="_blank" rel="noopener" href="'+esc(fin.source_url||'#')+'">SEC EDGAR</a></p>'}else{$('detail').innerHTML+='<div class="info warning">Für diesen Titel fehlen verifizierte Fundamentaldaten; Preis-Score nicht als fundamentale Prognose verstehen.</div>'}$('close').onclick=()=>{$('detail').hidden=true;selected=''}}
-function render(){if(!data)return;const a=data.stocks||[];const tr=data.tr_at_verification||{};$('trStatus').textContent=tr.list_loaded&&tr.mapping_loaded?('ISIN-Treffer im zuletzt geladenen Aktienbestand: '+(tr.verified||0)+' · Quelle Trade Republic AT-Wertpapierliste + unabhängige Ticker-ISIN-Zuordnung · geprüft '+(tr.checked_at?new Date(tr.checked_at).toLocaleString('de-AT'):'unbekannt')+'. Nicht zuordenbare Titel bleiben ausgeschlossen, wenn der Filter aktiv ist.'):'Keine bestätigte aktuelle Verifizierung verfügbar – bei aktiviertem Filter werden keine Aktien als TR-handelbar ausgegeben.';
-const eligible=x=>(data.version>=4?x.eligible_for_ranking:true)&&Number.isFinite(x.eur_per_unit)&&(!$('trOnly').checked||x.tr_at_listed===true);const top=a.filter(eligible).slice(0,10);$('count').textContent=a.length;$('universe').textContent=data.universe_size??'–';$('date').textContent='Abgerufen '+new Date(data.generated_at).toLocaleString('de-AT')+' · Tageskurse (nicht live)';$('fresh').textContent=Math.round((Date.now()-Date.parse(data.generated_at))/3600000)+' h';$('spy').textContent=data.benchmark?.close&&Number.isFinite(data.benchmark.eur_per_unit)?money(data.benchmark.close,data.benchmark):'EUR fehlt';
- $('coverage').textContent=(data.version>=4?'Dynamisch entdeckte Listings: ':'Älterer Datenstand: ')+(data.universe_size||0)+' bekannte Ticker, '+a.length+' mit gültigen Kursdaten ('+num(100*a.length/Math.max(1,data.universe_size||a.length),1)+' %), '+(data.checked_this_run||a.length)+' im letzten Lauf geprüft. SEC-Jahreszahlen vorhanden für '+(data.fundamental_coverage||0)+' Titel; '+(data.ranking_eligible_count||0)+' erfüllen zusätzlich das Kurs-/Liquiditätskriterium für die Top 10. Primär US-Börsen plus internationale Startauswahl. Nicht geprüfte Titel haben keinen Kurs-Score. Die Euro-Kurse sind Referenzwerte, kein aktueller TR-Handelspreis.';
- $('top').innerHTML=top.length?top.map(card).join(''):'<div class="muted">Keine überprüften Kurse verfügbar.</div>';
- const old=$('filter').value;let ts=[...new Set(a.map(x=>x.theme))].sort();$('filter').innerHTML='<option value="alle">Alle Bereiche</option>'+ts.map(t=>'<option value="'+esc(t)+'">'+esc(t)+'</option>').join('');if(ts.includes(old))$('filter').value=old;renderTable();renderNews();renderQVM();if(selected){const x=a.find(v=>v.ticker===selected);if(x)detail(x)}
- const errors=(data.errors||[]).length;$('status').className='info'+(errors?' warning':'');$('status').textContent='EUR-Richtwerte: Kurs × Referenz-FX (kein aktueller Trade-Republic-Brief-/Geldkurs). Originalkurse: Yahoo Finance / Stooq · '+(errors?errors+' derzeit nicht geladene Wertpapiere ('+(data.errors||[]).slice(0,3).map(e=>e.split(':')[0]).join(', ')+'). ':'Alle Wertpapiere geladen. ')+'Datenquelle und Abrufdatum werden dokumentiert. Top 10 ohne Fundamentaldaten und ohne Prognosevalidierung.'}
-function renderTable(){if(!data)return;let a=data.stocks.slice(),f=$('filter').value;if($('trOnly').checked)a=a.filter(x=>x.tr_at_listed===true);if(f!=='alle')a=a.filter(x=>x.theme===f);const term=($('search').value||'').trim().toLowerCase();if(term)a=a.filter(x=>(x.ticker+' '+(x.name||'')).toLowerCase().includes(term));$('listCount').textContent=a.length+' Treffer; davon maximal 150 angezeigt. Suche zum Eingrenzen nutzen.';switch($('sort').value){case 'mom':a.sort((x,y)=>y.momentum-x.momentum);break;case 'vol':a.sort((x,y)=>x.atr/x.close-y.atr/y.close);break;case 'symbol':a.sort((x,y)=>x.ticker.localeCompare(y.ticker))}
- $('table').innerHTML='<table><thead><tr><th>Ticker</th><th>Kurs</th><th>Momentum</th><th>Score</th><th>Buy</th><th>Stop</th></tr></thead><tbody>'+a.slice(0,150).map(x=>{const z=levels(x);return '<tr data-ticker="'+esc(x.ticker)+'"><td>'+esc(x.ticker)+'</td><td>'+money(x.close,x)+'</td><td>'+num(x.momentum*100,1)+' %</td><td>'+num(x.score,0)+'</td><td>'+money(z.buy,x)+'</td><td>'+money(z.stop,x)+'</td></tr>'}).join('')+'</tbody></table>'}
-function renderQVM(){const x=data.multifactor_model||{};const rows=(data.stocks||[]).filter(r=>r.multifactor&&Number.isFinite(r.eur_per_unit)&&(!$('trOnly').checked||r.tr_at_listed===true)).sort((a,b)=>b.multifactor.score-a.multifactor.score);const total=(data.stocks||[]).length;
-$('qvmStatus').textContent='SEC/Jahresabschluss + 12–2-Monats-Kursverlauf: '+(x.coverage||0)+' voll auswertbare Aktien aus '+total+' mit Kursdaten; '+rows.length+' aktuell in dieser Ansicht'+($('trOnly').checked?' (nur TR-AT bestätigt)':'')+'. '+(x.status==='experimental'?'Pilot-Rangliste verfügbar; kein unabhängiger Renditenachweis.':'Noch nicht genügend vollständige Daten für eine Rangliste. Die fehlenden Aktien werden nicht geschätzt.')+' Quelle/Filing in den Unternehmensdetails.';
-$('qvm').innerHTML= x.status==='experimental' && rows.length?rows.slice(0,10).map(r=>{const m=r.multifactor;const z=levels(r);return '<button class="stock" data-ticker="'+esc(r.ticker)+'"><div class="row"><span class="symbol">'+esc(r.ticker)+' · '+esc(r.name||'')+'</span><span class="score">'+num(m.score,1)+'/100</span></div><div class="small muted">Momentum '+num(m.momentum_score,0)+' · Quality '+num(m.quality_score,0)+' · Value '+num(m.value_score,0)+' · 10-K '+esc(m.filing_date)+'</div><div class="row"><span>'+money(r.close,r)+'</span><span class="muted small">'+(r.tr_at_listed?'TR-AT-ISIN ✓':'TR-AT ungeprüft')+'</span></div><div class="small muted">Illustratives Limit '+money(z.buy,r)+' · Stop '+money(z.stop,r)+' – alte ATR-Regeln, nicht für QVM validiert</div></button>'}).join(''):'<div class="info warning">Kein verlässliches QVM-Ranking bei der jetzigen Abdeckung. Die alte Kurs-Top-10 bleibt davon unabhängig sichtbar.</div>';}
-function renderNews(){const a=data.news||[];$('news').innerHTML=a.length?a.map(x=>'<div class="news"><a href="'+esc(x.url)+'" target="_blank" rel="noopener noreferrer">'+esc(x.title)+'</a><div class="small muted">'+esc(x.topic)+' · '+esc(x.published)+'</div></div>').join(''):'<div class="muted">Der RSS-Datenanbieter hat keine überprüfbaren Meldungen geliefert.</div>'}
-async function load(){const b=$('refresh');b.disabled=true;$('status').textContent='Lade veröffentlichten Datenstand …';try{const r=await fetch('snapshot.json?ts='+Date.now(),{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);const j=await r.json();if(!Array.isArray(j.stocks))throw Error('Noch kein Snapshot vorhanden');data=j;render()}catch(e){$('status').className='info warning';$('status').textContent='Kein veröffentlichter Snapshot: '+e.message+'. Bitte GitHub Actions/Pages überprüfen.'}finally{b.disabled=false}}
-document.querySelectorAll('.tabs button').forEach(b=>b.addEventListener('click',()=>switchTab(b.dataset.tab)));
-document.addEventListener('click',e=>{const el=e.target.closest('[data-ticker]');if(el&&data){const x=data.stocks.find(x=>x.ticker===el.dataset.ticker);if(x){switchTab('top');detail(x);$('detail').scrollIntoView({behavior:'smooth'})}}});
-$('refresh').onclick=load;$('filter').onchange=renderTable;$('sort').onchange=renderTable;$('search').oninput=renderTable;$('trOnly').onchange=()=>{if(data)render()};
-for(const id of ['buy','stop','risk'])$(id).oninput=()=>{$('buyLabel').textContent=num(+$('buy').value,2);$('stopLabel').textContent=num(+$('stop').value,2);$('riskLabel').textContent=num(+$('risk').value,2)+' %';if(data)render()};
-window.addEventListener("message",event=>{const globalFrame=document.getElementById("worldFrame");if(globalFrame&&event.origin===location.origin&&event.source===globalFrame.contentWindow&&event.data&&Object.prototype.hasOwnProperty.call(event.data,"bottleneckGlobalHeight")){const gh=Number(event.data.bottleneckGlobalHeight);if(Number.isFinite(gh)&&gh>=400&&gh<=18000)globalFrame.style.height=Math.ceil(gh+8)+"px"}const frame=document.getElementById("strategiesFrame");if(!frame||event.origin!==location.origin||event.source!==frame.contentWindow||!event.data||!Object.prototype.hasOwnProperty.call(event.data,"bottleneckResearchHeight"))return;const height=Number(event.data.bottleneckResearchHeight);if(Number.isFinite(height)&&height>=500&&height<=16000)frame.style.height=Math.ceil(height+8)+"px"});
+:root{color-scheme:dark;--bg:#0b1420;--panel:#152537;--panel2:#1c3043;--edge:#33495b;--text:#edf5fa;--muted:#9db4c3;--accent:#56c9b7;--warn:#e2bf88}
+*{box-sizing:border-box}
+html,body{margin:0;max-width:100%;overflow-x:hidden}
+body{background:radial-gradient(ellipse at 80% 0%,#173c44 0%,#0b1420 47%,#09121e 100%);color:var(--text);font:14px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:1060px;margin:auto;padding:20px 14px 90px}
+header{display:flex;gap:11px;align-items:center;margin-bottom:20px}
+.brand-icon{width:45px;height:45px;flex-shrink:0;display:grid;place-items:center;background:#1f7770;border-radius:13px;font-size:26px}
+h1{font-size:23px;line-height:1.12;letter-spacing:-.6px;margin:0}
+h2{font-size:19px;line-height:1.3;margin:0}
+p{margin:6px 0 11px}
+.muted{color:var(--muted)}.small{font-size:12px}.tiny{font-size:11px}
+a{color:#8bdecf;text-decoration-thickness:1px;text-underline-offset:3px}
+.headline{display:flex;align-items:start;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:11px}
+.status{font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:14px;min-height:18px}
+.panel{background:var(--panel);border:1px solid var(--edge);border-radius:15px;padding:16px;margin-bottom:13px}
+.summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:12px 0 16px}
+.stat{background:#1c3042;border-radius:11px;padding:11px 9px}
+.stat b{display:block;font-size:21px;font-variant-numeric:tabular-nums;line-height:1.3}
+.stat span{font-size:11px;color:var(--muted);display:block;line-height:1.35}
+.controls{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.controls .full{grid-column:1/-1}
+label.field{display:block;font-size:11px;color:var(--muted);margin-bottom:5px;font-weight:650}
+input[type="search"],select{width:100%;height:46px;min-width:0;background:#0e1e2d;border:1px solid #4c6578;border-radius:9px;color:var(--text);padding:0 11px;font:inherit}
+input[type="search"]::placeholder{color:#a4b5c0}
+input:focus-visible,select:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid #78dfca;outline-offset:2px}
+.switch{display:flex;align-items:center;gap:9px;cursor:pointer;min-height:45px;font-size:13px;font-weight:650}
+.switch input{width:21px;height:21px;accent-color:var(--accent);flex-shrink:0}
+.btn{background:#216e69;border:1px solid #49bdae;color:white;border-radius:10px;padding:9px 13px;font-size:13px;font-weight:700;min-height:43px;cursor:pointer}
+.btn.secondary{background:#1b3040;border-color:#536b7d}
+.explain{font-size:12px;color:var(--muted);line-height:1.55;margin-top:10px}
+.marks{display:flex;gap:7px;align-items:center;flex-wrap:wrap}
+.chip{font-size:11px;border-radius:40px;border:1px solid #46606c;color:#c9dce5;padding:4px 8px;white-space:nowrap}
+.chip.ok{color:#9be6d9;border-color:#418d80}
+.chip.unknown{color:#cbd5dc}
+.notice{padding:11px 12px;background:#29302d;border-left:3px solid var(--warn);border-radius:7px;font-size:12px;margin:10px 0;color:#e9dac5}
+#results{display:grid;grid-template-columns:1fr;gap:9px;margin:13px 0 0}
+.stock{background:#192c3f;border:1px solid #385166;border-radius:12px;overflow:hidden;min-width:0}
+.stock>summary{list-style:none;cursor:pointer;display:block;padding:14px;min-height:102px}
+.stock>summary::-webkit-details-marker{display:none}
+.stock-top{display:flex;justify-content:space-between;align-items:start;gap:12px}
+.stock-name{font-weight:770;font-size:15px;line-height:1.4;overflow-wrap:anywhere}
+.stock-name .ticker{color:#a5f1df}
+.stock-price{text-align:right;font-size:19px;font-weight:760;white-space:nowrap;font-variant-numeric:tabular-nums}
+.stock-sub{font-size:12px;color:var(--muted);margin-top:5px;line-height:1.5}
+.stock-bottom{display:flex;align-items:center;gap:6px;justify-content:space-between;flex-wrap:wrap;margin-top:10px}
+.momentum{color:#94d7cd;font-weight:750;font-variant-numeric:tabular-nums;font-size:13px}
+.details{padding:0 14px 14px;border-top:1px solid #365064;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.detail{padding-top:11px;min-width:0}
+.detail small{display:block;color:var(--muted);font-size:11px}
+.detail strong{display:block;margin-top:3px;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
+.disclosure{background:#142335;border:1px solid var(--edge);border-radius:12px;padding:0 14px;margin-top:18px}
+.disclosure summary{cursor:pointer;min-height:53px;display:flex;align-items:center;font-weight:700;font-size:13px}
+.disclosure-body{border-top:1px solid var(--edge);padding:12px 0 14px;color:#b8cbd7;font-size:12px}
+.disclosure-body p{margin:8px 0}
+ul{padding-left:17px}
+li{margin:7px 0}
+.footer{color:var(--muted);text-align:center;font-size:11px;margin-top:20px}
+@media(min-width:650px){
+main{padding:28px 22px 85px}
+h1{font-size:27px}
+.controls{grid-template-columns:2fr 1fr 1fr;align-items:end}
+.controls .full{grid-column:auto}
+.summary{max-width:620px}
+#results{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+</style>
+</head>
+<body><main>
+<header>
+  <div class="brand-icon" aria-hidden="true">◈</div>
+  <div>
+    <h1>Bottleneck Lab</h1>
+    <div class="small muted">Aktien weltweit · in Euro</div>
+  </div>
+</header>
+<div class="headline">
+  <div>
+    <h2>Aktien entdecken</h2>
+    <p class="muted small">Eine übersichtliche, weltweite Beobachtungsliste – kein Kaufversprechen.</p>
+  </div>
+  <button class="btn secondary" id="reload" type="button">↻ Aktualisieren</button>
+</div>
+<div id="status" class="status" aria-live="polite">Marktdaten werden geladen …</div>
+
+<div class="summary" aria-label="Marktabdeckung">
+  <div class="stat"><b id="universe">–</b><span>Entdeckte Ticker</span></div>
+  <div class="stat"><b id="quoted">–</b><span>Kurse vorhanden</span></div>
+  <div class="stat"><b id="eligible">–</b><span>Aktuell prüfbar</span></div>
+</div>
+
+<section class="panel" aria-label="Aktienauswahl">
+  <div class="controls">
+    <div class="full"><label class="field" for="search">Aktie suchen</label><input id="search" type="search" placeholder="Name oder Börsenticker" autocomplete="off"></div>
+    <div><label class="field" for="region">Region</label><select id="region"><option value="Alle">Weltweit</option></select></div>
+    <div><label class="field" for="scope">Ansicht</label>
+      <select id="scope"><option value="selection">Auswahl</option><option value="all">Alle geprüften</option></select>
+    </div>
+  </div>
+  <label class="switch" for="trOnly">
+    <input id="trOnly" type="checkbox">
+    Nur Trade Republic Österreich (ISIN-Treffer)
+  </label>
+  <div id="count" class="small muted" aria-live="polite"></div>
+  <div id="results" aria-label="Aktienkandidaten"></div>
+  <div id="empty" class="notice" hidden>Für diese Filter sind derzeit keine ausreichend geprüften Aktien vorhanden. Probiere eine andere Region, die Ansicht „Alle geprüften“ oder deaktiviere den Trade-Republic-Filter.</div>
+  <div class="explain">**Hinweis:** Die Auswahl sortiert nach historischer Kursstärke von Monat 12 bis Monat 2 und begrenzt die Zahl je Region. Das ist eine Forschungsheuristik, keine nachgewiesene Renditeprognose. Die Kurse sind EUR-Referenzwerte, keine ausführbaren Trade-Republic-Angebote.</div>
+</section>
+
+<details class="disclosure">
+  <summary>Wie wird ausgewählt? Was ist belegt?</summary>
+  <div class="disclosure-body">
+    <p><strong>Einheitliche Regel:</strong> Kursentwicklung von ungefähr 12 bis 2 Monaten vor dem Stichtag. Die jüngsten rund 42 Handelstage bleiben unberücksichtigt. Ein Titel erscheint nur mit aktuellem Kurs, EUR-Referenzwechselkurs und durchschnittlich mindestens 2 Mio. € täglichem Börsenumsatz über 20 Handelstage (und Kurs mindestens 2 €).</p>
+    <p><strong>Warum nicht mehr das alte Modell?</strong> Das frühere 60-Tage-Ranking samt ATR-Kauf- und Stop-Marken hat im bisherigen historischen Test keinen belastbaren Mehrwert belegt. Darum zeigt die App keine scheinpräzisen Kauf-/Verkaufsgrenzen mehr.</p>
+    <p><strong>Wissenschaft:</strong> Mittelfristiges Momentum ist in langfristiger akademischer Literatur untersucht. Unsere konkrete weltweite Aktienauswahl ist jedoch nicht überlebensbiasfrei oder vollständig außerhalb der Stichprobe validiert. Insbesondere sind die historischen US-Faktorportfolios kein Nachweis für die hier angezeigten Einzelaktien.</p>
+    <p><strong>Wichtig:</strong> Das globale Verzeichnis enthält mehr Aktien als täglich abgefragt werden können. Firmen ohne Kursdaten fehlen. Internationale Bilanzzahlen sind nicht flächendeckend vergleichbar, daher gibt es derzeit kein vermeintlich vollständiges weltweites Quality-/Value-Ranking.</p>
+    <p><strong>Trade Republic:</strong> Ein ISIN-Treffer in der österreichischen Instrumentenliste belegt nicht, dass eine Order heute möglich ist. Auch Geld-/Briefspanne, Gebühren, österreichische Steuer und tatsächliche Liquidität können abweichen.</p>
+    <p class="muted">Quellen: <a href="https://github.com/adanos-software/free-ticker-database" target="_blank" rel="noopener noreferrer">weltweites Aktienverzeichnis</a>, Yahoo/Stooq (tägliche Börsenkurse), Frankfurter (FX) und <a href="https://assets.traderepublic.com/assets/files/AT/Instrument_Universe_AT_en.pdf" target="_blank" rel="noopener noreferrer">Trade Republic AT</a>.</p>
+  </div>
+</details>
+<div class="footer">Bottleneck Lab · Stand der Daten siehe oben · keine Anlageberatung</div>
+</main>
+<script>
+"use strict";
+const $=id=>document.getElementById(id);
+const fmt=(n,d=0)=>Number.isFinite(n)?n.toLocaleString("de-AT",{minimumFractionDigits:d,maximumFractionDigits:d}):"–";
+const eur=n=>Number.isFinite(n)?fmt(n,2)+" €":"–";
+const add=(p,tag,text,cls)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(text!=null)e.textContent=String(text);p.appendChild(e);return e};
+let snapshot=null;
+let lastRequest=0;
+function isEligible(x){
+  return x.eligible_global_ranking===true
+    && Number.isFinite(x.momentum_12_2)
+    && Number.isFinite(x.reference_close_eur)
+    && Number.isFinite(x.avg_turnover_20d_eur);
+}
+function regionOf(x){return x.region||"Unbekannt"}
+function dataRows(){
+  const all=(snapshot?.stocks||[]).filter(isEligible);
+  const needle=$("search").value.trim().toLocaleLowerCase("de-AT");
+  const region=$("region").value;
+  const trOnly=$("trOnly").checked;
+  let base=all.filter(x=>(region==="Alle"||regionOf(x)===region)
+    &&(!trOnly||x.tr_at_listed===true)
+    &&(!needle||(x.ticker+" "+(x.name||"")).toLocaleLowerCase("de-AT").includes(needle)));
+  base.sort((a,b)=>b.momentum_12_2-a.momentum_12_2||a.ticker.localeCompare(b.ticker));
+  if($("scope").value==="selection"&&!needle){
+    const perRegion=new Map(),candidates=[];
+    for(const s of base){
+      const reg=regionOf(s);
+      if((perRegion.get(reg)||0)>=4)continue;
+      perRegion.set(reg,(perRegion.get(reg)||0)+1);
+      candidates.push(s);
+      if(candidates.length>=20)break;
+    }
+    return {shown:candidates,total:base.length,limit:true};
+  }
+  return {shown:base.slice(0,75),total:base.length,limit:false};
+}
+function makeCard(s){
+  const article=add(document.createDocumentFragment(),"details",null,"stock");
+  const head=add(article,"summary");
+  const top=add(head,"div",null,"stock-top");
+  const left=add(top,"div");
+  const title=add(left,"div",null,"stock-name");
+  const ticker=add(title,"span",s.ticker,"ticker");
+  add(title,"span"," · "+(s.name||s.ticker));
+  add(left,"div",regionOf(s)+" · "+(s.country||s.country_code||s.exchange||"Börse unbekannt"),"stock-sub");
+  add(top,"div",eur(s.reference_close_eur),"stock-price");
+  const bottom=add(head,"div",null,"stock-bottom");
+  add(bottom,"span","12–2-Momentum: "+fmt(s.momentum_12_2*100,1)+" %","momentum");
+  const flags=add(bottom,"span",null,"marks");
+  add(flags,"span",s.tr_at_listed===true?"TR-AT ISIN ✓":"TR-AT offen",
+      "chip "+(s.tr_at_listed===true?"ok":"unknown"));
+  const detail=add(article,"div",null,"details");
+  const items=[
+    ["Kursdatum",s.price_date||"unbekannt"],
+    ["EUR-Wechselkursdatum",s.fx_date||"unbekannt"],
+    ["Börsenumsatz Ø 20 Tage",eur(s.avg_turnover_20d_eur)+"/Tag"],
+    ["Originalkurs",fmt(s.close,2)+" "+(s.currency||"")],
+    ["Kursquelle",s.source||"unbekannt"],
+    ["Börse",s.exchange||"unbekannt"]
+  ];
+  if(s.tr_at_listed===true && s.tr_isin)items.push(["Trade Republic ISIN",s.tr_isin]);
+  for(const [name,val] of items){
+    const col=add(detail,"div",null,"detail");
+    add(col,"small",name);
+    add(col,"strong",val);
+  }
+  return article;
+}
+function render(){
+  if(!snapshot)return;
+  const {shown,total,limit}=dataRows();
+  $("count").textContent=fmt(total)+" passende Titel · "+
+    fmt(shown.length)+" angezeigt"+(limit?" (max. 4 pro Region)":" (max. 75)");
+  const el=$("results");el.replaceChildren();
+  for(const stock of shown)el.appendChild(makeCard(stock));
+  $("empty").hidden=shown.length>0;
+}
+function updateRegions(d){
+  const options=Object.keys(d.regions_universe||{});
+  const ranked=options.filter(x=>(d.regions_quoted||{})[x]>0).sort((a,b)=>a.localeCompare(b,"de"));
+  $("region").replaceChildren();
+  const all=add($("region"),"option","Weltweit");all.value="Alle";
+  for(const r of ranked){const opt=add($("region"),"option",r);opt.value=r}
+}
+async function load(){
+  const run=++lastRequest;
+  $("status").textContent="Lade letzte verfügbare Kurse …";
+  $("reload").disabled=true;
+  try{
+    const response=await fetch("snapshot.json?t="+Date.now(),{cache:"no-store"});
+    if(!response.ok)throw Error("HTTP "+response.status);
+    const data=await response.json();
+    if(!Array.isArray(data.stocks)||typeof data.generated_at!=="string")throw Error("Ungültiger Datensatz");
+    if(run!==lastRequest)return;
+    snapshot=data;
+    $("universe").textContent=fmt(data.universe_size);
+    $("quoted").textContent=fmt(data.scanned_tickers);
+    $("eligible").textContent=fmt(data.eligible_count);
+    const timestamp=Date.parse(data.generated_at);
+    const old=!Number.isFinite(timestamp)||(Date.now()-timestamp)>48*3600000;
+    $("status").textContent="Kursstand: "+(Number.isFinite(timestamp)?new Date(timestamp).toLocaleString("de-AT"):"unbekannt")
+      +(old?" · Achtung: Daten älter als 48 Stunden":"")+" · kein Echtzeitfeed";
+    updateRegions(data);
+    render();
+  }catch(err){
+    $("status").textContent="Marktdaten derzeit nicht verfügbar: "+err.message+". Keine erfundenen Kurse.";
+    if(!snapshot){$("empty").hidden=false;$("results").replaceChildren()}
+  }finally{if(run===lastRequest)$("reload").disabled=false}
+}
+for(const id of ["region","scope","trOnly","search"]){
+  $(id).addEventListener(id==="search"?"input":"change",render);
+}
+$("reload").addEventListener("click",load);
 load();
-</script></body></html>
+</script>
+</body></html>
