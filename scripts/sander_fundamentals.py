@@ -14,12 +14,13 @@ from datetime import date,datetime,timezone
 from concurrent.futures import ThreadPoolExecutor
 from itertools import zip_longest
 from urllib.request import Request,urlopen
+from growth_radar import sec_quarters,relay_quarters,comparable_quarters
 
 TICKERS_URL="https://www.sec.gov/files/company_tickers.json"
 FACTS_BASE="https://data.sec.gov/api/xbrl/companyfacts/CIK"
 USER_AGENT="Bottleneck Lab nonprofit academic research (contact: bottleneck-lab@github.com)"
 DEFAULT_MAX=60
-SCHEMA_VERSION=2
+SCHEMA_VERSION=3
 # Research heuristics, NOT rules personally specified by Beate Sander.
 MIN_DISCOUNT=.15
 MAX_DISCOUNT=.55
@@ -187,6 +188,7 @@ def fundamental_quality(facts,asof=None):
     if not annual:return None
     annual["source"]="SEC EDGAR 10-K XBRL (US-GAAP)"
     annual["cik"]=int(facts.get("cik",0)) if str(facts.get("cik","")).isdigit() else None
+    annual["quarterly"]=sec_quarters(facts,asof)
     return annual
 
 def download_fundamental(cik):
@@ -268,8 +270,19 @@ def tgm_annual_quality(ticker):
             ("liabilities","totalLiabilities"),("current_assets","totalCurrentAssets"),
             ("current_liabilities","totalCurrentLiabilities")):
             annual[key]=value(balance,provider_key)
-        return _derived_metrics(annual)
+        annual=_derived_metrics(annual)
+        annual["quarterly"]=tgm_quarterly(ticker)
+        return annual
     return None
+
+def tgm_quarterly(ticker):
+    """One bounded, attributed quarterly income request; no estimates."""
+    if not TICKER_RE.fullmatch(ticker):return {}
+    try:
+        raw=get_json(TGM_ROOT+ticker+"/income-statement?period=quarterly&years=3",
+                     timeout=14,max_bytes=1800000)
+        return relay_quarters(raw,ticker)
+    except Exception:return {}
 
 def sander_screen(stock,fund):
     """Independent price dip + filed fundamentals; ZERO if no valid fundamentals."""
@@ -297,16 +310,18 @@ def enrich_stocks(stocks,prior,maximum=DEFAULT_MAX):
     """
     old={s.get("ticker"):s for s in prior.get("stocks",[]) if isinstance(s,dict)}
     today=datetime.now(timezone.utc).date()
-    candidates=[s for s in stocks if s.get("eligible_global_ranking") is True
+    candidates=[s for s in stocks if (s.get("eligible_global_ranking") is True or s.get("eligible_liquid_ranking") is True)
                 and isinstance(s.get("ticker"),str) and TICKER_RE.fullmatch(s["ticker"])]
     by_dip=sorted((s for s in candidates if _number(s.get("drawdown_252d"))
         and -.55<=s["drawdown_252d"]<=-.15),
         key=lambda s:(abs(s["drawdown_252d"]+.30),s["ticker"]))
     by_momentum=sorted(candidates,key=lambda s:(
         -s["momentum_12_2"] if _number(s.get("momentum_12_2")) else 999,s["ticker"]))
+    by_growth=sorted(candidates,key=lambda s:(
+        -s["return_63d"] if _number(s.get("return_63d")) else 999,s["ticker"]))
     ordered=[]
     seen=set()
-    for pair in zip_longest(by_momentum,by_dip):
+    for pair in zip_longest(by_momentum,by_dip,by_growth):
         for stock in pair:
             if stock and stock["ticker"] not in seen:
                 ordered.append(stock)
@@ -321,13 +336,19 @@ def enrich_stocks(stocks,prior,maximum=DEFAULT_MAX):
             except (KeyError,ValueError,TypeError):pass
         if previous.get("fundamentals_checked_at"):
             stock["fundamentals_checked_at"]=previous["fundamentals_checked_at"]
+        if previous.get("fundamentals_schema_checked"):
+            stock["fundamentals_schema_checked"]=previous["fundamentals_schema_checked"]
     targets=[]
     for stock in ordered:
         cached=stock.get("fundamentals") or {}
-        if cached.get("schema_version")==SCHEMA_VERSION:continue
+        try:cache_age=(today-date.fromisoformat(cached.get("checked_at",""))).days
+        except (ValueError,TypeError):cache_age=999
+        if cached.get("schema_version")==SCHEMA_VERSION and 0<=cache_age<=7:continue
         try:
             attempted=(today-date.fromisoformat(stock.get("fundamentals_checked_at", ""))).days
-            if 0<=attempted<2:continue
+            already_upgraded=(cached.get("schema_version")==SCHEMA_VERSION
+                              or stock.get("fundamentals_schema_checked")==SCHEMA_VERSION)
+            if (not cached or already_upgraded) and 0<=attempted<2:continue
         except (TypeError,ValueError):pass
         targets.append(stock)
         if len(targets)>=max(0,maximum):break
@@ -344,6 +365,9 @@ def enrich_stocks(stocks,prior,maximum=DEFAULT_MAX):
         try:
             if cik is not None:fund=download_fundamental(cik)
         except Exception:pass
+        if fund is not None and not comparable_quarters(fund.get("quarterly")):
+            quarterly=tgm_quarterly(ticker)
+            if comparable_quarters(quarterly):fund["quarterly"]=quarterly
         if fund is None:
             try:fund=tgm_annual_quality(ticker)
             except Exception:pass
@@ -353,6 +377,7 @@ def enrich_stocks(stocks,prior,maximum=DEFAULT_MAX):
     with ThreadPoolExecutor(max_workers=3) as pool:
         for stock,fund in zip(targets,pool.map(load,targets)):
             stock["fundamentals_checked_at"]=today.isoformat()
+            stock["fundamentals_schema_checked"]=SCHEMA_VERSION
             if fund is not None:
                 fund["checked_at"]=today.isoformat()
                 stock["fundamentals"]=fund

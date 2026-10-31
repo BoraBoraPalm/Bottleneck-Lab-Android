@@ -94,6 +94,7 @@ class SandScreenTest(unittest.TestCase):
         stocks=[share(),{**share(drop=-.22),"ticker":"NOSEC","source":"Yahoo Finance"}]
         with patch.object(s,"ticker_map",return_value={"AAPL":320193}),\
              patch.object(s,"download_fundamental",return_value=verified),\
+             patch.object(s,"tgm_quarterly",return_value={}),\
              patch.object(s,"tgm_annual_quality",return_value=None):
             result=s.enrich_stocks(stocks,old,maximum=5)
         self.assertGreater(stocks[0]["sander_score"],0)

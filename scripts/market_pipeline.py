@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Bottleneck Lab: one worldwide price-only screening feed.
+"""Bottleneck Lab: worldwide price factors and explicit SEC-based research screens.
 
 No scores fitted on historical winners, no pseudo-optimal ATR orders, no
-US-only fundamentals presented as global. The only ranked metric is observed
-12–2-month price momentum. This is a RESEARCH screen, not a return forecast.
+US-only fundamentals presented as global. This is a RESEARCH screen, not a
+return forecast. Missing observations cannot qualify for fundamental screens.
 """
 import csv
 import io
@@ -23,6 +23,7 @@ from tr_at_universe import apply_tr_filter
 from trade_guidance import assign_decision,market_risk_from_quote
 from chart_history import chart_is_current,write_chart,chart_count
 from sander_fundamentals import enrich_stocks as update_sander_fundamentals
+from growth_radar import enrich_growth
 
 PAGES="https://boraborapalm.github.io/Bottleneck-Lab-Android/snapshot.json"
 NASDAQ="https://www.nasdaqtrader.com/dynamic/SymDir/nasdaqlisted.txt"
@@ -116,7 +117,8 @@ CACHE_FIELDS=(
   "avg_dollar_turnover_20d","avg_local_turnover_20d","last_checked_at",
   "sma200_ratio","sma200_native","crash_21_level_native","crash_peak_level_native","return_21d","drawdown_252d",
   "atr14_native","crash_warning","correction_warning",
-  "risk_reference_native","context_basis"
+  "risk_reference_native","context_basis","return_63d","return_126d",
+  "breakout_63d_ratio","turnover_ratio_20d","growth_price_basis"
 )
 def cached_quotes(old,known):
     existing={}
@@ -146,6 +148,9 @@ def requested_batch(known,cache):
                  key=lambda x:-float(x["momentum_12_2"]))[:15]
     missing_risk=sorted((s["ticker"] for s in cache.values()
         if s.get("momentum_12_2") is not None and not str(s.get("context_basis") or "").startswith("Yahoo adjusted OHLC")))[:60]
+    missing_growth=sorted((s for s in cache.values()
+        if s.get("source")=="Yahoo Finance" and not s.get("growth_price_basis")),
+        key=lambda s:-(s.get("momentum_12_2") or 0))[:60]
     # Prioritize attractive researched symbols lacking static history.
     # They will get charts without re-fetching all 43k directory entries.
     missing_charts=sorted(
@@ -155,7 +160,7 @@ def requested_batch(known,cache):
         key=lambda s:-s["momentum_12_2"])[:85]
     return list(dict.fromkeys(
         core+[x["ticker"] for x in extra]+missing_risk+
-        [x["ticker"] for x in missing_charts]))
+        [x["ticker"] for x in missing_charts]+[x["ticker"] for x in missing_growth]))
 
 def enrich(meta,raw,ticker):
     row=dict(raw)
@@ -228,10 +233,14 @@ def main():
         try:dated=date.fromisoformat(s.get("price_date",""))
         except (ValueError,TypeError):dated=None
         recent=bool(dated and 0<=(now.date()-dated).days<=7)
-        s["eligible_global_ranking"]=bool(valid_fx and recent and eur>=2
-            and s["avg_turnover_20d_eur"]>=2000000
+        s["eligible_liquid_ranking"]=bool(valid_fx and recent and eur>=2
+            and s["avg_turnover_20d_eur"]>=2000000)
+        s["eligible_global_ranking"]=bool(s["eligible_liquid_ranking"]
             and isinstance(momentum,(int,float)) and math.isfinite(momentum))
     sander_status=update_sander_fundamentals(stocks,old)
+    growth_status=enrich_growth(stocks,{
+        "date":(market_quote or {}).get("price_date"),
+        **{k:(market_quote or {}).get(k) for k in ("return_63d","return_126d","growth_price_basis")}})
     for stock in stocks:
         assign_decision(stock,market_context)
         stock["chart_available"]=chart_is_current(stock["ticker"],stock.get("price_date"))
@@ -241,12 +250,13 @@ def main():
     have=Counter(s.get("region") or "Unbekannt" for s in stocks)
     eligible=Counter(s.get("region") or "Unbekannt" for s in stocks if s["eligible_global_ranking"])
     output={
-        "version":10,
+        "version":11,
         "fundamentals_info":{"source":"SEC-XBRL annual USD statements; direct or TGMCharts",
             "coverage":"Primarily US filers; verified partial reports remain partial",
             "with_annual_data":sander_status["with_verified_fundamentals"],
             "colour_method":"Own metric-level orientation thresholds, sector-dependent; no overall stock rating"},
         "sander_research_status":sander_status,
+        "growth_research_status":growth_status,
         "chart_data_info":{"on_demand":True,"files":chart_count(),"written_this_run":charts_written,
                            "default_period":"3M","max_history":"up to 10y",
                            "reference_currency":"original listing currency"},

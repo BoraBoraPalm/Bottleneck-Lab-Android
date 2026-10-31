@@ -23,7 +23,7 @@ Es werden **keine tatsächlichen Käufe, Stop-Loss-Orders oder künftige Rendite
 
 ## Hoch-Tief-Mut-Screen: Daten, Grenzen, Rechte
 
-Datenquelle: [SEC EDGAR CompanyFacts API](https://www.sec.gov/search-filings/edgar-application-programming-interfaces), XBRL und offizielle SEC-Ticker/CIK-Zuordnung. Jährliche 10-K-/10-K/A-Berichte werden auf **Fiskaljahr-Geschäftszahlen (335–385 Tage)** geprüft, mit echtem Filing-Datum, Geschäftsjahresende und vergleichbarer Einheit USD. Quartalsdaten, unbestätigte Drittanbieter-Schätzungen sowie Unternehmen ohne Finanznachweise fallen heraus. Um API-Grenzen einzuhalten, werden pro Aktualisierung nur bis zu 60 SEC-Unternehmen geprüft und Werte 28 Tage zwischengespeichert. Die Abdeckung wächst mit Datenaktualisierungen. Ist die SEC nicht erreichbar, werden keine erfundenen Fundamentalwerte ausgegeben.
+Datenquelle: [SEC EDGAR CompanyFacts API](https://www.sec.gov/search-filings/edgar-application-programming-interfaces), XBRL und offizielle SEC-Ticker/CIK-Zuordnung. Jährliche 10-K-/10-K/A-Berichte werden auf **Fiskaljahr-Geschäftszahlen (335–385 Tage)** geprüft, mit echtem Filing-Datum, Geschäftsjahresende und vergleichbarer Einheit USD. Für diesen Sander-Filter fallen Quartalsdaten, unbestätigte Drittanbieter-Schätzungen sowie Unternehmen ohne Finanznachweise heraus. Frühwachstum nutzt separat geprüfte Quartalsdaten. Um API-Grenzen einzuhalten, werden pro Aktualisierung nur bis zu 60 SEC-Unternehmen geprüft und verifizierte Daten nach sieben Tagen erneut zur Aktualisierung vorgesehen (bestehende Daten bei vorübergehendem Ausfall höchstens 28 Tage weitergeführt). Die Abdeckung wächst mit Datenaktualisierungen. Ist die SEC nicht erreichbar, werden keine erfundenen Fundamentalwerte ausgegeben.
 
 **Beate Sander persönlich beschrieb** breite Diversifikation, langfristiges Halten, antizyklische Nachkäufe gut aufgestellter Unternehmen und gelegentliche Teilverkäufe. Interviews: [herCAREER](https://www.her-career.com/beate-sander-ich-koenne-ja-auch-auf-kreuzfahrten-unterwegs-sein-aber-ich-arbeite-lieber-so-viel-wie-eine-junge-startup-gruenderin/) und [Trading-Ideen](https://www.trading-ideen.de/wordpress/interview-mit-beate-sander/). Die Prozentgrenzen im Screener stammen **von uns**, nicht aus einer von Sander veröffentlichten festen Formel.
 
@@ -65,9 +65,9 @@ Berichtsdatierungen zeigen auch keine Zahlen. Teilweise verfügbare Jahreszahlen
 bleiben sichtbar, qualifizieren aber nur bei Erfüllung **aller** bisherigen
 Anforderungen für den unveränderten Sander-Filter.
 
-Die Datenabfrage rotiert über gewöhnliche Momentumaktien **und** Sander-Kandidaten,
+Die Datenabfrage rotiert über Momentumaktien, Sander-Kandidaten **und** Aktien mit hoher aktueller Dreimonats-Kursstärke,
 mit maximal 60 Unternehmensabfragen je Aktualisierung, höchstens drei parallel,
-28 Tagen Cache für verifizierte Daten und zwei Tagen Abstand nach erfolglosen
+sieben Tagen Aktualisierungsintervall für verifizierte Daten (höchstens 28 Tage Ausfallreserve) und zwei Tagen Abstand nach erfolglosen
 Abfragen. Neue Bilanzfelder werden auch bei älteren Caches nachgeladen. Die
 aktuelle SEC-/TGMCharts-Quelle umfasst hauptsächlich US-Unternehmen; bei
 nicht abgedeckten internationalen Aktien steht ein ausdrücklicher Hinweis.
@@ -75,6 +75,63 @@ nicht abgedeckten internationalen Aktien steht ein ausdrücklicher Hinweis.
 Grundlagen und Definitionen: [SEC – Geschäftsberichte lesen](https://www.sec.gov/reportspubs/investor-publications/investorpubsbegfinstmtguidehtm.html)
 und [SEC – XBRL-APIs](https://www.sec.gov/search-filings/edgar-application-programming-interfaces).
 Die Farbgrenzen stammen von uns, nicht von der SEC oder Beate Sander.
+
+## Frühwachstum / Multibagger-Kandidaten (zusätzliche Checkbox)
+
+Die Option funktioniert allein oder im bestehenden gleichgewichteten Strategie-Mix.
+Sie ist **eine eigene experimentelle Vorauswahl**, keine vollständige CAN-SLIM-
+Umsetzung und kein kalibrierter „10×-Detektor“. Standard bleibt Momentum.
+
+Die neue Vorauswahl verwendet drei aufeinanderfolgende diskrete Quartale samt
+passenden Vorjahresquartalen: Umsatzwachstum zuletzt mindestens 20 %, Mittel der
+beiden vorherigen Raten mindestens 10 % und letzte Beschleunigung mindestens
+2 Prozentpunkte. Das jüngste Quartal darf höchstens 180 Tage alt sein.
+Zusätzlich erforderlich: positiver operativer Jahres-Cashflow (Jahresende
+höchstens 550 Tage alt), letzte Quartals-Nettomarge mindestens null **oder**
+Verbesserung um mindestens 3 Prozentpunkte gegenüber dem Vorjahresquartal,
+positive 63-Tage-Kursrendite, Outperformance gegenüber ACWI und höchstens
+15 % Abstand unter dem vorherigen 63-Tage-Schlusshoch. Erkennbare Banken,
+Versicherungen und REITs werden aus dieser allgemeinen Cashflow-Regel ausgeschlossen.
+
+| Getrennter Regelwert | Gewicht im Frühwachstumswert | Verwendete Angaben |
+| --- | --- | --- |
+| Wachstum | 45 % | Letzte Umsatzrate 50 %, Dreiquartalsmittel 30 %, letzte Beschleunigung 20 % |
+| Finanzielle Qualität | 30 % | Letzte Nettomarge 40 %, deren Änderung gegenüber dem Vorjahresquartal 20 %, operative Jahres-Cashflow-Marge 40 % |
+| Kursbestätigung | 25 % | Relative 63-/126-Tage-Rendite gegenüber ACWI 35/25 %, Abstand zum vorherigen 63-Tage-Hoch 25 %, relativer letzter Handelsumsatz 15 % |
+
+Die festen linearen Abbildungsgrenzen auf 0–100 stehen vollständig in der
+aufklappbaren Methodik der App und in `scripts/growth_radar.py`. Diese Grenzen
+wurden **nicht** auf bekannte Gewinner optimiert. Ein bereits gestiegener Kurs
+ist allein keine Qualifikation. Der gemischte Strategierang verwendet weiterhin
+Rangprozente; der darunter gezeigte Frühwachstums-Regelwert ist kein Rangprozent
+und keine Gewinnwahrscheinlichkeit.
+
+Kursdaten benötigen 127 gültige split-/dividendenbereinigte Handelstage; daher
+können auch jüngere Börsennotierungen ohne 12–2-Momentum erscheinen. Sobald
+Momentum zusätzlich gewählt wird, gilt dessen volle Historienanforderung.
+Aktien- und ACWI-Kursdatum müssen übereinstimmen. Der Handelsumsatzvergleich
+verwendet Kurs × Aktienvolumen, um reine Aktiensplits nicht als Volumenexplosion
+zu interpretieren. Neue Kursfelder werden aus alten Kurs-Caches nachgeladen.
+
+Quartalsdaten kommen aus **SEC EDGAR 10-K/10-Q USD-XBRL** oder dem bereits
+verwendeten [TGMCharts-Relay](https://tgmcharts.com/developers/docs/statements),
+mit Datum und Provenienz je verwendetem Wert. Direkte SEC-Daten benötigen
+70–105 Tage Laufzeit; Halbjahres-, Jahres- und YTD-Beträge sind keine Quartale.
+Q4-/YTD-Ableitungen des Relays sind ausdrücklich gekennzeichnet und benötigen
+die dokumentierte Herkunft der zwei Eingangsfilings. Vorjahresvergleiche
+benötigen denselben Umsatz-Tag und vergleichbare Quartalslängen. Veröffentlichungen
+nach dem letzten Aktienkurs werden nicht verwendet. Die Pipeline ist damit
+weiterhin **kein Point-in-Time-Backtest**; spätere, bereits veröffentlichte
+Restatements können heutige Vergleiche verändern.
+
+Bewertung, Gewinnüberraschungen/Prognoseanhebungen, Wettbewerbsvorteil und
+Aktienverwässerung bleiben ausdrücklich **ungeprüft**, ohne ersatzweise Punkte.
+Die Cashflow-Regel ist keine vollständige Bilanz-/Finanzierungsprüfung und erfasst
+keine Unternehmen mit negativem Jahres-Cashflow. Die Abdeckung ist überwiegend
+US-beschränkt und wächst in den begrenzten Aktualisierungsläufen. Fehlende
+Daten schließen einen Titel aus diesem Filter aus. Ein überlebensbiasfreier
+historischer Test mit damals verfügbaren Daten bleibt erforderlich, bevor ein
+konkreter Renditevorteil behauptet werden könnte.
 
 ## Kursdiagramme in jeder Aktienkarte
 

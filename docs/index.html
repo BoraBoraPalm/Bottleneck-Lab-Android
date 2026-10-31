@@ -40,6 +40,18 @@ a{color:#8bdecf;text-decoration-thickness:1px;text-underline-offset:3px}
 .strategy-choice:has(input:checked){border-color:#63bcb0;background:#1c4147}
 .strategy-summary{font-size:12px;color:#c7e4e0;margin-top:9px;line-height:1.5}
 .strategy-score{font-size:12px;font-weight:700;color:#9ce8dd}
+.growth-components{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin:10px 0}
+.growth-component{padding:9px;border:1px solid #476d83;border-radius:9px;background:#153347;min-width:0}
+.growth-component small,.growth-component strong{display:block;overflow-wrap:anywhere}
+.growth-component small{font-size:11px;color:var(--muted)}
+.growth-component strong{font-size:17px;margin-top:4px;color:#a6d6ff}
+.growth-pill{background:#193c54;color:#b5dcff;border-color:#48748b}
+.growth-status{font-size:13px;color:#b5dcff}
+.growth-table-wrap{overflow-x:auto}
+.growth-table{width:100%;border-collapse:collapse;font-size:12px}
+.growth-table caption{text-align:left;color:var(--muted);font-size:11px;padding:7px 0}
+.growth-table th,.growth-table td{text-align:left;padding:8px 6px;border-bottom:1px solid #345264;white-space:nowrap}
+.growth-facts{padding:10px 0}
 .factor-detail{font-size:11px;color:var(--muted)}
 @media(min-width:650px){.strategy-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 
@@ -197,9 +209,13 @@ h1{font-size:27px}
         <input type="checkbox" id="factorSander" data-factor="sander">
         <span><strong>Hoch-Tief-Mut · Sander-inspiriert</strong><span>Qualitätsunternehmen nach deutlichem Kursrückgang · SEC-Fundamentaldaten</span></span>
       </label>
+      <label class="strategy-choice" for="factorGrowth">
+        <input type="checkbox" id="factorGrowth" data-factor="growth">
+        <span><strong>Frühwachstum / Multibagger-Kandidaten</strong><span>Beschleunigtes Quartalswachstum + finanzielle Qualität + Kursbestätigung · experimentell</span></span>
+      </label>
     </div>
     <div id="strategySummary" class="strategy-summary" role="status">12–2-Monats-Momentum aktiv. Jede zusätzliche Auswahl wird gleichgewichtet kombiniert.</div>
-    <div class="small muted">Qualitätsprüfung über echte SEC-Geschäftsberichte: bisher hauptsächlich US-Unternehmen. Nur Aktien mit verifizierten Daten können beim Sander-Filter erscheinen. Die Strategiekombination ist nicht als renditesteigernd validiert; Kauf-/Verkaufswarnungen bleiben eigene Regeln.</div>
+    <div class="small muted">Unternehmensprüfung über echte SEC-Berichte: bisher hauptsächlich US-Unternehmen. Sander und Frühwachstum berücksichtigen nur Titel mit den jeweils nötigen Nachweisen. Frühwachstum zeigt drei getrennte Regelwerte, keine Wahrscheinlichkeit einer Kursexplosion. Die Strategiekombination ist nicht als renditesteigernd validiert; Kauf-/Verkaufswarnungen bleiben eigene Regeln.</div>
   </div>
   <label class="switch" for="trOnly">
     <input id="trOnly" type="checkbox">
@@ -212,14 +228,17 @@ h1{font-size:27px}
   <div id="count" class="small muted" aria-live="polite"></div>
   <div id="results" aria-label="Aktienkandidaten"></div>
   <div id="empty" class="notice" hidden>Für diese Filter sind derzeit keine ausreichend geprüften Aktien vorhanden. Probiere eine andere Region, die Ansicht „Alle geprüften“ oder deaktiviere den Trade-Republic-Filter.</div>
-  <div class="explain"><strong>Hinweis:</strong> Bei mehreren aktivierten Faktoren werden gleichgewichtete Rangprozente (0–100) zu einem gemeinsamen Score kombiniert. Bei der Sander-Option müssen Gewinn, operativer Cashflow und Umsatzentwicklung aus einem Geschäftsbericht überprüfbar sein und ein deutlicher Kursrückgang vorliegen. Fehlen Daten, wird die Aktie ausgeschlossen – nicht künstlich aufgefüllt. Standardmäßig bleibt ausschließlich das 12–2-Monats-Momentum aktiv; die historische Mehr-Rendite einer Kombination ist nicht belegt. Kauf-/Ausstiegswarnungen sind separate, nicht validierte Kursregeln. EUR-Kurse sind keine ausführbaren Trade-Republic-Angebote.</div>
+  <div class="explain"><strong>Hinweis:</strong> Bei mehreren aktivierten Faktoren werden gleichgewichtete Rangprozente (0–100) zu einem gemeinsamen Score kombiniert. Bei der Sander-Option müssen Gewinn, operativer Cashflow und Umsatzentwicklung aus einem Geschäftsbericht überprüfbar sein und ein deutlicher Kursrückgang vorliegen. Frühwachstum benötigt drei vergleichbare Quartale, beschleunigtes Umsatzwachstum, positiven Jahres-Cashflow und erste Kursstärke. Fehlende Daten schließen einen Titel aus dem gewählten Mix aus. Standardmäßig bleibt ausschließlich das 12–2-Monats-Momentum aktiv; die historische Mehr-Rendite einer Kombination ist nicht belegt. Kauf-/Ausstiegswarnungen sind separate, nicht validierte Kursregeln. EUR-Kurse sind keine ausführbaren Trade-Republic-Angebote.</div>
 </section>
 
 <details class="disclosure">
   <summary>Wie wird ausgewählt? Was ist belegt?</summary>
   <div class="disclosure-body">
-    <p><strong>Faktoren kombiniert:</strong> Kursentwicklung von ungefähr 12 bis 2 Monaten vor dem Stichtag (Momentum), 200-Tage-Durchschnittsabstand (Trend) und umgekehrte relative ATR(14)-Schwankung (ruhigere Kurse). Jeder ausgewählte Faktor wird in eine Rangzahl von 0 bis 100 umgerechnet und dann gleichgewichtet gemittelt. Bei nur einer Auswahl entscheidet ausschließlich dieser Faktor. Dies ist eine transparente Heuristik, <strong>kein backgetestetes Mehrfaktormodell</strong>. Unsere frühere Trend-/ATR-Kombination zeigte keinen verlässlich höheren Gewinn.</p><p><strong>Handelbarkeit:</strong> Ein Titel erscheint nur mit aktuellem Kurs, EUR-Referenzwechselkurs und durchschnittlich mindestens 2 Mio. € täglichem Börsenumsatz über 20 Handelstage (Kurs mindestens 2 €). Auch bei anderen Faktorwahlen benötigt der derzeitige Datensatz vollständige Momentumhistorie.</p>
+    <p><strong>Faktoren kombiniert:</strong> Kursentwicklung von ungefähr 12 bis 2 Monaten vor dem Stichtag (Momentum), 200-Tage-Durchschnittsabstand (Trend) und umgekehrte relative ATR(14)-Schwankung (ruhigere Kurse). Jeder ausgewählte Faktor wird in eine Rangzahl von 0 bis 100 umgerechnet und dann gleichgewichtet gemittelt. Bei nur einer Auswahl entscheidet ausschließlich dieser Faktor. Dies ist eine transparente Heuristik, <strong>kein backgetestetes Mehrfaktormodell</strong>. Unsere frühere Trend-/ATR-Kombination zeigte keinen verlässlich höheren Gewinn.</p><p><strong>Handelbarkeit:</strong> Ein Titel erscheint nur mit aktuellem Kurs, EUR-Referenzwechselkurs und durchschnittlich mindestens 2 Mio. € täglichem Börsenumsatz über 20 Handelstage (Kurs mindestens 2 €). Frühwachstum kann allein schon mit 127 Handelstagen Kurshistorie funktionieren. Wird Momentum kombiniert, werden dessen vollständige 253 Handelstage benötigt.</p>
     <p><strong>Sander-inspirierter Kandidatenfilter:</strong> Die originale Hoch-Tief-Mut-Strategie von Beate Sander kombiniert breite Streuung, langfristiges Halten, Käufe überzeugender Unternehmen nach Kursrückgängen und gelegentliche Teilverkäufe. Wir automatisieren <strong>nur eine vereinfachte Vorauswahl</strong>, nicht ihre vollständige Strategie. Anforderungen: 15–55 % unter dem 252-Handelstage-Hoch, positiver Jahresgewinn, positiver operativer Cashflow, mindestens 3 % Nettomarge und Umsatzwachstum gegenüber dem vorigen Geschäftsjahr von mindestens −10 %. Der experimentelle Score gewichtet Kursrückgang zu 50 %, Gewinnmarge zu 25 % und Umsatzentwicklung zu 25 %. Finanzdaten kommen aus US-SEC-10-K-Geschäftsberichten, direkt oder über <a href="https://tgmcharts.com/" target="_blank" rel="noopener noreferrer">TGMCharts (SEC-XBRL-Daten)</a>. Deren Abdeckung ist nicht weltweit vollständig. Ein starker Rückgang bedeutet <strong>nicht automatisch eine günstige Unternehmensbewertung</strong>. KGV, Dividendenausschüttungen, Langfristdepot und Teilverkäufe sind nicht modelliert. Bilanzquoten werden separat als Fundamentaldaten angezeigt; sie ändern diesen Filter nicht. Auch mit mehreren Strategien ist keinerlei Überrendite belegt.</p>
+    <p><strong>Frühwachstum / Multibagger-Kandidaten:</strong> Eine eigene experimentelle Vorauswahl, von Wachstum-plus-Momentum-Ansätzen angeregt; keine vollständige CAN-SLIM-Umsetzung und keine Vorhersage einer Kursvervielfachung. Benötigt werden drei aufeinanderfolgende diskrete Quartale mit passenden Vorjahresquartalen (SEC 10-K/10-Q, USD), jüngstes Quartalsende höchstens 180 Tage alt. Umsatzwachstum zuletzt ≥20 %, im Mittel der beiden vorherigen Quartale ≥10 %, Beschleunigung gegenüber dem vorigen Quartal ≥2 Prozentpunkte. Zusätzlich: positiver operativer Jahres-Cashflow, letzte Nettomarge ≥0 oder Verbesserung um ≥3 Prozentpunkte zum Vorjahresquartal, positive 63-Tage-Kursrendite, stärker als ACWI und höchstens 15 % unter dem vorherigen 63-Tage-Schlusshoch. Der verwendete Jahresbericht darf höchstens 550 Tage alt sein; die verwendeten Filings dürfen nicht nach dem letzten beobachteten Aktienkurs liegen. Banken, Versicherungen und REITs werden bei erkennbarer Branche aus dieser allgemeinen Cashflow-Regel ausgeschlossen.</p>
+    <p><strong>Drei getrennte Regelwerte:</strong> Wachstum (45 % Gesamtgewicht), finanzielle Qualität (30 %) und Kursbestätigung (25 %). Innerhalb Wachstum: letzte Umsatzrate 50 %, Mittelwert der drei Umsatzraten 30 %, letzte Beschleunigung 20 %. Qualität: letzte Nettomarge 40 %, Margenänderung zum Vorjahresquartal 20 %, operative Jahres-Cashflow-Marge 40 %. Kursbestätigung: relative 63-Tage-Rendite gegenüber ACWI 35 %, relative 126-Tage-Rendite 25 %, Abstand zum vorherigen 63-Tage-Hoch 25 %, letzter Handelsumsatz relativ zum vorherigen 20-Tage-Mittel 15 %. Jeder Messwert wird linear zwischen festen Unter-/Obergrenzen auf 0–100 abgebildet und dort begrenzt: Wachstum 0–60 %, Dreiquartalsmittel 0–40 %, Beschleunigung 0–20 Prozentpunkte; Nettomarge −10–20 %, Margenänderung −5–10 Prozentpunkte, Cashflow-Marge 0–25 %; relative Kursstärke −10–30 % / −10–50 %, Hochabstand −15–5 %, Handelsumsatz 0,7–2,0×. Relative Stärke = (1 + Aktienrendite) / (1 + ACWI-Rendite) − 1; beide Kursreihen müssen dasselbe Schlussdatum haben. Die Angaben dienen der Nachvollziehbarkeit, nicht als validierte optimale Grenzen.</p>
+    <p><strong>Was noch selbst zu prüfen ist:</strong> Bewertung, Gewinnüberraschungen, Prognoseanhebungen, Wettbewerbsvorteil und Aktienverwässerung werden mangels verlässlich vergleichbarer Daten nicht bewertet. Der Filter erfasst damit auch keine umfassende Bilanz- oder Finanzierungsprüfung und schließt Unternehmen mit negativem Jahres-Cashflow aus. Es gibt keine kalibrierte „10×-Wahrscheinlichkeit“ und noch keinen historischen Nachweis eines Vorteils dieser konkreten Regeln. In einem Mix erhalten die ausgewählten Strategien weiterhin gleiche Ranggewichte. Geringe Schwankung kann volatile Wachstumsaktien nach hinten reihen; Sander verlangt zusätzlich einen Kursrückgang.</p>
     <p><strong>Wann Einstieg prüfen?</strong> Nur bei positivem 12–2-Monats-Momentum, Kurs oberhalb des 200-Tage-Durchschnitts, ohne größere laufende Korrektur und nur bei nicht negativem globalen Marktfilter (ACWI). Signale gelten erst nach dem letzten Tagesschluss; eine mögliche Limitorder kann frühestens am nächsten Handelstag zu einem tatsächlich verfügbaren Brokerkurs geprüft werden.</p>
 <p><strong>Wann Ausstieg prüfen?</strong> Für eine bereits gehaltene Position bei Schlusskurs unter dem 200-Tage-Durchschnitt oder bei starkem Kursrückgang. „Kurssturz“ bedeutet ein Rückgang von mindestens 15 % über 21 Handelstage oder von mindestens 25 % gegenüber dem Hoch der letzten 252 Handelstage; frühere Warnung schon bei 8 %/15 %. Keine Ausführung oder Überwachung durch die App.</p>
 <p><strong>Kauf-Limit und Stop-Loss:</strong> Über den optionalen Schalter erscheinen auf jeder Aktienkarte zwei konkrete EUR-Modellwerte wie früher: <strong>Kauf-Limit = letzter Schlusskurs − 1 × ATR(14)</strong> und <strong>initialer Stop-Loss = dieses Kauf-Limit − 2,5 × ATR(14)</strong>. Das ist nur eine unverbindliche Beispielrechnung für einen möglichen <em>Neueinstieg</em>, nicht der Stop einer bestehenden Position und kein nachweislich optimales Limit. Bei Trendbruch, Kurssturz oder fehlendem Gesamtmarktsignal besteht weiterhin kein Einstiegssignal. Vor der Order Ausführungskurs und Ordertyp im Broker prüfen; Kurslücken können einen Stop erheblich unterschreiten.</p>
@@ -235,6 +254,7 @@ h1{font-size:27px}
 </main>
 <script src="chart-widget.js"></script>
 <script src="fundamentals-widget.js?v=1"></script>
+<script src="growth-widget.js?v=1"></script>
 <script>
 "use strict";
 const $=id=>document.getElementById(id);
@@ -244,8 +264,7 @@ const add=(p,tag,text,cls)=>{const e=document.createElement(tag);if(cls)e.classN
 let snapshot=null;
 let lastRequest=0;
 function isEligible(x){
-  return x.eligible_global_ranking===true
-    && Number.isFinite(x.momentum_12_2)
+  return (x.eligible_liquid_ranking===true||x.eligible_global_ranking===true)
     && Number.isFinite(x.reference_close_eur)
     && Number.isFinite(x.avg_turnover_20d_eur);
 }
@@ -259,7 +278,10 @@ const FACTORS={
     &&s.atr14_native>0?-s.atr14_native/s.close:null},
   trend:{label:"Trend 200T",value:s=>s.sma200_ratio},
   sander:{label:"Sander: Qualität + Rücksetzer",value:s=>
-    Number.isFinite(s.sander_score)?s.sander_score:null}
+    Number.isFinite(s.sander_score)?s.sander_score:null},
+  growth:{label:"Frühwachstum / Multibagger",value:s=>
+    s.growth_radar?.status==="qualified"&&Number.isFinite(s.growth_score)
+    &&s.growth_radar?.score===s.growth_score?s.growth_score:null}
 };
 function percentileRanks(rows,extract){
   // Tied observations receive their average rank. Higher is always better.
@@ -337,7 +359,7 @@ function makeCard(s,mix){
   add(bottom,"span","Kombinierter Rang: "+fmt(mix.score,1)+"/100","strategy-score");
   add(head,"div","Faktoranteile: "+mix.parts.map(p=>FACTORS[p.key].label+
     " "+fmt(p.score,0)+"/100").join(" · "),"factor-detail");
-  add(head,"div","12–2-Momentum: "+fmt(s.momentum_12_2*100,1)+" %","momentum");
+  add(head,"div",Number.isFinite(s.momentum_12_2)?"12–2-Momentum: "+fmt(s.momentum_12_2*100,1)+" %":"12–2-Momentum: Historie fehlt","momentum");
   const flags=add(bottom,"span",null,"marks");
   add(flags,"span",s.tr_at_listed===true?"TR-AT ISIN ✓":"TR-AT offen",
       "chip "+(s.tr_at_listed===true?"ok":"unknown"));
@@ -360,6 +382,8 @@ function makeCard(s,mix){
   add(actions,"span",exitText[s.exit_review]||"Ausstieg ungeprüft",
       "chip "+((s.exit_review||"").startsWith("review_exit")?"action-sell":"unknown"));
   if(typeof StockFundamentals!=="undefined")StockFundamentals.preview(head,s);
+  const showGrowth=activeFactors().includes("growth")&&typeof StockGrowth!=="undefined";
+  if(showGrowth)StockGrowth.preview(head,s);
   if($("showTradeLevels").checked){
     const levels=add(head,"div",null,"trade-levels");
     const buyBox=add(levels,"div",null,"trade-box");
@@ -376,6 +400,7 @@ function makeCard(s,mix){
       "trade-footnote");
   }
   if(typeof StockFundamentals!=="undefined")StockFundamentals.render(article,s);
+  if(showGrowth)StockGrowth.render(article,s);
   const chartHost=add(article,"section",null,"chart-panel");
   chartHost.setAttribute("aria-label","Historischer Kursverlauf "+s.ticker);
   let chartInstance=null;
@@ -435,12 +460,17 @@ function render(){
   const {shown,total,limit,scores}=dataRows();
   const active=activeFactors();
   const sanderCount=snapshot.sander_research_status?.qualified_candidates||0;
+  const growthCount=snapshot.growth_research_status?.qualified_candidates||0;
   $("strategySummary").textContent=(active.length===1
      ? FACTORS[active[0]].label+" ausgewählt · Rangfolge nach einem Faktor."
      : active.length+" Faktoren gleichgewichtet kombiniert: "+
          active.map(key=>FACTORS[key].label).join(" + ")+". Nicht als Gesamtstrategie validiert.")
      +(active.includes("sander")
        ?" · Aktuell "+fmt(sanderCount)+" SEC-verifizierte Sander-Vorauswahlkandidaten im Datenbestand (regionale und weitere Filter können die Treffer reduzieren)."
+       :"")
+     +(active.includes("growth")
+       ?" · "+fmt(growthCount)+" Frühwachstumskandidaten im Datenbestand. Drei Regelwerte: Wachstum, Qualität, Kursbestätigung. "+
+        "Bewertung, Prognoseüberraschungen, Wettbewerbsvorteil und Verwässerung bleiben ungeprüft."
        :"");
   $("count").textContent=fmt(total)+" passende Titel · "+
     fmt(shown.length)+" angezeigt"+(limit?" (max. 4 pro Region)":" (max. 75)");
@@ -455,7 +485,9 @@ function render(){
     el.appendChild(card);
   }
   $("empty").hidden=shown.length>0;
-  $("empty").textContent=active.includes("sander")
+  $("empty").textContent=active.includes("growth")
+    ? "Keine geprüften Frühwachstumskandidaten für diesen Mix und diese Filter. Benötigt werden drei aufeinanderfolgende Quartale mit Vorjahresvergleich, beschleunigtes Wachstum, positiver Jahres-Cashflow und Kursstärke gegenüber ACWI. Die Datenabdeckung ist vorerst überwiegend US-beschränkt. Jeder zusätzliche Faktor benötigt seine eigenen Daten; Sander setzt zusätzlich einen deutlichen Kursrückgang voraus. Probiere Frühwachstum allein, Weltweit oder ohne Trade-Republic-Filter."
+    : active.includes("sander")
     ? ("Keine verifizierten Sander-inspirierten Kandidaten für diese Filter. "+
        "Es werden ausschließlich Aktien mit SEC-10-K-Geschäftsbericht, positivem Gewinn und Cashflow "+
        "sowie 15–55 % Rückgang vom Jahreshoch berücksichtigt. "+

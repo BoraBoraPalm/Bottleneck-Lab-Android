@@ -80,6 +80,7 @@ class FundamentalDisplayTests(unittest.TestCase):
         stock={**share(drop=-.02),"momentum_12_2":.4}
         verified=s.fundamental_quality(company(),asof=date(2026,10,31))
         with patch.object(s,"ticker_map",return_value={"AAPL":320193}), \
+             patch.object(s,"tgm_quarterly",return_value={}), \
              patch.object(s,"download_fundamental",return_value=verified):
             result=s.enrich_stocks([stock],{},maximum=1)
         self.assertEqual(result["with_verified_fundamentals"],1)

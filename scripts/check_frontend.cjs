@@ -6,14 +6,14 @@ function exactly(pattern,count,name){
 }
 exactly(/<html(?:\s[^>]*)?>/gi,1,"HTML opening");
 exactly(/<\/html>/gi,1,"HTML closing");
-exactly(/<script(?:\s[^>]*)?>/gi,3,"JS opening (two widgets and inline)");
-exactly(/<\/script>/gi,3,"JS closing (two widgets and inline)");
+exactly(/<script(?:\s[^>]*)?>/gi,4,"JS opening (three widgets and inline)");
+exactly(/<\/script>/gi,4,"JS closing (three widgets and inline)");
 if(!/<\/html>\s*$/i.test(html))throw new Error("Code leaked after </html>");
 const match=html.match(/<script>([\s\S]*?)<\/script>/i);
 if(!match)throw new Error("Missing inline script");
 new Function(match[1]);
 for(const id of ["universe","quoted","eligible","search","region","scope","trOnly",
-  "count","results","empty","status","reload","factorMomentum","factorLowRisk","factorTrend","factorSander","strategySummary","showTradeLevels"]){
+  "count","results","empty","status","reload","factorMomentum","factorLowRisk","factorTrend","factorSander","factorGrowth","strategySummary","showTradeLevels"]){
   if(!html.includes('id="'+id+'"'))throw new Error("UI control missing: "+id);
 }
 if(html.includes("<iframe")||html.includes('data-tab=')||html.includes("ATR-Stop")||html.includes("strategie-study.json"))
@@ -88,6 +88,40 @@ assert.equal(sanderCombination.get("QUALIFIED").parts.length,2);
 assert.equal(sanderCombination.get("MISSING"),undefined);
 
 console.log("Strategy checkbox mixer: solo momentum, equal-weight combinations, missing-data exclusion and ties verified.");
+
+const growthSample=[
+  {ticker:"EARLY",momentum_12_2:null,growth_score:80,growth_radar:{status:"qualified",score:80},atr14_native:8,close:100},
+  {ticker:"MATURE",momentum_12_2:.3,growth_score:60,growth_radar:{status:"qualified",score:60},atr14_native:2,close:100},
+  {ticker:"UNCHECKED",momentum_12_2:.5,growth_score:99,growth_radar:{status:"missing_quarters",score:null}},
+  {ticker:"MISSING",momentum_12_2:.4}
+];
+context.growthSample=growthSample;
+const growthOnly=vm.runInContext('mixedRanks(growthSample,["growth"])',context);
+assert.equal(growthOnly.size,2);
+assert.ok(growthOnly.has("EARLY"),"Growth alone can include a six-month stock without 12-2 momentum");
+assert.ok(growthOnly.get("EARLY").score>growthOnly.get("MATURE").score);
+const growthMix=vm.runInContext('mixedRanks(growthSample,["growth","momentum"])',context);
+assert.equal(growthMix.size,1,"Selecting momentum must enforce its own required history");
+assert.ok(growthMix.has("MATURE"));
+const growthRisk=vm.runInContext('mixedRanks(growthSample,["growth","lowRisk"])',context);
+assert.equal(growthRisk.get("EARLY").score,50);
+assert.equal(growthRisk.get("MATURE").score,50,"Low risk is a ranking preference, not an undisclosed hard volatility filter");
+assert.equal(vm.runInContext('mixedRanks(growthSample,["growth","sander"])',context).size,0);
+assert.ok(html.includes('StockGrowth.preview(head,s)')&&html.includes('StockGrowth.render(article,s)'));
+assert.ok(!html.includes('id="factorGrowth" data-factor="growth" checked'),"Growth is opt-in");
+console.log("Growth option: standalone, momentum/low-risk/Sander combinations and missing-data exclusion verified.");
+
+const growth=require("../docs/growth-widget.js");
+const growthStock={ticker:"GROW",price_date:"2026-10-30",growth_radar:{status:"qualified",score:72,
+  growth_score:70,quality_score:80,confirmation_score:66,
+  quarters:[{end:"2026-03-31",filed:"2026-04-25"},{end:"2026-06-30",filed:"2026-07-25"},
+    {end:"2026-09-30",filed:"2026-10-25"}]}};
+assert.equal(growth.state(growthStock,"2026-10-31T12:00:00Z").qualified,true);
+assert.equal(growth.state(growthStock,"2027-05-01T12:00:00Z").usable,false,"Old quarters cannot display a fresh growth score");
+assert.equal(growth.state(growthStock,"2026-11-15T12:00:00Z").qualified,false,"Stale quotes cannot display a confirmed signal");
+assert.equal(growth.state({...growthStock,growth_radar:{...growthStock.growth_radar,quality_score:null}},"2026-10-31T12:00:00Z").qualified,false);
+assert.equal(growth.state({ticker:"MISSING"}).usable,false);
+console.log("Growth display: three independent components, incomplete evidence and stale-date handling verified.");
 
 
 // Chart must remain lazy: fetched after <details> is opened, never at app start.
