@@ -37,8 +37,20 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_*.py' -v
       - name: Validate mobile frontend JavaScript
         run: node scripts/check_frontend.cjs
+      - name: Restore chart history from preceding successful runs
+        uses: actions/cache/restore@v4
+        with:
+          path: docs/charts
+          key: chart-histories-v1-${{ github.run_id }}
+          restore-keys: |
+            chart-histories-v1-
       - name: Refresh worldwide quotes, EUR FX and TR ISINs
         run: python scripts/market_pipeline.py
+      - name: Save static chart history for next run
+        uses: actions/cache/save@v4
+        with:
+          path: docs/charts
+          key: chart-histories-v1-${{ github.run_id }}
       - name: Upload data as diagnostic artifact
         if: always()
         uses: actions/upload-artifact@v4
