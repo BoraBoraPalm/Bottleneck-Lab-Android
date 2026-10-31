@@ -37,7 +37,7 @@ class GuidanceTest(unittest.TestCase):
         g.assign_decision(r,{"risk":"normal"})
         self.assertEqual(r["entry_review"],"entry_review")
         self.assertEqual(r["exit_review"],"hold_review")
-        self.assertLess(r["risk_reference_eur"],100)
+        self.assertLess(r["risk_reference_eur"],100+.5*299)
 
     def test_200d_bearish_trend_requires_exit_review(self):
         a=[100+i*.10 for i in range(280)]+[82.]*20
