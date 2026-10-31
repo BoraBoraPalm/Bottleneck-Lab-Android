@@ -32,6 +32,7 @@ def latest_eur_rates(fetch=read_url, today=None):
     if "GBP" in result:
         gbp=result["GBP"]
         result["GBp"]={"eur_per_unit":gbp["eur_per_unit"]/100,"fx_date":gbp["fx_date"],"source":"UK pence (1/100 GBP)"}
+        result["GBX"]={"eur_per_unit":gbp["eur_per_unit"]/100,"fx_date":gbp["fx_date"],"source":"UK pence GBX (1/100 GBP)"}
     if len(result)<20:
         raise ValueError("Too few valid rates: "+str(len(result)))
     return result
