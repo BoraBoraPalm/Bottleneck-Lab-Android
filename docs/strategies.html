@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>Strategien & Forschung — Bottleneck Lab</title>
+<style>
+:root{--bg:#0b1320;--card:#172538;--border:#304052;--muted:#a4b7c8;--text:#eff4fa;--accent:#58c9ba;--good:#70dcb9;--warn:#d0a465;--bad:#ffa6a9;color-scheme:dark}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;width:100%;overflow-x:hidden}
+body{background:transparent;color:var(--text);font:14px/1.52 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+main{width:100%;padding:0 0 18px}
+h1{font-size:21px;margin:0 0 7px;line-height:1.25;letter-spacing:-.4px}
+h2{font-size:17px;margin:0 0 9px}
+h3{font-size:14px;margin:12px 0 8px}
+p{margin:7px 0 11px}
+small,.muted{color:var(--muted)}
+small{font-size:12px}
+.card{padding:15px;background:var(--card);border:1px solid var(--border);border-radius:15px;margin-bottom:12px;overflow:hidden}
+.warn{padding:10px 12px;background:#302a24;border-left:3px solid var(--warn);border-radius:7px;font-size:12px;margin:9px 0}
+.info{padding:10px 12px;background:#19313d;border-left:3px solid #439d99;border-radius:7px;font-size:12px;margin:10px 0}
+select,input{font:inherit;background:#0d1b2b;color:var(--text);border:1px solid #526777;border-radius:8px;padding:10px;width:100%;min-height:44px}
+label{display:block;font-size:12px;color:var(--muted);margin:2px 0 6px}
+.controls{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px;margin-top:10px}
+.kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:12px 0}
+.kpi{background:#203247;padding:12px;border-radius:10px;min-width:0}
+.kpi span{font-size:11px;color:var(--muted);display:block}
+.kpi strong{font-size:21px;font-variant-numeric:tabular-nums;display:block;white-space:nowrap}
+.good{color:var(--good)}.bad{color:var(--bad)}
+.table-wrap{overflow:auto;max-width:100%}
+table{width:100%;border-collapse:collapse;font-size:12px}
+td,th{padding:9px 6px;border-bottom:1px solid #34485a;text-align:right;white-space:nowrap}
+td:first-child,th:first-child{text-align:left;white-space:normal}
+th{color:#bac9d6;font-weight:600}
+button{font:inherit;cursor:pointer}
+.barrow{display:grid;grid-template-columns:minmax(0,150px) minmax(0,1fr) 60px;gap:9px;align-items:center;width:100%;background:none;border:0;border-bottom:1px solid #304559;color:var(--text);padding:10px 2px;text-align:left}
+.barrow.current{background:#1a3a42}
+.barlabel{font-size:12px;line-height:1.2;overflow-wrap:anywhere}
+.bartrack{height:12px;background:#2b4255;border-radius:7px;overflow:hidden}
+.barfill{height:100%;background:#58c9ba;border-radius:7px}
+.barfill.market{background:#7893af}
+.barvalue{text-align:right;font-size:13px;font-variant-numeric:tabular-nums}
+.pill{display:inline-block;font-size:11px;color:#8fe2d3;font-weight:700;padding:3px 9px;background:#1e4144;border-radius:18px}
+.alloc-row{display:grid;grid-template-columns:minmax(0,1fr) 56px 90px;gap:6px;margin:8px 0;align-items:center}
+.alloc-row span:nth-child(2),.alloc-row strong{text-align:right;font-variant-numeric:tabular-nums}
+.alloc-bar{display:flex;border-radius:8px;overflow:hidden;background:#30485c;min-height:15px;margin:10px 0}
+.alloc-bar span{display:block;height:15px}
+a{color:#89e1d2;text-decoration:underline;text-underline-offset:3px}
+ul{padding-left:19px;margin:8px 0 0}
+li{margin:5px 0}
+#err{display:none}
+@media(min-width:720px){.kpis{grid-template-columns:repeat(4,1fr)}.barrow{grid-template-columns:210px 1fr 75px}.controls{grid-template-columns:repeat(3,minmax(0,1fr))}}
+</style>
+</head>
+<body>
+<main>
+  <div class="card">
+    <div class="pill">Forschungsbereich · kein Trading-Signal</div>
+    <h1 style="margin-top:10px">Strategien & wissenschaftliche Evidenz</h1>
+    <p class="muted">Historische US-Faktorportfolios im Vergleich zum breiten US-Aktienmarkt. Auswahl der Studie und Ergebnisse sind von den Live-Rankings und ATR-Einstellungen getrennt.</p>
+    <div class="warn"><strong>Kein Beweis für künftige Outperformance:</strong> Wissenschaftliche Faktorportfolios sind keine direkt handelbaren Trade-Republic-Produkte. Selbst historisch signifikante Vorteile gelten nicht für nahezu alle Zeiträume und können nach realen Kosten verschwinden.</div>
+    <div id="loadStatus" class="muted" role="status">Lade überprüfbare Forschungsdaten …</div>
+    <div id="err" class="warn" role="alert">Die Forschungsdaten sind derzeit nicht abrufbar. Die übrige Bottleneck-Lab-App funktioniert unabhängig davon.</div>
+    <div class="controls">
+      <div><label for="period">Vergleichszeitraum</label><select id="period" disabled><option value="eur_2000">EUR · 2000–2026</option><option value="usd_full">USD · 1965–2026</option></select></div>
+      <div><label for="model">Untersuchtes Portfolio</label><select id="model" disabled></select></div>
+      <div><label for="amount">Beispielkapital (€)</label><input type="number" id="amount" value="10000" min="100" max="100000000" step="1000" aria-label="Hypothetisches Beispielkapital"></div>
+    </div>
+    <small>Alle Zahlen stammen aus einem am 31.10.2026 abgeschlossenen Forschungsdurchlauf. Historische USD-Portfolios wurden für den EUR-Vergleich anhand historischer Referenzkurse umgerechnet. 1 % jährliche hypothetische Zusatzkosten auf Faktoranteile; keine österreichischen Steuern oder tatsächlichen TR-Gebühren enthalten.</small>
+  </div>
+
+  <div class="card">
+    <h2 id="modelTitle">Strategiekennzahlen</h2>
+    <div id="meta" class="muted" style="font-size:12px"></div>
+    <div class="kpis" aria-live="polite">
+      <div class="kpi"><span>Rendite p. a. (CAGR)</span><strong id="cagr">–</strong></div>
+      <div class="kpi"><span>Markt p. a. (CAGR)</span><strong id="benchmarkCagr">–</strong></div>
+      <div class="kpi"><span>Max. Rückgang (Monatsende)</span><strong id="drawdown">–</strong></div>
+      <div class="kpi"><span>5-Jahres-Fenster mit Outperformance</span><strong id="roll5">–</strong></div>
+    </div>
+    <div id="evidence" class="info">Die statistische Einordnung wird geladen.</div>
+    <div class="table-wrap">
+      <table>
+        <tbody>
+          <tr><td>Durchschnittliche jährliche Überrendite, arithmetisch</td><td id="excess">–</td></tr>
+          <tr><td>3-Jahres-Outperformance (überlappende Fenster)</td><td id="roll3">–</td></tr>
+          <tr><td>10-Jahres-Outperformance (überlappende Fenster)</td><td id="roll10">–</td></tr>
+          <tr><td>Volatilität p. a.</td><td id="vol">–</td></tr>
+          <tr><td>Newey-West p-Wert, zweiseitig</td><td id="pvalue">–</td></tr>
+          <tr><td>p-Wert, für 11 Tests korrigiert</td><td id="pAdjusted">–</td></tr>
+          <tr><td>95-%-Bootstrapintervall, jährliche Überrendite</td><td id="ci">–</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <small>Signifikanz prüft hier mittlere arithmetische Überrendite zum US-Markt, keine risikofaktorbereinigte Alpha-Schätzung. Überlappende 3-/5-/10-Jahresfenster sind nicht unabhängig. Der maximale Rückgang basiert auf Monatsendwerten, nicht auf Intraday-Risiko.</small>
+  </div>
+
+  <div class="card">
+    <h2>Alle zwölf untersuchten Portfolios</h2>
+    <div class="muted" style="font-size:12px">Historische CAGR im ausgewählten Zeitraum, für Faktoranteile mit dem zusätzlichen jährlichen Kostenabschlag. Antippen, um die Details zu vergleichen.</div>
+    <div id="bars" style="margin-top:10px"></div>
+  </div>
+
+  <div class="card">
+    <h2>Zusammensetzung der Vergleichsstrategie</h2>
+    <p class="muted" style="font-size:12px">Nur akademische Modellgewichte – keine konkreten Wertpapiere oder automatisch generierten Orders.</p>
+    <div id="allocation"></div>
+    <div class="alloc-bar" id="allocationBar"></div>
+    <div id="hypothetical" class="info"></div>
+    <small>Der Kapitalbetrag illustriert lediglich die nominale Aufteilung. Die historischen Renditen sind keine Prognose; die automatische €-Berechnung stellt keine Eignungsprüfung und keinen konkreten Broker-Handelsplan dar.</small>
+  </div>
+
+  <div class="card">
+    <h2>Kostensensitivität: Quality + Value + Momentum</h2>
+    <div class="muted" style="font-size:12px">Wie sich die historische jährliche Rendite der gleichgewichteten Q/V/M-Studie bei 0 %, 1 % oder 2 % angenommener jährlicher Zusatzbelastung der Faktoranteile verändert.</div>
+    <div class="table-wrap" id="costTable" style="margin-top:10px"></div>
+    <div class="warn">Diese Pauschalannahme ist <strong>kein</strong> Ersatz für den realen Trade-Republic-Backtest inklusive 1 € pro Kauf, 1 € pro Verkauf, Geld-/Briefspanne, Steuern und historischer Broker-Verfügbarkeit.</div>
+  </div>
+
+  <div class="card">
+    <h2>Was ist nachgewiesen – und was nicht?</h2>
+    <ul>
+      <li><strong>Langfristig untersucht:</strong> Value, Profitabilität/Quality, Momentum und konservative Investitionen; historisch rekonstituierte wissenschaftliche US-Portfolioreihen.</li>
+      <li><strong>Besonders untersuchenswerter Kandidat:</strong> 50 % Markt / 25 % Quality / 25 % Momentum. In USD über die lange Historie statistisch signifikant; im Euro-Zeitraum seit 2000 nicht signifikant.</li>
+      <li><strong>Keine nahezu sichere Outperformance:</strong> Selbst die robustere diversifizierte Mischung übertraf den Markt in Euro nicht in jedem Fünfjahreszeitraum.</li>
+      <li><strong>Nicht belegt:</strong> Handelbarkeit der akademischen Portfolios bei Trade Republic, Netto-Outperformance einer konkreten Aktienauswahl sowie ein zusätzlicher Alpha-Beitrag der Engpassnachrichten.</li>
+      <li><strong>Offen:</strong> Point-in-Time-Bilanzen mit ausgeschiedenen Unternehmen, echte EUR-Orderpreise, Branchen- und Portfoliorisiko, Gebühren/KESt, ein künftig unberührter Forward-Test.</li>
+    </ul>
+    <div class="info">Die bisherige Top 10, das Q/V/M-Beta-Aktienranking und die Buy-/Stop-Regler bleiben bewusst unverändert. Aus Forschungsergebnissen werden in diesem Reiter <strong>keine</strong> automatisch empfohlenen Trades abgeleitet.</div>
+    <div style="display:flex;gap:14px;flex-wrap:wrap;font-size:12px">
+      <a id="studyLink" target="_blank" rel="noopener" href="https://github.com/BoraBoraPalm/Bottleneck-Lab-Android/actions/runs/41190413013">Original-GitHub-Studie</a>
+      <a href="https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html" target="_blank" rel="noopener">Kenneth-French-Datenbibliothek</a>
+      <a href="https://github.com/BoraBoraPalm/Bottleneck-Lab-Android/blob/master/research/robust_factors_1965_2026.py" target="_blank" rel="noopener">Reproduzierbarer Forschungs-Code</a>
+    </div>
+  </div>
+</main>
+<script>
+'use strict';
+const $=id=>document.getElementById(id);
+const number=(v,d=2)=>Number.isFinite(v)?v.toLocaleString('de-AT',{minimumFractionDigits:d,maximumFractionDigits:d}):'–';
+const pct=(v,d=2)=>number(v,d)+' %';
+let research=null;
+const colorKeys={market:'#7893af',quality:'#5cc7b6',value:'#e1ba77',momentum:'#9b92ea',conservative:'#6f9dd0'};
+const weightLabels={market:'Breiter US-Aktienmarkt',quality:'Profitabilität / Quality',value:'Bewertung / Value',momentum:'12–2-Monats-Momentum',conservative:'Konservative Investitionen'};
+function notifyHeight(){
+  const height=Math.ceil(document.documentElement.scrollHeight);
+  if(window.parent!==window)window.parent.postMessage({bottleneckResearchHeight:height},location.origin==='null'?'*':location.origin);
+}
+function render(){
+  if(!research)return;
+  const period=$('period').value;
+  const model=$('model').value;
+  const study=research.periods[period];
+  const entry=study.model[model];
+  const market=study.model.Market;
+  if(!entry||!market)return;
+  $('loadStatus').textContent=study.range+' · '+number(study.months,0)+' Monatsrenditen · 12 vorab festgelegte Portfolios · Historische Rechenwerte';
+  $('modelTitle').textContent=research.labels[model];
+  $('meta').textContent=study.label+' · 1 % hypothetische jährliche Kosten auf Faktoranteile · '+(period==='eur_2000'?'Für einen EUR-Anleger besonders relevant':'Sehr lange USD-Forschungshistorie');
+  $('cagr').textContent=pct(entry.cagr);
+  $('benchmarkCagr').textContent=pct(market.cagr);
+  $('drawdown').textContent=pct(entry.maxDrawdown);
+  $('drawdown').className=entry.maxDrawdown<0?'bad':'';
+  $('roll5').textContent=model==='Market'?'Referenz':pct(entry.outperformance5y,1);
+  $('excess').textContent=pct(entry.annualExcess);
+  $('roll3').textContent=model==='Market'?'Referenz':pct(entry.outperformance3y,1);
+  $('roll10').textContent=model==='Market'?'Referenz':pct(entry.outperformance10y,1);
+  $('vol').textContent=pct(entry.volatility);
+  $('pvalue').textContent=number(entry.p,5);
+  $('pAdjusted').textContent=number(entry.correctedP,5);
+  const ci=entry.confidence95;
+  $('ci').textContent=pct(ci[0])+' bis '+pct(ci[1]);
+  const significant=model!=='Market'&&entry.correctedP<0.05&&ci[0]>0;
+  $('evidence').className=significant?'info':'warn';
+  $('evidence').textContent=model==='Market'?
+    'US-Marktbenchmark: keine Überrendite relativ zu sich selbst.':
+    significant?'Historisch statistisch signifikant gegenüber dem US-Markt nach Korrektur für 11 Vergleiche. Kein Beweis für künftigen Anlageerfolg.':
+    'Im ausgewählten Zeitraum ist keine positive Mehrertrags-Prämie nach der Mehrfachtestkorrektur zuverlässig nachgewiesen. Der Test erlaubt keine Aussage über nahezu sichere Outperformance.';
+  const rows=Object.entries(study.model).sort((a,b)=>b[1].cagr-a[1].cagr);
+  const maxCagr=Math.max(0.01,...rows.map(x=>Math.max(0,x[1].cagr)));
+  $('bars').replaceChildren();
+  for(const [key,row] of rows){
+    const button=document.createElement('button');
+    button.type='button';
+    button.className='barrow'+(key===model?' current':'');
+    button.setAttribute('aria-label',research.labels[key]+': '+pct(row.cagr)+' CAGR');
+    const name=document.createElement('span');name.className='barlabel';name.textContent=research.labels[key];
+    const track=document.createElement('span');track.className='bartrack';
+    const inner=document.createElement('span');inner.className='barfill'+(key==='Market'?' market':'');
+    inner.style.width=Math.max(0,Math.min(100,100*row.cagr/maxCagr))+'%';
+    track.appendChild(inner);
+    const value=document.createElement('span');value.className='barvalue';value.textContent=pct(row.cagr,1);
+    button.append(name,track,value);
+    button.onclick=()=>{$('model').value=key;render()};
+    $('bars').appendChild(button);
+  }
+  const weights=research.weights[model]||{};
+  const input=Number($('amount').value);
+  const cash=Number.isFinite(input)&&input>=100&&input<=1e8?input:10000;
+  $('allocation').replaceChildren();$('allocationBar').replaceChildren();
+  for(const [key,w] of Object.entries(weights)){
+    const div=document.createElement('div');div.className='alloc-row';
+    const name=document.createElement('span');name.textContent=weightLabels[key]||key;
+    const amount=document.createElement('strong');amount.textContent=number(w,1)+' %';
+    const eur=document.createElement('span');eur.textContent=number(cash*w/100,0)+' €';
+    div.append(name,amount,eur);
+    $('allocation').append(div);
+    const seg=document.createElement('span');seg.style.width=w+'%';seg.style.background=colorKeys[key]||'#9ab';
+    seg.title=(weightLabels[key]||key)+': '+number(w,1)+' %';
+    $('allocationBar').appendChild(seg);
+  }
+  $('hypothetical').textContent='Reine Aufteilung von '+number(cash,0)+' € nach akademischen Gewichten. Es werden keine konkreten Aktien gekauft und keine Erträge für die Zukunft prognostiziert.';
+  $('costTable').replaceChildren();
+  const win=period==='usd_full'?'USD full after 1965':'EUR 2000–2026';
+  const entries=(research.costs.headwindsQvm||[]).filter(x=>x.window===win).sort((a,b)=>a.costPct-b.costPct);
+  if(entries.length){
+    const table=document.createElement('table');
+    const thead=document.createElement('thead');
+    const headers=document.createElement('tr');
+    for(const txt of ['Zusatzkosten p. a.','Q/V/M CAGR','US-Markt CAGR']){
+      const th=document.createElement('th');th.textContent=txt;headers.appendChild(th);
+    }
+    thead.appendChild(headers);table.appendChild(thead);
+    const tbody=document.createElement('tbody');
+    for(const e of entries){
+      const tr=document.createElement('tr');
+      for(const v of [pct(e.costPct,0),pct(e.qvmCagr),pct(e.marketCagr)]){
+        const td=document.createElement('td');td.textContent=v;tr.appendChild(td);
+      }
+      tbody.appendChild(tr);
+    }
+    table.appendChild(tbody);$('costTable').appendChild(table);
+  }else{$('costTable').textContent='Keine überprüften Kostendaten für diesen Zeitraum.'}
+  notifyHeight();
+}
+async function start(){
+  try{
+    const response=await fetch('strategy-study.json',{cache:'no-store'});
+    if(!response.ok)throw Error('HTTP '+response.status);
+    research=await response.json();
+    if(!research.periods||!research.periods.eur_2000||!research.periods.usd_full)throw Error('Incomplete study');
+    const sel=$('model');
+    for(const key of Object.keys(research.periods.eur_2000.model)){
+      const o=document.createElement('option');o.value=key;o.textContent=research.labels[key]||key;sel.appendChild(o);
+    }
+    sel.value='50% Market + Quality/Momentum';
+    $('studyLink').href=research.studyRun;
+    $('period').disabled=false;sel.disabled=false;
+    $('period').onchange=render;sel.onchange=render;
+    $('amount').oninput=render;
+    render();
+  }catch(e){
+    $('loadStatus').textContent='Studienergebnisse konnten nicht überprüft geladen werden.';
+    $('err').style.display='block';
+    console.error('Research data load failed:',e);
+  }
+  notifyHeight();
+}
+if('ResizeObserver' in window)new ResizeObserver(notifyHeight).observe(document.body);
+window.addEventListener('load',notifyHeight);
+start();
+</script>
+</body>
+</html>
