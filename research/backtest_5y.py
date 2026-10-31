@@ -399,6 +399,7 @@ def capital_path(days,ranks,hists,fx):
             "exposure_matched_spy_equity_eur":pct(matched_spy_cap),
             "strategy_period_return_pct":group["strategy_return_pct"],
             "benchmark_period_return_pct":pct(b_pnl/(benchmark_cap-b_pnl)*100),
+            "matched_spy_period_return_pct":pct(matched_group["matched_spy_pnl_eur"]/(matched_spy_cap-matched_group["matched_spy_pnl_eur"])*100),
             "fills":len(group["trades"]),"selected":group["selected"]})
     peak=10000
     mdd=0
@@ -408,6 +409,7 @@ def capital_path(days,ranks,hists,fx):
     annual_years=(date.fromisoformat(rows[-1]["date"])-date.fromisoformat(rows[0]["date"])).days/365.2425 if len(rows)>1 else 1
     nret=[r["strategy_period_return_pct"] for r in rows]
     bex=[r["benchmark_period_return_pct"] for r in rows]
+    matched_ret=[r["matched_spy_period_return_pct"] for r in rows]
     exces=[a-b for a,b in zip(nret,bex)]
     return rows,all_trades,{
         "initial_capital_eur":10000,
@@ -430,6 +432,8 @@ def capital_path(days,ranks,hists,fx):
         "total_commissions_eur":pct(2*len(all_trades)),
         "max_block_end_drawdown_pct":pct(mdd*100),
         "mean_20d_excess_pct":pct(statistics.mean(exces)),
+        "mean_20d_excess_vs_exposure_matched_spy_pct":pct(statistics.mean([a-b for a,b in zip(nret,matched_ret)])),
+        "bootstrap_95pct_mean_20d_excess_matched_spy_pct":block_bootstrap([a-b for a,b in zip(nret,matched_ret)],seed=SEED+7),
         "bootstrap_95pct_mean_20d_excess_pct":block_bootstrap(exces),
         "periods_outperform_spy_pct":pct(100*sum(a>b for a,b in zip(nret,bex))/len(rows))
     }
