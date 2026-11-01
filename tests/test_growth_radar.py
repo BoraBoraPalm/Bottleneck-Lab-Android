@@ -181,6 +181,7 @@ class GrowthScreenTests(unittest.TestCase):
                              "fundamentals_checked_at": date.today().isoformat()}]}
         upgraded = {**old_fund, "schema_version": s.SCHEMA_VERSION}
         with patch.object(s, "ticker_map", return_value={"GROW": 123}), \
+             patch.object(s, "tgm_quarterly", return_value={}), \
              patch.object(s, "download_fundamental", return_value=upgraded) as fetch:
             s.enrich_stocks([candidate], prior, maximum=1)
         fetch.assert_called_once()

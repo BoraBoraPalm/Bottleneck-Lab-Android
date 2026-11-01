@@ -2,8 +2,9 @@
 (function(root){
   "use strict";
   const LABELS={green:"Passt gut",yellow:"Passt teilweise",orange:"Passt wenig",red:"Passt schlecht",unknown:"Zu wenig Daten"};
-  const NAMES={momentum:"12–2-Momentum",lowRisk:"Geringe Schwankung",trend:"200-Tage-Trend",
-    sander:"Hoch-Tief-Mut",growth:"Frühwachstum / Multibagger"};
+  const NAMES={momentum:"12–2-Momentum",lowRisk:"Geringe Schwankung · 12M",trend:"200-Tage-Trend",
+    sander:"Hoch-Tief-Mut",growth:"Frühwachstum / Multibagger",quality:"Profitabilität / Quality",
+    value:"Value · Bewertung",earnings:"Gewinnmomentum · Quartalsmodell",investment:"Konservatives Bilanzwachstum"};
   const finite=x=>typeof x==="number"&&Number.isFinite(x);
   const fmt=(n,d=1)=>finite(n)?n.toLocaleString("de-AT",{minimumFractionDigits:d,maximumFractionDigits:d}):"–";
   const pct=n=>fmt(100*n)+" %";
@@ -25,6 +26,9 @@
     const now=+new Date(options.today||Date.now()),s=stock||{};
     let result={state:"unknown",reason:"Die benötigten Nachweise fehlen."};
     if(!Object.hasOwn(NAMES,key))return null;
+    if(["quality","value","earnings","investment"].includes(key)){
+      return root.StockResearch?root.StockResearch.assess(s,key,options):{key,name:NAMES[key],state:"unknown",label:LABELS.unknown,reason:"Die zusätzlichen Faktordaten fehlen."};
+    }
     const price=currentPrice(s,now);
     const yahoo=s.source==="Yahoo Finance";
     const context=String(s.context_basis||"").startsWith("Yahoo adjusted OHLC");
@@ -35,11 +39,12 @@
           reason:pct(v)+" Kursentwicklung im 12–2-Monatsfenster."};
       }else result.reason="Aktuelle, bereinigte 12–2-Momentumhistorie fehlt.";
     }else if(key==="lowRisk"){
-      if(price&&yahoo&&context&&finite(s.atr14_native)&&s.atr14_native>0&&finite(s.close)&&s.close>0){
-        const v=s.atr14_native/s.close;
-        result={state:v<=.02?"green":v<=.04?"yellow":v<=.06?"orange":"red",
-          reason:"ATR(14) entspricht "+pct(v)+" des Kurses; kleinere Werte passen besser."};
-      }else result.reason="Aktuelle, bereinigte Kurse oder ATR(14) fehlen.";
+      if(price&&yahoo&&s.long_risk_basis==="Yahoo adjusted log returns; 252 sessions; annualised sqrt(252)"
+          &&finite(s.volatility_252d)&&s.volatility_252d>=0){
+        const v=s.volatility_252d;
+        result={state:v<=.2?"green":v<=.35?"yellow":v<=.5?"orange":"red",
+          reason:"Annualisierte Renditeschwankung über 252 Handelstage: "+pct(v)+"."};
+      }else result.reason="252 bereinigte Tagesrenditen für die längerfristige Risikomessung fehlen.";
     }else if(key==="trend"){
       if(price&&yahoo&&context&&finite(s.sma200_ratio)){
         const v=s.sma200_ratio;

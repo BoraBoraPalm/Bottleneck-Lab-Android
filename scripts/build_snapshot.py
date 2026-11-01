@@ -14,6 +14,7 @@ from datetime import datetime, timedelta, timezone
 from trade_guidance import price_context
 from chart_history import chart_payload
 from growth_radar import price_metrics as growth_price_metrics
+from factor_research import long_risk_metrics
 
 CURATED_THEMES = {
     "Stromnetze": "NEX.PA GEV HUBB ETN NVT ABBN.SW PWR EMR PH WCC POWL GNRC ROK PRY.MI",
@@ -123,6 +124,7 @@ def quote(symbol,theme):
             avg_turnover=avg_local_turnover if currency=="USD" else None
             context=price_context(bars) if source=="Yahoo Finance" else {}
             growth_context=growth_price_metrics(bars) if source=="Yahoo Finance" else {}
+            long_risk=long_risk_metrics(bars) if source=="Yahoo Finance" else {}
             chart=chart_payload(symbol,bars,currency,source)
             return {"ticker":symbol,"theme":theme,"close":round(price,6),"price_date":dates[-1],
                     "currency":currency,"source":source,"bars_count":len(bars),
@@ -131,7 +133,7 @@ def quote(symbol,theme):
                     "momentum_12_2":momentum_12_2(adjusted),
                     "chart_history":chart,
                     "momentum_basis":"Yahoo adjusted daily closes" if source=="Yahoo Finance" else "not verified",
-                    **context,**growth_context},None
+                    **context,**growth_context,**long_risk},None
         except Exception as e:
             errors.append(load.__name__+": "+str(e)[:140])
     return None,symbol+": "+"; ".join(errors)

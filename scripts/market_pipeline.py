@@ -25,6 +25,8 @@ from chart_history import chart_is_current,write_chart,chart_count
 from sander_fundamentals import enrich_stocks as update_sander_fundamentals
 from growth_radar import enrich_growth
 from search_catalog import write_catalog
+from factor_research import enrich_factors
+from sander_fundamentals import get_json as get_financial_json
 
 PAGES="https://boraborapalm.github.io/Bottleneck-Lab-Android/snapshot.json"
 NASDAQ="https://www.nasdaqtrader.com/dynamic/SymDir/nasdaqlisted.txt"
@@ -122,7 +124,8 @@ CACHE_FIELDS=(
   "sma200_ratio","sma200_native","crash_21_level_native","crash_peak_level_native","return_21d","drawdown_252d",
   "atr14_native","crash_warning","correction_warning",
   "risk_reference_native","context_basis","return_63d","return_126d",
-  "breakout_63d_ratio","turnover_ratio_20d","growth_price_basis"
+  "breakout_63d_ratio","turnover_ratio_20d","growth_price_basis",
+  "volatility_252d","long_risk_basis"
 )
 def cached_quotes(old,known):
     existing={}
@@ -155,6 +158,9 @@ def requested_batch(known,cache):
     missing_growth=sorted((s for s in cache.values()
         if s.get("source")=="Yahoo Finance" and not s.get("growth_price_basis")),
         key=lambda s:-(s.get("momentum_12_2") or 0))[:60]
+    missing_long_risk=sorted((s for s in cache.values()
+        if s.get("source")=="Yahoo Finance" and not s.get("long_risk_basis")),
+        key=lambda s:-(s.get("momentum_12_2") or 0))[:60]
     # Prioritize attractive researched symbols lacking static history.
     # They will get charts without re-fetching all 43k directory entries.
     missing_charts=sorted(
@@ -164,7 +170,8 @@ def requested_batch(known,cache):
         key=lambda s:-s["momentum_12_2"])[:85]
     return list(dict.fromkeys(
         core+[x["ticker"] for x in extra]+missing_risk+
-        [x["ticker"] for x in missing_charts]+[x["ticker"] for x in missing_growth]))
+        [x["ticker"] for x in missing_charts]+[x["ticker"] for x in missing_growth]
+        +[x["ticker"] for x in missing_long_risk]))
 
 def enrich(meta,raw,ticker):
     row=dict(raw)
@@ -245,6 +252,7 @@ def main():
     growth_status=enrich_growth(stocks,{
         "date":(market_quote or {}).get("price_date"),
         **{k:(market_quote or {}).get(k) for k in ("return_63d","return_126d","growth_price_basis")}})
+    factor_status=enrich_factors(stocks,old,get_financial_json)
     for stock in stocks:
         assign_decision(stock,market_context)
         stock["chart_available"]=chart_is_current(stock["ticker"],stock.get("price_date"))
@@ -255,7 +263,8 @@ def main():
     eligible=Counter(s.get("region") or "Unbekannt" for s in stocks if s["eligible_global_ranking"])
     search_count=write_catalog(known)
     output={
-        "version":12,
+        "version":13,
+        "factor_research_status":factor_status,
         "search_catalog_info":{"file":"search-index.json","listings":search_count},
         "fundamentals_info":{"source":"SEC-XBRL annual USD statements; direct or TGMCharts",
             "coverage":"Primarily US filers; verified partial reports remain partial",

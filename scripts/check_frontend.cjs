@@ -6,8 +6,8 @@ function exactly(pattern,count,name){
 }
 exactly(/<html(?:\s[^>]*)?>/gi,1,"HTML opening");
 exactly(/<\/html>/gi,1,"HTML closing");
-exactly(/<script(?:\s[^>]*)?>/gi,6,"JS opening (five widgets and inline)");
-exactly(/<\/script>/gi,6,"JS closing (five widgets and inline)");
+exactly(/<script(?:\s[^>]*)?>/gi,7,"JS opening (six widgets and inline)");
+exactly(/<\/script>/gi,7,"JS closing (six widgets and inline)");
 if(!/<\/html>\s*$/i.test(html))throw new Error("Code leaked after </html>");
 const match=html.match(/<script>([\s\S]*?)<\/script>/i);
 if(!match)throw new Error("Missing inline script");
@@ -15,7 +15,7 @@ new Function(match[1]);
 for(const id of ["universe","quoted","eligible","search","region","scope","trOnly",
   "tabCandidates","tabStockSearch","candidatesPanel","stockSearchPanel","stockSearchForm",
   "stockSearchInput","stockSearchButton","stockSearchStatus","stockSearchResults","stockSearchSuggestions",
-  "searchFitChoices",
+  "searchFitChoices","factorQuality","factorValue","factorEarnings","factorInvestment",
   "count","results","empty","status","reload","factorMomentum","factorLowRisk","factorTrend","factorSander","factorGrowth","strategySummary","showTradeLevels"]){
   if(!html.includes('id="'+id+'"'))throw new Error("UI control missing: "+id);
 }
@@ -45,10 +45,11 @@ if(start<0||end<=start)throw new Error("Cannot inspect the live factor mixer");
 const snippet=match[1].slice(start,end+to.length);
 const context=vm.createContext({});
 vm.runInContext(snippet,context);
+const riskBasis="Yahoo adjusted log returns; 252 sessions; annualised sqrt(252)";
 const sample=[
- {ticker:"A",momentum_12_2:.50,atr14_native:20,close:100,sma200_ratio:-.2},
- {ticker:"B",momentum_12_2:.30,atr14_native:3,close:100,sma200_ratio:.15},
- {ticker:"C",momentum_12_2:.10,atr14_native:5,close:100,sma200_ratio:.25},
+ {ticker:"A",momentum_12_2:.50,volatility_252d:.8,long_risk_basis:riskBasis,atr14_native:20,close:100,sma200_ratio:-.2},
+ {ticker:"B",momentum_12_2:.30,volatility_252d:.15,long_risk_basis:riskBasis,atr14_native:3,close:100,sma200_ratio:.15},
+ {ticker:"C",momentum_12_2:.10,volatility_252d:.25,long_risk_basis:riskBasis,atr14_native:5,close:100,sma200_ratio:.25},
  {ticker:"MISSING",momentum_12_2:.42,close:100,sma200_ratio:.30}
 ];
 context.sample=sample;
@@ -58,7 +59,7 @@ assert.equal(momentum.size,4);
 assert.equal(momentum.get("A").score,100);
 assert.ok(momentum.get("MISSING").score>momentum.get("B").score);
 const combined=vm.runInContext('mixedRanks(sample,["momentum","lowRisk"])',context);
-assert.equal(combined.has("MISSING"),false,"Missing ATR must NEVER be imputed");
+assert.equal(combined.has("MISSING"),false,"Missing annual volatility must NEVER be imputed");
 assert.ok(combined.get("B").score>combined.get("A").score,
   "Multi-factor average must genuinely change the ordering");
 assert.equal(combined.get("B").parts.length,2);
@@ -94,7 +95,7 @@ console.log("Strategy checkbox mixer: solo momentum, equal-weight combinations, 
 
 const growthSample=[
   {ticker:"EARLY",momentum_12_2:null,growth_score:80,growth_radar:{status:"qualified",score:80},atr14_native:8,close:100},
-  {ticker:"MATURE",momentum_12_2:.3,growth_score:60,growth_radar:{status:"qualified",score:60},atr14_native:2,close:100},
+  {ticker:"MATURE",momentum_12_2:.3,growth_score:60,growth_radar:{status:"qualified",score:60},volatility_252d:.2,long_risk_basis:riskBasis,atr14_native:2,close:100},
   {ticker:"UNCHECKED",momentum_12_2:.5,growth_score:99,growth_radar:{status:"missing_quarters",score:null}},
   {ticker:"MISSING",momentum_12_2:.4}
 ];
@@ -107,8 +108,8 @@ const growthMix=vm.runInContext('mixedRanks(growthSample,["growth","momentum"])'
 assert.equal(growthMix.size,1,"Selecting momentum must enforce its own required history");
 assert.ok(growthMix.has("MATURE"));
 const growthRisk=vm.runInContext('mixedRanks(growthSample,["growth","lowRisk"])',context);
-assert.equal(growthRisk.get("EARLY").score,50);
-assert.equal(growthRisk.get("MATURE").score,50,"Low risk is a ranking preference, not an undisclosed hard volatility filter");
+assert.equal(growthRisk.size,1,"Long-term low volatility requires its own full-year history");
+assert.ok(growthRisk.has("MATURE"));
 assert.equal(vm.runInContext('mixedRanks(growthSample,["growth","sander"])',context).size,0);
 assert.ok(html.includes('StockGrowth.preview(head,s)')&&html.includes('StockGrowth.render(article,s)'));
 assert.ok(!html.includes('id="factorGrowth" data-factor="growth" checked'),"Growth is opt-in");
@@ -239,11 +240,12 @@ assert.ok(html.includes('role="tablist"')&&html.includes('role="search"')&&html.
 assert.ok(match[1].includes('"ArrowLeft","ArrowRight","Home","End"'),"Tabs need keyboard navigation");
 console.log("Independent search: strategy exclusion bypass, directory-only stocks, ticker/ISIN, aliases, accents, typos, transpositions and bounded results verified.");
 
+const research=require("../docs/research-factors.js");
 const fit=require("../docs/strategy-fit.js");
 const fitToday={today:"2026-10-31T12:00:00Z"};
 const fitStock={ticker:"FIT",price_date:"2026-10-30",source:"Yahoo Finance",close:100,atr14_native:1.5,
   context_basis:"Yahoo adjusted OHLC, signal after close",momentum_basis:"Yahoo adjusted daily closes",
-  momentum_12_2:.3,sma200_ratio:.1,drawdown_252d:-.3,
+  momentum_12_2:.3,sma200_ratio:.1,drawdown_252d:-.3,volatility_252d:.15,long_risk_basis:riskBasis,
   fundamentals:{fy_end:"2025-12-31",filed:"2026-02-15",net_income:10,operating_cashflow:15,
     profit_margin:.1,revenue_growth_yoy:.2}};
 const fitFor=(stock,key)=>fit.assess(stock,key,fitToday);
@@ -256,8 +258,8 @@ for(const key of ["momentum","lowRisk","trend","sander"]){
 }
 for(const [value,state] of [[.2,"green"],[0,"yellow"],[-.15,"orange"],[-.16,"red"]])
   assert.equal(fitFor({...fitStock,momentum_12_2:value},"momentum").state,state);
-for(const [value,state] of [[2,"green"],[4,"yellow"],[6,"orange"],[6.1,"red"]])
-  assert.equal(fitFor({...fitStock,atr14_native:value},"lowRisk").state,state);
+for(const [value,state] of [[.2,"green"],[.35,"yellow"],[.5,"orange"],[.51,"red"]])
+  assert.equal(fitFor({...fitStock,volatility_252d:value},"lowRisk").state,state);
 assert.equal(fitFor({...fitStock,momentum_12_2:null},"momentum").state,"unknown");
 assert.equal(fitFor({...fitStock,drawdown_252d:-.02},"sander").state,"yellow","One failed requirement is partial fit, not missing data");
 assert.equal(fitFor({...fitStock,fundamentals:{...fitStock.fundamentals,
@@ -275,3 +277,30 @@ assert.ok(fitFor(weakGrowth,"growth").reason.includes("Beschleunigung"));
 assert.ok(match[1].includes('StockFit.render(head,s,selectedSearchFits())'),"Search cards must show selected per-strategy fit");
 assert.ok(match[1].includes('input.addEventListener("change",()=>searchController.refresh(false))'),"Fit selections must update cards without filtering search results or rebuilding the directory");
 console.log("Strategy fit: five strategies, four labelled colours, grey missing/stale evidence, partial-rule explanations and live checkbox updates verified.");
+
+const record=(value,state="green")=>({value,state,status:"ok",asof:"2026-10-31",report_end:"2026-09-30",filed:"2026-10-25",event_filed:"2026-10-25",reason:"Measured factor from dated evidence.",metrics:{}});
+context.StockResearch={assess:(stock,key)=>research.assess(stock,key,fitToday)};
+const recordsSample=[
+ {...fitStock,ticker:"QUALITY",factor_research:{version:1,quality:record(.5),value:record(.1),earnings:record(2),investment:record(-.05)}},
+ {...fitStock,ticker:"VALUE",factor_research:{version:1,quality:record(.1),value:record(.8),earnings:record(-1,"orange"),investment:record(-.3,"orange")}},
+ {...fitStock,ticker:"MISSING",factor_research:{version:1,quality:{value:null,status:"missing"},value:record(1)}},
+ {...fitStock,ticker:"STALE",price_date:"2026-01-01",factor_research:{version:1,quality:record(5)}}
+];
+context.recordsSample=recordsSample;
+for(const key of ["quality","value","earnings","investment"]){
+ const ranked=vm.runInContext(`mixedRanks(recordsSample,["${key}"])`,context);
+ assert.ok(ranked.has("QUALITY")&&ranked.has("VALUE"));
+}
+const qualityValue=vm.runInContext('mixedRanks(recordsSample,["quality","value"])',context);
+assert.equal(qualityValue.size,2,"Missing quality cannot be filled by a strong value score");
+assert.equal(vm.runInContext('mixedRanks(recordsSample,["quality"]).has("STALE")',context),false,"Grey stale evidence must not rank");
+assert.ok(qualityValue.get("QUALITY").parts.length===2);
+const researchedStock={...fitStock,factor_research:{version:1,quality:record(.5),value:record(.1,"red")}};
+assert.equal(fitFor(researchedStock,"quality").state,"green");
+assert.equal(fitFor(researchedStock,"value").state,"red");
+assert.equal(fitFor({...researchedStock,price_date:"2026-01-01"},"quality").state,"unknown");
+assert.equal(fitFor({...researchedStock,factor_research:{version:1,quality:{...record(.5),filed:"2027-01-01"}}},"quality").state,"unknown");
+assert.equal(fitFor({ticker:"NO_DATA"},"earnings").state,"unknown");
+assert.ok(html.includes('StockResearch.render(article,s,independent?selectedSearchFits():activeFactors())'));
+assert.ok(!html.includes('ATR(14) relativ zum Kurs · experimentell'),"Short-term ATR must not masquerade as the revised low-risk factor");
+console.log("Research factors: four independent rank inputs, missing-data exclusion, colour/date consistency, shared search fit and full-year low volatility verified.");

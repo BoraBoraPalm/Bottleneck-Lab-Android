@@ -15,12 +15,13 @@ from concurrent.futures import ThreadPoolExecutor
 from itertools import zip_longest
 from urllib.request import Request,urlopen
 from growth_radar import sec_quarters,relay_quarters,comparable_quarters
+from factor_research import sec_earnings_history,relay_earnings_history,earnings_window
 
 TICKERS_URL="https://www.sec.gov/files/company_tickers.json"
 FACTS_BASE="https://data.sec.gov/api/xbrl/companyfacts/CIK"
 USER_AGENT="Bottleneck Lab nonprofit academic research (contact: bottleneck-lab@github.com)"
 DEFAULT_MAX=60
-SCHEMA_VERSION=3
+SCHEMA_VERSION=4
 # Research heuristics, NOT rules personally specified by Beate Sander.
 MIN_DISCOUNT=.15
 MAX_DISCOUNT=.55
@@ -41,6 +42,7 @@ BALANCE_FIELDS={
     "current_liabilities":("LiabilitiesCurrent",),
 }
 CAPEX_FIELDS=("PaymentsToAcquirePropertyPlantAndEquipment",)
+GROSS_PROFIT_FIELDS=("GrossProfit",)
 CANONICAL_FORMS=("10-K","10-K/A")
 TICKER_RE=re.compile(r"^[A-Z][A-Z0-9-]{0,9}$")
 
@@ -135,12 +137,24 @@ def _recent_frame(facts,asof=None):
         if end in capex:
             annual["capex"]=capex[end][1]
             filings.append(capex[end][0])
+        gross=_financial_tag_series(facts,GROSS_PROFIT_FIELDS,today)
+        if end in gross:
+            annual["gross_profit"]=gross[end][1]
+            filings.append(gross[end][0])
         balance_filings=[]
         for key,tags in BALANCE_FIELDS.items():
             series=_financial_tag_series(facts,tags,today,instant=True)
             if end in series:
                 annual[key]=series[end][1]
                 balance_filings.append(series[end][0])
+            if key=="assets":
+                earlier_assets=sorted((k for k in series if 350<=(d-date.fromisoformat(k)).days<=385
+                                       and series[k][1]>0),reverse=True)
+                if earlier_assets:
+                    prior_asset_end=earlier_assets[0]
+                    annual["prior_assets"]=series[prior_asset_end][1]
+                    annual["prior_assets_end"]=prior_asset_end
+                    balance_filings.append(series[prior_asset_end][0])
         if balance_filings:annual["balance_filed"]=max(balance_filings).isoformat()
         annual["filed"]=max(filings+balance_filings).isoformat()
         return _derived_metrics(annual)
@@ -175,6 +189,10 @@ def _derived_metrics(annual):
     annual["equity_ratio"]=_ratio(annual.get("equity"),annual.get("assets"))
     annual["current_ratio"]=_ratio(annual.get("current_assets"),annual.get("current_liabilities"))
     annual["liabilities_to_equity"]=_ratio(annual.get("liabilities"),annual.get("equity"))
+    annual["gross_profit_to_assets"]=_ratio(annual.get("gross_profit"),annual.get("assets"))
+    annual["cashflow_to_assets"]=_ratio(cfo,annual.get("assets"))
+    assets_growth=_ratio(annual.get("assets"),annual.get("prior_assets"))
+    annual["asset_growth_yoy"]=round(assets_growth-1,6) if assets_growth is not None else None
     annual["quality_ok"]=(
         _number(net) and net>0 and _number(cfo) and cfo>0
         and _number(annual["profit_margin"]) and annual["profit_margin"]>=MIN_PROFIT_MARGIN
@@ -189,6 +207,7 @@ def fundamental_quality(facts,asof=None):
     annual["source"]="SEC EDGAR 10-K XBRL (US-GAAP)"
     annual["cik"]=int(facts.get("cik",0)) if str(facts.get("cik","")).isdigit() else None
     annual["quarterly"]=sec_quarters(facts,asof)
+    annual["quarterly"]["earnings"]=sec_earnings_history(facts,asof)
     return annual
 
 def download_fundamental(cik):
@@ -257,6 +276,7 @@ def tgm_annual_quality(ticker):
             and value(incomerows[k],"revenue")>0),reverse=True)
         previous=incomerows[older[0]] if older else {}
         annual={"revenue":rev,"net_income":value(a,"netIncome"),
+            "gross_profit":value(a,"grossProfit"),
             "operating_cashflow":value(b,"operatingCashFlow"),
             "prior_revenue":value(previous,"revenue"),
             "prior_net_income":value(previous,"netIncome"),
@@ -270,6 +290,13 @@ def tgm_annual_quality(ticker):
             ("liabilities","totalLiabilities"),("current_assets","totalCurrentAssets"),
             ("current_liabilities","totalCurrentLiabilities")):
             annual[key]=value(balance,provider_key)
+        asset_prior=sorted((k for k in balances if 350<=(date.fromisoformat(end)-date.fromisoformat(k)).days<=385
+                            and _number(value(balances[k],"totalAssets"))
+                            and value(balances[k],"totalAssets")>0),reverse=True)
+        if asset_prior:
+            annual["prior_assets"]=value(balances[asset_prior[0]],"totalAssets")
+            annual["prior_assets_end"]=asset_prior[0]
+            annual["filed"]=max(annual["filed"],balances[asset_prior[0]]["filed"])
         annual=_derived_metrics(annual)
         annual["quarterly"]=tgm_quarterly(ticker)
         return annual
@@ -279,9 +306,11 @@ def tgm_quarterly(ticker):
     """One bounded, attributed quarterly income request; no estimates."""
     if not TICKER_RE.fullmatch(ticker):return {}
     try:
-        raw=get_json(TGM_ROOT+ticker+"/income-statement?period=quarterly&years=3",
+        raw=get_json(TGM_ROOT+ticker+"/income-statement?period=quarterly&years=5",
                      timeout=14,max_bytes=1800000)
-        return relay_quarters(raw,ticker)
+        quarterly=relay_quarters(raw,ticker)
+        quarterly["earnings"]=relay_earnings_history(raw,ticker)
+        return quarterly
     except Exception:return {}
 
 def sander_screen(stock,fund):
@@ -365,9 +394,13 @@ def enrich_stocks(stocks,prior,maximum=DEFAULT_MAX):
         try:
             if cik is not None:fund=download_fundamental(cik)
         except Exception:pass
-        if fund is not None and not comparable_quarters(fund.get("quarterly")):
+        if fund is not None and (not comparable_quarters(fund.get("quarterly"))
+                                or not earnings_window((fund.get("quarterly") or {}).get("earnings") or {},today)):
             quarterly=tgm_quarterly(ticker)
-            if comparable_quarters(quarterly):fund["quarterly"]=quarterly
+            if not comparable_quarters(fund.get("quarterly")) and comparable_quarters(quarterly):
+                fund["quarterly"]=quarterly
+            elif earnings_window(quarterly.get("earnings") or {},today):
+                fund.setdefault("quarterly",{})["earnings"]=quarterly["earnings"]
         if fund is None:
             try:fund=tgm_annual_quality(ticker)
             except Exception:pass

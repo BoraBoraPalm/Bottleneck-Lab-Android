@@ -11,10 +11,10 @@ dazu Regionsfilter und ein optionaler Trade-Republic-AT-Filter für die Kandidat
 - Aktien von unterstützten internationalen Börsen, ergänzt durch offizielle US-Börsenverzeichnisse
 - **Reiter „Aktiensuche“:** eigenes Suchfeld mit Suchbutton und Enter, unabhängig von Strategie, Liquiditäts-/Momentumvorauswahl, Region und TR-AT-Filter. Durchsucht das gesamte verfügbare Namensverzeichnis sowie alle vorhandenen Kursdatensätze, mit antippbaren Vorschlägen, Ticker-/ISIN-Treffern, Akzentnormalisierung und begrenzter Tippfehlertoleranz einschließlich benachbarter Buchstabenvertauschungen. Auch Unternehmen ohne Kursdaten werden als Verzeichnistreffer gefunden und entsprechend gekennzeichnet. Charts und Fundamentaldaten bleiben bei vorhandenen Daten aufklappbar; ein Suchtreffer erhält keinen Strategie-Rang. „Kandidaten filtern“ bleibt ein lokaler Filter innerhalb der Kandidatenliste.
 - Echte, datierte Tageskurse als **indikativ nach EUR umgerechnete Referenzwerte**
-- Per Checkbox kombinierbare Ranglisten-Faktoren: **12–2-Monats-Momentum** (Standard), **geringe ATR(14)-Schwankung relativ zum Kurs** und **Abstand zum 200-Tage-Trend**. Bei mehreren Häkchen werden die Rangprozente 0–100 gleichgewichtet gemittelt. Fehlende Kennzahlen schließen Aktien aus dem Mix aus, statt geschätzte Nullen einzufügen. Mindestens ein Faktor bleibt ausgewählt.
-- Zusätzlich optional: **„Hoch-Tief-Mut · Sander-inspiriert“**. Diese Auswahl zeigt *tatsächlich geprüfte* Aktien mit 15–55 % Rückgang vom 252-Handelstage-Hoch, positivem Nettoergebnis, positivem operativem Cashflow, ≥3 % Nettomarge und mindestens −10 % Umsatzentwicklung im jüngsten prüfbaren Jahresabschluss. Finanzdaten stammen aus aktuellen **SEC EDGAR XBRL 10-K-Berichten**, daher derzeit überwiegend US-Emittenten. Score: 50 % relativer Rückgang, 25 % Gewinnmarge und 25 % Umsatzentwicklung. Unternehmensdaten und Geschäftsjahr werden im aufgeklappten Kandidaten angezeigt. Fehlen Unternehmensdaten, wird die Aktie **nicht** als Sander-Kandidat ausgegeben. Kann separat oder mit Momentum/ATR/Trend kombiniert werden.
+- Per Checkbox kombinierbare Ranglisten-Faktoren: **12–2-Monats-Momentum** (Standard), **geringe annualisierte Renditeschwankung über 252 Handelstage** und **Abstand zum 200-Tage-Trend**. Bei mehreren Häkchen werden die Rangprozente 0–100 gleichgewichtet gemittelt. Fehlende Kennzahlen schließen Aktien aus dem Mix aus, statt geschätzte Nullen einzufügen. Mindestens ein Faktor bleibt ausgewählt.
+- Zusätzlich optional: **„Hoch-Tief-Mut · Sander-inspiriert“**. Diese Auswahl zeigt *tatsächlich geprüfte* Aktien mit 15–55 % Rückgang vom 252-Handelstage-Hoch, positivem Nettoergebnis, positivem operativem Cashflow, ≥3 % Nettomarge und mindestens −10 % Umsatzentwicklung im jüngsten prüfbaren Jahresabschluss. Finanzdaten stammen aus aktuellen **SEC EDGAR XBRL 10-K-Berichten**, daher derzeit überwiegend US-Emittenten. Score: 50 % relativer Rückgang, 25 % Gewinnmarge und 25 % Umsatzentwicklung. Unternehmensdaten und Geschäftsjahr werden im aufgeklappten Kandidaten angezeigt. Fehlen Unternehmensdaten, wird die Aktie **nicht** als Sander-Kandidat ausgegeben. Kann separat oder mit Momentum/Renditevolatilität/Trend kombiniert werden.
 - **Interpretation:** Dies ist eine explizit *eigene* mechanische Teilannäherung an Beate Sanders Hoch-Tief-Mut-Ansatz, **keine exakte Umsetzung**. Deren wichtige Bestandteile langfristige Diversifikation, Dividenden, Unternehmensbewertung, überzeugendes Geschäftsmodell und Teilverkäufe sind nicht automatisiert. Auch ein starker Rückgang ist kein Beweis für eine günstige Bewertung. Keine belegte Überrendite aus dieser konkreten Screening-Regel.
-- Nur Momentum hat in dieser Implementierung eine breitere wissenschaftliche Faktorgrundlage; Trend und 14-Tage-ATR-Schwankung sind **experimentelle Zusatzfaktoren**, für die unser Vergleich keinen gesicherten Mehrertrag zeigte. Die konkrete Mehrfaktorkombination ist **nicht** historisch validiert.
+- Momentum, Gross Profitability, Value, konservatives Investment und Gewinnüberraschungen haben eine wissenschaftliche Faktorgrundlage. Unsere konkreten Datenwege, Farbgrenzen, Auswahl und Kombination sind **nicht** historisch als renditesteigernd validiert. Auch längerfristige Low Volatility ist nicht mit einem gehebelten Long/Short-Low-Beta-Portfolio gleichzusetzen.
 - Nur Titel mit einer EUR-Referenznotierung ab 2 € und durchschnittlich mindestens 2 Mio. € täglichen 20-Tage-Handelsumsatz, sofern die Daten existieren
 - „Auswahl“: bis zu 20 Kandidaten nach dem gewählten Faktor-Mix mit höchstens vier je Region; „Alle geprüften“: bis zu 75 Treffer der Filter
 - Trade Republic Österreich: nur eindeutige ISIN-Treffer in der offiziellen Instrumentenliste (keine Echtzeit-Handelsfreigabe)
@@ -58,8 +58,8 @@ Freier Cashflow = operativer Cashflow minus ausgewiesene Sachinvestitionen;
 fehlende Sachinvestitionen werden nicht als null angenommen. Bilanzdaten müssen
 zum gleichen Geschäftsjahresende passen; später erneut berichtete 10-Q-Bilanzwerte
 zu genau diesem Stichtag sind zulässig. Absolute Umsatz-, Gewinn- und
-Cashflowbeträge stehen in der Berichtswährung USD. KGV und Dividendenrendite
-werden mangels zuverlässig vergleichbarer Daten nicht erfunden.
+Cashflowbeträge stehen in der Berichtswährung USD. Ein datiertes KGV erscheint inzwischen bei der Value-Option als TTM-Kontext des
+Anbieters; fehlende Werte und Dividendenrenditen werden nicht erfunden.
 
 Fehlende Kennzahlen bleiben grau. Bei einem Geschäftsjahresende vor mehr als
 550 Tagen werden alle Farbbewertungen ausgesetzt; künftige oder ungeprüfte
@@ -135,6 +135,75 @@ Daten schließen einen Titel aus diesem Filter aus. Ein überlebensbiasfreier
 historischer Test mit damals verfügbaren Daten bleibt erforderlich, bevor ein
 konkreter Renditevorteil behauptet werden könnte.
 
+## Vier zusätzliche literaturmotivierte Optionen
+
+Die Kandidatenliste und die unabhängige Aktiensuche bieten zusätzlich:
+
+| Option | Rangmerkmal (höher = höherer Rang) | Pflichtdaten |
+| --- | --- | --- |
+| Profitabilität / Quality | Jahres-Bruttogewinn / Bilanzsumme | Gleicher Jahresstichtag, aktueller SEC-USD-Bericht; für erkennbare Finanzunternehmen keine pauschale Gross-Profit-Definition |
+| Value · Bewertung | Buchwert/Börsenwert = 1 / KBV | Datiertes TGMCharts-KBV für klassifizierte Stammaktien, aktueller USD-Jahresbericht und konsistenter USD-Schlusskurs |
+| Gewinnmomentum · Quartalsmodell | Standardisierte Abweichung des Quartals-Gesamtgewinns vom eigenen saisonalen Modell | 13 lückenlose Quartalsgewinne derselben USD-/Tag-Basis, dokumentierte Provenienz |
+| Konservatives Bilanzwachstum | Negative jährliche Änderung der Bilanzsumme | Zwei positive Bilanzsummen im Abstand von 350–385 Tagen |
+
+Quality ist hier bewusst das konkrete **Gross-Profitability-Merkmal**, kein
+vollständiger Quality-Minus-Junk-Index. Der operative Cashflow relativ zur
+Bilanzsumme wird zusätzlich als Kontext gezeigt. Value verwendet die vom
+Anbieter dokumentierte common-equity-P/B-Definition. Bewertungs- und Aktienkursdatum
+müssen übereinstimmen; eine Kursabweichung von mehr als 2 % führt zum Verzicht
+auf die Bewertung. Die Summary muss einem klassifizierten Stammaktien-Unternehmen
+zugeordnet sein; Fonds, Warrants, Preferreds usw. sind unzulässig. KGV, Gewinn-
+und FCF-Rendite sind ausschließlich zusätzlich gekennzeichnete TTM-Anbieterwerte.
+Es werden keine Marktwerte aus mehrdeutigen Aktienzahlen oder unangepassten EPS
+selbst erfunden. Quellenangabe und TGMCharts-Link erscheinen bei den Daten.
+
+Das **eigene Gewinnmomentum-Modell** hat einen saisonalen Erwartungswert:
+`NetIncome[q−4] + Mittelwert(ΔNetIncome der vorherigen 8 Quartale)`. Die aktuelle Differenz
+wird durch die Stichproben-Standardabweichung jener acht früheren Änderungen
+standardisiert. Die aktuelle Beobachtung ist nicht Teil der Mittelwert-/Streuungs-
+schätzung. Damit wird ausdrücklich **kein Analystenkonsens** und kein tatsächlicher
+Analysten-Beat vorgetäuscht. Die EPS-SUE-/PEAD-Literatur wird **nicht exakt repliziert**:
+Das Modell verwendet Gesamtgewinne, berücksichtigt keine Aktienverwässerung oder
+Rückkäufe und kann durch Sondereffekte stark beeinflusst sein. Eine reine Änderung
+der Aktienzahl durch einen Split verändert den Gesamtgewinn nicht. TGMCharts darf
+diskret fehlende Quartalsgewinne durch dokumentierte, gleich definierte Jahres-/YTD-
+Differenzen mit zwei Quellbelegen liefern; die Anzahl solcher Quartale wird angezeigt.
+Jahres- oder YTD-Beträge selbst gelten niemals als Quartal, Quartals-EPS werden
+nicht aus Jahres-EPS abgeleitet. Bei Lücken, einem Definitionswechsel oder fehlender
+Streuung bleibt die Option grau und rangiert nicht.
+Das jüngste Quartal muss höchstens 180 Tage alt sein, sein Filing höchstens
+120 Tage. Quartalsdaten des Anbieters werden für maximal fünf Fiskaljahre geladen;
+die Abdeckung ist dennoch nicht garantiert. Ein Filing-Datum ist
+nicht zwingend das frühere Datum einer Pressemitteilung. Spätere, bereits bekannte
+Restatements können heutige Vergleiche verändern; dies ist kein Point-in-Time-Backtest.
+
+Die neue **12-Monats-Schwankung** ersetzt das frühere ATR-Rangmerkmal:
+Stichproben-Standardabweichung der letzten 252 logarithmischen Tagesrenditen
+bereinigter Schlusskurse × √252. Sie benötigt 253 Preise und misst Volatilität,
+**kein Beta**. Das ATR(14) für die bereits vorhandenen optionalen Kauf-/Stop-
+Beispielrechnungen bleibt als eigenes Maß bestehen. Alte Preis-Caches bekommen
+die neuen Felder durch begrenzte priorisierte Nachabfragen.
+
+Die vier neuen Faktoren werden ohne vorab optimierte Gewichte in den bestehenden
+Rangmixer eingespeist. Farbgrenzen stehen in der App vollständig offen: Quality
+≥30/15/0 %; Value KBV ≤2/4/8; Gewinn-Modellabweichung ≥1/0/−1. Bilanzwachstum grün nur bei 0–5 %,
+gelb −20–15 %, orange −40–30 %, sonst rot; eine Bilanzschrumpfung wird nicht als
+automatisch sehr gut dargestellt. In der Rangliste entspricht die Richtung
+weiterhin dem negativen Vermögenswachstum; Unternehmensaufspaltungen und andere
+Sondereffekte erfordern zusätzliche Prüfung. Diese Ampeln sind eigene Einordnungen,
+keine aus den Papers abgeleiteten Kaufgrenzen. Fehlende Pflichtdaten sind grau.
+
+Die Datenpipeline ergänzt innerhalb ihres Budgets jährlich Bruttogewinn und
+Vorjahres-Bilanzsumme; ein Schemawechsel lädt alte Caches nach. Zusätzlich sind
+maximal 60 tägliche Summary-Abfragen mit drei parallelen Unternehmen vorgesehen.
+Gültige, zum Schlussdatum passende Summary-Caches werden wiederverwendet.
+
+Forschungsbezug: [Novy-Marx (2013)](https://doi.org/10.1016/j.jfineco.2013.01.003),
+[Fama/French (2015)](https://doi.org/10.1016/j.jfineco.2014.10.010) und
+[Chan/Jegadeesh/Lakonishok (1996)](https://doi.org/10.1111/j.1540-6261.1996.tb05222.x).
+Die Faktor-Literatur ist **kein Nachweis** für unsere spezielle, überwiegend
+US-fundamental abgedeckte Long-only-Liste, ihre Ampeln, Handelskosten oder Steuern.
+
 ## Kursdiagramme in jeder Aktienkarte
 
 Beim Aufklappen wird der Kursverlauf **erst dann** geladen (kein externer TradingView-Embed). Vorgaben: **3 Monate**, schnell umschaltbar zwischen **1M, 3M, 6M, 1J, 3J, 5J und MAX** (höchstens die letzten rund zehn Jahre, soweit Daten vom Anbieter verfügbar sind). Pro Symbol erzeugt die Kursdaten-Pipeline eine separate JSON-Datei unter `docs/charts/<Ticker>.json`; ein GitHub-Actions-Cache behält Kurshistorien aus vorherigen Aktualisierungen. Bei fehlenden Kursreihen erscheint eine klare Meldung. Das Chartangebot wächst daher mit den rotierenden Börsendaten-Aktualisierungen.
@@ -159,7 +228,7 @@ nutzbar. Bis zu fünf Namensvorschläge und 30 Ergebnisse halten die mobile Ansi
 Suchabfrage pro Tastendruck versendet. Die Reiter sind per Tastatur bedienbar;
 `#search` öffnet die Aktiensuche direkt.
 
-In der Aktiensuche können unter **„Strategie prüfen für:“** alle fünf bestehenden
+In der Aktiensuche können unter **„Strategie prüfen für:“** alle neun bestehenden
 Strategien unabhängig angehakt werden (anfangs alle aktiv). Pro Aktie erscheint
 je gewählter Strategie eine textlich begründete Passung: **grün „Passt gut“, gelb
 „Passt teilweise“, orange „Passt wenig“, rot „Passt schlecht“** oder **grau „Zu
@@ -167,8 +236,8 @@ wenig Daten“**. Diese Häkchen ändern weder die Namenssuche noch die Reihenfo
 oder die sichtbaren Titel; es gibt keinen pauschalen Kauf- oder Gesamtscore.
 
 Die allgemeinen Orientierungsgrenzen sind in der Aktiensuche einsehbar:
-Momentum grün ab +20 %, gelb ab 0 %, orange ab −15 %; relative ATR grün bis 2 %,
-gelb bis 4 %, orange bis 6 %; Trend grün ab dem 200-Tage-Durchschnitt, gelb bis
+Momentum grün ab +20 %, gelb ab 0 %, orange ab −15 %; annualisierte
+252-Tage-Renditevolatilität grün bis 20 %, gelb bis 35 %, orange bis 50 %; Trend grün ab dem 200-Tage-Durchschnitt, gelb bis
 5 % darunter, orange bis 15 % darunter. Schlechtere Werte sind rot. Bei Sander
 und Frühwachstum werden die bereits vorhandenen Pflichtbedingungen einzeln
 geprüft: alle erfüllt grün, mindestens 75 % gelb, mindestens 50 % orange, sonst
