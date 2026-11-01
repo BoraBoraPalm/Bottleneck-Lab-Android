@@ -1,0 +1,5 @@
+__pycache__/
+*.py[cod]
+docs/snapshot.json
+docs/search-index.json
+docs/charts/

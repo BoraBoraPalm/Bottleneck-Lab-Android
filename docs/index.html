@@ -30,6 +30,26 @@ a{color:#8bdecf;text-decoration-thickness:1px;text-underline-offset:3px}
 .stat span{font-size:11px;color:var(--muted);display:block;line-height:1.35}
 .controls{display:grid;grid-template-columns:1fr 1fr;gap:9px}
 .controls .full{grid-column:1/-1}
+[hidden]{display:none!important}
+.view-tabs{display:flex;gap:8px;margin:16px 0 8px}
+.view-tab{flex:1;min-height:46px;border:1px solid #456375;background:#132738;border-radius:10px;color:var(--text);font:inherit;font-weight:700;cursor:pointer}
+.view-tab[aria-selected="true"]{background:#24554f;border-color:#68c6b2;color:#c4ffef}
+.view-tab:focus-visible{outline:2px solid #78dfca;outline-offset:2px}
+.stock-search-form{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:9px;margin:15px 0 10px}
+.stock-search-form .btn{height:46px}
+.search-status{line-height:1.6;min-height:38px}
+.search-suggestions{display:grid;gap:6px;margin:9px 0}
+.search-suggestion{min-height:44px;border:1px solid #405d70;background:#193449;color:#d5e8ed;border-radius:8px;text-align:left;padding:9px 11px;font:inherit;font-size:12px;cursor:pointer;overflow-wrap:anywhere}
+.search-suggestion:hover{border-color:#68c6b2;background:#21453f}
+.stock-search-results{display:grid;grid-template-columns:1fr;gap:10px}
+.search-fit-options{margin-bottom:15px}
+.fit-legend{margin:10px 0 5px;line-height:1.6;color:#b7cad7}
+.fit-grid{display:grid;gap:6px;margin-top:12px}
+.fit-tile{border:1px solid;border-radius:8px;padding:8px 10px;font-size:11px;line-height:1.5}
+.fit-tile strong,.fit-tile span{display:block}
+.fit-tile span{margin-top:3px;font-weight:400}
+.search-note{font-size:12px;color:#c2d4e2;padding:9px 0 0;line-height:1.5}
+@media(min-width:650px){.stock-search-results{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .strategy-panel{margin-top:13px;padding:12px;border-radius:11px;background:#112838;border:1px solid #33596a}
 .strategy-panel h3{font-size:14px;margin:0 0 7px}
 .strategy-grid{display:grid;grid-template-columns:1fr;gap:6px}
@@ -182,9 +202,17 @@ h1{font-size:27px}
   <div class="stat"><b id="eligible">–</b><span>Aktuell prüfbar</span></div>
 </div>
 
-<section class="panel" aria-label="Aktienauswahl">
+<nav class="view-tabs" role="tablist" aria-label="Ansicht wählen">
+  <button id="tabCandidates" class="view-tab" type="button" role="tab" aria-selected="true" aria-controls="candidatesPanel">Kandidaten</button>
+  <button id="tabStockSearch" class="view-tab" type="button" role="tab" aria-selected="false" aria-controls="stockSearchPanel" tabindex="-1">Aktiensuche</button>
+</nav>
+<label class="switch" for="showTradeLevels">
+  <input id="showTradeLevels" type="checkbox">
+  Kauf-Limit &amp; Stop-Loss anzeigen (optionale Modellwerte)
+</label>
+<section id="candidatesPanel" class="panel" role="tabpanel" aria-labelledby="tabCandidates">
   <div class="controls">
-    <div class="full"><label class="field" for="search">Aktie suchen</label><input id="search" type="search" placeholder="Name oder Börsenticker" autocomplete="off"></div>
+    <div class="full"><label class="field" for="search">Kandidaten filtern</label><input id="search" type="search" placeholder="Name oder Ticker innerhalb dieser Auswahl" autocomplete="off"></div>
     <div><label class="field" for="region">Region</label><select id="region"><option value="Alle">Weltweit</option></select></div>
     <div><label class="field" for="scope">Ansicht</label>
       <select id="scope"><option value="selection">Auswahl</option><option value="entry">Einstieg prüfen</option><option value="exit">Ausstieg prüfen</option><option value="crash">Kurssturz</option><option value="all">Alle geprüften</option></select>
@@ -221,14 +249,41 @@ h1{font-size:27px}
     <input id="trOnly" type="checkbox">
     Nur Trade Republic Österreich (ISIN-Treffer)
   </label>
-  <label class="switch" for="showTradeLevels">
-    <input id="showTradeLevels" type="checkbox">
-    Kauf-Limit &amp; Stop-Loss anzeigen (optionale Modellwerte)
-  </label>
   <div id="count" class="small muted" aria-live="polite"></div>
   <div id="results" aria-label="Aktienkandidaten"></div>
   <div id="empty" class="notice" hidden>Für diese Filter sind derzeit keine ausreichend geprüften Aktien vorhanden. Probiere eine andere Region, die Ansicht „Alle geprüften“ oder deaktiviere den Trade-Republic-Filter.</div>
   <div class="explain"><strong>Hinweis:</strong> Bei mehreren aktivierten Faktoren werden gleichgewichtete Rangprozente (0–100) zu einem gemeinsamen Score kombiniert. Bei der Sander-Option müssen Gewinn, operativer Cashflow und Umsatzentwicklung aus einem Geschäftsbericht überprüfbar sein und ein deutlicher Kursrückgang vorliegen. Frühwachstum benötigt drei vergleichbare Quartale, beschleunigtes Umsatzwachstum, positiven Jahres-Cashflow und erste Kursstärke. Fehlende Daten schließen einen Titel aus dem gewählten Mix aus. Standardmäßig bleibt ausschließlich das 12–2-Monats-Momentum aktiv; die historische Mehr-Rendite einer Kombination ist nicht belegt. Kauf-/Ausstiegswarnungen sind separate, nicht validierte Kursregeln. EUR-Kurse sind keine ausführbaren Trade-Republic-Angebote.</div>
+</section>
+
+<section id="stockSearchPanel" class="panel" role="tabpanel" aria-labelledby="tabStockSearch" hidden>
+  <h2>Aktie suchen</h2>
+  <p class="muted small">Suche nach Firmennamen, Börsenticker oder ISIN. Auch ähnliche Schreibweisen werden berücksichtigt.</p>
+  <form id="stockSearchForm" class="stock-search-form" role="search">
+    <div><label class="field" for="stockSearchInput">Name oder Börsenticker</label>
+      <input id="stockSearchInput" type="search" placeholder="z. B. Nvidia, NVDA oder Micrsoft" autocomplete="off" maxlength="120" aria-describedby="stockSearchStatus" aria-controls="stockSearchSuggestions">
+    </div>
+    <button id="stockSearchButton" class="btn" type="submit">Suchen</button>
+  </form>
+  <div id="stockSearchSuggestions" class="search-suggestions" aria-label="Namensvorschläge"></div>
+  <p id="stockSearchStatus" class="search-status small muted" role="status" aria-live="polite">Gib einen Firmennamen oder Börsenticker ein. Die Suche ist unabhängig von den Kandidaten-Filtern.</p>
+  <div class="strategy-panel search-fit-options" aria-label="Strategiepassung auswählen">
+    <h3>Strategie prüfen für:</h3>
+    <div id="searchFitChoices" class="strategy-grid">
+      <label class="strategy-choice"><input type="checkbox" data-fit="momentum" checked><span><strong>12–2-Monats-Momentum</strong></span></label>
+      <label class="strategy-choice"><input type="checkbox" data-fit="lowRisk" checked><span><strong>Geringe Kursschwankung</strong></span></label>
+      <label class="strategy-choice"><input type="checkbox" data-fit="trend" checked><span><strong>200-Tage-Trend</strong></span></label>
+      <label class="strategy-choice"><input type="checkbox" data-fit="sander" checked><span><strong>Hoch-Tief-Mut · Sander-inspiriert</strong></span></label>
+      <label class="strategy-choice"><input type="checkbox" data-fit="growth" checked><span><strong>Frühwachstum / Multibagger</strong></span></label>
+    </div>
+    <p class="fit-legend small">Grün: passt gut · Gelb: passt teilweise · Orange: passt wenig · Rot: passt schlecht · Grau: zu wenig Daten.</p>
+    <p class="small muted">Die Auswahl ändert nur die angezeigten Bewertungen. Alle Namens-Treffer bleiben sichtbar.</p>
+    <details class="fund-help"><summary>Wie wird die Passung eingeordnet?</summary>
+      <p>Eigene Orientierungsgrenzen, keine Renditeprognose. Momentum: grün ab +20 %, gelb ab 0 %, orange ab −15 %, sonst rot. Relative ATR(14): grün bis 2 %, gelb bis 4 %, orange bis 6 %, sonst rot. Trend: grün ab dem 200-Tage-Durchschnitt, gelb bis 5 % darunter, orange bis 15 % darunter, sonst rot.</p>
+      <p>Sander und Frühwachstum verwenden dieselben nachprüfbaren Voraussetzungen wie die Kandidaten-Vorauswahl. Alle Bedingungen erfüllt: grün. Ansonsten werden mindestens 75 % erfüllte Bedingungen gelb, mindestens 50 % orange und weniger als 50 % rot eingeordnet. Fehlende oder veraltete Pflichtdaten bleiben grau. Einzelne Gegenargumente stehen direkt bei der Aktie; Bewertung und Geschäftsmodell werden damit nicht automatisch geprüft.</p>
+    </details>
+  </div>
+  <div id="stockSearchResults" class="stock-search-results" aria-label="Suchergebnisse"></div>
+  <p class="small muted">Das Verzeichnis umfasst mehr Aktien als die Kandidatenliste. Charts und Fundamentaldaten erscheinen, soweit sie bereits vorhanden sind. Ein Namensfund bestätigt keine Handelbarkeit bei Trade Republic.</p>
 </section>
 
 <details class="disclosure">
@@ -255,6 +310,8 @@ h1{font-size:27px}
 <script src="chart-widget.js"></script>
 <script src="fundamentals-widget.js?v=1"></script>
 <script src="growth-widget.js?v=1"></script>
+<script src="stock-search.js?v=1"></script>
+<script src="strategy-fit.js?v=1"></script>
 <script>
 "use strict";
 const $=id=>document.getElementById(id);
@@ -263,6 +320,7 @@ const eur=n=>Number.isFinite(n)?fmt(n,2)+" €":"–";
 const add=(p,tag,text,cls)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(text!=null)e.textContent=String(text);p.appendChild(e);return e};
 let snapshot=null;
 let lastRequest=0;
+let searchController=null;
 function isEligible(x){
   return (x.eligible_liquid_ranking===true||x.eligible_global_ranking===true)
     && Number.isFinite(x.reference_close_eur)
@@ -345,7 +403,8 @@ function dataRows(){
   }
   return {shown:base.slice(0,75),total:base.length,limit:false,scores};
 }
-function makeCard(s,mix){
+function makeCard(s,mix,options={}){
+  const independent=options.independent===true;
   const article=add(document.createDocumentFragment(),"details",null,"stock");
   const head=add(article,"summary");
   const top=add(head,"div",null,"stock-top");
@@ -353,12 +412,20 @@ function makeCard(s,mix){
   const title=add(left,"div",null,"stock-name");
   const ticker=add(title,"span",s.ticker,"ticker");
   add(title,"span"," · "+(s.name||s.ticker));
-  add(left,"div",regionOf(s)+" · "+(s.country||s.country_code||s.exchange||"Börse unbekannt"),"stock-sub");
+  add(left,"div",regionOf(s)+" · "+(s.country||s.country_code||s.exchange||"Börse unbekannt")
+    +(independent&&s.exchange?" · "+s.exchange:""),"stock-sub");
   add(top,"div",eur(s.reference_close_eur),"stock-price");
   const bottom=add(head,"div",null,"stock-bottom");
-  add(bottom,"span","Kombinierter Rang: "+fmt(mix.score,1)+"/100","strategy-score");
-  add(head,"div","Faktoranteile: "+mix.parts.map(p=>FACTORS[p.key].label+
-    " "+fmt(p.score,0)+"/100").join(" · "),"factor-detail");
+  if(independent){
+    add(bottom,"span",options.matchLabel||"Suchtreffer","strategy-score");
+    add(head,"div",Number.isFinite(s.reference_close_eur)
+      ?"Einzeltitel · unabhängig von den Kandidaten-Filtern"
+      :"Zu diesem Titel liegen noch keine geprüften Kursdaten vor.","search-note");
+  }else{
+    add(bottom,"span","Kombinierter Rang: "+fmt(mix.score,1)+"/100","strategy-score");
+    add(head,"div","Faktoranteile: "+mix.parts.map(p=>FACTORS[p.key].label+
+      " "+fmt(p.score,0)+"/100").join(" · "),"factor-detail");
+  }
   add(head,"div",Number.isFinite(s.momentum_12_2)?"12–2-Momentum: "+fmt(s.momentum_12_2*100,1)+" %":"12–2-Momentum: Historie fehlt","momentum");
   const flags=add(bottom,"span",null,"marks");
   add(flags,"span",s.tr_at_listed===true?"TR-AT ISIN ✓":"TR-AT offen",
@@ -382,7 +449,9 @@ function makeCard(s,mix){
   add(actions,"span",exitText[s.exit_review]||"Ausstieg ungeprüft",
       "chip "+((s.exit_review||"").startsWith("review_exit")?"action-sell":"unknown"));
   if(typeof StockFundamentals!=="undefined")StockFundamentals.preview(head,s);
-  const showGrowth=activeFactors().includes("growth")&&typeof StockGrowth!=="undefined";
+  if(independent&&typeof StockFit!=="undefined")StockFit.render(head,s,selectedSearchFits());
+  const showGrowth=(independent?selectedSearchFits().includes("growth")&&Boolean(s.growth_radar?.quarters?.length):activeFactors().includes("growth"))
+    &&typeof StockGrowth!=="undefined";
   if(showGrowth)StockGrowth.preview(head,s);
   if($("showTradeLevels").checked){
     const levels=add(head,"div",null,"trade-levels");
@@ -427,6 +496,7 @@ function makeCard(s,mix){
     ["Momentum-Berechnung",s.momentum_basis||"nicht verifiziert"],
     ["Börse",s.exchange||"unbekannt"]
   ];
+  if(independent&&(s.reference_isin||s.tr_isin))items.push(["ISIN",s.reference_isin||s.tr_isin]);
   if(s.tr_at_listed===true && s.tr_isin)items.push(["Trade Republic ISIN",s.tr_isin]);
   if(Number.isFinite(s.entry_reference_eur))items.push(["Letzter Referenzkurs für Orderprüfung",eur(s.entry_reference_eur)]);
   if(s.fundamentals && Number.isFinite(s.sander_score)){
@@ -514,6 +584,7 @@ async function load(){
     if(!Array.isArray(data.stocks)||typeof data.generated_at!=="string")throw Error("Ungültiger Datensatz");
     if(run!==lastRequest)return;
     snapshot=data;
+    if(searchController)searchController.refresh();
     $("universe").textContent=fmt(data.universe_size);
     $("quoted").textContent=fmt(data.scanned_tickers);
     $("eligible").textContent=fmt(data.eligible_count);
@@ -547,6 +618,41 @@ for(const input of document.querySelectorAll("#strategyChoices input[data-factor
     render();
   });
 }
+function selectedSearchFits(){
+  return Array.from(document.querySelectorAll("#searchFitChoices input[data-fit]:checked"),input=>input.dataset.fit);
+}
+searchController=StockSearch.create({
+  input:$("stockSearchInput"),form:$("stockSearchForm"),status:$("stockSearchStatus"),
+  results:$("stockSearchResults"),suggestions:$("stockSearchSuggestions"),
+  getStocks:()=>snapshot?.stocks||[],
+  makeCard:(stock,matchLabel)=>makeCard(stock,null,{independent:true,matchLabel})
+});
+$("showTradeLevels").addEventListener("change",()=>searchController.refresh(false));
+for(const input of document.querySelectorAll("#searchFitChoices input[data-fit]")){
+  input.addEventListener("change",()=>searchController.refresh(false));
+}
+function setView(view,focus=false){
+  const searching=view==="search";
+  $("candidatesPanel").hidden=searching;
+  $("stockSearchPanel").hidden=!searching;
+  for(const [id,selected] of [["tabCandidates",!searching],["tabStockSearch",searching]]){
+    $(id).setAttribute("aria-selected",String(selected));
+    $(id).tabIndex=selected?0:-1;
+  }
+  if(searching)searchController.activate();
+  if(focus)$(searching?"tabStockSearch":"tabCandidates").focus();
+  history.replaceState(null,"",searching?"#search":"#candidates");
+}
+for(const [id,view] of [["tabCandidates","candidates"],["tabStockSearch","search"]]){
+  $(id).addEventListener("click",()=>setView(view));
+  $(id).addEventListener("keydown",event=>{
+    if(!["ArrowLeft","ArrowRight","Home","End"].includes(event.key))return;
+    event.preventDefault();
+    const next=event.key==="Home"?"candidates":event.key==="End"?"search":view==="search"?"candidates":"search";
+    setView(next,true);
+  });
+}
+setView(location.hash==="#search"?"search":"candidates");
 $("reload").addEventListener("click",load);
 load();
 </script>

@@ -3,11 +3,13 @@
 **Website:** https://boraborapalm.github.io/Bottleneck-Lab-Android/
 
 Ein mobiles, bewusst einfaches Recherchewerkzeug für weltweite Aktien:
-eine Liste, eine Suche, ein Regionsfilter und ein optionaler Trade-Republic-AT-Filter.
+zwei Reiter für Strategie-Kandidaten und eine unabhängige Aktiensuche,
+dazu Regionsfilter und ein optionaler Trade-Republic-AT-Filter für die Kandidaten.
 
 ## Was die App zeigt
 
 - Aktien von unterstützten internationalen Börsen, ergänzt durch offizielle US-Börsenverzeichnisse
+- **Reiter „Aktiensuche“:** eigenes Suchfeld mit Suchbutton und Enter, unabhängig von Strategie, Liquiditäts-/Momentumvorauswahl, Region und TR-AT-Filter. Durchsucht das gesamte verfügbare Namensverzeichnis sowie alle vorhandenen Kursdatensätze, mit antippbaren Vorschlägen, Ticker-/ISIN-Treffern, Akzentnormalisierung und begrenzter Tippfehlertoleranz einschließlich benachbarter Buchstabenvertauschungen. Auch Unternehmen ohne Kursdaten werden als Verzeichnistreffer gefunden und entsprechend gekennzeichnet. Charts und Fundamentaldaten bleiben bei vorhandenen Daten aufklappbar; ein Suchtreffer erhält keinen Strategie-Rang. „Kandidaten filtern“ bleibt ein lokaler Filter innerhalb der Kandidatenliste.
 - Echte, datierte Tageskurse als **indikativ nach EUR umgerechnete Referenzwerte**
 - Per Checkbox kombinierbare Ranglisten-Faktoren: **12–2-Monats-Momentum** (Standard), **geringe ATR(14)-Schwankung relativ zum Kurs** und **Abstand zum 200-Tage-Trend**. Bei mehreren Häkchen werden die Rangprozente 0–100 gleichgewichtet gemittelt. Fehlende Kennzahlen schließen Aktien aus dem Mix aus, statt geschätzte Nullen einzufügen. Mindestens ein Faktor bleibt ausgewählt.
 - Zusätzlich optional: **„Hoch-Tief-Mut · Sander-inspiriert“**. Diese Auswahl zeigt *tatsächlich geprüfte* Aktien mit 15–55 % Rückgang vom 252-Handelstage-Hoch, positivem Nettoergebnis, positivem operativem Cashflow, ≥3 % Nettomarge und mindestens −10 % Umsatzentwicklung im jüngsten prüfbaren Jahresabschluss. Finanzdaten stammen aus aktuellen **SEC EDGAR XBRL 10-K-Berichten**, daher derzeit überwiegend US-Emittenten. Score: 50 % relativer Rückgang, 25 % Gewinnmarge und 25 % Umsatzentwicklung. Unternehmensdaten und Geschäftsjahr werden im aufgeklappten Kandidaten angezeigt. Fehlen Unternehmensdaten, wird die Aktie **nicht** als Sander-Kandidat ausgegeben. Kann separat oder mit Momentum/ATR/Trend kombiniert werden.
@@ -146,6 +148,33 @@ Die Aktienverzeichnisse umfassen viele mehr Börsenticker, als in einem sechs St
 Datenquellen: [Adanos – globales Aktienverzeichnis](https://github.com/adanos-software/free-ticker-database), Nasdaq Trader, inoffizielle Yahoo-Finance-Tageskurse (US-Fallback Stooq), Frankfurter-Referenzwechselkurse sowie [TR AT – offizielle Wertpapierliste](https://assets.traderepublic.com/assets/files/AT/Instrument_Universe_AT_en.pdf). Fehlende Daten bleiben fehlend. Kurse sind **keine** tatsächlichen Trade-Republic-Geld-/Briefpreise. Kein Zugriff auf das Brokerkonto, keine Käufe oder Verkäufe. Delistings, Splits, Dividenden, Gebühren und österreichische Besteuerung werden nicht als historische Trading-Performance modelliert.
 
 ## Betrieb
+
+Das unabhängige Namensverzeichnis wird je Datenlauf als `docs/search-index.json`
+aus den bereits entdeckten Aktien erzeugt und erst beim Öffnen der Aktiensuche
+geladen. Es enthält ausschließlich öffentliche Identitäts-/Börsenangaben,
+keine simulierten Kurse oder Datenabdeckungsversprechen. Bei einem Ladefehler
+bleibt die Suche über alle vorhandenen Kursdatensätze mit entsprechendem Hinweis
+nutzbar. Bis zu fünf Namensvorschläge und 30 Ergebnisse halten die mobile Ansicht
+übersichtlich. Suchbegriffe werden lokal verarbeitet; es wird keine externe
+Suchabfrage pro Tastendruck versendet. Die Reiter sind per Tastatur bedienbar;
+`#search` öffnet die Aktiensuche direkt.
+
+In der Aktiensuche können unter **„Strategie prüfen für:“** alle fünf bestehenden
+Strategien unabhängig angehakt werden (anfangs alle aktiv). Pro Aktie erscheint
+je gewählter Strategie eine textlich begründete Passung: **grün „Passt gut“, gelb
+„Passt teilweise“, orange „Passt wenig“, rot „Passt schlecht“** oder **grau „Zu
+wenig Daten“**. Diese Häkchen ändern weder die Namenssuche noch die Reihenfolge
+oder die sichtbaren Titel; es gibt keinen pauschalen Kauf- oder Gesamtscore.
+
+Die allgemeinen Orientierungsgrenzen sind in der Aktiensuche einsehbar:
+Momentum grün ab +20 %, gelb ab 0 %, orange ab −15 %; relative ATR grün bis 2 %,
+gelb bis 4 %, orange bis 6 %; Trend grün ab dem 200-Tage-Durchschnitt, gelb bis
+5 % darunter, orange bis 15 % darunter. Schlechtere Werte sind rot. Bei Sander
+und Frühwachstum werden die bereits vorhandenen Pflichtbedingungen einzeln
+geprüft: alle erfüllt grün, mindestens 75 % gelb, mindestens 50 % orange, sonst
+rot. Unvollständige oder veraltete Pflichtdaten ergeben grau statt einer
+negativen Bewertung. Dies ist eine transparente Einordnung der Merkmale zu
+unseren Regeln, keine validierte Gewinnprognose oder Geschäftsmodellbewertung.
 
 Der aktive Workflow ist `.github/workflows/market-data-pages.yml`; er läuft alle sechs Stunden und bei relevanten Änderungen. Die Website kommt aus `docs/index.html`, die generierte Daten-Datei heißt `docs/snapshot.json`. Manuell starten: GitHub → Actions → **Bottleneck Lab · Simplified Global Snapshot** → **Run workflow**. Die Website-Schaltfläche „Aktualisieren“ lädt nur den zuletzt veröffentlichten Snapshot erneut, sie startet keine Datenabfrage.
 

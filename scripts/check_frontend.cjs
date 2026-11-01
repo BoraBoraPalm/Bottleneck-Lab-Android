@@ -6,13 +6,16 @@ function exactly(pattern,count,name){
 }
 exactly(/<html(?:\s[^>]*)?>/gi,1,"HTML opening");
 exactly(/<\/html>/gi,1,"HTML closing");
-exactly(/<script(?:\s[^>]*)?>/gi,4,"JS opening (three widgets and inline)");
-exactly(/<\/script>/gi,4,"JS closing (three widgets and inline)");
+exactly(/<script(?:\s[^>]*)?>/gi,6,"JS opening (five widgets and inline)");
+exactly(/<\/script>/gi,6,"JS closing (five widgets and inline)");
 if(!/<\/html>\s*$/i.test(html))throw new Error("Code leaked after </html>");
 const match=html.match(/<script>([\s\S]*?)<\/script>/i);
 if(!match)throw new Error("Missing inline script");
 new Function(match[1]);
 for(const id of ["universe","quoted","eligible","search","region","scope","trOnly",
+  "tabCandidates","tabStockSearch","candidatesPanel","stockSearchPanel","stockSearchForm",
+  "stockSearchInput","stockSearchButton","stockSearchStatus","stockSearchResults","stockSearchSuggestions",
+  "searchFitChoices",
   "count","results","empty","status","reload","factorMomentum","factorLowRisk","factorTrend","factorSander","factorGrowth","strategySummary","showTradeLevels"]){
   if(!html.includes('id="'+id+'"'))throw new Error("UI control missing: "+id);
 }
@@ -194,3 +197,81 @@ assert.ok(html.includes('StockFundamentals.preview(head,s)')&&html.includes('Sto
 for(const colour of ["green","yellow","orange","red","unknown"])
   assert.ok(html.includes(".fund-"+colour+"{"),"Missing financial colour style: "+colour);
 console.log("Fundamentals: 8 metrics, 4 colour bands, missing/stale data, losses, turnarounds and sector exceptions verified.");
+
+// Independent identity search: all known stocks, never the strategy-filtered list.
+const search=require("../docs/stock-search.js");
+const searchIndex=search.prepare([
+  {ticker:"NVDA",name:"NVIDIA Corporation",reference_isin:"US67066G1040"},
+  {ticker:"NVDA.DE",name:"NVIDIA Corporation",exchange:"XETRA"},
+  {ticker:"MSFT",name:"Microsoft Corporation"},
+  {ticker:"GOOGL",name:"Alphabet Inc."},
+  {ticker:"META",name:"Meta Platforms Inc."},
+  {ticker:"MUELL.DE",name:"Müller & Söhne AG"},
+  {ticker:"NEW",name:"Unscanned Company"},
+  {ticker:"BRK-B",name:"Berkshire Hathaway Inc."},
+  {ticker:"F",name:"Ford Motor Company"}
+],[{ticker:"NVDA",name:"NVDA",reference_close_eur:100,eligible_global_ranking:false},
+   {ticker:"LOW",name:"Illiquid Low Price Company",eligible_global_ranking:false,tr_at_listed:false}]);
+const first=query=>search.find(searchIndex,query).items[0]?.stock;
+assert.equal(first("nViDiA").ticker,"NVDA");
+assert.equal(first("nvda").name,"NVIDIA Corporation","Ticker-only quote names must not erase directory names");
+assert.equal(search.find(searchIndex,"NVDA").total,1,"An exact ticker must not add unrelated fuzzy names");
+assert.equal(first("US67066G1040").ticker,"NVDA");
+assert.equal(first("Micrsoft").ticker,"MSFT","Missing character tolerated");
+assert.equal(first("Mircosoft").ticker,"MSFT","Adjacent transposition tolerated");
+assert.equal(first("Nvidai").ticker,"NVDA");
+assert.equal(first("Google").ticker,"GOOGL");
+assert.equal(first("Facebook").ticker,"META");
+assert.equal(first("muller sohne").ticker,"MUELL.DE");
+assert.equal(first("mueller").ticker,"MUELL.DE");
+assert.equal(first("brk.b").ticker,"BRK-B");
+assert.equal(first("F").ticker,"F","One-letter exact tickers work");
+assert.equal(first("illiquid").ticker,"LOW","Illiquid/filtered stocks remain searchable");
+assert.equal(first("unscanned").ticker,"NEW","Directory-only company remains searchable");
+assert.equal(first("nonsenseUnrelatedName"),undefined);
+assert.equal(search.find(searchIndex,"").items.length,0);
+assert.equal(search.find(searchIndex,"Nvidia",1).items.length,1);
+assert.equal(search.find(searchIndex,"Nvidia",1).total,2,"Separate exchange listings retain their identity");
+assert.equal(search.distance("microsoft","mircosoft",2),1);
+assert.ok(match[1].includes('getStocks:()=>snapshot?.stocks||[]'),"Search must use all snapshot stocks, not dataRows or mixedRanks");
+assert.ok(match[1].includes('makeCard(stock,null,{independent:true,matchLabel})'),"Search cards must not display investment ranks");
+assert.ok(html.includes('role="tablist"')&&html.includes('role="search"')&&html.includes('type="submit">Suchen'));
+assert.ok(match[1].includes('"ArrowLeft","ArrowRight","Home","End"'),"Tabs need keyboard navigation");
+console.log("Independent search: strategy exclusion bypass, directory-only stocks, ticker/ISIN, aliases, accents, typos, transpositions and bounded results verified.");
+
+const fit=require("../docs/strategy-fit.js");
+const fitToday={today:"2026-10-31T12:00:00Z"};
+const fitStock={ticker:"FIT",price_date:"2026-10-30",source:"Yahoo Finance",close:100,atr14_native:1.5,
+  context_basis:"Yahoo adjusted OHLC, signal after close",momentum_basis:"Yahoo adjusted daily closes",
+  momentum_12_2:.3,sma200_ratio:.1,drawdown_252d:-.3,
+  fundamentals:{fy_end:"2025-12-31",filed:"2026-02-15",net_income:10,operating_cashflow:15,
+    profit_margin:.1,revenue_growth_yoy:.2}};
+const fitFor=(stock,key)=>fit.assess(stock,key,fitToday);
+for(const key of ["momentum","lowRisk","trend","sander"]){
+  const value=fitFor(fitStock,key);
+  assert.equal(value.state,"green");
+  assert.ok(value.reason.length>10);
+  assert.equal(fitFor({ticker:"NO_DATA"},key).state,"unknown","Missing evidence must not be graded red");
+  assert.equal(fitFor({...fitStock,price_date:"2026-01-01"},key).state,"unknown","Stale prices must not be graded green");
+}
+for(const [value,state] of [[.2,"green"],[0,"yellow"],[-.15,"orange"],[-.16,"red"]])
+  assert.equal(fitFor({...fitStock,momentum_12_2:value},"momentum").state,state);
+for(const [value,state] of [[2,"green"],[4,"yellow"],[6,"orange"],[6.1,"red"]])
+  assert.equal(fitFor({...fitStock,atr14_native:value},"lowRisk").state,state);
+assert.equal(fitFor({...fitStock,momentum_12_2:null},"momentum").state,"unknown");
+assert.equal(fitFor({...fitStock,drawdown_252d:-.02},"sander").state,"yellow","One failed requirement is partial fit, not missing data");
+assert.equal(fitFor({...fitStock,fundamentals:{...fitStock.fundamentals,
+  net_income:-10,operating_cashflow:-10,profit_margin:-.1,revenue_growth_yoy:-.2}},"sander").state,"red");
+const growthFit={...fitStock,return_63d:.3,growth_radar:{status:"qualified",
+  quarters:[{end:"2026-03-31",filed:"2026-04-25",revenue_growth_yoy:.2},
+    {end:"2026-06-30",filed:"2026-07-25",revenue_growth_yoy:.25},
+    {end:"2026-09-30",filed:"2026-10-25",revenue_growth_yoy:.4,net_margin:.15}],
+  revenue_acceleration:.15,annual_cashflow_margin:.2,net_margin_change_yoy:.05,relative_63d:.1,breakout_63d_ratio:-.02}};
+assert.equal(fitFor(growthFit,"growth").state,"green");
+assert.equal(fitFor({...growthFit,growth_radar:{...growthFit.growth_radar,status:"missing_price"}},"growth").state,"unknown");
+const weakGrowth={...growthFit,growth_radar:{...growthFit.growth_radar,status:"criteria_not_met",revenue_acceleration:-.1}};
+assert.equal(fitFor(weakGrowth,"growth").state,"yellow");
+assert.ok(fitFor(weakGrowth,"growth").reason.includes("Beschleunigung"));
+assert.ok(match[1].includes('StockFit.render(head,s,selectedSearchFits())'),"Search cards must show selected per-strategy fit");
+assert.ok(match[1].includes('input.addEventListener("change",()=>searchController.refresh(false))'),"Fit selections must update cards without filtering search results or rebuilding the directory");
+console.log("Strategy fit: five strategies, four labelled colours, grey missing/stale evidence, partial-rule explanations and live checkbox updates verified.");

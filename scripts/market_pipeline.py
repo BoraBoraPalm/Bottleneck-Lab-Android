@@ -24,6 +24,7 @@ from trade_guidance import assign_decision,market_risk_from_quote
 from chart_history import chart_is_current,write_chart,chart_count
 from sander_fundamentals import enrich_stocks as update_sander_fundamentals
 from growth_radar import enrich_growth
+from search_catalog import write_catalog
 
 PAGES="https://boraborapalm.github.io/Bottleneck-Lab-Android/snapshot.json"
 NASDAQ="https://www.nasdaqtrader.com/dynamic/SymDir/nasdaqlisted.txt"
@@ -44,7 +45,10 @@ SEEDS={
   "Naher Osten":"D05.SI"
 }
 SEED_NAMES={s:r for r,syms in SEEDS.items() for s in syms.split()}
-CURATED_SYMBOLS=set(CURATED)|set(SEED_NAMES)
+# A small fixed reference set also receives quotes/charts in every data run,
+# so ordinary name searches need not await the worldwide directory rotation.
+SEARCH_REFERENCE_SYMBOLS=set("MSFT AAPL AMZN GOOGL GOOG META TSLA BRK-B".split())
+CURATED_SYMBOLS=set(CURATED)|set(SEED_NAMES)|SEARCH_REFERENCE_SYMBOLS
 SUFFIX_REGION={
  ".DE":"Europa",".F":"Europa",".PA":"Europa",".MI":"Europa",".AS":"Europa",".SW":"Europa",".CO":"Europa",".ST":"Europa",".L":"Europa",
  ".T":"Asien",".TWO":"Asien",".KS":"Asien",".TW":"Asien",".HK":"Asien",".SS":"Asien",".SZ":"Asien",".NS":"Asien",".BO":"Asien",".SI":"Asien",
@@ -249,8 +253,10 @@ def main():
     counts=Counter(s.get("region") or "Unbekannt" for s in known.values())
     have=Counter(s.get("region") or "Unbekannt" for s in stocks)
     eligible=Counter(s.get("region") or "Unbekannt" for s in stocks if s["eligible_global_ranking"])
+    search_count=write_catalog(known)
     output={
-        "version":11,
+        "version":12,
+        "search_catalog_info":{"file":"search-index.json","listings":search_count},
         "fundamentals_info":{"source":"SEC-XBRL annual USD statements; direct or TGMCharts",
             "coverage":"Primarily US filers; verified partial reports remain partial",
             "with_annual_data":sander_status["with_verified_fundamentals"],
