@@ -1,0 +1,34 @@
+[
+  {
+    "holding_months": 1,
+    "file": "PredictorAltPorts_HoldPer_1.parquet",
+    "url": "https://huggingface.co/datasets/OpenSourceAP/CrossSection/resolve/ad1dfba5a6d80c4ce53ce6b8127f5a949dda1e40/Portfolios/Full%20Sets%20Alt/PredictorAltPorts_HoldPer_1.parquet",
+    "bytes": 18753833,
+    "sha256": "a0bf9c7cc737a9419f74dc13648b95e63ff7fa16b570ce11def0bfead4252aa3",
+    "source_revision": "ad1dfba5a6d80c4ce53ce6b8127f5a949dda1e40"
+  },
+  {
+    "holding_months": 3,
+    "file": "PredictorAltPorts_HoldPer_3.parquet",
+    "url": "https://huggingface.co/datasets/OpenSourceAP/CrossSection/resolve/ad1dfba5a6d80c4ce53ce6b8127f5a949dda1e40/Portfolios/Full%20Sets%20Alt/PredictorAltPorts_HoldPer_3.parquet",
+    "bytes": 19004713,
+    "sha256": "7dc5e4d3fef1ac4c51e6156d708dd6f89c0504e364f7aa33cd9b71a75ef7490f",
+    "source_revision": "ad1dfba5a6d80c4ce53ce6b8127f5a949dda1e40"
+  },
+  {
+    "holding_months": 6,
+    "file": "PredictorAltPorts_HoldPer_6.parquet",
+    "url": "https://huggingface.co/datasets/OpenSourceAP/CrossSection/resolve/ad1dfba5a6d80c4ce53ce6b8127f5a949dda1e40/Portfolios/Full%20Sets%20Alt/PredictorAltPorts_HoldPer_6.parquet",
+    "bytes": 18906511,
+    "sha256": "c58d86a24e204929881d57b8b44024f19b10ca620b16e63f4d71bdf499714443",
+    "source_revision": "ad1dfba5a6d80c4ce53ce6b8127f5a949dda1e40"
+  },
+  {
+    "holding_months": 12,
+    "file": "PredictorAltPorts_HoldPer_12.parquet",
+    "url": "https://huggingface.co/datasets/OpenSourceAP/CrossSection/resolve/ad1dfba5a6d80c4ce53ce6b8127f5a949dda1e40/Portfolios/Full%20Sets%20Alt/PredictorAltPorts_HoldPer_12.parquet",
+    "bytes": 18785280,
+    "sha256": "c03f52909ada77c157a233d3315698d7132cbbed6789d94aae470d18d42d6fa2",
+    "source_revision": "ad1dfba5a6d80c4ce53ce6b8127f5a949dda1e40"
+  }
+]

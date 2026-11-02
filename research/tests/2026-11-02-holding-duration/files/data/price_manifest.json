@@ -1,0 +1,1037 @@
+[
+  {
+    "ticker": "AAPL",
+    "ok": true,
+    "observations": 4233,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/AAPL?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 471396,
+    "sha256": "04a5f94d41a4512791e30e212d5d31d6c63b851ba9c13b0401e73325ea5a31fc",
+    "retrieved_utc": "2026-11-02T10:52:51.398175+00:00"
+  },
+  {
+    "ticker": "GOOGL",
+    "ok": true,
+    "observations": 4233,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/GOOGL?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 470375,
+    "sha256": "11a69c16d555bf4d65ddccb28c9f9de752d20c6554d53814a1ecf9134ef277b4",
+    "retrieved_utc": "2026-11-02T10:52:51.285420+00:00"
+  },
+  {
+    "ticker": "MSFT",
+    "ok": true,
+    "observations": 4233,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/MSFT?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 464384,
+    "sha256": "e23f027a7cfd7d2e871566b17466532c6d9e2f0468741bbe1e7ba57f89c096cf",
+    "retrieved_utc": "2026-11-02T10:52:51.317315+00:00"
+  },
+  {
+    "ticker": "AMZN",
+    "ok": true,
+    "observations": 4233,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/AMZN?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 464813,
+    "sha256": "5452d902549ac43b3b738244e147e9255e52153c72ce9293af41403899b566ac",
+    "retrieved_utc": "2026-11-02T10:52:51.287698+00:00"
+  },
+  {
+    "ticker": "0700.HK",
+    "ok": true,
+    "observations": 4149,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/0700.HK?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 440450,
+    "sha256": "6045ea194757cdeb8cd883cfab83e0fc0b6e0829a81063770646966c3130e81c",
+    "retrieved_utc": "2026-11-02T10:52:51.329550+00:00"
+  },
+  {
+    "ticker": "BRK-B",
+    "ok": true,
+    "observations": 4233,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/BRK-B?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 450341,
+    "sha256": "f7f35e1db2f4e37c983f1244ec9dd2431e262de17e2626cf1ada16f1b349e345",
+    "retrieved_utc": "2026-11-02T10:52:51.301589+00:00"
+  },
+  {
+    "ticker": "BABA",
+    "ok": true,
+    "observations": 3047,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/BABA?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 327771,
+    "sha256": "d65ba6237bc1e3d7fb55dbdfe76172085c4ad3f0c48bf12ddb87103273f2f729",
+    "retrieved_utc": "2026-11-02T10:52:57.791765+00:00"
+  },
+  {
+    "ticker": "META",
+    "ok": true,
+    "observations": 3634,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/META?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 391948,
+    "sha256": "940ffd024b0376bd3fd4bb5f0112537dbd9b8a25038dd8de3f688ac2e2a5d326",
+    "retrieved_utc": "2026-11-02T10:52:57.835749+00:00"
+  },
+  {
+    "ticker": "JPM",
+    "ok": true,
+    "observations": 4233,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/JPM?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 463724,
+    "sha256": "1809c83da49aabc71e9edd06b675626bf537bbe9506106b1bb72f9597ba7b832",
+    "retrieved_utc": "2026-11-02T10:52:57.857854+00:00"
+  },
+  {
+    "ticker": "JNJ",
+    "ok": true,
+    "observations": 4233,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/JNJ?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 460794,
+    "sha256": "803f7d5d7c12bb001688dfb48d06b87120889cb065e85a39b889010096641acd",
+    "retrieved_utc": "2026-11-02T10:52:57.855905+00:00"
+  },
+  {
+    "ticker": "1398.HK",
+    "ok": true,
+    "observations": 4149,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/1398.HK?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 452877,
+    "sha256": "d5d09ac254852ab0928b587c6014509147af0e8ada8dfcb61c87398535e232f9",
+    "retrieved_utc": "2026-11-02T10:52:57.835048+00:00"
+  },
+  {
+    "ticker": "XOM",
+    "ok": true,
+    "observations": 4233,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/XOM?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 460958,
+    "sha256": "4fd0b6816b6b1da8e6eabdbd894fec502f9088302050c4e703dd89c5d7861a28",
+    "retrieved_utc": "2026-11-02T10:52:57.970055+00:00"
+  },
+  {
+    "ticker": "BAC",
+    "ok": true,
+    "observations": 4233,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/BAC?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 470510,
+    "sha256": "72e9fecae30d5cf3d8ec5f4d8e09546d3763055a9862987fe26912dbde6b0c37",
+    "retrieved_utc": "2026-11-02T10:53:01.801574+00:00"
+  },
+  {
+    "ticker": "005930.KS",
+    "ok": true,
+    "observations": 4139,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/005930.KS?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 277876,
+    "sha256": "f3d49aed4278cdb3112dc09ec65faaf1d439f77145ae539794e52896ecc7da49",
+    "retrieved_utc": "2026-11-02T10:53:01.741828+00:00"
+  },
+  {
+    "ticker": "SHEL.L",
+    "ok": true,
+    "observations": 4253,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/SHEL.L?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 303924,
+    "sha256": "c49737874e3d081f8973967e379911b1d8125c6709174934121c36575727ccd3",
+    "retrieved_utc": "2026-11-02T10:53:01.770577+00:00"
+  },
+  {
+    "ticker": "WMT",
+    "ok": true,
+    "observations": 4233,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/WMT?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 474503,
+    "sha256": "69ae96d9545d18d0759c7b24e50f9e86af58aa5752d19a2dab26c20235c42f59",
+    "retrieved_utc": "2026-11-02T10:53:01.900805+00:00"
+  },
+  {
+    "ticker": "0939.HK",
+    "ok": true,
+    "observations": 4149,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/0939.HK?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 452263,
+    "sha256": "8b60ff3c18aaffec6498d8454dca72c417b40c5f63eb46ae447c530d53a4447d",
+    "retrieved_utc": "2026-11-02T10:53:01.873106+00:00"
+  },
+  {
+    "ticker": "WFC",
+    "ok": true,
+    "observations": 4233,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/WFC?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 465069,
+    "sha256": "7db877ef30697edd2d7479e23839ef519a9ef4661646090fe53655588a282f06",
+    "retrieved_utc": "2026-11-02T10:53:01.901198+00:00"
+  },
+  {
+    "ticker": "NESN.SW",
+    "ok": true,
+    "observations": 4231,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/NESN.SW?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 436037,
+    "sha256": "1b81d6c915aaba3caa19d79f7f7d9dfb5b676bf1b364d10106366ea1b4cc1bca",
+    "retrieved_utc": "2026-11-02T10:53:06.773545+00:00"
+  },
+  {
+    "ticker": "V",
+    "ok": true,
+    "observations": 4233,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/V?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 458047,
+    "sha256": "83f685de9d3bb479ab9679cd0c29b9e7ace5e880e1397d514b7d6d5a8bc005c7",
+    "retrieved_utc": "2026-11-02T10:53:06.647457+00:00"
+  },
+  {
+    "ticker": "INTC",
+    "ok": true,
+    "observations": 4233,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/INTC?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 466983,
+    "sha256": "ea0b3bfb1e76f27c38a044bd67f6a3833cb23aea2d45d4760b82b04e0ae9f8ac",
+    "retrieved_utc": "2026-11-02T10:53:06.660889+00:00"
+  },
+  {
+    "ticker": "ABI.BR",
+    "ok": true,
+    "observations": 4307,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/ABI.BR?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 453913,
+    "sha256": "39c049939ebed9d412f864e9768f08667dcfaedd10067f086cde31e5509e010a",
+    "retrieved_utc": "2026-11-02T10:53:06.773982+00:00"
+  },
+  {
+    "ticker": "2330.TW",
+    "ok": true,
+    "observations": 4119,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/2330.TW?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 285389,
+    "sha256": "9b34ed63cd66bd42fbf71027303596733d34c78122761d19bec8e05efcc216ad",
+    "retrieved_utc": "2026-11-02T10:53:06.676815+00:00"
+  },
+  {
+    "ticker": "T",
+    "ok": true,
+    "observations": 4233,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/T?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 479804,
+    "sha256": "9259af196a0fa2a5ed9c2972e99abaa7b6515b14fb729621b12367f01cf6773e",
+    "retrieved_utc": "2026-11-02T10:53:06.761320+00:00"
+  },
+  {
+    "ticker": "CVX",
+    "ok": true,
+    "observations": 4233,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/CVX?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 463357,
+    "sha256": "19fc29d523fbe3edd21d8b717d27f74d271bddab290576a8a3688b6bc7c95003",
+    "retrieved_utc": "2026-11-02T10:53:10.853762+00:00"
+  },
+  {
+    "ticker": "0857.HK",
+    "ok": true,
+    "observations": 4149,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/0857.HK?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 452849,
+    "sha256": "660c6f3d3c03938d94a63c1b0078e85f5e81bc48f5a9c353ade8f816893d45a8",
+    "retrieved_utc": "2026-11-02T10:53:10.829034+00:00"
+  },
+  {
+    "ticker": "NOVN.SW",
+    "ok": true,
+    "observations": 4231,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/NOVN.SW?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 460984,
+    "sha256": "7c73bd422c3f29ae0db64a11aceec6f22903c39cafe4270187c78bd89bb93d15",
+    "retrieved_utc": "2026-11-02T10:53:10.845037+00:00"
+  },
+  {
+    "ticker": "PFE",
+    "ok": true,
+    "observations": 4233,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/PFE?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 476377,
+    "sha256": "b35d77f50955281a269b425227bab431ea15cf44c6a9b1704716b20e13150851",
+    "retrieved_utc": "2026-11-02T10:53:10.852678+00:00"
+  },
+  {
+    "ticker": "7203.T",
+    "ok": true,
+    "observations": 4136,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/7203.T?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 337312,
+    "sha256": "301a4bda54588dc71834441c4974916187241559a1ba7f29b141efc40e3500ba",
+    "retrieved_utc": "2026-11-02T10:53:10.932030+00:00"
+  },
+  {
+    "ticker": "UNH",
+    "ok": true,
+    "observations": 4233,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/UNH?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 454132,
+    "sha256": "ebc1bd5fde92f07cbe440f1a8d195a12d5a6c33d56790758dba224e51e23ef51",
+    "retrieved_utc": "2026-11-02T10:53:10.872434+00:00"
+  },
+  {
+    "ticker": "CSCO",
+    "ok": true,
+    "observations": 4233,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/CSCO?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 468236,
+    "sha256": "6fb5331283bd9526e91d0109d942965521192fad9f08a42fc255b04f8451aaf1",
+    "retrieved_utc": "2026-11-02T10:53:15.308650+00:00"
+  },
+  {
+    "ticker": "HD",
+    "ok": true,
+    "observations": 4233,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/HD?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 457426,
+    "sha256": "4ad515c12cd37fdebde632856c11f61c7998c291d0bb01fe1d82796f37d5ca63",
+    "retrieved_utc": "2026-11-02T10:53:15.403809+00:00"
+  },
+  {
+    "ticker": "1288.HK",
+    "ok": true,
+    "observations": 4018,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/1288.HK?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 444686,
+    "sha256": "33062d10a7177e11cbd3aa032c9b54ab6302a4b12043bc52f31d02dfa306db86",
+    "retrieved_utc": "2026-11-02T10:53:15.348268+00:00"
+  },
+  {
+    "ticker": "PG",
+    "ok": true,
+    "observations": 4233,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/PG?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 460205,
+    "sha256": "896deae57ba8e4ca5504054fd4da4658b13b27c62713670ae43ad407fb270f8e",
+    "retrieved_utc": "2026-11-02T10:53:15.450844+00:00"
+  },
+  {
+    "ticker": "ROP.SW",
+    "ok": true,
+    "observations": 4231,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/ROP.SW?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 416534,
+    "sha256": "c5396c8a1e7df81b8f5a3d9858ca9d022a4e6d4a70cd5221a81476076ed57add",
+    "retrieved_utc": "2026-11-02T10:53:15.403068+00:00"
+  },
+  {
+    "ticker": "VZ",
+    "ok": true,
+    "observations": 4233,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/VZ?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 465783,
+    "sha256": "138227a4a4d1542cd85baeb49dd5c2aefc883451c8859d3d1d9f3ca8f0f78f8d",
+    "retrieved_utc": "2026-11-02T10:53:15.346246+00:00"
+  },
+  {
+    "ticker": "BA",
+    "ok": true,
+    "observations": 4233,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/BA?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 453684,
+    "sha256": "0297b916b6c26b3ddefd3a9ac767d1bf68c47a3ac8918cae82e409bd486867e9",
+    "retrieved_utc": "2026-11-02T10:53:20.108838+00:00"
+  },
+  {
+    "ticker": "2318.HK",
+    "ok": true,
+    "observations": 4149,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/2318.HK?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 416422,
+    "sha256": "b5373e7c5a983d6cf21877ed2a461bf14090afa32be0e44b5f2b2fe38c5e80b1",
+    "retrieved_utc": "2026-11-02T10:53:20.063015+00:00"
+  },
+  {
+    "ticker": "0941.HK",
+    "ok": true,
+    "observations": 4149,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/0941.HK?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 403957,
+    "sha256": "8e5272d0173ad566a7193f93fabb844ee74fb98fa8278d82a1cb82bc95d3a457",
+    "retrieved_utc": "2026-11-02T10:53:20.062673+00:00"
+  },
+  {
+    "ticker": "HSBA.L",
+    "ok": true,
+    "observations": 4253,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/HSBA.L?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 419295,
+    "sha256": "72bcdd468c3403f3d5ecece5b021660d4f1197d7dd5ec3398d8c5dd42fbb7240",
+    "retrieved_utc": "2026-11-02T10:53:19.966925+00:00"
+  },
+  {
+    "ticker": "ORCL",
+    "ok": true,
+    "observations": 4233,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/ORCL?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 463306,
+    "sha256": "f311d3ee8584a71cb07278dd00a31a2e5c869fa181c9d42cbba9fdd4a6e3680a",
+    "retrieved_utc": "2026-11-02T10:53:20.056888+00:00"
+  },
+  {
+    "ticker": "KO",
+    "ok": true,
+    "observations": 4233,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/KO?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 463898,
+    "sha256": "f5d6436c3fa47c0c8426968bb4385a15d19d9d6a31d689041524823bab49829e",
+    "retrieved_utc": "2026-11-02T10:53:20.051253+00:00"
+  },
+  {
+    "ticker": "MA",
+    "ok": true,
+    "observations": 4233,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/MA?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 453994,
+    "sha256": "21c1de6b1dfac8c85f1cd4382502c689e0b289130be8d43201deaedc77149759",
+    "retrieved_utc": "2026-11-02T10:53:24.893277+00:00"
+  },
+  {
+    "ticker": "3988.HK",
+    "ok": true,
+    "observations": 4149,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/3988.HK?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 461059,
+    "sha256": "9b62bd23c318c2b100d7edd398c7332617b173819277a2d82d4df0f1fa654d87",
+    "retrieved_utc": "2026-11-02T10:53:24.882582+00:00"
+  },
+  {
+    "ticker": "C",
+    "ok": true,
+    "observations": 4233,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/C?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 459517,
+    "sha256": "cde2c710704e82d94e24a3d274783696e8c17c72aa93e656186e6d34db8d29de",
+    "retrieved_utc": "2026-11-02T10:53:25.001377+00:00"
+  },
+  {
+    "ticker": "UNA.AS",
+    "ok": true,
+    "observations": 1514,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/UNA.AS?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 167863,
+    "sha256": "19852c717e69ef99242947542aee3356de28eb34b84175293dab15846f586115",
+    "retrieved_utc": "2026-11-02T10:53:24.822072+00:00"
+  },
+  {
+    "ticker": "MC.PA",
+    "ok": true,
+    "observations": 4308,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/MC.PA?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 420837,
+    "sha256": "e59c247a408b103c667f2d132e440a5e2a5ec9320b404e1a97492983811c6f07",
+    "retrieved_utc": "2026-11-02T10:53:24.976964+00:00"
+  },
+  {
+    "ticker": "CMCSA",
+    "ok": true,
+    "observations": 4233,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/CMCSA?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 477938,
+    "sha256": "d1391ad21e45d45df6fdeb596e08450b4b29e4c9df16fa1f0384d93443f892ca",
+    "retrieved_utc": "2026-11-02T10:53:24.924719+00:00"
+  },
+  {
+    "ticker": "PEP",
+    "ok": true,
+    "observations": 4233,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/PEP?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 461247,
+    "sha256": "8b244386792cc878c8d012a2108c8effa5f69c43f4771ee8632e4e2a62ab3949",
+    "retrieved_utc": "2026-11-02T10:53:28.704049+00:00"
+  },
+  {
+    "ticker": "PM",
+    "ok": true,
+    "observations": 4233,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/PM?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 453509,
+    "sha256": "55897242776bb6061b50baba0987f1b35f3037e73ad59f18ede4ea9661f1345d",
+    "retrieved_utc": "2026-11-02T10:53:28.644899+00:00"
+  },
+  {
+    "ticker": "DIS",
+    "ok": true,
+    "observations": 4233,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/DIS?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 459712,
+    "sha256": "0a2116b80b72a7ffbc32a716da23c82bf3ed85cf6256a372c72137b88d4ce692",
+    "retrieved_utc": "2026-11-02T10:53:28.703256+00:00"
+  },
+  {
+    "ticker": "ABBV",
+    "ok": true,
+    "observations": 3479,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/ABBV?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 376593,
+    "sha256": "fe489964ba426d700a341e820cce666e94ac21b1280fc682fed95e339f473414",
+    "retrieved_utc": "2026-11-02T10:53:28.589347+00:00"
+  },
+  {
+    "ticker": "TTE.PA",
+    "ok": true,
+    "observations": 4308,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/TTE.PA?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 466659,
+    "sha256": "c3e481fc564d48715ebbc3f557beb8da6cb471c530d6b33c2a6037061bda9114",
+    "retrieved_utc": "2026-11-02T10:53:28.685571+00:00"
+  },
+  {
+    "ticker": "DD",
+    "ok": true,
+    "observations": 4233,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/DD?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 466938,
+    "sha256": "f249c873c49d5f9df52228662ab00c714dbaf3b2101fa525fc571ca3d9c6b7a1",
+    "retrieved_utc": "2026-11-02T10:53:28.724962+00:00"
+  },
+  {
+    "ticker": "MRK",
+    "ok": true,
+    "observations": 4233,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/MRK?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 468463,
+    "sha256": "2e84f26d2b737dcf5dec32ccd01a4a4801e615e388285d63e8844a1186da6206",
+    "retrieved_utc": "2026-11-02T10:53:33.800143+00:00"
+  },
+  {
+    "ticker": "IBM",
+    "ok": true,
+    "observations": 4233,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/IBM?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 471789,
+    "sha256": "0aea198cf472c0884d22794aa3f582860f259b0c2074d8034ca0ee6959acb844",
+    "retrieved_utc": "2026-11-02T10:53:33.822261+00:00"
+  },
+  {
+    "ticker": "NVDA",
+    "ok": true,
+    "observations": 4233,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/NVDA?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 485249,
+    "sha256": "12c1b40aaae4ce4eabbe3dec0a6e0d0ca90c94afa25e33b2bda7a24ed240e44e",
+    "retrieved_utc": "2026-11-02T10:53:33.802210+00:00"
+  },
+  {
+    "ticker": "600519.SS",
+    "ok": true,
+    "observations": 4084,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/600519.SS?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 403189,
+    "sha256": "3f89b1aaac55821cdc479fcbd6047ddc5cbc633db79cc59082c63d3904633ddb",
+    "retrieved_utc": "2026-11-02T10:53:33.670448+00:00"
+  },
+  {
+    "ticker": "BP.L",
+    "ok": true,
+    "observations": 4253,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/BP.L?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 425957,
+    "sha256": "f7e6e118634a5246bf6d33cadc6b372868b081009cf7e19ac71424da5e1a0624",
+    "retrieved_utc": "2026-11-02T10:53:33.801107+00:00"
+  },
+  {
+    "ticker": "BATS.L",
+    "ok": true,
+    "observations": 4253,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/BATS.L?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 281289,
+    "sha256": "1067d9e565d0db7b80807f3d7b78600a0c081d4e860aa514c802af3078890f30",
+    "retrieved_utc": "2026-11-02T10:53:33.754413+00:00"
+  },
+  {
+    "ticker": "MMM",
+    "ok": true,
+    "observations": 4233,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/MMM?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 470340,
+    "sha256": "d393de3fb4c321a3143cf3fc1a9a0afc5cb08dfed4aeae5ebf6720176d446086",
+    "retrieved_utc": "2026-11-02T10:53:37.557729+00:00"
+  },
+  {
+    "ticker": "SAP.DE",
+    "ok": true,
+    "observations": 4278,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/SAP.DE?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 456307,
+    "sha256": "01d5e85170fcabe8891961ea5281178b5b95331afb90a0b3592c74033fdaf742",
+    "retrieved_utc": "2026-11-02T10:53:37.492591+00:00"
+  },
+  {
+    "ticker": "NFLX",
+    "ok": true,
+    "observations": 4233,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/NFLX?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 471184,
+    "sha256": "28efdb443a625038c23f82b18d06085cd123b32425d7034f2f4b787709d8d848",
+    "retrieved_utc": "2026-11-02T10:53:37.485271+00:00"
+  },
+  {
+    "ticker": "OR.PA",
+    "ok": true,
+    "observations": 4308,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/OR.PA?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 430982,
+    "sha256": "250db8ff19ac0b218c81068e00d88739582fbbeaa074bd9a7e94dfaaa1ee1ac7",
+    "retrieved_utc": "2026-11-02T10:53:37.475588+00:00"
+  },
+  {
+    "ticker": "MCD",
+    "ok": true,
+    "observations": 4233,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/MCD?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 455549,
+    "sha256": "bd60fbec6679f1db5e0a9363d06587fb28d1da82f84516fd1858056d0e75d9e2",
+    "retrieved_utc": "2026-11-02T10:53:37.539718+00:00"
+  },
+  {
+    "ticker": "NOVO-B.CO",
+    "ok": true,
+    "observations": 4207,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/NOVO-B.CO?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 408548,
+    "sha256": "05e050d689f9ea10021fde0eeb70ecb2610ef89a6aa20076a344283b772c93c4",
+    "retrieved_utc": "2026-11-02T10:53:37.495827+00:00"
+  },
+  {
+    "ticker": "AMGN",
+    "ok": true,
+    "observations": 4233,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/AMGN?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 459048,
+    "sha256": "03348100e0a7647b2b01bf40ac85a1096fd40c2a126c67a9d8980902e3e8d0ef",
+    "retrieved_utc": "2026-11-02T10:53:42.855099+00:00"
+  },
+  {
+    "ticker": "0386.HK",
+    "ok": true,
+    "observations": 4149,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/0386.HK?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 454540,
+    "sha256": "19c6b8fa5b8610b48afd5d658fb0bd340817fa4593e85d0877b01961d0c1cca4",
+    "retrieved_utc": "2026-11-02T10:53:42.846791+00:00"
+  },
+  {
+    "ticker": "MO",
+    "ok": true,
+    "observations": 4233,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/MO?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 460730,
+    "sha256": "eb421a9e3ae3d0235ab655eaeea6027a16adc0e2a9dc7f7a8bd5e1799ae6537e",
+    "retrieved_utc": "2026-11-02T10:53:42.872416+00:00"
+  },
+  {
+    "ticker": "GE",
+    "ok": true,
+    "observations": 4233,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/GE?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 469950,
+    "sha256": "d02fca6a671c7cefd145edfccf8211e7ed34859043469ba85426d627eaeea5c5",
+    "retrieved_utc": "2026-11-02T10:53:42.872863+00:00"
+  },
+  {
+    "ticker": "ABEV3.SA",
+    "ok": true,
+    "observations": 4182,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/ABEV3.SA?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 464862,
+    "sha256": "bece6e0411880278a2d0aca9e1026713abb75b090a9f582095e0759ebec7f57f",
+    "retrieved_utc": "2026-11-02T10:53:42.855860+00:00"
+  },
+  {
+    "ticker": "3968.HK",
+    "ok": true,
+    "observations": 4149,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/3968.HK?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 439537,
+    "sha256": "66a0855b15f981e141cf52afe8f6f8ae7f84382149e4bfbe3ddc356669accb5f",
+    "retrieved_utc": "2026-11-02T10:53:42.847682+00:00"
+  },
+  {
+    "ticker": "RY.TO",
+    "ok": true,
+    "observations": 4223,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/RY.TO?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 452840,
+    "sha256": "c852c9fef72b88a4aa58f164ebc2e6bd2d2e27411ac37ca42eefd99a7e622ae1",
+    "retrieved_utc": "2026-11-02T10:53:46.567610+00:00"
+  },
+  {
+    "ticker": "BHP.AX",
+    "ok": true,
+    "observations": 4259,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/BHP.AX?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 473718,
+    "sha256": "9a5c7060f2a2d924eb7e4cea480b832c7572e4d66880dffba3fe956b49d87fd3",
+    "retrieved_utc": "2026-11-02T10:53:46.614501+00:00"
+  },
+  {
+    "ticker": "MDT",
+    "ok": true,
+    "observations": 4233,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/MDT?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 454406,
+    "sha256": "578d55ee444dad00cedbe498eec0cece1713365f091f6cf274e64dc39e246e4b",
+    "retrieved_utc": "2026-11-02T10:53:46.537291+00:00"
+  },
+  {
+    "ticker": "SIE.DE",
+    "ok": true,
+    "observations": 4278,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/SIE.DE?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 462114,
+    "sha256": "45a52bfd8fa184c03e241f28093b62b6cf4f09686ef64b15176a459a9ba12150",
+    "retrieved_utc": "2026-11-02T10:53:46.503415+00:00"
+  },
+  {
+    "ticker": "HON",
+    "ok": true,
+    "observations": 4233,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/HON?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 473048,
+    "sha256": "895f9450b2b8e7d5d81a3aa183c5186f383fbe83595bab2a3169d691f81f0dff",
+    "retrieved_utc": "2026-11-02T10:53:46.625296+00:00"
+  },
+  {
+    "ticker": "NKE",
+    "ok": true,
+    "observations": 4233,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/NKE?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 459773,
+    "sha256": "0dd3909dd39df92c82746c0222e32e97ef97a9bf041b1bdf2d34ded397cb7002",
+    "retrieved_utc": "2026-11-02T10:53:46.566990+00:00"
+  },
+  {
+    "ticker": "NPN.JO",
+    "ok": true,
+    "observations": 4291,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/NPN.JO?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 379231,
+    "sha256": "1a12354eaa32b6232e204f3ad2661f640da95bb18d881e8cc86a9635bc8b782f",
+    "retrieved_utc": "2026-11-02T10:53:51.374896+00:00"
+  },
+  {
+    "ticker": "ADBE",
+    "ok": true,
+    "observations": 4233,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/ADBE?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 449199,
+    "sha256": "6d7ccf907728f5fc5f57a08c6e8d01590379fe2582eaa24d6e3f92f5af64cfee",
+    "retrieved_utc": "2026-11-02T10:53:51.481355+00:00"
+  },
+  {
+    "ticker": "2628.HK",
+    "ok": true,
+    "observations": 4149,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/2628.HK?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 444819,
+    "sha256": "a6a05e0337efefc8845ff3b23a941ebce48aecccc282b0ae056cbdba67234233",
+    "retrieved_utc": "2026-11-02T10:53:51.460076+00:00"
+  },
+  {
+    "ticker": "SAN.MC",
+    "ok": true,
+    "observations": 4308,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/SAN.MC?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 483051,
+    "sha256": "8ac4891d160f2651ed6813efc7e12cb512b9305490a3170aedc16d75fefb30cd",
+    "retrieved_utc": "2026-11-02T10:53:51.437957+00:00"
+  },
+  {
+    "ticker": "ABT",
+    "ok": true,
+    "observations": 4233,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/ABT?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 464521,
+    "sha256": "8a3b1b111a13751572a23fe9271990581ce78f1db47086a26d4aae9a9eedf2ad",
+    "retrieved_utc": "2026-11-02T10:53:51.385897+00:00"
+  },
+  {
+    "ticker": "TD.TO",
+    "ok": true,
+    "observations": 4223,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/TD.TO?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 449827,
+    "sha256": "fb88c0e710add0de3db6c04a0d3a8e6d62a52990609cfebcffbaaa97d25d6f87",
+    "retrieved_utc": "2026-11-02T10:53:51.497120+00:00"
+  },
+  {
+    "ticker": "UNP",
+    "ok": true,
+    "observations": 4233,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/UNP?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 460723,
+    "sha256": "8fe77590baa893379152428046fbd36e2a651f4c51615466d2c514b7277f4e8d",
+    "retrieved_utc": "2026-11-02T10:53:55.214207+00:00"
+  },
+  {
+    "ticker": "BMY",
+    "ok": true,
+    "observations": 4233,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/BMY?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 461243,
+    "sha256": "5f4fb161104512abd57b316a2be2ea70672fd6fc8095ba24d7c5f375b6230d66",
+    "retrieved_utc": "2026-11-02T10:53:55.241284+00:00"
+  },
+  {
+    "ticker": "ACN",
+    "ok": true,
+    "observations": 4233,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/ACN?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 453894,
+    "sha256": "d9c91d0f0aadf6fa5fe053e7591006cdb0d35bd36f5c0277d3785581714848e4",
+    "retrieved_utc": "2026-11-02T10:53:55.165946+00:00"
+  },
+  {
+    "ticker": "1299.HK",
+    "ok": true,
+    "observations": 3945,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/1299.HK?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 388800,
+    "sha256": "566c10a864e703adbecb0f51107ea2f6fc4cd60e7da2e8fd5a9710a1eaad9cdb",
+    "retrieved_utc": "2026-11-02T10:53:55.180126+00:00"
+  },
+  {
+    "ticker": "TXN",
+    "ok": true,
+    "observations": 4233,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/TXN?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 462141,
+    "sha256": "df1b50e22c9e94b424ebb2be615627a584689223f7340a9caae4c3f70c9f2d32",
+    "retrieved_utc": "2026-11-02T10:53:55.222349+00:00"
+  },
+  {
+    "ticker": "SAN.PA",
+    "ok": true,
+    "observations": 4308,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/SAN.PA?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 466240,
+    "sha256": "8bb50663138ce654a80c5e09a2681f3b64f7defb0ac20530168d2efc8de7fa4b",
+    "retrieved_utc": "2026-11-02T10:53:55.139069+00:00"
+  },
+  {
+    "ticker": "RTX",
+    "ok": true,
+    "observations": 4233,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/RTX?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 461928,
+    "sha256": "225b01c7bdfed69ba9f55dfe6fa0261f7fd914cf8c51b6df6c58dc1589bd5970",
+    "retrieved_utc": "2026-11-02T10:53:58.957768+00:00"
+  },
+  {
+    "ticker": "BKNG",
+    "ok": true,
+    "observations": 4233,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/BKNG?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 466242,
+    "sha256": "fd6b07c5497d549c0453598ef8a9f77ee97372353e74cda84945b6c12d0d892b",
+    "retrieved_utc": "2026-11-02T10:53:58.936901+00:00"
+  },
+  {
+    "ticker": "VOW3.DE",
+    "ok": true,
+    "observations": 4278,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/VOW3.DE?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 438529,
+    "sha256": "a5bbaea60af80a5881bf94694b3665160002e1b3864133d316ee7bee384ef6ee",
+    "retrieved_utc": "2026-11-02T10:53:58.949585+00:00"
+  },
+  {
+    "ticker": "ALV.DE",
+    "ok": true,
+    "observations": 4278,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/ALV.DE?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 435534,
+    "sha256": "d6b75e3888d1395cad4cf28770eb8fd7593c7ac01d23de7e8aa64bd84a10e334",
+    "retrieved_utc": "2026-11-02T10:53:59.006294+00:00"
+  },
+  {
+    "ticker": "GS",
+    "ok": true,
+    "observations": 4233,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/GS?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 452952,
+    "sha256": "f76b12115fe20d5cc46ef09d71e0429396b8fbec05341208e5a793f8d9cc05db",
+    "retrieved_utc": "2026-11-02T10:53:58.887404+00:00"
+  },
+  {
+    "ticker": "GILD",
+    "ok": true,
+    "observations": 4233,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/GILD?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 456309,
+    "sha256": "30d63017cff276efd7da16b96e6f9c090b2d6ff0c0bd5e66d75298ff47fbee4d",
+    "retrieved_utc": "2026-11-02T10:53:58.922960+00:00"
+  },
+  {
+    "ticker": "CBA.AX",
+    "ok": true,
+    "observations": 4259,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/CBA.AX?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 454471,
+    "sha256": "cb7e924c8b650c739fe1130008ec2929dcb03fbea0a796f58f19e260d7bc680f",
+    "retrieved_utc": "2026-11-02T10:54:02.789020+00:00"
+  },
+  {
+    "ticker": "ITX.MC",
+    "ok": true,
+    "observations": 4308,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/ITX.MC?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 472408,
+    "sha256": "bae2e021dc8ae4dfe3daed0dd8ac2f959d95ebddf1d7c7a8632ae649c18cacf1",
+    "retrieved_utc": "2026-11-02T10:54:02.605381+00:00"
+  },
+  {
+    "ticker": "GSK.L",
+    "ok": true,
+    "observations": 4253,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/GSK.L?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 437345,
+    "sha256": "7f773456da336136771adb856e4a73d1889e94e7b9806729055ebeec1c7e18da",
+    "retrieved_utc": "2026-11-02T10:54:02.717957+00:00"
+  },
+  {
+    "ticker": "AVGO",
+    "ok": true,
+    "observations": 4233,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/AVGO?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 471779,
+    "sha256": "5a2a55c865a54160117d1ced6133d76b15e9d680c68f9abbc9daf8b32c946561",
+    "retrieved_utc": "2026-11-02T10:54:02.592172+00:00"
+  },
+  {
+    "ticker": "ACWI",
+    "ok": true,
+    "observations": 4233,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/ACWI?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 458352,
+    "sha256": "5de59011a93a6b40baced931f6c682a883c5d8386eee6d64b3805f4540d734d3",
+    "retrieved_utc": "2026-11-02T10:54:02.591563+00:00"
+  },
+  {
+    "ticker": "SPY",
+    "ok": true,
+    "observations": 4233,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/SPY?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 469282,
+    "sha256": "e54d32784618948712367498aba01948c118edff71ab9c05ae5b589bad3ea12e",
+    "retrieved_utc": "2026-11-02T10:54:02.717148+00:00"
+  },
+  {
+    "ticker": "EURUSD=X",
+    "ok": true,
+    "observations": 4392,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/EURUSD%3DX?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 469411,
+    "sha256": "148dcfcbb214eb4fa1d7b4af28c0dbe71a5ae3e20ce7b053fc6acd1e5a7087b6",
+    "retrieved_utc": "2026-11-02T10:54:06.286924+00:00"
+  },
+  {
+    "ticker": "HKD=X",
+    "ok": true,
+    "observations": 4392,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/HKD%3DX?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 452332,
+    "sha256": "0ecd336c1a6d92d8535af349680600883b6766ca1b13a8f95a879c69d5d25007",
+    "retrieved_utc": "2026-11-02T10:54:06.248774+00:00"
+  },
+  {
+    "ticker": "KRW=X",
+    "ok": true,
+    "observations": 4392,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/KRW%3DX?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 431530,
+    "sha256": "b89eaec6eb0e2db731bb9e14dde7bafc0ba291b06338c5b1585bb2710981aa09",
+    "retrieved_utc": "2026-11-02T10:54:06.208458+00:00"
+  },
+  {
+    "ticker": "JPY=X",
+    "ok": true,
+    "observations": 4392,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/JPY%3DX?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 461714,
+    "sha256": "f670e33e27351b3de49fb224ca556ac2a7b1ab67e0d2cfdeb6baaba4dc5e831a",
+    "retrieved_utc": "2026-11-02T10:54:06.171737+00:00"
+  },
+  {
+    "ticker": "TWD=X",
+    "ok": true,
+    "observations": 4391,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/TWD%3DX?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 461402,
+    "sha256": "e58bde720820532341731391198e2f994c209ea6e1ea303ca8c5eeadc0d3be62",
+    "retrieved_utc": "2026-11-02T10:54:06.249306+00:00"
+  },
+  {
+    "ticker": "CHF=X",
+    "ok": true,
+    "observations": 4392,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/CHF%3DX?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 471535,
+    "sha256": "f4564675caaa0cdeb169f387f7b1886d7d9bc3b5cadd030effc06e61a86ae1b8",
+    "retrieved_utc": "2026-11-02T10:54:06.225697+00:00"
+  },
+  {
+    "ticker": "GBPUSD=X",
+    "ok": true,
+    "observations": 4392,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/GBPUSD%3DX?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 469013,
+    "sha256": "313b9b0b78cf41f1e2249982d76f524029d3c5e0001019977d04a4ce376404e9",
+    "retrieved_utc": "2026-11-02T10:54:10.015438+00:00"
+  },
+  {
+    "ticker": "CNY=X",
+    "ok": true,
+    "observations": 4391,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/CNY%3DX?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 452564,
+    "sha256": "544db62dd285c9ad1997670b83ed111524d4c24ca7c4ba696d7b4de839599506",
+    "retrieved_utc": "2026-11-02T10:54:09.916731+00:00"
+  },
+  {
+    "ticker": "BRL=X",
+    "ok": true,
+    "observations": 4391,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/BRL%3DX?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 459472,
+    "sha256": "b0c00193c427db27aab85f7b14fbd952d933cb8bce7296375aed189cefaa3403",
+    "retrieved_utc": "2026-11-02T10:54:09.901689+00:00"
+  },
+  {
+    "ticker": "CAD=X",
+    "ok": true,
+    "observations": 4392,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/CAD%3DX?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 469377,
+    "sha256": "fac29e55fd22cc814cfa1acb09b33d7e1ee4ea64a8fe9cb256a49e94b35397b5",
+    "retrieved_utc": "2026-11-02T10:54:09.976971+00:00"
+  },
+  {
+    "ticker": "AUDUSD=X",
+    "ok": true,
+    "observations": 4392,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/AUDUSD%3DX?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 471640,
+    "sha256": "426db6cf0310a5057253efe243c4ab3ca8104ac898994f4178efed4c54f97202",
+    "retrieved_utc": "2026-11-02T10:54:09.945519+00:00"
+  },
+  {
+    "ticker": "ZAR=X",
+    "ok": true,
+    "observations": 4392,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/ZAR%3DX?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 464578,
+    "sha256": "2d100f7e5ffadb8c21de97b0d011b51247cdec165f6ea9923737fe74561a567a",
+    "retrieved_utc": "2026-11-02T10:54:09.977204+00:00"
+  },
+  {
+    "ticker": "DKK=X",
+    "ok": true,
+    "observations": 4392,
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/DKK%3DX?period1=1262304000&period2=1793664000&interval=1d&events=div%2Csplits",
+    "bytes": 452933,
+    "sha256": "1d20c71a65e3de837e8b6ee62a1ec723a8831252e25108562a37b511f1b1a5f2",
+    "retrieved_utc": "2026-11-02T10:54:13.850902+00:00"
+  }
+]

@@ -1,0 +1,3104 @@
+[
+  {
+    "horizon_weeks": 1,
+    "year": 2022,
+    "method": "price_ridge",
+    "selected": {
+      "alpha": 100
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "alpha": 1
+        },
+        "mse": 0.0009719613081127989
+      },
+      {
+        "config": {
+          "alpha": 10
+        },
+        "mse": 0.0009571122698625001
+      },
+      {
+        "config": {
+          "alpha": 100
+        },
+        "mse": 0.0009272882153428689
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 1,
+    "year": 2022,
+    "method": "elastic_net",
+    "selected": {
+      "alpha": 0.01
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "alpha": 0.0001
+        },
+        "mse": 0.0009271751799958608
+      },
+      {
+        "config": {
+          "alpha": 0.001
+        },
+        "mse": 0.0009181233734328315
+      },
+      {
+        "config": {
+          "alpha": 0.01
+        },
+        "mse": 0.000917725713209938
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 1,
+    "year": 2022,
+    "method": "pca_ridge",
+    "selected": {
+      "k": 2,
+      "alpha": 10
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "k": 2,
+          "alpha": 10
+        },
+        "mse": 0.0009302693335974516
+      },
+      {
+        "config": {
+          "k": 4,
+          "alpha": 10
+        },
+        "mse": 0.0009385362650942131
+      },
+      {
+        "config": {
+          "k": 8,
+          "alpha": 10
+        },
+        "mse": 0.0009443927582173194
+      },
+      {
+        "config": {
+          "k": 12,
+          "alpha": 10
+        },
+        "mse": 0.0009467982606053816
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 1,
+    "year": 2022,
+    "method": "pls_ridge",
+    "selected": {
+      "k": 2,
+      "alpha": 10
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "k": 2,
+          "alpha": 10
+        },
+        "mse": 0.0009301924850968112
+      },
+      {
+        "config": {
+          "k": 4,
+          "alpha": 10
+        },
+        "mse": 0.0009355197113605968
+      },
+      {
+        "config": {
+          "k": 8,
+          "alpha": 10
+        },
+        "mse": 0.0009442238244620194
+      },
+      {
+        "config": {
+          "k": 12,
+          "alpha": 10
+        },
+        "mse": 0.0009500209535835163
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 1,
+    "year": 2022,
+    "method": "small_boosting",
+    "selected": {
+      "max_iter": 100,
+      "learning_rate": 0.05,
+      "max_leaf_nodes": 7,
+      "min_samples_leaf": 100,
+      "l2_regularization": 10
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "max_iter": 100,
+          "learning_rate": 0.05,
+          "max_leaf_nodes": 7,
+          "min_samples_leaf": 100,
+          "l2_regularization": 10
+        },
+        "mse": 0.0009201136229471816
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 1,
+    "year": 2023,
+    "method": "price_ridge",
+    "selected": {
+      "alpha": 100
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "alpha": 1
+        },
+        "mse": 0.0013843058246942258
+      },
+      {
+        "config": {
+          "alpha": 10
+        },
+        "mse": 0.0013791512230399412
+      },
+      {
+        "config": {
+          "alpha": 100
+        },
+        "mse": 0.0013586382090823228
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 1,
+    "year": 2023,
+    "method": "elastic_net",
+    "selected": {
+      "alpha": 0.001
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "alpha": 0.0001
+        },
+        "mse": 0.0013461525185525054
+      },
+      {
+        "config": {
+          "alpha": 0.001
+        },
+        "mse": 0.0013409329059849708
+      },
+      {
+        "config": {
+          "alpha": 0.01
+        },
+        "mse": 0.0013411274529950882
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 1,
+    "year": 2023,
+    "method": "pca_ridge",
+    "selected": {
+      "k": 2,
+      "alpha": 10
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "k": 2,
+          "alpha": 10
+        },
+        "mse": 0.0013610173683194422
+      },
+      {
+        "config": {
+          "k": 4,
+          "alpha": 10
+        },
+        "mse": 0.0013660104861748202
+      },
+      {
+        "config": {
+          "k": 8,
+          "alpha": 10
+        },
+        "mse": 0.001366802034281015
+      },
+      {
+        "config": {
+          "k": 12,
+          "alpha": 10
+        },
+        "mse": 0.0013691584139868232
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 1,
+    "year": 2023,
+    "method": "pls_ridge",
+    "selected": {
+      "k": 2,
+      "alpha": 10
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "k": 2,
+          "alpha": 10
+        },
+        "mse": 0.0013583975480377256
+      },
+      {
+        "config": {
+          "k": 4,
+          "alpha": 10
+        },
+        "mse": 0.0013665083973467284
+      },
+      {
+        "config": {
+          "k": 8,
+          "alpha": 10
+        },
+        "mse": 0.0013735894428122918
+      },
+      {
+        "config": {
+          "k": 12,
+          "alpha": 10
+        },
+        "mse": 0.0013752795202603874
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 1,
+    "year": 2023,
+    "method": "small_boosting",
+    "selected": {
+      "max_iter": 100,
+      "learning_rate": 0.05,
+      "max_leaf_nodes": 7,
+      "min_samples_leaf": 100,
+      "l2_regularization": 10
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "max_iter": 100,
+          "learning_rate": 0.05,
+          "max_leaf_nodes": 7,
+          "min_samples_leaf": 100,
+          "l2_regularization": 10
+        },
+        "mse": 0.0013576574039047226
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 1,
+    "year": 2024,
+    "method": "price_ridge",
+    "selected": {
+      "alpha": 100
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "alpha": 1
+        },
+        "mse": 0.0008703386766473705
+      },
+      {
+        "config": {
+          "alpha": 10
+        },
+        "mse": 0.0008700442539933215
+      },
+      {
+        "config": {
+          "alpha": 100
+        },
+        "mse": 0.0008686405602935723
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 1,
+    "year": 2024,
+    "method": "elastic_net",
+    "selected": {
+      "alpha": 0.001
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "alpha": 0.0001
+        },
+        "mse": 0.0008690269765156254
+      },
+      {
+        "config": {
+          "alpha": 0.001
+        },
+        "mse": 0.0008685620368014411
+      },
+      {
+        "config": {
+          "alpha": 0.01
+        },
+        "mse": 0.0008688692949134077
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 1,
+    "year": 2024,
+    "method": "pca_ridge",
+    "selected": {
+      "k": 2,
+      "alpha": 10
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "k": 2,
+          "alpha": 10
+        },
+        "mse": 0.0008690859312994182
+      },
+      {
+        "config": {
+          "k": 4,
+          "alpha": 10
+        },
+        "mse": 0.0008693023831892949
+      },
+      {
+        "config": {
+          "k": 8,
+          "alpha": 10
+        },
+        "mse": 0.0008692348135472271
+      },
+      {
+        "config": {
+          "k": 12,
+          "alpha": 10
+        },
+        "mse": 0.0008704807335047294
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 1,
+    "year": 2024,
+    "method": "pls_ridge",
+    "selected": {
+      "k": 2,
+      "alpha": 10
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "k": 2,
+          "alpha": 10
+        },
+        "mse": 0.0008687455781107895
+      },
+      {
+        "config": {
+          "k": 4,
+          "alpha": 10
+        },
+        "mse": 0.0008697817379402022
+      },
+      {
+        "config": {
+          "k": 8,
+          "alpha": 10
+        },
+        "mse": 0.0008700563458463472
+      },
+      {
+        "config": {
+          "k": 12,
+          "alpha": 10
+        },
+        "mse": 0.000870738719461286
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 1,
+    "year": 2024,
+    "method": "small_boosting",
+    "selected": {
+      "max_iter": 100,
+      "learning_rate": 0.05,
+      "max_leaf_nodes": 7,
+      "min_samples_leaf": 100,
+      "l2_regularization": 10
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "max_iter": 100,
+          "learning_rate": 0.05,
+          "max_leaf_nodes": 7,
+          "min_samples_leaf": 100,
+          "l2_regularization": 10
+        },
+        "mse": 0.0008685962784139201
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 2,
+    "year": 2022,
+    "method": "price_ridge",
+    "selected": {
+      "alpha": 100
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "alpha": 1
+        },
+        "mse": 0.0020246907471279055
+      },
+      {
+        "config": {
+          "alpha": 10
+        },
+        "mse": 0.001970923974480541
+      },
+      {
+        "config": {
+          "alpha": 100
+        },
+        "mse": 0.0018664819422208267
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 2,
+    "year": 2022,
+    "method": "elastic_net",
+    "selected": {
+      "alpha": 0.01
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "alpha": 0.0001
+        },
+        "mse": 0.00188359977219459
+      },
+      {
+        "config": {
+          "alpha": 0.001
+        },
+        "mse": 0.0018482849477804266
+      },
+      {
+        "config": {
+          "alpha": 0.01
+        },
+        "mse": 0.0018434570135631265
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 2,
+    "year": 2022,
+    "method": "pca_ridge",
+    "selected": {
+      "k": 2,
+      "alpha": 10
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "k": 2,
+          "alpha": 10
+        },
+        "mse": 0.0018904664409539634
+      },
+      {
+        "config": {
+          "k": 4,
+          "alpha": 10
+        },
+        "mse": 0.001924321151981838
+      },
+      {
+        "config": {
+          "k": 8,
+          "alpha": 10
+        },
+        "mse": 0.0019442673933584963
+      },
+      {
+        "config": {
+          "k": 12,
+          "alpha": 10
+        },
+        "mse": 0.001953018605136888
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 2,
+    "year": 2022,
+    "method": "pls_ridge",
+    "selected": {
+      "k": 2,
+      "alpha": 10
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "k": 2,
+          "alpha": 10
+        },
+        "mse": 0.0018812045832004233
+      },
+      {
+        "config": {
+          "k": 4,
+          "alpha": 10
+        },
+        "mse": 0.001901707185300857
+      },
+      {
+        "config": {
+          "k": 8,
+          "alpha": 10
+        },
+        "mse": 0.0019288410569584776
+      },
+      {
+        "config": {
+          "k": 12,
+          "alpha": 10
+        },
+        "mse": 0.001957353305978427
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 2,
+    "year": 2022,
+    "method": "small_boosting",
+    "selected": {
+      "max_iter": 100,
+      "learning_rate": 0.05,
+      "max_leaf_nodes": 7,
+      "min_samples_leaf": 100,
+      "l2_regularization": 10
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "max_iter": 100,
+          "learning_rate": 0.05,
+          "max_leaf_nodes": 7,
+          "min_samples_leaf": 100,
+          "l2_regularization": 10
+        },
+        "mse": 0.0018579913037655115
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 2,
+    "year": 2023,
+    "method": "price_ridge",
+    "selected": {
+      "alpha": 100
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "alpha": 1
+        },
+        "mse": 0.002744332118861422
+      },
+      {
+        "config": {
+          "alpha": 10
+        },
+        "mse": 0.0027263510770648967
+      },
+      {
+        "config": {
+          "alpha": 100
+        },
+        "mse": 0.002651894030250698
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 2,
+    "year": 2023,
+    "method": "elastic_net",
+    "selected": {
+      "alpha": 0.001
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "alpha": 0.0001
+        },
+        "mse": 0.002632746162292637
+      },
+      {
+        "config": {
+          "alpha": 0.001
+        },
+        "mse": 0.0025894757529057676
+      },
+      {
+        "config": {
+          "alpha": 0.01
+        },
+        "mse": 0.0025918615695919717
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 2,
+    "year": 2023,
+    "method": "pca_ridge",
+    "selected": {
+      "k": 2,
+      "alpha": 10
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "k": 2,
+          "alpha": 10
+        },
+        "mse": 0.002666745436811087
+      },
+      {
+        "config": {
+          "k": 4,
+          "alpha": 10
+        },
+        "mse": 0.0026876874159186986
+      },
+      {
+        "config": {
+          "k": 8,
+          "alpha": 10
+        },
+        "mse": 0.002689447218317278
+      },
+      {
+        "config": {
+          "k": 12,
+          "alpha": 10
+        },
+        "mse": 0.002696810016238712
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 2,
+    "year": 2023,
+    "method": "pls_ridge",
+    "selected": {
+      "k": 2,
+      "alpha": 10
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "k": 2,
+          "alpha": 10
+        },
+        "mse": 0.0026561800266218993
+      },
+      {
+        "config": {
+          "k": 4,
+          "alpha": 10
+        },
+        "mse": 0.0026900013226547814
+      },
+      {
+        "config": {
+          "k": 8,
+          "alpha": 10
+        },
+        "mse": 0.0027069065100986367
+      },
+      {
+        "config": {
+          "k": 12,
+          "alpha": 10
+        },
+        "mse": 0.002711661671529088
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 2,
+    "year": 2023,
+    "method": "small_boosting",
+    "selected": {
+      "max_iter": 100,
+      "learning_rate": 0.05,
+      "max_leaf_nodes": 7,
+      "min_samples_leaf": 100,
+      "l2_regularization": 10
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "max_iter": 100,
+          "learning_rate": 0.05,
+          "max_leaf_nodes": 7,
+          "min_samples_leaf": 100,
+          "l2_regularization": 10
+        },
+        "mse": 0.002622145146634031
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 2,
+    "year": 2024,
+    "method": "price_ridge",
+    "selected": {
+      "alpha": 100
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "alpha": 1
+        },
+        "mse": 0.0017241547450813303
+      },
+      {
+        "config": {
+          "alpha": 10
+        },
+        "mse": 0.0017229704142932177
+      },
+      {
+        "config": {
+          "alpha": 100
+        },
+        "mse": 0.0017173449071288408
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 2,
+    "year": 2024,
+    "method": "elastic_net",
+    "selected": {
+      "alpha": 0.001
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "alpha": 0.0001
+        },
+        "mse": 0.0017162393643291138
+      },
+      {
+        "config": {
+          "alpha": 0.001
+        },
+        "mse": 0.0017113416104288554
+      },
+      {
+        "config": {
+          "alpha": 0.01
+        },
+        "mse": 0.0017127752564218214
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 2,
+    "year": 2024,
+    "method": "pca_ridge",
+    "selected": {
+      "k": 2,
+      "alpha": 10
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "k": 2,
+          "alpha": 10
+        },
+        "mse": 0.0017149700611530016
+      },
+      {
+        "config": {
+          "k": 4,
+          "alpha": 10
+        },
+        "mse": 0.0017170331442102563
+      },
+      {
+        "config": {
+          "k": 8,
+          "alpha": 10
+        },
+        "mse": 0.0017163427440333328
+      },
+      {
+        "config": {
+          "k": 12,
+          "alpha": 10
+        },
+        "mse": 0.0017190267964813247
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 2,
+    "year": 2024,
+    "method": "pls_ridge",
+    "selected": {
+      "k": 2,
+      "alpha": 10
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "k": 2,
+          "alpha": 10
+        },
+        "mse": 0.0017149658261199773
+      },
+      {
+        "config": {
+          "k": 4,
+          "alpha": 10
+        },
+        "mse": 0.0017185345973551654
+      },
+      {
+        "config": {
+          "k": 8,
+          "alpha": 10
+        },
+        "mse": 0.001725196886214133
+      },
+      {
+        "config": {
+          "k": 12,
+          "alpha": 10
+        },
+        "mse": 0.0017275163905988837
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 2,
+    "year": 2024,
+    "method": "small_boosting",
+    "selected": {
+      "max_iter": 100,
+      "learning_rate": 0.05,
+      "max_leaf_nodes": 7,
+      "min_samples_leaf": 100,
+      "l2_regularization": 10
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "max_iter": 100,
+          "learning_rate": 0.05,
+          "max_leaf_nodes": 7,
+          "min_samples_leaf": 100,
+          "l2_regularization": 10
+        },
+        "mse": 0.0017094579829924335
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 4,
+    "year": 2022,
+    "method": "price_ridge",
+    "selected": {
+      "alpha": 100
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "alpha": 1
+        },
+        "mse": 0.0045390185617512745
+      },
+      {
+        "config": {
+          "alpha": 10
+        },
+        "mse": 0.004320940246640997
+      },
+      {
+        "config": {
+          "alpha": 100
+        },
+        "mse": 0.0038953727902485613
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 4,
+    "year": 2022,
+    "method": "elastic_net",
+    "selected": {
+      "alpha": 0.01
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "alpha": 0.0001
+        },
+        "mse": 0.004141197541915495
+      },
+      {
+        "config": {
+          "alpha": 0.001
+        },
+        "mse": 0.003821589003261192
+      },
+      {
+        "config": {
+          "alpha": 0.01
+        },
+        "mse": 0.003815376216454741
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 4,
+    "year": 2022,
+    "method": "pca_ridge",
+    "selected": {
+      "k": 2,
+      "alpha": 10
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "k": 2,
+          "alpha": 10
+        },
+        "mse": 0.004009549084575571
+      },
+      {
+        "config": {
+          "k": 4,
+          "alpha": 10
+        },
+        "mse": 0.004169159356144273
+      },
+      {
+        "config": {
+          "k": 8,
+          "alpha": 10
+        },
+        "mse": 0.004223194367686204
+      },
+      {
+        "config": {
+          "k": 12,
+          "alpha": 10
+        },
+        "mse": 0.004253279745886624
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 4,
+    "year": 2022,
+    "method": "pls_ridge",
+    "selected": {
+      "k": 2,
+      "alpha": 10
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "k": 2,
+          "alpha": 10
+        },
+        "mse": 0.0039555754139600375
+      },
+      {
+        "config": {
+          "k": 4,
+          "alpha": 10
+        },
+        "mse": 0.004028125798784456
+      },
+      {
+        "config": {
+          "k": 8,
+          "alpha": 10
+        },
+        "mse": 0.004158795454246147
+      },
+      {
+        "config": {
+          "k": 12,
+          "alpha": 10
+        },
+        "mse": 0.004246385106745785
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 4,
+    "year": 2022,
+    "method": "small_boosting",
+    "selected": {
+      "max_iter": 100,
+      "learning_rate": 0.05,
+      "max_leaf_nodes": 7,
+      "min_samples_leaf": 100,
+      "l2_regularization": 10
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "max_iter": 100,
+          "learning_rate": 0.05,
+          "max_leaf_nodes": 7,
+          "min_samples_leaf": 100,
+          "l2_regularization": 10
+        },
+        "mse": 0.0038656080977631305
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 4,
+    "year": 2023,
+    "method": "price_ridge",
+    "selected": {
+      "alpha": 100
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "alpha": 1
+        },
+        "mse": 0.005416750021236776
+      },
+      {
+        "config": {
+          "alpha": 10
+        },
+        "mse": 0.005350933872226961
+      },
+      {
+        "config": {
+          "alpha": 100
+        },
+        "mse": 0.005084790854760843
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 4,
+    "year": 2023,
+    "method": "elastic_net",
+    "selected": {
+      "alpha": 0.001
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "alpha": 0.0001
+        },
+        "mse": 0.005137428633445269
+      },
+      {
+        "config": {
+          "alpha": 0.001
+        },
+        "mse": 0.004888016661659366
+      },
+      {
+        "config": {
+          "alpha": 0.01
+        },
+        "mse": 0.004896033285223154
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 4,
+    "year": 2023,
+    "method": "pca_ridge",
+    "selected": {
+      "k": 2,
+      "alpha": 10
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "k": 2,
+          "alpha": 10
+        },
+        "mse": 0.005205746910629354
+      },
+      {
+        "config": {
+          "k": 4,
+          "alpha": 10
+        },
+        "mse": 0.005294381491803052
+      },
+      {
+        "config": {
+          "k": 8,
+          "alpha": 10
+        },
+        "mse": 0.005296743193428179
+      },
+      {
+        "config": {
+          "k": 12,
+          "alpha": 10
+        },
+        "mse": 0.005325722392948534
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 4,
+    "year": 2023,
+    "method": "pls_ridge",
+    "selected": {
+      "k": 2,
+      "alpha": 10
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "k": 2,
+          "alpha": 10
+        },
+        "mse": 0.005138671153191297
+      },
+      {
+        "config": {
+          "k": 4,
+          "alpha": 10
+        },
+        "mse": 0.005254632356076239
+      },
+      {
+        "config": {
+          "k": 8,
+          "alpha": 10
+        },
+        "mse": 0.005283276313481905
+      },
+      {
+        "config": {
+          "k": 12,
+          "alpha": 10
+        },
+        "mse": 0.005298519293298234
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 4,
+    "year": 2023,
+    "method": "small_boosting",
+    "selected": {
+      "max_iter": 100,
+      "learning_rate": 0.05,
+      "max_leaf_nodes": 7,
+      "min_samples_leaf": 100,
+      "l2_regularization": 10
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "max_iter": 100,
+          "learning_rate": 0.05,
+          "max_leaf_nodes": 7,
+          "min_samples_leaf": 100,
+          "l2_regularization": 10
+        },
+        "mse": 0.004990602327375025
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 4,
+    "year": 2024,
+    "method": "price_ridge",
+    "selected": {
+      "alpha": 100
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "alpha": 1
+        },
+        "mse": 0.003427535605945905
+      },
+      {
+        "config": {
+          "alpha": 10
+        },
+        "mse": 0.003422803691696365
+      },
+      {
+        "config": {
+          "alpha": 100
+        },
+        "mse": 0.003401002733176564
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 4,
+    "year": 2024,
+    "method": "elastic_net",
+    "selected": {
+      "alpha": 0.01
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "alpha": 0.0001
+        },
+        "mse": 0.0033942425175399827
+      },
+      {
+        "config": {
+          "alpha": 0.001
+        },
+        "mse": 0.003396242151379462
+      },
+      {
+        "config": {
+          "alpha": 0.01
+        },
+        "mse": 0.0033849365104999785
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 4,
+    "year": 2024,
+    "method": "pca_ridge",
+    "selected": {
+      "k": 2,
+      "alpha": 10
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "k": 2,
+          "alpha": 10
+        },
+        "mse": 0.003397610668965324
+      },
+      {
+        "config": {
+          "k": 4,
+          "alpha": 10
+        },
+        "mse": 0.0034078849356985424
+      },
+      {
+        "config": {
+          "k": 8,
+          "alpha": 10
+        },
+        "mse": 0.00340646612376582
+      },
+      {
+        "config": {
+          "k": 12,
+          "alpha": 10
+        },
+        "mse": 0.0034198096907959883
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 4,
+    "year": 2024,
+    "method": "pls_ridge",
+    "selected": {
+      "k": 2,
+      "alpha": 10
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "k": 2,
+          "alpha": 10
+        },
+        "mse": 0.0034005285303924234
+      },
+      {
+        "config": {
+          "k": 4,
+          "alpha": 10
+        },
+        "mse": 0.003411436087190953
+      },
+      {
+        "config": {
+          "k": 8,
+          "alpha": 10
+        },
+        "mse": 0.003415764856695904
+      },
+      {
+        "config": {
+          "k": 12,
+          "alpha": 10
+        },
+        "mse": 0.003436857141435202
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 4,
+    "year": 2024,
+    "method": "small_boosting",
+    "selected": {
+      "max_iter": 100,
+      "learning_rate": 0.05,
+      "max_leaf_nodes": 7,
+      "min_samples_leaf": 100,
+      "l2_regularization": 10
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "max_iter": 100,
+          "learning_rate": 0.05,
+          "max_leaf_nodes": 7,
+          "min_samples_leaf": 100,
+          "l2_regularization": 10
+        },
+        "mse": 0.003363396765858914
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 8,
+    "year": 2022,
+    "method": "price_ridge",
+    "selected": {
+      "alpha": 100
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "alpha": 1
+        },
+        "mse": 0.00947875568001701
+      },
+      {
+        "config": {
+          "alpha": 10
+        },
+        "mse": 0.00861632767762068
+      },
+      {
+        "config": {
+          "alpha": 100
+        },
+        "mse": 0.006989064972577494
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 8,
+    "year": 2022,
+    "method": "elastic_net",
+    "selected": {
+      "alpha": 0.01
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "alpha": 0.0001
+        },
+        "mse": 0.008632790931142583
+      },
+      {
+        "config": {
+          "alpha": 0.001
+        },
+        "mse": 0.006764947244533939
+      },
+      {
+        "config": {
+          "alpha": 0.01
+        },
+        "mse": 0.0067131416080513425
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 8,
+    "year": 2022,
+    "method": "pca_ridge",
+    "selected": {
+      "k": 2,
+      "alpha": 10
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "k": 2,
+          "alpha": 10
+        },
+        "mse": 0.007635627441659597
+      },
+      {
+        "config": {
+          "k": 4,
+          "alpha": 10
+        },
+        "mse": 0.008231371334223515
+      },
+      {
+        "config": {
+          "k": 8,
+          "alpha": 10
+        },
+        "mse": 0.00833933271010735
+      },
+      {
+        "config": {
+          "k": 12,
+          "alpha": 10
+        },
+        "mse": 0.008416498834239516
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 8,
+    "year": 2022,
+    "method": "pls_ridge",
+    "selected": {
+      "k": 2,
+      "alpha": 10
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "k": 2,
+          "alpha": 10
+        },
+        "mse": 0.007590751717719171
+      },
+      {
+        "config": {
+          "k": 4,
+          "alpha": 10
+        },
+        "mse": 0.007819279677451623
+      },
+      {
+        "config": {
+          "k": 8,
+          "alpha": 10
+        },
+        "mse": 0.00798511239555305
+      },
+      {
+        "config": {
+          "k": 12,
+          "alpha": 10
+        },
+        "mse": 0.008324723283283857
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 8,
+    "year": 2022,
+    "method": "small_boosting",
+    "selected": {
+      "max_iter": 100,
+      "learning_rate": 0.05,
+      "max_leaf_nodes": 7,
+      "min_samples_leaf": 100,
+      "l2_regularization": 10
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "max_iter": 100,
+          "learning_rate": 0.05,
+          "max_leaf_nodes": 7,
+          "min_samples_leaf": 100,
+          "l2_regularization": 10
+        },
+        "mse": 0.006995415953074609
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 8,
+    "year": 2023,
+    "method": "price_ridge",
+    "selected": {
+      "alpha": 100
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "alpha": 1
+        },
+        "mse": 0.011280535265801526
+      },
+      {
+        "config": {
+          "alpha": 10
+        },
+        "mse": 0.011029097826040656
+      },
+      {
+        "config": {
+          "alpha": 100
+        },
+        "mse": 0.010032869073198426
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 8,
+    "year": 2023,
+    "method": "elastic_net",
+    "selected": {
+      "alpha": 0.01
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "alpha": 0.0001
+        },
+        "mse": 0.010735660319895113
+      },
+      {
+        "config": {
+          "alpha": 0.001
+        },
+        "mse": 0.009460379458945841
+      },
+      {
+        "config": {
+          "alpha": 0.01
+        },
+        "mse": 0.00936387060547236
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 8,
+    "year": 2023,
+    "method": "pca_ridge",
+    "selected": {
+      "k": 2,
+      "alpha": 10
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "k": 2,
+          "alpha": 10
+        },
+        "mse": 0.010659235497445846
+      },
+      {
+        "config": {
+          "k": 4,
+          "alpha": 10
+        },
+        "mse": 0.010952814292153895
+      },
+      {
+        "config": {
+          "k": 8,
+          "alpha": 10
+        },
+        "mse": 0.010990128875892336
+      },
+      {
+        "config": {
+          "k": 12,
+          "alpha": 10
+        },
+        "mse": 0.011085617521454144
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 8,
+    "year": 2023,
+    "method": "pls_ridge",
+    "selected": {
+      "k": 2,
+      "alpha": 10
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "k": 2,
+          "alpha": 10
+        },
+        "mse": 0.010329552367740339
+      },
+      {
+        "config": {
+          "k": 4,
+          "alpha": 10
+        },
+        "mse": 0.010800484772954332
+      },
+      {
+        "config": {
+          "k": 8,
+          "alpha": 10
+        },
+        "mse": 0.010870406148969732
+      },
+      {
+        "config": {
+          "k": 12,
+          "alpha": 10
+        },
+        "mse": 0.010896690501908515
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 8,
+    "year": 2023,
+    "method": "small_boosting",
+    "selected": {
+      "max_iter": 100,
+      "learning_rate": 0.05,
+      "max_leaf_nodes": 7,
+      "min_samples_leaf": 100,
+      "l2_regularization": 10
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "max_iter": 100,
+          "learning_rate": 0.05,
+          "max_leaf_nodes": 7,
+          "min_samples_leaf": 100,
+          "l2_regularization": 10
+        },
+        "mse": 0.010056403646251988
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 8,
+    "year": 2024,
+    "method": "price_ridge",
+    "selected": {
+      "alpha": 100
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "alpha": 1
+        },
+        "mse": 0.007006660076193001
+      },
+      {
+        "config": {
+          "alpha": 10
+        },
+        "mse": 0.006989424236326705
+      },
+      {
+        "config": {
+          "alpha": 100
+        },
+        "mse": 0.006915552451823668
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 8,
+    "year": 2024,
+    "method": "elastic_net",
+    "selected": {
+      "alpha": 0.0001
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "alpha": 0.0001
+        },
+        "mse": 0.006882407662394827
+      },
+      {
+        "config": {
+          "alpha": 0.001
+        },
+        "mse": 0.006932075764365113
+      },
+      {
+        "config": {
+          "alpha": 0.01
+        },
+        "mse": 0.006928678235860356
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 8,
+    "year": 2024,
+    "method": "pca_ridge",
+    "selected": {
+      "k": 2,
+      "alpha": 10
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "k": 2,
+          "alpha": 10
+        },
+        "mse": 0.00693366785925254
+      },
+      {
+        "config": {
+          "k": 4,
+          "alpha": 10
+        },
+        "mse": 0.006965556910700877
+      },
+      {
+        "config": {
+          "k": 8,
+          "alpha": 10
+        },
+        "mse": 0.006959327754257842
+      },
+      {
+        "config": {
+          "k": 12,
+          "alpha": 10
+        },
+        "mse": 0.006972801447521293
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 8,
+    "year": 2024,
+    "method": "pls_ridge",
+    "selected": {
+      "k": 2,
+      "alpha": 10
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "k": 2,
+          "alpha": 10
+        },
+        "mse": 0.006863550790533173
+      },
+      {
+        "config": {
+          "k": 4,
+          "alpha": 10
+        },
+        "mse": 0.006890694150998884
+      },
+      {
+        "config": {
+          "k": 8,
+          "alpha": 10
+        },
+        "mse": 0.006919567539915731
+      },
+      {
+        "config": {
+          "k": 12,
+          "alpha": 10
+        },
+        "mse": 0.0069551762540014
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 8,
+    "year": 2024,
+    "method": "small_boosting",
+    "selected": {
+      "max_iter": 100,
+      "learning_rate": 0.05,
+      "max_leaf_nodes": 7,
+      "min_samples_leaf": 100,
+      "l2_regularization": 10
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "max_iter": 100,
+          "learning_rate": 0.05,
+          "max_leaf_nodes": 7,
+          "min_samples_leaf": 100,
+          "l2_regularization": 10
+        },
+        "mse": 0.006820160045587816
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 12,
+    "year": 2022,
+    "method": "price_ridge",
+    "selected": {
+      "alpha": 100
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "alpha": 1
+        },
+        "mse": 0.014402406343012873
+      },
+      {
+        "config": {
+          "alpha": 10
+        },
+        "mse": 0.012600510620902668
+      },
+      {
+        "config": {
+          "alpha": 100
+        },
+        "mse": 0.009524880527020486
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 12,
+    "year": 2022,
+    "method": "elastic_net",
+    "selected": {
+      "alpha": 0.01
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "alpha": 0.0001
+        },
+        "mse": 0.01326294968272278
+      },
+      {
+        "config": {
+          "alpha": 0.001
+        },
+        "mse": 0.009312931583596463
+      },
+      {
+        "config": {
+          "alpha": 0.01
+        },
+        "mse": 0.009250096427522059
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 12,
+    "year": 2022,
+    "method": "pca_ridge",
+    "selected": {
+      "k": 2,
+      "alpha": 10
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "k": 2,
+          "alpha": 10
+        },
+        "mse": 0.010979333967533486
+      },
+      {
+        "config": {
+          "k": 4,
+          "alpha": 10
+        },
+        "mse": 0.011958877519280384
+      },
+      {
+        "config": {
+          "k": 8,
+          "alpha": 10
+        },
+        "mse": 0.012232593700466678
+      },
+      {
+        "config": {
+          "k": 12,
+          "alpha": 10
+        },
+        "mse": 0.01232388971849867
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 12,
+    "year": 2022,
+    "method": "pls_ridge",
+    "selected": {
+      "k": 4,
+      "alpha": 10
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "k": 2,
+          "alpha": 10
+        },
+        "mse": 0.011749321386115024
+      },
+      {
+        "config": {
+          "k": 4,
+          "alpha": 10
+        },
+        "mse": 0.01159646830614713
+      },
+      {
+        "config": {
+          "k": 8,
+          "alpha": 10
+        },
+        "mse": 0.011892933009885125
+      },
+      {
+        "config": {
+          "k": 12,
+          "alpha": 10
+        },
+        "mse": 0.012083671307484885
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 12,
+    "year": 2022,
+    "method": "small_boosting",
+    "selected": {
+      "max_iter": 100,
+      "learning_rate": 0.05,
+      "max_leaf_nodes": 7,
+      "min_samples_leaf": 100,
+      "l2_regularization": 10
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "max_iter": 100,
+          "learning_rate": 0.05,
+          "max_leaf_nodes": 7,
+          "min_samples_leaf": 100,
+          "l2_regularization": 10
+        },
+        "mse": 0.009689883352969943
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 12,
+    "year": 2023,
+    "method": "price_ridge",
+    "selected": {
+      "alpha": 100
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "alpha": 1
+        },
+        "mse": 0.01662985245179534
+      },
+      {
+        "config": {
+          "alpha": 10
+        },
+        "mse": 0.016014230955344887
+      },
+      {
+        "config": {
+          "alpha": 100
+        },
+        "mse": 0.013642960833974841
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 12,
+    "year": 2023,
+    "method": "elastic_net",
+    "selected": {
+      "alpha": 0.01
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "alpha": 0.0001
+        },
+        "mse": 0.01580116452511382
+      },
+      {
+        "config": {
+          "alpha": 0.001
+        },
+        "mse": 0.012576222411420793
+      },
+      {
+        "config": {
+          "alpha": 0.01
+        },
+        "mse": 0.012001422234836216
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 12,
+    "year": 2023,
+    "method": "pca_ridge",
+    "selected": {
+      "k": 2,
+      "alpha": 10
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "k": 2,
+          "alpha": 10
+        },
+        "mse": 0.015093935717431632
+      },
+      {
+        "config": {
+          "k": 4,
+          "alpha": 10
+        },
+        "mse": 0.015800010749594164
+      },
+      {
+        "config": {
+          "k": 8,
+          "alpha": 10
+        },
+        "mse": 0.01589905705309155
+      },
+      {
+        "config": {
+          "k": 12,
+          "alpha": 10
+        },
+        "mse": 0.01623972379694532
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 12,
+    "year": 2023,
+    "method": "pls_ridge",
+    "selected": {
+      "k": 2,
+      "alpha": 10
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "k": 2,
+          "alpha": 10
+        },
+        "mse": 0.014350862086484858
+      },
+      {
+        "config": {
+          "k": 4,
+          "alpha": 10
+        },
+        "mse": 0.01563061662005075
+      },
+      {
+        "config": {
+          "k": 8,
+          "alpha": 10
+        },
+        "mse": 0.01574107313537375
+      },
+      {
+        "config": {
+          "k": 12,
+          "alpha": 10
+        },
+        "mse": 0.015771418186594305
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 12,
+    "year": 2023,
+    "method": "small_boosting",
+    "selected": {
+      "max_iter": 100,
+      "learning_rate": 0.05,
+      "max_leaf_nodes": 7,
+      "min_samples_leaf": 100,
+      "l2_regularization": 10
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "max_iter": 100,
+          "learning_rate": 0.05,
+          "max_leaf_nodes": 7,
+          "min_samples_leaf": 100,
+          "l2_regularization": 10
+        },
+        "mse": 0.013710079696518714
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 12,
+    "year": 2024,
+    "method": "price_ridge",
+    "selected": {
+      "alpha": 100
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "alpha": 1
+        },
+        "mse": 0.010638008909087483
+      },
+      {
+        "config": {
+          "alpha": 10
+        },
+        "mse": 0.010604937854457671
+      },
+      {
+        "config": {
+          "alpha": 100
+        },
+        "mse": 0.010479446961798212
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 12,
+    "year": 2024,
+    "method": "elastic_net",
+    "selected": {
+      "alpha": 0.0001
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "alpha": 0.0001
+        },
+        "mse": 0.010462861048010886
+      },
+      {
+        "config": {
+          "alpha": 0.001
+        },
+        "mse": 0.01050948073418339
+      },
+      {
+        "config": {
+          "alpha": 0.01
+        },
+        "mse": 0.010673904911713637
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 12,
+    "year": 2024,
+    "method": "pca_ridge",
+    "selected": {
+      "k": 2,
+      "alpha": 10
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "k": 2,
+          "alpha": 10
+        },
+        "mse": 0.010588943452717192
+      },
+      {
+        "config": {
+          "k": 4,
+          "alpha": 10
+        },
+        "mse": 0.010641664309547832
+      },
+      {
+        "config": {
+          "k": 8,
+          "alpha": 10
+        },
+        "mse": 0.010618328785013646
+      },
+      {
+        "config": {
+          "k": 12,
+          "alpha": 10
+        },
+        "mse": 0.010600712673563543
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 12,
+    "year": 2024,
+    "method": "pls_ridge",
+    "selected": {
+      "k": 2,
+      "alpha": 10
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "k": 2,
+          "alpha": 10
+        },
+        "mse": 0.01045511882368657
+      },
+      {
+        "config": {
+          "k": 4,
+          "alpha": 10
+        },
+        "mse": 0.01045625523957013
+      },
+      {
+        "config": {
+          "k": 8,
+          "alpha": 10
+        },
+        "mse": 0.01048544617738816
+      },
+      {
+        "config": {
+          "k": 12,
+          "alpha": 10
+        },
+        "mse": 0.010539754161797534
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 12,
+    "year": 2024,
+    "method": "small_boosting",
+    "selected": {
+      "max_iter": 100,
+      "learning_rate": 0.05,
+      "max_leaf_nodes": 7,
+      "min_samples_leaf": 100,
+      "l2_regularization": 10
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "max_iter": 100,
+          "learning_rate": 0.05,
+          "max_leaf_nodes": 7,
+          "min_samples_leaf": 100,
+          "l2_regularization": 10
+        },
+        "mse": 0.010296568101974378
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 26,
+    "year": 2022,
+    "method": "price_ridge",
+    "selected": {
+      "alpha": 100
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "alpha": 1
+        },
+        "mse": 0.040655768058138336
+      },
+      {
+        "config": {
+          "alpha": 10
+        },
+        "mse": 0.033016580203381794
+      },
+      {
+        "config": {
+          "alpha": 100
+        },
+        "mse": 0.024940110211686028
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 26,
+    "year": 2022,
+    "method": "elastic_net",
+    "selected": {
+      "alpha": 0.001
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "alpha": 0.0001
+        },
+        "mse": 0.03894281240768045
+      },
+      {
+        "config": {
+          "alpha": 0.001
+        },
+        "mse": 0.025848640349426452
+      },
+      {
+        "config": {
+          "alpha": 0.01
+        },
+        "mse": 0.02784783044510538
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 26,
+    "year": 2022,
+    "method": "pca_ridge",
+    "selected": {
+      "k": 2,
+      "alpha": 10
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "k": 2,
+          "alpha": 10
+        },
+        "mse": 0.028125636046683878
+      },
+      {
+        "config": {
+          "k": 4,
+          "alpha": 10
+        },
+        "mse": 0.029634374315722946
+      },
+      {
+        "config": {
+          "k": 8,
+          "alpha": 10
+        },
+        "mse": 0.03057612906679005
+      },
+      {
+        "config": {
+          "k": 12,
+          "alpha": 10
+        },
+        "mse": 0.03062677017777541
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 26,
+    "year": 2022,
+    "method": "pls_ridge",
+    "selected": {
+      "k": 4,
+      "alpha": 10
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "k": 2,
+          "alpha": 10
+        },
+        "mse": 0.030007385136071596
+      },
+      {
+        "config": {
+          "k": 4,
+          "alpha": 10
+        },
+        "mse": 0.029541207199244697
+      },
+      {
+        "config": {
+          "k": 8,
+          "alpha": 10
+        },
+        "mse": 0.030308307315976092
+      },
+      {
+        "config": {
+          "k": 12,
+          "alpha": 10
+        },
+        "mse": 0.030013931453823705
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 26,
+    "year": 2022,
+    "method": "small_boosting",
+    "selected": {
+      "max_iter": 100,
+      "learning_rate": 0.05,
+      "max_leaf_nodes": 7,
+      "min_samples_leaf": 100,
+      "l2_regularization": 10
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "max_iter": 100,
+          "learning_rate": 0.05,
+          "max_leaf_nodes": 7,
+          "min_samples_leaf": 100,
+          "l2_regularization": 10
+        },
+        "mse": 0.04442851854258449
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 26,
+    "year": 2023,
+    "method": "price_ridge",
+    "selected": {
+      "alpha": 100
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "alpha": 1
+        },
+        "mse": 0.04476180808891204
+      },
+      {
+        "config": {
+          "alpha": 10
+        },
+        "mse": 0.04083443885253099
+      },
+      {
+        "config": {
+          "alpha": 100
+        },
+        "mse": 0.027310046699169834
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 26,
+    "year": 2023,
+    "method": "elastic_net",
+    "selected": {
+      "alpha": 0.01
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "alpha": 0.0001
+        },
+        "mse": 0.04260577217616188
+      },
+      {
+        "config": {
+          "alpha": 0.001
+        },
+        "mse": 0.02780626765050886
+      },
+      {
+        "config": {
+          "alpha": 0.01
+        },
+        "mse": 0.018763784274012388
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 26,
+    "year": 2023,
+    "method": "pca_ridge",
+    "selected": {
+      "k": 2,
+      "alpha": 10
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "k": 2,
+          "alpha": 10
+        },
+        "mse": 0.03282735805120092
+      },
+      {
+        "config": {
+          "k": 4,
+          "alpha": 10
+        },
+        "mse": 0.03697118276817694
+      },
+      {
+        "config": {
+          "k": 8,
+          "alpha": 10
+        },
+        "mse": 0.03675133091530947
+      },
+      {
+        "config": {
+          "k": 12,
+          "alpha": 10
+        },
+        "mse": 0.040482584863259924
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 26,
+    "year": 2023,
+    "method": "pls_ridge",
+    "selected": {
+      "k": 2,
+      "alpha": 10
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "k": 2,
+          "alpha": 10
+        },
+        "mse": 0.0293528217148789
+      },
+      {
+        "config": {
+          "k": 4,
+          "alpha": 10
+        },
+        "mse": 0.036124840434626854
+      },
+      {
+        "config": {
+          "k": 8,
+          "alpha": 10
+        },
+        "mse": 0.038431131479345966
+      },
+      {
+        "config": {
+          "k": 12,
+          "alpha": 10
+        },
+        "mse": 0.038193378327989844
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 26,
+    "year": 2023,
+    "method": "small_boosting",
+    "selected": {
+      "max_iter": 100,
+      "learning_rate": 0.05,
+      "max_leaf_nodes": 7,
+      "min_samples_leaf": 100,
+      "l2_regularization": 10
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "max_iter": 100,
+          "learning_rate": 0.05,
+          "max_leaf_nodes": 7,
+          "min_samples_leaf": 100,
+          "l2_regularization": 10
+        },
+        "mse": 0.024694372914489938
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 26,
+    "year": 2024,
+    "method": "price_ridge",
+    "selected": {
+      "alpha": 100
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "alpha": 1
+        },
+        "mse": 0.028994823586054316
+      },
+      {
+        "config": {
+          "alpha": 10
+        },
+        "mse": 0.02880262905617155
+      },
+      {
+        "config": {
+          "alpha": 100
+        },
+        "mse": 0.02830772760809886
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 26,
+    "year": 2024,
+    "method": "elastic_net",
+    "selected": {
+      "alpha": 0.001
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "alpha": 0.0001
+        },
+        "mse": 0.028868849128799896
+      },
+      {
+        "config": {
+          "alpha": 0.001
+        },
+        "mse": 0.027677693268766793
+      },
+      {
+        "config": {
+          "alpha": 0.01
+        },
+        "mse": 0.030569716671176507
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 26,
+    "year": 2024,
+    "method": "pca_ridge",
+    "selected": {
+      "k": 12,
+      "alpha": 10
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "k": 2,
+          "alpha": 10
+        },
+        "mse": 0.029308361545503737
+      },
+      {
+        "config": {
+          "k": 4,
+          "alpha": 10
+        },
+        "mse": 0.02972607218214911
+      },
+      {
+        "config": {
+          "k": 8,
+          "alpha": 10
+        },
+        "mse": 0.029043425552158785
+      },
+      {
+        "config": {
+          "k": 12,
+          "alpha": 10
+        },
+        "mse": 0.028975561169477703
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 26,
+    "year": 2024,
+    "method": "pls_ridge",
+    "selected": {
+      "k": 4,
+      "alpha": 10
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "k": 2,
+          "alpha": 10
+        },
+        "mse": 0.028759625994960576
+      },
+      {
+        "config": {
+          "k": 4,
+          "alpha": 10
+        },
+        "mse": 0.02867267093918868
+      },
+      {
+        "config": {
+          "k": 8,
+          "alpha": 10
+        },
+        "mse": 0.02872322052565023
+      },
+      {
+        "config": {
+          "k": 12,
+          "alpha": 10
+        },
+        "mse": 0.028913082717044642
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 26,
+    "year": 2024,
+    "method": "small_boosting",
+    "selected": {
+      "max_iter": 100,
+      "learning_rate": 0.05,
+      "max_leaf_nodes": 7,
+      "min_samples_leaf": 100,
+      "l2_regularization": 10
+    },
+    "fallback_for_insufficient_inner_data": false,
+    "inner_grid": [
+      {
+        "config": {
+          "max_iter": 100,
+          "learning_rate": 0.05,
+          "max_leaf_nodes": 7,
+          "min_samples_leaf": 100,
+          "l2_regularization": 10
+        },
+        "mse": 0.02671931594097581
+      }
+    ]
+  },
+  {
+    "horizon_weeks": 52,
+    "year": 2022,
+    "method": "price_ridge",
+    "selected": {
+      "alpha": 100
+    },
+    "fallback_for_insufficient_inner_data": true,
+    "inner_grid": []
+  },
+  {
+    "horizon_weeks": 52,
+    "year": 2022,
+    "method": "elastic_net",
+    "selected": {
+      "alpha": 0.001
+    },
+    "fallback_for_insufficient_inner_data": true,
+    "inner_grid": []
+  },
+  {
+    "horizon_weeks": 52,
+    "year": 2022,
+    "method": "pca_ridge",
+    "selected": {
+      "k": 2,
+      "alpha": 10
+    },
+    "fallback_for_insufficient_inner_data": true,
+    "inner_grid": []
+  },
+  {
+    "horizon_weeks": 52,
+    "year": 2022,
+    "method": "pls_ridge",
+    "selected": {
+      "k": 2,
+      "alpha": 10
+    },
+    "fallback_for_insufficient_inner_data": true,
+    "inner_grid": []
+  },
+  {
+    "horizon_weeks": 52,
+    "year": 2022,
+    "method": "small_boosting",
+    "selected": {
+      "max_iter": 100,
+      "learning_rate": 0.05,
+      "max_leaf_nodes": 7,
+      "min_samples_leaf": 100,
+      "l2_regularization": 10
+    },
+    "fallback_for_insufficient_inner_data": true,
+    "inner_grid": []
+  },
+  {
+    "horizon_weeks": 52,
+    "year": 2023,
+    "method": "price_ridge",
+    "selected": {
+      "alpha": 100
+    },
+    "fallback_for_insufficient_inner_data": true,
+    "inner_grid": []
+  },
+  {
+    "horizon_weeks": 52,
+    "year": 2023,
+    "method": "elastic_net",
+    "selected": {
+      "alpha": 0.001
+    },
+    "fallback_for_insufficient_inner_data": true,
+    "inner_grid": []
+  },
+  {
+    "horizon_weeks": 52,
+    "year": 2023,
+    "method": "pca_ridge",
+    "selected": {
+      "k": 2,
+      "alpha": 10
+    },
+    "fallback_for_insufficient_inner_data": true,
+    "inner_grid": []
+  },
+  {
+    "horizon_weeks": 52,
+    "year": 2023,
+    "method": "pls_ridge",
+    "selected": {
+      "k": 2,
+      "alpha": 10
+    },
+    "fallback_for_insufficient_inner_data": true,
+    "inner_grid": []
+  },
+  {
+    "horizon_weeks": 52,
+    "year": 2023,
+    "method": "small_boosting",
+    "selected": {
+      "max_iter": 100,
+      "learning_rate": 0.05,
+      "max_leaf_nodes": 7,
+      "min_samples_leaf": 100,
+      "l2_regularization": 10
+    },
+    "fallback_for_insufficient_inner_data": true,
+    "inner_grid": []
+  },
+  {
+    "horizon_weeks": 52,
+    "year": 2024,
+    "method": "price_ridge",
+    "selected": {
+      "alpha": 100
+    },
+    "fallback_for_insufficient_inner_data": true,
+    "inner_grid": []
+  },
+  {
+    "horizon_weeks": 52,
+    "year": 2024,
+    "method": "elastic_net",
+    "selected": {
+      "alpha": 0.001
+    },
+    "fallback_for_insufficient_inner_data": true,
+    "inner_grid": []
+  },
+  {
+    "horizon_weeks": 52,
+    "year": 2024,
+    "method": "pca_ridge",
+    "selected": {
+      "k": 2,
+      "alpha": 10
+    },
+    "fallback_for_insufficient_inner_data": true,
+    "inner_grid": []
+  },
+  {
+    "horizon_weeks": 52,
+    "year": 2024,
+    "method": "pls_ridge",
+    "selected": {
+      "k": 2,
+      "alpha": 10
+    },
+    "fallback_for_insufficient_inner_data": true,
+    "inner_grid": []
+  },
+  {
+    "horizon_weeks": 52,
+    "year": 2024,
+    "method": "small_boosting",
+    "selected": {
+      "max_iter": 100,
+      "learning_rate": 0.05,
+      "max_leaf_nodes": 7,
+      "min_samples_leaf": 100,
+      "l2_regularization": 10
+    },
+    "fallback_for_insufficient_inner_data": true,
+    "inner_grid": []
+  }
+]

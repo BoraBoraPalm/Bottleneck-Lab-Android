@@ -13,6 +13,8 @@ Hier liegen die relevanten Informationen der bisherigen empirischen Studien. **V
 | [Globaler Nachrichtenstimmungs-Pilot](tests/2026-11-01-global-sentiment) | Nächste Archivwoche bzw. folgende Handelswoche | Bessere Nachrichtenkategorien-Prognose; kein zusätzlicher zuverlässiger Kursrichtungsvorteil im Wochenziel. |
 | [PCA/PLS und gemeinsame historische Faktor-Zustände](tests/2026-11-02-pca-factor-states) | Vier Wochen primär, zwölf Wochen deskriptiv | Bei vier Wochen kein Modell mit geringerem MSE als Null-Mehrertragsprognose; zwölf Wochen ohne besseren Gesamt-MSE. |
 
+| [Haltedauer, Weiterhalten und Prognosehorizonte – systematische Folgestudie](tests/2026-11-02-holding-duration) | A:1–12Monate Aktualisierung; B:5–252Sitzungen; C:1–52Wochen | Tatsächlich durchgeführte vergangenheitsbasierte Intervallwahl; große Unterschiede, keine universelle optimale Dauer; Einzelpositionsrisiko beachten. |
+
 ## Schnellzugriff
 
 - [Maschinenlesbarer Index](index.json)
@@ -37,4 +39,4 @@ Große Kurs-/Nachrichten-/Modell-/Trade-Dateien werden über den genauen vollst�
 6. `research/index.json` und diese Übersicht aktualisieren; `python research/tools/check_archive.py` ausführen.
 7. Vorhandene Ergebnisse und Pakete wiederverwenden; nur bei neuer Fragestellung, geändertem Protokoll, Datenupdate oder nachgewiesenem Fehler neu rechnen. Bei reinen Forschungsaufträgen die App nicht verändern.
 
-Die Archivierung vom 02.11.2026 selbst führte **keine** neuen Strategietests aus. Die noch fehlende Strategie-spezifische Haltedauer-Auswahl ist offen und wird nicht als erledigt dargestellt.
+Die ursprüngliche Archivierung vom 02.11.2026 selbst führte keine neuen Strategietests aus. Anschließend wurde auf ausdrücklichen Auftrag die separate Haltedauer-Folgestudie durchgeführt und als neuer Test archiviert. Ihre abgeschlossene, begrenzte Reichweite und verbleibenden Lücken stehen in HOLDING_PERIODS.md.

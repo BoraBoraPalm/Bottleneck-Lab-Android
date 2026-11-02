@@ -1,0 +1,8 @@
+{
+  "time": "2026-11-02T11:04:12.463119+00:00",
+  "sha256": {
+    "code/run_forecast_horizons.py": "af2a0caf2908a29267a40cf29fc236214d0225549a2dd38edfc26b8fa271adf3",
+    "code/fit_core.py": "6cdd1b58125292617d3d0e426b5db7a6599e6d1b5c5de375ba1ac9f7360d8620"
+  },
+  "horizon_results_not_inspected": true
+}

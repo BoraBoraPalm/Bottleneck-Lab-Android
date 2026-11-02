@@ -1,0 +1,915 @@
+{
+  "scope": "All local source/input data; only exact compact calculation inputs and provenance manifests are bundled. No raw source is required for cached reproduction.",
+  "files": [
+    {
+      "path": "data/PredictorAltPorts_HoldPer_1.parquet",
+      "bytes": 18753833,
+      "sha256": "a0bf9c7cc737a9419f74dc13648b95e63ff7fa16b570ce11def0bfead4252aa3",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/PredictorAltPorts_HoldPer_12.parquet",
+      "bytes": 18785280,
+      "sha256": "c03f52909ada77c157a233d3315698d7132cbbed6789d94aae470d18d42d6fa2",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/PredictorAltPorts_HoldPer_3.parquet",
+      "bytes": 19004713,
+      "sha256": "7dc5e4d3fef1ac4c51e6156d708dd6f89c0504e364f7aa33cd9b71a75ef7490f",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/PredictorAltPorts_HoldPer_6.parquet",
+      "bytes": 18906511,
+      "sha256": "c58d86a24e204929881d57b8b44024f19b10ca620b16e63f4d71bdf499714443",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/SignalDoc.csv",
+      "bytes": 183100,
+      "sha256": "0ceb11020c2138c2477b732948beaac2e67ccaad8428753e3a79af2bb5ea0178",
+      "included_in_bundle": true,
+      "role": "frozen used input"
+    },
+    {
+      "path": "data/academic_selected_long_returns.csv",
+      "bytes": 1350150,
+      "sha256": "7451113dc9ea3278ec0f0021c90837c5bb7f71c6d3207d0ff83c25417b3a4589",
+      "included_in_bundle": true,
+      "role": "frozen used input"
+    },
+    {
+      "path": "data/academic_source_metadata.json",
+      "bytes": 3526,
+      "sha256": "7561048ce808934d0e24655753cdeb15e1859524d42240e6ba7359819a386aa7",
+      "included_in_bundle": true,
+      "role": "frozen used input"
+    },
+    {
+      "path": "data/cohort.csv",
+      "bytes": 7853,
+      "sha256": "95fe3c9122ffd6879d6a843882697c1744d4bb821b1564e3a5f02ec1e0d999bc",
+      "included_in_bundle": true,
+      "role": "frozen used input"
+    },
+    {
+      "path": "data/forecast_horizon_panel.parquet",
+      "bytes": 14032830,
+      "sha256": "c7ca42797b958a211c7bd1d3636eeee862a2e5f2e224b2d726af030ae36181e4",
+      "included_in_bundle": true,
+      "role": "frozen used input"
+    },
+    {
+      "path": "data/holding_port_download_manifest.json",
+      "bytes": 1773,
+      "sha256": "5b69bc36362cbab8e5acc59f2018e2a1a4ad1b92ceada3435a26f3fee049a1ec",
+      "included_in_bundle": true,
+      "role": "frozen used input"
+    },
+    {
+      "path": "data/market_monthly_inputs.csv",
+      "bytes": 66079,
+      "sha256": "029e0c3e7ae5f96188a073cbf03f3c12f4e57797a7be3f213433f06900c0f6a1",
+      "included_in_bundle": true,
+      "role": "frozen used input"
+    },
+    {
+      "path": "data/normalized_daily_prices.parquet",
+      "bytes": 17200148,
+      "sha256": "93f60fa5fdd3a66870725ec990535415aba42d90db6a1c610499c354b6f9ef28",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/pca_feature_metadata.json",
+      "bytes": 15114,
+      "sha256": "d8af40b7fd73751553fc5aa8a461dca8dfbd73afa6bb9716d37d496e51e43d97",
+      "included_in_bundle": true,
+      "role": "frozen used input"
+    },
+    {
+      "path": "data/price_manifest.json",
+      "bytes": 42843,
+      "sha256": "d68f904150c94dc5427d7f3ded9ce815695fdf62fb0ac828e73e534c638b96bf",
+      "included_in_bundle": true,
+      "role": "frozen used input"
+    },
+    {
+      "path": "data/prices/005930.KS.json",
+      "bytes": 277876,
+      "sha256": "f3d49aed4278cdb3112dc09ec65faaf1d439f77145ae539794e52896ecc7da49",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/0386.HK.json",
+      "bytes": 454540,
+      "sha256": "19c6b8fa5b8610b48afd5d658fb0bd340817fa4593e85d0877b01961d0c1cca4",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/0700.HK.json",
+      "bytes": 440450,
+      "sha256": "6045ea194757cdeb8cd883cfab83e0fc0b6e0829a81063770646966c3130e81c",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/0857.HK.json",
+      "bytes": 452849,
+      "sha256": "660c6f3d3c03938d94a63c1b0078e85f5e81bc48f5a9c353ade8f816893d45a8",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/0939.HK.json",
+      "bytes": 452263,
+      "sha256": "8b60ff3c18aaffec6498d8454dca72c417b40c5f63eb46ae447c530d53a4447d",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/0941.HK.json",
+      "bytes": 403957,
+      "sha256": "8e5272d0173ad566a7193f93fabb844ee74fb98fa8278d82a1cb82bc95d3a457",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/1288.HK.json",
+      "bytes": 444686,
+      "sha256": "33062d10a7177e11cbd3aa032c9b54ab6302a4b12043bc52f31d02dfa306db86",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/1299.HK.json",
+      "bytes": 388800,
+      "sha256": "566c10a864e703adbecb0f51107ea2f6fc4cd60e7da2e8fd5a9710a1eaad9cdb",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/1398.HK.json",
+      "bytes": 452877,
+      "sha256": "d5d09ac254852ab0928b587c6014509147af0e8ada8dfcb61c87398535e232f9",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/2318.HK.json",
+      "bytes": 416422,
+      "sha256": "b5373e7c5a983d6cf21877ed2a461bf14090afa32be0e44b5f2b2fe38c5e80b1",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/2330.TW.json",
+      "bytes": 285389,
+      "sha256": "9b34ed63cd66bd42fbf71027303596733d34c78122761d19bec8e05efcc216ad",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/2628.HK.json",
+      "bytes": 444819,
+      "sha256": "a6a05e0337efefc8845ff3b23a941ebce48aecccc282b0ae056cbdba67234233",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/3968.HK.json",
+      "bytes": 439537,
+      "sha256": "66a0855b15f981e141cf52afe8f6f8ae7f84382149e4bfbe3ddc356669accb5f",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/3988.HK.json",
+      "bytes": 461059,
+      "sha256": "9b62bd23c318c2b100d7edd398c7332617b173819277a2d82d4df0f1fa654d87",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/600519.SS.json",
+      "bytes": 403189,
+      "sha256": "3f89b1aaac55821cdc479fcbd6047ddc5cbc633db79cc59082c63d3904633ddb",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/7203.T.json",
+      "bytes": 337312,
+      "sha256": "301a4bda54588dc71834441c4974916187241559a1ba7f29b141efc40e3500ba",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/AAPL.json",
+      "bytes": 471396,
+      "sha256": "04a5f94d41a4512791e30e212d5d31d6c63b851ba9c13b0401e73325ea5a31fc",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/ABBV.json",
+      "bytes": 376593,
+      "sha256": "fe489964ba426d700a341e820cce666e94ac21b1280fc682fed95e339f473414",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/ABEV3.SA.json",
+      "bytes": 464862,
+      "sha256": "bece6e0411880278a2d0aca9e1026713abb75b090a9f582095e0759ebec7f57f",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/ABI.BR.json",
+      "bytes": 453913,
+      "sha256": "39c049939ebed9d412f864e9768f08667dcfaedd10067f086cde31e5509e010a",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/ABT.json",
+      "bytes": 464521,
+      "sha256": "8a3b1b111a13751572a23fe9271990581ce78f1db47086a26d4aae9a9eedf2ad",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/ACN.json",
+      "bytes": 453894,
+      "sha256": "d9c91d0f0aadf6fa5fe053e7591006cdb0d35bd36f5c0277d3785581714848e4",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/ACWI.json",
+      "bytes": 458352,
+      "sha256": "5de59011a93a6b40baced931f6c682a883c5d8386eee6d64b3805f4540d734d3",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/ADBE.json",
+      "bytes": 449199,
+      "sha256": "6d7ccf907728f5fc5f57a08c6e8d01590379fe2582eaa24d6e3f92f5af64cfee",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/ALV.DE.json",
+      "bytes": 435534,
+      "sha256": "d6b75e3888d1395cad4cf28770eb8fd7593c7ac01d23de7e8aa64bd84a10e334",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/AMGN.json",
+      "bytes": 459048,
+      "sha256": "03348100e0a7647b2b01bf40ac85a1096fd40c2a126c67a9d8980902e3e8d0ef",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/AMZN.json",
+      "bytes": 464813,
+      "sha256": "5452d902549ac43b3b738244e147e9255e52153c72ce9293af41403899b566ac",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/AUDUSD=X.json",
+      "bytes": 471640,
+      "sha256": "426db6cf0310a5057253efe243c4ab3ca8104ac898994f4178efed4c54f97202",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/AVGO.json",
+      "bytes": 471779,
+      "sha256": "5a2a55c865a54160117d1ced6133d76b15e9d680c68f9abbc9daf8b32c946561",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/BA.json",
+      "bytes": 453684,
+      "sha256": "0297b916b6c26b3ddefd3a9ac767d1bf68c47a3ac8918cae82e409bd486867e9",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/BABA.json",
+      "bytes": 327771,
+      "sha256": "d65ba6237bc1e3d7fb55dbdfe76172085c4ad3f0c48bf12ddb87103273f2f729",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/BAC.json",
+      "bytes": 470510,
+      "sha256": "72e9fecae30d5cf3d8ec5f4d8e09546d3763055a9862987fe26912dbde6b0c37",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/BATS.L.json",
+      "bytes": 281289,
+      "sha256": "1067d9e565d0db7b80807f3d7b78600a0c081d4e860aa514c802af3078890f30",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/BHP.AX.json",
+      "bytes": 473718,
+      "sha256": "9a5c7060f2a2d924eb7e4cea480b832c7572e4d66880dffba3fe956b49d87fd3",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/BKNG.json",
+      "bytes": 466242,
+      "sha256": "fd6b07c5497d549c0453598ef8a9f77ee97372353e74cda84945b6c12d0d892b",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/BMY.json",
+      "bytes": 461243,
+      "sha256": "5f4fb161104512abd57b316a2be2ea70672fd6fc8095ba24d7c5f375b6230d66",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/BP.L.json",
+      "bytes": 425957,
+      "sha256": "f7e6e118634a5246bf6d33cadc6b372868b081009cf7e19ac71424da5e1a0624",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/BRK-B.json",
+      "bytes": 450341,
+      "sha256": "f7f35e1db2f4e37c983f1244ec9dd2431e262de17e2626cf1ada16f1b349e345",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/BRL=X.json",
+      "bytes": 459472,
+      "sha256": "b0c00193c427db27aab85f7b14fbd952d933cb8bce7296375aed189cefaa3403",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/C.json",
+      "bytes": 459517,
+      "sha256": "cde2c710704e82d94e24a3d274783696e8c17c72aa93e656186e6d34db8d29de",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/CAD=X.json",
+      "bytes": 469377,
+      "sha256": "fac29e55fd22cc814cfa1acb09b33d7e1ee4ea64a8fe9cb256a49e94b35397b5",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/CBA.AX.json",
+      "bytes": 454471,
+      "sha256": "cb7e924c8b650c739fe1130008ec2929dcb03fbea0a796f58f19e260d7bc680f",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/CHF=X.json",
+      "bytes": 471535,
+      "sha256": "f4564675caaa0cdeb169f387f7b1886d7d9bc3b5cadd030effc06e61a86ae1b8",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/CMCSA.json",
+      "bytes": 477938,
+      "sha256": "d1391ad21e45d45df6fdeb596e08450b4b29e4c9df16fa1f0384d93443f892ca",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/CNY=X.json",
+      "bytes": 452564,
+      "sha256": "544db62dd285c9ad1997670b83ed111524d4c24ca7c4ba696d7b4de839599506",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/CSCO.json",
+      "bytes": 468236,
+      "sha256": "6fb5331283bd9526e91d0109d942965521192fad9f08a42fc255b04f8451aaf1",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/CVX.json",
+      "bytes": 463357,
+      "sha256": "19fc29d523fbe3edd21d8b717d27f74d271bddab290576a8a3688b6bc7c95003",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/DD.json",
+      "bytes": 466938,
+      "sha256": "f249c873c49d5f9df52228662ab00c714dbaf3b2101fa525fc571ca3d9c6b7a1",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/DIS.json",
+      "bytes": 459712,
+      "sha256": "0a2116b80b72a7ffbc32a716da23c82bf3ed85cf6256a372c72137b88d4ce692",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/DKK=X.json",
+      "bytes": 452933,
+      "sha256": "1d20c71a65e3de837e8b6ee62a1ec723a8831252e25108562a37b511f1b1a5f2",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/EURUSD=X.json",
+      "bytes": 469411,
+      "sha256": "148dcfcbb214eb4fa1d7b4af28c0dbe71a5ae3e20ce7b053fc6acd1e5a7087b6",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/GBPUSD=X.json",
+      "bytes": 469013,
+      "sha256": "313b9b0b78cf41f1e2249982d76f524029d3c5e0001019977d04a4ce376404e9",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/GE.json",
+      "bytes": 469950,
+      "sha256": "d02fca6a671c7cefd145edfccf8211e7ed34859043469ba85426d627eaeea5c5",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/GILD.json",
+      "bytes": 456309,
+      "sha256": "30d63017cff276efd7da16b96e6f9c090b2d6ff0c0bd5e66d75298ff47fbee4d",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/GOOGL.json",
+      "bytes": 470375,
+      "sha256": "11a69c16d555bf4d65ddccb28c9f9de752d20c6554d53814a1ecf9134ef277b4",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/GS.json",
+      "bytes": 452952,
+      "sha256": "f76b12115fe20d5cc46ef09d71e0429396b8fbec05341208e5a793f8d9cc05db",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/GSK.L.json",
+      "bytes": 437345,
+      "sha256": "7f773456da336136771adb856e4a73d1889e94e7b9806729055ebeec1c7e18da",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/HD.json",
+      "bytes": 457426,
+      "sha256": "4ad515c12cd37fdebde632856c11f61c7998c291d0bb01fe1d82796f37d5ca63",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/HKD=X.json",
+      "bytes": 452332,
+      "sha256": "0ecd336c1a6d92d8535af349680600883b6766ca1b13a8f95a879c69d5d25007",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/HON.json",
+      "bytes": 473048,
+      "sha256": "895f9450b2b8e7d5d81a3aa183c5186f383fbe83595bab2a3169d691f81f0dff",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/HSBA.L.json",
+      "bytes": 419295,
+      "sha256": "72bcdd468c3403f3d5ecece5b021660d4f1197d7dd5ec3398d8c5dd42fbb7240",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/IBM.json",
+      "bytes": 471789,
+      "sha256": "0aea198cf472c0884d22794aa3f582860f259b0c2074d8034ca0ee6959acb844",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/INTC.json",
+      "bytes": 466983,
+      "sha256": "ea0b3bfb1e76f27c38a044bd67f6a3833cb23aea2d45d4760b82b04e0ae9f8ac",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/ITX.MC.json",
+      "bytes": 472408,
+      "sha256": "bae2e021dc8ae4dfe3daed0dd8ac2f959d95ebddf1d7c7a8632ae649c18cacf1",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/JNJ.json",
+      "bytes": 460794,
+      "sha256": "803f7d5d7c12bb001688dfb48d06b87120889cb065e85a39b889010096641acd",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/JPM.json",
+      "bytes": 463724,
+      "sha256": "1809c83da49aabc71e9edd06b675626bf537bbe9506106b1bb72f9597ba7b832",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/JPY=X.json",
+      "bytes": 461714,
+      "sha256": "f670e33e27351b3de49fb224ca556ac2a7b1ab67e0d2cfdeb6baaba4dc5e831a",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/KO.json",
+      "bytes": 463898,
+      "sha256": "f5d6436c3fa47c0c8426968bb4385a15d19d9d6a31d689041524823bab49829e",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/KRW=X.json",
+      "bytes": 431530,
+      "sha256": "b89eaec6eb0e2db731bb9e14dde7bafc0ba291b06338c5b1585bb2710981aa09",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/MA.json",
+      "bytes": 453994,
+      "sha256": "21c1de6b1dfac8c85f1cd4382502c689e0b289130be8d43201deaedc77149759",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/MC.PA.json",
+      "bytes": 420837,
+      "sha256": "e59c247a408b103c667f2d132e440a5e2a5ec9320b404e1a97492983811c6f07",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/MCD.json",
+      "bytes": 455549,
+      "sha256": "bd60fbec6679f1db5e0a9363d06587fb28d1da82f84516fd1858056d0e75d9e2",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/MDT.json",
+      "bytes": 454406,
+      "sha256": "578d55ee444dad00cedbe498eec0cece1713365f091f6cf274e64dc39e246e4b",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/META.json",
+      "bytes": 391948,
+      "sha256": "940ffd024b0376bd3fd4bb5f0112537dbd9b8a25038dd8de3f688ac2e2a5d326",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/MMM.json",
+      "bytes": 470340,
+      "sha256": "d393de3fb4c321a3143cf3fc1a9a0afc5cb08dfed4aeae5ebf6720176d446086",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/MO.json",
+      "bytes": 460730,
+      "sha256": "eb421a9e3ae3d0235ab655eaeea6027a16adc0e2a9dc7f7a8bd5e1799ae6537e",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/MRK.json",
+      "bytes": 468463,
+      "sha256": "2e84f26d2b737dcf5dec32ccd01a4a4801e615e388285d63e8844a1186da6206",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/MSFT.json",
+      "bytes": 464384,
+      "sha256": "e23f027a7cfd7d2e871566b17466532c6d9e2f0468741bbe1e7ba57f89c096cf",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/NESN.SW.json",
+      "bytes": 436037,
+      "sha256": "1b81d6c915aaba3caa19d79f7f7d9dfb5b676bf1b364d10106366ea1b4cc1bca",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/NFLX.json",
+      "bytes": 471184,
+      "sha256": "28efdb443a625038c23f82b18d06085cd123b32425d7034f2f4b787709d8d848",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/NKE.json",
+      "bytes": 459773,
+      "sha256": "0dd3909dd39df92c82746c0222e32e97ef97a9bf041b1bdf2d34ded397cb7002",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/NOVN.SW.json",
+      "bytes": 460984,
+      "sha256": "7c73bd422c3f29ae0db64a11aceec6f22903c39cafe4270187c78bd89bb93d15",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/NOVO-B.CO.json",
+      "bytes": 408548,
+      "sha256": "05e050d689f9ea10021fde0eeb70ecb2610ef89a6aa20076a344283b772c93c4",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/NPN.JO.json",
+      "bytes": 379231,
+      "sha256": "1a12354eaa32b6232e204f3ad2661f640da95bb18d881e8cc86a9635bc8b782f",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/NVDA.json",
+      "bytes": 485249,
+      "sha256": "12c1b40aaae4ce4eabbe3dec0a6e0d0ca90c94afa25e33b2bda7a24ed240e44e",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/OR.PA.json",
+      "bytes": 430982,
+      "sha256": "250db8ff19ac0b218c81068e00d88739582fbbeaa074bd9a7e94dfaaa1ee1ac7",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/ORCL.json",
+      "bytes": 463306,
+      "sha256": "f311d3ee8584a71cb07278dd00a31a2e5c869fa181c9d42cbba9fdd4a6e3680a",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/PEP.json",
+      "bytes": 461247,
+      "sha256": "8b244386792cc878c8d012a2108c8effa5f69c43f4771ee8632e4e2a62ab3949",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/PFE.json",
+      "bytes": 476377,
+      "sha256": "b35d77f50955281a269b425227bab431ea15cf44c6a9b1704716b20e13150851",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/PG.json",
+      "bytes": 460205,
+      "sha256": "896deae57ba8e4ca5504054fd4da4658b13b27c62713670ae43ad407fb270f8e",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/PM.json",
+      "bytes": 453509,
+      "sha256": "55897242776bb6061b50baba0987f1b35f3037e73ad59f18ede4ea9661f1345d",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/ROP.SW.json",
+      "bytes": 416534,
+      "sha256": "c5396c8a1e7df81b8f5a3d9858ca9d022a4e6d4a70cd5221a81476076ed57add",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/RTX.json",
+      "bytes": 461928,
+      "sha256": "225b01c7bdfed69ba9f55dfe6fa0261f7fd914cf8c51b6df6c58dc1589bd5970",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/RY.TO.json",
+      "bytes": 452840,
+      "sha256": "c852c9fef72b88a4aa58f164ebc2e6bd2d2e27411ac37ca42eefd99a7e622ae1",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/SAN.MC.json",
+      "bytes": 483051,
+      "sha256": "8ac4891d160f2651ed6813efc7e12cb512b9305490a3170aedc16d75fefb30cd",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/SAN.PA.json",
+      "bytes": 466240,
+      "sha256": "8bb50663138ce654a80c5e09a2681f3b64f7defb0ac20530168d2efc8de7fa4b",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/SAP.DE.json",
+      "bytes": 456307,
+      "sha256": "01d5e85170fcabe8891961ea5281178b5b95331afb90a0b3592c74033fdaf742",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/SHEL.L.json",
+      "bytes": 303924,
+      "sha256": "c49737874e3d081f8973967e379911b1d8125c6709174934121c36575727ccd3",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/SIE.DE.json",
+      "bytes": 462114,
+      "sha256": "45a52bfd8fa184c03e241f28093b62b6cf4f09686ef64b15176a459a9ba12150",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/SPY.json",
+      "bytes": 469282,
+      "sha256": "e54d32784618948712367498aba01948c118edff71ab9c05ae5b589bad3ea12e",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/T.json",
+      "bytes": 479804,
+      "sha256": "9259af196a0fa2a5ed9c2972e99abaa7b6515b14fb729621b12367f01cf6773e",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/TD.TO.json",
+      "bytes": 449827,
+      "sha256": "fb88c0e710add0de3db6c04a0d3a8e6d62a52990609cfebcffbaaa97d25d6f87",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/TTE.PA.json",
+      "bytes": 466659,
+      "sha256": "c3e481fc564d48715ebbc3f557beb8da6cb471c530d6b33c2a6037061bda9114",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/TWD=X.json",
+      "bytes": 461402,
+      "sha256": "e58bde720820532341731391198e2f994c209ea6e1ea303ca8c5eeadc0d3be62",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/TXN.json",
+      "bytes": 462141,
+      "sha256": "df1b50e22c9e94b424ebb2be615627a584689223f7340a9caae4c3f70c9f2d32",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/UNA.AS.json",
+      "bytes": 167863,
+      "sha256": "19852c717e69ef99242947542aee3356de28eb34b84175293dab15846f586115",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/UNH.json",
+      "bytes": 454132,
+      "sha256": "ebc1bd5fde92f07cbe440f1a8d195a12d5a6c33d56790758dba224e51e23ef51",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/UNP.json",
+      "bytes": 460723,
+      "sha256": "8fe77590baa893379152428046fbd36e2a651f4c51615466d2c514b7277f4e8d",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/V.json",
+      "bytes": 458047,
+      "sha256": "83f685de9d3bb479ab9679cd0c29b9e7ace5e880e1397d514b7d6d5a8bc005c7",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/VOW3.DE.json",
+      "bytes": 438529,
+      "sha256": "a5bbaea60af80a5881bf94694b3665160002e1b3864133d316ee7bee384ef6ee",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/VZ.json",
+      "bytes": 465783,
+      "sha256": "138227a4a4d1542cd85baeb49dd5c2aefc883451c8859d3d1d9f3ca8f0f78f8d",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/WFC.json",
+      "bytes": 465069,
+      "sha256": "7db877ef30697edd2d7479e23839ef519a9ef4661646090fe53655588a282f06",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/WMT.json",
+      "bytes": 474503,
+      "sha256": "69ae96d9545d18d0759c7b24e50f9e86af58aa5752d19a2dab26c20235c42f59",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/XOM.json",
+      "bytes": 460958,
+      "sha256": "4fd0b6816b6b1da8e6eabdbd894fec502f9088302050c4e703dd89c5d7861a28",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/prices/ZAR=X.json",
+      "bytes": 464578,
+      "sha256": "2d100f7e5ffadb8c21de97b0d011b51247cdec165f6ea9923737fe74561a567a",
+      "included_in_bundle": false,
+      "role": "original/intermediate download; compact exact used inputs bundled instead"
+    },
+    {
+      "path": "data/trading_input_cache.joblib",
+      "bytes": 26800291,
+      "sha256": "f728778e5f3bd7587a5d0e3d8a72dd7b2a56eed1191842308659e4f59b82602a",
+      "included_in_bundle": true,
+      "role": "frozen used input"
+    }
+  ]
+}

@@ -1,0 +1,162 @@
+{
+  "signals": [
+    "Mom12m",
+    "BM",
+    "GP",
+    "AssetGrowth",
+    "OperProf",
+    "RealizedVol",
+    "EarningsSurprise",
+    "REV6",
+    "AnnouncementReturn"
+  ],
+  "original_period": {
+    "Mom12m": 3,
+    "BM": 12,
+    "GP": 12,
+    "AssetGrowth": 12,
+    "OperProf": 12,
+    "RealizedVol": 1,
+    "EarningsSurprise": 1,
+    "REV6": 1,
+    "AnnouncementReturn": 1
+  },
+  "stock_weights": {
+    "Mom12m": "EW",
+    "BM": "EW",
+    "GP": "VW",
+    "AssetGrowth": "EW",
+    "OperProf": "EW",
+    "RealizedVol": "VW",
+    "EarningsSurprise": "EW",
+    "REV6": "EW",
+    "AnnouncementReturn": "EW"
+  },
+  "long_portfolios": {
+    "1": {
+      "AnnouncementReturn": "05",
+      "AssetGrowth": "10",
+      "BM": "10",
+      "EarningsSurprise": "10",
+      "GP": "05",
+      "Mom12m": "10",
+      "OperProf": "05",
+      "REV6": "05",
+      "RealizedVol": "05"
+    },
+    "3": {
+      "AnnouncementReturn": "05",
+      "AssetGrowth": "10",
+      "BM": "10",
+      "EarningsSurprise": "10",
+      "GP": "05",
+      "Mom12m": "10",
+      "OperProf": "05",
+      "REV6": "05",
+      "RealizedVol": "05"
+    },
+    "6": {
+      "AnnouncementReturn": "05",
+      "AssetGrowth": "10",
+      "BM": "10",
+      "EarningsSurprise": "10",
+      "GP": "05",
+      "Mom12m": "10",
+      "OperProf": "05",
+      "REV6": "05",
+      "RealizedVol": "05"
+    },
+    "12": {
+      "AnnouncementReturn": "05",
+      "AssetGrowth": "10",
+      "BM": "10",
+      "EarningsSurprise": "10",
+      "GP": "05",
+      "Mom12m": "10",
+      "OperProf": "05",
+      "REV6": "05",
+      "RealizedVol": "05"
+    }
+  },
+  "families": {
+    "Momentum": {
+      "Mom12m": 1.0
+    },
+    "Value": {
+      "BM": 1.0
+    },
+    "Gross-Profit-Quality": {
+      "GP": 1.0
+    },
+    "Konservatives Bilanzwachstum": {
+      "AssetGrowth": 1.0
+    },
+    "Operative Profitabilität": {
+      "OperProf": 1.0
+    },
+    "Geringe realisierte Volatilität": {
+      "RealizedVol": 1.0
+    },
+    "Gewinnüberraschung": {
+      "EarningsSurprise": 1.0
+    },
+    "Analystenrevisionen": {
+      "REV6": 1.0
+    },
+    "Ankündigungsrendite": {
+      "AnnouncementReturn": 1.0
+    },
+    "Momentum + Gewinnüberraschung": {
+      "Mom12m": 0.5,
+      "EarningsSurprise": 0.5
+    },
+    "Momentum + Analystenrevisionen": {
+      "Mom12m": 0.5,
+      "REV6": 0.5
+    },
+    "Momentum + Ankündigungsrendite": {
+      "Mom12m": 0.5,
+      "AnnouncementReturn": 0.5
+    },
+    "Gewinnüberraschung + Analystenrevisionen": {
+      "EarningsSurprise": 0.5,
+      "REV6": 0.5
+    },
+    "Gewinnüberraschung + Ankündigungsrendite": {
+      "EarningsSurprise": 0.5,
+      "AnnouncementReturn": 0.5
+    },
+    "Analystenrevisionen + Ankündigungsrendite": {
+      "REV6": 0.5,
+      "AnnouncementReturn": 0.5
+    },
+    "Behavioral vierfach": {
+      "Mom12m": 0.25,
+      "EarningsSurprise": 0.25,
+      "REV6": 0.25,
+      "AnnouncementReturn": 0.25
+    },
+    "QVM Gross Profit": {
+      "Mom12m": 0.3333333333333333,
+      "BM": 0.3333333333333333,
+      "GP": 0.3333333333333333
+    },
+    "QVM Operative Profitabilität": {
+      "Mom12m": 0.3333333333333333,
+      "BM": 0.3333333333333333,
+      "OperProf": 0.3333333333333333
+    },
+    "50% Markt + QVM": {
+      "Market": 0.5,
+      "Mom12m": 0.16666666666666666,
+      "BM": 0.16666666666666666,
+      "GP": 0.16666666666666666
+    },
+    "80% Markt + Momentum": {
+      "Market": 0.8,
+      "Mom12m": 0.2
+    }
+  },
+  "source_holdper_means_signal_refresh": true,
+  "not_forced_individual_stock_liquidation": true
+}

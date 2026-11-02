@@ -1,0 +1,17 @@
+Downloaded native holding-period variants: [(1, 18753833), (3, 19004713), (6, 18906511), (12, 18785280)]
+1 shape (1244561, 7) columns ['signalname', 'port', 'date', 'ret', 'signallag', 'Nlong', 'Nshort'] dtypes {'signalname': 'object', 'port': 'object', 'date': 'object', 'ret': 'float64', 'signallag': 'float64', 'Nlong': 'int64', 'Nshort': 'int64'}
+port identifiers ['01', '02', '03', '04', '05', 'LS', '06', '07', '08', '09', '10']
+number of signals 212
+date coverage 1926-01-30 2025-12-31
+3 shape (1245211, 7) columns ['signalname', 'port', 'date', 'ret', 'signallag', 'Nlong', 'Nshort'] dtypes {'signalname': 'object', 'port': 'object', 'date': 'object', 'ret': 'float64', 'signallag': 'float64', 'Nlong': 'int64', 'Nshort': 'int64'}
+port identifiers ['01', '02', '03', '04', '05', 'LS', '06', '07', '08', '09', '10']
+number of signals 212
+date coverage 1926-01-30 2025-12-31
+6 shape (1244410, 7) columns ['signalname', 'port', 'date', 'ret', 'signallag', 'Nlong', 'Nshort'] dtypes {'signalname': 'object', 'port': 'object', 'date': 'object', 'ret': 'float64', 'signallag': 'float64', 'Nlong': 'int64', 'Nshort': 'int64'}
+port identifiers ['01', '02', '03', '04', '05', 'LS', '06', '07', '08', '09', '10']
+number of signals 212
+date coverage 1926-01-30 2025-12-31
+12 shape (1239647, 7) columns ['signalname', 'port', 'date', 'ret', 'signallag', 'Nlong', 'Nshort'] dtypes {'signalname': 'object', 'port': 'object', 'date': 'object', 'ret': 'float64', 'signallag': 'float64', 'Nlong': 'int64', 'Nshort': 'int64'}
+port identifiers ['01', '02', '03', '04', '05', 'LS', '06', '07', '08', '09', '10']
+number of signals 212
+date coverage 1926-01-30 2025-12-31

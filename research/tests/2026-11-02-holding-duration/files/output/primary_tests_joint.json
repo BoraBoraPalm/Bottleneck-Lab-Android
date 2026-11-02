@@ -1,0 +1,1082 @@
+[
+  {
+    "module": "academic_refresh",
+    "effect_annualized_mean": 0.011136632908845034,
+    "low": -0.003498883394942819,
+    "high": 0.02470406904988856,
+    "p_one_sided": 0.05458908218356329,
+    "block_months": 12,
+    "iterations": 5000,
+    "strategy": "Momentum",
+    "reference": "published_source_interval",
+    "chosen_frequency": {
+      "1": 12,
+      "3": 0,
+      "6": 0,
+      "12": 0
+    },
+    "sensitivity": {
+      "6": {
+        "effect_annualized_mean": 0.011136632908845034,
+        "low": -0.004082774543218238,
+        "high": 0.02614717446749854,
+        "p_one_sided": 0.07078584283143372,
+        "block_months": 6,
+        "iterations": 5000
+      },
+      "24": {
+        "effect_annualized_mean": 0.011136632908845034,
+        "low": -0.0016973867657876754,
+        "high": 0.022652838408566096,
+        "p_one_sided": 0.028994201159768047,
+        "block_months": 24,
+        "iterations": 5000
+      }
+    },
+    "p_holm_all_strategies": 1.0
+  },
+  {
+    "module": "academic_refresh",
+    "effect_annualized_mean": -0.0014080383037207971,
+    "low": -0.01051547021218569,
+    "high": 0.007539492111071329,
+    "p_one_sided": 0.6282743451309738,
+    "block_months": 12,
+    "iterations": 5000,
+    "strategy": "Value",
+    "reference": "published_source_interval",
+    "chosen_frequency": {
+      "1": 4,
+      "3": 0,
+      "6": 6,
+      "12": 2
+    },
+    "sensitivity": {
+      "6": {
+        "effect_annualized_mean": -0.0014080383037207971,
+        "low": -0.010518058974231533,
+        "high": 0.007708921240085925,
+        "p_one_sided": 0.6162767446510697,
+        "block_months": 6,
+        "iterations": 5000
+      },
+      "24": {
+        "effect_annualized_mean": -0.0014080383037207971,
+        "low": -0.010860877033174073,
+        "high": 0.009187297974067074,
+        "p_one_sided": 0.5828834233153369,
+        "block_months": 24,
+        "iterations": 5000
+      }
+    },
+    "p_holm_all_strategies": 1.0
+  },
+  {
+    "module": "academic_refresh",
+    "effect_annualized_mean": 0.00021696624537319496,
+    "low": -0.0012316373628728874,
+    "high": 0.0018709727636656425,
+    "p_one_sided": 0.373125374925015,
+    "block_months": 12,
+    "iterations": 5000,
+    "strategy": "Gross-Profit-Quality",
+    "reference": "published_source_interval",
+    "chosen_frequency": {
+      "1": 3,
+      "3": 0,
+      "6": 0,
+      "12": 9
+    },
+    "sensitivity": {
+      "6": {
+        "effect_annualized_mean": 0.00021696624537319496,
+        "low": -0.001180639153764349,
+        "high": 0.0018738112688404447,
+        "p_one_sided": 0.3515296940611878,
+        "block_months": 6,
+        "iterations": 5000
+      },
+      "24": {
+        "effect_annualized_mean": 0.00021696624537319496,
+        "low": -0.0010051994371129262,
+        "high": 0.001505186215482676,
+        "p_one_sided": 0.3287342531493701,
+        "block_months": 24,
+        "iterations": 5000
+      }
+    },
+    "p_holm_all_strategies": 1.0
+  },
+  {
+    "module": "academic_refresh",
+    "effect_annualized_mean": 0.003974657691531255,
+    "low": -0.008190530664048174,
+    "high": 0.017110535829400877,
+    "p_one_sided": 0.254749050189962,
+    "block_months": 12,
+    "iterations": 5000,
+    "strategy": "Konservatives Bilanzwachstum",
+    "reference": "published_source_interval",
+    "chosen_frequency": {
+      "1": 10,
+      "3": 0,
+      "6": 1,
+      "12": 1
+    },
+    "sensitivity": {
+      "6": {
+        "effect_annualized_mean": 0.003974657691531255,
+        "low": -0.007600840292409879,
+        "high": 0.017650823465434923,
+        "p_one_sided": 0.27074585082983404,
+        "block_months": 6,
+        "iterations": 5000
+      },
+      "24": {
+        "effect_annualized_mean": 0.003974657691531255,
+        "low": -0.0038732705786170955,
+        "high": 0.012524774472394555,
+        "p_one_sided": 0.1775644871025795,
+        "block_months": 24,
+        "iterations": 5000
+      }
+    },
+    "p_holm_all_strategies": 1.0
+  },
+  {
+    "module": "academic_refresh",
+    "effect_annualized_mean": -0.001248888708950559,
+    "low": -0.004840926206013894,
+    "high": 0.0018250457161175114,
+    "p_one_sided": 0.7750449910017997,
+    "block_months": 12,
+    "iterations": 5000,
+    "strategy": "Operative Profitabilität",
+    "reference": "published_source_interval",
+    "chosen_frequency": {
+      "1": 7,
+      "3": 0,
+      "6": 0,
+      "12": 5
+    },
+    "sensitivity": {
+      "6": {
+        "effect_annualized_mean": -0.001248888708950559,
+        "low": -0.00529353724251502,
+        "high": 0.00253335159688408,
+        "p_one_sided": 0.7446510697860428,
+        "block_months": 6,
+        "iterations": 5000
+      },
+      "24": {
+        "effect_annualized_mean": -0.001248888708950559,
+        "low": -0.004387406753263222,
+        "high": 0.0017020662917157444,
+        "p_one_sided": 0.7896420715856829,
+        "block_months": 24,
+        "iterations": 5000
+      }
+    },
+    "p_holm_all_strategies": 1.0
+  },
+  {
+    "module": "academic_refresh",
+    "effect_annualized_mean": 0.0012988589082802617,
+    "low": -0.01223389986196549,
+    "high": 0.015148545901518477,
+    "p_one_sided": 0.41731653669266144,
+    "block_months": 12,
+    "iterations": 5000,
+    "strategy": "Geringe realisierte Volatilität",
+    "reference": "published_source_interval",
+    "chosen_frequency": {
+      "1": 1,
+      "3": 11,
+      "6": 0,
+      "12": 0
+    },
+    "sensitivity": {
+      "6": {
+        "effect_annualized_mean": 0.0012988589082802617,
+        "low": -0.010872416099742706,
+        "high": 0.01443625703628797,
+        "p_one_sided": 0.41251749650069985,
+        "block_months": 6,
+        "iterations": 5000
+      },
+      "24": {
+        "effect_annualized_mean": 0.0012988589082802617,
+        "low": -0.013723067814888133,
+        "high": 0.01615752621382288,
+        "p_one_sided": 0.4191161767646471,
+        "block_months": 24,
+        "iterations": 5000
+      }
+    },
+    "p_holm_all_strategies": 1.0
+  },
+  {
+    "module": "academic_refresh",
+    "effect_annualized_mean": 0.005652371174764111,
+    "low": -0.004021791506421595,
+    "high": 0.014945752113883819,
+    "p_one_sided": 0.12297540491901619,
+    "block_months": 12,
+    "iterations": 5000,
+    "strategy": "Gewinnüberraschung",
+    "reference": "published_source_interval",
+    "chosen_frequency": {
+      "1": 1,
+      "3": 2,
+      "6": 9,
+      "12": 0
+    },
+    "sensitivity": {
+      "6": {
+        "effect_annualized_mean": 0.005652371174764111,
+        "low": -0.004394683506512198,
+        "high": 0.016911451728088243,
+        "p_one_sided": 0.15236952609478105,
+        "block_months": 6,
+        "iterations": 5000
+      },
+      "24": {
+        "effect_annualized_mean": 0.005652371174764111,
+        "low": -0.0038668502469094597,
+        "high": 0.01568830533240017,
+        "p_one_sided": 0.13457308538292342,
+        "block_months": 24,
+        "iterations": 5000
+      }
+    },
+    "p_holm_all_strategies": 1.0
+  },
+  {
+    "module": "academic_refresh",
+    "effect_annualized_mean": -0.011240623929354843,
+    "low": -0.03689472230143465,
+    "high": 0.011322630812859754,
+    "p_one_sided": 0.8140371925614877,
+    "block_months": 12,
+    "iterations": 5000,
+    "strategy": "Analystenrevisionen",
+    "reference": "published_source_interval",
+    "chosen_frequency": {
+      "1": 4,
+      "3": 0,
+      "6": 0,
+      "12": 8
+    },
+    "sensitivity": {
+      "6": {
+        "effect_annualized_mean": -0.011240623929354843,
+        "low": -0.039338593335681384,
+        "high": 0.013606563760231767,
+        "p_one_sided": 0.8072385522895421,
+        "block_months": 6,
+        "iterations": 5000
+      },
+      "24": {
+        "effect_annualized_mean": -0.011240623929354843,
+        "low": -0.040212182291296666,
+        "high": 0.012517586616416373,
+        "p_one_sided": 0.8000399920015997,
+        "block_months": 24,
+        "iterations": 5000
+      }
+    },
+    "p_holm_all_strategies": 1.0
+  },
+  {
+    "module": "academic_refresh",
+    "effect_annualized_mean": -0.0024244528057952054,
+    "low": -0.016115842651950735,
+    "high": 0.009542825682004279,
+    "p_one_sided": 0.6608678264347131,
+    "block_months": 12,
+    "iterations": 5000,
+    "strategy": "Ankündigungsrendite",
+    "reference": "published_source_interval",
+    "chosen_frequency": {
+      "1": 9,
+      "3": 0,
+      "6": 0,
+      "12": 3
+    },
+    "sensitivity": {
+      "6": {
+        "effect_annualized_mean": -0.0024244528057952054,
+        "low": -0.016016505277221604,
+        "high": 0.010696435913336372,
+        "p_one_sided": 0.6410717856428714,
+        "block_months": 6,
+        "iterations": 5000
+      },
+      "24": {
+        "effect_annualized_mean": -0.0024244528057952054,
+        "low": -0.015185643858935413,
+        "high": 0.007934062688436515,
+        "p_one_sided": 0.6490701859628074,
+        "block_months": 24,
+        "iterations": 5000
+      }
+    },
+    "p_holm_all_strategies": 1.0
+  },
+  {
+    "module": "academic_refresh",
+    "effect_annualized_mean": 0.005568316454422517,
+    "low": -0.0017494416974714103,
+    "high": 0.012352034524944279,
+    "p_one_sided": 0.05458908218356329,
+    "block_months": 12,
+    "iterations": 5000,
+    "strategy": "Momentum + Gewinnüberraschung",
+    "reference": "published_source_interval",
+    "chosen_frequency": {
+      "1": 12,
+      "3": 0,
+      "6": 0,
+      "12": 0
+    },
+    "sensitivity": {
+      "6": {
+        "effect_annualized_mean": 0.005568316454422517,
+        "low": -0.0020413872716091145,
+        "high": 0.013073587233749262,
+        "p_one_sided": 0.07078584283143372,
+        "block_months": 6,
+        "iterations": 5000
+      },
+      "24": {
+        "effect_annualized_mean": 0.005568316454422517,
+        "low": -0.0008486933828938389,
+        "high": 0.011326419204283048,
+        "p_one_sided": 0.028994201159768047,
+        "block_months": 24,
+        "iterations": 5000
+      }
+    },
+    "p_holm_all_strategies": 1.0
+  },
+  {
+    "module": "academic_refresh",
+    "effect_annualized_mean": 0.005568316454422517,
+    "low": -0.0017494416974714138,
+    "high": 0.012352034524944286,
+    "p_one_sided": 0.05458908218356329,
+    "block_months": 12,
+    "iterations": 5000,
+    "strategy": "Momentum + Analystenrevisionen",
+    "reference": "published_source_interval",
+    "chosen_frequency": {
+      "1": 12,
+      "3": 0,
+      "6": 0,
+      "12": 0
+    },
+    "sensitivity": {
+      "6": {
+        "effect_annualized_mean": 0.005568316454422517,
+        "low": -0.002041387271609122,
+        "high": 0.013073587233749264,
+        "p_one_sided": 0.07078584283143372,
+        "block_months": 6,
+        "iterations": 5000
+      },
+      "24": {
+        "effect_annualized_mean": 0.005568316454422517,
+        "low": -0.0008486933828938388,
+        "high": 0.01132641920428305,
+        "p_one_sided": 0.028994201159768047,
+        "block_months": 24,
+        "iterations": 5000
+      }
+    },
+    "p_holm_all_strategies": 1.0
+  },
+  {
+    "module": "academic_refresh",
+    "effect_annualized_mean": 0.005568316454422513,
+    "low": -0.0017494416974714192,
+    "high": 0.012352034524944275,
+    "p_one_sided": 0.05458908218356329,
+    "block_months": 12,
+    "iterations": 5000,
+    "strategy": "Momentum + Ankündigungsrendite",
+    "reference": "published_source_interval",
+    "chosen_frequency": {
+      "1": 12,
+      "3": 0,
+      "6": 0,
+      "12": 0
+    },
+    "sensitivity": {
+      "6": {
+        "effect_annualized_mean": 0.005568316454422513,
+        "low": -0.0020413872716091197,
+        "high": 0.013073587233749264,
+        "p_one_sided": 0.07078584283143372,
+        "block_months": 6,
+        "iterations": 5000
+      },
+      "24": {
+        "effect_annualized_mean": 0.005568316454422513,
+        "low": -0.0008486933828938364,
+        "high": 0.011326419204283043,
+        "p_one_sided": 0.028994201159768047,
+        "block_months": 24,
+        "iterations": 5000
+      }
+    },
+    "p_holm_all_strategies": 1.0
+  },
+  {
+    "module": "academic_refresh",
+    "effect_annualized_mean": -0.002391902072602996,
+    "low": -0.00802881119911817,
+    "high": 0.0025278701529968736,
+    "p_one_sided": 0.8218356328734253,
+    "block_months": 12,
+    "iterations": 5000,
+    "strategy": "Gewinnüberraschung + Analystenrevisionen",
+    "reference": "published_source_interval",
+    "chosen_frequency": {
+      "1": 8,
+      "3": 0,
+      "6": 0,
+      "12": 4
+    },
+    "sensitivity": {
+      "6": {
+        "effect_annualized_mean": -0.002391902072602996,
+        "low": -0.008090264346222186,
+        "high": 0.002217235644072181,
+        "p_one_sided": 0.8278344331133773,
+        "block_months": 6,
+        "iterations": 5000
+      },
+      "24": {
+        "effect_annualized_mean": -0.002391902072602996,
+        "low": -0.0075019711838979234,
+        "high": 0.0022150284253021537,
+        "p_one_sided": 0.8298340331933614,
+        "block_months": 24,
+        "iterations": 5000
+      }
+    },
+    "p_holm_all_strategies": 1.0
+  },
+  {
+    "module": "academic_refresh",
+    "effect_annualized_mean": -4.523578725550466e-05,
+    "low": -0.005100488060216339,
+    "high": 0.006151258506466607,
+    "p_one_sided": 0.4897020595880824,
+    "block_months": 12,
+    "iterations": 5000,
+    "strategy": "Gewinnüberraschung + Ankündigungsrendite",
+    "reference": "published_source_interval",
+    "chosen_frequency": {
+      "1": 10,
+      "3": 0,
+      "6": 2,
+      "12": 0
+    },
+    "sensitivity": {
+      "6": {
+        "effect_annualized_mean": -4.523578725550466e-05,
+        "low": -0.006030111591228714,
+        "high": 0.0075904004534974616,
+        "p_one_sided": 0.4611077784443111,
+        "block_months": 6,
+        "iterations": 5000
+      },
+      "24": {
+        "effect_annualized_mean": -4.523578725550466e-05,
+        "low": -0.00471022630316324,
+        "high": 0.004348853821729571,
+        "p_one_sided": 0.55248950209958,
+        "block_months": 24,
+        "iterations": 5000
+      }
+    },
+    "p_holm_all_strategies": 1.0
+  },
+  {
+    "module": "academic_refresh",
+    "effect_annualized_mean": -0.0013208531941232642,
+    "low": -0.010345086660255156,
+    "high": 0.007462626556543823,
+    "p_one_sided": 0.6072785442911418,
+    "block_months": 12,
+    "iterations": 5000,
+    "strategy": "Analystenrevisionen + Ankündigungsrendite",
+    "reference": "published_source_interval",
+    "chosen_frequency": {
+      "1": 10,
+      "3": 0,
+      "6": 0,
+      "12": 2
+    },
+    "sensitivity": {
+      "6": {
+        "effect_annualized_mean": -0.0013208531941232642,
+        "low": -0.010683016011443973,
+        "high": 0.008953215845841661,
+        "p_one_sided": 0.5924815036992601,
+        "block_months": 6,
+        "iterations": 5000
+      },
+      "24": {
+        "effect_annualized_mean": -0.0013208531941232642,
+        "low": -0.009431533539693171,
+        "high": 0.00571187978126898,
+        "p_one_sided": 0.6386722655468906,
+        "block_months": 24,
+        "iterations": 5000
+      }
+    },
+    "p_holm_all_strategies": 1.0
+  },
+  {
+    "module": "academic_refresh",
+    "effect_annualized_mean": 0.0027841582272112616,
+    "low": -0.0008747208487357024,
+    "high": 0.006176017262472141,
+    "p_one_sided": 0.05458908218356329,
+    "block_months": 12,
+    "iterations": 5000,
+    "strategy": "Behavioral vierfach",
+    "reference": "published_source_interval",
+    "chosen_frequency": {
+      "1": 12,
+      "3": 0,
+      "6": 0,
+      "12": 0
+    },
+    "sensitivity": {
+      "6": {
+        "effect_annualized_mean": 0.0027841582272112616,
+        "low": -0.0010206936358045557,
+        "high": 0.006536793616874635,
+        "p_one_sided": 0.07078584283143372,
+        "block_months": 6,
+        "iterations": 5000
+      },
+      "24": {
+        "effect_annualized_mean": 0.0027841582272112616,
+        "low": -0.00042434669144691896,
+        "high": 0.005663209602141528,
+        "p_one_sided": 0.028994201159768047,
+        "block_months": 24,
+        "iterations": 5000
+      }
+    },
+    "p_holm_all_strategies": 1.0
+  },
+  {
+    "module": "academic_refresh",
+    "effect_annualized_mean": 0.011947065969281107,
+    "low": 0.0021476559414649664,
+    "high": 0.02451958533129277,
+    "p_one_sided": 0.030193961207758448,
+    "block_months": 12,
+    "iterations": 5000,
+    "strategy": "QVM Gross Profit",
+    "reference": "published_source_interval",
+    "chosen_frequency": {
+      "1": 12,
+      "3": 0,
+      "6": 0,
+      "12": 0
+    },
+    "sensitivity": {
+      "6": {
+        "effect_annualized_mean": 0.011947065969281107,
+        "low": 0.0016324986869265762,
+        "high": 0.025020777309195188,
+        "p_one_sided": 0.03459308138372325,
+        "block_months": 6,
+        "iterations": 5000
+      },
+      "24": {
+        "effect_annualized_mean": 0.011947065969281107,
+        "low": 0.0016268805174281425,
+        "high": 0.025825567783951342,
+        "p_one_sided": 0.04579084183163367,
+        "block_months": 24,
+        "iterations": 5000
+      }
+    },
+    "p_holm_all_strategies": 0.8454309138172366
+  },
+  {
+    "module": "academic_refresh",
+    "effect_annualized_mean": 0.010934284189335584,
+    "low": 0.001238177220736072,
+    "high": 0.023759114092060656,
+    "p_one_sided": 0.04619076184763048,
+    "block_months": 12,
+    "iterations": 5000,
+    "strategy": "QVM Operative Profitabilität",
+    "reference": "published_source_interval",
+    "chosen_frequency": {
+      "1": 12,
+      "3": 0,
+      "6": 0,
+      "12": 0
+    },
+    "sensitivity": {
+      "6": {
+        "effect_annualized_mean": 0.010934284189335584,
+        "low": 0.0008408686861078946,
+        "high": 0.024249180041096233,
+        "p_one_sided": 0.047590481903619274,
+        "block_months": 6,
+        "iterations": 5000
+      },
+      "24": {
+        "effect_annualized_mean": 0.010934284189335584,
+        "low": 0.0013546792026334178,
+        "high": 0.02448452235054589,
+        "p_one_sided": 0.05598880223955209,
+        "block_months": 24,
+        "iterations": 5000
+      }
+    },
+    "p_holm_all_strategies": 1.0
+  },
+  {
+    "module": "academic_refresh",
+    "effect_annualized_mean": 0.005973532984640557,
+    "low": 0.0010738279707324897,
+    "high": 0.012259792665646392,
+    "p_one_sided": 0.030193961207758448,
+    "block_months": 12,
+    "iterations": 5000,
+    "strategy": "50% Markt + QVM",
+    "reference": "published_source_interval",
+    "chosen_frequency": {
+      "1": 12,
+      "3": 0,
+      "6": 0,
+      "12": 0
+    },
+    "sensitivity": {
+      "6": {
+        "effect_annualized_mean": 0.005973532984640557,
+        "low": 0.0008162493434632872,
+        "high": 0.012510388654597596,
+        "p_one_sided": 0.03459308138372325,
+        "block_months": 6,
+        "iterations": 5000
+      },
+      "24": {
+        "effect_annualized_mean": 0.005973532984640557,
+        "low": 0.00081344025871407,
+        "high": 0.012912783891975676,
+        "p_one_sided": 0.04579084183163367,
+        "block_months": 24,
+        "iterations": 5000
+      }
+    },
+    "p_holm_all_strategies": 0.8454309138172366
+  },
+  {
+    "module": "academic_refresh",
+    "effect_annualized_mean": 0.0022273265817690036,
+    "low": -0.0006997766789885709,
+    "high": 0.004940813809977712,
+    "p_one_sided": 0.05458908218356329,
+    "block_months": 12,
+    "iterations": 5000,
+    "strategy": "80% Markt + Momentum",
+    "reference": "published_source_interval",
+    "chosen_frequency": {
+      "1": 12,
+      "3": 0,
+      "6": 0,
+      "12": 0
+    },
+    "sensitivity": {
+      "6": {
+        "effect_annualized_mean": 0.0022273265817690036,
+        "low": -0.0008165549086436445,
+        "high": 0.005229434893499707,
+        "p_one_sided": 0.07078584283143372,
+        "block_months": 6,
+        "iterations": 5000
+      },
+      "24": {
+        "effect_annualized_mean": 0.0022273265817690036,
+        "low": -0.00033947735315753704,
+        "high": 0.004530567681713213,
+        "p_one_sided": 0.028994201159768047,
+        "block_months": 24,
+        "iterations": 5000
+      }
+    },
+    "p_holm_all_strategies": 1.0
+  },
+  {
+    "module": "trading_interval",
+    "effect_annualized_mean": 0.063815068840486,
+    "low": -0.0034617830540357667,
+    "high": 0.11878003637008976,
+    "p_one_sided": 0.010197960407918417,
+    "block_sessions": 252,
+    "iterations": 5000,
+    "strategy": "momentum_market",
+    "reference": "fixed_20_sessions",
+    "sensitivity": {
+      "126": {
+        "effect_annualized_mean": 0.063815068840486,
+        "low": -0.0164563339841638,
+        "high": 0.13493222600004998,
+        "p_one_sided": 0.041391721655668866,
+        "block_sessions": 126,
+        "iterations": 5000
+      },
+      "504": {
+        "effect_annualized_mean": 0.063815068840486,
+        "low": 0.004894843466346358,
+        "high": 0.11489026454104478,
+        "p_one_sided": 0.004399120175964807,
+        "block_sessions": 504,
+        "iterations": 5000
+      }
+    },
+    "p_holm_all_strategies": 0.2957408518296341
+  },
+  {
+    "module": "trading_interval",
+    "effect_annualized_mean": -0.0045230117374707255,
+    "low": -0.07278398894586902,
+    "high": 0.05789715457359946,
+    "p_one_sided": 0.5710857828434314,
+    "block_sessions": 252,
+    "iterations": 5000,
+    "strategy": "momentum_limit",
+    "reference": "fixed_20_sessions",
+    "sensitivity": {
+      "126": {
+        "effect_annualized_mean": -0.0045230117374707255,
+        "low": -0.07525742008804356,
+        "high": 0.06877636618716643,
+        "p_one_sided": 0.5442911417716457,
+        "block_sessions": 126,
+        "iterations": 5000
+      },
+      "504": {
+        "effect_annualized_mean": -0.0045230117374707255,
+        "low": -0.05440955599554813,
+        "high": 0.044282309113206846,
+        "p_one_sided": 0.5782843431313738,
+        "block_sessions": 504,
+        "iterations": 5000
+      }
+    },
+    "p_holm_all_strategies": 1.0
+  },
+  {
+    "module": "trading_interval",
+    "effect_annualized_mean": 0.006304235137034629,
+    "low": -0.05634369501550208,
+    "high": 0.0660448725503031,
+    "p_one_sided": 0.4189162167566487,
+    "block_sessions": 252,
+    "iterations": 5000,
+    "strategy": "momentum_limit_stop",
+    "reference": "fixed_20_sessions",
+    "sensitivity": {
+      "126": {
+        "effect_annualized_mean": 0.006304235137034629,
+        "low": -0.06237547532047351,
+        "high": 0.07253458638604769,
+        "p_one_sided": 0.4365126974605079,
+        "block_sessions": 126,
+        "iterations": 5000
+      },
+      "504": {
+        "effect_annualized_mean": 0.006304235137034629,
+        "low": -0.04029071206749026,
+        "high": 0.05113362740345256,
+        "p_one_sided": 0.395120975804839,
+        "block_sessions": 504,
+        "iterations": 5000
+      }
+    },
+    "p_holm_all_strategies": 1.0
+  },
+  {
+    "module": "trading_interval",
+    "effect_annualized_mean": -0.030314131087558007,
+    "low": -0.07440946605322593,
+    "high": 0.016072581484703148,
+    "p_one_sided": 0.9012197560487902,
+    "block_sessions": 252,
+    "iterations": 5000,
+    "strategy": "filtered_market",
+    "reference": "fixed_20_sessions",
+    "sensitivity": {
+      "126": {
+        "effect_annualized_mean": -0.030314131087558007,
+        "low": -0.08236080123071185,
+        "high": 0.02308986853490952,
+        "p_one_sided": 0.8704259148170366,
+        "block_sessions": 126,
+        "iterations": 5000
+      },
+      "504": {
+        "effect_annualized_mean": -0.030314131087558007,
+        "low": -0.0719517210752893,
+        "high": 0.01184879667510993,
+        "p_one_sided": 0.9156168766246751,
+        "block_sessions": 504,
+        "iterations": 5000
+      }
+    },
+    "p_holm_all_strategies": 1.0
+  },
+  {
+    "module": "trading_interval",
+    "effect_annualized_mean": -0.004139086702537271,
+    "low": -0.05900056818036454,
+    "high": 0.04876795640747224,
+    "p_one_sided": 0.5714857028594281,
+    "block_sessions": 252,
+    "iterations": 5000,
+    "strategy": "filtered_limit",
+    "reference": "fixed_20_sessions",
+    "sensitivity": {
+      "126": {
+        "effect_annualized_mean": -0.004139086702537271,
+        "low": -0.07519163394390949,
+        "high": 0.06327105871189444,
+        "p_one_sided": 0.5506898620275945,
+        "block_sessions": 126,
+        "iterations": 5000
+      },
+      "504": {
+        "effect_annualized_mean": -0.004139086702537271,
+        "low": -0.047845917857913776,
+        "high": 0.0373345356159141,
+        "p_one_sided": 0.5788842231553689,
+        "block_sessions": 504,
+        "iterations": 5000
+      }
+    },
+    "p_holm_all_strategies": 1.0
+  },
+  {
+    "module": "trading_interval",
+    "effect_annualized_mean": -0.01635268332023015,
+    "low": -0.07058246018299594,
+    "high": 0.0343205486436475,
+    "p_one_sided": 0.7336532693461307,
+    "block_sessions": 252,
+    "iterations": 5000,
+    "strategy": "filtered_market_stop",
+    "reference": "fixed_20_sessions",
+    "sensitivity": {
+      "126": {
+        "effect_annualized_mean": -0.01635268332023015,
+        "low": -0.07579824649723003,
+        "high": 0.04384166288153582,
+        "p_one_sided": 0.7008598280343932,
+        "block_sessions": 126,
+        "iterations": 5000
+      },
+      "504": {
+        "effect_annualized_mean": -0.01635268332023015,
+        "low": -0.057488643540640885,
+        "high": 0.02527168701431544,
+        "p_one_sided": 0.7698460307938413,
+        "block_sessions": 504,
+        "iterations": 5000
+      }
+    },
+    "p_holm_all_strategies": 1.0
+  },
+  {
+    "module": "trading_interval",
+    "effect_annualized_mean": 0.004664111992310786,
+    "low": -0.0330655344922888,
+    "high": 0.04219758921290393,
+    "p_one_sided": 0.3955208958208358,
+    "block_sessions": 252,
+    "iterations": 5000,
+    "strategy": "filtered_limit_stop",
+    "reference": "fixed_20_sessions",
+    "sensitivity": {
+      "126": {
+        "effect_annualized_mean": 0.004664111992310786,
+        "low": -0.04368731679532008,
+        "high": 0.051219242183950194,
+        "p_one_sided": 0.4211157768446311,
+        "block_sessions": 126,
+        "iterations": 5000
+      },
+      "504": {
+        "effect_annualized_mean": 0.004664111992310786,
+        "low": -0.02567878380983968,
+        "high": 0.033906017071111086,
+        "p_one_sided": 0.3823235352929414,
+        "block_sessions": 504,
+        "iterations": 5000
+      }
+    },
+    "p_holm_all_strategies": 1.0
+  },
+  {
+    "module": "trading_interval",
+    "effect_annualized_mean": 0.03556881891623498,
+    "low": 0.01526038065826801,
+    "high": 0.05725063887333803,
+    "p_one_sided": 0.0009998000399920016,
+    "block_sessions": 252,
+    "iterations": 5000,
+    "strategy": "lowrisk_market",
+    "reference": "fixed_20_sessions",
+    "sensitivity": {
+      "126": {
+        "effect_annualized_mean": 0.03556881891623498,
+        "low": 0.009504757143623508,
+        "high": 0.062247889961889714,
+        "p_one_sided": 0.004599080183963208,
+        "block_sessions": 126,
+        "iterations": 5000
+      },
+      "504": {
+        "effect_annualized_mean": 0.03556881891623498,
+        "low": 0.01507054297929778,
+        "high": 0.05675760970870475,
+        "p_one_sided": 0.0001999600079984003,
+        "block_sessions": 504,
+        "iterations": 5000
+      }
+    },
+    "p_holm_all_strategies": 0.03099380123975205
+  },
+  {
+    "module": "trading_interval",
+    "effect_annualized_mean": 0.06342815373800778,
+    "low": 0.024067475974712055,
+    "high": 0.09945393134004508,
+    "p_one_sided": 0.0001999600079984003,
+    "block_sessions": 252,
+    "iterations": 5000,
+    "strategy": "trend_market",
+    "reference": "fixed_20_sessions",
+    "sensitivity": {
+      "126": {
+        "effect_annualized_mean": 0.06342815373800778,
+        "low": 0.016102041494874222,
+        "high": 0.11080413208899759,
+        "p_one_sided": 0.0027994401119776045,
+        "block_sessions": 126,
+        "iterations": 5000
+      },
+      "504": {
+        "effect_annualized_mean": 0.06342815373800778,
+        "low": 0.030314557972043507,
+        "high": 0.09442219123099041,
+        "p_one_sided": 0.0001999600079984003,
+        "block_sessions": 504,
+        "iterations": 5000
+      }
+    },
+    "p_holm_all_strategies": 0.00639872025594881
+  },
+  {
+    "module": "trading_interval",
+    "effect_annualized_mean": 0.10280360906346553,
+    "low": 0.004773777425151782,
+    "high": 0.19129610770486824,
+    "p_one_sided": 0.009198160367926415,
+    "block_sessions": 252,
+    "iterations": 5000,
+    "strategy": "momentum_keep",
+    "reference": "fixed_20_sessions",
+    "sensitivity": {
+      "126": {
+        "effect_annualized_mean": 0.10280360906346553,
+        "low": 0.0010718478406039906,
+        "high": 0.19841470862189675,
+        "p_one_sided": 0.016396720655868825,
+        "block_sessions": 126,
+        "iterations": 5000
+      },
+      "504": {
+        "effect_annualized_mean": 0.10280360906346553,
+        "low": 0.02222775984548496,
+        "high": 0.18581373433759457,
+        "p_one_sided": 0.008398320335932814,
+        "block_sessions": 504,
+        "iterations": 5000
+      }
+    },
+    "p_holm_all_strategies": 0.27594481103779245
+  },
+  {
+    "module": "trading_interval",
+    "effect_annualized_mean": -0.01239382318049662,
+    "low": -0.03203736140897109,
+    "high": 0.012578957536307032,
+    "p_one_sided": 0.8624275144971005,
+    "block_sessions": 252,
+    "iterations": 5000,
+    "strategy": "lowrisk_keep",
+    "reference": "fixed_20_sessions",
+    "sensitivity": {
+      "126": {
+        "effect_annualized_mean": -0.01239382318049662,
+        "low": -0.031645835583107636,
+        "high": 0.011333774046643168,
+        "p_one_sided": 0.8838232353529294,
+        "block_sessions": 126,
+        "iterations": 5000
+      },
+      "504": {
+        "effect_annualized_mean": -0.01239382318049662,
+        "low": -0.03345798394992006,
+        "high": 0.014300093236416194,
+        "p_one_sided": 0.8130373925214956,
+        "block_sessions": 504,
+        "iterations": 5000
+      }
+    },
+    "p_holm_all_strategies": 1.0
+  },
+  {
+    "module": "trading_interval",
+    "effect_annualized_mean": 0.01814774731656476,
+    "low": -0.033749885536493156,
+    "high": 0.06963702912498058,
+    "p_one_sided": 0.2461507698460308,
+    "block_sessions": 252,
+    "iterations": 5000,
+    "strategy": "trend_keep",
+    "reference": "fixed_20_sessions",
+    "sensitivity": {
+      "126": {
+        "effect_annualized_mean": 0.01814774731656476,
+        "low": -0.03685428838257407,
+        "high": 0.07325880940031561,
+        "p_one_sided": 0.25774845030993804,
+        "block_sessions": 126,
+        "iterations": 5000
+      },
+      "504": {
+        "effect_annualized_mean": 0.01814774731656476,
+        "low": -0.033704976556421185,
+        "high": 0.06603273328274756,
+        "p_one_sided": 0.244751049790042,
+        "block_sessions": 504,
+        "iterations": 5000
+      }
+    },
+    "p_holm_all_strategies": 1.0
+  }
+]

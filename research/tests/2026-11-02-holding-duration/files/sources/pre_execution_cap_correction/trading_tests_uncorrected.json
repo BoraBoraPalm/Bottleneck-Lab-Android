@@ -1,0 +1,338 @@
+[
+  {
+    "effect_annualized_mean": 0.06384607339021606,
+    "low": -0.0029204984344380204,
+    "high": 0.11870110148027434,
+    "p_one_sided": 0.009598080383923215,
+    "block_sessions": 252,
+    "iterations": 5000,
+    "strategy": "momentum_market",
+    "reference": "fixed_20_sessions",
+    "sensitivity": {
+      "126": {
+        "effect_annualized_mean": 0.06384607339021606,
+        "low": -0.016176774891352903,
+        "high": 0.13467639225528233,
+        "p_one_sided": 0.04059188162367527,
+        "block_sessions": 126,
+        "iterations": 5000
+      },
+      "504": {
+        "effect_annualized_mean": 0.06384607339021606,
+        "low": 0.004962369355845656,
+        "high": 0.11434824071697873,
+        "p_one_sided": 0.004399120175964807,
+        "block_sessions": 504,
+        "iterations": 5000
+      }
+    }
+  },
+  {
+    "effect_annualized_mean": -0.0045230117374707255,
+    "low": -0.07278398894586902,
+    "high": 0.05789715457359946,
+    "p_one_sided": 0.5710857828434314,
+    "block_sessions": 252,
+    "iterations": 5000,
+    "strategy": "momentum_limit",
+    "reference": "fixed_20_sessions",
+    "sensitivity": {
+      "126": {
+        "effect_annualized_mean": -0.0045230117374707255,
+        "low": -0.07525742008804356,
+        "high": 0.06877636618716643,
+        "p_one_sided": 0.5442911417716457,
+        "block_sessions": 126,
+        "iterations": 5000
+      },
+      "504": {
+        "effect_annualized_mean": -0.0045230117374707255,
+        "low": -0.05440955599554813,
+        "high": 0.044282309113206846,
+        "p_one_sided": 0.5782843431313738,
+        "block_sessions": 504,
+        "iterations": 5000
+      }
+    }
+  },
+  {
+    "effect_annualized_mean": 0.006304235137034629,
+    "low": -0.05634369501550208,
+    "high": 0.0660448725503031,
+    "p_one_sided": 0.4189162167566487,
+    "block_sessions": 252,
+    "iterations": 5000,
+    "strategy": "momentum_limit_stop",
+    "reference": "fixed_20_sessions",
+    "sensitivity": {
+      "126": {
+        "effect_annualized_mean": 0.006304235137034629,
+        "low": -0.06237547532047351,
+        "high": 0.07253458638604769,
+        "p_one_sided": 0.4365126974605079,
+        "block_sessions": 126,
+        "iterations": 5000
+      },
+      "504": {
+        "effect_annualized_mean": 0.006304235137034629,
+        "low": -0.04029071206749026,
+        "high": 0.05113362740345256,
+        "p_one_sided": 0.395120975804839,
+        "block_sessions": 504,
+        "iterations": 5000
+      }
+    }
+  },
+  {
+    "effect_annualized_mean": -0.030314486782754498,
+    "low": -0.07440947260164066,
+    "high": 0.016072120772976033,
+    "p_one_sided": 0.9012197560487902,
+    "block_sessions": 252,
+    "iterations": 5000,
+    "strategy": "filtered_market",
+    "reference": "fixed_20_sessions",
+    "sensitivity": {
+      "126": {
+        "effect_annualized_mean": -0.030314486782754498,
+        "low": -0.08236135338089312,
+        "high": 0.023089176317832336,
+        "p_one_sided": 0.8704259148170366,
+        "block_sessions": 126,
+        "iterations": 5000
+      },
+      "504": {
+        "effect_annualized_mean": -0.030314486782754498,
+        "low": -0.07195206936476913,
+        "high": 0.01184860198739823,
+        "p_one_sided": 0.9156168766246751,
+        "block_sessions": 504,
+        "iterations": 5000
+      }
+    }
+  },
+  {
+    "effect_annualized_mean": -0.004139086702537271,
+    "low": -0.05900056818036454,
+    "high": 0.04876795640747224,
+    "p_one_sided": 0.5714857028594281,
+    "block_sessions": 252,
+    "iterations": 5000,
+    "strategy": "filtered_limit",
+    "reference": "fixed_20_sessions",
+    "sensitivity": {
+      "126": {
+        "effect_annualized_mean": -0.004139086702537271,
+        "low": -0.07519163394390949,
+        "high": 0.06327105871189444,
+        "p_one_sided": 0.5506898620275945,
+        "block_sessions": 126,
+        "iterations": 5000
+      },
+      "504": {
+        "effect_annualized_mean": -0.004139086702537271,
+        "low": -0.047845917857913776,
+        "high": 0.0373345356159141,
+        "p_one_sided": 0.5788842231553689,
+        "block_sessions": 504,
+        "iterations": 5000
+      }
+    }
+  },
+  {
+    "effect_annualized_mean": -0.01635268332023015,
+    "low": -0.07058246018299594,
+    "high": 0.0343205486436475,
+    "p_one_sided": 0.7336532693461307,
+    "block_sessions": 252,
+    "iterations": 5000,
+    "strategy": "filtered_market_stop",
+    "reference": "fixed_20_sessions",
+    "sensitivity": {
+      "126": {
+        "effect_annualized_mean": -0.01635268332023015,
+        "low": -0.07579824649723003,
+        "high": 0.04384166288153582,
+        "p_one_sided": 0.7008598280343932,
+        "block_sessions": 126,
+        "iterations": 5000
+      },
+      "504": {
+        "effect_annualized_mean": -0.01635268332023015,
+        "low": -0.057488643540640885,
+        "high": 0.02527168701431544,
+        "p_one_sided": 0.7698460307938413,
+        "block_sessions": 504,
+        "iterations": 5000
+      }
+    }
+  },
+  {
+    "effect_annualized_mean": 0.004664111992310786,
+    "low": -0.0330655344922888,
+    "high": 0.04219758921290393,
+    "p_one_sided": 0.3955208958208358,
+    "block_sessions": 252,
+    "iterations": 5000,
+    "strategy": "filtered_limit_stop",
+    "reference": "fixed_20_sessions",
+    "sensitivity": {
+      "126": {
+        "effect_annualized_mean": 0.004664111992310786,
+        "low": -0.04368731679532008,
+        "high": 0.051219242183950194,
+        "p_one_sided": 0.4211157768446311,
+        "block_sessions": 126,
+        "iterations": 5000
+      },
+      "504": {
+        "effect_annualized_mean": 0.004664111992310786,
+        "low": -0.02567878380983968,
+        "high": 0.033906017071111086,
+        "p_one_sided": 0.3823235352929414,
+        "block_sessions": 504,
+        "iterations": 5000
+      }
+    }
+  },
+  {
+    "effect_annualized_mean": 0.03629520590509127,
+    "low": 0.016154648618184147,
+    "high": 0.05789624531650088,
+    "p_one_sided": 0.0009998000399920016,
+    "block_sessions": 252,
+    "iterations": 5000,
+    "strategy": "lowrisk_market",
+    "reference": "fixed_20_sessions",
+    "sensitivity": {
+      "126": {
+        "effect_annualized_mean": 0.03629520590509127,
+        "low": 0.010244365126666514,
+        "high": 0.0627258133619931,
+        "p_one_sided": 0.003799240151969606,
+        "block_sessions": 126,
+        "iterations": 5000
+      },
+      "504": {
+        "effect_annualized_mean": 0.03629520590509127,
+        "low": 0.016197564323782724,
+        "high": 0.057225434275435284,
+        "p_one_sided": 0.0001999600079984003,
+        "block_sessions": 504,
+        "iterations": 5000
+      }
+    }
+  },
+  {
+    "effect_annualized_mean": 0.06005702428635983,
+    "low": 0.017120660070111066,
+    "high": 0.09813302673137196,
+    "p_one_sided": 0.0007998400319936012,
+    "block_sessions": 252,
+    "iterations": 5000,
+    "strategy": "trend_market",
+    "reference": "fixed_20_sessions",
+    "sensitivity": {
+      "126": {
+        "effect_annualized_mean": 0.06005702428635983,
+        "low": 0.010021101105333228,
+        "high": 0.1088350120936841,
+        "p_one_sided": 0.005398920215956809,
+        "block_sessions": 126,
+        "iterations": 5000
+      },
+      "504": {
+        "effect_annualized_mean": 0.06005702428635983,
+        "low": 0.023561789646365433,
+        "high": 0.09352230189574644,
+        "p_one_sided": 0.0001999600079984003,
+        "block_sessions": 504,
+        "iterations": 5000
+      }
+    }
+  },
+  {
+    "effect_annualized_mean": 0.10211959568199917,
+    "low": 0.004029567569879307,
+    "high": 0.19027489608457568,
+    "p_one_sided": 0.010397920415916816,
+    "block_sessions": 252,
+    "iterations": 5000,
+    "strategy": "momentum_keep",
+    "reference": "fixed_20_sessions",
+    "sensitivity": {
+      "126": {
+        "effect_annualized_mean": 0.10211959568199917,
+        "low": 0.00044947477857045805,
+        "high": 0.1976439819209721,
+        "p_one_sided": 0.016596680663867228,
+        "block_sessions": 126,
+        "iterations": 5000
+      },
+      "504": {
+        "effect_annualized_mean": 0.10211959568199917,
+        "low": 0.02214006920078601,
+        "high": 0.1855768432746982,
+        "p_one_sided": 0.009398120375924815,
+        "block_sessions": 504,
+        "iterations": 5000
+      }
+    }
+  },
+  {
+    "effect_annualized_mean": -0.010482425669035643,
+    "low": -0.03227051205671317,
+    "high": 0.017385140844930563,
+    "p_one_sided": 0.7818436312737452,
+    "block_sessions": 252,
+    "iterations": 5000,
+    "strategy": "lowrisk_keep",
+    "reference": "fixed_20_sessions",
+    "sensitivity": {
+      "126": {
+        "effect_annualized_mean": -0.010482425669035643,
+        "low": -0.03104864046569955,
+        "high": 0.015005682865540776,
+        "p_one_sided": 0.8186362727454509,
+        "block_sessions": 126,
+        "iterations": 5000
+      },
+      "504": {
+        "effect_annualized_mean": -0.010482425669035643,
+        "low": -0.03407761480623156,
+        "high": 0.019858165822726908,
+        "p_one_sided": 0.7376524695060988,
+        "block_sessions": 504,
+        "iterations": 5000
+      }
+    }
+  },
+  {
+    "effect_annualized_mean": 0.018049881308073862,
+    "low": -0.03420732657229064,
+    "high": 0.06970213226895261,
+    "p_one_sided": 0.2489502099580084,
+    "block_sessions": 252,
+    "iterations": 5000,
+    "strategy": "trend_keep",
+    "reference": "fixed_20_sessions",
+    "sensitivity": {
+      "126": {
+        "effect_annualized_mean": 0.018049881308073862,
+        "low": -0.03701465817128783,
+        "high": 0.07335040030976635,
+        "p_one_sided": 0.25934813037392523,
+        "block_sessions": 126,
+        "iterations": 5000
+      },
+      "504": {
+        "effect_annualized_mean": 0.018049881308073862,
+        "low": -0.0343726344565146,
+        "high": 0.0661010895321362,
+        "p_one_sided": 0.2471505698860228,
+        "block_sessions": 504,
+        "iterations": 5000
+      }
+    }
+  }
+]

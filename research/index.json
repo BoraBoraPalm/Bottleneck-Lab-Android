@@ -209,6 +209,65 @@
         "bytes": 44208321,
         "archive_root": "PCA_Faktoren_Gesamtstudie_2026/"
       }
+    },
+    {
+      "id": "2026-11-02-holding-duration",
+      "title": "Haltedauer, Weiterhalten und Prognosehorizonte – systematische Folgestudie",
+      "date": "2026-11-02",
+      "status": "completed_limited_scope",
+      "period": "A 2014–2025; B 2019–2025; C Prognosen 2022–2024 mit Zielreife bis Ende 2025",
+      "prediction": {
+        "A": "Portfoliorenditen, keine Einzelaktien-Prognose",
+        "B": "Preisregeln statt gelernter Renditeziele",
+        "C": "1/2/4/8/12/26/52 Wochen, 44 historische Merkmale, 15.240 identische Aktien-Zeitpunkte je Horizont"
+      },
+      "holding": {
+        "A": {
+          "kind": "source_signal_refresh_months",
+          "values": [
+            1,
+            3,
+            6,
+            12
+          ],
+          "individual_stock_holding_observable": false
+        },
+        "B": {
+          "kind": "finite_cohort_exit_or_membership_review_sessions",
+          "values": [
+            5,
+            10,
+            20,
+            60,
+            120,
+            252
+          ],
+          "actual_distribution_file": "files/output/trading_metrics.csv",
+          "completed_trades_in_bundle": "output/trading_closed_trades.csv",
+          "censored_open_positions": true,
+          "membership_can_exceed_review_interval": true
+        },
+        "C": {
+          "kind": "forecast_horizon_only",
+          "financial_holding_optimizer_performed": false
+        },
+        "optimized": true
+      },
+      "rebalance": {
+        "A": "Quellregeln: nur in K-Monats-Abständen neue Portfoliozuordnung, monatliche Quellgewichtung",
+        "B": "Signal nach Schluss D, Abgänge frühestens Schluss D+1, Käufe frühestens D+2 bis D+6; erneute Prüfung nach H; Weiterhalten ohne künstliche Rundläufe",
+        "C": "Keine ausgeführte kostenbereinigte Handelsstrategie"
+      },
+      "result": "Dauerwahl verändert Handelsresultate erheblich. Trend-Markt 21.57% statt14.25% CAGR, Momentum-Markt19.82% statt12.65%; Momentum-Weiterhalten28.91% mit bis61.20% Einzelpositionsgewicht. ACWI13.65%. PCA/PLS bei allen Horizonten negatives R²; Baummodell52Wochen+10.11%, deskriptives Blockintervall enthält null.",
+      "holding_period_search_performed": true,
+      "holding_search_scope": "A: Aktualisierungsintervall; B: sechs Kohorten-/Mitgliedschaftsintervalle je Regel jährlich aus abgeschlossener Vergangenheit; C: Prognose-Sensitivität, keine finanzielle Dauerwahl",
+      "source_artifact": {
+        "filename": "Haltedauer_Strategien_Gesamtstudie_2026.zip",
+        "url": "https://chatgpt.com/library?file_id=libfile_e52d2f0f4f008191a52aacdcedda8487&account_id=personal",
+        "sha256": "0a759f4ddc6df7096973f1f4b4c9891ab7bf16edfc62daf3396958465d4f22d4",
+        "bytes": 55609895,
+        "archive_root": "Haltedauer_Strategien_2026/"
+      }
     }
   ]
 }

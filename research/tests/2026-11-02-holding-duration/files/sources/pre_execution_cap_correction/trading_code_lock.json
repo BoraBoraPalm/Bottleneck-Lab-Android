@@ -1,0 +1,7 @@
+{
+  "time": "2026-11-02T11:08:07.652658+00:00",
+  "code_sha256": "aa0e527735268e999c8bb666a1963941296b5595364789909e7e1d67e8472931",
+  "protocol_sha256": "a8c43d9db253abf47d2531f69d7c759dde48d7569ea2214732947aee09be2c0d",
+  "reason": "Intraday stops before planned closing auctions; opening cash never includes same-day sales; portable frozen input cache",
+  "new_trading_performance_not_inspected": true
+}

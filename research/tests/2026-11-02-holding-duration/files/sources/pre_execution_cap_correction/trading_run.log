@@ -1,0 +1,98 @@
+Trading inputs prepared 4024 sessions, 100 historical firms.
+Trade duration chosen from past: momentum_market 2019 252
+Trade duration chosen from past: momentum_market 2020 120
+Trade duration chosen from past: momentum_market 2021 252
+Trade duration chosen from past: momentum_market 2022 252
+Trade duration chosen from past: momentum_market 2023 252
+Trade duration chosen from past: momentum_market 2024 252
+Trade duration chosen from past: momentum_market 2025 252
+Trade strategy complete: momentum_market
+Trade duration chosen from past: momentum_limit 2019 120
+Trade duration chosen from past: momentum_limit 2020 60
+Trade duration chosen from past: momentum_limit 2021 120
+Trade duration chosen from past: momentum_limit 2022 20
+Trade duration chosen from past: momentum_limit 2023 20
+Trade duration chosen from past: momentum_limit 2024 252
+Trade duration chosen from past: momentum_limit 2025 252
+Trade strategy complete: momentum_limit
+Trade duration chosen from past: momentum_limit_stop 2019 60
+Trade duration chosen from past: momentum_limit_stop 2020 60
+Trade duration chosen from past: momentum_limit_stop 2021 252
+Trade duration chosen from past: momentum_limit_stop 2022 20
+Trade duration chosen from past: momentum_limit_stop 2023 20
+Trade duration chosen from past: momentum_limit_stop 2024 10
+Trade duration chosen from past: momentum_limit_stop 2025 10
+Trade strategy complete: momentum_limit_stop
+Trade duration chosen from past: filtered_market 2019 60
+Trade duration chosen from past: filtered_market 2020 120
+Trade duration chosen from past: filtered_market 2021 20
+Trade duration chosen from past: filtered_market 2022 60
+Trade duration chosen from past: filtered_market 2023 20
+Trade duration chosen from past: filtered_market 2024 10
+Trade duration chosen from past: filtered_market 2025 20
+Trade strategy complete: filtered_market
+Trade duration chosen from past: filtered_limit 2019 60
+Trade duration chosen from past: filtered_limit 2020 60
+Trade duration chosen from past: filtered_limit 2021 120
+Trade duration chosen from past: filtered_limit 2022 10
+Trade duration chosen from past: filtered_limit 2023 20
+Trade duration chosen from past: filtered_limit 2024 10
+Trade duration chosen from past: filtered_limit 2025 20
+Trade strategy complete: filtered_limit
+Trade duration chosen from past: filtered_market_stop 2019 252
+Trade duration chosen from past: filtered_market_stop 2020 252
+Trade duration chosen from past: filtered_market_stop 2021 20
+Trade duration chosen from past: filtered_market_stop 2022 252
+Trade duration chosen from past: filtered_market_stop 2023 120
+Trade duration chosen from past: filtered_market_stop 2024 120
+Trade duration chosen from past: filtered_market_stop 2025 252
+Trade strategy complete: filtered_market_stop
+Trade duration chosen from past: filtered_limit_stop 2019 120
+Trade duration chosen from past: filtered_limit_stop 2020 60
+Trade duration chosen from past: filtered_limit_stop 2021 252
+Trade duration chosen from past: filtered_limit_stop 2022 20
+Trade duration chosen from past: filtered_limit_stop 2023 20
+Trade duration chosen from past: filtered_limit_stop 2024 10
+Trade duration chosen from past: filtered_limit_stop 2025 10
+Trade strategy complete: filtered_limit_stop
+Trade duration chosen from past: lowrisk_market 2019 120
+Trade duration chosen from past: lowrisk_market 2020 252
+Trade duration chosen from past: lowrisk_market 2021 252
+Trade duration chosen from past: lowrisk_market 2022 252
+Trade duration chosen from past: lowrisk_market 2023 252
+Trade duration chosen from past: lowrisk_market 2024 60
+Trade duration chosen from past: lowrisk_market 2025 252
+Trade strategy complete: lowrisk_market
+Trade duration chosen from past: trend_market 2019 120
+Trade duration chosen from past: trend_market 2020 120
+Trade duration chosen from past: trend_market 2021 60
+Trade duration chosen from past: trend_market 2022 120
+Trade duration chosen from past: trend_market 2023 120
+Trade duration chosen from past: trend_market 2024 120
+Trade duration chosen from past: trend_market 2025 60
+Trade strategy complete: trend_market
+Trade duration chosen from past: momentum_keep 2019 252
+Trade duration chosen from past: momentum_keep 2020 120
+Trade duration chosen from past: momentum_keep 2021 252
+Trade duration chosen from past: momentum_keep 2022 252
+Trade duration chosen from past: momentum_keep 2023 252
+Trade duration chosen from past: momentum_keep 2024 252
+Trade duration chosen from past: momentum_keep 2025 20
+Trade strategy complete: momentum_keep
+Trade duration chosen from past: lowrisk_keep 2019 120
+Trade duration chosen from past: lowrisk_keep 2020 10
+Trade duration chosen from past: lowrisk_keep 2021 252
+Trade duration chosen from past: lowrisk_keep 2022 5
+Trade duration chosen from past: lowrisk_keep 2023 5
+Trade duration chosen from past: lowrisk_keep 2024 60
+Trade duration chosen from past: lowrisk_keep 2025 252
+Trade strategy complete: lowrisk_keep
+Trade duration chosen from past: trend_keep 2019 120
+Trade duration chosen from past: trend_keep 2020 120
+Trade duration chosen from past: trend_keep 2021 60
+Trade duration chosen from past: trend_keep 2022 20
+Trade duration chosen from past: trend_keep 2023 120
+Trade duration chosen from past: trend_keep 2024 120
+Trade duration chosen from past: trend_keep 2025 60
+Trade strategy complete: trend_keep
+Trading module DONE in 28 seconds.

@@ -1,0 +1,6 @@
+{
+  "time": "2026-11-02T11:02:08.856347+00:00",
+  "code_sha256": "aea2e0cc7eff89df9da0ac2333445f58e384aa37620c65ae20faf2841581c542",
+  "protocol_sha256": "a8c43d9db253abf47d2531f69d7c759dde48d7569ea2214732947aee09be2c0d",
+  "reason": "Cross-exchange opening-cash availability guard, including delayed holiday exits; new trading result metrics not inspected"
+}

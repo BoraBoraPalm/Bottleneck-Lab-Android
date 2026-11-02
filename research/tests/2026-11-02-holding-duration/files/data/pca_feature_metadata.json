@@ -1,0 +1,766 @@
+{
+  "rows": 34323,
+  "companies": 100,
+  "countries": 19,
+  "start": "2019-01-02",
+  "end": "2025-09-24",
+  "main_features": [
+    "ret_5",
+    "ret_20",
+    "ret_60",
+    "ret_120",
+    "ret_252",
+    "mom_252_42",
+    "ma50_gap",
+    "ma200_gap",
+    "high252_gap",
+    "low252_gap",
+    "drawdown60",
+    "vol20",
+    "vol60",
+    "vol20_60",
+    "downside20",
+    "atr14_pct",
+    "volume5_20",
+    "volume20_60",
+    "market_ret20",
+    "market_ret60",
+    "market_vol20",
+    "market_breadth",
+    "tone",
+    "positive",
+    "negative",
+    "polarity",
+    "dispersion",
+    "log_news",
+    "log_sources",
+    "translated_share",
+    "focus_share",
+    "coverage",
+    "archive_fraction",
+    "tone_4w",
+    "news_4w",
+    "tone_change",
+    "tone_lag1",
+    "log_news_lag1",
+    "ret20_x_market",
+    "mom_x_breadth",
+    "atr_x_marketvol",
+    "tone_x_attention",
+    "tone_change_x_vol",
+    "tone4_x_market"
+  ],
+  "price_features": [
+    "ret_5",
+    "ret_20",
+    "ret_60",
+    "ret_120",
+    "ret_252",
+    "mom_252_42",
+    "ma50_gap",
+    "ma200_gap",
+    "high252_gap",
+    "low252_gap",
+    "drawdown60",
+    "vol20",
+    "vol60",
+    "vol20_60",
+    "downside20",
+    "atr14_pct",
+    "volume5_20",
+    "volume20_60",
+    "market_ret20",
+    "market_ret60",
+    "market_vol20",
+    "market_breadth"
+  ],
+  "extended_features": [
+    "factor_last_Mom12m",
+    "factor_3m_Mom12m",
+    "factor_last_EarningsSurprise",
+    "factor_3m_EarningsSurprise",
+    "factor_last_REV6",
+    "factor_3m_REV6",
+    "factor_last_AnnouncementReturn",
+    "factor_3m_AnnouncementReturn",
+    "factor_last_BM",
+    "factor_3m_BM",
+    "factor_last_GP",
+    "factor_3m_GP",
+    "factor_last_Mkt-RF",
+    "factor_3m_Mkt-RF",
+    "factor_last_SMB",
+    "factor_3m_SMB",
+    "factor_last_HML",
+    "factor_3m_HML",
+    "factor_last_RMW",
+    "factor_3m_RMW",
+    "factor_last_CMA",
+    "factor_3m_CMA",
+    "factor_last_Mom",
+    "factor_3m_Mom"
+  ],
+  "groups": {
+    "momentum": [
+      "ret_5",
+      "ret_20",
+      "ret_60",
+      "ret_120",
+      "ret_252",
+      "mom_252_42"
+    ],
+    "trend": [
+      "ma50_gap",
+      "ma200_gap",
+      "high252_gap",
+      "low252_gap",
+      "drawdown60"
+    ],
+    "risk": [
+      "vol20",
+      "vol60",
+      "vol20_60",
+      "downside20",
+      "atr14_pct"
+    ],
+    "volume": [
+      "volume5_20",
+      "volume20_60"
+    ],
+    "market": [
+      "market_ret20",
+      "market_ret60",
+      "market_vol20",
+      "market_breadth"
+    ],
+    "news": [
+      "tone",
+      "positive",
+      "negative",
+      "polarity",
+      "dispersion",
+      "log_news",
+      "log_sources",
+      "translated_share",
+      "focus_share",
+      "coverage",
+      "archive_fraction",
+      "tone_4w",
+      "news_4w",
+      "tone_change",
+      "tone_lag1",
+      "log_news_lag1"
+    ],
+    "interactions": [
+      "ret20_x_market",
+      "mom_x_breadth",
+      "atr_x_marketvol",
+      "tone_x_attention",
+      "tone_change_x_vol",
+      "tone4_x_market"
+    ]
+  },
+  "source_audit": [
+    {
+      "company": "Apple",
+      "ticker": "AAPL",
+      "currency": "USD",
+      "feature_rows": 351
+    },
+    {
+      "company": "Alphabet",
+      "ticker": "GOOGL",
+      "currency": "USD",
+      "feature_rows": 351
+    },
+    {
+      "company": "Microsoft",
+      "ticker": "MSFT",
+      "currency": "USD",
+      "feature_rows": 351
+    },
+    {
+      "company": "Amazon",
+      "ticker": "AMZN",
+      "currency": "USD",
+      "feature_rows": 351
+    },
+    {
+      "company": "Tencent",
+      "ticker": "0700.HK",
+      "currency": "HKD",
+      "feature_rows": 350
+    },
+    {
+      "company": "Berkshire Hathaway",
+      "ticker": "BRK-B",
+      "currency": "USD",
+      "feature_rows": 351
+    },
+    {
+      "company": "Alibaba",
+      "ticker": "BABA",
+      "currency": "USD",
+      "feature_rows": 351
+    },
+    {
+      "company": "Facebook/Meta",
+      "ticker": "META",
+      "currency": "USD",
+      "feature_rows": 351
+    },
+    {
+      "company": "JPMorgan Chase",
+      "ticker": "JPM",
+      "currency": "USD",
+      "feature_rows": 351
+    },
+    {
+      "company": "Johnson & Johnson",
+      "ticker": "JNJ",
+      "currency": "USD",
+      "feature_rows": 351
+    },
+    {
+      "company": "ICBC",
+      "ticker": "1398.HK",
+      "currency": "HKD",
+      "feature_rows": 350
+    },
+    {
+      "company": "Exxon Mobil",
+      "ticker": "XOM",
+      "currency": "USD",
+      "feature_rows": 351
+    },
+    {
+      "company": "Bank of America",
+      "ticker": "BAC",
+      "currency": "USD",
+      "feature_rows": 351
+    },
+    {
+      "company": "Samsung Electronics",
+      "ticker": "005930.KS",
+      "currency": "KRW",
+      "feature_rows": 349
+    },
+    {
+      "company": "Royal Dutch Shell",
+      "ticker": "SHEL.L",
+      "currency": "GBp",
+      "feature_rows": 352
+    },
+    {
+      "company": "Walmart",
+      "ticker": "WMT",
+      "currency": "USD",
+      "feature_rows": 351
+    },
+    {
+      "company": "China Construction Bank",
+      "ticker": "0939.HK",
+      "currency": "HKD",
+      "feature_rows": 350
+    },
+    {
+      "company": "Wells Fargo",
+      "ticker": "WFC",
+      "currency": "USD",
+      "feature_rows": 351
+    },
+    {
+      "company": "Nestle",
+      "ticker": "NESN.SW",
+      "currency": "CHF",
+      "feature_rows": 351
+    },
+    {
+      "company": "Visa",
+      "ticker": "V",
+      "currency": "USD",
+      "feature_rows": 351
+    },
+    {
+      "company": "Intel",
+      "ticker": "INTC",
+      "currency": "USD",
+      "feature_rows": 351
+    },
+    {
+      "company": "Anheuser-Busch InBev",
+      "ticker": "ABI.BR",
+      "currency": "EUR",
+      "feature_rows": 352
+    },
+    {
+      "company": "Taiwan Semiconductor",
+      "ticker": "2330.TW",
+      "currency": "TWD",
+      "feature_rows": 347
+    },
+    {
+      "company": "AT&T",
+      "ticker": "T",
+      "currency": "USD",
+      "feature_rows": 351
+    },
+    {
+      "company": "Chevron",
+      "ticker": "CVX",
+      "currency": "USD",
+      "feature_rows": 351
+    },
+    {
+      "company": "PetroChina",
+      "ticker": "0857.HK",
+      "currency": "HKD",
+      "feature_rows": 350
+    },
+    {
+      "company": "Novartis",
+      "ticker": "NOVN.SW",
+      "currency": "CHF",
+      "feature_rows": 351
+    },
+    {
+      "company": "Pfizer",
+      "ticker": "PFE",
+      "currency": "USD",
+      "feature_rows": 351
+    },
+    {
+      "company": "Toyota",
+      "ticker": "7203.T",
+      "currency": "JPY",
+      "feature_rows": 349
+    },
+    {
+      "company": "UnitedHealth Group",
+      "ticker": "UNH",
+      "currency": "USD",
+      "feature_rows": 351
+    },
+    {
+      "company": "Cisco Systems",
+      "ticker": "CSCO",
+      "currency": "USD",
+      "feature_rows": 351
+    },
+    {
+      "company": "Home Depot",
+      "ticker": "HD",
+      "currency": "USD",
+      "feature_rows": 351
+    },
+    {
+      "company": "Agricultural Bank of China",
+      "ticker": "1288.HK",
+      "currency": "HKD",
+      "feature_rows": 350
+    },
+    {
+      "company": "Procter & Gamble",
+      "ticker": "PG",
+      "currency": "USD",
+      "feature_rows": 351
+    },
+    {
+      "company": "Roche",
+      "ticker": "ROP.SW",
+      "currency": "CHF",
+      "feature_rows": 351
+    },
+    {
+      "company": "Verizon Communications",
+      "ticker": "VZ",
+      "currency": "USD",
+      "feature_rows": 351
+    },
+    {
+      "company": "Boeing",
+      "ticker": "BA",
+      "currency": "USD",
+      "feature_rows": 351
+    },
+    {
+      "company": "Ping An Insurance",
+      "ticker": "2318.HK",
+      "currency": "HKD",
+      "feature_rows": 350
+    },
+    {
+      "company": "China Mobile",
+      "ticker": "0941.HK",
+      "currency": "HKD",
+      "feature_rows": 350
+    },
+    {
+      "company": "HSBC",
+      "ticker": "HSBA.L",
+      "currency": "GBp",
+      "feature_rows": 352
+    },
+    {
+      "company": "Oracle",
+      "ticker": "ORCL",
+      "currency": "USD",
+      "feature_rows": 351
+    },
+    {
+      "company": "Coca-Cola",
+      "ticker": "KO",
+      "currency": "USD",
+      "feature_rows": 351
+    },
+    {
+      "company": "Mastercard",
+      "ticker": "MA",
+      "currency": "USD",
+      "feature_rows": 351
+    },
+    {
+      "company": "Bank of China",
+      "ticker": "3988.HK",
+      "currency": "HKD",
+      "feature_rows": 350
+    },
+    {
+      "company": "Citigroup",
+      "ticker": "C",
+      "currency": "USD",
+      "feature_rows": 351
+    },
+    {
+      "company": "Unilever",
+      "ticker": "UNA.AS",
+      "currency": "EUR",
+      "feature_rows": 200
+    },
+    {
+      "company": "LVMH",
+      "ticker": "MC.PA",
+      "currency": "EUR",
+      "feature_rows": 352
+    },
+    {
+      "company": "Comcast",
+      "ticker": "CMCSA",
+      "currency": "USD",
+      "feature_rows": 351
+    },
+    {
+      "company": "PepsiCo",
+      "ticker": "PEP",
+      "currency": "USD",
+      "feature_rows": 351
+    },
+    {
+      "company": "Philip Morris International",
+      "ticker": "PM",
+      "currency": "USD",
+      "feature_rows": 351
+    },
+    {
+      "company": "Walt Disney",
+      "ticker": "DIS",
+      "currency": "USD",
+      "feature_rows": 351
+    },
+    {
+      "company": "AbbVie",
+      "ticker": "ABBV",
+      "currency": "USD",
+      "feature_rows": 351
+    },
+    {
+      "company": "Total",
+      "ticker": "TTE.PA",
+      "currency": "EUR",
+      "feature_rows": 352
+    },
+    {
+      "company": "DowDuPont",
+      "ticker": "DD",
+      "currency": "USD",
+      "feature_rows": 21
+    },
+    {
+      "company": "Merck & Co",
+      "ticker": "MRK",
+      "currency": "USD",
+      "feature_rows": 351
+    },
+    {
+      "company": "IBM",
+      "ticker": "IBM",
+      "currency": "USD",
+      "feature_rows": 351
+    },
+    {
+      "company": "NVIDIA",
+      "ticker": "NVDA",
+      "currency": "USD",
+      "feature_rows": 351
+    },
+    {
+      "company": "Kweichow Moutai",
+      "ticker": "600519.SS",
+      "currency": "CNY",
+      "feature_rows": 348
+    },
+    {
+      "company": "BP",
+      "ticker": "BP.L",
+      "currency": "GBp",
+      "feature_rows": 352
+    },
+    {
+      "company": "British American Tobacco",
+      "ticker": "BATS.L",
+      "currency": "GBp",
+      "feature_rows": 352
+    },
+    {
+      "company": "3M",
+      "ticker": "MMM",
+      "currency": "USD",
+      "feature_rows": 351
+    },
+    {
+      "company": "SAP",
+      "ticker": "SAP.DE",
+      "currency": "EUR",
+      "feature_rows": 351
+    },
+    {
+      "company": "Netflix",
+      "ticker": "NFLX",
+      "currency": "USD",
+      "feature_rows": 351
+    },
+    {
+      "company": "L'Oreal",
+      "ticker": "OR.PA",
+      "currency": "EUR",
+      "feature_rows": 352
+    },
+    {
+      "company": "McDonalds",
+      "ticker": "MCD",
+      "currency": "USD",
+      "feature_rows": 351
+    },
+    {
+      "company": "Novo Nordisk",
+      "ticker": "NOVO-B.CO",
+      "currency": "DKK",
+      "feature_rows": 351
+    },
+    {
+      "company": "Amgen",
+      "ticker": "AMGN",
+      "currency": "USD",
+      "feature_rows": 351
+    },
+    {
+      "company": "Sinopec",
+      "ticker": "0386.HK",
+      "currency": "HKD",
+      "feature_rows": 350
+    },
+    {
+      "company": "Altria",
+      "ticker": "MO",
+      "currency": "USD",
+      "feature_rows": 351
+    },
+    {
+      "company": "General Electric",
+      "ticker": "GE",
+      "currency": "USD",
+      "feature_rows": 351
+    },
+    {
+      "company": "AmBev",
+      "ticker": "ABEV3.SA",
+      "currency": "BRL",
+      "feature_rows": 350
+    },
+    {
+      "company": "China Merchants Bank",
+      "ticker": "3968.HK",
+      "currency": "HKD",
+      "feature_rows": 350
+    },
+    {
+      "company": "Royal Bank of Canada",
+      "ticker": "RY.TO",
+      "currency": "CAD",
+      "feature_rows": 351
+    },
+    {
+      "company": "BHP Billiton",
+      "ticker": "BHP.AX",
+      "currency": "AUD",
+      "feature_rows": 352
+    },
+    {
+      "company": "Medtronic",
+      "ticker": "MDT",
+      "currency": "USD",
+      "feature_rows": 351
+    },
+    {
+      "company": "Siemens",
+      "ticker": "SIE.DE",
+      "currency": "EUR",
+      "feature_rows": 351
+    },
+    {
+      "company": "Honeywell",
+      "ticker": "HON",
+      "currency": "USD",
+      "feature_rows": 351
+    },
+    {
+      "company": "Nike",
+      "ticker": "NKE",
+      "currency": "USD",
+      "feature_rows": 351
+    },
+    {
+      "company": "Naspers",
+      "ticker": "NPN.JO",
+      "currency": "ZAc",
+      "feature_rows": 351
+    },
+    {
+      "company": "Adobe",
+      "ticker": "ADBE",
+      "currency": "USD",
+      "feature_rows": 351
+    },
+    {
+      "company": "China Life Insurance",
+      "ticker": "2628.HK",
+      "currency": "HKD",
+      "feature_rows": 350
+    },
+    {
+      "company": "Santander",
+      "ticker": "SAN.MC",
+      "currency": "EUR",
+      "feature_rows": 352
+    },
+    {
+      "company": "Abbott Laboratories",
+      "ticker": "ABT",
+      "currency": "USD",
+      "feature_rows": 351
+    },
+    {
+      "company": "Toronto-Dominion Bank",
+      "ticker": "TD.TO",
+      "currency": "CAD",
+      "feature_rows": 351
+    },
+    {
+      "company": "Union Pacific",
+      "ticker": "UNP",
+      "currency": "USD",
+      "feature_rows": 351
+    },
+    {
+      "company": "Bristol-Myers Squibb",
+      "ticker": "BMY",
+      "currency": "USD",
+      "feature_rows": 351
+    },
+    {
+      "company": "Accenture",
+      "ticker": "ACN",
+      "currency": "USD",
+      "feature_rows": 351
+    },
+    {
+      "company": "AIA Group",
+      "ticker": "1299.HK",
+      "currency": "HKD",
+      "feature_rows": 350
+    },
+    {
+      "company": "Texas Instruments",
+      "ticker": "TXN",
+      "currency": "USD",
+      "feature_rows": 351
+    },
+    {
+      "company": "Sanofi",
+      "ticker": "SAN.PA",
+      "currency": "EUR",
+      "feature_rows": 352
+    },
+    {
+      "company": "United Technologies",
+      "ticker": "RTX",
+      "currency": "USD",
+      "feature_rows": 65
+    },
+    {
+      "company": "Booking Holdings",
+      "ticker": "BKNG",
+      "currency": "USD",
+      "feature_rows": 351
+    },
+    {
+      "company": "Volkswagen",
+      "ticker": "VOW3.DE",
+      "currency": "EUR",
+      "feature_rows": 351
+    },
+    {
+      "company": "Allianz",
+      "ticker": "ALV.DE",
+      "currency": "EUR",
+      "feature_rows": 351
+    },
+    {
+      "company": "Goldman Sachs",
+      "ticker": "GS",
+      "currency": "USD",
+      "feature_rows": 351
+    },
+    {
+      "company": "Gilead Sciences",
+      "ticker": "GILD",
+      "currency": "USD",
+      "feature_rows": 351
+    },
+    {
+      "company": "Commonwealth Bank",
+      "ticker": "CBA.AX",
+      "currency": "AUD",
+      "feature_rows": 352
+    },
+    {
+      "company": "Inditex",
+      "ticker": "ITX.MC",
+      "currency": "EUR",
+      "feature_rows": 352
+    },
+    {
+      "company": "GlaxoSmithKline",
+      "ticker": "GSK.L",
+      "currency": "GBp",
+      "feature_rows": 352
+    },
+    {
+      "company": "Broadcom",
+      "ticker": "AVGO",
+      "currency": "USD",
+      "feature_rows": 351
+    }
+  ],
+  "news_state_and_future_columns_used": false
+}

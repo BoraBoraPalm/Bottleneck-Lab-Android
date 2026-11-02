@@ -1,0 +1,18 @@
+{
+  "sessions": 1760,
+  "cagr": 0.17509581157152265,
+  "acwi_cagr": 0.1365035392958842,
+  "cagr_excess": 0.03859227227563844,
+  "information_ratio": 0.4103737492499799,
+  "annualized_mean_excess": 0.02734664164789194,
+  "annualized_vol": 0.16628863894236606,
+  "max_drawdown": -0.2905212481439192,
+  "end_eur": 30915.566594856056,
+  "acwi_end_eur": 24475.371633889055,
+  "spy_end_eur": 29783.377699991444,
+  "average_exposure": 1.0,
+  "initial_companies": 99,
+  "fees_eur": 101,
+  "diagnostic_added_after_primary_results": true,
+  "construction": "Equal initial EUR weights, no rebalancing, 1 EUR per actual order, 0.1% per side, same 2018 cohort, corporate boundaries converted to cash; no region/ten-stock caps."
+}

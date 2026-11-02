@@ -1,0 +1,5 @@
+{
+  "timestamp_utc": "2026-11-02T11:22:29.915651+00:00",
+  "reason": "Integrity correction after inspecting results: actual entry must respect 10 total and 4 per region even if outgoing trades wait for local exchange holidays. No grid, score or model change. Prior code and outputs retained in sources/pre_execution_cap_correction.",
+  "code_sha256": "ccb7783ca9378e14a13d0d06301a367b33d0da79c63b47d6c6f15a2b2f1d43b6"
+}

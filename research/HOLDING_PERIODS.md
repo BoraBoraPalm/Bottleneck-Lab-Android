@@ -1,6 +1,6 @@
 # Haltedauer und Reichweite der bisherigen Tests
 
-Stand 02.11.2026. **Eine systematische Auswahl der Haltedauer je Strategie ist noch nicht durchgeführt.** Die Archivierung hat keine neuen Renditetests gestartet.
+Stand 02.11.2026, nach Abschluss der [Haltedauer-Folgestudie](tests/2026-11-02-holding-duration). **Die systematische vergangenheitsbasierte Intervallwahl wurde jetzt für 20 Literaturfamilien und zwölf Preisregeln durchgeführt.** Prognosemodelle wurden zusätzlich für sieben Horizonte neu gelernt. Die früheren Originaltests bleiben unverändert; die anfängliche reine Archivierung hatte noch keine neuen Renditetests gestartet.
 
 ## Was tatsächlich geprüft wurde
 
@@ -23,11 +23,11 @@ Stand 02.11.2026. **Eine systematische Auswahl der Haltedauer je Strategie ist n
 
 ## Korrigierte Aussagegrenze
 
-Die bisherigen negativen Ergebnisse gelten für die dokumentierten Daten, Märkte, Zielgrößen und Halte-/Ausstiegsregeln. Sie belegen nicht, dass jede untersuchte Grundidee bei beliebiger anderer Haltedauer nutzlos ist. Ebenso ist nicht belegt, dass eine andere Dauer die Prognose oder Rendite massiv verbessert.
+Die bisherigen negativen Ergebnisse gelten für die dokumentierten Daten, Märkte, Zielgrößen und Halte-/Ausstiegsregeln. Sie belegen nicht, dass jede untersuchte Grundidee bei beliebiger anderer Haltedauer nutzlos ist. Die neue Folgestudie zeigt nun große historische Renditeunterschiede bei einzelnen Preisregeln. Daraus folgt noch kein universell günstiger oder künftig garantierter Horizont.
 
 Ein günstiger Bereich kann strategieabhängig sein; ein einziger stabiler „optimaler Mittelwert“ für alle Marktphasen oder Aktien ist nicht vorauszusetzen. Höhere kumulierte Rendite bei längerem Halten allein ist kein fairer Optimierungsmaßstab. Kapitalbindung, annualisierter Mehrertrag, Risiko, Kosten, Ausfall-/Stopprisiko und Benchmark müssen zusammen betrachtet werden.
 
-## Nächster methodischer Schritt – geplant, noch nicht berechnet
+## In der neuen Folgestudie tatsächlich umgesetzt (zuvor geplanter Schritt)
 
 1. Pro Strategie einen kleinen begründeten Halte-/Ausstiegsraster vorab festlegen, passend zur Signal- und Datenauflösung. Rückblick, Haltedauer und Rebalancing getrennt variieren.
 2. In jedem zeitlichen Lernfenster die Dauer/Politik nur anhand damals abgeschlossener Daten wählen. Auch diese Wahl liegt in einer inneren zeitlichen Validierung; der spätere Test bleibt außen vor.
@@ -39,3 +39,13 @@ Ein günstiger Bereich kann strategieabhängig sein; ein einziger stabiler „op
 ## Literaturhinweis, kein aktuelles Optimum
 
 Jegadeesh & Titman (1993) untersuchten Momentum mit Haltedauern von drei bis zwölf Monaten. Das illustriert die Bedeutung des Horizonts; es bestimmt nicht die beste Dauer unserer heutigen Strategie oder garantiert deren Rentabilität. Quelle: https://doi.org/10.1111/j.1540-6261.1993.tb04702.x .
+
+## Ergebnisse der abgeschlossenen Folgestudie und verbleibende Grenzen
+
+- A: Native Signal-/Portfolioaktualisierung alle 1/3/6/12 Monate, Bewertung 2014–2025, jährliche Wahl aus 120 vergangenen Monaten. Die Quelle liefert keine gemessenen individuellen Aktien-Haltedauern. Kein signifikanter zusätzlicher Intervallnutzen nach gemeinsamer Korrektur; Gross-Profit-Quality 15,01 % gegenüber Original 14,99 %, Markt 13,20 % CAGR.
+- B: Zwölf Regeln mit sechs festen Intervallen von 5/10/20/60/120/252 US-Sitzungen und jährlicher Wahl aus fünf vergangenen Jahren, Bewertung 2019–2025. Signalrückblick, Kohortentakt, tatsächliche Ein-/Ausstiegstage und bloßes Prüfen/Weiterhalten werden getrennt. 1 EUR je Order plus 0,1 % je Seite. Momentum-Marktorder 19,82 % gegenüber 12,65 % bei 20 Sitzungen; Trend-Marktorder 21,57 % gegenüber 14,25 %; ACWI 13,65 %. Momentum-Weiterhalten mit 28,91 % hatte zeitweise 61,20 % in einer Position. Diese Punktwerte belegen keine gesicherte Marktüberlegenheit.
+- C: Fünf Modelle, sieben neu gelernte Horizonte von 1/2/4/8/12/26/52 Wochen, identische 15.240 Aktien-Zeitpunkte 2022–2024. PCA/PLS bei allen Horizonten negatives R²; Baummodell bei 52 Wochen +10,11 % R² gegen Null-Mehrertrag. Das deskriptive 52-Wochen-Blockintervall enthält null. Keine ausgeführte finanzielle 52-Wochen-Strategie.
+- Zwölf adaptive B-Pfade exakt aus eingefrorenen Eingaben reproduziert; 1211 Integritäts-/Zeit-/Reproduktionsprüfungen bestanden. Nach erster Ergebnisprüfung gefundene Ausführungsgrenze korrigiert, alle B-Varianten neu gerechnet; alte Fassung separat aufbewahrt.
+- Universelle zukünftige optimale mittlere Haltedauer, prospektive Validierung und vollständige historische App-Fundamentalfilter bleiben offen. Frühere bekannte Testjahre, revidierte Daten, lange Zielüberlappungen und globale Ausführungsannahmen verhindern den Anspruch absoluter Biasfreiheit.
+
+Neue Berechnungen nur für eine neue Frage, neue Daten oder konkrete Fehler. Zum Nachsehen Ergebnisse/Code/Daten aus dem archivierten Paket wiederverwenden.

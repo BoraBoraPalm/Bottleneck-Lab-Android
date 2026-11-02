@@ -1,0 +1,212 @@
+[
+  {
+    "horizon": 1,
+    "year": 2022,
+    "cutoff": "2022-01-01",
+    "latest_known_target": "2021-12-29",
+    "train_rows": 15003,
+    "test_rows": 5075,
+    "inner_training_rows": 9959,
+    "inner_validation_rows": 4850
+  },
+  {
+    "horizon": 1,
+    "year": 2023,
+    "cutoff": "2023-01-01",
+    "latest_known_target": "2022-12-28",
+    "train_rows": 20093,
+    "test_rows": 5079,
+    "inner_training_rows": 15003,
+    "inner_validation_rows": 4894
+  },
+  {
+    "horizon": 1,
+    "year": 2024,
+    "cutoff": "2024-01-01",
+    "latest_known_target": "2023-12-27",
+    "train_rows": 25183,
+    "test_rows": 5086,
+    "inner_training_rows": 20093,
+    "inner_validation_rows": 4894
+  },
+  {
+    "horizon": 2,
+    "year": 2022,
+    "cutoff": "2022-01-01",
+    "latest_known_target": "2021-12-29",
+    "train_rows": 14904,
+    "test_rows": 5075,
+    "inner_training_rows": 9861,
+    "inner_validation_rows": 4752
+  },
+  {
+    "horizon": 2,
+    "year": 2023,
+    "cutoff": "2023-01-01",
+    "latest_known_target": "2022-12-28",
+    "train_rows": 19994,
+    "test_rows": 5079,
+    "inner_training_rows": 14904,
+    "inner_validation_rows": 4796
+  },
+  {
+    "horizon": 2,
+    "year": 2024,
+    "cutoff": "2024-01-01",
+    "latest_known_target": "2023-12-27",
+    "train_rows": 25084,
+    "test_rows": 5086,
+    "inner_training_rows": 19994,
+    "inner_validation_rows": 4796
+  },
+  {
+    "horizon": 4,
+    "year": 2022,
+    "cutoff": "2022-01-01",
+    "latest_known_target": "2021-12-29",
+    "train_rows": 14705,
+    "test_rows": 5075,
+    "inner_training_rows": 9664,
+    "inner_validation_rows": 4556
+  },
+  {
+    "horizon": 4,
+    "year": 2023,
+    "cutoff": "2023-01-01",
+    "latest_known_target": "2022-12-28",
+    "train_rows": 19795,
+    "test_rows": 5079,
+    "inner_training_rows": 14705,
+    "inner_validation_rows": 4602
+  },
+  {
+    "horizon": 4,
+    "year": 2024,
+    "cutoff": "2024-01-01",
+    "latest_known_target": "2023-12-27",
+    "train_rows": 24885,
+    "test_rows": 5086,
+    "inner_training_rows": 19795,
+    "inner_validation_rows": 4602
+  },
+  {
+    "horizon": 8,
+    "year": 2022,
+    "cutoff": "2022-01-01",
+    "latest_known_target": "2021-12-29",
+    "train_rows": 14309,
+    "test_rows": 5075,
+    "inner_training_rows": 9268,
+    "inner_validation_rows": 4169
+  },
+  {
+    "horizon": 8,
+    "year": 2023,
+    "cutoff": "2023-01-01",
+    "latest_known_target": "2022-12-28",
+    "train_rows": 19395,
+    "test_rows": 5079,
+    "inner_training_rows": 14309,
+    "inner_validation_rows": 4210
+  },
+  {
+    "horizon": 8,
+    "year": 2024,
+    "cutoff": "2024-01-01",
+    "latest_known_target": "2023-12-27",
+    "train_rows": 24485,
+    "test_rows": 5086,
+    "inner_training_rows": 19395,
+    "inner_validation_rows": 4210
+  },
+  {
+    "horizon": 12,
+    "year": 2022,
+    "cutoff": "2022-01-01",
+    "latest_known_target": "2021-12-29",
+    "train_rows": 13914,
+    "test_rows": 5075,
+    "inner_training_rows": 8873,
+    "inner_validation_rows": 3781
+  },
+  {
+    "horizon": 12,
+    "year": 2023,
+    "cutoff": "2023-01-01",
+    "latest_known_target": "2022-12-28",
+    "train_rows": 18996,
+    "test_rows": 5079,
+    "inner_training_rows": 13914,
+    "inner_validation_rows": 3818
+  },
+  {
+    "horizon": 12,
+    "year": 2024,
+    "cutoff": "2024-01-01",
+    "latest_known_target": "2023-12-27",
+    "train_rows": 24086,
+    "test_rows": 5086,
+    "inner_training_rows": 18996,
+    "inner_validation_rows": 3818
+  },
+  {
+    "horizon": 26,
+    "year": 2022,
+    "cutoff": "2022-01-01",
+    "latest_known_target": "2021-12-29",
+    "train_rows": 12535,
+    "test_rows": 5075,
+    "inner_training_rows": 7494,
+    "inner_validation_rows": 2423
+  },
+  {
+    "horizon": 26,
+    "year": 2023,
+    "cutoff": "2023-01-01",
+    "latest_known_target": "2022-12-28",
+    "train_rows": 17604,
+    "test_rows": 5079,
+    "inner_training_rows": 12535,
+    "inner_validation_rows": 2447
+  },
+  {
+    "horizon": 26,
+    "year": 2024,
+    "cutoff": "2024-01-01",
+    "latest_known_target": "2023-12-27",
+    "train_rows": 22694,
+    "test_rows": 5086,
+    "inner_training_rows": 17604,
+    "inner_validation_rows": 2447
+  },
+  {
+    "horizon": 52,
+    "year": 2022,
+    "cutoff": "2022-01-01",
+    "latest_known_target": "2021-12-29",
+    "train_rows": 9989,
+    "test_rows": 5075,
+    "inner_training_rows": 4948,
+    "inner_validation_rows": 0
+  },
+  {
+    "horizon": 52,
+    "year": 2023,
+    "cutoff": "2023-01-01",
+    "latest_known_target": "2022-12-28",
+    "train_rows": 15032,
+    "test_rows": 5079,
+    "inner_training_rows": 9989,
+    "inner_validation_rows": 0
+  },
+  {
+    "horizon": 52,
+    "year": 2024,
+    "cutoff": "2024-01-01",
+    "latest_known_target": "2023-12-27",
+    "train_rows": 20123,
+    "test_rows": 5086,
+    "inner_training_rows": 15032,
+    "inner_validation_rows": 0
+  }
+]

@@ -1,0 +1,103 @@
+{
+  "id": "2026-11-02-holding-duration",
+  "title": "Haltedauer, Weiterhalten und Prognosehorizonte – systematische Folgestudie",
+  "date": "2026-11-02",
+  "schema_version": 1,
+  "status": "completed_limited_scope",
+  "period": "A 2014–2025; B 2019–2025; C Prognosen 2022–2024 mit Zielreife bis Ende 2025",
+  "strategy": "20 Literaturfaktoren/Mischungen; 12 Handelsregeln; 5 Prognosemodelle x 7 Horizonte",
+  "prediction": {
+    "A": "Portfoliorenditen, keine Einzelaktien-Prognose",
+    "B": "Preisregeln statt gelernter Renditeziele",
+    "C": "1/2/4/8/12/26/52 Wochen, 44 historische Merkmale, 15.240 identische Aktien-Zeitpunkte je Horizont"
+  },
+  "signal_lookback": {
+    "B": "Momentum 252 zu 42 lokalen Sitzungen; Trend MA200; Low Risk Vol252; ATR14; Liquidität20",
+    "C": "Unveränderte 44 Preis/Markt/Nachrichtenmerkmale mit ausschließlich historischem Rückblick; siehe eingefrorene Metadaten"
+  },
+  "holding": {
+    "A": {
+      "kind": "source_signal_refresh_months",
+      "values": [
+        1,
+        3,
+        6,
+        12
+      ],
+      "individual_stock_holding_observable": false
+    },
+    "B": {
+      "kind": "finite_cohort_exit_or_membership_review_sessions",
+      "values": [
+        5,
+        10,
+        20,
+        60,
+        120,
+        252
+      ],
+      "actual_distribution_file": "files/output/trading_metrics.csv",
+      "completed_trades_in_bundle": "output/trading_closed_trades.csv",
+      "censored_open_positions": true,
+      "membership_can_exceed_review_interval": true
+    },
+    "C": {
+      "kind": "forecast_horizon_only",
+      "financial_holding_optimizer_performed": false
+    },
+    "optimized": true
+  },
+  "rebalance": {
+    "A": "Quellregeln: nur in K-Monats-Abständen neue Portfoliozuordnung, monatliche Quellgewichtung",
+    "B": "Signal nach Schluss D, Abgänge frühestens Schluss D+1, Käufe frühestens D+2 bis D+6; erneute Prüfung nach H; Weiterhalten ohne künstliche Rundläufe",
+    "C": "Keine ausgeführte kostenbereinigte Handelsstrategie"
+  },
+  "exit_policy": {
+    "B": "Endlicher nächster Kohorten-Ausstieg, frühere ATR-Stopps/Signalreviews je Modell, Firmenereignisgrenzen; Weiterhalten beim fortbestehenden Ziel; terminale Markierung"
+  },
+  "holding_period_search_performed": true,
+  "holding_search_scope": "A: Aktualisierungsintervall; B: sechs Kohorten-/Mitgliedschaftsintervalle je Regel jährlich aus abgeschlossener Vergangenheit; C: Prognose-Sensitivität, keine finanzielle Dauerwahl",
+  "time_splits": {
+    "A": "Jedes Jahr 2014–2025: 120 vollständige frühere Monate; Auswahl nach Netto-IR",
+    "B": "Jedes Jahr 2019–2025: fünf frühere Kalenderjahre; Auswahl nach Netto-IR; historische Kohorte bekannt seit 2018",
+    "C": "Expandierendes Training ab 2019, Prognosejahre 2022/23/24; nur gereifte Aktien- UND Benchmarkziele vor jedem Jahresstichtag; innere vergangene Validierung oder fester Fallback"
+  },
+  "costs": {
+    "A": "Pauschale 1% p.a. auf aktiven Anteil; Sensitivität0/2%; keine exakten Einzelorderdaten",
+    "B": "1 EUR je tatsächlicher Order plus 0.1% pro Seite; Bruchstücke bereinigter Preise; EUR, FX mindestens zwei Kalendertage verzögert; keine Steuern/Cashzinsen/Endliquidation",
+    "C": "Prognosegüte; keine behauptete Netto-Handelsrendite"
+  },
+  "benchmark": {
+    "A": "French US Mkt-RF+RF",
+    "B": "ACWI und SPY im identischen EUR-/Initialkostenmodell; passive historische Kohorte nachträgliche Diagnose",
+    "C": "Null regionaler Kohorten-Mehrertrag; Preis-Ridge/ElasticNet/PCA/PLS/Baummodell"
+  },
+  "result": "Dauerwahl verändert Handelsresultate erheblich. Trend-Markt 21.57% statt14.25% CAGR, Momentum-Markt19.82% statt12.65%; Momentum-Weiterhalten28.91% mit bis61.20% Einzelpositionsgewicht. ACWI13.65%. PCA/PLS bei allen Horizonten negatives R²; Baummodell52Wochen+10.11%, deskriptives Blockintervall enthält null.",
+  "limits": [
+    "Bekannte historische Testjahre, explorative Folgestudie; keine perfekte Biasfreiheit",
+    "Revidierte native Faktor-/bereinigte Preisquellen; kein vollständiges archiviertes Point-in-time-Vintage-Universum",
+    "Starke Einzelpositionskonzentration bei Momentum-Weiterhalten; Quellintervalle sind keine harten Haltedauern",
+    "Nur drei Prognose-Testjahre, lange Ziele überlappen; keine gesicherte 52-Wochen-Handelsalpha",
+    "Hoch-Tief-Mut/Frühwachstum/Multibagger und vollständige App-Fundamentalampeln ohne historische Filing-Vintages nicht identisch testbar",
+    "Globale Ausführungs-/OHLC-/FX-Näherungen, Gebührenannahmen und fehlende Steuern"
+  ],
+  "not_tested": [
+    "Universell beste zukünftige mittlere Haltedauer",
+    "Vollständige historische Fundamental-Appfilter",
+    "Kostenbereinigte finanzielle Umsetzung der 52-Wochen-Prognosen",
+    "Neue unberührte prospektive Validierung"
+  ],
+  "reproduction_status": "Vollständige verwendete kompakte Eingaben, Code, Ergebnisse, Korrekturhistorie und Reproduktionsbefehle im exakten Vollpaket. 1211 Integritäts-/Zeit-/Reproduktionsprüfungen bestanden; zwölf adaptive Handelspfade exakt aus Cache reproduziert.",
+  "source_artifact": {
+    "filename": "Haltedauer_Strategien_Gesamtstudie_2026.zip",
+    "url": "https://chatgpt.com/library?file_id=libfile_e52d2f0f4f008191a52aacdcedda8487&account_id=personal",
+    "sha256": "0a759f4ddc6df7096973f1f4b4c9891ab7bf16edfc62daf3396958465d4f22d4",
+    "bytes": 55609895,
+    "archive_root": "Haltedauer_Strategien_2026/"
+  },
+  "entry_report": "files/output/bericht.md",
+  "artifact_members": "ARTIFACT_MEMBERS.json",
+  "data_availability": "Alle verwendeten kompakten Eingaben im Vollpaket; große Quelldownloads über SHA/URLs identifiziert. Vollständige Merkmals-/Nachrichtenprovenienz außerdem in vorherigem PCA-/Nachrichtenpaket.",
+  "corrections": "B: Ausführungs-Kaufgrenzen nach erster Ergebnisprüfung korrigiert, alle B-Varianten neu gerechnet; ursprüngliche Fassung in sources/pre_execution_cap_correction separat erhalten. Keine Modell-/Rasteränderung. Siehe VERSION_HISTORY.md.",
+  "app_changed": false
+}
