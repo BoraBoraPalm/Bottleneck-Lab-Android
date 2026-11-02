@@ -204,6 +204,16 @@ Forschungsbezug: [Novy-Marx (2013)](https://doi.org/10.1016/j.jfineco.2013.01.00
 Die Faktor-Literatur ist **kein Nachweis** für unsere spezielle, überwiegend
 US-fundamental abgedeckte Long-only-Liste, ihre Ampeln, Handelskosten oder Steuern.
 
+## Anlagehorizont und Strategie-Zeitplan
+
+Über beiden Reitern steht **„Dein Anlagehorizont“**: offen, 1–4 Wochen, etwa 3/6/12 Monate oder länger als ein Jahr. Der Horizont ordnet Strategiehinweise ein. Der deutlich beschriftete Übernahmebutton setzt im geöffneten Reiter eine Einzelstrategie: bei 3/6 Monaten den Trend, bei 12 Monaten Momentum. In der Kandidatenliste bestimmt diese Wahl die Aktienrangfolge; in der unabhängigen Aktiensuche ändert sie die angezeigten Strategieprüfungen, niemals die Namens-Treffer. Weitere Häkchen bleiben manuell möglich. Horizonte und beide Strategieauswahlen werden lokal auf dem Gerät gespeichert; unbrauchbare oder gesperrte Speicherung verhindert die Nutzung nicht.
+
+Die Zeitangaben stammen aus der [archivierten Haltedauer-Folgestudie](research/tests/2026-11-02-holding-duration), nicht aus einem neu erfundenen Optimum für jede Aktie. Verwendet werden die aus vergangenen Daten gewählten Intervalle, keine nachträglichen Sieger des ganzen Testzeitraums: Momentum meist 252 Sitzungen (6 von 7 Jahren); Trend 120 (5 Jahre) oder 60 Sitzungen (2 Jahre); geringe Schwankung meist 252 Sitzungen (5 Jahre), aber Median der abgeschlossenen Trades nur 120 Sitzungen. Beobachtete Prüfintervalle, tatsächliche Haltedauer und Signalrückblick bleiben getrennt. Nicht abgeschlossene Positionen sind in den Haltemedianen zensiert.
+
+Jede Strategieauswahl und Kandidatenkarte zeigt einen Zeithinweis, in Suchtreffern steht er bei der jeweiligen Strategiepassung. Für einen Mix wird kein gemeinsames Mittel oder scheinbar optimales Verkaufsdatum berechnet. Die hohen Weiterhalte-Renditen aus dem Test waren teils stark konzentriert; Weiterhalten bedeutet außerdem keinen erzwungenen Verkauf zum nächsten Prüftermin. Die allgemeine App-Rangliste ist nicht identisch mit dem historischen Zehn-Aktien-Portfolio und dessen Gewichtungs-/Ausführungsregeln.
+
+Quality, Value und Bilanzwachstum zeigen ausdrücklich **Portfolioaktualisierung statt Aktien-Haltedauer**. Sander, Frühwachstum und das eigene Gewinn-Quartalsmodell bleiben hinsichtlich optimaler Haltedauer ungeprüft. Deshalb gibt es für kurze oder überjährige Horizonte keinen automatisch übernommenen Strategievorschlag. Fehlende Evidenz verändert die bestehenden Aktienmerkmale und deren Farben nicht. Der frühere 12–2-Momentum-Standard bleibt ohne gespeicherte eigene Auswahl erhalten.
+
 ## Kursdiagramme in jeder Aktienkarte
 
 Beim Aufklappen wird der Kursverlauf **erst dann** geladen (kein externer TradingView-Embed). Vorgaben: **3 Monate**, schnell umschaltbar zwischen **1M, 3M, 6M, 1J, 3J, 5J und MAX** (höchstens die letzten rund zehn Jahre, soweit Daten vom Anbieter verfügbar sind). Pro Symbol erzeugt die Kursdaten-Pipeline eine separate JSON-Datei unter `docs/charts/<Ticker>.json`; ein GitHub-Actions-Cache behält Kurshistorien aus vorherigen Aktualisierungen. Bei fehlenden Kursreihen erscheint eine klare Meldung. Das Chartangebot wächst daher mit den rotierenden Börsendaten-Aktualisierungen.

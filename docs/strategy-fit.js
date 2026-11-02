@@ -99,7 +99,7 @@
     }
     return {key,name:NAMES[key],...result,label:LABELS[result.state]};
   }
-  function render(parent,stock,chosen){
+  function render(parent,stock,chosen,options={}){
     if(!chosen?.length)return;
     const panel=document.createElement("div");panel.className="fit-grid";
     panel.setAttribute("aria-label","Passung zu ausgewählten Strategien");
@@ -109,7 +109,14 @@
       const tile=document.createElement("div");tile.className="fit-tile fund-"+fit.state;
       const heading=document.createElement("strong");heading.textContent=fit.name+" · "+fit.label;
       const reason=document.createElement("span");reason.textContent=fit.reason;
-      tile.append(heading,reason);panel.appendChild(tile);
+      tile.append(heading,reason);
+      if(root.StockHorizon){
+        const time=root.StockHorizon.describe(key,options.horizon);
+        const note=document.createElement("span");note.className="fit-time horizon-"+time.state;
+        note.textContent=time.short+" · "+time.label;
+        note.title=time.detail+" "+time.study;tile.appendChild(note);
+      }
+      panel.appendChild(tile);
     }
     parent.appendChild(panel);
   }

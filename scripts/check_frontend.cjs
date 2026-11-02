@@ -6,8 +6,8 @@ function exactly(pattern,count,name){
 }
 exactly(/<html(?:\s[^>]*)?>/gi,1,"HTML opening");
 exactly(/<\/html>/gi,1,"HTML closing");
-exactly(/<script(?:\s[^>]*)?>/gi,7,"JS opening (six widgets and inline)");
-exactly(/<\/script>/gi,7,"JS closing (six widgets and inline)");
+exactly(/<script(?:\s[^>]*)?>/gi,8,"JS opening (seven widgets and inline)");
+exactly(/<\/script>/gi,8,"JS closing (seven widgets and inline)");
 if(!/<\/html>\s*$/i.test(html))throw new Error("Code leaked after </html>");
 const match=html.match(/<script>([\s\S]*?)<\/script>/i);
 if(!match)throw new Error("Missing inline script");
@@ -274,8 +274,8 @@ assert.equal(fitFor({...growthFit,growth_radar:{...growthFit.growth_radar,status
 const weakGrowth={...growthFit,growth_radar:{...growthFit.growth_radar,status:"criteria_not_met",revenue_acceleration:-.1}};
 assert.equal(fitFor(weakGrowth,"growth").state,"yellow");
 assert.ok(fitFor(weakGrowth,"growth").reason.includes("Beschleunigung"));
-assert.ok(match[1].includes('StockFit.render(head,s,selectedSearchFits())'),"Search cards must show selected per-strategy fit");
-assert.ok(match[1].includes('input.addEventListener("change",()=>searchController.refresh(false))'),"Fit selections must update cards without filtering search results or rebuilding the directory");
+assert.ok(match[1].includes('StockFit.render(head,s,selectedSearchFits(),{horizon:currentHorizon()})'),"Search cards must show selected per-strategy fit and the chosen time horizon");
+assert.ok(match[1].includes('updateTimePlan();searchController.refresh(false);'),"Fit selections must update cards without filtering search results or rebuilding the directory");
 console.log("Strategy fit: five strategies, four labelled colours, grey missing/stale evidence, partial-rule explanations and live checkbox updates verified.");
 
 const record=(value,state="green")=>({value,state,status:"ok",asof:"2026-10-31",report_end:"2026-09-30",filed:"2026-10-25",event_filed:"2026-10-25",reason:"Measured factor from dated evidence.",metrics:{}});
@@ -304,3 +304,5 @@ assert.equal(fitFor({ticker:"NO_DATA"},"earnings").state,"unknown");
 assert.ok(html.includes('StockResearch.render(article,s,independent?selectedSearchFits():activeFactors())'));
 assert.ok(!html.includes('ATR(14) relativ zum Kurs · experimentell'),"Short-term ATR must not masquerade as the revised low-risk factor");
 console.log("Research factors: four independent rank inputs, missing-data exclusion, colour/date consistency, shared search fit and full-year low volatility verified.");
+
+require("../tests/test_holding_horizon.cjs");

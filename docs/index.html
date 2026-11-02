@@ -50,6 +50,25 @@ a{color:#8bdecf;text-decoration-thickness:1px;text-underline-offset:3px}
 .fit-tile span{margin-top:3px;font-weight:400}
 .search-note{font-size:12px;color:#c2d4e2;padding:9px 0 0;line-height:1.5}
 @media(min-width:650px){.stock-search-results{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.horizon-panel{margin:16px 0 10px;padding:15px;border:1px solid #486a78;border-radius:12px;background:#112b39}
+.horizon-panel h2{font-size:16px;margin:0 0 10px}
+.horizon-controls{display:grid;grid-template-columns:minmax(0,1fr);gap:9px;align-items:end}
+.horizon-controls .btn{min-height:46px;white-space:normal}
+.horizon-description{font-size:12px;color:#c2d9df;line-height:1.6;margin:10px 0 5px}
+.horizon-selection{font-size:12px;color:#c7d6df;line-height:1.6;margin-top:8px}
+.strategy-choice .holding-chip{display:block;font-size:10px;line-height:1.5;padding:4px 6px;margin-top:7px;border-radius:5px;border:1px solid #53636e;color:#c4cdd4;background:#233441}
+.strategy-choice .holding-chip.horizon-match{color:#b5f4e4;border-color:#5cae99;background:#16423e}
+.strategy-choice .holding-chip.horizon-other{color:#f1dca9;border-color:#8a7850;background:#3a3528}
+.holding-note{padding:9px 10px;margin-top:9px;border-radius:8px;border:1px solid #4a5e6d;background:#172f3d;font-size:11px;line-height:1.6;color:#c7d8e2}
+.holding-note strong,.holding-note span{display:block}
+.holding-note.horizon-match{border-color:#4a9b8a}
+.holding-note.horizon-other{border-color:#8a7850}
+.fit-tile .fit-time{display:block;border-top:1px solid #66747b;margin-top:6px;padding-top:6px;font-size:10px;line-height:1.55;color:#c9d7df}
+.horizon-help{margin-top:8px;font-size:12px;line-height:1.6}
+.horizon-help summary{cursor:pointer;color:#b8dedb;padding:8px 0;min-height:36px}
+.horizon-help p{margin:9px 0}
+.horizon-panel button:disabled{cursor:default;opacity:.65}
+@media(min-width:650px){.horizon-controls{grid-template-columns:minmax(0,1fr) minmax(180px,1fr)}}
 .strategy-panel{margin-top:13px;padding:12px;border-radius:11px;background:#112838;border:1px solid #33596a}
 .strategy-panel h3{font-size:14px;margin:0 0 7px}
 .strategy-grid{display:grid;grid-template-columns:1fr;gap:6px}
@@ -202,6 +221,33 @@ h1{font-size:27px}
   <div class="stat"><b id="eligible">–</b><span>Aktuell prüfbar</span></div>
 </div>
 
+<section class="horizon-panel" aria-labelledby="horizonTitle">
+  <h2 id="horizonTitle">Dein Anlagehorizont</h2>
+  <div class="horizon-controls">
+    <div><label class="field" for="investmentHorizon">Wie lange möchtest du investieren?</label>
+      <select id="investmentHorizon" aria-describedby="horizonDescription">
+        <option value="all">Offen / alle Horizonte</option>
+        <option value="short">1–4 Wochen</option>
+        <option value="quarter">Etwa 3 Monate</option>
+        <option value="half">Etwa 6 Monate</option>
+        <option value="year">Etwa 12 Monate</option>
+        <option value="longer">Länger als 1 Jahr</option>
+      </select>
+    </div>
+    <button id="applyHorizon" class="btn secondary" type="button" disabled>Erst Horizont wählen</button>
+  </div>
+  <p id="horizonDescription" class="horizon-description">Wähle einen Horizont für passende Strategiehinweise.</p>
+  <div id="horizonApplyStatus" class="small muted" role="status" aria-live="polite"></div>
+  <details class="horizon-help">
+    <summary>Was sagt der Zeithinweis aus?</summary>
+    <p>Der Vorschlag setzt die Strategie-Häkchen im geöffneten Reiter. Bei „Kandidaten“ entsteht dadurch eine neue Rangliste; bei „Aktiensuche“ ändern sich die angezeigten Prüfungen. Namens-Treffer bleiben sichtbar. Du kannst alle Häkchen danach selbst ändern.</p>
+    <p>Momentum: in der Auswahl aus früheren Daten meist 252 Handelssitzungen (etwa zwölf Monate). Trend: 60–120 Sitzungen (etwa drei bis sechs Monate). Geringe Schwankung: meist jährlicher Prüftakt; tatsächlich abgeschlossene Trades hatten einen Median von etwa sechs Monaten. Das sind historische Zeitansätze für die jeweilige Kursregel, keine optimale Dauer für eine bestimmte Aktie.</p>
+    <p>Prüfen, Halten und Verkaufen sind verschieden: Beim Weiterhalten bleibt eine weiterhin ausgewählte Aktie über den Prüfzeitpunkt hinaus im Bestand. Die hohen historischen Weiterhalte-Renditen gingen teils mit starker Einzelpositionskonzentration einher. Stopps und andere Ausstiegsgründe können die Haltung verkürzen.</p>
+    <p>Für Strategiemischungen ist keine gemeinsame Haltedauer geprüft. Bei Quality, Value und Bilanzwachstum betreffen die Literaturdaten nur Portfolioaktualisierungen. Für unsere Sander-, Frühwachstums- und Gewinn-Quartalsmodelle ist die optimale Haltedauer offen. Diese Strategien bleiben manuell auswählbar.</p>
+    <p>Grundlage: Kursregeln 2019–2025 auf einer historischen Großkonzern-Kohorte, jährliche Zeitwahl aus fünf abgeschlossenen vorherigen Jahren. Die heutige weltweite Aktienliste ist damit nicht identisch geprüft. Eine zukünftige optimale Haltedauer oder sichere Marktüberlegenheit ist nicht nachgewiesen. <a href="https://github.com/BoraBoraPalm/Bottleneck-Lab-Android/blob/9fbd2c0105816f3d86a807cd22d4a55c6c3d23a3/research/tests/2026-11-02-holding-duration/files/output/bericht.md" target="_blank" rel="noopener noreferrer">Gespeicherte Ergebnisse und Grenzen</a>.</p>
+  </details>
+</section>
+
 <nav class="view-tabs" role="tablist" aria-label="Ansicht wählen">
   <button id="tabCandidates" class="view-tab" type="button" role="tab" aria-selected="true" aria-controls="candidatesPanel">Kandidaten</button>
   <button id="tabStockSearch" class="view-tab" type="button" role="tab" aria-selected="false" aria-controls="stockSearchPanel" tabindex="-1">Aktiensuche</button>
@@ -231,7 +277,7 @@ h1{font-size:27px}
       </label>
       <label class="strategy-choice" for="factorTrend">
         <input type="checkbox" id="factorTrend" data-factor="trend">
-        <span><strong>200-Tage-Trend</strong><span>Abstand zur Trendlinie · kein nachgewiesener Zusatzgewinn</span></span>
+        <span><strong>200-Tage-Trend</strong><span>Abstand zur 200-Tage-Linie · historischer Zeitansatz</span></span>
       </label>
       <label class="strategy-choice" for="factorSander">
         <input type="checkbox" id="factorSander" data-factor="sander">
@@ -247,6 +293,7 @@ h1{font-size:27px}
       <label class="strategy-choice" for="factorInvestment"><input type="checkbox" id="factorInvestment" data-factor="investment"><span><strong>Konservatives Bilanzwachstum</strong><span>Geringerer jährlicher Zuwachs der Bilanzsumme · Sondereffekte prüfen</span></span></label>
     </div>
     <div id="strategySummary" class="strategy-summary" role="status">12–2-Monats-Momentum aktiv. Jede zusätzliche Auswahl wird gleichgewichtet kombiniert.</div>
+    <div id="candidateTimePlan" class="horizon-selection"></div>
     <div class="small muted">Unternehmensprüfung über echte SEC-Berichte: bisher hauptsächlich US-Unternehmen. Sander und Frühwachstum berücksichtigen nur Titel mit den jeweils nötigen Nachweisen. Frühwachstum zeigt drei getrennte Regelwerte, keine Wahrscheinlichkeit einer Kursexplosion. Die Strategiekombination ist nicht als renditesteigernd validiert; Kauf-/Verkaufswarnungen bleiben eigene Regeln.</div>
   </div>
   <label class="switch" for="trOnly">
@@ -283,6 +330,7 @@ h1{font-size:27px}
       <label class="strategy-choice"><input type="checkbox" data-fit="earnings" checked><span><strong>Gewinnmomentum · Quartalsmodell</strong></span></label>
       <label class="strategy-choice"><input type="checkbox" data-fit="investment" checked><span><strong>Konservatives Bilanzwachstum</strong></span></label>
     </div>
+    <div id="searchTimePlan" class="horizon-selection"></div>
     <p class="fit-legend small">Grün: passt gut · Gelb: passt teilweise · Orange: passt wenig · Rot: passt schlecht · Grau: zu wenig Daten.</p>
     <p class="small muted">Die Auswahl ändert nur die angezeigten Bewertungen. Alle Namens-Treffer bleiben sichtbar.</p>
     <details class="fund-help"><summary>Wie wird die Passung eingeordnet?</summary>
@@ -325,7 +373,8 @@ h1{font-size:27px}
 <script src="growth-widget.js?v=1"></script>
 <script src="stock-search.js?v=1"></script>
 <script src="research-factors.js?v=1"></script>
-<script src="strategy-fit.js?v=2"></script>
+<script src="holding-horizon.js?v=1"></script>
+<script src="strategy-fit.js?v=3"></script>
 <script>
 "use strict";
 const $=id=>document.getElementById(id);
@@ -472,7 +521,8 @@ function makeCard(s,mix,options={}){
   add(actions,"span",exitText[s.exit_review]||"Ausstieg ungeprüft",
       "chip "+((s.exit_review||"").startsWith("review_exit")?"action-sell":"unknown"));
   if(typeof StockFundamentals!=="undefined")StockFundamentals.preview(head,s);
-  if(independent&&typeof StockFit!=="undefined")StockFit.render(head,s,selectedSearchFits());
+  if(independent&&typeof StockFit!=="undefined")StockFit.render(head,s,selectedSearchFits(),{horizon:currentHorizon()});
+  if(!independent)StockHorizon.renderCard(head,activeFactors(),currentHorizon());
   const showGrowth=(independent?selectedSearchFits().includes("growth")&&Boolean(s.growth_radar?.quarters?.length):activeFactors().includes("growth"))
     &&typeof StockGrowth!=="undefined";
   if(showGrowth)StockGrowth.preview(head,s);
@@ -551,6 +601,7 @@ function makeCard(s,mix,options={}){
   return article;
 }
 function render(){
+  updateTimePlan();
   if(!snapshot)return;
   const {shown,total,limit,scores}=dataRows();
   const active=activeFactors();
@@ -645,12 +696,46 @@ for(const id of ["region","scope","trOnly","showTradeLevels","search"]){
 for(const input of document.querySelectorAll("#strategyChoices input[data-factor]")){
   input.addEventListener("change",()=>{
     if(activeFactors().length===0)input.checked=true; // at least one ranking factor
+    saveTimePlan();
     render();
   });
 }
 function selectedSearchFits(){
   return Array.from(document.querySelectorAll("#searchFitChoices input[data-fit]:checked"),input=>input.dataset.fit);
 }
+function currentHorizon(){return StockHorizon.normalize($("investmentHorizon").value);}
+function saveTimePlan(){
+  try{StockHorizon.writeSettings(localStorage,{horizon:currentHorizon(),candidates:activeFactors(),search:selectedSearchFits()});}catch{}
+}
+function restoreTimePlan(){
+  let saved=null;try{saved=StockHorizon.readSettings(localStorage);}catch{}
+  if(!saved)return;
+  $("investmentHorizon").value=saved.horizon;
+  for(const input of document.querySelectorAll("#strategyChoices input[data-factor]"))input.checked=saved.candidates.includes(input.dataset.factor);
+  for(const input of document.querySelectorAll("#searchFitChoices input[data-fit]"))input.checked=saved.search.includes(input.dataset.fit);
+}
+function updateTimePlan(){
+  const h=currentHorizon(),plan=StockHorizon.plan(h),searching=!$("stockSearchPanel").hidden;
+  $("horizonDescription").textContent=plan.text;
+  const button=$("applyHorizon");button.disabled=!plan.proposal;
+  button.textContent=plan.proposal?StockHorizon.profiles[plan.proposal].name+(searching?" prüfen":" auswählen")
+    :h==="all"?"Erst Horizont wählen":"Kein geprüfter Strategievorschlag";
+  const candidate=StockHorizon.summary(activeFactors(),h),search=StockHorizon.summary(selectedSearchFits(),h);
+  $("candidateTimePlan").textContent=candidate.title+". "+candidate.text;
+  $("searchTimePlan").textContent=search.title+". "+search.text;
+  StockHorizon.decorate($("strategyChoices"),h);StockHorizon.decorate($("searchFitChoices"),h);
+}
+restoreTimePlan();
+$("investmentHorizon").addEventListener("change",()=>{
+  $("horizonApplyStatus").textContent="";saveTimePlan();render();searchController?.refresh(false);
+});
+$("applyHorizon").addEventListener("click",()=>{
+  const key=StockHorizon.plan(currentHorizon()).proposal;if(!key)return;
+  const searching=!$("stockSearchPanel").hidden;
+  for(const input of document.querySelectorAll(searching?"#searchFitChoices input[data-fit]":"#strategyChoices input[data-factor]"))input.checked=(input.dataset.factor||input.dataset.fit)===key;
+  saveTimePlan();render();searchController?.refresh(false);
+  $("horizonApplyStatus").textContent=StockHorizon.profiles[key].name+" für "+(searching?"die Strategieprüfung":"die Kandidatenliste")+" übernommen. Weitere Strategien kannst du selbst anhaken.";
+});
 searchController=StockSearch.create({
   input:$("stockSearchInput"),form:$("stockSearchForm"),status:$("stockSearchStatus"),
   results:$("stockSearchResults"),suggestions:$("stockSearchSuggestions"),
@@ -659,7 +744,7 @@ searchController=StockSearch.create({
 });
 $("showTradeLevels").addEventListener("change",()=>searchController.refresh(false));
 for(const input of document.querySelectorAll("#searchFitChoices input[data-fit]")){
-  input.addEventListener("change",()=>searchController.refresh(false));
+  input.addEventListener("change",()=>{saveTimePlan();updateTimePlan();searchController.refresh(false);});
 }
 function setView(view,focus=false){
   const searching=view==="search";
@@ -672,6 +757,7 @@ function setView(view,focus=false){
   if(searching)searchController.activate();
   if(focus)$(searching?"tabStockSearch":"tabCandidates").focus();
   history.replaceState(null,"",searching?"#search":"#candidates");
+  updateTimePlan();
 }
 for(const [id,view] of [["tabCandidates","candidates"],["tabStockSearch","search"]]){
   $(id).addEventListener("click",()=>setView(view));
