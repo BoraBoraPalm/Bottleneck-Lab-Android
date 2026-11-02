@@ -1,0 +1,272 @@
+[
+  {
+    "archive_path": "CHECKSUMS.sha256",
+    "relative_path": "CHECKSUMS.sha256",
+    "bytes": 3162,
+    "sha256": "7a8ffcb65153dcd21c7e2efb130258dba7e15c921e10bf0c167b75ba05c40e11",
+    "in_repository": false
+  },
+  {
+    "archive_path": "README.md",
+    "relative_path": "README.md",
+    "bytes": 4199,
+    "sha256": "803a761f4fbfe154d881c3f0294dadeb8d0452f828db284145171f6602479780",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-01-behavioral-benchmark/files/README.md"
+  },
+  {
+    "archive_path": "REPORT.html",
+    "relative_path": "REPORT.html",
+    "bytes": 494469,
+    "sha256": "f7d6514b1ecc0661887cf9d0af8f3a1cc9f5b6dc53a4e9f1f2237dbaa0e0b303",
+    "in_repository": false
+  },
+  {
+    "archive_path": "REPORT.md",
+    "relative_path": "REPORT.md",
+    "bytes": 17637,
+    "sha256": "7049bb9051aeecadb2b9695965486ba483275c3d531b81046edef9d936b9255b",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-01-behavioral-benchmark/files/REPORT.md"
+  },
+  {
+    "archive_path": "data/10_Portfolios_Prior_12_2_CSV.zip",
+    "relative_path": "data/10_Portfolios_Prior_12_2_CSV.zip",
+    "bytes": 119215,
+    "sha256": "688467caa28578a8dca70698537c4f03c406b246350b6f3e9c396e15e1e7964f",
+    "in_repository": false
+  },
+  {
+    "archive_path": "data/6_Portfolios_ME_Prior_12_2_CSV.zip",
+    "relative_path": "data/6_Portfolios_ME_Prior_12_2_CSV.zip",
+    "bytes": 122033,
+    "sha256": "e973a50bf2c2f3738132e6efa05533fb7a473c18995aa36899a493904842bfee",
+    "in_repository": false
+  },
+  {
+    "archive_path": "data/F-F_Momentum_Factor_CSV.zip",
+    "relative_path": "data/F-F_Momentum_Factor_CSV.zip",
+    "bytes": 5603,
+    "sha256": "27ed60e5b2caa9ea334a261cddfa864a9926f6bf45e9677c95dfd835c5abb315",
+    "in_repository": false
+  },
+  {
+    "archive_path": "data/F-F_Research_Data_5_Factors_2x3_CSV.zip",
+    "relative_path": "data/F-F_Research_Data_5_Factors_2x3_CSV.zip",
+    "bytes": 11971,
+    "sha256": "17d7a575e71d6764a70ddec3f8d887756c0eebf3a60f64d6ba95d2adde3fed26",
+    "in_repository": false
+  },
+  {
+    "archive_path": "data/SignalDoc.csv",
+    "relative_path": "data/SignalDoc.csv",
+    "bytes": 183100,
+    "sha256": "0ceb11020c2138c2477b732948beaac2e67ccaad8428753e3a79af2bb5ea0178",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-01-behavioral-benchmark/files/data/SignalDoc.csv"
+  },
+  {
+    "archive_path": "data/selected_counts.json",
+    "relative_path": "data/selected_counts.json",
+    "bytes": 2105,
+    "sha256": "88f82a8243df26656bb8cf7b57bb9582098a850797b11ff0c8179d9ab4e49f42",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-01-behavioral-benchmark/files/data/selected_counts.json"
+  },
+  {
+    "archive_path": "data/sources.json",
+    "relative_path": "data/sources.json",
+    "bytes": 2678,
+    "sha256": "d4bbcee09c932c030c7ceea83fb08ed0b3e75320a6803deeb999d04739c226b0",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-01-behavioral-benchmark/files/data/sources.json"
+  },
+  {
+    "archive_path": "data/usd_eur_daily.json",
+    "relative_path": "data/usd_eur_daily.json",
+    "bytes": 607634,
+    "sha256": "5a4f60f26a13b0fccf5888604300996e6b40bdb790c22146b474b38ecf6b4239",
+    "in_repository": false
+  },
+  {
+    "archive_path": "download_data.py",
+    "relative_path": "download_data.py",
+    "bytes": 1328,
+    "sha256": "80d8ed80bd41340af3fe746937afc7fc2c478d80bb8eb5d30997aecc126048bf",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-01-behavioral-benchmark/files/download_data.py"
+  },
+  {
+    "archive_path": "environment.json",
+    "relative_path": "environment.json",
+    "bytes": 212,
+    "sha256": "ee8336594d94f65f720127d546edab9ca6ac8c775c19ff45291ee5da023e2d16",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-01-behavioral-benchmark/files/environment.json"
+  },
+  {
+    "archive_path": "make_report.py",
+    "relative_path": "make_report.py",
+    "bytes": 25581,
+    "sha256": "adf8e8bbae5ef1e5702ccdff7445473e810255712ef5cbd963d825deb8a46ecf",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-01-behavioral-benchmark/files/make_report.py"
+  },
+  {
+    "archive_path": "output/annual_big_sensitivity_only_gross_sleeves.csv",
+    "relative_path": "output/annual_big_sensitivity_only_gross_sleeves.csv",
+    "bytes": 91247,
+    "sha256": "43ff318292615352eadc4fb79dc8efd592a2bc790beff533b79b38d05b83f977",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-01-behavioral-benchmark/files/output/annual_big_sensitivity_only_gross_sleeves.csv"
+  },
+  {
+    "archive_path": "output/annual_big_sensitivity_only_inputs.csv",
+    "relative_path": "output/annual_big_sensitivity_only_inputs.csv",
+    "bytes": 66512,
+    "sha256": "5a0cd9e1beabcfcacd073d8f34e7d080b587bca4d532bcf6176f8a19b69b9711",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-01-behavioral-benchmark/files/output/annual_big_sensitivity_only_inputs.csv"
+  },
+  {
+    "archive_path": "output/comparison.png",
+    "relative_path": "output/comparison.png",
+    "bytes": 354545,
+    "sha256": "b59a515b014ce2f38e640532b87685c58114b9ba0c8e2150ee443054968e1d5c",
+    "in_repository": false
+  },
+  {
+    "archive_path": "output/independent_monthly_momentum_inputs.csv",
+    "relative_path": "output/independent_monthly_momentum_inputs.csv",
+    "bytes": 16573,
+    "sha256": "90c926821b54786d1d5ba57dc8695a2f0aff083eb62aa6c4e438d6d2aa31ba88",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-01-behavioral-benchmark/files/output/independent_monthly_momentum_inputs.csv"
+  },
+  {
+    "archive_path": "output/liquid_original_gross_sleeves.csv",
+    "relative_path": "output/liquid_original_gross_sleeves.csv",
+    "bytes": 90526,
+    "sha256": "17f0ffa7651dc730211283f552de79eba06bbe09d68e1d02fd3fac85e8c566e4",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-01-behavioral-benchmark/files/output/liquid_original_gross_sleeves.csv"
+  },
+  {
+    "archive_path": "output/liquid_original_inputs.csv",
+    "relative_path": "output/liquid_original_inputs.csv",
+    "bytes": 66079,
+    "sha256": "029e0c3e7ae5f96188a073cbf03f3c12f4e57797a7be3f213433f06900c0f6a1",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-01-behavioral-benchmark/files/output/liquid_original_inputs.csv"
+  },
+  {
+    "archive_path": "output/overview_german.csv",
+    "relative_path": "output/overview_german.csv",
+    "bytes": 1053,
+    "sha256": "13e4729e7bc8b995d89fb358fa7bbd9baf5130b9102783e1e100e23df1b30c09",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-01-behavioral-benchmark/files/output/overview_german.csv"
+  },
+  {
+    "archive_path": "output/results.json",
+    "relative_path": "output/results.json",
+    "bytes": 783777,
+    "sha256": "0faa28ec51fb85fbd61a806c8639792191e010ab02d1fcdd8f3fb2a249a4dab4",
+    "in_repository": false
+  },
+  {
+    "archive_path": "output/run.log",
+    "relative_path": "output/run.log",
+    "bytes": 5952,
+    "sha256": "d7b94240ee9fd1f05d6b846ab17dd21c39f3d6f479a08386e36d9b277d347dc5",
+    "in_repository": false
+  },
+  {
+    "archive_path": "output/supplement.json",
+    "relative_path": "output/supplement.json",
+    "bytes": 6880,
+    "sha256": "d0abc520a1ce74bdedb777846c12303f42fa94b0e3509ae58791ca9d6796712e",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-01-behavioral-benchmark/files/output/supplement.json"
+  },
+  {
+    "archive_path": "output/usd_eur_month_end_reference.csv",
+    "relative_path": "output/usd_eur_month_end_reference.csv",
+    "bytes": 10904,
+    "sha256": "33403e6c4400d870f56e5761817aac69496fbbd1644f069274939f3b1b20f3fe",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-01-behavioral-benchmark/files/output/usd_eur_month_end_reference.csv"
+  },
+  {
+    "archive_path": "output/value_weighted_quintiles_gross_sleeves.csv",
+    "relative_path": "output/value_weighted_quintiles_gross_sleeves.csv",
+    "bytes": 91202,
+    "sha256": "0c1c0e2195cf065e717f01a9f456df284349ede4c98ba14755a6cca7df1737cc",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-01-behavioral-benchmark/files/output/value_weighted_quintiles_gross_sleeves.csv"
+  },
+  {
+    "archive_path": "output/value_weighted_quintiles_inputs.csv",
+    "relative_path": "output/value_weighted_quintiles_inputs.csv",
+    "bytes": 66584,
+    "sha256": "843d91aa270375be4f3a7967a72a15ab16021a20fd8bf36694b23ee9b0f3b521",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-01-behavioral-benchmark/files/output/value_weighted_quintiles_inputs.csv"
+  },
+  {
+    "archive_path": "output/walk_forward_net_1pct.csv",
+    "relative_path": "output/walk_forward_net_1pct.csv",
+    "bytes": 5542,
+    "sha256": "7a418e2d0e25f564e5f4d70eb78497ef4aad189535ef9f4ed6909c624bfa2acb",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-01-behavioral-benchmark/files/output/walk_forward_net_1pct.csv"
+  },
+  {
+    "archive_path": "output/wealth_net_1pct.csv",
+    "relative_path": "output/wealth_net_1pct.csv",
+    "bytes": 89885,
+    "sha256": "577b8d4ce99cbaacf199a0882c6004c282f897ccfe181f0c392097fec7f5f6a3",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-01-behavioral-benchmark/files/output/wealth_net_1pct.csv"
+  },
+  {
+    "archive_path": "protocol.json",
+    "relative_path": "protocol.json",
+    "bytes": 3828,
+    "sha256": "6ae37388d3b46bd1e24cfcd071aa3722bf6f811fc0fd899684d8bb94e5a90a80",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-01-behavioral-benchmark/files/protocol.json"
+  },
+  {
+    "archive_path": "requirements.txt",
+    "relative_path": "requirements.txt",
+    "bytes": 76,
+    "sha256": "2748c74810d4ceb04835991be1ba61db18d9866c24541e14e306243d96364309",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-01-behavioral-benchmark/files/requirements.txt"
+  },
+  {
+    "archive_path": "run_study.py",
+    "relative_path": "run_study.py",
+    "bytes": 17275,
+    "sha256": "e14656cba5593ed9d45a0f8bc9e54983bab6a3762df3a01b94773c7263f6ed96",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-01-behavioral-benchmark/files/run_study.py"
+  },
+  {
+    "archive_path": "source_audit.md",
+    "relative_path": "source_audit.md",
+    "bytes": 6413,
+    "sha256": "86c46396721402e99ceb11f88ccb66897dc1d09296d414162215bff28ac77fb9",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-01-behavioral-benchmark/files/source_audit.md"
+  },
+  {
+    "archive_path": "supplement.py",
+    "relative_path": "supplement.py",
+    "bytes": 4650,
+    "sha256": "0e48275841c9af1c289c11125714fcce30c1009245782c30b8394f4d540f4977",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-01-behavioral-benchmark/files/supplement.py"
+  }
+]

@@ -1,0 +1,46 @@
+{
+  "id": "2026-10-31-momentum-12-2",
+  "title": "12–2-Momentum gegen ursprüngliches Momentum/ATR-Modell",
+  "date": "2026-10-31",
+  "period": "2021–2026",
+  "strategy": "Ursprünglicher 60-Tage-Score versus 12–2-Rückblick-Rang",
+  "prediction": "20-Handelstage-Ausstieg bei identischen weiteren Bedingungen",
+  "holding": {
+    "kind": "maximum_sessions",
+    "maximum": 20,
+    "entry_window_sessions": 5,
+    "average_actual": null,
+    "variable_by": "Füllung/Stoppausstieg",
+    "optimized": false
+  },
+  "rebalance": "Gemeinsame 20-Session-Handelsannahme",
+  "result": "12–2 bezeichnet den Signalrückblick, keine zwölfmonatige Haltedauer.",
+  "limits": [
+    "Aktuelle Überlebendenliste",
+    "Kein gesondertes 3-/6-/12-Monats-Halteexperiment",
+    "Kein vollständiger ursprünglicher Versuchscode im ZIP"
+  ],
+  "repro": "Vergleichsresultate und Kurven archiviert; damaliger kompletter Code nicht mitgeliefert.",
+  "schema_version": 1,
+  "archived_date": "2026-11-02",
+  "status": "completed_limited_scope",
+  "source_artifact": {
+    "filename": "Bottleneck_Momentum_12_2_Research.zip",
+    "url": "https://chatgpt.com/library?file_id=libfile_9411fbe17e5081918573115989254416&account_id=personal",
+    "sha256": "013d84f9ebfac711c851b659bf74b15a115d4a810d50c2e5bde08ee1079e2192",
+    "bytes": 4062,
+    "archive_root": ""
+  },
+  "entry_report": "files/momentum_results/momentum_model_comparison.json",
+  "artifact_members": "ARTIFACT_MEMBERS.json",
+  "data_availability": "Complete original bundle remains accessible to the owner; repository retains code, reports, compact inputs and results. See member hashes, no reevaluation required.",
+  "holding_period_search_performed": false,
+  "not_tested": [
+    "Systematisch ausgewählte optimale Haltedauer je Strategie",
+    "Erfolg auf allen nicht geprüften Zeiträumen/Horizonten"
+  ],
+  "reproduction_status": "Vergleichsresultate und Kurven archiviert; damaliger kompletter Code nicht mitgeliefert.",
+  "costs": "Unveränderte Parameter siehe Originalberichte; Gebührenmodelle sind nicht als tatsächliche Ausführungskosten verifiziert.",
+  "benchmark": "Unveränderte Benchmarkdefinition im Originalbericht nachlesen.",
+  "time_splits": "Originale zeitliche Aufteilung ist im eingefrorenen Bericht/Protokoll erhalten; keine neue Auswertung beim Archivieren."
+}

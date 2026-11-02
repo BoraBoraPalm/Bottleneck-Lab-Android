@@ -1,0 +1,215 @@
+{
+  "label": "Exploratory independent construction check, added after the primary test; all inspected variants are disclosed.",
+  "momentum": {
+    "French monthly large top30": {
+      "months": 312,
+      "cagr": 0.07352461814501889,
+      "volatility": 0.15823388114385054,
+      "sharpe": 0.4108930362978085,
+      "max_month_end_drawdown": -0.486997187882366,
+      "longest_underwater_months": 66,
+      "ending_wealth_1": 6.3257527379898635,
+      "geometric_relative_excess": -0.008538595202953086,
+      "information_ratio": -0.12040926035152569,
+      "rolling_outperformance": {
+        "36": {
+          "windows": 277,
+          "outperformance_fraction": 0.36101083032490977
+        },
+        "60": {
+          "windows": 253,
+          "outperformance_fraction": 0.23715415019762845
+        },
+        "120": {
+          "windows": 193,
+          "outperformance_fraction": 0.10362694300518134
+        }
+      },
+      "relative_log_hac": {
+        "coefficient": -0.0007146048212093966,
+        "se": 0.0009584952525090344,
+        "z": -0.7455486287895422,
+        "p": 0.45594012506618364,
+        "betas": [],
+        "p_holm_all_18": 1.0
+      }
+    },
+    "French monthly small top30": {
+      "months": 312,
+      "cagr": 0.10632726767639569,
+      "volatility": 0.21483383582375404,
+      "sharpe": 0.49239961708411456,
+      "max_month_end_drawdown": -0.5490932906132311,
+      "longest_underwater_months": 62,
+      "ending_wealth_1": 13.83483651067883,
+      "geometric_relative_excess": 0.02175652838875452,
+      "information_ratio": 0.26823258489967794,
+      "rolling_outperformance": {
+        "36": {
+          "windows": 277,
+          "outperformance_fraction": 0.48736462093862815
+        },
+        "60": {
+          "windows": 253,
+          "outperformance_fraction": 0.43478260869565216
+        },
+        "120": {
+          "windows": 193,
+          "outperformance_fraction": 0.3316062176165803
+        }
+      },
+      "relative_log_hac": {
+        "coefficient": 0.001793602738394245,
+        "se": 0.001855020475478105,
+        "z": 0.9668910732276255,
+        "p": 0.33359848964269945,
+        "betas": [],
+        "p_holm_all_18": 1.0
+      }
+    },
+    "French monthly top10": {
+      "months": 312,
+      "cagr": 0.08410431892097052,
+      "volatility": 0.21182132601860276,
+      "sharpe": 0.4011577235505304,
+      "max_month_end_drawdown": -0.5166237190931042,
+      "longest_underwater_months": 70,
+      "ending_wealth_1": 8.162965094574371,
+      "geometric_relative_excess": 0.001232363763765688,
+      "information_ratio": 0.08978275809114893,
+      "rolling_outperformance": {
+        "36": {
+          "windows": 277,
+          "outperformance_fraction": 0.5306859205776173
+        },
+        "60": {
+          "windows": 253,
+          "outperformance_fraction": 0.5138339920948617
+        },
+        "120": {
+          "windows": 193,
+          "outperformance_fraction": 0.39378238341968913
+        }
+      },
+      "relative_log_hac": {
+        "coefficient": 0.00010263375223654223,
+        "se": 0.0018297395186490342,
+        "z": 0.05609200172509834,
+        "p": 0.9552685156072854,
+        "betas": [],
+        "p_holm_all_18": 1.0
+      }
+    },
+    "French monthly decile9": {
+      "months": 312,
+      "cagr": 0.06626208365348685,
+      "volatility": 0.15390360465988917,
+      "sharpe": 0.373425647437617,
+      "max_month_end_drawdown": -0.5182620171258245,
+      "longest_underwater_months": 64,
+      "ending_wealth_1": 5.302285573591288,
+      "geometric_relative_excess": -0.015245961319813437,
+      "information_ratio": -0.20308178027963056,
+      "rolling_outperformance": {
+        "36": {
+          "windows": 277,
+          "outperformance_fraction": 0.36462093862815886
+        },
+        "60": {
+          "windows": 253,
+          "outperformance_fraction": 0.3359683794466403
+        },
+        "120": {
+          "windows": 193,
+          "outperformance_fraction": 0.20725388601036268
+        }
+      },
+      "relative_log_hac": {
+        "coefficient": -0.0012802813263067946,
+        "se": 0.0012044367191470463,
+        "z": -1.0629710186961583,
+        "p": 0.28779509435279216,
+        "betas": [],
+        "p_holm_all_18": 1.0
+      }
+    }
+  },
+  "currency": {
+    "Mom12m": {
+      "cagr": 0.05327211819629054,
+      "volatility": 0.18753224654374268,
+      "max_month_end_drawdown": -0.6281535944551417
+    },
+    "EarningsSurprise": {
+      "cagr": 0.07623068709221335,
+      "volatility": 0.1581394530349389,
+      "max_month_end_drawdown": -0.570931537205823
+    },
+    "REV6": {
+      "cagr": 0.07937631621747225,
+      "volatility": 0.20172511851999642,
+      "max_month_end_drawdown": -0.553362541850563
+    },
+    "AnnouncementReturn": {
+      "cagr": 0.06186568379307101,
+      "volatility": 0.18749530367619274,
+      "max_month_end_drawdown": -0.6602712002379925
+    },
+    "Mom12m + EarningsSurprise": {
+      "cagr": 0.06612181764716148,
+      "volatility": 0.16542265135783862,
+      "max_month_end_drawdown": -0.5924860254746598
+    },
+    "Mom12m + REV6": {
+      "cagr": 0.06843759481183564,
+      "volatility": 0.1837362881434541,
+      "max_month_end_drawdown": -0.5808533627960129
+    },
+    "Mom12m + AnnouncementReturn": {
+      "cagr": 0.05880170966040538,
+      "volatility": 0.18111109325629782,
+      "max_month_end_drawdown": -0.6360399176911717
+    },
+    "EarningsSurprise + REV6": {
+      "cagr": 0.0792009908609138,
+      "volatility": 0.17389404325036173,
+      "max_month_end_drawdown": -0.5409682008364902
+    },
+    "EarningsSurprise + AnnouncementReturn": {
+      "cagr": 0.07009387724540761,
+      "volatility": 0.16742478125345878,
+      "max_month_end_drawdown": -0.6094034455728956
+    },
+    "REV6 + AnnouncementReturn": {
+      "cagr": 0.07248937181484823,
+      "volatility": 0.18526922469551282,
+      "max_month_end_drawdown": -0.5983401601515566
+    },
+    "Equal four": {
+      "cagr": 0.06994299519841411,
+      "volatility": 0.1721248204917386,
+      "max_month_end_drawdown": -0.5892104963907173
+    },
+    "BM": {
+      "cagr": 0.08293948852564906,
+      "volatility": 0.20924742345985606,
+      "max_month_end_drawdown": -0.5460974036912788
+    },
+    "GP": {
+      "cagr": 0.08351780043185349,
+      "volatility": 0.15430365505713203,
+      "max_month_end_drawdown": -0.538385703975184
+    },
+    "Momentum + Value + Quality": {
+      "cagr": 0.07716336587410827,
+      "volatility": 0.1642903513660661,
+      "max_month_end_drawdown": -0.47471555066592674
+    },
+    "US Market": {
+      "cagr": 0.07636947962443211,
+      "volatility": 0.15619820778454133,
+      "max_month_end_drawdown": -0.582552124469911
+    }
+  },
+  "fx_method": "Unhedged USD to EUR; last available reference each calendar month. Frankfurter blended official-source mid-rates, not broker FX fills. EUR Sharpe intentionally omitted. No Austrian taxes."
+}

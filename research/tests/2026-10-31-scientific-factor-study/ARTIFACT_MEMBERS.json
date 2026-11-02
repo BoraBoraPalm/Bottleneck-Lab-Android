@@ -1,0 +1,25 @@
+[
+  {
+    "archive_path": "factor_robustness/factor_study_summary.csv",
+    "relative_path": "factor_robustness/factor_study_summary.csv",
+    "bytes": 23907,
+    "sha256": "08c4146421437748d31a7245e664ca0f9ae237cde0abc08f82421e31d90dffc5",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-10-31-scientific-factor-study/files/factor_robustness/factor_study_summary.csv"
+  },
+  {
+    "archive_path": "factor_robustness/full_factor_study.json",
+    "relative_path": "factor_robustness/full_factor_study.json",
+    "bytes": 199875,
+    "sha256": "a4f1634e05906bc494763f58ee28a1ef02f96124ae5f6e46d1f620dae7b05687",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-10-31-scientific-factor-study/files/factor_robustness/full_factor_study.json"
+  },
+  {
+    "archive_path": "scientific_factor_output.log",
+    "relative_path": "scientific_factor_output.log",
+    "bytes": 13864,
+    "sha256": "1ac98e75d462ebbfcebdf06ba627bc56d7b649d5e1a306cfef277d59164df7f2",
+    "in_repository": false
+  }
+]

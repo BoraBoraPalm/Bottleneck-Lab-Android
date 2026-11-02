@@ -1,0 +1,56 @@
+{
+  "status": "post-primary diagnostic; no future-coverage sample filter; conditional models unchanged",
+  "n": 3713,
+  "firms": 73,
+  "next_week_measurable_fraction": 0.7085914354969027,
+  "baseline_logloss": 1.3587028067908267,
+  "candidate_logloss": 1.3130106242981243,
+  "baseline_accuracy": 0.4877457581470509,
+  "candidate_accuracy": 0.5103689738755723,
+  "comparison": {
+    "effect": 0.045692182492702155,
+    "ci_low": 0.03335546214627781,
+    "ci_high": 0.05811930850814353,
+    "p_one_sided": 0.0001999600079984003,
+    "block_weeks": 8,
+    "weeks": 153,
+    "iterations": 5000
+  },
+  "availability_baseline": {
+    "n": 3713,
+    "base_rate": 0.7085914354969027,
+    "brier": 0.1394146221908344,
+    "logloss": 0.42421546798678933,
+    "auc": 0.8561812064458247,
+    "accuracy": 0.8036628063560464
+  },
+  "availability_candidate": {
+    "n": 3713,
+    "base_rate": 0.7085914354969027,
+    "brier": 0.129123136595087,
+    "logloss": 0.40069867389832553,
+    "auc": 0.8744336508190766,
+    "accuracy": 0.809857258281713
+  },
+  "blocks": {
+    "4": {
+      "effect": 0.045692182492702155,
+      "ci_low": 0.034612409134436056,
+      "ci_high": 0.05676794121424829,
+      "p_one_sided": 0.0001999600079984003,
+      "block_weeks": 4,
+      "weeks": 153,
+      "iterations": 5000
+    },
+    "13": {
+      "effect": 0.045692182492702155,
+      "ci_low": 0.03313088420286893,
+      "ci_high": 0.05820411664344696,
+      "p_one_sided": 0.0001999600079984003,
+      "block_weeks": 13,
+      "weeks": 153,
+      "iterations": 5000
+    }
+  },
+  "holm_if_five_tests": 0.0009998000399920016
+}

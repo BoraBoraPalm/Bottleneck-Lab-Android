@@ -1,0 +1,113 @@
+{
+  "universe": "2026 surviving US listings, not unbiased historical market",
+  "factors_compared": [
+    "Current capped 60d moment/ATR score",
+    "Standard 12-2 month return rank"
+  ],
+  "equal_conditions": "10 positions, identical liquidity requirement, EUR FX at each trade, 1EUR buy/1EUR sell, 0.1pct each side adverse slippage, 5-day limit entry and 20-day exit",
+  "random_dates": 320,
+  "price_histories": 209,
+  "price_missing": {
+    "TMTS": "Only 147 bars",
+    "NOEMR": "Only 0 bars",
+    "ILLUU": "Only 171 bars",
+    "SCAT": "Only 17 bars",
+    "RFAMR": "Only 0 bars",
+    "SAAQ": "Only 156 bars",
+    "MEVOU": "Only 190 bars",
+    "BLSM": "Only 60 bars",
+    "OPI": "Only 94 bars",
+    "KTWOR": "Only 1 bars",
+    "MESHU": "Only 224 bars",
+    "HAVAU": "Only 257 bars",
+    "RVII": "Only 56 bars",
+    "VHUB": "Only 190 bars",
+    "DNMX": "Only 238 bars",
+    "VGNT": "Only 151 bars"
+  },
+  "fx_days": 1979,
+  "chronological": {
+    "legacy_60d": {
+      "end_eur": 9914.1,
+      "net_eur": -85.9,
+      "return_pct": -0.859,
+      "matched_spy_end_eur": 10251.75,
+      "excess_eur": -337.66,
+      "executed_trades": 284,
+      "total_eur_fees": 568
+    },
+    "momentum_12_2": {
+      "end_eur": 14316.75,
+      "net_eur": 4316.75,
+      "return_pct": 43.167,
+      "matched_spy_end_eur": 10385.74,
+      "excess_eur": 3931.0,
+      "executed_trades": 245,
+      "total_eur_fees": 490
+    }
+  },
+  "train_2021_to_2024": {
+    "legacy_60d": {
+      "end_eur": 7522.05,
+      "net_eur": -2477.95,
+      "return_pct": -24.78,
+      "matched_spy_end_eur": 9130.78,
+      "excess_eur": -1608.73,
+      "executed_trades": 178,
+      "total_eur_fees": 356
+    },
+    "momentum_12_2": {
+      "end_eur": 10024.83,
+      "net_eur": 24.83,
+      "return_pct": 0.248,
+      "matched_spy_end_eur": 9747.82,
+      "excess_eur": 277.01,
+      "executed_trades": 161,
+      "total_eur_fees": 322
+    }
+  },
+  "test_2024_to_2026": {
+    "legacy_60d": {
+      "end_eur": 12855.3,
+      "net_eur": 2855.3,
+      "return_pct": 28.553,
+      "matched_spy_end_eur": 11450.34,
+      "excess_eur": 1404.96,
+      "executed_trades": 102,
+      "total_eur_fees": 204
+    },
+    "momentum_12_2": {
+      "end_eur": 14097.6,
+      "net_eur": 4097.6,
+      "return_pct": 40.976,
+      "matched_spy_end_eur": 10526.23,
+      "excess_eur": 3571.37,
+      "executed_trades": 79,
+      "total_eur_fees": 158
+    }
+  },
+  "random_samples": {
+    "legacy_60d": {
+      "random_days": 320,
+      "mean_20d_pct": 0.2629,
+      "median_20d_pct": 0.0,
+      "fill_pct": 49.406,
+      "executed_trade_observations": 1581
+    },
+    "momentum_12_2": {
+      "random_days": 320,
+      "mean_20d_pct": 0.7716,
+      "median_20d_pct": 0.0,
+      "fill_pct": 48.125,
+      "executed_trade_observations": 1540
+    }
+  },
+  "caveats": [
+    "Survivorship bias",
+    "No actual historical TR orderability",
+    "No stock dividends",
+    "Fixed EUR brokerage costs but unknown real bid/ask",
+    "Daily OHLC approximation to stops"
+  ],
+  "seconds": 10.7
+}

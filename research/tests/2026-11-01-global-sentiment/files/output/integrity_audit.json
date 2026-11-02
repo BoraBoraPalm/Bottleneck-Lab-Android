@@ -1,0 +1,24 @@
+{
+  "checks": {
+    "protocol_matches_pre_test_lock": true,
+    "features_before_news_cutoff": true,
+    "entry_after_news_plus_4d": true,
+    "exit_strictly_after_entry": true,
+    "one_price_observation_per_firm_week": true,
+    "one_news_observation_per_firm_week": true,
+    "one_raw_url_per_firm_week": true,
+    "test_only_after_2023_01_18": true,
+    "unknown_not_a_neutral_cluster": true,
+    "six_data_categories": true,
+    "state_forecast_probability_sum": true,
+    "state_target_exactly_next_fresh_week": true
+  },
+  "diagnostics": {
+    "max_abs_forward_return": 0.5575695955300632,
+    "forward_returns_abs_over_50pct": 2,
+    "return_available_companies": 100,
+    "firms_with_test_targets": 98,
+    "unknown_test_states": 11200
+  },
+  "all_pass": true
+}

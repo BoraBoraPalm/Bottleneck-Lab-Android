@@ -1,0 +1,214 @@
+{
+  "schema_version": 1,
+  "updated": "2026-11-02",
+  "tests": [
+    {
+      "id": "2026-10-31-five-year-backtest",
+      "title": "Fünfjahres-Backtest der ursprünglichen Handelsregeln",
+      "date": "2026-10-31",
+      "status": "completed_limited_scope",
+      "period": "2021-11 bis 2026-10",
+      "prediction": "20-Handelstage-Ausstiegsannahme; 320 zufällige, teils überlappende Signaltermine",
+      "holding": {
+        "kind": "maximum_sessions",
+        "maximum": 20,
+        "entry_window_sessions": 5,
+        "average_actual": null,
+        "variable_by": "Limitfüllung und vorzeitiger Stoppausstieg",
+        "optimized": false
+      },
+      "rebalance": "Nichtüberlappende 20-Session-Kohorten plus gesonderte überlappende Zufallstermine",
+      "result": "320 Datumskohorten archiviert; heutige Überlebendenliste begrenzt die Aussage.",
+      "holding_period_search_performed": false,
+      "source_artifact": {
+        "filename": "Bottleneck_Lab_5Jahre_Backtest_komplett.zip",
+        "url": "https://chatgpt.com/library?file_id=libfile_7f26d8bebe048191976b08afcb65337b&account_id=personal",
+        "sha256": "8ee8128a914a7bc06bb7fe21b77ca627a3b73b4d46700a5814b623fc4ad578aa",
+        "bytes": 181610,
+        "archive_root": ""
+      }
+    },
+    {
+      "id": "2026-10-31-atr-limits-stops",
+      "title": "ATR-Kauflimit-/Stopp-Sensitivität",
+      "date": "2026-10-31",
+      "status": "completed_limited_scope",
+      "period": "2021–2026 mit zeitlichem Trainings-/Testabschnitt",
+      "prediction": "20-Handelstage-Tradeversuch",
+      "holding": {
+        "kind": "maximum_sessions",
+        "maximum": 20,
+        "entry_window_sessions": 5,
+        "average_actual": null,
+        "variable_by": "Füllung und Stoppdistanz",
+        "optimized": false
+      },
+      "rebalance": "20-Session-Kohorten; ATR-Stopp kann früher schließen",
+      "result": "Kauf-/Stoppabstände variiert; die maximale Haltedauer wurde nicht variiert.",
+      "holding_period_search_performed": false,
+      "source_artifact": {
+        "filename": "Bottleneck_Lab_ATR_Grenzen_Sensitivitaet.zip",
+        "url": "https://chatgpt.com/library?file_id=libfile_e4ca48b909fc819186a4bc128f46a91d&account_id=personal",
+        "sha256": "87fd42d218749448dd957b68aec95fb979f0062ba6d0adfd6f755271414933b2",
+        "bytes": 76600,
+        "archive_root": ""
+      }
+    },
+    {
+      "id": "2026-10-31-momentum-12-2",
+      "title": "12–2-Momentum gegen ursprüngliches Momentum/ATR-Modell",
+      "date": "2026-10-31",
+      "status": "completed_limited_scope",
+      "period": "2021–2026",
+      "prediction": "20-Handelstage-Ausstieg bei identischen weiteren Bedingungen",
+      "holding": {
+        "kind": "maximum_sessions",
+        "maximum": 20,
+        "entry_window_sessions": 5,
+        "average_actual": null,
+        "variable_by": "Füllung/Stoppausstieg",
+        "optimized": false
+      },
+      "rebalance": "Gemeinsame 20-Session-Handelsannahme",
+      "result": "12–2 bezeichnet den Signalrückblick, keine zwölfmonatige Haltedauer.",
+      "holding_period_search_performed": false,
+      "source_artifact": {
+        "filename": "Bottleneck_Momentum_12_2_Research.zip",
+        "url": "https://chatgpt.com/library?file_id=libfile_9411fbe17e5081918573115989254416&account_id=personal",
+        "sha256": "013d84f9ebfac711c851b659bf74b15a115d4a810d50c2e5bde08ee1079e2192",
+        "bytes": 4062,
+        "archive_root": ""
+      }
+    },
+    {
+      "id": "2026-10-31-scientific-factor-study",
+      "title": "Akademische Value-/Quality-/Investment-/Momentum-Portfolios",
+      "date": "2026-10-31",
+      "status": "completed_limited_scope",
+      "period": "Quellen ab 1963; je Auswertung andere vollständige Zeitfenster bis 2026-09",
+      "prediction": "Keine individuelle Aktien-Kursprognose; langfristiger Portfoliovergleich",
+      "holding": {
+        "kind": "source_defined",
+        "maximum": null,
+        "average_actual": null,
+        "variable_by": "Originalbildung und Rebalancing der Quellportfolios",
+        "optimized": false
+      },
+      "rebalance": "Quellkonventionen; Monatsrendite ist keine pauschale Einzeltitel-Haltedauer",
+      "result": "Langfristige Portfolio-, Kosten- und Robustheitsvergleiche; kein eigener Haltedauer-Suchlauf.",
+      "holding_period_search_performed": false,
+      "source_artifact": {
+        "filename": "Bottleneck_Scientific_Factor_Study.zip",
+        "url": "https://chatgpt.com/library?file_id=libfile_a7a7e430a70c81918a7eae4dddd4b40c&account_id=personal",
+        "sha256": "7e5f0c62b96fe3de496c48eee11bdc15303da7f60dbff51434b910d0d63846c0",
+        "bytes": 26269,
+        "archive_root": ""
+      }
+    },
+    {
+      "id": "2026-10-31-independent-trade-rules",
+      "title": "Unabhängiger Vergleich der aktuellen Ein-/Ausstiegsregeln",
+      "date": "2026-10-31",
+      "status": "completed_limited_scope",
+      "period": "2021-11 bis 2026-10",
+      "prediction": "Maximal 20 Sessions; zehn gleich große Kapitalsitze",
+      "holding": {
+        "kind": "maximum_sessions",
+        "maximum": 20,
+        "entry_window_sessions": 5,
+        "average_actual": null,
+        "variable_by": "Limitfüllung, Stopps und Trend-/Crash-Review",
+        "optimized": false
+      },
+      "rebalance": "Nichtüberlappende 20-Session-Kohorten mit früheren Ausstiegen",
+      "result": "Ein-/Ausstiegsregeln bei gleicher maximaler Dauer verglichen; keine optimierte Dauer je Strategie.",
+      "holding_period_search_performed": false,
+      "source_artifact": {
+        "filename": "Bottleneck_Trading_Rules_Independent_2026.zip",
+        "url": "https://chatgpt.com/library?file_id=libfile_c3afd081f67881918a9b714611ad5457&account_id=personal",
+        "sha256": "6912b52f3f32787ba9095d839e2dc3a92fd4716f18ddcaaccbf6b236ff5e8f43",
+        "bytes": 193859,
+        "archive_root": ""
+      }
+    },
+    {
+      "id": "2026-11-01-behavioral-benchmark",
+      "title": "Behavioral-/Informationsstrategien gegen US-Markt",
+      "date": "2026-11-01",
+      "status": "completed_limited_scope",
+      "period": "2000–2025",
+      "prediction": "Vergleich fester Quellenportfolios; keine individuelle Aktien-Prognose",
+      "holding": {
+        "kind": "source_defined",
+        "maximum": null,
+        "average_actual": null,
+        "variable_by": "Originale monatliche/vierteljährliche/jährliche Quellregeln; siehe source_audit.md",
+        "optimized": false
+      },
+      "rebalance": "Quellkonventionen und vorab feste Mischungen; Monatsbeobachtungen sind keine einheitliche Aktien-Haltedauer",
+      "result": "Für die festgelegten Portfoliovarianten kein robuster Überlegenheitsnachweis gegen den US-Markt.",
+      "holding_period_search_performed": false,
+      "source_artifact": {
+        "filename": "Behavioral_Strategien_Benchmark_2026.zip",
+        "url": "https://chatgpt.com/library?file_id=libfile_eb7efca016688191a682289a9e09e551&account_id=personal",
+        "sha256": "64cdb711abfe1a3eb2046269480fcd1ec76d9a24a716396800bf28b47a8998bf",
+        "bytes": 1442363,
+        "archive_root": ""
+      }
+    },
+    {
+      "id": "2026-11-01-global-sentiment",
+      "title": "Globaler Nachrichtenstimmungs-Pilot",
+      "date": "2026-11-01",
+      "status": "completed_limited_scope",
+      "period": "Lernen 2019–2021, Diagnose 2022, Test 2023–2025",
+      "prediction": "Nächste Archivwoche bzw. folgende Handelswoche",
+      "holding": {
+        "kind": "forecast_horizon_calendar_weeks",
+        "values": [
+          1
+        ],
+        "average_actual": null,
+        "optimized": false
+      },
+      "rebalance": "Kein validiertes Handelsportfolio; Wochen-Zielgrößen mit Informationspuffer",
+      "result": "Bessere Nachrichtenkategorien-Prognose; kein zusätzlicher zuverlässiger Kursrichtungsvorteil im Wochenziel.",
+      "holding_period_search_performed": false,
+      "source_artifact": {
+        "filename": "Stimmungsmodell_Globaler_Pilot_2026.zip",
+        "url": "https://chatgpt.com/library?file_id=libfile_f3dbb35d015c8191856387bb0bb2ff16&account_id=personal",
+        "sha256": "6710f7fbf0580491a4329548fc0d472400e0efd670527797e23290c0fe1f93a8",
+        "bytes": 24358913,
+        "archive_root": "Stimmungsmodell_Globaler_Pilot_2026/"
+      }
+    },
+    {
+      "id": "2026-11-02-pca-factor-states",
+      "title": "PCA/PLS und gemeinsame historische Faktor-Zustände",
+      "date": "2026-11-02",
+      "status": "completed_limited_scope",
+      "period": "Vorwärtsprognosen 2022 bis September 2025; expandierendes Training ab 2019",
+      "prediction": "Vier Wochen primär, zwölf Wochen deskriptiv",
+      "holding": {
+        "kind": "fixed_calendar_weeks",
+        "values": [
+          4,
+          12
+        ],
+        "financial_portfolio_weeks": 4,
+        "average_actual": null,
+        "optimized": false
+      },
+      "rebalance": "Finanzdiagnose: alle vier Wochen vollständiges Schließen und Neueröffnen; keine umsatzsparende Signalhaltung",
+      "result": "Bei vier Wochen kein Modell mit geringerem MSE als Null-Mehrertragsprognose; zwölf Wochen ohne besseren Gesamt-MSE.",
+      "holding_period_search_performed": false,
+      "source_artifact": {
+        "filename": "PCA_Faktoren_Gesamtstudie_2026.zip",
+        "url": "https://chatgpt.com/library?file_id=libfile_e1d24544f9808191bdfc75b76d32962a&account_id=personal",
+        "sha256": "4ddd8f16666541a06abe8e9cf795864dbb17d48c2244279e2f58c3049ad92400",
+        "bytes": 44208321,
+        "archive_root": "PCA_Faktoren_Gesamtstudie_2026/"
+      }
+    }
+  ]
+}

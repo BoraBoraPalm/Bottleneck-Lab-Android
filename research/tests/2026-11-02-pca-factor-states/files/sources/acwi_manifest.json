@@ -1,0 +1,5 @@
+{
+  "url": "https://query1.finance.yahoo.com/v8/finance/chart/ACWI?period1=1514764800&period2=1768435200&interval=1d",
+  "sha256": "1c28e40f95be73ffb391d51a10237fd58feb6be7b15980f8ea5ceb159b88876a",
+  "purpose": "fixed broad global financial benchmark only; never an input or model selector"
+}

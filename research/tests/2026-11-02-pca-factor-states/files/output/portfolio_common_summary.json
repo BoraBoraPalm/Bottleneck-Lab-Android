@@ -1,0 +1,83 @@
+{
+  "initial_eur": 10000,
+  "first_signal": "2022-01-05",
+  "last_signal": "2025-09-10",
+  "scheduled_cohorts": 49,
+  "valid_cohorts": 49,
+  "skipped_dates": [],
+  "candidates": [
+    {
+      "model": "all_ridge",
+      "cohorts": 49,
+      "gross_end_eur": 15670.743649036041,
+      "fees_end_eur": 12524.088695528162,
+      "net_end_eur": 11223.979400521164,
+      "benchmark_gross_end_eur": 15337.84751905804,
+      "acwi_gross_end_eur": 13763.149857717068,
+      "net_excess_to_benchmark_eur": -4113.868118536875,
+      "mean_gross_cohort_excess": 0.0008491237584649066,
+      "gross_better_cohort_fraction": 0.5102040816326531
+    },
+    {
+      "model": "elastic_net",
+      "cohorts": 49,
+      "gross_end_eur": 16986.142149441046,
+      "fees_end_eur": 6573.561026720387,
+      "net_end_eur": 5519.900965128071,
+      "benchmark_gross_end_eur": 15337.84751905804,
+      "acwi_gross_end_eur": 13763.149857717068,
+      "net_excess_to_benchmark_eur": -9817.946553929967,
+      "mean_gross_cohort_excess": 0.002119807586283144,
+      "gross_better_cohort_fraction": 0.3673469387755102
+    },
+    {
+      "model": "pca_ridge",
+      "cohorts": 49,
+      "gross_end_eur": 15932.207940448357,
+      "fees_end_eur": 12641.242217257492,
+      "net_end_eur": 11326.373739188695,
+      "benchmark_gross_end_eur": 15337.84751905804,
+      "acwi_gross_end_eur": 13763.149857717068,
+      "net_excess_to_benchmark_eur": -4011.473779869344,
+      "mean_gross_cohort_excess": 0.0013362259889527427,
+      "gross_better_cohort_fraction": 0.5306122448979592
+    },
+    {
+      "model": "pls_ridge",
+      "cohorts": 49,
+      "gross_end_eur": 16315.319802281976,
+      "fees_end_eur": 12991.8282571628,
+      "net_end_eur": 11643.996314881733,
+      "benchmark_gross_end_eur": 15337.84751905804,
+      "acwi_gross_end_eur": 13763.149857717068,
+      "net_excess_to_benchmark_eur": -3693.851204176306,
+      "mean_gross_cohort_excess": 0.00182204894256546,
+      "gross_better_cohort_fraction": 0.5510204081632653
+    },
+    {
+      "model": "price_ridge",
+      "cohorts": 49,
+      "gross_end_eur": 15481.66333163862,
+      "fees_end_eur": 12393.884823922841,
+      "net_end_eur": 11108.588218397903,
+      "benchmark_gross_end_eur": 15337.84751905804,
+      "acwi_gross_end_eur": 13763.149857717068,
+      "net_excess_to_benchmark_eur": -4229.259300660136,
+      "mean_gross_cohort_excess": 0.0005910841152775336,
+      "gross_better_cohort_fraction": 0.5306122448979592
+    },
+    {
+      "model": "small_boosting",
+      "cohorts": 49,
+      "gross_end_eur": 17963.28837470987,
+      "fees_end_eur": 14574.663973453477,
+      "net_end_eur": 13076.111711195408,
+      "benchmark_gross_end_eur": 15337.84751905804,
+      "acwi_gross_end_eur": 13763.149857717068,
+      "net_excess_to_benchmark_eur": -2261.735807862631,
+      "mean_gross_cohort_excess": 0.00360467379225878,
+      "gross_better_cohort_fraction": 0.5714285714285714
+    }
+  ],
+  "warning": "Shared complete-data cohorts; gross benchmarks, active fees, conservative full round trips. Descriptive approximation; no actual executable portfolio claim."
+}

@@ -1,0 +1,1171 @@
+[
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/README.md",
+    "relative_path": "README.md",
+    "bytes": 2799,
+    "sha256": "a18179b615528971090f988f9b3455e7047326a07b52fe60dd7ab48015f04aab",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-01-global-sentiment/files/README.md"
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/cohort.py",
+    "relative_path": "cohort.py",
+    "bytes": 8721,
+    "sha256": "1a314bb026ee5a5b558a9df44a75486a63a7803dd02dc7c2b416f27cb6a91671",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-01-global-sentiment/files/cohort.py"
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/collect.py",
+    "relative_path": "collect.py",
+    "bytes": 3549,
+    "sha256": "619bc893aa1a92eebf9bbe5bbdc4c3e03b596712914d6b6eb0f67e3b361ea1ec",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-01-global-sentiment/files/collect.py"
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/archive_manifest.json",
+    "relative_path": "data/archive_manifest.json",
+    "bytes": 320536,
+    "sha256": "d9790de7ac69c96e6faf96e478cc5fc992c12f639cbb0e717f67d27eb801bfaf",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/cohort.csv",
+    "relative_path": "data/cohort.csv",
+    "bytes": 7853,
+    "sha256": "95fe3c9122ffd6879d6a843882697c1744d4bb821b1564e3a5f02ec1e0d999bc",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-01-global-sentiment/files/data/cohort.csv"
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/initial_id_migration_done.json",
+    "relative_path": "data/initial_id_migration_done.json",
+    "bytes": 171,
+    "sha256": "f9389af2cf136da86787e939869dfe480b93e1af7f188b010cebdad7ae729c31",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-01-global-sentiment/files/data/initial_id_migration_done.json"
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/news_features.parquet",
+    "relative_path": "data/news_features.parquet",
+    "bytes": 1241252,
+    "sha256": "8df5383bfc7615e71e380327188c91d97657eb0510780e8fbce5553336510ebe",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/news_sample.parquet",
+    "relative_path": "data/news_sample.parquet",
+    "bytes": 12259491,
+    "sha256": "89917aad05339bc2e63bde6669a6b5434ff6ee8eed927d8be9d1fd235fb1f449",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/price_panel.parquet",
+    "relative_path": "data/price_panel.parquet",
+    "bytes": 3808524,
+    "sha256": "e3fcc1ff799aa28d343089b0a61c101f0e68c65703f71abf1370cd951da38353",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/005930.KS.json",
+    "relative_path": "data/prices/005930.KS.json",
+    "bytes": 130378,
+    "sha256": "d965b91cb2fc397344216aba06008a2944849d1d2e927e59ba25fd48b4caf6bc",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/0386.HK.json",
+    "relative_path": "data/prices/0386.HK.json",
+    "bytes": 216689,
+    "sha256": "fe64783043d08e884be70e74c4d67d01847496123de52a65f40b3aac0ee07a9a",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/0700.HK.json",
+    "relative_path": "data/prices/0700.HK.json",
+    "bytes": 202257,
+    "sha256": "dc928556fa2f4b7baa768daa85406895c15d1978c656ea95babb08fff813ce99",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/0857.HK.json",
+    "relative_path": "data/prices/0857.HK.json",
+    "bytes": 216619,
+    "sha256": "3cc3d6c53d908d013fe72a548178911869ddd558e03281af0a2d0217ae6e2cdb",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/0939.HK.json",
+    "relative_path": "data/prices/0939.HK.json",
+    "bytes": 215234,
+    "sha256": "118b041894c4c9dbb45389b6d2ba6f7f82c8815b5e562c57a13fb07183718724",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/0941.HK.json",
+    "relative_path": "data/prices/0941.HK.json",
+    "bytes": 193402,
+    "sha256": "d062044aadadff497146d0957e1cc5a7dff65942dbe24cb462107a48c51cc0f6",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/1288.HK.json",
+    "relative_path": "data/prices/1288.HK.json",
+    "bytes": 218905,
+    "sha256": "0ab36aeeab19ebb96ae2f663a52c94d1e756e24b1423de440967f4c999c60ab7",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/1299.HK.json",
+    "relative_path": "data/prices/1299.HK.json",
+    "bytes": 191014,
+    "sha256": "43040117477670485ca6193f8b00e1553cc3437dd85f809741c0ace555400a12",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/1398.HK.json",
+    "relative_path": "data/prices/1398.HK.json",
+    "bytes": 215797,
+    "sha256": "73af325582a5bdc9bec2fc5653b680d1f1b5fee88c44d89fbaf432cea86d000f",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/2318.HK.json",
+    "relative_path": "data/prices/2318.HK.json",
+    "bytes": 195950,
+    "sha256": "201d0ac8cefce657ed1a0399761a09b63c2b415e8d0ebce693144f12464c82a9",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/2330.TW.json",
+    "relative_path": "data/prices/2330.TW.json",
+    "bytes": 123284,
+    "sha256": "4bbe14ec76e5d75048a50777db8a384e163e922333d2a90e68a12a44bd6d9fda",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/2628.HK.json",
+    "relative_path": "data/prices/2628.HK.json",
+    "bytes": 216929,
+    "sha256": "b0e4f36fa418bfa1588f699208a2da251637721571a60afc5443b33b9d3686c1",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/3968.HK.json",
+    "relative_path": "data/prices/3968.HK.json",
+    "bytes": 200670,
+    "sha256": "eb52ebae867df5c1e1c1260294084cd9032d26a97d3f1d90dda0d973df5c03e9",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/3988.HK.json",
+    "relative_path": "data/prices/3988.HK.json",
+    "bytes": 219742,
+    "sha256": "3429cf8aab392af7ede5a80ef36a157e9e2d5f2570d26060bfd700ca10146f69",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/600519.SS.json",
+    "relative_path": "data/prices/600519.SS.json",
+    "bytes": 174321,
+    "sha256": "17e18c44aaa7752dafa90dffff07f5000a277021160311ddeaf1afa305a651da",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/7203.T.json",
+    "relative_path": "data/prices/7203.T.json",
+    "bytes": 159823,
+    "sha256": "5bd4b40e9edf6aaf37fcedb466728fdf06890db5d2dbbc5185f10842f348cec6",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/AAPL.json",
+    "relative_path": "data/prices/AAPL.json",
+    "bytes": 222223,
+    "sha256": "b46dee04ba1e586538eb4c84807a6ff92ea463476dfd4001e614f765dfc0001c",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/ABBV.json",
+    "relative_path": "data/prices/ABBV.json",
+    "bytes": 218138,
+    "sha256": "4914268159afedc97d4e64a502499ba96fd75f148ae0c6add8dc6cd8e2b26fc5",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/ABEV3.SA.json",
+    "relative_path": "data/prices/ABEV3.SA.json",
+    "bytes": 222430,
+    "sha256": "22b20171ba5a3698f40e2d9269099f7a18b27e78bf1eec2fc4dc2305e228d4ce",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/ABI.BR.json",
+    "relative_path": "data/prices/ABI.BR.json",
+    "bytes": 219319,
+    "sha256": "ff5df3ada1aa01ad13d8890d109529d68542dfc682f1fbbfb2d9e3fca046675d",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/ABT.json",
+    "relative_path": "data/prices/ABT.json",
+    "bytes": 218571,
+    "sha256": "c014157b9815b2af33157a49302dcfac1ea564efb1b656962ebe50c9cea613ab",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/ACN.json",
+    "relative_path": "data/prices/ACN.json",
+    "bytes": 216162,
+    "sha256": "2cc7e85f3866405091457d88f90c83986d481329e3a3d0a85f186f58e0877df0",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/ADBE.json",
+    "relative_path": "data/prices/ADBE.json",
+    "bytes": 212033,
+    "sha256": "080dc973de42b92e91d97d371feeec034da2222c3a5824757a2ec9d4aa7d3bde",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/ALV.DE.json",
+    "relative_path": "data/prices/ALV.DE.json",
+    "bytes": 209853,
+    "sha256": "41203aafda2de3f84452cf4cad5a97b2bc9390d15a54ccfb98f265474f517424",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/AMGN.json",
+    "relative_path": "data/prices/AMGN.json",
+    "bytes": 218506,
+    "sha256": "fdce1da66cd2feadaf8c7f81ecc50152a4c807923ab9feb6916cb1c3c2d205be",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/AMZN.json",
+    "relative_path": "data/prices/AMZN.json",
+    "bytes": 219891,
+    "sha256": "97aada024ffb2d481afc530fea3ecfa5091dd3791f83bfd6a2b9a631af00ddfa",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/AUDUSD=X.json",
+    "relative_path": "data/prices/AUDUSD=X.json",
+    "bytes": 226074,
+    "sha256": "6cac7b6ac4cedad6b2b4d2adab8db1b349f4c67072818362b61eec0ff3c2d09f",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/AVGO.json",
+    "relative_path": "data/prices/AVGO.json",
+    "bytes": 223227,
+    "sha256": "a842e29343ac218b096f908eae5b52574951cc66326ddd3803d7bc16fd908457",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/BA.json",
+    "relative_path": "data/prices/BA.json",
+    "bytes": 215327,
+    "sha256": "7408d91bc2e81e7445ada93b733541c90e80157b4249c15fa5d4ec3a04303958",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/BABA.json",
+    "relative_path": "data/prices/BABA.json",
+    "bytes": 218319,
+    "sha256": "073b78670413d5c95c39817423eddda43ff01043d2b3c51872cfb55665fa6447",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/BAC.json",
+    "relative_path": "data/prices/BAC.json",
+    "bytes": 222566,
+    "sha256": "d8b5de2df398970112c7efd450f98d83483a1b839a7d556924dc4c3576b08874",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/BATS.L.json",
+    "relative_path": "data/prices/BATS.L.json",
+    "bytes": 133494,
+    "sha256": "7df013ad477452193b9cb491cfbf088f3f5adeb57219efbcf5367101411500e2",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/BHP.AX.json",
+    "relative_path": "data/prices/BHP.AX.json",
+    "bytes": 223614,
+    "sha256": "8ba61855865fa488cd132704ddebf2d120bf30ecb2378558e3b04279553e1b90",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/BKNG.json",
+    "relative_path": "data/prices/BKNG.json",
+    "bytes": 220877,
+    "sha256": "82139226cbb2454efe33b7053eac9c6c84f06036919d06214e721286835a8235",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/BMY.json",
+    "relative_path": "data/prices/BMY.json",
+    "bytes": 218718,
+    "sha256": "2249259110764a964dd6f8721b4d4340926b3f45eabae49ad842c45ef8ab1258",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/BP.L.json",
+    "relative_path": "data/prices/BP.L.json",
+    "bytes": 203832,
+    "sha256": "f93e7f5a579e3167f54390a39f3e0194fd3c4acacaf56a1701fba653d95bf173",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/BRK-B.json",
+    "relative_path": "data/prices/BRK-B.json",
+    "bytes": 216020,
+    "sha256": "08549771f23b6fc233250a64f0b2c253d7b254a29c9c3e64cb5556397ff18754",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/BRL=X.json",
+    "relative_path": "data/prices/BRL=X.json",
+    "bytes": 217835,
+    "sha256": "86047ad1a0201f42ded4aef08478bf8b5cb00ba9891f66c74fc7e5b5b6b4ec9b",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/C.json",
+    "relative_path": "data/prices/C.json",
+    "bytes": 218761,
+    "sha256": "d3161c9a34b4ff03068ded287d00d6d291d6ce41921e30d92c0dfdaa2c137416",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/CAD=X.json",
+    "relative_path": "data/prices/CAD=X.json",
+    "bytes": 224846,
+    "sha256": "1c9a31b6a04028608def4f44f653755a2ff5bbae2b36997af3adb9ae1841e990",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/CBA.AX.json",
+    "relative_path": "data/prices/CBA.AX.json",
+    "bytes": 214580,
+    "sha256": "21efaa9246c125537291ead8de2a3bed2614405f912ad53eb3aee4bf304c566a",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/CHF=X.json",
+    "relative_path": "data/prices/CHF=X.json",
+    "bytes": 225950,
+    "sha256": "7ab8943145a695a6c27f4053b389228b1ccfaf0cab00043a7e3a0ccb2ce5968e",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/CMCSA.json",
+    "relative_path": "data/prices/CMCSA.json",
+    "bytes": 225950,
+    "sha256": "39e657bff87af3e9fde62b2c827d2656432bfdc2d53b455ea999ad9540e7f4ef",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/CNY=X.json",
+    "relative_path": "data/prices/CNY=X.json",
+    "bytes": 216907,
+    "sha256": "7278b2e6890a8cd01d46030719e65ebd9c0469a85b8ab70731d44cb28e70e295",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/CSCO.json",
+    "relative_path": "data/prices/CSCO.json",
+    "bytes": 221189,
+    "sha256": "c1dc3e93247a4813c996f8c72bdf82f2c915e9372070cd4cb103c32d6d38afc2",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/CVX.json",
+    "relative_path": "data/prices/CVX.json",
+    "bytes": 221691,
+    "sha256": "c4fa6c7a55b19099cc01887aa87ec1976716d2d6c67fcebc52de2eb7b3efab00",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/DD.json",
+    "relative_path": "data/prices/DD.json",
+    "bytes": 221291,
+    "sha256": "c784ee9395361aba2dadac0ea2412f6eb5914620b4016da76015b11402451390",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/DIS.json",
+    "relative_path": "data/prices/DIS.json",
+    "bytes": 220932,
+    "sha256": "d6091f2fa40f3a76ad46329a4d022443704e4569f71df6fde10bd7bcbc70554e",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/DKK=X.json",
+    "relative_path": "data/prices/DKK=X.json",
+    "bytes": 217007,
+    "sha256": "6c986fa7d42fed520c6280a2cecbeadda6f7b6bdc3e95ccfd228462e93aac3c4",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/EURUSD=X.json",
+    "relative_path": "data/prices/EURUSD=X.json",
+    "bytes": 224915,
+    "sha256": "841ab65a16406df7ec9eb5fd2d95aeba698a4b1bfd1b9021ca756e230c14339a",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/GBPUSD=X.json",
+    "relative_path": "data/prices/GBPUSD=X.json",
+    "bytes": 224718,
+    "sha256": "ae6cb4539fd6708b9df425c50c88dd491797e2b1dc6d2c1c1583b75e3d4cdfa8",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/GE.json",
+    "relative_path": "data/prices/GE.json",
+    "bytes": 221948,
+    "sha256": "1c91b3f8263b55dc156b7d317709cc98f42f615e7cfde1d9a97589b4b1f462e9",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/GILD.json",
+    "relative_path": "data/prices/GILD.json",
+    "bytes": 215557,
+    "sha256": "caa46a90abe2c6189bdfe3b1bfbe2a8b85523bedeb1f1cb884f31c95d5fa50d3",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/GOOGL.json",
+    "relative_path": "data/prices/GOOGL.json",
+    "bytes": 222231,
+    "sha256": "916e29046a4e11d15e0b8dc2068863f8453953944357b8c3eb9af3821486e4e2",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/GS.json",
+    "relative_path": "data/prices/GS.json",
+    "bytes": 213028,
+    "sha256": "c80937b57c63c2b96f9390bc183ce36899156186e8d14e9a83bd392c3d9b54cd",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/GSK.L.json",
+    "relative_path": "data/prices/GSK.L.json",
+    "bytes": 200316,
+    "sha256": "5962c9984f94a972cf8ceaa9b01a951153722148ad12cab22f20e62d8023b1f6",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/HD.json",
+    "relative_path": "data/prices/HD.json",
+    "bytes": 215746,
+    "sha256": "bbcf61511f6066843a3c24bec3f15d04d4ac230122cb7ccf038b30e0cf00d60a",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/HKD=X.json",
+    "relative_path": "data/prices/HKD=X.json",
+    "bytes": 216592,
+    "sha256": "93fc2bc54afb13fae4c5a46907717cf116613dceb26363ae4bcbd7655304b417",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/HON.json",
+    "relative_path": "data/prices/HON.json",
+    "bytes": 226523,
+    "sha256": "dc2a4f6e3c0daf5d34578ff384663e0191991c99475bf6d94a872d9e6a2942e6",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/HSBA.L.json",
+    "relative_path": "data/prices/HSBA.L.json",
+    "bytes": 200425,
+    "sha256": "1f46f79c463b5b02f82af0309265e861b3b05fbc9cf0860c5bf403f8539a84ed",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/IBM.json",
+    "relative_path": "data/prices/IBM.json",
+    "bytes": 222547,
+    "sha256": "706b362ce922c54b8330a630379c622123bc59b21308da78d15ebe7a7572faee",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/INTC.json",
+    "relative_path": "data/prices/INTC.json",
+    "bytes": 221205,
+    "sha256": "7e850fc6e462219fb43c8d9b1643fd4ee96bde231f9e28b280795e9b15f7f76e",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/ITX.MC.json",
+    "relative_path": "data/prices/ITX.MC.json",
+    "bytes": 224206,
+    "sha256": "94b1028991cf9e3d8fe73161fe43ac0d676fa5fac76ac072f19ff8f40b7995ad",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/JNJ.json",
+    "relative_path": "data/prices/JNJ.json",
+    "bytes": 220307,
+    "sha256": "1c03299567638fb88e70b3d58c7bbcf87df61042371824fad03d9a0bb9eab6a3",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/JPM.json",
+    "relative_path": "data/prices/JPM.json",
+    "bytes": 221613,
+    "sha256": "02e4afbb4ad408b9f8c64b508c85f93ae07534c75cfb75702c019906440640db",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/JPY=X.json",
+    "relative_path": "data/prices/JPY=X.json",
+    "bytes": 223453,
+    "sha256": "03637bbd362a727a2acda2bf9565b91ad39a7231d2123434deab426e18acdc21",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/KO.json",
+    "relative_path": "data/prices/KO.json",
+    "bytes": 219551,
+    "sha256": "8a4456fc5462e55038c58fe684c9ba66ef590e1c24d41bb7b4eb9f0c7aaf2837",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/KRW=X.json",
+    "relative_path": "data/prices/KRW=X.json",
+    "bytes": 211398,
+    "sha256": "6a408a6bb3931ae402b9154eabaffcfdd869397e9e2696fb39da44572b362dd9",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/MA.json",
+    "relative_path": "data/prices/MA.json",
+    "bytes": 212941,
+    "sha256": "96bf66cc8bb38423c0b898a879744fe32b11bcbd3f760996cfd8a67857f756a4",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/MC.PA.json",
+    "relative_path": "data/prices/MC.PA.json",
+    "bytes": 197144,
+    "sha256": "2abda99d0345549b43e23aef1553cb60532556c95650c79f150b87d0d97e9fe1",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/MCD.json",
+    "relative_path": "data/prices/MCD.json",
+    "bytes": 217731,
+    "sha256": "f3c5a84361c11a986176e3b6362ad56b3a92840718715b3e52588deb787a626e",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/MDT.json",
+    "relative_path": "data/prices/MDT.json",
+    "bytes": 215218,
+    "sha256": "cd0a8e07d1f72e08c69ed748d0de6c2744051332166723166b50c468a53983f9",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/META.json",
+    "relative_path": "data/prices/META.json",
+    "bytes": 217664,
+    "sha256": "99d21a498768f7c41b0e56b5bfbacf29729109a32c5b41722beba92871561151",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/MMM.json",
+    "relative_path": "data/prices/MMM.json",
+    "bytes": 224015,
+    "sha256": "85f2ea3392115ac671253b327e4b8654cedaa7b2d643a486e76213484e157b02",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/MO.json",
+    "relative_path": "data/prices/MO.json",
+    "bytes": 218819,
+    "sha256": "d9a871b832666c2838d6eac1cbde0e5eb791872b127d1d765f6730f9b286c21b",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/MRK.json",
+    "relative_path": "data/prices/MRK.json",
+    "bytes": 219747,
+    "sha256": "d375be76c53922c0f65d84bce4c069dcbc1656f0d11dea1dbe34cd2d2ac4818d",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/MSFT.json",
+    "relative_path": "data/prices/MSFT.json",
+    "bytes": 220060,
+    "sha256": "9033f3779b74b46ec21911885e964a463ddf2b86014f7cf9bc632506199f2307",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/NESN.SW.json",
+    "relative_path": "data/prices/NESN.SW.json",
+    "bytes": 215918,
+    "sha256": "54aebcd9cddcb7ae4b4d53ea0ec0a13e9b6264d8a8b86ff35e5851953bd1018c",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/NFLX.json",
+    "relative_path": "data/prices/NFLX.json",
+    "bytes": 223171,
+    "sha256": "069f0bd5c43cba6f8f0f6fb130f16a0970dd8128abc55eab601dda8559a239d8",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/NKE.json",
+    "relative_path": "data/prices/NKE.json",
+    "bytes": 216619,
+    "sha256": "fa92b15be65bf290768bd52c1749ef3f14ac4099a8c010cacbd9a2e928782873",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/NOVN.SW.json",
+    "relative_path": "data/prices/NOVN.SW.json",
+    "bytes": 217798,
+    "sha256": "232349b507ad161919b5f7b09b563014bef9f0e529e620496fa975dac4779b15",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/NOVO-B.CO.json",
+    "relative_path": "data/prices/NOVO-B.CO.json",
+    "bytes": 193792,
+    "sha256": "f9e491620e9c69f990b837fe126f6d493ee718039b6a4e1e94327b51dc9f75e7",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/NPN.JO.json",
+    "relative_path": "data/prices/NPN.JO.json",
+    "bytes": 163845,
+    "sha256": "82bb8b8af2d87847be03a3415fd5ecdc42c533cbc1fc4c0ebd334e732328f7f6",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/NVDA.json",
+    "relative_path": "data/prices/NVDA.json",
+    "bytes": 226698,
+    "sha256": "56b16593c22eb67e7ede008eb302f5121b4a98edf64df0b7f9412b21c54703c2",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/OR.PA.json",
+    "relative_path": "data/prices/OR.PA.json",
+    "bytes": 204574,
+    "sha256": "a7cf48ebe3c6baf01df88a1eeae680bdde6a44c784f624ddcedfb23794e65e6f",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/ORCL.json",
+    "relative_path": "data/prices/ORCL.json",
+    "bytes": 218815,
+    "sha256": "b3c84d39daf47ef40e41dec4d74abbdfb8ba001d594ae8843ecf408151a420ad",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/PEP.json",
+    "relative_path": "data/prices/PEP.json",
+    "bytes": 221907,
+    "sha256": "2e5cdd4048bc3d1bf46b8ae964bc63330dc1a6a67e8f33aeacb3343b2cabf72b",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/PFE.json",
+    "relative_path": "data/prices/PFE.json",
+    "bytes": 224124,
+    "sha256": "59dcb06386ef81b660bce86f79980584eb2f504af48e394b6577761ae02276eb",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/PG.json",
+    "relative_path": "data/prices/PG.json",
+    "bytes": 221895,
+    "sha256": "000bba184035042f35d47a23aaef76d19d07e34d03623252834c5093901cb22b",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/PM.json",
+    "relative_path": "data/prices/PM.json",
+    "bytes": 215627,
+    "sha256": "2d0b87fada1b939d316432ba1e82d9ef348d06cced460b0cf7623f5123a5a149",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/ROP.SW.json",
+    "relative_path": "data/prices/ROP.SW.json",
+    "bytes": 199877,
+    "sha256": "3930eeb34a4f61fd9b3261dd6cf89418d4a2301c00b31036d302b37c41515b86",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/RTX.json",
+    "relative_path": "data/prices/RTX.json",
+    "bytes": 217174,
+    "sha256": "b2f23da3ed018cb8a1ab34d24578f462f059a881db6e4a37f4070935cf44af13",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/RY.TO.json",
+    "relative_path": "data/prices/RY.TO.json",
+    "bytes": 217594,
+    "sha256": "c89f1d2387ff867bc63b3c0ae470c94d369900bee90efc2f600a8c83fc1a44c5",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/SAN.MC.json",
+    "relative_path": "data/prices/SAN.MC.json",
+    "bytes": 230056,
+    "sha256": "4931578bcbdf88b0ae7d3842a6c3c6173546ba8336462d067f3254c01e946022",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/SAN.PA.json",
+    "relative_path": "data/prices/SAN.PA.json",
+    "bytes": 221200,
+    "sha256": "c3f12bb70d1615ee06cc6c20264283e30c743121c037361a7bac37f895d620e7",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/SAP.DE.json",
+    "relative_path": "data/prices/SAP.DE.json",
+    "bytes": 217652,
+    "sha256": "4448857f6b6794fcaf05ba91360ad6db2d48910e0d5e1573b8b6505ab4d38f0b",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/SHEL.L.json",
+    "relative_path": "data/prices/SHEL.L.json",
+    "bytes": 154563,
+    "sha256": "1ae9974e3deff5c1ee2d98a72005704fff74ae1a4c3b91ab1bc6cd3c5c1db590",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/SIE.DE.json",
+    "relative_path": "data/prices/SIE.DE.json",
+    "bytes": 220319,
+    "sha256": "f92eefe0bf92526f5d46276cbb285388b4d9273369ac9871ddfbac1c992993cd",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/T.json",
+    "relative_path": "data/prices/T.json",
+    "bytes": 227541,
+    "sha256": "bcb30376e32d66192b9ea1323e05ca82e40f2c4657ad244eba95e101012a97b7",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/TD.TO.json",
+    "relative_path": "data/prices/TD.TO.json",
+    "bytes": 212464,
+    "sha256": "618f3826e085df89991dc542cb8b50b5d2476f827bf0ae4aed0c2848c6621057",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/TTE.PA.json",
+    "relative_path": "data/prices/TTE.PA.json",
+    "bytes": 222238,
+    "sha256": "74d59f018c637eab161054224acb5432861762103acb4e04a74c0c08cdbd3c18",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/TWD=X.json",
+    "relative_path": "data/prices/TWD=X.json",
+    "bytes": 221908,
+    "sha256": "40b9dfa32d0ca454e8ea7d9d1787e0e950c63bcb1c1f022a260708ced52f7483",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/TXN.json",
+    "relative_path": "data/prices/TXN.json",
+    "bytes": 220474,
+    "sha256": "7b71a29772384a036555ba1a4e92adebdc169e1e58c72be458d940763c5ce1d2",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/UNA.AS.json",
+    "relative_path": "data/prices/UNA.AS.json",
+    "bytes": 144650,
+    "sha256": "5235e99f77b98c298a0d1bf07924e96e2a71127ea70737a00f27dd8b91420e66",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/UNH.json",
+    "relative_path": "data/prices/UNH.json",
+    "bytes": 212996,
+    "sha256": "7e338f9ca21a9eaa4a3017ab7d32e071983fde043badc610652c4f0fcd64eaca",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/UNP.json",
+    "relative_path": "data/prices/UNP.json",
+    "bytes": 221179,
+    "sha256": "080ccbfbaf96b1dafbb6bbf01c621a9d7161f3cdfb935617652e59bf61be435e",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/V.json",
+    "relative_path": "data/prices/V.json",
+    "bytes": 218497,
+    "sha256": "f876dea695e64582be0014074a31de55478788d4ac6551b221b455e3def1b1f7",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/VOW3.DE.json",
+    "relative_path": "data/prices/VOW3.DE.json",
+    "bytes": 215432,
+    "sha256": "7fa0a263fed0d315f0a23f0db6c1ae5783a3033403679385ccfc1053ebae8bb9",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/VZ.json",
+    "relative_path": "data/prices/VZ.json",
+    "bytes": 220980,
+    "sha256": "b99f06f6dec4d0d2340beb068c9ba014520aa4191e70e66b1a4079fd0d864c9a",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/WFC.json",
+    "relative_path": "data/prices/WFC.json",
+    "bytes": 220852,
+    "sha256": "f420558ec5c9e6205b5ee9e03dadc4189cafdc9dc707cc081cf311f192847d0e",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/WMT.json",
+    "relative_path": "data/prices/WMT.json",
+    "bytes": 223240,
+    "sha256": "cf55dbe295b74d1cb2ec36bc3a2a740d487a1d63700d6000e00d6c88759ee3cf",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/XOM.json",
+    "relative_path": "data/prices/XOM.json",
+    "bytes": 221113,
+    "sha256": "5b261bdb9af2c58c045a4163d4b36b1e02dab059e49a81e24e07c5d2f79ebd65",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices/ZAR=X.json",
+    "relative_path": "data/prices/ZAR=X.json",
+    "bytes": 224142,
+    "sha256": "6d1cdcfaf3cfcd29661a734bd24635048e27b2ea82b103a8fda1d8f64d194cf3",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/data/prices_manifest.json",
+    "relative_path": "data/prices_manifest.json",
+    "bytes": 44337,
+    "sha256": "636bdc8a8c1b7621b56cc4e377699ef78e9306d4790dc4efe94d8ed06b3244c1",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-01-global-sentiment/files/data/prices_manifest.json"
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/joint_forecast.py",
+    "relative_path": "joint_forecast.py",
+    "bytes": 2775,
+    "sha256": "80879f47b4bdc7e78424c00723221e15b5f3d6152ff7721dd7b314f78921a8ef",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-01-global-sentiment/files/joint_forecast.py"
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/model.py",
+    "relative_path": "model.py",
+    "bytes": 17128,
+    "sha256": "0f8c90314bb4a4451e82fc5c3f0b2831d5bcd14afd515514bc943a2dbbf3977e",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-01-global-sentiment/files/model.py"
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/output/availability_models.joblib",
+    "relative_path": "output/availability_models.joblib",
+    "bytes": 10411,
+    "sha256": "be0f95e838586a6088582ea90ec1e50826573637ef009d1d2ccb7a2d2b836d77",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/output/bericht.html",
+    "relative_path": "output/bericht.html",
+    "bytes": 269539,
+    "sha256": "0d06dd787b549ed20319ce51d7569d4620682c8ad0cad986b2d9ee06152ba66d",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/output/bericht.md",
+    "relative_path": "output/bericht.md",
+    "bytes": 16740,
+    "sha256": "38262d5b196db5a7937769b11a19fcf136a22595a47b82460dda0620d7464905",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-01-global-sentiment/files/output/bericht.md"
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/output/category_centers.csv",
+    "relative_path": "output/category_centers.csv",
+    "bytes": 752,
+    "sha256": "bd677d0123facdde5d14cca3e067b8ef0cf1b81922d23b3c06a6023b71d5d197",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-01-global-sentiment/files/output/category_centers.csv"
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/output/category_model.joblib",
+    "relative_path": "output/category_model.joblib",
+    "bytes": 19372,
+    "sha256": "8df4967fd107e7d7dcd7d04c28f225da87924fed4c072beaf12816edee036b09",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/output/conditional_rates.csv",
+    "relative_path": "output/conditional_rates.csv",
+    "bytes": 1355,
+    "sha256": "9d21e19bc4e3e693838bc1a52708ffe9f4a86a99b742a0aa1a89ec3ea0a762d5",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-01-global-sentiment/files/output/conditional_rates.csv"
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/output/coverage.json",
+    "relative_path": "output/coverage.json",
+    "bytes": 545,
+    "sha256": "8fbe0dfad1febb7ee24a1c3fef930c8ebfab16c93d09d223e7bd056d5d824fee",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-01-global-sentiment/files/output/coverage.json"
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/output/delivery_audit.json",
+    "relative_path": "output/delivery_audit.json",
+    "bytes": 244,
+    "sha256": "164b17d067556dd21b11fe29dd390e82ac2599dfea77e0093e259e8b9b0fb73b",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-01-global-sentiment/files/output/delivery_audit.json"
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/output/entity_audit_sample.csv",
+    "relative_path": "output/entity_audit_sample.csv",
+    "bytes": 14391,
+    "sha256": "0aa9d0253255021430cb16cc5e3e2e42066b73b542c12a1e4cae361c10488494",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-01-global-sentiment/files/output/entity_audit_sample.csv"
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/output/environment.json",
+    "relative_path": "output/environment.json",
+    "bytes": 218,
+    "sha256": "35eb6347a3905ac3fd9d5e474a460e766b92b7429197817e8d93a41e1d1f144a",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-01-global-sentiment/files/output/environment.json"
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/output/forecast_models.joblib",
+    "relative_path": "output/forecast_models.joblib",
+    "bytes": 34043,
+    "sha256": "36adf7fad04f7f0e451f88506902c8a93d8bca1ae6fe73cd5300d90705f2c240",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/output/historische_beispiele.csv",
+    "relative_path": "output/historische_beispiele.csv",
+    "bytes": 1093,
+    "sha256": "66a349a95c479041139481b5b29dbc3df3343a3fc0631fe3989b6a5ec3346762",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-01-global-sentiment/files/output/historische_beispiele.csv"
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/output/integrity_audit.json",
+    "relative_path": "output/integrity_audit.json",
+    "bytes": 770,
+    "sha256": "089b6e7fe37ec284532467f6cea1a6e73b71c03d58d06307d3ddf02546ee9af0",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-01-global-sentiment/files/output/integrity_audit.json"
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/output/joint.log",
+    "relative_path": "output/joint.log",
+    "bytes": 1593,
+    "sha256": "5f279e9b86237339cad37340551c4971ef8fc80080029fc661a57c20612a466e",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/output/joint_state_diagnostic.json",
+    "relative_path": "output/joint_state_diagnostic.json",
+    "bytes": 1592,
+    "sha256": "4264a7b8bebb308c4834143e00a5c822a253e9ab5cd67b9dc22f12c8b7794680",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-01-global-sentiment/files/output/joint_state_diagnostic.json"
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/output/joint_state_predictions.parquet",
+    "relative_path": "output/joint_state_predictions.parquet",
+    "bytes": 344058,
+    "sha256": "f0b7dfa4ae4e58e103ad1b7e87d633ab02856391cffeb356f8508e2128af7348",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/output/model.log",
+    "relative_path": "output/model.log",
+    "bytes": 1631,
+    "sha256": "412a1f51e911e30ac577b40c5fe670684333a2a9ff6538d552cd1b77b8253c12",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/output/price_coverage.json",
+    "relative_path": "output/price_coverage.json",
+    "bytes": 16245,
+    "sha256": "d27aba17ca598a355851ea256e5dbf445dd3c266c288be2c4c184d136d910795",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-01-global-sentiment/files/output/price_coverage.json"
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/output/primary_tests.csv",
+    "relative_path": "output/primary_tests.csv",
+    "bytes": 453,
+    "sha256": "5f5520826af53a42adc9ec001d611f92637ec49c084156cc0105a8a0577e042c",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-01-global-sentiment/files/output/primary_tests.csv"
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/output/prognosevergleich.png",
+    "relative_path": "output/prognosevergleich.png",
+    "bytes": 81874,
+    "sha256": "8212b3f9f1d142af678431944912d9e9a56d4bdcc718c28925be2acb9a1633c7",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-01-global-sentiment/files/output/prognosevergleich.png"
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/output/protocol_lock.json",
+    "relative_path": "output/protocol_lock.json",
+    "bytes": 633,
+    "sha256": "8542ad97600f19c034494c7e2524cc866fc483b73aee061820b8d0056d811bdc",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-01-global-sentiment/files/output/protocol_lock.json"
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/output/protocol_lock_v1.json",
+    "relative_path": "output/protocol_lock_v1.json",
+    "bytes": 524,
+    "sha256": "e0d0a3b8fda79f91b2262b10fc19e524ded797425f1af54df8f1bce765540725",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-01-global-sentiment/files/output/protocol_lock_v1.json"
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/output/reaktionen_nach_kategorie.png",
+    "relative_path": "output/reaktionen_nach_kategorie.png",
+    "bytes": 105636,
+    "sha256": "fe2eea6182de768fcaba0a327902b43af2e283b882e5afa008415543010853c7",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-01-global-sentiment/files/output/reaktionen_nach_kategorie.png"
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/output/results.json",
+    "relative_path": "output/results.json",
+    "bytes": 21336,
+    "sha256": "fa7af26ada86d799e9fa813f8f9c69a56bb1ebcebdbf4fb82e6c4421ce124d5d",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-01-global-sentiment/files/output/results.json"
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/output/robustness.log",
+    "relative_path": "output/robustness.log",
+    "bytes": 1257,
+    "sha256": "0947c7113c8917fdc242da358b1d51cc8eb82b8fcae69ff1e18a27a5d1d96800",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/output/state_by_region.csv",
+    "relative_path": "output/state_by_region.csv",
+    "bytes": 207,
+    "sha256": "8b100abec164688f8cf43c4b94094171a2e585a4c37e21d60bcacf30670fe64e",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-01-global-sentiment/files/output/state_by_region.csv"
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/output/state_robustness.json",
+    "relative_path": "output/state_robustness.json",
+    "bytes": 1256,
+    "sha256": "824e5ed9b6bacf231cb27d00fa8575be54f2ace5fb9506af87558fff6a5822a2",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-01-global-sentiment/files/output/state_robustness.json"
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/output/state_strong_baseline.joblib",
+    "relative_path": "output/state_strong_baseline.joblib",
+    "bytes": 7266,
+    "sha256": "c1c7068d5cea8781daa8f56ac5c1396980122ad29d2d43b773d47e2a3f276ce4",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/output/test_predictions.parquet",
+    "relative_path": "output/test_predictions.parquet",
+    "bytes": 1926843,
+    "sha256": "89c6a1784fdd4189a2f9086afd40cbe5a585447d2b2d8f6a4e36a80d6358d97d",
+    "in_repository": false
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/package_manifest.json",
+    "relative_path": "package_manifest.json",
+    "bytes": 15440,
+    "sha256": "af59ff12eae18b910aa7f3b44d2566c855ad9b0821f0128e68134c8380ed5c13",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-01-global-sentiment/files/package_manifest.json"
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/prices.py",
+    "relative_path": "prices.py",
+    "bytes": 1890,
+    "sha256": "9b3ce0a1a05c93b6091d12b8c1fe4b37ec167aa255a531ad7052b323f4a16839",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-01-global-sentiment/files/prices.py"
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/protocol.md",
+    "relative_path": "protocol.md",
+    "bytes": 5864,
+    "sha256": "4d32f2a26bf41aa56fc865307c286f933802451505882c28eb7ed9e862c30167",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-01-global-sentiment/files/protocol.md"
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/report.py",
+    "relative_path": "report.py",
+    "bytes": 27454,
+    "sha256": "c64c2b08ebe86613705562a2883d4a765e2ba2fc0fbd8caa3a319bf75083c825",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-01-global-sentiment/files/report.py"
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/requirements.txt",
+    "relative_path": "requirements.txt",
+    "bytes": 110,
+    "sha256": "3f1977d791a9dbe6e4eade067283f0dfd7891f0cabae03132a6cabe18c72e8d3",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-01-global-sentiment/files/requirements.txt"
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/robustness.py",
+    "relative_path": "robustness.py",
+    "bytes": 2543,
+    "sha256": "33e6b1fb530ebe90a8e5e0715549ec2272cba158d9c242396db75f10e696b545",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-01-global-sentiment/files/robustness.py"
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/sources.md",
+    "relative_path": "sources.md",
+    "bytes": 2702,
+    "sha256": "42f36253e5796b8cedb3e1f4a81cb9eadaa0f68cdb6e7970ace68e846b1d4905",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-01-global-sentiment/files/sources.md"
+  },
+  {
+    "archive_path": "Stimmungsmodell_Globaler_Pilot_2026/verify.py",
+    "relative_path": "verify.py",
+    "bytes": 2577,
+    "sha256": "34baa6621fdad304a94e03b8e02309f584110ff05977b1c218e00b8ad8953942",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-01-global-sentiment/files/verify.py"
+  }
+]

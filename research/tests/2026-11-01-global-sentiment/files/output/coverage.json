@@ -1,0 +1,30 @@
+{
+  "news_rows": 101885,
+  "unique_urls": 86001,
+  "languages": 62,
+  "companies_with_news": 90,
+  "countries": 19,
+  "raw_firm_weeks": 36600,
+  "sufficient_firm_weeks": 9375,
+  "news_by_year": {
+    "2019": 1569,
+    "2020": 1510,
+    "2021": 1303,
+    "2022": 1200,
+    "2023": 1280,
+    "2024": 1294,
+    "2025": 1219
+  },
+  "price_rows": 35839,
+  "price_companies": 100,
+  "test_weeks": 153,
+  "regions": [
+    "Africa",
+    "Asia",
+    "Europe",
+    "Latin America",
+    "North America",
+    "Oceania"
+  ],
+  "train_only_clustering": true
+}

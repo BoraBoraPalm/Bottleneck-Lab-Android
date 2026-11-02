@@ -1,0 +1,55 @@
+[
+  {
+    "archive_path": "results/data_coverage.json",
+    "relative_path": "results/data_coverage.json",
+    "bytes": 11407,
+    "sha256": "a30784f9941419cd9edbc607094d6b3cc7a1b877a6dfb18c5226478c62e94092",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-10-31-five-year-backtest/files/results/data_coverage.json"
+  },
+  {
+    "archive_path": "results/chronological_trades.csv",
+    "relative_path": "results/chronological_trades.csv",
+    "bytes": 65058,
+    "sha256": "04043bc7a3fe6bb39aafc0837a7aca3b26c78c7c2bc7ec97fab51305a2e8a493",
+    "in_repository": false
+  },
+  {
+    "archive_path": "results/chronological_equity.csv",
+    "relative_path": "results/chronological_equity.csv",
+    "bytes": 5879,
+    "sha256": "d074aec8ceee880c25a56b3ecb63741e44dc62ade83c57bee7e44f7f42e15a4f",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-10-31-five-year-backtest/files/results/chronological_equity.csv"
+  },
+  {
+    "archive_path": "results/random_320_cohorts.csv",
+    "relative_path": "results/random_320_cohorts.csv",
+    "bytes": 33871,
+    "sha256": "40644f277a95c52680b4b8672295caeeb9fb501a8d13fae46a86c96d30173ac5",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-10-31-five-year-backtest/files/results/random_320_cohorts.csv"
+  },
+  {
+    "archive_path": "results/random_all_trades.csv",
+    "relative_path": "results/random_all_trades.csv",
+    "bytes": 361790,
+    "sha256": "262956954b78816c916dc23aa79b2b236a6356f2badf74f504e556b0cc503738",
+    "in_repository": false
+  },
+  {
+    "archive_path": "results/report.json",
+    "relative_path": "results/report.json",
+    "bytes": 5626,
+    "sha256": "003591eb57e03d1d2a889539dc50548e8ca91446bf83f50d467f94506c05dba0",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-10-31-five-year-backtest/files/results/report.json"
+  },
+  {
+    "archive_path": "backtest_output.log",
+    "relative_path": "backtest_output.log",
+    "bytes": 2063,
+    "sha256": "a73ed3fea566c335c907291920af7f75bbe6c0877f1e91a2a025a497d9b21d05",
+    "in_repository": false
+  }
+]

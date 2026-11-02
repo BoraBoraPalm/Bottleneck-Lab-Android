@@ -1,0 +1,46 @@
+{
+  "id": "2026-10-31-independent-trade-rules",
+  "title": "Unabhängiger Vergleich der aktuellen Ein-/Ausstiegsregeln",
+  "date": "2026-10-31",
+  "period": "2021-11 bis 2026-10",
+  "strategy": "Sieben Momentum-, Limit-, Stop- und Review-Varianten",
+  "prediction": "Maximal 20 Sessions; zehn gleich große Kapitalsitze",
+  "holding": {
+    "kind": "maximum_sessions",
+    "maximum": 20,
+    "entry_window_sessions": 5,
+    "average_actual": null,
+    "variable_by": "Limitfüllung, Stopps und Trend-/Crash-Review",
+    "optimized": false
+  },
+  "rebalance": "Nichtüberlappende 20-Session-Kohorten mit früheren Ausstiegen",
+  "result": "Ein-/Ausstiegsregeln bei gleicher maximaler Dauer verglichen; keine optimierte Dauer je Strategie.",
+  "limits": [
+    "Heutige überlebende Titel",
+    "Bekannte historische Testjahre",
+    "Historische Brokerverfügbarkeit/Spreads unvollständig"
+  ],
+  "repro": "Ergebnisse und Trade-Details im Vollpaket. Ein verwandter festgehaltener Code im Repository ist verlinkt; seine Bitidentität mit dem Original-Lauf wird nicht behauptet.",
+  "schema_version": 1,
+  "archived_date": "2026-11-02",
+  "status": "completed_limited_scope",
+  "source_artifact": {
+    "filename": "Bottleneck_Trading_Rules_Independent_2026.zip",
+    "url": "https://chatgpt.com/library?file_id=libfile_c3afd081f67881918a9b714611ad5457&account_id=personal",
+    "sha256": "6912b52f3f32787ba9095d839e2dc3a92fd4716f18ddcaaccbf6b236ff5e8f43",
+    "bytes": 193859,
+    "archive_root": ""
+  },
+  "entry_report": "files/current_rules_results/current_trading_rules_report.json",
+  "artifact_members": "ARTIFACT_MEMBERS.json",
+  "data_availability": "Complete original bundle remains accessible to the owner; repository retains code, reports, compact inputs and results. See member hashes, no reevaluation required.",
+  "holding_period_search_performed": false,
+  "not_tested": [
+    "Systematisch ausgewählte optimale Haltedauer je Strategie",
+    "Erfolg auf allen nicht geprüften Zeiträumen/Horizonten"
+  ],
+  "reproduction_status": "Ergebnisse und Trade-Details im Vollpaket. Ein verwandter festgehaltener Code im Repository ist verlinkt; seine Bitidentität mit dem Original-Lauf wird nicht behauptet.",
+  "costs": "Unveränderte Parameter siehe Originalberichte; Gebührenmodelle sind nicht als tatsächliche Ausführungskosten verifiziert.",
+  "benchmark": "Unveränderte Benchmarkdefinition im Originalbericht nachlesen.",
+  "time_splits": "Originale zeitliche Aufteilung ist im eingefrorenen Bericht/Protokoll erhalten; keine neue Auswertung beim Archivieren."
+}

@@ -1,0 +1,9 @@
+{
+  "constant_scores_uniform_1": true,
+  "constant_scores_uniform_2": true,
+  "constant_scores_uniform_10": true,
+  "constant_scores_uniform_23": true,
+  "boundary_ties_neutral": true,
+  "unique_top_quintile": true,
+  "common_portfolio_all_models_same_49_cohorts": true
+}

@@ -1,0 +1,11 @@
+{
+  "locked_before_target_evaluation_utc": "2026-11-01T22:53:14.210288+00:00",
+  "reason_for_update": "Missing archive measurements and currency unit support; no target scores inspected",
+  "sha256": {
+    "protocol.md": "4d32f2a26bf41aa56fc865307c286f933802451505882c28eb7ed9e862c30167",
+    "cohort.py": "1a314bb026ee5a5b558a9df44a75486a63a7803dd02dc7c2b416f27cb6a91671",
+    "collect.py": "619bc893aa1a92eebf9bbe5bbdc4c3e03b596712914d6b6eb0f67e3b361ea1ec",
+    "prices.py": "9b3ce0a1a05c93b6091d12b8c1fe4b37ec167aa255a531ad7052b323f4a16839",
+    "model.py": "0f8c90314bb4a4451e82fc5c3f0b2831d5bcd14afd515514bc943a2dbbf3977e"
+  }
+}

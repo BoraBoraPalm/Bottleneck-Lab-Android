@@ -1,0 +1,40 @@
+[
+  {
+    "archive_path": "limits_results/all_20_variants.json",
+    "relative_path": "limits_results/all_20_variants.json",
+    "bytes": 36531,
+    "sha256": "d783aa96a5c8511866ef070873e148b477d635cf800c37771e7b6eed385756db",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-10-31-atr-limits-stops/files/limits_results/all_20_variants.json"
+  },
+  {
+    "archive_path": "limits_results/chronological_curves.json",
+    "relative_path": "limits_results/chronological_curves.json",
+    "bytes": 326999,
+    "sha256": "f28803b4aebe8b9b1a9829f909f7bf307128f5ccc9bead2d84c5c41b45cf739d",
+    "in_repository": false
+  },
+  {
+    "archive_path": "limits_results/grid_summary.csv",
+    "relative_path": "limits_results/grid_summary.csv",
+    "bytes": 2234,
+    "sha256": "b44a9c0bafcc9223ea7d4694d576db40fc1f5e381f7093c51518d430bd3e6e0c",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-10-31-atr-limits-stops/files/limits_results/grid_summary.csv"
+  },
+  {
+    "archive_path": "limits_results/threshold_summary.json",
+    "relative_path": "limits_results/threshold_summary.json",
+    "bytes": 6068,
+    "sha256": "d2a36fcdcefb1e213c4654cce4b3263ecb1a639640bcc3af36bde9cf69a61d2c",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-10-31-atr-limits-stops/files/limits_results/threshold_summary.json"
+  },
+  {
+    "archive_path": "limits_sensitivity_output.log",
+    "relative_path": "limits_sensitivity_output.log",
+    "bytes": 5656,
+    "sha256": "ce245ebc057de50b43308318b5cb945770972ce3c2ab362d6bcc3e4c0ecc424c",
+    "in_repository": false
+  }
+]

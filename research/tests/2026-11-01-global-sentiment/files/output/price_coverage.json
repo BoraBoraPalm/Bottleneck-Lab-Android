@@ -1,0 +1,802 @@
+[
+  {
+    "company": "Apple",
+    "ticker": "AAPL",
+    "currency": "USD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2020
+  },
+  {
+    "company": "Alphabet",
+    "ticker": "GOOGL",
+    "currency": "USD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2020
+  },
+  {
+    "company": "Microsoft",
+    "ticker": "MSFT",
+    "currency": "USD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2020
+  },
+  {
+    "company": "Amazon",
+    "ticker": "AMZN",
+    "currency": "USD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2020
+  },
+  {
+    "company": "Tencent",
+    "ticker": "0700.HK",
+    "currency": "HKD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 1968
+  },
+  {
+    "company": "Berkshire Hathaway",
+    "ticker": "BRK-B",
+    "currency": "USD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2020
+  },
+  {
+    "company": "Alibaba",
+    "ticker": "BABA",
+    "currency": "USD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2020
+  },
+  {
+    "company": "Facebook/Meta",
+    "ticker": "META",
+    "currency": "USD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2020
+  },
+  {
+    "company": "JPMorgan Chase",
+    "ticker": "JPM",
+    "currency": "USD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2020
+  },
+  {
+    "company": "Johnson & Johnson",
+    "ticker": "JNJ",
+    "currency": "USD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2020
+  },
+  {
+    "company": "ICBC",
+    "ticker": "1398.HK",
+    "currency": "HKD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 1967
+  },
+  {
+    "company": "Exxon Mobil",
+    "ticker": "XOM",
+    "currency": "USD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2020
+  },
+  {
+    "company": "Bank of America",
+    "ticker": "BAC",
+    "currency": "USD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2020
+  },
+  {
+    "company": "Samsung Electronics",
+    "ticker": "005930.KS",
+    "currency": "KRW",
+    "first": "2018-01-02",
+    "last": "2026-01-15",
+    "observations": 1954
+  },
+  {
+    "company": "Royal Dutch Shell",
+    "ticker": "SHEL.L",
+    "currency": "GBp",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2030
+  },
+  {
+    "company": "Walmart",
+    "ticker": "WMT",
+    "currency": "USD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2020
+  },
+  {
+    "company": "China Construction Bank",
+    "ticker": "0939.HK",
+    "currency": "HKD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 1968
+  },
+  {
+    "company": "Wells Fargo",
+    "ticker": "WFC",
+    "currency": "USD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2020
+  },
+  {
+    "company": "Nestle",
+    "ticker": "NESN.SW",
+    "currency": "CHF",
+    "first": "2018-01-03",
+    "last": "2026-01-14",
+    "observations": 2016
+  },
+  {
+    "company": "Visa",
+    "ticker": "V",
+    "currency": "USD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2020
+  },
+  {
+    "company": "Intel",
+    "ticker": "INTC",
+    "currency": "USD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2020
+  },
+  {
+    "company": "Anheuser-Busch InBev",
+    "ticker": "ABI.BR",
+    "currency": "EUR",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2057
+  },
+  {
+    "company": "Taiwan Semiconductor",
+    "ticker": "2330.TW",
+    "currency": "TWD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 1951
+  },
+  {
+    "company": "AT&T",
+    "ticker": "T",
+    "currency": "USD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2020
+  },
+  {
+    "company": "Chevron",
+    "ticker": "CVX",
+    "currency": "USD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2020
+  },
+  {
+    "company": "PetroChina",
+    "ticker": "0857.HK",
+    "currency": "HKD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 1968
+  },
+  {
+    "company": "Novartis",
+    "ticker": "NOVN.SW",
+    "currency": "CHF",
+    "first": "2018-01-03",
+    "last": "2026-01-14",
+    "observations": 2015
+  },
+  {
+    "company": "Pfizer",
+    "ticker": "PFE",
+    "currency": "USD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2020
+  },
+  {
+    "company": "Toyota",
+    "ticker": "7203.T",
+    "currency": "JPY",
+    "first": "2018-01-04",
+    "last": "2026-01-15",
+    "observations": 1959
+  },
+  {
+    "company": "UnitedHealth Group",
+    "ticker": "UNH",
+    "currency": "USD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2020
+  },
+  {
+    "company": "Cisco Systems",
+    "ticker": "CSCO",
+    "currency": "USD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2020
+  },
+  {
+    "company": "Home Depot",
+    "ticker": "HD",
+    "currency": "USD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2020
+  },
+  {
+    "company": "Agricultural Bank of China",
+    "ticker": "1288.HK",
+    "currency": "HKD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 1965
+  },
+  {
+    "company": "Procter & Gamble",
+    "ticker": "PG",
+    "currency": "USD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2020
+  },
+  {
+    "company": "Roche",
+    "ticker": "ROP.SW",
+    "currency": "CHF",
+    "first": "2018-01-03",
+    "last": "2026-01-14",
+    "observations": 2016
+  },
+  {
+    "company": "Verizon Communications",
+    "ticker": "VZ",
+    "currency": "USD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2020
+  },
+  {
+    "company": "Boeing",
+    "ticker": "BA",
+    "currency": "USD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2020
+  },
+  {
+    "company": "Ping An Insurance",
+    "ticker": "2318.HK",
+    "currency": "HKD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 1968
+  },
+  {
+    "company": "China Mobile",
+    "ticker": "0941.HK",
+    "currency": "HKD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 1966
+  },
+  {
+    "company": "HSBC",
+    "ticker": "HSBA.L",
+    "currency": "GBp",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2030
+  },
+  {
+    "company": "Oracle",
+    "ticker": "ORCL",
+    "currency": "USD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2020
+  },
+  {
+    "company": "Coca-Cola",
+    "ticker": "KO",
+    "currency": "USD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2020
+  },
+  {
+    "company": "Mastercard",
+    "ticker": "MA",
+    "currency": "USD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2020
+  },
+  {
+    "company": "Bank of China",
+    "ticker": "3988.HK",
+    "currency": "HKD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 1968
+  },
+  {
+    "company": "Citigroup",
+    "ticker": "C",
+    "currency": "USD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2020
+  },
+  {
+    "company": "Unilever",
+    "ticker": "UNA.AS",
+    "currency": "EUR",
+    "first": "2020-12-04",
+    "last": "2026-01-14",
+    "observations": 1309
+  },
+  {
+    "company": "LVMH",
+    "ticker": "MC.PA",
+    "currency": "EUR",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2057
+  },
+  {
+    "company": "Comcast",
+    "ticker": "CMCSA",
+    "currency": "USD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2020
+  },
+  {
+    "company": "PepsiCo",
+    "ticker": "PEP",
+    "currency": "USD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2020
+  },
+  {
+    "company": "Philip Morris International",
+    "ticker": "PM",
+    "currency": "USD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2020
+  },
+  {
+    "company": "Walt Disney",
+    "ticker": "DIS",
+    "currency": "USD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2020
+  },
+  {
+    "company": "AbbVie",
+    "ticker": "ABBV",
+    "currency": "USD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2020
+  },
+  {
+    "company": "Total",
+    "ticker": "TTE.PA",
+    "currency": "EUR",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2055
+  },
+  {
+    "company": "DowDuPont",
+    "ticker": "DD",
+    "currency": "USD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2020
+  },
+  {
+    "company": "Merck & Co",
+    "ticker": "MRK",
+    "currency": "USD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2020
+  },
+  {
+    "company": "IBM",
+    "ticker": "IBM",
+    "currency": "USD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2020
+  },
+  {
+    "company": "NVIDIA",
+    "ticker": "NVDA",
+    "currency": "USD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2020
+  },
+  {
+    "company": "Kweichow Moutai",
+    "ticker": "600519.SS",
+    "currency": "CNY",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 1946
+  },
+  {
+    "company": "BP",
+    "ticker": "BP.L",
+    "currency": "GBp",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2029
+  },
+  {
+    "company": "British American Tobacco",
+    "ticker": "BATS.L",
+    "currency": "GBp",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2030
+  },
+  {
+    "company": "3M",
+    "ticker": "MMM",
+    "currency": "USD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2020
+  },
+  {
+    "company": "SAP",
+    "ticker": "SAP.DE",
+    "currency": "EUR",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2039
+  },
+  {
+    "company": "Netflix",
+    "ticker": "NFLX",
+    "currency": "USD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2020
+  },
+  {
+    "company": "L'Oreal",
+    "ticker": "OR.PA",
+    "currency": "EUR",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2057
+  },
+  {
+    "company": "McDonalds",
+    "ticker": "MCD",
+    "currency": "USD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2020
+  },
+  {
+    "company": "Novo Nordisk",
+    "ticker": "NOVO-B.CO",
+    "currency": "DKK",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2007
+  },
+  {
+    "company": "Amgen",
+    "ticker": "AMGN",
+    "currency": "USD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2020
+  },
+  {
+    "company": "Sinopec",
+    "ticker": "0386.HK",
+    "currency": "HKD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 1968
+  },
+  {
+    "company": "Altria",
+    "ticker": "MO",
+    "currency": "USD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2020
+  },
+  {
+    "company": "General Electric",
+    "ticker": "GE",
+    "currency": "USD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2020
+  },
+  {
+    "company": "AmBev",
+    "ticker": "ABEV3.SA",
+    "currency": "BRL",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 1996
+  },
+  {
+    "company": "China Merchants Bank",
+    "ticker": "3968.HK",
+    "currency": "HKD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 1968
+  },
+  {
+    "company": "Royal Bank of Canada",
+    "ticker": "RY.TO",
+    "currency": "CAD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2017
+  },
+  {
+    "company": "BHP Billiton",
+    "ticker": "BHP.AX",
+    "currency": "AUD",
+    "first": "2018-01-02",
+    "last": "2026-01-15",
+    "observations": 2035
+  },
+  {
+    "company": "Medtronic",
+    "ticker": "MDT",
+    "currency": "USD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2020
+  },
+  {
+    "company": "Siemens",
+    "ticker": "SIE.DE",
+    "currency": "EUR",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2039
+  },
+  {
+    "company": "Honeywell",
+    "ticker": "HON",
+    "currency": "USD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2020
+  },
+  {
+    "company": "Nike",
+    "ticker": "NKE",
+    "currency": "USD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2020
+  },
+  {
+    "company": "Naspers",
+    "ticker": "NPN.JO",
+    "currency": "ZAc",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2008
+  },
+  {
+    "company": "Adobe",
+    "ticker": "ADBE",
+    "currency": "USD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2020
+  },
+  {
+    "company": "China Life Insurance",
+    "ticker": "2628.HK",
+    "currency": "HKD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 1968
+  },
+  {
+    "company": "Santander",
+    "ticker": "SAN.MC",
+    "currency": "EUR",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2054
+  },
+  {
+    "company": "Abbott Laboratories",
+    "ticker": "ABT",
+    "currency": "USD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2020
+  },
+  {
+    "company": "Toronto-Dominion Bank",
+    "ticker": "TD.TO",
+    "currency": "CAD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2017
+  },
+  {
+    "company": "Union Pacific",
+    "ticker": "UNP",
+    "currency": "USD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2020
+  },
+  {
+    "company": "Bristol-Myers Squibb",
+    "ticker": "BMY",
+    "currency": "USD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2020
+  },
+  {
+    "company": "Accenture",
+    "ticker": "ACN",
+    "currency": "USD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2020
+  },
+  {
+    "company": "AIA Group",
+    "ticker": "1299.HK",
+    "currency": "HKD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 1965
+  },
+  {
+    "company": "Texas Instruments",
+    "ticker": "TXN",
+    "currency": "USD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2020
+  },
+  {
+    "company": "Sanofi",
+    "ticker": "SAN.PA",
+    "currency": "EUR",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2057
+  },
+  {
+    "company": "United Technologies",
+    "ticker": "RTX",
+    "currency": "USD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2020
+  },
+  {
+    "company": "Booking Holdings",
+    "ticker": "BKNG",
+    "currency": "USD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2020
+  },
+  {
+    "company": "Volkswagen",
+    "ticker": "VOW3.DE",
+    "currency": "EUR",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2039
+  },
+  {
+    "company": "Allianz",
+    "ticker": "ALV.DE",
+    "currency": "EUR",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2039
+  },
+  {
+    "company": "Goldman Sachs",
+    "ticker": "GS",
+    "currency": "USD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2020
+  },
+  {
+    "company": "Gilead Sciences",
+    "ticker": "GILD",
+    "currency": "USD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2020
+  },
+  {
+    "company": "Commonwealth Bank",
+    "ticker": "CBA.AX",
+    "currency": "AUD",
+    "first": "2018-01-02",
+    "last": "2026-01-15",
+    "observations": 2035
+  },
+  {
+    "company": "Inditex",
+    "ticker": "ITX.MC",
+    "currency": "EUR",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2054
+  },
+  {
+    "company": "GlaxoSmithKline",
+    "ticker": "GSK.L",
+    "currency": "GBp",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2030
+  },
+  {
+    "company": "Broadcom",
+    "ticker": "AVGO",
+    "currency": "USD",
+    "first": "2018-01-02",
+    "last": "2026-01-14",
+    "observations": 2020
+  }
+]

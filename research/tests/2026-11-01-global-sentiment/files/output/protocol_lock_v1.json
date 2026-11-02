@@ -1,0 +1,10 @@
+{
+  "locked_before_target_evaluation_utc": "2026-11-01T22:48:05.448750+00:00",
+  "sha256": {
+    "protocol.md": "77221b2a4ac3a00cf28203fecb500067a9b2e0e2fd5afaabd9a2748653377ab7",
+    "cohort.py": "1a314bb026ee5a5b558a9df44a75486a63a7803dd02dc7c2b416f27cb6a91671",
+    "collect.py": "619bc893aa1a92eebf9bbe5bbdc4c3e03b596712914d6b6eb0f67e3b361ea1ec",
+    "prices.py": "05a2b12d6281ee525f1fa6507896d3a79bdcff97db24e0aa78ffdde88c8c4797",
+    "model.py": "c2ec5111e17431956b54a41ceb269a8446806d2cdb08c3ed0944dccf52469dc8"
+  }
+}

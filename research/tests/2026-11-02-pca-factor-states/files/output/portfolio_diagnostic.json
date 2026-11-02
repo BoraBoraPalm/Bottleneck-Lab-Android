@@ -1,0 +1,58 @@
+[
+  {
+    "model": "price_ridge",
+    "end_eur": 11108.588218397903,
+    "initial_eur": 10000,
+    "return_pct": 11.085882183979034,
+    "valid_cohorts": 49,
+    "skipped_dates": []
+  },
+  {
+    "model": "all_ridge",
+    "end_eur": 11223.979400521164,
+    "initial_eur": 10000,
+    "return_pct": 12.239794005211646,
+    "valid_cohorts": 49,
+    "skipped_dates": []
+  },
+  {
+    "model": "elastic_net",
+    "end_eur": 12073.109701978643,
+    "initial_eur": 10000,
+    "return_pct": 20.73109701978644,
+    "valid_cohorts": 49,
+    "skipped_dates": []
+  },
+  {
+    "model": "pca_ridge",
+    "end_eur": 11326.373739188695,
+    "initial_eur": 10000,
+    "return_pct": 13.263737391886954,
+    "valid_cohorts": 49,
+    "skipped_dates": []
+  },
+  {
+    "model": "pls_ridge",
+    "end_eur": 11643.996314881733,
+    "initial_eur": 10000,
+    "return_pct": 16.439963148817327,
+    "valid_cohorts": 49,
+    "skipped_dates": []
+  },
+  {
+    "model": "small_boosting",
+    "end_eur": 13168.382967087167,
+    "initial_eur": 10000,
+    "return_pct": 31.683829670871667,
+    "valid_cohorts": 49,
+    "skipped_dates": []
+  },
+  {
+    "model": "benchmark",
+    "end_eur": 1814.8158293157464,
+    "initial_eur": 10000,
+    "return_pct": -81.85184170684254,
+    "valid_cohorts": 49,
+    "skipped_dates": []
+  }
+]

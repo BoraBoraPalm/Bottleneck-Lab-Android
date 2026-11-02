@@ -1,0 +1,8 @@
+package,saved_level,use
+Fünfjahres-Backtest,"Trades, 320 überlappende Datumstests, Kurven",Kurs-/Volumen-/ATR-Merkmale rekonstruiert; künftige Tradegewinne keine Eingaben
+ATR-Grenzen,20 Stop-/Limit-Varianten und Ergebnisse,ATR als damaliger Risikozustand; keine Ergebnisse späterer Ausführungen als Faktor
+12–2-Momentum,Strategievergleiche und Kurven,"Historisches Momentum als Eingabe, hier exakt zwischen 252 und 42 Handelstagen"
+Wissenschaftliche Faktorstudie,Aggregierte Value-/Quality-/Investment-/Momentum-Portfolios,"Marktindikatoren in gesonderter, nicht streng point-in-time-fähiger Erweiterung"
+Unabhängige Handelsregeln,Trades und Variantenkurven,Vergleichs-/Kostenannahmen und Grenzen; keine Vermischung mit Aktienmerkmalen
+Behavioral-Studie,312 Monate primitive Signal-/Faktorportfoliorenditen,24 verzögerte Marktindikatoren im Zusatztest
+Globales Stimmungsmodell,"Historische Nachrichten-Metadaten, Kurse, Devisen",Hauptquelle für gemeinsames Aktien-Zeitpunkt-Panel; frühere Zustands- und Zukunftsspalten ausgeschlossen

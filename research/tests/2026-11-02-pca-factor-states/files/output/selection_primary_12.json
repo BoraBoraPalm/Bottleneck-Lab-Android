@@ -1,0 +1,950 @@
+[
+  {
+    "scope": "primary",
+    "horizon": 12,
+    "year": 2022,
+    "method": "price_ridge",
+    "selected": {
+      "alpha": 100
+    },
+    "inner_grid": [
+      {
+        "config": {
+          "alpha": 1
+        },
+        "mse": 0.014394088354375343,
+        "train_n": 8873,
+        "validation_n": 3781
+      },
+      {
+        "config": {
+          "alpha": 10
+        },
+        "mse": 0.012593794913659924,
+        "train_n": 8873,
+        "validation_n": 3781
+      },
+      {
+        "config": {
+          "alpha": 100
+        },
+        "mse": 0.009521536646726256,
+        "train_n": 8873,
+        "validation_n": 3781
+      }
+    ]
+  },
+  {
+    "scope": "primary",
+    "horizon": 12,
+    "year": 2022,
+    "method": "all_ridge",
+    "selected": {
+      "alpha": 100
+    },
+    "inner_grid": [
+      {
+        "config": {
+          "alpha": 1
+        },
+        "mse": 0.014638080962484108,
+        "train_n": 8873,
+        "validation_n": 3781
+      },
+      {
+        "config": {
+          "alpha": 10
+        },
+        "mse": 0.012631661970238284,
+        "train_n": 8873,
+        "validation_n": 3781
+      },
+      {
+        "config": {
+          "alpha": 100
+        },
+        "mse": 0.00953811393590904,
+        "train_n": 8873,
+        "validation_n": 3781
+      }
+    ]
+  },
+  {
+    "scope": "primary",
+    "horizon": 12,
+    "year": 2022,
+    "method": "elastic_net",
+    "selected": {
+      "alpha": 0.01
+    },
+    "inner_grid": [
+      {
+        "config": {
+          "alpha": 0.0001
+        },
+        "mse": 0.01325516358097188,
+        "train_n": 8873,
+        "validation_n": 3781
+      },
+      {
+        "config": {
+          "alpha": 0.001
+        },
+        "mse": 0.009310404887672605,
+        "train_n": 8873,
+        "validation_n": 3781
+      },
+      {
+        "config": {
+          "alpha": 0.01
+        },
+        "mse": 0.009246631979542827,
+        "train_n": 8873,
+        "validation_n": 3781
+      }
+    ]
+  },
+  {
+    "scope": "primary",
+    "horizon": 12,
+    "year": 2022,
+    "method": "pca_ridge",
+    "selected": {
+      "k": 2,
+      "alpha": 10
+    },
+    "inner_grid": [
+      {
+        "config": {
+          "k": 2,
+          "alpha": 10
+        },
+        "mse": 0.010975506780072707,
+        "train_n": 8873,
+        "validation_n": 3781
+      },
+      {
+        "config": {
+          "k": 4,
+          "alpha": 10
+        },
+        "mse": 0.01195486321582368,
+        "train_n": 8873,
+        "validation_n": 3781
+      },
+      {
+        "config": {
+          "k": 8,
+          "alpha": 10
+        },
+        "mse": 0.012229490652324208,
+        "train_n": 8873,
+        "validation_n": 3781
+      },
+      {
+        "config": {
+          "k": 12,
+          "alpha": 10
+        },
+        "mse": 0.012319001931132691,
+        "train_n": 8873,
+        "validation_n": 3781
+      },
+      {
+        "config": {
+          "k": 20,
+          "alpha": 10
+        },
+        "mse": 0.012281921326132544,
+        "train_n": 8873,
+        "validation_n": 3781
+      }
+    ]
+  },
+  {
+    "scope": "primary",
+    "horizon": 12,
+    "year": 2022,
+    "method": "pls_ridge",
+    "selected": {
+      "k": 4,
+      "alpha": 10
+    },
+    "inner_grid": [
+      {
+        "config": {
+          "k": 2,
+          "alpha": 10
+        },
+        "mse": 0.011743524009348543,
+        "train_n": 8873,
+        "validation_n": 3781
+      },
+      {
+        "config": {
+          "k": 4,
+          "alpha": 10
+        },
+        "mse": 0.011591664621084087,
+        "train_n": 8873,
+        "validation_n": 3781
+      },
+      {
+        "config": {
+          "k": 8,
+          "alpha": 10
+        },
+        "mse": 0.011888049247914374,
+        "train_n": 8873,
+        "validation_n": 3781
+      },
+      {
+        "config": {
+          "k": 12,
+          "alpha": 10
+        },
+        "mse": 0.012077689260807663,
+        "train_n": 8873,
+        "validation_n": 3781
+      }
+    ]
+  },
+  {
+    "scope": "primary",
+    "horizon": 12,
+    "year": 2022,
+    "method": "small_boosting",
+    "selected": {
+      "max_iter": 100,
+      "learning_rate": 0.05,
+      "max_leaf_nodes": 7,
+      "min_samples_leaf": 100,
+      "l2_regularization": 10
+    },
+    "inner_grid": [
+      {
+        "config": {
+          "max_iter": 100,
+          "learning_rate": 0.05,
+          "max_leaf_nodes": 7,
+          "min_samples_leaf": 100,
+          "l2_regularization": 10
+        },
+        "mse": 0.009644748838318055,
+        "train_n": 8873,
+        "validation_n": 3781
+      }
+    ]
+  },
+  {
+    "scope": "primary",
+    "horizon": 12,
+    "year": 2023,
+    "method": "price_ridge",
+    "selected": {
+      "alpha": 100
+    },
+    "inner_grid": [
+      {
+        "config": {
+          "alpha": 1
+        },
+        "mse": 0.016622598166342095,
+        "train_n": 13914,
+        "validation_n": 3818
+      },
+      {
+        "config": {
+          "alpha": 10
+        },
+        "mse": 0.016007039160022284,
+        "train_n": 13914,
+        "validation_n": 3818
+      },
+      {
+        "config": {
+          "alpha": 100
+        },
+        "mse": 0.013635679768098026,
+        "train_n": 13914,
+        "validation_n": 3818
+      }
+    ]
+  },
+  {
+    "scope": "primary",
+    "horizon": 12,
+    "year": 2023,
+    "method": "all_ridge",
+    "selected": {
+      "alpha": 100
+    },
+    "inner_grid": [
+      {
+        "config": {
+          "alpha": 1
+        },
+        "mse": 0.016775104320654828,
+        "train_n": 13914,
+        "validation_n": 3818
+      },
+      {
+        "config": {
+          "alpha": 10
+        },
+        "mse": 0.016096855006144675,
+        "train_n": 13914,
+        "validation_n": 3818
+      },
+      {
+        "config": {
+          "alpha": 100
+        },
+        "mse": 0.013762995757455918,
+        "train_n": 13914,
+        "validation_n": 3818
+      }
+    ]
+  },
+  {
+    "scope": "primary",
+    "horizon": 12,
+    "year": 2023,
+    "method": "elastic_net",
+    "selected": {
+      "alpha": 0.01
+    },
+    "inner_grid": [
+      {
+        "config": {
+          "alpha": 0.0001
+        },
+        "mse": 0.015793439093662317,
+        "train_n": 13914,
+        "validation_n": 3818
+      },
+      {
+        "config": {
+          "alpha": 0.001
+        },
+        "mse": 0.01256813907081383,
+        "train_n": 13914,
+        "validation_n": 3818
+      },
+      {
+        "config": {
+          "alpha": 0.01
+        },
+        "mse": 0.011993068775463116,
+        "train_n": 13914,
+        "validation_n": 3818
+      }
+    ]
+  },
+  {
+    "scope": "primary",
+    "horizon": 12,
+    "year": 2023,
+    "method": "pca_ridge",
+    "selected": {
+      "k": 2,
+      "alpha": 10
+    },
+    "inner_grid": [
+      {
+        "config": {
+          "k": 2,
+          "alpha": 10
+        },
+        "mse": 0.015086440669220528,
+        "train_n": 13914,
+        "validation_n": 3818
+      },
+      {
+        "config": {
+          "k": 4,
+          "alpha": 10
+        },
+        "mse": 0.015792255946527684,
+        "train_n": 13914,
+        "validation_n": 3818
+      },
+      {
+        "config": {
+          "k": 8,
+          "alpha": 10
+        },
+        "mse": 0.015891049285780303,
+        "train_n": 13914,
+        "validation_n": 3818
+      },
+      {
+        "config": {
+          "k": 12,
+          "alpha": 10
+        },
+        "mse": 0.016233007788014144,
+        "train_n": 13914,
+        "validation_n": 3818
+      },
+      {
+        "config": {
+          "k": 20,
+          "alpha": 10
+        },
+        "mse": 0.01641242187864446,
+        "train_n": 13914,
+        "validation_n": 3818
+      }
+    ]
+  },
+  {
+    "scope": "primary",
+    "horizon": 12,
+    "year": 2023,
+    "method": "pls_ridge",
+    "selected": {
+      "k": 2,
+      "alpha": 10
+    },
+    "inner_grid": [
+      {
+        "config": {
+          "k": 2,
+          "alpha": 10
+        },
+        "mse": 0.014343469971110414,
+        "train_n": 13914,
+        "validation_n": 3818
+      },
+      {
+        "config": {
+          "k": 4,
+          "alpha": 10
+        },
+        "mse": 0.015624871617843383,
+        "train_n": 13914,
+        "validation_n": 3818
+      },
+      {
+        "config": {
+          "k": 8,
+          "alpha": 10
+        },
+        "mse": 0.01573297046870409,
+        "train_n": 13914,
+        "validation_n": 3818
+      },
+      {
+        "config": {
+          "k": 12,
+          "alpha": 10
+        },
+        "mse": 0.01576453933606287,
+        "train_n": 13914,
+        "validation_n": 3818
+      }
+    ]
+  },
+  {
+    "scope": "primary",
+    "horizon": 12,
+    "year": 2023,
+    "method": "small_boosting",
+    "selected": {
+      "max_iter": 100,
+      "learning_rate": 0.05,
+      "max_leaf_nodes": 7,
+      "min_samples_leaf": 100,
+      "l2_regularization": 10
+    },
+    "inner_grid": [
+      {
+        "config": {
+          "max_iter": 100,
+          "learning_rate": 0.05,
+          "max_leaf_nodes": 7,
+          "min_samples_leaf": 100,
+          "l2_regularization": 10
+        },
+        "mse": 0.013695448946366366,
+        "train_n": 13914,
+        "validation_n": 3818
+      }
+    ]
+  },
+  {
+    "scope": "primary",
+    "horizon": 12,
+    "year": 2024,
+    "method": "price_ridge",
+    "selected": {
+      "alpha": 100
+    },
+    "inner_grid": [
+      {
+        "config": {
+          "alpha": 1
+        },
+        "mse": 0.010634969240723697,
+        "train_n": 18996,
+        "validation_n": 3818
+      },
+      {
+        "config": {
+          "alpha": 10
+        },
+        "mse": 0.010601839855014018,
+        "train_n": 18996,
+        "validation_n": 3818
+      },
+      {
+        "config": {
+          "alpha": 100
+        },
+        "mse": 0.010476051501562885,
+        "train_n": 18996,
+        "validation_n": 3818
+      }
+    ]
+  },
+  {
+    "scope": "primary",
+    "horizon": 12,
+    "year": 2024,
+    "method": "all_ridge",
+    "selected": {
+      "alpha": 100
+    },
+    "inner_grid": [
+      {
+        "config": {
+          "alpha": 1
+        },
+        "mse": 0.010643984961713314,
+        "train_n": 18996,
+        "validation_n": 3818
+      },
+      {
+        "config": {
+          "alpha": 10
+        },
+        "mse": 0.010608201534295744,
+        "train_n": 18996,
+        "validation_n": 3818
+      },
+      {
+        "config": {
+          "alpha": 100
+        },
+        "mse": 0.010496675008920993,
+        "train_n": 18996,
+        "validation_n": 3818
+      }
+    ]
+  },
+  {
+    "scope": "primary",
+    "horizon": 12,
+    "year": 2024,
+    "method": "elastic_net",
+    "selected": {
+      "alpha": 0.0001
+    },
+    "inner_grid": [
+      {
+        "config": {
+          "alpha": 0.0001
+        },
+        "mse": 0.010459282174328588,
+        "train_n": 18996,
+        "validation_n": 3818
+      },
+      {
+        "config": {
+          "alpha": 0.001
+        },
+        "mse": 0.010505816390439146,
+        "train_n": 18996,
+        "validation_n": 3818
+      },
+      {
+        "config": {
+          "alpha": 0.01
+        },
+        "mse": 0.010669841048842122,
+        "train_n": 18996,
+        "validation_n": 3818
+      }
+    ]
+  },
+  {
+    "scope": "primary",
+    "horizon": 12,
+    "year": 2024,
+    "method": "pca_ridge",
+    "selected": {
+      "k": 20,
+      "alpha": 10
+    },
+    "inner_grid": [
+      {
+        "config": {
+          "k": 2,
+          "alpha": 10
+        },
+        "mse": 0.010585072114210168,
+        "train_n": 18996,
+        "validation_n": 3818
+      },
+      {
+        "config": {
+          "k": 4,
+          "alpha": 10
+        },
+        "mse": 0.010637919966295517,
+        "train_n": 18996,
+        "validation_n": 3818
+      },
+      {
+        "config": {
+          "k": 8,
+          "alpha": 10
+        },
+        "mse": 0.010614564058541798,
+        "train_n": 18996,
+        "validation_n": 3818
+      },
+      {
+        "config": {
+          "k": 12,
+          "alpha": 10
+        },
+        "mse": 0.010597091547888588,
+        "train_n": 18996,
+        "validation_n": 3818
+      },
+      {
+        "config": {
+          "k": 20,
+          "alpha": 10
+        },
+        "mse": 0.010511935858260687,
+        "train_n": 18996,
+        "validation_n": 3818
+      }
+    ]
+  },
+  {
+    "scope": "primary",
+    "horizon": 12,
+    "year": 2024,
+    "method": "pls_ridge",
+    "selected": {
+      "k": 2,
+      "alpha": 10
+    },
+    "inner_grid": [
+      {
+        "config": {
+          "k": 2,
+          "alpha": 10
+        },
+        "mse": 0.01045123481365132,
+        "train_n": 18996,
+        "validation_n": 3818
+      },
+      {
+        "config": {
+          "k": 4,
+          "alpha": 10
+        },
+        "mse": 0.010452581308285995,
+        "train_n": 18996,
+        "validation_n": 3818
+      },
+      {
+        "config": {
+          "k": 8,
+          "alpha": 10
+        },
+        "mse": 0.010481867865533713,
+        "train_n": 18996,
+        "validation_n": 3818
+      },
+      {
+        "config": {
+          "k": 12,
+          "alpha": 10
+        },
+        "mse": 0.010536418759586346,
+        "train_n": 18996,
+        "validation_n": 3818
+      }
+    ]
+  },
+  {
+    "scope": "primary",
+    "horizon": 12,
+    "year": 2024,
+    "method": "small_boosting",
+    "selected": {
+      "max_iter": 100,
+      "learning_rate": 0.05,
+      "max_leaf_nodes": 7,
+      "min_samples_leaf": 100,
+      "l2_regularization": 10
+    },
+    "inner_grid": [
+      {
+        "config": {
+          "max_iter": 100,
+          "learning_rate": 0.05,
+          "max_leaf_nodes": 7,
+          "min_samples_leaf": 100,
+          "l2_regularization": 10
+        },
+        "mse": 0.010315131563795377,
+        "train_n": 18996,
+        "validation_n": 3818
+      }
+    ]
+  },
+  {
+    "scope": "primary",
+    "horizon": 12,
+    "year": 2025,
+    "method": "price_ridge",
+    "selected": {
+      "alpha": 100
+    },
+    "inner_grid": [
+      {
+        "config": {
+          "alpha": 1
+        },
+        "mse": 0.014159689237941971,
+        "train_n": 24086,
+        "validation_n": 3918
+      },
+      {
+        "config": {
+          "alpha": 10
+        },
+        "mse": 0.014129826257233724,
+        "train_n": 24086,
+        "validation_n": 3918
+      },
+      {
+        "config": {
+          "alpha": 100
+        },
+        "mse": 0.013963500656687925,
+        "train_n": 24086,
+        "validation_n": 3918
+      }
+    ]
+  },
+  {
+    "scope": "primary",
+    "horizon": 12,
+    "year": 2025,
+    "method": "all_ridge",
+    "selected": {
+      "alpha": 100
+    },
+    "inner_grid": [
+      {
+        "config": {
+          "alpha": 1
+        },
+        "mse": 0.014177211792763428,
+        "train_n": 24086,
+        "validation_n": 3918
+      },
+      {
+        "config": {
+          "alpha": 10
+        },
+        "mse": 0.014144559733824828,
+        "train_n": 24086,
+        "validation_n": 3918
+      },
+      {
+        "config": {
+          "alpha": 100
+        },
+        "mse": 0.013982560853563815,
+        "train_n": 24086,
+        "validation_n": 3918
+      }
+    ]
+  },
+  {
+    "scope": "primary",
+    "horizon": 12,
+    "year": 2025,
+    "method": "elastic_net",
+    "selected": {
+      "alpha": 0.001
+    },
+    "inner_grid": [
+      {
+        "config": {
+          "alpha": 0.0001
+        },
+        "mse": 0.014014194689493371,
+        "train_n": 24086,
+        "validation_n": 3918
+      },
+      {
+        "config": {
+          "alpha": 0.001
+        },
+        "mse": 0.013697275999561973,
+        "train_n": 24086,
+        "validation_n": 3918
+      },
+      {
+        "config": {
+          "alpha": 0.01
+        },
+        "mse": 0.013775515622646036,
+        "train_n": 24086,
+        "validation_n": 3918
+      }
+    ]
+  },
+  {
+    "scope": "primary",
+    "horizon": 12,
+    "year": 2025,
+    "method": "pca_ridge",
+    "selected": {
+      "k": 2,
+      "alpha": 10
+    },
+    "inner_grid": [
+      {
+        "config": {
+          "k": 2,
+          "alpha": 10
+        },
+        "mse": 0.013871310259548155,
+        "train_n": 24086,
+        "validation_n": 3918
+      },
+      {
+        "config": {
+          "k": 4,
+          "alpha": 10
+        },
+        "mse": 0.013897221679477762,
+        "train_n": 24086,
+        "validation_n": 3918
+      },
+      {
+        "config": {
+          "k": 8,
+          "alpha": 10
+        },
+        "mse": 0.013930244281534294,
+        "train_n": 24086,
+        "validation_n": 3918
+      },
+      {
+        "config": {
+          "k": 12,
+          "alpha": 10
+        },
+        "mse": 0.01394720533115195,
+        "train_n": 24086,
+        "validation_n": 3918
+      },
+      {
+        "config": {
+          "k": 20,
+          "alpha": 10
+        },
+        "mse": 0.014029936906957799,
+        "train_n": 24086,
+        "validation_n": 3918
+      }
+    ]
+  },
+  {
+    "scope": "primary",
+    "horizon": 12,
+    "year": 2025,
+    "method": "pls_ridge",
+    "selected": {
+      "k": 2,
+      "alpha": 10
+    },
+    "inner_grid": [
+      {
+        "config": {
+          "k": 2,
+          "alpha": 10
+        },
+        "mse": 0.013869103026651168,
+        "train_n": 24086,
+        "validation_n": 3918
+      },
+      {
+        "config": {
+          "k": 4,
+          "alpha": 10
+        },
+        "mse": 0.014010055777773377,
+        "train_n": 24086,
+        "validation_n": 3918
+      },
+      {
+        "config": {
+          "k": 8,
+          "alpha": 10
+        },
+        "mse": 0.014073905436907114,
+        "train_n": 24086,
+        "validation_n": 3918
+      },
+      {
+        "config": {
+          "k": 12,
+          "alpha": 10
+        },
+        "mse": 0.014130357563668197,
+        "train_n": 24086,
+        "validation_n": 3918
+      }
+    ]
+  },
+  {
+    "scope": "primary",
+    "horizon": 12,
+    "year": 2025,
+    "method": "small_boosting",
+    "selected": {
+      "max_iter": 100,
+      "learning_rate": 0.05,
+      "max_leaf_nodes": 7,
+      "min_samples_leaf": 100,
+      "l2_regularization": 10
+    },
+    "inner_grid": [
+      {
+        "config": {
+          "max_iter": 100,
+          "learning_rate": 0.05,
+          "max_leaf_nodes": 7,
+          "min_samples_leaf": 100,
+          "l2_regularization": 10
+        },
+        "mse": 0.013698018711205802,
+        "train_n": 24086,
+        "validation_n": 3918
+      }
+    ]
+  }
+]

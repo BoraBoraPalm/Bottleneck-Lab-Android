@@ -1,0 +1,72 @@
+{
+  "created_utc": "2026-11-01T21:58:32.755Z",
+  "scope": "One-time retrospective empirical comparison; no app files or hosting changes.",
+  "primary_signals": [
+    "Mom12m",
+    "EarningsSurprise",
+    "REV6",
+    "AnnouncementReturn"
+  ],
+  "controls": [
+    "BM",
+    "GP",
+    "equal_Mom12m_BM_GP"
+  ],
+  "primary_data": "OpenSourceAP October 2026, standardized value-weighted quintiles, favorable quintile 05; no short or leverage. Source holding-period and availability conventions retained.",
+  "source_sha": "ad1dfba5a6d80c4ce53ce6b8127f5a949dda1e40",
+  "selection": "Four well-established behavioral/information-related predictors published by 1996, chosen from conversation/literature before inspecting target-period returns. All 6 50/50 pairs and a 25%-each four-way mix. No fit/weight/threshold search.",
+  "primary_window": [
+    "2000-01",
+    "2025-12"
+  ],
+  "development": [
+    "2000-01",
+    "2013-12"
+  ],
+  "evaluation": [
+    "2014-01",
+    "2025-12"
+  ],
+  "subwindows": [
+    [
+      "2000-01",
+      "2007-12"
+    ],
+    [
+      "2008-01",
+      "2013-12"
+    ],
+    [
+      "2014-01",
+      "2019-12"
+    ],
+    [
+      "2020-01",
+      "2025-12"
+    ]
+  ],
+  "primary_cost_extra_annual": 0.01,
+  "cost_sensitivity": [
+    0,
+    0.005,
+    0.01,
+    0.02,
+    0.04
+  ],
+  "cost_warning": "Illustrative annual headwind, not measured spreads/commissions/turnover/taxes. No claims of executable net profit.",
+  "benchmark": "CRSP US broad value-weighted market total return reconstructed as French Mkt-RF+RF; same currency, months, compounding. USD primary; optional EUR CAGR/drawdown check.",
+  "primary_objective": "Annualized realized Sharpe under fixed 1% headwind, jointly inspect geometric benchmark excess and max month-end drawdown. No universal optimum implied.",
+  "inference": "Paired mean log-return difference to market, HAC 12 lags, two-sided p, Holm adjustment over all 14 active portfolios. CAPM and FF5+momentum alpha secondary, Holm-adjusted within 14-strategy family. Paired circular block bootstrap 12 months, 10000 repetitions, common resamples; sensitivity 6 and 24. Simultaneous confidence intervals for 14 geometric excess means.",
+  "development_selection": "Select largest development Sharpe among the 11 psychological portfolios only (fixed tie-break lexicographic), freeze, report evaluation. Also 10-year trailing Sharpe selection annually without future data, choosing only 11 psychological portfolios.",
+  "robustness": "Identical fixed candidates on liquid-size-screened original-construction portfolios (formation/weight differences explicit); annual big-stock FF93-style separate structural sensitivity only because these signals update only every June. No selecting the best universe ex post.",
+  "exclusions": "Baker-Wurgler sentiment timing excluded from confirmatory trading test: current index is revised and full-sample estimated, no verified historical release vintages. News/social text trading excluded: no audited historical timestamped archive with complete coverage and expectations.",
+  "bias_limits": [
+    "Revised CRSP/Compustat/IBES histories, not full point-in-time commercial vintage audit.",
+    "Original literature and the analyst already know historical anomalies; retrospective evaluation is not a new genuinely unseen prospective test.",
+    "Publication/strategy-selection bias and source-code errors cannot be eliminated by multiple-test correction.",
+    "Monthly portfolio indices do not verify next-day fills, turnover, borrow, capacity or Austrian broker availability/tax.",
+    "Separate sleeves can overlap; equal sleeve weights are not an intersection stock-ranking strategy.",
+    "Behavioral interpretation does not establish psychological causation.",
+    "Conclusions limited to chosen US strategies and source conventions."
+  ]
+}

@@ -1,0 +1,187 @@
+{
+  "test": "Predefined 5x4 ATR boundary grid, train 2021–2024, OOS 2024–2026",
+  "universe": "Current surviving 2026 US tickers only; severe survivorship and universe-selection bias",
+  "model_same_as_current_app": "60d momentum/ATR ranks; buy limit below signal close, fixed ATR stop, 5-session entry window, 20-session holding; EUR FX as of trade dates",
+  "transaction_costs": "EUR 1 buy + EUR 1 sell; 0.1% adverse price slippage each side",
+  "train_cutoff_exit_strictly_before": "2024-11-01",
+  "untouched_test_from": "2024-11-01",
+  "train_blocks": 37,
+  "test_blocks": 24,
+  "random_seed": 20261031,
+  "random_dates": 320,
+  "random_train": 202,
+  "random_test": 111,
+  "known_universe": 225,
+  "usable_histories_excl_SPY": 219,
+  "missing_histories": {
+    "NOEMR": "Yahoo Short data: 0; Stooq Short Stooq: 0",
+    "SCAT": "Yahoo Short data: 17; Stooq Short Stooq: 0",
+    "RFAMR": "Yahoo Short data: 0; Stooq Short Stooq: 0",
+    "BLSM": "Yahoo Short data: 60; Stooq Short Stooq: 0",
+    "KTWOR": "Yahoo Short data: 1; Stooq Short Stooq: 0",
+    "RVII": "Yahoo Short data: 56; Stooq Short Stooq: 0"
+  },
+  "n_historical_usdeur_days": 1979,
+  "locked_grid": {
+    "buy_limit_ATR": [
+      0.0,
+      0.5,
+      1.0,
+      1.5,
+      2.0
+    ],
+    "stop_distance_ATR": [
+      1.0,
+      1.5,
+      2.5,
+      4.0
+    ],
+    "selection_metric": "train EUR strategy terminal minus matched-SPY terminal, min 20% fill"
+  },
+  "original": {
+    "buy_atr": 1.0,
+    "stop_atr": 2.5,
+    "train": {
+      "periods": 37,
+      "trades": 178,
+      "fill_pct": 48.1081,
+      "stop_exits": 79,
+      "strategy_end_eur": 7522.0489,
+      "strategy_net_pnl_eur": -2477.9511,
+      "strategy_return_pct": -24.7795,
+      "matched_spy_end_eur": 9046.8312,
+      "matched_spy_pnl_eur": -953.1688,
+      "matched_spy_return_pct": -9.5317,
+      "excess_vs_matched_eur": -1524.7823,
+      "spy_full_end_eur": 12814.0258,
+      "mean_block_excess_pct": -0.4403,
+      "block_excess_95pct_bootstrap": [
+        -1.2834,
+        0.3556
+      ],
+      "max_period_end_drawdown_pct": -24.9287,
+      "fee_total_eur": 356
+    },
+    "test": {
+      "periods": 24,
+      "trades": 102,
+      "fill_pct": 42.5,
+      "stop_exits": 30,
+      "strategy_end_eur": 12855.304,
+      "strategy_net_pnl_eur": 2855.304,
+      "strategy_return_pct": 28.553,
+      "matched_spy_end_eur": 11401.2539,
+      "matched_spy_pnl_eur": 1401.2539,
+      "matched_spy_return_pct": 14.0125,
+      "excess_vs_matched_eur": 1454.05,
+      "spy_full_end_eur": 11511.6808,
+      "mean_block_excess_pct": 0.5545,
+      "block_excess_95pct_bootstrap": [
+        -0.6737,
+        1.9307
+      ],
+      "max_period_end_drawdown_pct": -9.7717,
+      "fee_total_eur": 204
+    },
+    "test_random": {
+      "n": 111,
+      "filled": 522,
+      "fill_pct": 47.027,
+      "mean_20d_strategy_pct": 0.7796,
+      "mean_20d_excess_vs_matched_spy_pct": 0.6825,
+      "mean_20d_excess_vs_full_spy_pct": -0.1202,
+      "two_way_fees_eur": 1044
+    }
+  },
+  "chosen_without_test_peeking": {
+    "buy_atr": 1.5,
+    "stop_atr": 4.0,
+    "train": {
+      "periods": 37,
+      "trades": 112,
+      "fill_pct": 30.2703,
+      "stop_exits": 18,
+      "strategy_end_eur": 9665.3445,
+      "strategy_net_pnl_eur": -334.6555,
+      "strategy_return_pct": -3.3466,
+      "matched_spy_end_eur": 9345.3094,
+      "matched_spy_pnl_eur": -654.6906,
+      "matched_spy_return_pct": -6.5469,
+      "excess_vs_matched_eur": 320.0351,
+      "spy_full_end_eur": 12814.0258,
+      "mean_block_excess_pct": 0.1196,
+      "block_excess_95pct_bootstrap": [
+        -0.5589,
+        0.7952
+      ],
+      "max_period_end_drawdown_pct": -19.367,
+      "fee_total_eur": 224
+    },
+    "test": {
+      "periods": 24,
+      "trades": 71,
+      "fill_pct": 29.5833,
+      "stop_exits": 5,
+      "strategy_end_eur": 12842.4816,
+      "strategy_net_pnl_eur": 2842.4816,
+      "strategy_return_pct": 28.4248,
+      "matched_spy_end_eur": 10890.6105,
+      "matched_spy_pnl_eur": 890.6105,
+      "matched_spy_return_pct": 8.9061,
+      "excess_vs_matched_eur": 1951.871,
+      "spy_full_end_eur": 11511.6808,
+      "mean_block_excess_pct": 0.7384,
+      "block_excess_95pct_bootstrap": [
+        -0.3059,
+        1.9653
+      ],
+      "max_period_end_drawdown_pct": -6.2828,
+      "fee_total_eur": 142
+    },
+    "test_random": {
+      "n": 111,
+      "filled": 327,
+      "fill_pct": 29.4595,
+      "mean_20d_strategy_pct": 0.9089,
+      "mean_20d_excess_vs_matched_spy_pct": 0.8883,
+      "mean_20d_excess_vs_full_spy_pct": 0.0091,
+      "two_way_fees_eur": 654
+    }
+  },
+  "test_best_only_in_hindsight_not_actionable": {
+    "buy_atr": 0.5,
+    "stop_atr": 4.0,
+    "test": {
+      "periods": 24,
+      "trades": 163,
+      "fill_pct": 67.9167,
+      "stop_exits": 25,
+      "strategy_end_eur": 15191.3715,
+      "strategy_net_pnl_eur": 5191.3715,
+      "strategy_return_pct": 51.9137,
+      "matched_spy_end_eur": 11026.7844,
+      "matched_spy_pnl_eur": 1026.7844,
+      "matched_spy_return_pct": 10.2678,
+      "excess_vs_matched_eur": 4164.5871,
+      "spy_full_end_eur": 11511.6808,
+      "mean_block_excess_pct": 1.4362,
+      "block_excess_95pct_bootstrap": [
+        -0.2862,
+        3.1254
+      ],
+      "max_period_end_drawdown_pct": -17.5765,
+      "fee_total_eur": 326
+    }
+  },
+  "limitations": [
+    "2026 surviving US listings are not historical listings, so results are NOT unbiased",
+    "historical Trade Republic Austria tradability is unknown, filter cannot be backtested",
+    "Yahoo chart historical source not a tick-level executable bid-ask feed; stops approximated by OHLC",
+    "individual stock dividends omitted, matched SPY dividends approximated",
+    "random dates overlap; bootstrap interval on short chronological blocks is only approximate",
+    "parameter selection within training uses multiple comparisons; holdout is one historical regime",
+    "cash does not earn interest; Austrian taxes and FX bid-ask not included"
+  ],
+  "created_utc": "2026-10-31T08:37:06.470365+00:00",
+  "duration_seconds": 18.34
+}

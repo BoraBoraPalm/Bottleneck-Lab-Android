@@ -1,0 +1,326 @@
+[
+  {
+    "package": "Behavioral_Strategien_Benchmark_2026.zip",
+    "files": 35,
+    "data_shapes": {
+      "output/liquid_original_inputs.csv": {
+        "rows": 312,
+        "cols": [
+          "Unnamed: 0",
+          "Mom12m",
+          "EarningsSurprise",
+          "REV6",
+          "AnnouncementReturn",
+          "BM",
+          "GP",
+          "Mkt-RF",
+          "SMB",
+          "HML",
+          "RMW",
+          "CMA",
+          "RF",
+          "Mom",
+          "Market"
+        ],
+        "unit": "monthly portfolio returns"
+      },
+      "output/liquid_original_gross_sleeves.csv": {
+        "rows": 312,
+        "cols": [
+          "Unnamed: 0",
+          "Mom12m",
+          "EarningsSurprise",
+          "REV6",
+          "AnnouncementReturn",
+          "Mom12m + EarningsSurprise",
+          "Mom12m + REV6",
+          "Mom12m + AnnouncementReturn",
+          "EarningsSurprise + REV6",
+          "EarningsSurprise + AnnouncementReturn",
+          "REV6 + AnnouncementReturn",
+          "Equal four",
+          "BM",
+          "GP",
+          "Momentum + Value + Quality"
+        ],
+        "unit": "monthly portfolio returns"
+      }
+    }
+  },
+  {
+    "package": "Bottleneck_Lab_5Jahre_Backtest_komplett.zip",
+    "files": 7,
+    "data_shapes": {
+      "results/chronological_trades.csv": {
+        "rows": 284,
+        "cols": [
+          "buy_date",
+          "buy_usd",
+          "buy_eur",
+          "shares",
+          "spent",
+          "buy_fee",
+          "ticker",
+          "signal_date",
+          "signal_score",
+          "exit_date",
+          "exit_reason",
+          "stop_price_usd",
+          "limit_price_usd",
+          "sell_eur",
+          "sell_fee",
+          "proceeds",
+          "pnl_eur",
+          "return_on_allocated"
+        ]
+      },
+      "results/chronological_equity.csv": {
+        "rows": 62,
+        "cols": [
+          "date",
+          "strategy_equity_eur",
+          "benchmark_equity_eur",
+          "benchmark_price_only_equity_eur",
+          "exposure_matched_spy_equity_eur",
+          "strategy_period_return_pct",
+          "benchmark_period_return_pct",
+          "matched_spy_period_return_pct",
+          "fills",
+          "selected"
+        ]
+      },
+      "results/random_320_cohorts.csv": {
+        "rows": 320,
+        "cols": [
+          "signal_date",
+          "initial_eur",
+          "strategy_pnl_eur",
+          "strategy_return_pct",
+          "benchmark_pnl_eur",
+          "benchmark_return_pct",
+          "benchmark_price_only_return_pct",
+          "matched_spy_pnl_eur",
+          "matched_spy_return_pct",
+          "matched_excess_pct",
+          "excess_return_pct",
+          "excess_vs_spy_price_only_pct",
+          "selected",
+          "filled",
+          "unfilled"
+        ]
+      },
+      "results/random_all_trades.csv": {
+        "rows": 1581,
+        "cols": [
+          "buy_date",
+          "buy_usd",
+          "buy_eur",
+          "shares",
+          "spent",
+          "buy_fee",
+          "ticker",
+          "signal_date",
+          "signal_score",
+          "exit_date",
+          "exit_reason",
+          "stop_price_usd",
+          "limit_price_usd",
+          "sell_eur",
+          "sell_fee",
+          "proceeds",
+          "pnl_eur",
+          "return_on_allocated"
+        ]
+      }
+    }
+  },
+  {
+    "package": "Bottleneck_Lab_ATR_Grenzen_Sensitivitaet.zip",
+    "files": 5,
+    "data_shapes": {
+      "limits_results/grid_summary.csv": {
+        "rows": 20,
+        "cols": [
+          "buy_atr",
+          "stop_atr",
+          "train_end_eur",
+          "train_excess_eur",
+          "test_end_eur",
+          "test_return_pct",
+          "test_spy_matched_eur",
+          "test_excess_eur",
+          "test_fills",
+          "test_fill_pct",
+          "test_maxdrawdown_pct",
+          "train_random_mean_pct",
+          "test_random_mean_pct"
+        ]
+      }
+    },
+    "limits_results/threshold_summary.json": {
+      "keys": [
+        "test",
+        "universe",
+        "model_same_as_current_app",
+        "transaction_costs",
+        "train_cutoff_exit_strictly_before",
+        "untouched_test_from",
+        "train_blocks",
+        "test_blocks",
+        "random_seed",
+        "random_dates",
+        "random_train",
+        "random_test",
+        "known_universe",
+        "usable_histories_excl_SPY",
+        "missing_histories",
+        "n_historical_usdeur_days",
+        "locked_grid",
+        "original",
+        "chosen_without_test_peeking",
+        "test_best_only_in_hindsight_not_actionable",
+        "limitations",
+        "created_utc",
+        "duration_seconds"
+      ],
+      "universe": "Current surviving 2026 US tickers only; severe survivorship and universe-selection bias",
+      "limitations": "['2026 surviving US listings are not historical listings, so results are NOT unbiased', 'historical Trade Republic Austria tradability is unknown, filter cannot be backtested', 'Yahoo chart historical source not a tick-level executable bid-ask feed; stops approximated by OHLC', 'individual stock dividends omitted, matched SPY dividends approximated', 'random dates overlap; bootstrap interval on short chronological blocks is only approximate', 'parameter selection within training uses multiple comparisons; holdout is one historical regime', 'cash does not earn interest; Austrian taxes and FX bid-ask not included']"
+    }
+  },
+  {
+    "package": "Bottleneck_Momentum_12_2_Research.zip",
+    "files": 3,
+    "data_shapes": {},
+    "momentum_results/momentum_model_comparison.json": {
+      "keys": [
+        "universe",
+        "factors_compared",
+        "equal_conditions",
+        "random_dates",
+        "price_histories",
+        "price_missing",
+        "fx_days",
+        "chronological",
+        "train_2021_to_2024",
+        "test_2024_to_2026",
+        "random_samples",
+        "caveats",
+        "seconds"
+      ],
+      "universe": "2026 surviving US listings, not unbiased historical market"
+    }
+  },
+  {
+    "package": "Bottleneck_Scientific_Factor_Study.zip",
+    "files": 3,
+    "data_shapes": {
+      "factor_robustness/factor_study_summary.csv": {
+        "rows": 216,
+        "cols": [
+          "window",
+          "cost_per_year_extra",
+          "strategy",
+          "months",
+          "strategy_CAGR_pct",
+          "benchmark_CAGR_pct",
+          "annual_excess_mean_pct",
+          "HAC_z",
+          "HAC_p",
+          "bonferroni_p",
+          "bootstrap_low_pct",
+          "bootstrap_high_pct",
+          "roll5y_win_pct",
+          "max_drawdown_pct"
+        ]
+      }
+    },
+    "factor_robustness/full_factor_study.json": {
+      "keys": [
+        "goal",
+        "source",
+        "sources",
+        "matched_portfolio_columns",
+        "fx_url",
+        "fx_error",
+        "candidate_count_including_benchmark",
+        "fixed_candidates",
+        "headwinds_extra_annual",
+        "first_year",
+        "last_year",
+        "selection_statement",
+        "significance",
+        "limitations",
+        "results",
+        "elapsed_sec"
+      ],
+      "sources": "{'FF5': {'url': 'https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/F-F_Research_Data_5_Factors_2x3_CSV.zip', 'rows': 759, 'columns': ['', 'Mkt-RF', 'SMB', 'HML', 'RMW', 'CMA', 'RF']}, 'VALUE': {'url': 'https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/6_Portfolios_2x3_CSV.zip', 'rows': 1203, 'columns': ['', 'SMALL LoBM', 'ME1 BM2', 'SMALL HiBM', 'BIG LoBM', 'ME2 BM2', 'BIG HiBM']}, 'QUALITY': {'url': 'https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/6_Portfolios_ME_OP_2x3_CSV.zip', 'rows': 759, 'columns': ['', 'SMALL LoOP', 'ME1 OP2', 'SMALL HiOP', 'BIG LoOP', 'ME2 OP2', 'BIG HiOP']}, 'INVEST': {'url': 'https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/6_Portfolios_ME_INV_2x3_CSV.zip', 'rows': 759, 'columns': ['', 'SMALL LoINV', 'ME1 INV2', 'SMALL HiINV', 'BIG LoINV', 'ME2 INV2', 'BIG HiINV']}, 'MOMENTUM': {'url': 'https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/10_Portfolios_Prior_12_2_CSV.zip', 'rows': 1197, 'columns': ['', 'Lo PRIOR', 'PRIOR 2', 'PRIOR 3', 'PRIOR 4', 'PRIOR 5', 'PRIOR 6', 'PRIOR 7', 'PRIOR 8', 'PRIOR 9', 'Hi PRIOR']}}",
+      "limitations": "['Academic factor portfolio indices are NOT directly tradeable assets or TR stock fills', 'The reported factors use revised historical CRSP data and are already known in scientific literature', 'Individual stock trading fees/spreads and portfolio turnover are not captured; 1-2pct extra annual costs only are illustrative', 'EUR converted equity indices assume fully unhedged USD exposure; no Austrian taxation', 'Some factor portfolios contain small stocks and incur capacity and rebalancing costs', 'EUR FX file converted at monthly official reference not broker FX bid/ask', 'The 2015-2026 period was NOT truly intellectually hidden; past published studies saw it', 'Past outperformance fraction does not imply probability of future superiority', 'Index-level benchmark Mkt-RF + RF is US stock market, not Gerd Kommer world ETF']"
+    }
+  },
+  {
+    "package": "Bottleneck_Trading_Rules_Independent_2026.zip",
+    "files": 4,
+    "data_shapes": {},
+    "current_rules_results/current_trading_rules_report.json": {
+      "keys": [
+        "date",
+        "run_kind",
+        "test_design",
+        "params",
+        "period",
+        "sample",
+        "models",
+        "matched_pairs",
+        "subperiods",
+        "passive_ACWI",
+        "slippage_sensitivity",
+        "research_cautions",
+        "cost_research",
+        "statistical_method",
+        "elapsed_seconds",
+        "sources"
+      ],
+      "sources": "{'prices': 'Yahoo Finance historical charts with current adjusted OHLC', 'FX': 'Frankfurter 2020-2026, EUR base', 'universe': 'Nasdaq Trader current and Adanos current listing universe', 'broker': 'EUR1/order and 0.1% assumed slippage; not verified real historical Trade Republic availability'}",
+      "models": "{'momentum_market': {'capital_final_eur': 22936.14, 'return_pct': 129.361, 'cagr_pct': 18.593, 'max_period_end_drawdown_pct': -28.645, 'matched_ACWI_final_eur': 12235.35, 'excess_vs_matched_ACWI_eur': 10700.79, 'mean_20day_pct': 1.7438, 'mean_20day_excess_matched_pct': 1.3505, 'excess_matched_bootstrap_95pct_mean20d': [-0.3106, 3.021], 'matched_newey_west': {'p': 0.080228, 'z': 1.749}, 'invested_trade_count': 602, 'filled_pct': 97.1, 'fees_eur': 1204, 'stop_exits': 0, 'trend_crash_review_exits': 0, 'periods': 62, 'period_outperformance_matched_pct': 50.0, 'mean_deployed_fraction_at_open': 0.971}, 'momentum_limit': {'capital_final_eur': 17875.3, 'return_pct': 78.753, 'cagr_pct': 12.673, 'max_period_end_drawdown_pct': -16.897, 'matched_ACWI_final_eur': 9868.0, 'excess_vs_matched_ACWI_eur': 8007.3, 'mean_20day_pct': 1.056, 'mean_20day_excess_matched_pct': 1.0613, 'excess_matched_bootstrap_95pct_mean20d': [0.0164, 2.1016], 'matched_newey_west': {'p': 0.044222, 'z': 2.012}, 'invested_trade_count': 247, 'filled_pct': 39.84, 'fees_eur': 494, 'stop_exits': 0, 'trend_crash_review_exits': 0, 'periods': 62, 'period_outperformance_matched_pct': 51.61, 'mean_deployed_fraction_at_open': 0.3984}, 'momentum_limit_stop': {'capital_final_eur': 17155.84, 'return_pct': 71.558, 'cagr_pct': 11.726, 'max_period_end_drawdown_pct': -15.285, 'matched_ACWI_final_eur': 10118.52, 'excess_vs_matched_ACWI_eur': 7037.33, 'mean_20day_pct': 0.9775, 'mean_20day_excess_matched_pct': 0.9496, 'excess_matched_bootstrap_95pct_mean20d': [-0.0725, 1.9772], 'matched_newey_west': {'p': 0.066238, 'z': 1.837}, 'invested_trade_count': 247, 'filled_pct': 39.84, 'fees_eur': 494, 'stop_exits': 88, 'trend_crash_review_exi"
+    }
+  },
+  {
+    "package": "Stimmungsmodell_Globaler_Pilot_2026.zip",
+    "files": 162,
+    "data_shapes": {},
+    "predictors": {
+      "NEWSFEATS": "['tone','positive','negative','polarity','dispersion','log_news','log_sources','translated_share','focus_share','coverage','archive_fraction','tone_4w','news_4w','tone_change','tone_lag1','log_news_lag1']",
+      "PRICEFEATS": "['ret_5','ret_20','ret_60','vol_20','vol_60','volume_ratio']"
+    },
+    "observations": {
+      "news_rows": 101885,
+      "unique_urls": 86001,
+      "languages": 62,
+      "companies_with_news": 90,
+      "countries": 19,
+      "raw_firm_weeks": 36600,
+      "sufficient_firm_weeks": 9375,
+      "news_by_year": {
+        "2019": 1569,
+        "2020": 1510,
+        "2021": 1303,
+        "2022": 1200,
+        "2023": 1280,
+        "2024": 1294,
+        "2025": 1219
+      },
+      "price_rows": 35839,
+      "price_companies": 100,
+      "test_weeks": 153,
+      "regions": [
+        "Africa",
+        "Asia",
+        "Europe",
+        "Latin America",
+        "North America",
+        "Oceania"
+      ],
+      "train_only_clustering": true
+    }
+  }
+]

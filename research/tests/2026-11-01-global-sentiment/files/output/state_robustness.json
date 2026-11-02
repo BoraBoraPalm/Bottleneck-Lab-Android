@@ -1,0 +1,46 @@
+{
+  "status": "secondary diagnostic added after primary results; candidate unchanged",
+  "baseline": "regularized state+company+region model, no continuous news features",
+  "baseline_metrics": {
+    "n": 2631,
+    "logloss": 1.3187957008663589,
+    "brier": 0.6423620141846018,
+    "accuracy": 0.4849866970733561
+  },
+  "candidate_metrics": {
+    "n": 2631,
+    "logloss": 1.28750067344525,
+    "brier": 0.6342448756628473,
+    "accuracy": 0.48346636259977194
+  },
+  "comparison": {
+    "effect": 0.03129502742110877,
+    "ci_low": 0.021040631380796964,
+    "ci_high": 0.04083470464420603,
+    "p_one_sided": 0.0001999600079984003,
+    "block_weeks": 8,
+    "weeks": 153,
+    "iterations": 5000
+  },
+  "blocks": {
+    "4": {
+      "effect": 0.03129502742110877,
+      "ci_low": 0.02160483204535696,
+      "ci_high": 0.040739035851370085,
+      "p_one_sided": 0.0001999600079984003,
+      "block_weeks": 4,
+      "weeks": 153,
+      "iterations": 5000
+    },
+    "13": {
+      "effect": 0.03129502742110877,
+      "ci_low": 0.021158343367455347,
+      "ci_high": 0.04040918626867647,
+      "p_one_sided": 0.0001999600079984003,
+      "block_weeks": 13,
+      "weeks": 153,
+      "iterations": 5000
+    }
+  },
+  "holm_if_four_tests": 0.0007998400319936012
+}

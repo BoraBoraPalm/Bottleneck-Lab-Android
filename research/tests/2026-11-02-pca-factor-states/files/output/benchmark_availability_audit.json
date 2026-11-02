@@ -1,0 +1,62 @@
+[
+  {
+    "horizon": 4,
+    "cutoff": "2021-01-01",
+    "train_rows": 9664,
+    "benchmark_not_known_rows": 0
+  },
+  {
+    "horizon": 4,
+    "cutoff": "2022-01-01",
+    "train_rows": 14705,
+    "benchmark_not_known_rows": 0
+  },
+  {
+    "horizon": 4,
+    "cutoff": "2023-01-01",
+    "train_rows": 19795,
+    "benchmark_not_known_rows": 0
+  },
+  {
+    "horizon": 4,
+    "cutoff": "2024-01-01",
+    "train_rows": 24885,
+    "benchmark_not_known_rows": 0
+  },
+  {
+    "horizon": 4,
+    "cutoff": "2025-01-01",
+    "train_rows": 30076,
+    "benchmark_not_known_rows": 0
+  },
+  {
+    "horizon": 12,
+    "cutoff": "2021-01-01",
+    "train_rows": 8873,
+    "benchmark_not_known_rows": 0
+  },
+  {
+    "horizon": 12,
+    "cutoff": "2022-01-01",
+    "train_rows": 13914,
+    "benchmark_not_known_rows": 0
+  },
+  {
+    "horizon": 12,
+    "cutoff": "2023-01-01",
+    "train_rows": 18996,
+    "benchmark_not_known_rows": 0
+  },
+  {
+    "horizon": 12,
+    "cutoff": "2024-01-01",
+    "train_rows": 24086,
+    "benchmark_not_known_rows": 0
+  },
+  {
+    "horizon": 12,
+    "cutoff": "2025-01-01",
+    "train_rows": 29277,
+    "benchmark_not_known_rows": 0
+  }
+]

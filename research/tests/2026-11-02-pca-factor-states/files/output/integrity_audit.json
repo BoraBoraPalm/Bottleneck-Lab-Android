@@ -1,0 +1,282 @@
+{
+  "checks": {
+    "primary_sources_unchanged_after_lock": true,
+    "one_input_per_firm_date": true,
+    "price_features_strictly_before_news_date": true,
+    "news_state_and_future_targets_absent_from_features": true,
+    "assumed_factor_availability_not_in_future": true,
+    "factor_delay_at_least_62_days": true,
+    "one_oof_forecast_per_firm_date": true,
+    "all_models_forecast_identical_rows": true,
+    "test_period_after_first_training_years": true,
+    "all_news_ingested_by_cutoff": true,
+    "training_targets_closed_before_cutoff_4": true,
+    "training_features_before_test_4": true,
+    "holding_target_after_entry_4": true,
+    "entry_buffer_at_least_five_days_4": true,
+    "training_targets_closed_before_cutoff_12": true,
+    "training_features_before_test_12": true,
+    "holding_target_after_entry_12": true,
+    "entry_buffer_at_least_five_days_12": true,
+    "benchmark_constituents_also_known_before_all_inner_and_outer_cutoffs": true,
+    "saved_preprocessors_fit_only_training_rows": true,
+    "saved_models_reproduce_oof_predictions": true
+  },
+  "all_pass": true,
+  "model_roundtrips": [
+    {
+      "year": 2022,
+      "method": "price_ridge",
+      "median_fit_train_only": true,
+      "winsor_train_only": true,
+      "scale_train_only": true,
+      "saved_predictions_reproduce": true
+    },
+    {
+      "year": 2022,
+      "method": "all_ridge",
+      "median_fit_train_only": true,
+      "winsor_train_only": true,
+      "scale_train_only": true,
+      "saved_predictions_reproduce": true
+    },
+    {
+      "year": 2022,
+      "method": "elastic_net",
+      "median_fit_train_only": true,
+      "winsor_train_only": true,
+      "scale_train_only": true,
+      "saved_predictions_reproduce": true
+    },
+    {
+      "year": 2022,
+      "method": "pca_ridge",
+      "median_fit_train_only": true,
+      "winsor_train_only": true,
+      "scale_train_only": true,
+      "saved_predictions_reproduce": true
+    },
+    {
+      "year": 2022,
+      "method": "pls_ridge",
+      "median_fit_train_only": true,
+      "winsor_train_only": true,
+      "scale_train_only": true,
+      "saved_predictions_reproduce": true
+    },
+    {
+      "year": 2022,
+      "method": "small_boosting",
+      "median_fit_train_only": true,
+      "winsor_train_only": true,
+      "scale_train_only": true,
+      "saved_predictions_reproduce": true
+    },
+    {
+      "year": 2023,
+      "method": "price_ridge",
+      "median_fit_train_only": true,
+      "winsor_train_only": true,
+      "scale_train_only": true,
+      "saved_predictions_reproduce": true
+    },
+    {
+      "year": 2023,
+      "method": "all_ridge",
+      "median_fit_train_only": true,
+      "winsor_train_only": true,
+      "scale_train_only": true,
+      "saved_predictions_reproduce": true
+    },
+    {
+      "year": 2023,
+      "method": "elastic_net",
+      "median_fit_train_only": true,
+      "winsor_train_only": true,
+      "scale_train_only": true,
+      "saved_predictions_reproduce": true
+    },
+    {
+      "year": 2023,
+      "method": "pca_ridge",
+      "median_fit_train_only": true,
+      "winsor_train_only": true,
+      "scale_train_only": true,
+      "saved_predictions_reproduce": true
+    },
+    {
+      "year": 2023,
+      "method": "pls_ridge",
+      "median_fit_train_only": true,
+      "winsor_train_only": true,
+      "scale_train_only": true,
+      "saved_predictions_reproduce": true
+    },
+    {
+      "year": 2023,
+      "method": "small_boosting",
+      "median_fit_train_only": true,
+      "winsor_train_only": true,
+      "scale_train_only": true,
+      "saved_predictions_reproduce": true
+    },
+    {
+      "year": 2024,
+      "method": "price_ridge",
+      "median_fit_train_only": true,
+      "winsor_train_only": true,
+      "scale_train_only": true,
+      "saved_predictions_reproduce": true
+    },
+    {
+      "year": 2024,
+      "method": "all_ridge",
+      "median_fit_train_only": true,
+      "winsor_train_only": true,
+      "scale_train_only": true,
+      "saved_predictions_reproduce": true
+    },
+    {
+      "year": 2024,
+      "method": "elastic_net",
+      "median_fit_train_only": true,
+      "winsor_train_only": true,
+      "scale_train_only": true,
+      "saved_predictions_reproduce": true
+    },
+    {
+      "year": 2024,
+      "method": "pca_ridge",
+      "median_fit_train_only": true,
+      "winsor_train_only": true,
+      "scale_train_only": true,
+      "saved_predictions_reproduce": true
+    },
+    {
+      "year": 2024,
+      "method": "pls_ridge",
+      "median_fit_train_only": true,
+      "winsor_train_only": true,
+      "scale_train_only": true,
+      "saved_predictions_reproduce": true
+    },
+    {
+      "year": 2024,
+      "method": "small_boosting",
+      "median_fit_train_only": true,
+      "winsor_train_only": true,
+      "scale_train_only": true,
+      "saved_predictions_reproduce": true
+    },
+    {
+      "year": 2025,
+      "method": "price_ridge",
+      "median_fit_train_only": true,
+      "winsor_train_only": true,
+      "scale_train_only": true,
+      "saved_predictions_reproduce": true
+    },
+    {
+      "year": 2025,
+      "method": "all_ridge",
+      "median_fit_train_only": true,
+      "winsor_train_only": true,
+      "scale_train_only": true,
+      "saved_predictions_reproduce": true
+    },
+    {
+      "year": 2025,
+      "method": "elastic_net",
+      "median_fit_train_only": true,
+      "winsor_train_only": true,
+      "scale_train_only": true,
+      "saved_predictions_reproduce": true
+    },
+    {
+      "year": 2025,
+      "method": "pca_ridge",
+      "median_fit_train_only": true,
+      "winsor_train_only": true,
+      "scale_train_only": true,
+      "saved_predictions_reproduce": true
+    },
+    {
+      "year": 2025,
+      "method": "pls_ridge",
+      "median_fit_train_only": true,
+      "winsor_train_only": true,
+      "scale_train_only": true,
+      "saved_predictions_reproduce": true
+    },
+    {
+      "year": 2025,
+      "method": "small_boosting",
+      "median_fit_train_only": true,
+      "winsor_train_only": true,
+      "scale_train_only": true,
+      "saved_predictions_reproduce": true
+    }
+  ],
+  "benchmark_boundaries": [
+    {
+      "horizon": 4,
+      "year": 2021,
+      "unknown_benchmark_label_rows": 0
+    },
+    {
+      "horizon": 4,
+      "year": 2022,
+      "unknown_benchmark_label_rows": 0
+    },
+    {
+      "horizon": 4,
+      "year": 2023,
+      "unknown_benchmark_label_rows": 0
+    },
+    {
+      "horizon": 4,
+      "year": 2024,
+      "unknown_benchmark_label_rows": 0
+    },
+    {
+      "horizon": 4,
+      "year": 2025,
+      "unknown_benchmark_label_rows": 0
+    },
+    {
+      "horizon": 12,
+      "year": 2021,
+      "unknown_benchmark_label_rows": 0
+    },
+    {
+      "horizon": 12,
+      "year": 2022,
+      "unknown_benchmark_label_rows": 0
+    },
+    {
+      "horizon": 12,
+      "year": 2023,
+      "unknown_benchmark_label_rows": 0
+    },
+    {
+      "horizon": 12,
+      "year": 2024,
+      "unknown_benchmark_label_rows": 0
+    },
+    {
+      "horizon": 12,
+      "year": 2025,
+      "unknown_benchmark_label_rows": 0
+    }
+  ],
+  "diagnostics": {
+    "input_rows": 34323,
+    "oof_rows": 19108,
+    "oof_labeled_rows": 19094,
+    "test_weeks": 195,
+    "test_firms": 98,
+    "test_countries": 19,
+    "source_hashes_pinned": true,
+    "absolute_four_week_returns_above_50pct": 10
+  }
+}

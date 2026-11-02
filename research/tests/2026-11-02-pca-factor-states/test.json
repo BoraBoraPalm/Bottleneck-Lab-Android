@@ -1,0 +1,49 @@
+{
+  "id": "2026-11-02-pca-factor-states",
+  "title": "PCA/PLS und gemeinsame historische Faktor-Zustände",
+  "date": "2026-11-02",
+  "period": "Vorwärtsprognosen 2022 bis September 2025; expandierendes Training ab 2019",
+  "strategy": "44 Merkmale; Preis-Ridge, Gesamt-Ridge, Elastic Net, PCA, PLS, kleines Boosting; Zusatz mit 24 Faktorindikatoren",
+  "prediction": "Vier Wochen primär, zwölf Wochen deskriptiv",
+  "holding": {
+    "kind": "fixed_calendar_weeks",
+    "values": [
+      4,
+      12
+    ],
+    "financial_portfolio_weeks": 4,
+    "average_actual": null,
+    "optimized": false
+  },
+  "rebalance": "Finanzdiagnose: alle vier Wochen vollständiges Schließen und Neueröffnen; keine umsatzsparende Signalhaltung",
+  "result": "Bei vier Wochen kein Modell mit geringerem MSE als Null-Mehrertragsprognose; zwölf Wochen ohne besseren Gesamt-MSE.",
+  "limits": [
+    "Keine Strategie-spezifische Haltedauer-Suche",
+    "Vollständige Vierwochen-Rundläufe sind konservative Kostenannahme",
+    "Fehlende Fundamental-Vintages",
+    "Bekannte historische Testjahre; nur Großkonzern-Kohorte"
+  ],
+  "repro": "Vollständiger Code, Modelle, Zeit-/Reproduktionsprüfungen und Roh-/Eingabesnapshots im Vollpaket vorhanden.",
+  "schema_version": 1,
+  "archived_date": "2026-11-02",
+  "status": "completed_limited_scope",
+  "source_artifact": {
+    "filename": "PCA_Faktoren_Gesamtstudie_2026.zip",
+    "url": "https://chatgpt.com/library?file_id=libfile_e1d24544f9808191bdfc75b76d32962a&account_id=personal",
+    "sha256": "4ddd8f16666541a06abe8e9cf795864dbb17d48c2244279e2f58c3049ad92400",
+    "bytes": 44208321,
+    "archive_root": "PCA_Faktoren_Gesamtstudie_2026/"
+  },
+  "entry_report": "files/output/bericht.md",
+  "artifact_members": "ARTIFACT_MEMBERS.json",
+  "data_availability": "Complete original bundle remains accessible to the owner; repository retains code, reports, compact inputs and results. See member hashes, no reevaluation required.",
+  "holding_period_search_performed": false,
+  "not_tested": [
+    "Systematisch ausgewählte optimale Haltedauer je Strategie",
+    "Erfolg auf allen nicht geprüften Zeiträumen/Horizonten"
+  ],
+  "reproduction_status": "Vollständiger Code, Modelle, Zeit-/Reproduktionsprüfungen und Roh-/Eingabesnapshots im Vollpaket vorhanden.",
+  "costs": "Unveränderte Parameter siehe Originalberichte; Gebührenmodelle sind nicht als tatsächliche Ausführungskosten verifiziert.",
+  "benchmark": "Unveränderte Benchmarkdefinition im Originalbericht nachlesen.",
+  "time_splits": "Originale zeitliche Aufteilung ist im eingefrorenen Bericht/Protokoll erhalten; keine neue Auswertung beim Archivieren."
+}

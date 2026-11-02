@@ -1,0 +1,46 @@
+{
+  "id": "2026-10-31-atr-limits-stops",
+  "title": "ATR-Kauflimit-/Stopp-Sensitivität",
+  "date": "2026-10-31",
+  "period": "2021–2026 mit zeitlichem Trainings-/Testabschnitt",
+  "strategy": "20 festgelegte Buy-ATR-/Stop-ATR-Kombinationen",
+  "prediction": "20-Handelstage-Tradeversuch",
+  "holding": {
+    "kind": "maximum_sessions",
+    "maximum": 20,
+    "entry_window_sessions": 5,
+    "average_actual": null,
+    "variable_by": "Füllung und Stoppdistanz",
+    "optimized": false
+  },
+  "rebalance": "20-Session-Kohorten; ATR-Stopp kann früher schließen",
+  "result": "Kauf-/Stoppabstände variiert; die maximale Haltedauer wurde nicht variiert.",
+  "limits": [
+    "Aktuelle überlebende US-Aktien statt damaliger Mitgliedschaften",
+    "Historische Brokerhandelbarkeit unbekannt",
+    "Kein vollständiger damaliger Quellcode im Paket"
+  ],
+  "repro": "Ergebnisse aller 20 Varianten vorhanden; vollständiger damaliger Versuchscode fehlt im ZIP.",
+  "schema_version": 1,
+  "archived_date": "2026-11-02",
+  "status": "completed_limited_scope",
+  "source_artifact": {
+    "filename": "Bottleneck_Lab_ATR_Grenzen_Sensitivitaet.zip",
+    "url": "https://chatgpt.com/library?file_id=libfile_e4ca48b909fc819186a4bc128f46a91d&account_id=personal",
+    "sha256": "87fd42d218749448dd957b68aec95fb979f0062ba6d0adfd6f755271414933b2",
+    "bytes": 76600,
+    "archive_root": ""
+  },
+  "entry_report": "files/limits_results/threshold_summary.json",
+  "artifact_members": "ARTIFACT_MEMBERS.json",
+  "data_availability": "Complete original bundle remains accessible to the owner; repository retains code, reports, compact inputs and results. See member hashes, no reevaluation required.",
+  "holding_period_search_performed": false,
+  "not_tested": [
+    "Systematisch ausgewählte optimale Haltedauer je Strategie",
+    "Erfolg auf allen nicht geprüften Zeiträumen/Horizonten"
+  ],
+  "reproduction_status": "Ergebnisse aller 20 Varianten vorhanden; vollständiger damaliger Versuchscode fehlt im ZIP.",
+  "costs": "Unveränderte Parameter siehe Originalberichte; Gebührenmodelle sind nicht als tatsächliche Ausführungskosten verifiziert.",
+  "benchmark": "Unveränderte Benchmarkdefinition im Originalbericht nachlesen.",
+  "time_splits": "Originale zeitliche Aufteilung ist im eingefrorenen Bericht/Protokoll erhalten; keine neue Auswertung beim Archivieren."
+}

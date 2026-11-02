@@ -1,0 +1,45 @@
+{
+  "id": "2026-11-01-behavioral-benchmark",
+  "title": "Behavioral-/Informationsstrategien gegen US-Markt",
+  "date": "2026-11-01",
+  "period": "2000–2025",
+  "strategy": "Momentum, Earnings Surprise, Analystenrevisionen, Announcement Return; alle sechs Paare und weitere Kontrollen",
+  "prediction": "Vergleich fester Quellenportfolios; keine individuelle Aktien-Prognose",
+  "holding": {
+    "kind": "source_defined",
+    "maximum": null,
+    "average_actual": null,
+    "variable_by": "Originale monatliche/vierteljährliche/jährliche Quellregeln; siehe source_audit.md",
+    "optimized": false
+  },
+  "rebalance": "Quellkonventionen und vorab feste Mischungen; Monatsbeobachtungen sind keine einheitliche Aktien-Haltedauer",
+  "result": "Für die festgelegten Portfoliovarianten kein robuster Überlegenheitsnachweis gegen den US-Markt.",
+  "limits": [
+    "Quellen-Vintages und Anpassungen",
+    "Illustrative jährliche Kosten statt tatsächlichem Orderfluss",
+    "Keine eigene Dauerwahl für jede Originalstrategie"
+  ],
+  "repro": "Skripte, monatliche Eingaben, Protokoll und Ergebnisse verfügbar; genaue Quellenregeln erhalten.",
+  "schema_version": 1,
+  "archived_date": "2026-11-02",
+  "status": "completed_limited_scope",
+  "source_artifact": {
+    "filename": "Behavioral_Strategien_Benchmark_2026.zip",
+    "url": "https://chatgpt.com/library?file_id=libfile_eb7efca016688191a682289a9e09e551&account_id=personal",
+    "sha256": "64cdb711abfe1a3eb2046269480fcd1ec76d9a24a716396800bf28b47a8998bf",
+    "bytes": 1442363,
+    "archive_root": ""
+  },
+  "entry_report": "files/REPORT.md",
+  "artifact_members": "ARTIFACT_MEMBERS.json",
+  "data_availability": "Complete original bundle remains accessible to the owner; repository retains code, reports, compact inputs and results. See member hashes, no reevaluation required.",
+  "holding_period_search_performed": false,
+  "not_tested": [
+    "Systematisch ausgewählte optimale Haltedauer je Strategie",
+    "Erfolg auf allen nicht geprüften Zeiträumen/Horizonten"
+  ],
+  "reproduction_status": "Skripte, monatliche Eingaben, Protokoll und Ergebnisse verfügbar; genaue Quellenregeln erhalten.",
+  "costs": "Unveränderte Parameter siehe Originalberichte; Gebührenmodelle sind nicht als tatsächliche Ausführungskosten verifiziert.",
+  "benchmark": "Unveränderte Benchmarkdefinition im Originalbericht nachlesen.",
+  "time_splits": "Originale zeitliche Aufteilung ist im eingefrorenen Bericht/Protokoll erhalten; keine neue Auswertung beim Archivieren."
+}

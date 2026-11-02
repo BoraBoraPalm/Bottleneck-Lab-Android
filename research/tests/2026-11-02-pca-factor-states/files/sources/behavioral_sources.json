@@ -1,0 +1,56 @@
+[
+  {
+    "file": "PredictorAltPorts_FF93style.parquet",
+    "url": "https://huggingface.co/datasets/OpenSourceAP/CrossSection/resolve/ad1dfba5a6d80c4ce53ce6b8127f5a949dda1e40/Portfolios/Full%20Sets%20Alt/PredictorAltPorts_FF93style.parquet",
+    "bytes": 16200712,
+    "sha256": "7821863d2455d875237240a0dd6b78d86c50fbb222af8e3d586befd97fb72578"
+  },
+  {
+    "file": "PredictorAltPorts_QuintilesVW.parquet",
+    "url": "https://huggingface.co/datasets/OpenSourceAP/CrossSection/resolve/ad1dfba5a6d80c4ce53ce6b8127f5a949dda1e40/Portfolios/Full%20Sets%20Alt/PredictorAltPorts_QuintilesVW.parquet",
+    "bytes": 13896457,
+    "sha256": "1c3f424e8b5839226d88b856daed888567f7e5d760a47fc4849ebc65ecd04c93"
+  },
+  {
+    "file": "PredictorAltPorts_LiqScreen_ME_gt_NYSE20pct.parquet",
+    "url": "https://huggingface.co/datasets/OpenSourceAP/CrossSection/resolve/ad1dfba5a6d80c4ce53ce6b8127f5a949dda1e40/Portfolios/Full%20Sets%20Alt/PredictorAltPorts_LiqScreen_ME_gt_NYSE20pct.parquet",
+    "bytes": 18770749,
+    "sha256": "fcd2ae4053d7262868f5531be051ab6039161f7422091651116cf4a6990f3734"
+  },
+  {
+    "file": "F-F_Research_Data_5_Factors_2x3_CSV.zip",
+    "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/F-F_Research_Data_5_Factors_2x3_CSV.zip",
+    "bytes": 11971,
+    "sha256": "17d7a575e71d6764a70ddec3f8d887756c0eebf3a60f64d6ba95d2adde3fed26"
+  },
+  {
+    "file": "F-F_Momentum_Factor_CSV.zip",
+    "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/F-F_Momentum_Factor_CSV.zip",
+    "bytes": 5603,
+    "sha256": "27ed60e5b2caa9ea334a261cddfa864a9926f6bf45e9677c95dfd835c5abb315"
+  },
+  {
+    "file": "6_Portfolios_ME_Prior_12_2_CSV.zip",
+    "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/6_Portfolios_ME_Prior_12_2_CSV.zip",
+    "bytes": 122033,
+    "sha256": "e973a50bf2c2f3738132e6efa05533fb7a473c18995aa36899a493904842bfee"
+  },
+  {
+    "file": "10_Portfolios_Prior_12_2_CSV.zip",
+    "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/10_Portfolios_Prior_12_2_CSV.zip",
+    "bytes": 119215,
+    "sha256": "688467caa28578a8dca70698537c4f03c406b246350b6f3e9c396e15e1e7964f"
+  },
+  {
+    "file": "SignalDoc.csv",
+    "url": "https://huggingface.co/datasets/OpenSourceAP/CrossSection/resolve/ad1dfba5a6d80c4ce53ce6b8127f5a949dda1e40/SignalDoc.csv",
+    "bytes": 183100,
+    "sha256": "0ceb11020c2138c2477b732948beaac2e67ccaad8428753e3a79af2bb5ea0178"
+  },
+  {
+    "file": "usd_eur_daily.json",
+    "url": "https://api.frankfurter.dev/v2/rates?from=1999-12-01&to=2025-12-31&base=USD&quotes=EUR",
+    "bytes": 607634,
+    "sha256": "5a4f60f26a13b0fccf5888604300996e6b40bdb790c22146b474b38ecf6b4239"
+  }
+]

@@ -252,3 +252,9 @@ Die Offline-Tests prüfen geografische Symbolübersetzung, EUR-Konvertierung, di
 ## Alte Versionen
 
 Frühere Reiter, deren alte **nicht validierte** Kauf-/Stop-Signalmodelle, Forschungs-Backtests, die frühere Android-APK und deren Quellcode bleiben durch die Git-Commit-Historie rekonstruierbar. Diese historischen, nicht ausreichend validierten Ansätze gehören bewusst **nicht** mehr zum aktuellen App-Build.
+
+
+## Dokumentierte Forschungs- und Strategietests
+
+Die bisherigen Studien sind unter [research/tests](research/tests) mit eigenem Ordner pro Test dokumentiert. [research/README.md](research/README.md) bietet den Index und die aktuell geltenden Grenzen; [die Haltedauer-Prüfung](research/HOLDING_PERIODS.md) trennt Signalrückblick, Prognosehorizont, tatsächliche Haltedauer und Rebalancing. Die ursprünglichen Ergebnisse sind archiviert, damit sie vor weiteren Berechnungen nachgelesen werden können.
+

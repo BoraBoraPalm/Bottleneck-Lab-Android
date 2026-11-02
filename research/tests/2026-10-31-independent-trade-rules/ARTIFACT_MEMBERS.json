@@ -1,0 +1,32 @@
+[
+  {
+    "archive_path": "current_rules_results/current_trading_rules_report.json",
+    "relative_path": "current_rules_results/current_trading_rules_report.json",
+    "bytes": 27531,
+    "sha256": "e85475fff3fea7b62116e8983c055930331782f626d5c521eeb3f5c42ad6b32c",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-10-31-independent-trade-rules/files/current_rules_results/current_trading_rules_report.json"
+  },
+  {
+    "archive_path": "current_rules_results/trade_details.json",
+    "relative_path": "current_rules_results/trade_details.json",
+    "bytes": 1150639,
+    "sha256": "d769e5f6f286bfce00b421206ca3184ee50ff945637e1295be1f0e5f912bf30d",
+    "in_repository": false
+  },
+  {
+    "archive_path": "current_rules_results/curve_20d_blocks.json",
+    "relative_path": "current_rules_results/curve_20d_blocks.json",
+    "bytes": 118761,
+    "sha256": "b75cb2253a0eb20a0c2579d351d63ee716bbdc08041f62f88882c18e73b21874",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-10-31-independent-trade-rules/files/current_rules_results/curve_20d_blocks.json"
+  },
+  {
+    "archive_path": "current_trade_rules_output.log",
+    "relative_path": "current_trade_rules_output.log",
+    "bytes": 6452,
+    "sha256": "9ab0fd0ccb6f655b4dfe0987611e7a7853ac5b978cb8ea1ecf17b68e3e4bb896",
+    "in_repository": false
+  }
+]

@@ -1,0 +1,46 @@
+{
+  "id": "2026-10-31-scientific-factor-study",
+  "title": "Akademische Value-/Quality-/Investment-/Momentum-Portfolios",
+  "date": "2026-10-31",
+  "period": "Quellen ab 1963; je Auswertung andere vollständige Zeitfenster bis 2026-09",
+  "strategy": "Zwölf vorab festgelegte akademische Faktor-/Markt-Mischungen",
+  "prediction": "Keine individuelle Aktien-Kursprognose; langfristiger Portfoliovergleich",
+  "holding": {
+    "kind": "source_defined",
+    "maximum": null,
+    "average_actual": null,
+    "variable_by": "Originalbildung und Rebalancing der Quellportfolios",
+    "optimized": false
+  },
+  "rebalance": "Quellkonventionen; Monatsrendite ist keine pauschale Einzeltitel-Haltedauer",
+  "result": "Langfristige Portfolio-, Kosten- und Robustheitsvergleiche; kein eigener Haltedauer-Suchlauf.",
+  "limits": [
+    "Faktorportfolios sind keine direkt ausführbaren Einzeltiteltrades",
+    "Revidierte historische Daten",
+    "Keine umfassenden Kosten/Steuern",
+    "Monatliche Auswertungs- und rollende Erfolgsfenster nicht mit Haltedauer verwechseln"
+  ],
+  "repro": "Originalkennzahlen und vollständige Vergleichstabelle vorhanden; Quelldaten-URLs im Ergebnis, ursprünglicher vollständiger Code fehlt.",
+  "schema_version": 1,
+  "archived_date": "2026-11-02",
+  "status": "completed_limited_scope",
+  "source_artifact": {
+    "filename": "Bottleneck_Scientific_Factor_Study.zip",
+    "url": "https://chatgpt.com/library?file_id=libfile_a7a7e430a70c81918a7eae4dddd4b40c&account_id=personal",
+    "sha256": "7e5f0c62b96fe3de496c48eee11bdc15303da7f60dbff51434b910d0d63846c0",
+    "bytes": 26269,
+    "archive_root": ""
+  },
+  "entry_report": "files/factor_robustness/full_factor_study.json",
+  "artifact_members": "ARTIFACT_MEMBERS.json",
+  "data_availability": "Complete original bundle remains accessible to the owner; repository retains code, reports, compact inputs and results. See member hashes, no reevaluation required.",
+  "holding_period_search_performed": false,
+  "not_tested": [
+    "Systematisch ausgewählte optimale Haltedauer je Strategie",
+    "Erfolg auf allen nicht geprüften Zeiträumen/Horizonten"
+  ],
+  "reproduction_status": "Originalkennzahlen und vollständige Vergleichstabelle vorhanden; Quelldaten-URLs im Ergebnis, ursprünglicher vollständiger Code fehlt.",
+  "costs": "Unveränderte Parameter siehe Originalberichte; Gebührenmodelle sind nicht als tatsächliche Ausführungskosten verifiziert.",
+  "benchmark": "Unveränderte Benchmarkdefinition im Originalbericht nachlesen.",
+  "time_splits": "Originale zeitliche Aufteilung ist im eingefrorenen Bericht/Protokoll erhalten; keine neue Auswertung beim Archivieren."
+}

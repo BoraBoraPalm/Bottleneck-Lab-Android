@@ -1,0 +1,25 @@
+[
+  {
+    "archive_path": "momentum_results/chronological_curve.json",
+    "relative_path": "momentum_results/chronological_curve.json",
+    "bytes": 12055,
+    "sha256": "99a74c0b506af30c95cf952f180660f471854d7f10c4a5163063ba3ac49e33fd",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-10-31-momentum-12-2/files/momentum_results/chronological_curve.json"
+  },
+  {
+    "archive_path": "momentum_results/momentum_model_comparison.json",
+    "relative_path": "momentum_results/momentum_model_comparison.json",
+    "bytes": 3027,
+    "sha256": "fec43f9adb51c992fe932c169b98b6bf386bc64da9e57886314aea8c889377fd",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-10-31-momentum-12-2/files/momentum_results/momentum_model_comparison.json"
+  },
+  {
+    "archive_path": "momentum_comparison_output.log",
+    "relative_path": "momentum_comparison_output.log",
+    "bytes": 2530,
+    "sha256": "1c013e427c6eb56d3f15ddcacf6def36abc4055e64643e5a05e3ca607b5ac3fd",
+    "in_repository": false
+  }
+]

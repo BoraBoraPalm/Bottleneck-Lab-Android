@@ -1,0 +1,1282 @@
+[
+  {
+    "buy_atr": 0.0,
+    "stop_atr": 1.0,
+    "train": {
+      "periods": 37,
+      "trades": 339,
+      "fill_pct": 91.6216,
+      "stop_exits": 269,
+      "strategy_end_eur": 6833.6357,
+      "strategy_net_pnl_eur": -3166.3643,
+      "strategy_return_pct": -31.6636,
+      "matched_spy_end_eur": 9925.1394,
+      "matched_spy_pnl_eur": -74.8606,
+      "matched_spy_return_pct": -0.7486,
+      "excess_vs_matched_eur": -3091.5037,
+      "spy_full_end_eur": 12814.0258,
+      "mean_block_excess_pct": -0.8936,
+      "block_excess_95pct_bootstrap": [
+        -1.8428,
+        0.0294
+      ],
+      "max_period_end_drawdown_pct": -36.2636,
+      "fee_total_eur": 678
+    },
+    "test": {
+      "periods": 24,
+      "trades": 218,
+      "fill_pct": 90.8333,
+      "stop_exits": 164,
+      "strategy_end_eur": 9498.0765,
+      "strategy_net_pnl_eur": -501.9235,
+      "strategy_return_pct": -5.0192,
+      "matched_spy_end_eur": 10234.4918,
+      "matched_spy_pnl_eur": 234.4918,
+      "matched_spy_return_pct": 2.3449,
+      "excess_vs_matched_eur": -736.4152,
+      "spy_full_end_eur": 11511.6808,
+      "mean_block_excess_pct": -0.1841,
+      "block_excess_95pct_bootstrap": [
+        -2.0047,
+        1.7318
+      ],
+      "max_period_end_drawdown_pct": -24.0249,
+      "fee_total_eur": 436
+    },
+    "train_random": {
+      "n": 202,
+      "filled": 1926,
+      "fill_pct": 95.3465,
+      "mean_20d_strategy_pct": -0.9624,
+      "mean_20d_excess_vs_matched_spy_pct": -0.7362,
+      "mean_20d_excess_vs_full_spy_pct": -1.4021,
+      "two_way_fees_eur": 3852
+    },
+    "test_random": {
+      "n": 111,
+      "filled": 1004,
+      "fill_pct": 90.4505,
+      "mean_20d_strategy_pct": -0.4595,
+      "mean_20d_excess_vs_matched_spy_pct": -0.5794,
+      "mean_20d_excess_vs_full_spy_pct": -1.3593,
+      "two_way_fees_eur": 2008
+    }
+  },
+  {
+    "buy_atr": 0.0,
+    "stop_atr": 1.5,
+    "train": {
+      "periods": 37,
+      "trades": 339,
+      "fill_pct": 91.6216,
+      "stop_exits": 235,
+      "strategy_end_eur": 6647.9126,
+      "strategy_net_pnl_eur": -3352.0874,
+      "strategy_return_pct": -33.5209,
+      "matched_spy_end_eur": 10934.0035,
+      "matched_spy_pnl_eur": 934.0035,
+      "matched_spy_return_pct": 9.34,
+      "excess_vs_matched_eur": -4286.0909,
+      "spy_full_end_eur": 12814.0258,
+      "mean_block_excess_pct": -1.1626,
+      "block_excess_95pct_bootstrap": [
+        -2.3203,
+        0.052
+      ],
+      "max_period_end_drawdown_pct": -36.2394,
+      "fee_total_eur": 678
+    },
+    "test": {
+      "periods": 24,
+      "trades": 220,
+      "fill_pct": 91.6667,
+      "stop_exits": 132,
+      "strategy_end_eur": 11766.8844,
+      "strategy_net_pnl_eur": 1766.8844,
+      "strategy_return_pct": 17.6688,
+      "matched_spy_end_eur": 10706.9863,
+      "matched_spy_pnl_eur": 706.9863,
+      "matched_spy_return_pct": 7.0699,
+      "excess_vs_matched_eur": 1059.8982,
+      "spy_full_end_eur": 11511.6808,
+      "mean_block_excess_pct": 0.5404,
+      "block_excess_95pct_bootstrap": [
+        -1.3503,
+        2.5305
+      ],
+      "max_period_end_drawdown_pct": -18.8333,
+      "fee_total_eur": 440
+    },
+    "train_random": {
+      "n": 202,
+      "filled": 1926,
+      "fill_pct": 95.3465,
+      "mean_20d_strategy_pct": -1.0463,
+      "mean_20d_excess_vs_matched_spy_pct": -0.9228,
+      "mean_20d_excess_vs_full_spy_pct": -1.4859,
+      "two_way_fees_eur": 3852
+    },
+    "test_random": {
+      "n": 111,
+      "filled": 1004,
+      "fill_pct": 90.4505,
+      "mean_20d_strategy_pct": -0.1844,
+      "mean_20d_excess_vs_matched_spy_pct": -0.4241,
+      "mean_20d_excess_vs_full_spy_pct": -1.0841,
+      "two_way_fees_eur": 2008
+    }
+  },
+  {
+    "buy_atr": 0.0,
+    "stop_atr": 2.5,
+    "train": {
+      "periods": 37,
+      "trades": 339,
+      "fill_pct": 91.6216,
+      "stop_exits": 154,
+      "strategy_end_eur": 6421.7067,
+      "strategy_net_pnl_eur": -3578.2933,
+      "strategy_return_pct": -35.7829,
+      "matched_spy_end_eur": 10807.6682,
+      "matched_spy_pnl_eur": 807.6682,
+      "matched_spy_return_pct": 8.0767,
+      "excess_vs_matched_eur": -4385.9616,
+      "spy_full_end_eur": 12814.0258,
+      "mean_block_excess_pct": -1.167,
+      "block_excess_95pct_bootstrap": [
+        -2.6663,
+        0.346
+      ],
+      "max_period_end_drawdown_pct": -38.8059,
+      "fee_total_eur": 678
+    },
+    "test": {
+      "periods": 24,
+      "trades": 219,
+      "fill_pct": 91.25,
+      "stop_exits": 83,
+      "strategy_end_eur": 12677.9037,
+      "strategy_net_pnl_eur": 2677.9037,
+      "strategy_return_pct": 26.779,
+      "matched_spy_end_eur": 11113.2791,
+      "matched_spy_pnl_eur": 1113.2791,
+      "matched_spy_return_pct": 11.1328,
+      "excess_vs_matched_eur": 1564.6246,
+      "spy_full_end_eur": 11511.6808,
+      "mean_block_excess_pct": 0.7354,
+      "block_excess_95pct_bootstrap": [
+        -1.1899,
+        2.7531
+      ],
+      "max_period_end_drawdown_pct": -18.7024,
+      "fee_total_eur": 438
+    },
+    "train_random": {
+      "n": 202,
+      "filled": 1923,
+      "fill_pct": 95.198,
+      "mean_20d_strategy_pct": -0.9747,
+      "mean_20d_excess_vs_matched_spy_pct": -0.9449,
+      "mean_20d_excess_vs_full_spy_pct": -1.4143,
+      "two_way_fees_eur": 3846
+    },
+    "test_random": {
+      "n": 111,
+      "filled": 1002,
+      "fill_pct": 90.2703,
+      "mean_20d_strategy_pct": 0.0451,
+      "mean_20d_excess_vs_matched_spy_pct": -0.4156,
+      "mean_20d_excess_vs_full_spy_pct": -0.8546,
+      "two_way_fees_eur": 2004
+    }
+  },
+  {
+    "buy_atr": 0.0,
+    "stop_atr": 4.0,
+    "train": {
+      "periods": 37,
+      "trades": 334,
+      "fill_pct": 90.2703,
+      "stop_exits": 62,
+      "strategy_end_eur": 6468.149,
+      "strategy_net_pnl_eur": -3531.851,
+      "strategy_return_pct": -35.3185,
+      "matched_spy_end_eur": 10662.7738,
+      "matched_spy_pnl_eur": 662.7738,
+      "matched_spy_return_pct": 6.6277,
+      "excess_vs_matched_eur": -4194.6248,
+      "spy_full_end_eur": 12814.0258,
+      "mean_block_excess_pct": -1.0783,
+      "block_excess_95pct_bootstrap": [
+        -2.6354,
+        0.4787
+      ],
+      "max_period_end_drawdown_pct": -43.7889,
+      "fee_total_eur": 668
+    },
+    "test": {
+      "periods": 24,
+      "trades": 217,
+      "fill_pct": 90.4167,
+      "stop_exits": 37,
+      "strategy_end_eur": 14768.4807,
+      "strategy_net_pnl_eur": 4768.4807,
+      "strategy_return_pct": 47.6848,
+      "matched_spy_end_eur": 11192.3278,
+      "matched_spy_pnl_eur": 1192.3278,
+      "matched_spy_return_pct": 11.9233,
+      "excess_vs_matched_eur": 3576.1529,
+      "spy_full_end_eur": 11511.6808,
+      "mean_block_excess_pct": 1.3579,
+      "block_excess_95pct_bootstrap": [
+        -0.7569,
+        3.3569
+      ],
+      "max_period_end_drawdown_pct": -25.0896,
+      "fee_total_eur": 434
+    },
+    "train_random": {
+      "n": 202,
+      "filled": 1918,
+      "fill_pct": 94.9505,
+      "mean_20d_strategy_pct": -0.8162,
+      "mean_20d_excess_vs_matched_spy_pct": -0.9128,
+      "mean_20d_excess_vs_full_spy_pct": -1.2559,
+      "two_way_fees_eur": 3836
+    },
+    "test_random": {
+      "n": 111,
+      "filled": 995,
+      "fill_pct": 89.6396,
+      "mean_20d_strategy_pct": 1.0119,
+      "mean_20d_excess_vs_matched_spy_pct": 0.4938,
+      "mean_20d_excess_vs_full_spy_pct": 0.1122,
+      "two_way_fees_eur": 1990
+    }
+  },
+  {
+    "buy_atr": 0.5,
+    "stop_atr": 1.0,
+    "train": {
+      "periods": 37,
+      "trades": 253,
+      "fill_pct": 68.3784,
+      "stop_exits": 192,
+      "strategy_end_eur": 9942.9334,
+      "strategy_net_pnl_eur": -57.0666,
+      "strategy_return_pct": -0.5707,
+      "matched_spy_end_eur": 10397.0198,
+      "matched_spy_pnl_eur": 397.0198,
+      "matched_spy_return_pct": 3.9702,
+      "excess_vs_matched_eur": -454.0864,
+      "spy_full_end_eur": 12814.0258,
+      "mean_block_excess_pct": -0.039,
+      "block_excess_95pct_bootstrap": [
+        -1.0215,
+        0.9826
+      ],
+      "max_period_end_drawdown_pct": -14.2361,
+      "fee_total_eur": 506
+    },
+    "test": {
+      "periods": 24,
+      "trades": 164,
+      "fill_pct": 68.3333,
+      "stop_exits": 114,
+      "strategy_end_eur": 11444.9604,
+      "strategy_net_pnl_eur": 1444.9604,
+      "strategy_return_pct": 14.4496,
+      "matched_spy_end_eur": 10519.4751,
+      "matched_spy_pnl_eur": 519.4751,
+      "matched_spy_return_pct": 5.1948,
+      "excess_vs_matched_eur": 925.4853,
+      "spy_full_end_eur": 11511.6808,
+      "mean_block_excess_pct": 0.407,
+      "block_excess_95pct_bootstrap": [
+        -1.0024,
+        1.9131
+      ],
+      "max_period_end_drawdown_pct": -15.5112,
+      "fee_total_eur": 328
+    },
+    "train_random": {
+      "n": 202,
+      "filled": 1494,
+      "fill_pct": 73.9604,
+      "mean_20d_strategy_pct": -0.5549,
+      "mean_20d_excess_vs_matched_spy_pct": -0.3671,
+      "mean_20d_excess_vs_full_spy_pct": -0.9946,
+      "two_way_fees_eur": 2988
+    },
+    "test_random": {
+      "n": 111,
+      "filled": 772,
+      "fill_pct": 69.5495,
+      "mean_20d_strategy_pct": 0.1552,
+      "mean_20d_excess_vs_matched_spy_pct": 0.1206,
+      "mean_20d_excess_vs_full_spy_pct": -0.7445,
+      "two_way_fees_eur": 1544
+    }
+  },
+  {
+    "buy_atr": 0.5,
+    "stop_atr": 1.5,
+    "train": {
+      "periods": 37,
+      "trades": 253,
+      "fill_pct": 68.3784,
+      "stop_exits": 152,
+      "strategy_end_eur": 10446.1441,
+      "strategy_net_pnl_eur": 446.1441,
+      "strategy_return_pct": 4.4614,
+      "matched_spy_end_eur": 10340.3335,
+      "matched_spy_pnl_eur": 340.3335,
+      "matched_spy_return_pct": 3.4033,
+      "excess_vs_matched_eur": 105.8106,
+      "spy_full_end_eur": 12814.0258,
+      "mean_block_excess_pct": 0.1219,
+      "block_excess_95pct_bootstrap": [
+        -1.0552,
+        1.3804
+      ],
+      "max_period_end_drawdown_pct": -14.9487,
+      "fee_total_eur": 506
+    },
+    "test": {
+      "periods": 24,
+      "trades": 164,
+      "fill_pct": 68.3333,
+      "stop_exits": 91,
+      "strategy_end_eur": 11880.9093,
+      "strategy_net_pnl_eur": 1880.9093,
+      "strategy_return_pct": 18.8091,
+      "matched_spy_end_eur": 10654.7757,
+      "matched_spy_pnl_eur": 654.7757,
+      "matched_spy_return_pct": 6.5478,
+      "excess_vs_matched_eur": 1226.1336,
+      "spy_full_end_eur": 11511.6808,
+      "mean_block_excess_pct": 0.5213,
+      "block_excess_95pct_bootstrap": [
+        -0.8987,
+        2.003
+      ],
+      "max_period_end_drawdown_pct": -14.3915,
+      "fee_total_eur": 328
+    },
+    "train_random": {
+      "n": 202,
+      "filled": 1494,
+      "fill_pct": 73.9604,
+      "mean_20d_strategy_pct": -0.6644,
+      "mean_20d_excess_vs_matched_spy_pct": -0.4983,
+      "mean_20d_excess_vs_full_spy_pct": -1.1041,
+      "two_way_fees_eur": 2988
+    },
+    "test_random": {
+      "n": 111,
+      "filled": 772,
+      "fill_pct": 69.5495,
+      "mean_20d_strategy_pct": 0.0198,
+      "mean_20d_excess_vs_matched_spy_pct": -0.0628,
+      "mean_20d_excess_vs_full_spy_pct": -0.8799,
+      "two_way_fees_eur": 1544
+    }
+  },
+  {
+    "buy_atr": 0.5,
+    "stop_atr": 2.5,
+    "train": {
+      "periods": 37,
+      "trades": 253,
+      "fill_pct": 68.3784,
+      "stop_exits": 103,
+      "strategy_end_eur": 9243.262,
+      "strategy_net_pnl_eur": -756.738,
+      "strategy_return_pct": -7.5674,
+      "matched_spy_end_eur": 9870.5153,
+      "matched_spy_pnl_eur": -129.4847,
+      "matched_spy_return_pct": -1.2948,
+      "excess_vs_matched_eur": -627.2533,
+      "spy_full_end_eur": 12814.0258,
+      "mean_block_excess_pct": -0.055,
+      "block_excess_95pct_bootstrap": [
+        -1.3562,
+        1.2691
+      ],
+      "max_period_end_drawdown_pct": -24.406,
+      "fee_total_eur": 506
+    },
+    "test": {
+      "periods": 24,
+      "trades": 163,
+      "fill_pct": 67.9167,
+      "stop_exits": 53,
+      "strategy_end_eur": 13638.0342,
+      "strategy_net_pnl_eur": 3638.0342,
+      "strategy_return_pct": 36.3803,
+      "matched_spy_end_eur": 10972.3688,
+      "matched_spy_pnl_eur": 972.3688,
+      "matched_spy_return_pct": 9.7237,
+      "excess_vs_matched_eur": 2665.6654,
+      "spy_full_end_eur": 11511.6808,
+      "mean_block_excess_pct": 0.9633,
+      "block_excess_95pct_bootstrap": [
+        -0.4104,
+        2.3873
+      ],
+      "max_period_end_drawdown_pct": -11.5852,
+      "fee_total_eur": 326
+    },
+    "train_random": {
+      "n": 202,
+      "filled": 1494,
+      "fill_pct": 73.9604,
+      "mean_20d_strategy_pct": -0.5201,
+      "mean_20d_excess_vs_matched_spy_pct": -0.4655,
+      "mean_20d_excess_vs_full_spy_pct": -0.9597,
+      "two_way_fees_eur": 2988
+    },
+    "test_random": {
+      "n": 111,
+      "filled": 770,
+      "fill_pct": 69.3694,
+      "mean_20d_strategy_pct": 0.7022,
+      "mean_20d_excess_vs_matched_spy_pct": 0.4537,
+      "mean_20d_excess_vs_full_spy_pct": -0.1976,
+      "two_way_fees_eur": 1540
+    }
+  },
+  {
+    "buy_atr": 0.5,
+    "stop_atr": 4.0,
+    "train": {
+      "periods": 37,
+      "trades": 252,
+      "fill_pct": 68.1081,
+      "stop_exits": 45,
+      "strategy_end_eur": 8776.1284,
+      "strategy_net_pnl_eur": -1223.8716,
+      "strategy_return_pct": -12.2387,
+      "matched_spy_end_eur": 9652.6926,
+      "matched_spy_pnl_eur": -347.3074,
+      "matched_spy_return_pct": -3.4731,
+      "excess_vs_matched_eur": -876.5642,
+      "spy_full_end_eur": 12814.0258,
+      "mean_block_excess_pct": -0.1068,
+      "block_excess_95pct_bootstrap": [
+        -1.4707,
+        1.2324
+      ],
+      "max_period_end_drawdown_pct": -34.7397,
+      "fee_total_eur": 504
+    },
+    "test": {
+      "periods": 24,
+      "trades": 163,
+      "fill_pct": 67.9167,
+      "stop_exits": 25,
+      "strategy_end_eur": 15191.3715,
+      "strategy_net_pnl_eur": 5191.3715,
+      "strategy_return_pct": 51.9137,
+      "matched_spy_end_eur": 11026.7844,
+      "matched_spy_pnl_eur": 1026.7844,
+      "matched_spy_return_pct": 10.2678,
+      "excess_vs_matched_eur": 4164.5871,
+      "spy_full_end_eur": 11511.6808,
+      "mean_block_excess_pct": 1.4362,
+      "block_excess_95pct_bootstrap": [
+        -0.2862,
+        3.1254
+      ],
+      "max_period_end_drawdown_pct": -17.5765,
+      "fee_total_eur": 326
+    },
+    "train_random": {
+      "n": 202,
+      "filled": 1489,
+      "fill_pct": 73.7129,
+      "mean_20d_strategy_pct": -0.3455,
+      "mean_20d_excess_vs_matched_spy_pct": -0.3767,
+      "mean_20d_excess_vs_full_spy_pct": -0.7851,
+      "two_way_fees_eur": 2978
+    },
+    "test_random": {
+      "n": 111,
+      "filled": 764,
+      "fill_pct": 68.8288,
+      "mean_20d_strategy_pct": 1.4782,
+      "mean_20d_excess_vs_matched_spy_pct": 1.157,
+      "mean_20d_excess_vs_full_spy_pct": 0.5784,
+      "two_way_fees_eur": 1528
+    }
+  },
+  {
+    "buy_atr": 1.0,
+    "stop_atr": 1.0,
+    "train": {
+      "periods": 37,
+      "trades": 178,
+      "fill_pct": 48.1081,
+      "stop_exits": 131,
+      "strategy_end_eur": 9616.0881,
+      "strategy_net_pnl_eur": -383.9119,
+      "strategy_return_pct": -3.8391,
+      "matched_spy_end_eur": 9758.4579,
+      "matched_spy_pnl_eur": -241.5421,
+      "matched_spy_return_pct": -2.4154,
+      "excess_vs_matched_eur": -142.3698,
+      "spy_full_end_eur": 12814.0258,
+      "mean_block_excess_pct": -0.013,
+      "block_excess_95pct_bootstrap": [
+        -0.6743,
+        0.6684
+      ],
+      "max_period_end_drawdown_pct": -13.3621,
+      "fee_total_eur": 356
+    },
+    "test": {
+      "periods": 24,
+      "trades": 102,
+      "fill_pct": 42.5,
+      "stop_exits": 69,
+      "strategy_end_eur": 11320.0572,
+      "strategy_net_pnl_eur": 1320.0572,
+      "strategy_return_pct": 13.2006,
+      "matched_spy_end_eur": 10904.7027,
+      "matched_spy_pnl_eur": 904.7027,
+      "matched_spy_return_pct": 9.047,
+      "excess_vs_matched_eur": 415.3545,
+      "spy_full_end_eur": 11511.6808,
+      "mean_block_excess_pct": 0.1854,
+      "block_excess_95pct_bootstrap": [
+        -0.7587,
+        1.3251
+      ],
+      "max_period_end_drawdown_pct": -4.3058,
+      "fee_total_eur": 204
+    },
+    "train_random": {
+      "n": 202,
+      "filled": 1025,
+      "fill_pct": 50.7426,
+      "mean_20d_strategy_pct": -0.4298,
+      "mean_20d_excess_vs_matched_spy_pct": -0.22,
+      "mean_20d_excess_vs_full_spy_pct": -0.8695,
+      "two_way_fees_eur": 2050
+    },
+    "test_random": {
+      "n": 111,
+      "filled": 522,
+      "fill_pct": 47.027,
+      "mean_20d_strategy_pct": 0.0187,
+      "mean_20d_excess_vs_matched_spy_pct": 0.0469,
+      "mean_20d_excess_vs_full_spy_pct": -0.881,
+      "two_way_fees_eur": 1044
+    }
+  },
+  {
+    "buy_atr": 1.0,
+    "stop_atr": 1.5,
+    "train": {
+      "periods": 37,
+      "trades": 178,
+      "fill_pct": 48.1081,
+      "stop_exits": 115,
+      "strategy_end_eur": 8347.3434,
+      "strategy_net_pnl_eur": -1652.6566,
+      "strategy_return_pct": -16.5266,
+      "matched_spy_end_eur": 9361.052,
+      "matched_spy_pnl_eur": -638.948,
+      "matched_spy_return_pct": -6.3895,
+      "excess_vs_matched_eur": -1013.7086,
+      "spy_full_end_eur": 12814.0258,
+      "mean_block_excess_pct": -0.2638,
+      "block_excess_95pct_bootstrap": [
+        -1.0072,
+        0.4635
+      ],
+      "max_period_end_drawdown_pct": -16.6997,
+      "fee_total_eur": 356
+    },
+    "test": {
+      "periods": 24,
+      "trades": 102,
+      "fill_pct": 42.5,
+      "stop_exits": 55,
+      "strategy_end_eur": 11799.2828,
+      "strategy_net_pnl_eur": 1799.2828,
+      "strategy_return_pct": 17.9928,
+      "matched_spy_end_eur": 11113.0056,
+      "matched_spy_pnl_eur": 1113.0056,
+      "matched_spy_return_pct": 11.1301,
+      "excess_vs_matched_eur": 686.2772,
+      "spy_full_end_eur": 11511.6808,
+      "mean_block_excess_pct": 0.278,
+      "block_excess_95pct_bootstrap": [
+        -0.5532,
+        1.2744
+      ],
+      "max_period_end_drawdown_pct": -6.2635,
+      "fee_total_eur": 204
+    },
+    "train_random": {
+      "n": 202,
+      "filled": 1025,
+      "fill_pct": 50.7426,
+      "mean_20d_strategy_pct": -0.2486,
+      "mean_20d_excess_vs_matched_spy_pct": -0.1053,
+      "mean_20d_excess_vs_full_spy_pct": -0.6883,
+      "two_way_fees_eur": 2050
+    },
+    "test_random": {
+      "n": 111,
+      "filled": 522,
+      "fill_pct": 47.027,
+      "mean_20d_strategy_pct": 0.3367,
+      "mean_20d_excess_vs_matched_spy_pct": 0.2662,
+      "mean_20d_excess_vs_full_spy_pct": -0.563,
+      "two_way_fees_eur": 1044
+    }
+  },
+  {
+    "buy_atr": 1.0,
+    "stop_atr": 2.5,
+    "train": {
+      "periods": 37,
+      "trades": 178,
+      "fill_pct": 48.1081,
+      "stop_exits": 79,
+      "strategy_end_eur": 7522.0489,
+      "strategy_net_pnl_eur": -2477.9511,
+      "strategy_return_pct": -24.7795,
+      "matched_spy_end_eur": 9046.8312,
+      "matched_spy_pnl_eur": -953.1688,
+      "matched_spy_return_pct": -9.5317,
+      "excess_vs_matched_eur": -1524.7823,
+      "spy_full_end_eur": 12814.0258,
+      "mean_block_excess_pct": -0.4403,
+      "block_excess_95pct_bootstrap": [
+        -1.2834,
+        0.3556
+      ],
+      "max_period_end_drawdown_pct": -24.9287,
+      "fee_total_eur": 356
+    },
+    "test": {
+      "periods": 24,
+      "trades": 102,
+      "fill_pct": 42.5,
+      "stop_exits": 30,
+      "strategy_end_eur": 12855.304,
+      "strategy_net_pnl_eur": 2855.304,
+      "strategy_return_pct": 28.553,
+      "matched_spy_end_eur": 11401.2539,
+      "matched_spy_pnl_eur": 1401.2539,
+      "matched_spy_return_pct": 14.0125,
+      "excess_vs_matched_eur": 1454.05,
+      "spy_full_end_eur": 11511.6808,
+      "mean_block_excess_pct": 0.5545,
+      "block_excess_95pct_bootstrap": [
+        -0.6737,
+        1.9307
+      ],
+      "max_period_end_drawdown_pct": -9.7717,
+      "fee_total_eur": 204
+    },
+    "train_random": {
+      "n": 202,
+      "filled": 1024,
+      "fill_pct": 50.6931,
+      "mean_20d_strategy_pct": -0.2012,
+      "mean_20d_excess_vs_matched_spy_pct": -0.1498,
+      "mean_20d_excess_vs_full_spy_pct": -0.6408,
+      "two_way_fees_eur": 2048
+    },
+    "test_random": {
+      "n": 111,
+      "filled": 522,
+      "fill_pct": 47.027,
+      "mean_20d_strategy_pct": 0.7796,
+      "mean_20d_excess_vs_matched_spy_pct": 0.6825,
+      "mean_20d_excess_vs_full_spy_pct": -0.1202,
+      "two_way_fees_eur": 1044
+    }
+  },
+  {
+    "buy_atr": 1.0,
+    "stop_atr": 4.0,
+    "train": {
+      "periods": 37,
+      "trades": 178,
+      "fill_pct": 48.1081,
+      "stop_exits": 32,
+      "strategy_end_eur": 8532.1672,
+      "strategy_net_pnl_eur": -1467.8328,
+      "strategy_return_pct": -14.6783,
+      "matched_spy_end_eur": 9111.2667,
+      "matched_spy_pnl_eur": -888.7333,
+      "matched_spy_return_pct": -8.8873,
+      "excess_vs_matched_eur": -579.0995,
+      "spy_full_end_eur": 12814.0258,
+      "mean_block_excess_pct": -0.1031,
+      "block_excess_95pct_bootstrap": [
+        -1.0408,
+        0.843
+      ],
+      "max_period_end_drawdown_pct": -30.5258,
+      "fee_total_eur": 356
+    },
+    "test": {
+      "periods": 24,
+      "trades": 102,
+      "fill_pct": 42.5,
+      "stop_exits": 9,
+      "strategy_end_eur": 14068.8261,
+      "strategy_net_pnl_eur": 4068.8261,
+      "strategy_return_pct": 40.6883,
+      "matched_spy_end_eur": 11423.6672,
+      "matched_spy_pnl_eur": 1423.6672,
+      "matched_spy_return_pct": 14.2367,
+      "excess_vs_matched_eur": 2645.159,
+      "spy_full_end_eur": 11511.6808,
+      "mean_block_excess_pct": 0.9383,
+      "block_excess_95pct_bootstrap": [
+        -0.4628,
+        2.5352
+      ],
+      "max_period_end_drawdown_pct": -13.6654,
+      "fee_total_eur": 204
+    },
+    "train_random": {
+      "n": 202,
+      "filled": 1021,
+      "fill_pct": 50.5446,
+      "mean_20d_strategy_pct": -0.0494,
+      "mean_20d_excess_vs_matched_spy_pct": -0.0607,
+      "mean_20d_excess_vs_full_spy_pct": -0.489,
+      "two_way_fees_eur": 2042
+    },
+    "test_random": {
+      "n": 111,
+      "filled": 520,
+      "fill_pct": 46.8468,
+      "mean_20d_strategy_pct": 1.3231,
+      "mean_20d_excess_vs_matched_spy_pct": 1.1811,
+      "mean_20d_excess_vs_full_spy_pct": 0.4234,
+      "two_way_fees_eur": 1040
+    }
+  },
+  {
+    "buy_atr": 1.5,
+    "stop_atr": 1.0,
+    "train": {
+      "periods": 37,
+      "trades": 112,
+      "fill_pct": 30.2703,
+      "stop_exits": 86,
+      "strategy_end_eur": 9317.5351,
+      "strategy_net_pnl_eur": -682.4649,
+      "strategy_return_pct": -6.8246,
+      "matched_spy_end_eur": 9297.4508,
+      "matched_spy_pnl_eur": -702.5492,
+      "matched_spy_return_pct": -7.0255,
+      "excess_vs_matched_eur": 20.0843,
+      "spy_full_end_eur": 12814.0258,
+      "mean_block_excess_pct": 0.0166,
+      "block_excess_95pct_bootstrap": [
+        -0.399,
+        0.4466
+      ],
+      "max_period_end_drawdown_pct": -10.2016,
+      "fee_total_eur": 224
+    },
+    "test": {
+      "periods": 24,
+      "trades": 71,
+      "fill_pct": 29.5833,
+      "stop_exits": 45,
+      "strategy_end_eur": 10814.572,
+      "strategy_net_pnl_eur": 814.572,
+      "strategy_return_pct": 8.1457,
+      "matched_spy_end_eur": 10510.341,
+      "matched_spy_pnl_eur": 510.341,
+      "matched_spy_return_pct": 5.1034,
+      "excess_vs_matched_eur": 304.231,
+      "spy_full_end_eur": 11511.6808,
+      "mean_block_excess_pct": 0.1348,
+      "block_excess_95pct_bootstrap": [
+        -0.4697,
+        0.8935
+      ],
+      "max_period_end_drawdown_pct": -4.4577,
+      "fee_total_eur": 142
+    },
+    "train_random": {
+      "n": 202,
+      "filled": 628,
+      "fill_pct": 31.0891,
+      "mean_20d_strategy_pct": 0.0083,
+      "mean_20d_excess_vs_matched_spy_pct": 0.0745,
+      "mean_20d_excess_vs_full_spy_pct": -0.4313,
+      "two_way_fees_eur": 1256
+    },
+    "test_random": {
+      "n": 111,
+      "filled": 331,
+      "fill_pct": 29.8198,
+      "mean_20d_strategy_pct": 0.012,
+      "mean_20d_excess_vs_matched_spy_pct": 0.0536,
+      "mean_20d_excess_vs_full_spy_pct": -0.8878,
+      "two_way_fees_eur": 662
+    }
+  },
+  {
+    "buy_atr": 1.5,
+    "stop_atr": 1.5,
+    "train": {
+      "periods": 37,
+      "trades": 112,
+      "fill_pct": 30.2703,
+      "stop_exits": 74,
+      "strategy_end_eur": 8999.1019,
+      "strategy_net_pnl_eur": -1000.8981,
+      "strategy_return_pct": -10.009,
+      "matched_spy_end_eur": 9162.7241,
+      "matched_spy_pnl_eur": -837.2759,
+      "matched_spy_return_pct": -8.3728,
+      "excess_vs_matched_eur": -163.6223,
+      "spy_full_end_eur": 12814.0258,
+      "mean_block_excess_pct": -0.0347,
+      "block_excess_95pct_bootstrap": [
+        -0.5286,
+        0.4881
+      ],
+      "max_period_end_drawdown_pct": -13.5275,
+      "fee_total_eur": 224
+    },
+    "test": {
+      "periods": 24,
+      "trades": 71,
+      "fill_pct": 29.5833,
+      "stop_exits": 32,
+      "strategy_end_eur": 11721.9988,
+      "strategy_net_pnl_eur": 1721.9988,
+      "strategy_return_pct": 17.22,
+      "matched_spy_end_eur": 10626.997,
+      "matched_spy_pnl_eur": 626.997,
+      "matched_spy_return_pct": 6.27,
+      "excess_vs_matched_eur": 1095.0018,
+      "spy_full_end_eur": 11511.6808,
+      "mean_block_excess_pct": 0.4305,
+      "block_excess_95pct_bootstrap": [
+        -0.3614,
+        1.3864
+      ],
+      "max_period_end_drawdown_pct": -3.1406,
+      "fee_total_eur": 142
+    },
+    "train_random": {
+      "n": 202,
+      "filled": 628,
+      "fill_pct": 31.0891,
+      "mean_20d_strategy_pct": -0.0075,
+      "mean_20d_excess_vs_matched_spy_pct": 0.0128,
+      "mean_20d_excess_vs_full_spy_pct": -0.4472,
+      "two_way_fees_eur": 1256
+    },
+    "test_random": {
+      "n": 111,
+      "filled": 331,
+      "fill_pct": 29.8198,
+      "mean_20d_strategy_pct": 0.3323,
+      "mean_20d_excess_vs_matched_spy_pct": 0.3508,
+      "mean_20d_excess_vs_full_spy_pct": -0.5674,
+      "two_way_fees_eur": 662
+    }
+  },
+  {
+    "buy_atr": 1.5,
+    "stop_atr": 2.5,
+    "train": {
+      "periods": 37,
+      "trades": 112,
+      "fill_pct": 30.2703,
+      "stop_exits": 39,
+      "strategy_end_eur": 9651.6204,
+      "strategy_net_pnl_eur": -348.3796,
+      "strategy_return_pct": -3.4838,
+      "matched_spy_end_eur": 9332.9819,
+      "matched_spy_pnl_eur": -667.0181,
+      "matched_spy_return_pct": -6.6702,
+      "excess_vs_matched_eur": 318.6385,
+      "spy_full_end_eur": 12814.0258,
+      "mean_block_excess_pct": 0.1041,
+      "block_excess_95pct_bootstrap": [
+        -0.4445,
+        0.6592
+      ],
+      "max_period_end_drawdown_pct": -16.4204,
+      "fee_total_eur": 224
+    },
+    "test": {
+      "periods": 24,
+      "trades": 71,
+      "fill_pct": 29.5833,
+      "stop_exits": 21,
+      "strategy_end_eur": 12125.4892,
+      "strategy_net_pnl_eur": 2125.4892,
+      "strategy_return_pct": 21.2549,
+      "matched_spy_end_eur": 10785.9527,
+      "matched_spy_pnl_eur": 785.9527,
+      "matched_spy_return_pct": 7.8595,
+      "excess_vs_matched_eur": 1339.5366,
+      "spy_full_end_eur": 11511.6808,
+      "mean_block_excess_pct": 0.5225,
+      "block_excess_95pct_bootstrap": [
+        -0.3617,
+        1.6633
+      ],
+      "max_period_end_drawdown_pct": -5.0108,
+      "fee_total_eur": 142
+    },
+    "train_random": {
+      "n": 202,
+      "filled": 626,
+      "fill_pct": 30.9901,
+      "mean_20d_strategy_pct": 0.1714,
+      "mean_20d_excess_vs_matched_spy_pct": 0.1322,
+      "mean_20d_excess_vs_full_spy_pct": -0.2682,
+      "two_way_fees_eur": 1252
+    },
+    "test_random": {
+      "n": 111,
+      "filled": 330,
+      "fill_pct": 29.7297,
+      "mean_20d_strategy_pct": 0.6646,
+      "mean_20d_excess_vs_matched_spy_pct": 0.676,
+      "mean_20d_excess_vs_full_spy_pct": -0.2351,
+      "two_way_fees_eur": 660
+    }
+  },
+  {
+    "buy_atr": 1.5,
+    "stop_atr": 4.0,
+    "train": {
+      "periods": 37,
+      "trades": 112,
+      "fill_pct": 30.2703,
+      "stop_exits": 18,
+      "strategy_end_eur": 9665.3445,
+      "strategy_net_pnl_eur": -334.6555,
+      "strategy_return_pct": -3.3466,
+      "matched_spy_end_eur": 9345.3094,
+      "matched_spy_pnl_eur": -654.6906,
+      "matched_spy_return_pct": -6.5469,
+      "excess_vs_matched_eur": 320.0351,
+      "spy_full_end_eur": 12814.0258,
+      "mean_block_excess_pct": 0.1196,
+      "block_excess_95pct_bootstrap": [
+        -0.5589,
+        0.7952
+      ],
+      "max_period_end_drawdown_pct": -19.367,
+      "fee_total_eur": 224
+    },
+    "test": {
+      "periods": 24,
+      "trades": 71,
+      "fill_pct": 29.5833,
+      "stop_exits": 5,
+      "strategy_end_eur": 12842.4816,
+      "strategy_net_pnl_eur": 2842.4816,
+      "strategy_return_pct": 28.4248,
+      "matched_spy_end_eur": 10890.6105,
+      "matched_spy_pnl_eur": 890.6105,
+      "matched_spy_return_pct": 8.9061,
+      "excess_vs_matched_eur": 1951.871,
+      "spy_full_end_eur": 11511.6808,
+      "mean_block_excess_pct": 0.7384,
+      "block_excess_95pct_bootstrap": [
+        -0.3059,
+        1.9653
+      ],
+      "max_period_end_drawdown_pct": -6.2828,
+      "fee_total_eur": 142
+    },
+    "train_random": {
+      "n": 202,
+      "filled": 626,
+      "fill_pct": 30.9901,
+      "mean_20d_strategy_pct": 0.2926,
+      "mean_20d_excess_vs_matched_spy_pct": 0.1987,
+      "mean_20d_excess_vs_full_spy_pct": -0.147,
+      "two_way_fees_eur": 1252
+    },
+    "test_random": {
+      "n": 111,
+      "filled": 327,
+      "fill_pct": 29.4595,
+      "mean_20d_strategy_pct": 0.9089,
+      "mean_20d_excess_vs_matched_spy_pct": 0.8883,
+      "mean_20d_excess_vs_full_spy_pct": 0.0091,
+      "two_way_fees_eur": 654
+    }
+  },
+  {
+    "buy_atr": 2.0,
+    "stop_atr": 1.0,
+    "train": {
+      "periods": 37,
+      "trades": 68,
+      "fill_pct": 18.3784,
+      "stop_exits": 52,
+      "strategy_end_eur": 8851.1026,
+      "strategy_net_pnl_eur": -1148.8974,
+      "strategy_return_pct": -11.489,
+      "matched_spy_end_eur": 9501.5275,
+      "matched_spy_pnl_eur": -498.4725,
+      "matched_spy_return_pct": -4.9847,
+      "excess_vs_matched_eur": -650.425,
+      "spy_full_end_eur": 12814.0258,
+      "mean_block_excess_pct": -0.1884,
+      "block_excess_95pct_bootstrap": [
+        -0.4935,
+        0.1265
+      ],
+      "max_period_end_drawdown_pct": -11.489,
+      "fee_total_eur": 136
+    },
+    "test": {
+      "periods": 24,
+      "trades": 40,
+      "fill_pct": 16.6667,
+      "stop_exits": 24,
+      "strategy_end_eur": 10687.2962,
+      "strategy_net_pnl_eur": 687.2962,
+      "strategy_return_pct": 6.873,
+      "matched_spy_end_eur": 10004.3063,
+      "matched_spy_pnl_eur": 4.3063,
+      "matched_spy_return_pct": 0.0431,
+      "excess_vs_matched_eur": 682.9899,
+      "spy_full_end_eur": 11511.6808,
+      "mean_block_excess_pct": 0.2822,
+      "block_excess_95pct_bootstrap": [
+        -0.1272,
+        0.7879
+      ],
+      "max_period_end_drawdown_pct": -1.6203,
+      "fee_total_eur": 80
+    },
+    "train_random": {
+      "n": 202,
+      "filled": 385,
+      "fill_pct": 19.0594,
+      "mean_20d_strategy_pct": 0.1398,
+      "mean_20d_excess_vs_matched_spy_pct": 0.1644,
+      "mean_20d_excess_vs_full_spy_pct": -0.2999,
+      "two_way_fees_eur": 770
+    },
+    "test_random": {
+      "n": 111,
+      "filled": 200,
+      "fill_pct": 18.018,
+      "mean_20d_strategy_pct": 0.2223,
+      "mean_20d_excess_vs_matched_spy_pct": 0.2928,
+      "mean_20d_excess_vs_full_spy_pct": -0.6774,
+      "two_way_fees_eur": 400
+    }
+  },
+  {
+    "buy_atr": 2.0,
+    "stop_atr": 1.5,
+    "train": {
+      "periods": 37,
+      "trades": 68,
+      "fill_pct": 18.3784,
+      "stop_exits": 43,
+      "strategy_end_eur": 8481.624,
+      "strategy_net_pnl_eur": -1518.376,
+      "strategy_return_pct": -15.1838,
+      "matched_spy_end_eur": 9580.5101,
+      "matched_spy_pnl_eur": -419.4899,
+      "matched_spy_return_pct": -4.1949,
+      "excess_vs_matched_eur": -1098.8861,
+      "spy_full_end_eur": 12814.0258,
+      "mean_block_excess_pct": -0.3207,
+      "block_excess_95pct_bootstrap": [
+        -0.7105,
+        0.0477
+      ],
+      "max_period_end_drawdown_pct": -15.6576,
+      "fee_total_eur": 136
+    },
+    "test": {
+      "periods": 24,
+      "trades": 40,
+      "fill_pct": 16.6667,
+      "stop_exits": 18,
+      "strategy_end_eur": 11018.77,
+      "strategy_net_pnl_eur": 1018.77,
+      "strategy_return_pct": 10.1877,
+      "matched_spy_end_eur": 10132.99,
+      "matched_spy_pnl_eur": 132.99,
+      "matched_spy_return_pct": 1.3299,
+      "excess_vs_matched_eur": 885.78,
+      "spy_full_end_eur": 11511.6808,
+      "mean_block_excess_pct": 0.3605,
+      "block_excess_95pct_bootstrap": [
+        -0.1135,
+        0.9049
+      ],
+      "max_period_end_drawdown_pct": -2.7214,
+      "fee_total_eur": 80
+    },
+    "train_random": {
+      "n": 202,
+      "filled": 385,
+      "fill_pct": 19.0594,
+      "mean_20d_strategy_pct": 0.1851,
+      "mean_20d_excess_vs_matched_spy_pct": 0.1717,
+      "mean_20d_excess_vs_full_spy_pct": -0.2545,
+      "two_way_fees_eur": 770
+    },
+    "test_random": {
+      "n": 111,
+      "filled": 200,
+      "fill_pct": 18.018,
+      "mean_20d_strategy_pct": 0.2512,
+      "mean_20d_excess_vs_matched_spy_pct": 0.3303,
+      "mean_20d_excess_vs_full_spy_pct": -0.6486,
+      "two_way_fees_eur": 400
+    }
+  },
+  {
+    "buy_atr": 2.0,
+    "stop_atr": 2.5,
+    "train": {
+      "periods": 37,
+      "trades": 68,
+      "fill_pct": 18.3784,
+      "stop_exits": 21,
+      "strategy_end_eur": 9315.1019,
+      "strategy_net_pnl_eur": -684.8981,
+      "strategy_return_pct": -6.849,
+      "matched_spy_end_eur": 9829.1142,
+      "matched_spy_pnl_eur": -170.8858,
+      "matched_spy_return_pct": -1.7089,
+      "excess_vs_matched_eur": -514.0123,
+      "spy_full_end_eur": 12814.0258,
+      "mean_block_excess_pct": -0.1369,
+      "block_excess_95pct_bootstrap": [
+        -0.5697,
+        0.3059
+      ],
+      "max_period_end_drawdown_pct": -13.4566,
+      "fee_total_eur": 136
+    },
+    "test": {
+      "periods": 24,
+      "trades": 40,
+      "fill_pct": 16.6667,
+      "stop_exits": 11,
+      "strategy_end_eur": 11893.9321,
+      "strategy_net_pnl_eur": 1893.9321,
+      "strategy_return_pct": 18.9393,
+      "matched_spy_end_eur": 10207.1184,
+      "matched_spy_pnl_eur": 207.1184,
+      "matched_spy_return_pct": 2.0712,
+      "excess_vs_matched_eur": 1686.8136,
+      "spy_full_end_eur": 11511.6808,
+      "mean_block_excess_pct": 0.6637,
+      "block_excess_95pct_bootstrap": [
+        -0.0792,
+        1.5653
+      ],
+      "max_period_end_drawdown_pct": -4.1876,
+      "fee_total_eur": 80
+    },
+    "train_random": {
+      "n": 202,
+      "filled": 384,
+      "fill_pct": 19.0099,
+      "mean_20d_strategy_pct": 0.3272,
+      "mean_20d_excess_vs_matched_spy_pct": 0.2717,
+      "mean_20d_excess_vs_full_spy_pct": -0.1125,
+      "two_way_fees_eur": 768
+    },
+    "test_random": {
+      "n": 111,
+      "filled": 199,
+      "fill_pct": 17.9279,
+      "mean_20d_strategy_pct": 0.6618,
+      "mean_20d_excess_vs_matched_spy_pct": 0.7018,
+      "mean_20d_excess_vs_full_spy_pct": -0.2379,
+      "two_way_fees_eur": 398
+    }
+  },
+  {
+    "buy_atr": 2.0,
+    "stop_atr": 4.0,
+    "train": {
+      "periods": 37,
+      "trades": 68,
+      "fill_pct": 18.3784,
+      "stop_exits": 10,
+      "strategy_end_eur": 9624.2262,
+      "strategy_net_pnl_eur": -375.7738,
+      "strategy_return_pct": -3.7577,
+      "matched_spy_end_eur": 10007.4126,
+      "matched_spy_pnl_eur": 7.4126,
+      "matched_spy_return_pct": 0.0741,
+      "excess_vs_matched_eur": -383.1864,
+      "spy_full_end_eur": 12814.0258,
+      "mean_block_excess_pct": -0.094,
+      "block_excess_95pct_bootstrap": [
+        -0.5971,
+        0.4143
+      ],
+      "max_period_end_drawdown_pct": -13.4771,
+      "fee_total_eur": 136
+    },
+    "test": {
+      "periods": 24,
+      "trades": 40,
+      "fill_pct": 16.6667,
+      "stop_exits": 3,
+      "strategy_end_eur": 12150.7771,
+      "strategy_net_pnl_eur": 2150.7771,
+      "strategy_return_pct": 21.5078,
+      "matched_spy_end_eur": 10281.0733,
+      "matched_spy_pnl_eur": 281.0733,
+      "matched_spy_return_pct": 2.8107,
+      "excess_vs_matched_eur": 1869.7038,
+      "spy_full_end_eur": 11511.6808,
+      "mean_block_excess_pct": 0.7204,
+      "block_excess_95pct_bootstrap": [
+        0.0086,
+        1.5932
+      ],
+      "max_period_end_drawdown_pct": -4.2846,
+      "fee_total_eur": 80
+    },
+    "train_random": {
+      "n": 202,
+      "filled": 384,
+      "fill_pct": 19.0099,
+      "mean_20d_strategy_pct": 0.3714,
+      "mean_20d_excess_vs_matched_spy_pct": 0.2869,
+      "mean_20d_excess_vs_full_spy_pct": -0.0683,
+      "two_way_fees_eur": 768
+    },
+    "test_random": {
+      "n": 111,
+      "filled": 196,
+      "fill_pct": 17.6577,
+      "mean_20d_strategy_pct": 0.778,
+      "mean_20d_excess_vs_matched_spy_pct": 0.8307,
+      "mean_20d_excess_vs_full_spy_pct": -0.1217,
+      "two_way_fees_eur": 392
+    }
+  }
+]

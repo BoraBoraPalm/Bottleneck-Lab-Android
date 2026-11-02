@@ -1,0 +1,498 @@
+[
+  {
+    "date": "2021-11-01",
+    "long_eligible": 124,
+    "legacy_60d_end": 9944.02,
+    "legacy_60d_trade_count": 6,
+    "momentum_12_2_end": 10070.8,
+    "momentum_12_2_trade_count": 1
+  },
+  {
+    "date": "2021-11-30",
+    "long_eligible": 125,
+    "legacy_60d_end": 9846.35,
+    "legacy_60d_trade_count": 10,
+    "momentum_12_2_end": 10111.44,
+    "momentum_12_2_trade_count": 8
+  },
+  {
+    "date": "2021-12-29",
+    "long_eligible": 126,
+    "legacy_60d_end": 9147.91,
+    "legacy_60d_trade_count": 8,
+    "momentum_12_2_end": 9650.41,
+    "momentum_12_2_trade_count": 5
+  },
+  {
+    "date": "2022-01-27",
+    "long_eligible": 122,
+    "legacy_60d_end": 9412.29,
+    "legacy_60d_trade_count": 3,
+    "momentum_12_2_end": 9650.41,
+    "momentum_12_2_trade_count": 0
+  },
+  {
+    "date": "2022-02-25",
+    "long_eligible": 122,
+    "legacy_60d_end": 9467.19,
+    "legacy_60d_trade_count": 2,
+    "momentum_12_2_end": 10485.29,
+    "momentum_12_2_trade_count": 7
+  },
+  {
+    "date": "2022-03-25",
+    "long_eligible": 124,
+    "legacy_60d_end": 9045.67,
+    "legacy_60d_trade_count": 9,
+    "momentum_12_2_end": 9983.27,
+    "momentum_12_2_trade_count": 7
+  },
+  {
+    "date": "2022-04-25",
+    "long_eligible": 123,
+    "legacy_60d_end": 7947.62,
+    "legacy_60d_trade_count": 9,
+    "momentum_12_2_end": 9485.61,
+    "momentum_12_2_trade_count": 8
+  },
+  {
+    "date": "2022-05-23",
+    "long_eligible": 123,
+    "legacy_60d_end": 7952.55,
+    "legacy_60d_trade_count": 1,
+    "momentum_12_2_end": 9417.25,
+    "momentum_12_2_trade_count": 1
+  },
+  {
+    "date": "2022-06-22",
+    "long_eligible": 125,
+    "legacy_60d_end": 7952.55,
+    "legacy_60d_trade_count": 0,
+    "momentum_12_2_end": 9291.63,
+    "momentum_12_2_trade_count": 2
+  },
+  {
+    "date": "2022-07-21",
+    "long_eligible": 123,
+    "legacy_60d_end": 8396.73,
+    "legacy_60d_trade_count": 6,
+    "momentum_12_2_end": 9732.31,
+    "momentum_12_2_trade_count": 3
+  },
+  {
+    "date": "2022-08-18",
+    "long_eligible": 124,
+    "legacy_60d_end": 7956.08,
+    "legacy_60d_trade_count": 8,
+    "momentum_12_2_end": 9613.62,
+    "momentum_12_2_trade_count": 8
+  },
+  {
+    "date": "2022-09-16",
+    "long_eligible": 122,
+    "legacy_60d_end": 7565.98,
+    "legacy_60d_trade_count": 10,
+    "momentum_12_2_end": 9349.99,
+    "momentum_12_2_trade_count": 9
+  },
+  {
+    "date": "2022-10-14",
+    "long_eligible": 125,
+    "legacy_60d_end": 7667.6,
+    "legacy_60d_trade_count": 2,
+    "momentum_12_2_end": 9323.72,
+    "momentum_12_2_trade_count": 2
+  },
+  {
+    "date": "2022-11-11",
+    "long_eligible": 127,
+    "legacy_60d_end": 7507.13,
+    "legacy_60d_trade_count": 4,
+    "momentum_12_2_end": 9043.91,
+    "momentum_12_2_trade_count": 3
+  },
+  {
+    "date": "2022-12-12",
+    "long_eligible": 123,
+    "legacy_60d_end": 7742.27,
+    "legacy_60d_trade_count": 6,
+    "momentum_12_2_end": 8771.6,
+    "momentum_12_2_trade_count": 5
+  },
+  {
+    "date": "2023-01-11",
+    "long_eligible": 127,
+    "legacy_60d_end": 7813.15,
+    "legacy_60d_trade_count": 3,
+    "momentum_12_2_end": 8948.87,
+    "momentum_12_2_trade_count": 5
+  },
+  {
+    "date": "2023-02-09",
+    "long_eligible": 132,
+    "legacy_60d_end": 7803.45,
+    "legacy_60d_trade_count": 3,
+    "momentum_12_2_end": 8868.8,
+    "momentum_12_2_trade_count": 1
+  },
+  {
+    "date": "2023-03-10",
+    "long_eligible": 129,
+    "legacy_60d_end": 8158.31,
+    "legacy_60d_trade_count": 4,
+    "momentum_12_2_end": 8899.52,
+    "momentum_12_2_trade_count": 7
+  },
+  {
+    "date": "2023-04-10",
+    "long_eligible": 130,
+    "legacy_60d_end": 8137.28,
+    "legacy_60d_trade_count": 2,
+    "momentum_12_2_end": 9427.59,
+    "momentum_12_2_trade_count": 5
+  },
+  {
+    "date": "2023-05-08",
+    "long_eligible": 130,
+    "legacy_60d_end": 8576.95,
+    "legacy_60d_trade_count": 5,
+    "momentum_12_2_end": 9754.7,
+    "momentum_12_2_trade_count": 5
+  },
+  {
+    "date": "2023-06-06",
+    "long_eligible": 131,
+    "legacy_60d_end": 8493.06,
+    "legacy_60d_trade_count": 2,
+    "momentum_12_2_end": 9614.58,
+    "momentum_12_2_trade_count": 2
+  },
+  {
+    "date": "2023-07-06",
+    "long_eligible": 132,
+    "legacy_60d_end": 8668.33,
+    "legacy_60d_trade_count": 1,
+    "momentum_12_2_end": 9876.93,
+    "momentum_12_2_trade_count": 2
+  },
+  {
+    "date": "2023-08-03",
+    "long_eligible": 132,
+    "legacy_60d_end": 8558.74,
+    "legacy_60d_trade_count": 5,
+    "momentum_12_2_end": 9972.23,
+    "momentum_12_2_trade_count": 7
+  },
+  {
+    "date": "2023-08-31",
+    "long_eligible": 133,
+    "legacy_60d_end": 8357.4,
+    "legacy_60d_trade_count": 7,
+    "momentum_12_2_end": 9734.7,
+    "momentum_12_2_trade_count": 7
+  },
+  {
+    "date": "2023-09-29",
+    "long_eligible": 133,
+    "legacy_60d_end": 8078.81,
+    "legacy_60d_trade_count": 9,
+    "momentum_12_2_end": 9513.99,
+    "momentum_12_2_trade_count": 7
+  },
+  {
+    "date": "2023-10-27",
+    "long_eligible": 129,
+    "legacy_60d_end": 8094.68,
+    "legacy_60d_trade_count": 1,
+    "momentum_12_2_end": 10452.21,
+    "momentum_12_2_trade_count": 3
+  },
+  {
+    "date": "2023-11-27",
+    "long_eligible": 131,
+    "legacy_60d_end": 8043.79,
+    "legacy_60d_trade_count": 6,
+    "momentum_12_2_end": 10491.23,
+    "momentum_12_2_trade_count": 5
+  },
+  {
+    "date": "2023-12-26",
+    "long_eligible": 133,
+    "legacy_60d_end": 8469.0,
+    "legacy_60d_trade_count": 9,
+    "momentum_12_2_end": 10987.99,
+    "momentum_12_2_trade_count": 9
+  },
+  {
+    "date": "2024-01-25",
+    "long_eligible": 131,
+    "legacy_60d_end": 8614.75,
+    "legacy_60d_trade_count": 9,
+    "momentum_12_2_end": 11340.04,
+    "momentum_12_2_trade_count": 1
+  },
+  {
+    "date": "2024-02-23",
+    "long_eligible": 133,
+    "legacy_60d_end": 8564.82,
+    "legacy_60d_trade_count": 1,
+    "momentum_12_2_end": 11217.72,
+    "momentum_12_2_trade_count": 2
+  },
+  {
+    "date": "2024-03-22",
+    "long_eligible": 136,
+    "legacy_60d_end": 8348.34,
+    "legacy_60d_trade_count": 5,
+    "momentum_12_2_end": 10650.5,
+    "momentum_12_2_trade_count": 5
+  },
+  {
+    "date": "2024-04-22",
+    "long_eligible": 135,
+    "legacy_60d_end": 8610.18,
+    "legacy_60d_trade_count": 2,
+    "momentum_12_2_end": 10765.57,
+    "momentum_12_2_trade_count": 1
+  },
+  {
+    "date": "2024-05-20",
+    "long_eligible": 134,
+    "legacy_60d_end": 8222.18,
+    "legacy_60d_trade_count": 5,
+    "momentum_12_2_end": 10735.6,
+    "momentum_12_2_trade_count": 2
+  },
+  {
+    "date": "2024-06-18",
+    "long_eligible": 134,
+    "legacy_60d_end": 7876.18,
+    "legacy_60d_trade_count": 8,
+    "momentum_12_2_end": 9865.59,
+    "momentum_12_2_trade_count": 7
+  },
+  {
+    "date": "2024-07-18",
+    "long_eligible": 135,
+    "legacy_60d_end": 7511.96,
+    "legacy_60d_trade_count": 6,
+    "momentum_12_2_end": 9738.83,
+    "momentum_12_2_trade_count": 7
+  },
+  {
+    "date": "2024-08-15",
+    "long_eligible": 134,
+    "legacy_60d_end": 7511.96,
+    "legacy_60d_trade_count": 0,
+    "momentum_12_2_end": 10024.83,
+    "momentum_12_2_trade_count": 2
+  },
+  {
+    "date": "2024-09-13",
+    "long_eligible": 131,
+    "legacy_60d_end": 7522.05,
+    "legacy_60d_trade_count": 1,
+    "momentum_12_2_end": 10024.83,
+    "momentum_12_2_trade_count": 0
+  },
+  {
+    "date": "2024-10-11",
+    "long_eligible": 133,
+    "legacy_60d_end": 7688.17,
+    "legacy_60d_trade_count": 5,
+    "momentum_12_2_end": 10276.12,
+    "momentum_12_2_trade_count": 5
+  },
+  {
+    "date": "2024-11-08",
+    "long_eligible": 134,
+    "legacy_60d_end": 7707.95,
+    "legacy_60d_trade_count": 7,
+    "momentum_12_2_end": 10109.37,
+    "momentum_12_2_trade_count": 7
+  },
+  {
+    "date": "2024-12-09",
+    "long_eligible": 138,
+    "legacy_60d_end": 7618.65,
+    "legacy_60d_trade_count": 4,
+    "momentum_12_2_end": 10135.47,
+    "momentum_12_2_trade_count": 4
+  },
+  {
+    "date": "2025-01-08",
+    "long_eligible": 140,
+    "legacy_60d_end": 8350.57,
+    "legacy_60d_trade_count": 8,
+    "momentum_12_2_end": 10928.14,
+    "momentum_12_2_trade_count": 6
+  },
+  {
+    "date": "2025-02-07",
+    "long_eligible": 136,
+    "legacy_60d_end": 7741.45,
+    "legacy_60d_trade_count": 3,
+    "momentum_12_2_end": 9617.44,
+    "momentum_12_2_trade_count": 6
+  },
+  {
+    "date": "2025-03-10",
+    "long_eligible": 137,
+    "legacy_60d_end": 7532.46,
+    "legacy_60d_trade_count": 6,
+    "momentum_12_2_end": 9343.29,
+    "momentum_12_2_trade_count": 1
+  },
+  {
+    "date": "2025-04-07",
+    "long_eligible": 132,
+    "legacy_60d_end": 7876.94,
+    "legacy_60d_trade_count": 9,
+    "momentum_12_2_end": 9371.81,
+    "momentum_12_2_trade_count": 1
+  },
+  {
+    "date": "2025-05-06",
+    "long_eligible": 134,
+    "legacy_60d_end": 7755.34,
+    "legacy_60d_trade_count": 6,
+    "momentum_12_2_end": 10131.29,
+    "momentum_12_2_trade_count": 1
+  },
+  {
+    "date": "2025-06-04",
+    "long_eligible": 135,
+    "legacy_60d_end": 8047.86,
+    "legacy_60d_trade_count": 5,
+    "momentum_12_2_end": 10180.93,
+    "momentum_12_2_trade_count": 2
+  },
+  {
+    "date": "2025-07-03",
+    "long_eligible": 139,
+    "legacy_60d_end": 8030.92,
+    "legacy_60d_trade_count": 3,
+    "momentum_12_2_end": 10327.87,
+    "momentum_12_2_trade_count": 6
+  },
+  {
+    "date": "2025-08-01",
+    "long_eligible": 140,
+    "legacy_60d_end": 8006.25,
+    "legacy_60d_trade_count": 2,
+    "momentum_12_2_end": 10195.45,
+    "momentum_12_2_trade_count": 3
+  },
+  {
+    "date": "2025-08-29",
+    "long_eligible": 139,
+    "legacy_60d_end": 8140.26,
+    "legacy_60d_trade_count": 8,
+    "momentum_12_2_end": 11128.63,
+    "momentum_12_2_trade_count": 7
+  },
+  {
+    "date": "2025-09-29",
+    "long_eligible": 140,
+    "legacy_60d_end": 8165.11,
+    "legacy_60d_trade_count": 2,
+    "momentum_12_2_end": 11128.63,
+    "momentum_12_2_trade_count": 0
+  },
+  {
+    "date": "2025-10-27",
+    "long_eligible": 140,
+    "legacy_60d_end": 8141.71,
+    "legacy_60d_trade_count": 2,
+    "momentum_12_2_end": 11237.13,
+    "momentum_12_2_trade_count": 3
+  },
+  {
+    "date": "2025-11-24",
+    "long_eligible": 138,
+    "legacy_60d_end": 8182.35,
+    "legacy_60d_trade_count": 1,
+    "momentum_12_2_end": 11237.13,
+    "momentum_12_2_trade_count": 0
+  },
+  {
+    "date": "2025-12-23",
+    "long_eligible": 141,
+    "legacy_60d_end": 8200.17,
+    "legacy_60d_trade_count": 2,
+    "momentum_12_2_end": 12109.68,
+    "momentum_12_2_trade_count": 3
+  },
+  {
+    "date": "2026-01-23",
+    "long_eligible": 140,
+    "legacy_60d_end": 8118.17,
+    "legacy_60d_trade_count": 2,
+    "momentum_12_2_end": 11634.4,
+    "momentum_12_2_trade_count": 3
+  },
+  {
+    "date": "2026-02-23",
+    "long_eligible": 141,
+    "legacy_60d_end": 8104.99,
+    "legacy_60d_trade_count": 1,
+    "momentum_12_2_end": 11511.9,
+    "momentum_12_2_trade_count": 4
+  },
+  {
+    "date": "2026-03-23",
+    "long_eligible": 141,
+    "legacy_60d_end": 8985.64,
+    "legacy_60d_trade_count": 8,
+    "momentum_12_2_end": 14554.88,
+    "momentum_12_2_trade_count": 10
+  },
+  {
+    "date": "2026-04-21",
+    "long_eligible": 143,
+    "legacy_60d_end": 9648.18,
+    "legacy_60d_trade_count": 6,
+    "momentum_12_2_end": 14799.45,
+    "momentum_12_2_trade_count": 3
+  },
+  {
+    "date": "2026-05-19",
+    "long_eligible": 146,
+    "legacy_60d_end": 9756.04,
+    "legacy_60d_trade_count": 1,
+    "momentum_12_2_end": 14726.63,
+    "momentum_12_2_trade_count": 1
+  },
+  {
+    "date": "2026-06-17",
+    "long_eligible": 146,
+    "legacy_60d_end": 9642.92,
+    "legacy_60d_trade_count": 2,
+    "momentum_12_2_end": 14552.34,
+    "momentum_12_2_trade_count": 1
+  },
+  {
+    "date": "2026-07-17",
+    "long_eligible": 145,
+    "legacy_60d_end": 9937.03,
+    "legacy_60d_trade_count": 3,
+    "momentum_12_2_end": 14847.48,
+    "momentum_12_2_trade_count": 1
+  },
+  {
+    "date": "2026-08-14",
+    "long_eligible": 146,
+    "legacy_60d_end": 9708.13,
+    "legacy_60d_trade_count": 6,
+    "momentum_12_2_end": 14236.47,
+    "momentum_12_2_trade_count": 5
+  },
+  {
+    "date": "2026-09-14",
+    "long_eligible": 147,
+    "legacy_60d_end": 9914.1,
+    "legacy_60d_trade_count": 4,
+    "momentum_12_2_end": 14316.75,
+    "momentum_12_2_trade_count": 1
+  }
+]

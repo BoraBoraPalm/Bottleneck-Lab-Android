@@ -3,3 +3,7 @@ __pycache__/
 docs/snapshot.json
 docs/search-index.json
 docs/charts/
+
+# Local research bundle caches (sources are referenced by immutable manifests).
+.research_cache/
+

@@ -1,0 +1,833 @@
+{
+  "date": "2026-10-31",
+  "run_kind": "research_not_production",
+  "test_design": "fixed rules; 20-session nonoverlapping sequential cohorts, 10 equal-capital seats, empty pending seats in cash",
+  "params": {
+    "seed": 20261031,
+    "limit_atr": 1.0,
+    "stop_atr": 2.5,
+    "entry_window_sessions": 5,
+    "max_hold_sessions": 20,
+    "fee_eur_per_order": 1.0,
+    "slippage_per_side": 0.001,
+    "market_proxy": "ACWI",
+    "trend_window": 200,
+    "momentum_start_lag": 252,
+    "momentum_end_lag": 42,
+    "correction_21d": -0.08,
+    "correction_252peak": -0.15,
+    "crash_21d": -0.15,
+    "crash_252peak": -0.25
+  },
+  "period": {
+    "start": "2021-11-01",
+    "last_signal": "2026-09-25",
+    "last_trade_exit": "2026-10-12",
+    "chronological_blocks": 62,
+    "earlier_blocks": 37,
+    "later_blocks": 24,
+    "not_truly_unseen": true
+  },
+  "sample": {
+    "current_surviving_universe_tickers": 305,
+    "stock_histories_ok": 267,
+    "historical_foreign_listings": 117,
+    "FX": {
+      "fx_currencies": [
+        "AUD",
+        "BRL",
+        "CAD",
+        "CHF",
+        "CNY",
+        "DKK",
+        "GBP",
+        "HKD",
+        "INR",
+        "JPY",
+        "KRW",
+        "MXN",
+        "PLN",
+        "SEK",
+        "SGD",
+        "THB",
+        "TRY",
+        "TWD",
+        "USD"
+      ],
+      "fx_points": {
+        "AUD": 2496,
+        "BRL": 2496,
+        "CAD": 2496,
+        "CHF": 2496,
+        "CNY": 2496,
+        "DKK": 2496,
+        "GBP": 2496,
+        "HKD": 2496,
+        "INR": 2496,
+        "JPY": 2496,
+        "KRW": 2496,
+        "MXN": 2496,
+        "PLN": 2496,
+        "SEK": 2496,
+        "SGD": 2496,
+        "THB": 2496,
+        "TRY": 2496,
+        "TWD": 2495,
+        "USD": 2496
+      }
+    },
+    "median_eligible_per_signal": 174.0,
+    "min_eligible_per_signal": 141,
+    "max_eligible_per_signal": 189,
+    "stock_quote_errors": {
+      "HIDRA2C1.LM": "HTTPError:HTTP Error 404: Not Found;HTTPError:HTTP Error 404: Not Found",
+      "PRVA3.SA": "HTTPError:HTTP Error 404: Not Found;HTTPError:HTTP Error 404: Not Found",
+      "KLRA": "ValueError:Only 137 price observations;ValueError:Only 137 price observations",
+      "SULG3.SA": "HTTPError:HTTP Error 404: Not Found;HTTPError:HTTP Error 404: Not Found",
+      "AMAL.TA": "ValueError:Only 221 price observations;ValueError:Only 221 price observations",
+      "GFUZ": "ValueError:Only 274 price observations;ValueError:Only 274 price observations",
+      "RBNS3.SA": "HTTPError:HTTP Error 404: Not Found;HTTPError:HTTP Error 404: Not Found",
+      "LATAU": "ValueError:Only 281 price observations;ValueError:Only 281 price observations",
+      "HVMCU": "ValueError:Only 308 price observations;ValueError:Only 308 price observations",
+      "EVMN": "ValueError:Only 247 price observations;ValueError:Only 247 price observations",
+      "GIWWU": "ValueError:Only 270 price observations;ValueError:Only 270 price observations",
+      "KALS5.SA": "HTTPError:HTTP Error 404: Not Found;HTTPError:HTTP Error 404: Not Found",
+      "ROG.SW": "HTTPError:HTTP Error 404: Not Found;HTTPError:HTTP Error 404: Not Found",
+      "9584.SAU": "HTTPError:HTTP Error 404: Not Found;HTTPError:HTTP Error 404: Not Found",
+      "SSMR": "ValueError:Only 104 price observations;ValueError:Only 104 price observations",
+      "00719.HK": "HTTPError:HTTP Error 404: Not Found;HTTPError:HTTP Error 404: Not Found",
+      "NESB3.SA": "HTTPError:HTTP Error 404: Not Found;HTTPError:HTTP Error 404: Not Found",
+      "BLRK": "ValueError:Only 189 price observations;ValueError:Only 189 price observations",
+      "WLCO": "ValueError:Only 59 price observations;ValueError:Only 59 price observations",
+      "BRCB": "ValueError:Only 286 price observations;ValueError:Only 286 price observations",
+      "ARGO.ST": "ValueError:Currency unavailable;ValueError:Currency unavailable",
+      "ESENTIAII.MX": "ValueError:Only 170 price observations;ValueError:Only 170 price observations",
+      "RA3.AX": "HTTPError:HTTP Error 404: Not Found;HTTPError:HTTP Error 404: Not Found",
+      "YYLBEE.JO": "Historical FX unavailable for ZAc",
+      "FFB.JO": "Historical FX unavailable for ZAc",
+      "PETR3.BA": "Historical FX unavailable for ARS",
+      "TKG.JO": "Historical FX unavailable for ZAc",
+      "ROSE.BA": "Historical FX unavailable for ARS",
+      "IQCD.QA": "Historical FX unavailable for QAR",
+      "IOC.JO": "Historical FX unavailable for ZAc",
+      "NPN.JO": "Historical FX unavailable for ZAc",
+      "LBR.JO": "Historical FX unavailable for ZAc",
+      "DSBP.JO": "Historical FX unavailable for ZAc",
+      "AMOT.TA": "Historical FX unavailable for ILA",
+      "SAMI.BA": "Historical FX unavailable for ARS",
+      "OAS.JO": "Historical FX unavailable for ZAc",
+      "CKS.JO": "Historical FX unavailable for ZAc",
+      "SAC.JO": "Historical FX unavailable for ZAc"
+    }
+  },
+  "models": {
+    "momentum_market": {
+      "capital_final_eur": 22936.14,
+      "return_pct": 129.361,
+      "cagr_pct": 18.593,
+      "max_period_end_drawdown_pct": -28.645,
+      "matched_ACWI_final_eur": 12235.35,
+      "excess_vs_matched_ACWI_eur": 10700.79,
+      "mean_20day_pct": 1.7438,
+      "mean_20day_excess_matched_pct": 1.3505,
+      "excess_matched_bootstrap_95pct_mean20d": [
+        -0.3106,
+        3.021
+      ],
+      "matched_newey_west": {
+        "p": 0.080228,
+        "z": 1.749
+      },
+      "invested_trade_count": 602,
+      "filled_pct": 97.1,
+      "fees_eur": 1204,
+      "stop_exits": 0,
+      "trend_crash_review_exits": 0,
+      "periods": 62,
+      "period_outperformance_matched_pct": 50.0,
+      "mean_deployed_fraction_at_open": 0.971
+    },
+    "momentum_limit": {
+      "capital_final_eur": 17875.3,
+      "return_pct": 78.753,
+      "cagr_pct": 12.673,
+      "max_period_end_drawdown_pct": -16.897,
+      "matched_ACWI_final_eur": 9868.0,
+      "excess_vs_matched_ACWI_eur": 8007.3,
+      "mean_20day_pct": 1.056,
+      "mean_20day_excess_matched_pct": 1.0613,
+      "excess_matched_bootstrap_95pct_mean20d": [
+        0.0164,
+        2.1016
+      ],
+      "matched_newey_west": {
+        "p": 0.044222,
+        "z": 2.012
+      },
+      "invested_trade_count": 247,
+      "filled_pct": 39.84,
+      "fees_eur": 494,
+      "stop_exits": 0,
+      "trend_crash_review_exits": 0,
+      "periods": 62,
+      "period_outperformance_matched_pct": 51.61,
+      "mean_deployed_fraction_at_open": 0.3984
+    },
+    "momentum_limit_stop": {
+      "capital_final_eur": 17155.84,
+      "return_pct": 71.558,
+      "cagr_pct": 11.726,
+      "max_period_end_drawdown_pct": -15.285,
+      "matched_ACWI_final_eur": 10118.52,
+      "excess_vs_matched_ACWI_eur": 7037.33,
+      "mean_20day_pct": 0.9775,
+      "mean_20day_excess_matched_pct": 0.9496,
+      "excess_matched_bootstrap_95pct_mean20d": [
+        -0.0725,
+        1.9772
+      ],
+      "matched_newey_west": {
+        "p": 0.066238,
+        "z": 1.837
+      },
+      "invested_trade_count": 247,
+      "filled_pct": 39.84,
+      "fees_eur": 494,
+      "stop_exits": 88,
+      "trend_crash_review_exits": 0,
+      "periods": 62,
+      "period_outperformance_matched_pct": 50.0,
+      "mean_deployed_fraction_at_open": 0.3984
+    },
+    "filtered_market": {
+      "capital_final_eur": 21539.37,
+      "return_pct": 115.394,
+      "cagr_pct": 17.072,
+      "max_period_end_drawdown_pct": -15.145,
+      "matched_ACWI_final_eur": 13321.2,
+      "excess_vs_matched_ACWI_eur": 8218.17,
+      "mean_20day_pct": 1.4397,
+      "mean_20day_excess_matched_pct": 0.9518,
+      "excess_matched_bootstrap_95pct_mean20d": [
+        -0.2863,
+        2.3066
+      ],
+      "matched_newey_west": {
+        "p": 0.149364,
+        "z": 1.442
+      },
+      "invested_trade_count": 458,
+      "filled_pct": 98.07,
+      "fees_eur": 916,
+      "stop_exits": 0,
+      "trend_crash_review_exits": 94,
+      "periods": 62,
+      "period_outperformance_matched_pct": 35.48,
+      "mean_deployed_fraction_at_open": 0.7387
+    },
+    "filtered_limit": {
+      "capital_final_eur": 10463.49,
+      "return_pct": 4.635,
+      "cagr_pct": 0.935,
+      "max_period_end_drawdown_pct": -9.718,
+      "matched_ACWI_final_eur": 10806.59,
+      "excess_vs_matched_ACWI_eur": -343.09,
+      "mean_20day_pct": 0.0994,
+      "mean_20day_excess_matched_pct": -0.0306,
+      "excess_matched_bootstrap_95pct_mean20d": [
+        -0.5,
+        0.5068
+      ],
+      "matched_newey_west": {
+        "p": 0.900107,
+        "z": -0.126
+      },
+      "invested_trade_count": 190,
+      "filled_pct": 40.69,
+      "fees_eur": 380,
+      "stop_exits": 0,
+      "trend_crash_review_exits": 58,
+      "periods": 62,
+      "period_outperformance_matched_pct": 32.26,
+      "mean_deployed_fraction_at_open": 0.3065
+    },
+    "filtered_market_stop": {
+      "capital_final_eur": 18201.46,
+      "return_pct": 82.015,
+      "cagr_pct": 13.092,
+      "max_period_end_drawdown_pct": -19.358,
+      "matched_ACWI_final_eur": 12295.04,
+      "excess_vs_matched_ACWI_eur": 5906.42,
+      "mean_20day_pct": 1.1655,
+      "mean_20day_excess_matched_pct": 0.8133,
+      "excess_matched_bootstrap_95pct_mean20d": [
+        -0.4422,
+        2.2598
+      ],
+      "matched_newey_west": {
+        "p": 0.22346,
+        "z": 1.217
+      },
+      "invested_trade_count": 457,
+      "filled_pct": 97.86,
+      "fees_eur": 914,
+      "stop_exits": 159,
+      "trend_crash_review_exits": 42,
+      "periods": 62,
+      "period_outperformance_matched_pct": 32.26,
+      "mean_deployed_fraction_at_open": 0.7371
+    },
+    "filtered_limit_stop": {
+      "capital_final_eur": 9266.51,
+      "return_pct": -7.335,
+      "cagr_pct": -1.553,
+      "max_period_end_drawdown_pct": -11.161,
+      "matched_ACWI_final_eur": 10649.17,
+      "excess_vs_matched_ACWI_eur": -1382.66,
+      "mean_20day_pct": -0.0989,
+      "mean_20day_excess_matched_pct": -0.2036,
+      "excess_matched_bootstrap_95pct_mean20d": [
+        -0.6499,
+        0.3064
+      ],
+      "matched_newey_west": {
+        "p": 0.373145,
+        "z": -0.891
+      },
+      "invested_trade_count": 190,
+      "filled_pct": 40.69,
+      "fees_eur": 380,
+      "stop_exits": 62,
+      "trend_crash_review_exits": 32,
+      "periods": 62,
+      "period_outperformance_matched_pct": 25.81,
+      "mean_deployed_fraction_at_open": 0.3065
+    }
+  },
+  "matched_pairs": {
+    "momentum_limit VS momentum_market": {
+      "compared": "paired period returns, ATR buy-limit vs market entry, same unfiltered momentum picks",
+      "n": 62,
+      "average_20d_ppts": -0.6877,
+      "moving_block_95pct_ppts": [
+        -1.9515,
+        0.5349
+      ],
+      "nw": {
+        "p": 0.243906,
+        "z": -1.165
+      },
+      "better_period_pct": 50.0
+    },
+    "momentum_limit_stop VS momentum_limit": {
+      "compared": "paired period returns, ATR initial stop increment, same momentum entries",
+      "n": 62,
+      "average_20d_ppts": -0.0785,
+      "moving_block_95pct_ppts": [
+        -0.3378,
+        0.2011
+      ],
+      "nw": {
+        "p": 0.569158,
+        "z": -0.569
+      },
+      "better_period_pct": 43.55
+    },
+    "filtered_market VS momentum_market": {
+      "compared": "paired period returns, Trend/market/crash entry and exit filters, market entries",
+      "n": 62,
+      "average_20d_ppts": -0.3041,
+      "moving_block_95pct_ppts": [
+        -1.6769,
+        1.0884
+      ],
+      "nw": {
+        "p": 0.652096,
+        "z": -0.451
+      },
+      "better_period_pct": 54.84
+    },
+    "filtered_limit VS filtered_market": {
+      "compared": "paired period returns, 1 ATR entry limit increment with trend/crash filters",
+      "n": 62,
+      "average_20d_ppts": -1.3403,
+      "moving_block_95pct_ppts": [
+        -2.7673,
+        -0.1126
+      ],
+      "nw": {
+        "p": 0.047855,
+        "z": -1.979
+      },
+      "better_period_pct": 37.1
+    },
+    "filtered_limit_stop VS filtered_limit": {
+      "compared": "paired period returns, 2.5 ATR protective stop increment with trend/crash filters",
+      "n": 62,
+      "average_20d_ppts": -0.1983,
+      "moving_block_95pct_ppts": [
+        -0.3886,
+        -0.0109
+      ],
+      "nw": {
+        "p": 0.043636,
+        "z": -2.018
+      },
+      "better_period_pct": 29.03
+    },
+    "filtered_limit_stop VS momentum_market": {
+      "compared": "paired period returns, Full complex current proposed rules vs simple momentum",
+      "n": 62,
+      "average_20d_ppts": -1.8426,
+      "moving_block_95pct_ppts": [
+        -3.7661,
+        0.0361
+      ],
+      "nw": {
+        "p": 0.045326,
+        "z": -2.002
+      },
+      "better_period_pct": 48.39
+    },
+    "filtered_limit_stop VS momentum_limit_stop": {
+      "compared": "paired period returns, Trend/market/crash filter increment on original ATR signals",
+      "n": 62,
+      "average_20d_ppts": -1.0764,
+      "moving_block_95pct_ppts": [
+        -2.1161,
+        -0.1144
+      ],
+      "nw": {
+        "p": 0.032535,
+        "z": -2.138
+      },
+      "better_period_pct": 40.32
+    },
+    "filtered_market_stop VS filtered_market": {
+      "compared": "paired period returns, Initial 2.5 ATR stop at market entry",
+      "n": 62,
+      "average_20d_ppts": -0.2741,
+      "moving_block_95pct_ppts": [
+        -0.7006,
+        0.1463
+      ],
+      "nw": {
+        "p": 0.193058,
+        "z": -1.302
+      },
+      "better_period_pct": 27.42
+    }
+  },
+  "subperiods": {
+    "earlier": {
+      "momentum_market": {
+        "capital_final_eur": 13081.13,
+        "return_pct": 30.811,
+        "cagr_pct": 9.822,
+        "max_period_end_drawdown_pct": -26.825,
+        "matched_ACWI_final_eur": 10738.51,
+        "excess_vs_matched_ACWI_eur": 2342.62,
+        "mean_20day_pct": 1.0001,
+        "mean_20day_excess_matched_pct": 0.7422,
+        "excess_matched_bootstrap_95pct_mean20d": [
+          -1.0277,
+          2.3947
+        ],
+        "matched_newey_west": {
+          "p": 0.393074,
+          "z": 0.854
+        },
+        "invested_trade_count": 364,
+        "filled_pct": 98.38,
+        "fees_eur": 728,
+        "stop_exits": 0,
+        "trend_crash_review_exits": 0,
+        "periods": 37,
+        "period_outperformance_matched_pct": 51.35,
+        "mean_deployed_fraction_at_open": 0.9838
+      },
+      "momentum_limit": {
+        "capital_final_eur": 10565.94,
+        "return_pct": 5.659,
+        "cagr_pct": 1.939,
+        "max_period_end_drawdown_pct": -16.897,
+        "matched_ACWI_final_eur": 9632.47,
+        "excess_vs_matched_ACWI_eur": 933.47,
+        "mean_20day_pct": 0.2278,
+        "mean_20day_excess_matched_pct": 0.3123,
+        "excess_matched_bootstrap_95pct_mean20d": [
+          -0.8616,
+          1.5175
+        ],
+        "matched_newey_west": {
+          "p": 0.621207,
+          "z": 0.494
+        },
+        "invested_trade_count": 160,
+        "filled_pct": 43.24,
+        "fees_eur": 320,
+        "stop_exits": 0,
+        "trend_crash_review_exits": 0,
+        "periods": 37,
+        "period_outperformance_matched_pct": 45.95,
+        "mean_deployed_fraction_at_open": 0.4324
+      },
+      "momentum_limit_stop": {
+        "capital_final_eur": 10144.18,
+        "return_pct": 1.442,
+        "cagr_pct": 0.501,
+        "max_period_end_drawdown_pct": -15.285,
+        "matched_ACWI_final_eur": 9435.46,
+        "excess_vs_matched_ACWI_eur": 708.72,
+        "mean_20day_pct": 0.1035,
+        "mean_20day_excess_matched_pct": 0.2512,
+        "excess_matched_bootstrap_95pct_mean20d": [
+          -0.907,
+          1.3764
+        ],
+        "matched_newey_west": {
+          "p": 0.677807,
+          "z": 0.415
+        },
+        "invested_trade_count": 160,
+        "filled_pct": 43.24,
+        "fees_eur": 320,
+        "stop_exits": 68,
+        "trend_crash_review_exits": 0,
+        "periods": 37,
+        "period_outperformance_matched_pct": 45.95,
+        "mean_deployed_fraction_at_open": 0.4324
+      },
+      "filtered_market": {
+        "capital_final_eur": 14019.22,
+        "return_pct": 40.192,
+        "cagr_pct": 12.508,
+        "max_period_end_drawdown_pct": -11.773,
+        "matched_ACWI_final_eur": 11058.53,
+        "excess_vs_matched_ACWI_eur": 2960.69,
+        "mean_20day_pct": 1.0647,
+        "mean_20day_excess_matched_pct": 0.7682,
+        "excess_matched_bootstrap_95pct_mean20d": [
+          -0.3623,
+          2.2014
+        ],
+        "matched_newey_west": {
+          "p": 0.261361,
+          "z": 1.123
+        },
+        "invested_trade_count": 236,
+        "filled_pct": 99.58,
+        "fees_eur": 472,
+        "stop_exits": 0,
+        "trend_crash_review_exits": 46,
+        "periods": 37,
+        "period_outperformance_matched_pct": 32.43,
+        "mean_deployed_fraction_at_open": 0.6378
+      },
+      "filtered_limit": {
+        "capital_final_eur": 9611.62,
+        "return_pct": -3.884,
+        "cagr_pct": -1.372,
+        "max_period_end_drawdown_pct": -9.718,
+        "matched_ACWI_final_eur": 10374.09,
+        "excess_vs_matched_ACWI_eur": -762.47,
+        "mean_20day_pct": -0.0845,
+        "mean_20day_excess_matched_pct": -0.189,
+        "excess_matched_bootstrap_95pct_mean20d": [
+          -0.7132,
+          0.3984
+        ],
+        "matched_newey_west": {
+          "p": 0.516264,
+          "z": -0.649
+        },
+        "invested_trade_count": 102,
+        "filled_pct": 43.04,
+        "fees_eur": 204,
+        "stop_exits": 0,
+        "trend_crash_review_exits": 33,
+        "periods": 37,
+        "period_outperformance_matched_pct": 29.73,
+        "mean_deployed_fraction_at_open": 0.2757
+      },
+      "filtered_market_stop": {
+        "capital_final_eur": 12041.58,
+        "return_pct": 20.416,
+        "cagr_pct": 6.696,
+        "max_period_end_drawdown_pct": -18.565,
+        "matched_ACWI_final_eur": 10408.69,
+        "excess_vs_matched_ACWI_eur": 1632.9,
+        "mean_20day_pct": 0.658,
+        "mean_20day_excess_matched_pct": 0.5318,
+        "excess_matched_bootstrap_95pct_mean20d": [
+          -0.7302,
+          2.072
+        ],
+        "matched_newey_west": {
+          "p": 0.464846,
+          "z": 0.731
+        },
+        "invested_trade_count": 236,
+        "filled_pct": 99.58,
+        "fees_eur": 472,
+        "stop_exits": 95,
+        "trend_crash_review_exits": 14,
+        "periods": 37,
+        "period_outperformance_matched_pct": 27.03,
+        "mean_deployed_fraction_at_open": 0.6378
+      },
+      "filtered_limit_stop": {
+        "capital_final_eur": 9202.31,
+        "return_pct": -7.977,
+        "cagr_pct": -2.858,
+        "max_period_end_drawdown_pct": -11.161,
+        "matched_ACWI_final_eur": 10233.28,
+        "excess_vs_matched_ACWI_eur": -1030.97,
+        "mean_20day_pct": -0.2049,
+        "mean_20day_excess_matched_pct": -0.2708,
+        "excess_matched_bootstrap_95pct_mean20d": [
+          -0.7655,
+          0.2452
+        ],
+        "matched_newey_west": {
+          "p": 0.280345,
+          "z": -1.08
+        },
+        "invested_trade_count": 102,
+        "filled_pct": 43.04,
+        "fees_eur": 204,
+        "stop_exits": 36,
+        "trend_crash_review_exits": 15,
+        "periods": 37,
+        "period_outperformance_matched_pct": 21.62,
+        "mean_deployed_fraction_at_open": 0.2757
+      }
+    },
+    "later": {
+      "momentum_market": {
+        "capital_final_eur": 16814.79,
+        "return_pct": 68.148,
+        "cagr_pct": 32.471,
+        "max_period_end_drawdown_pct": -26.763,
+        "matched_ACWI_final_eur": 11239.03,
+        "excess_vs_matched_ACWI_eur": 5575.76,
+        "mean_20day_pct": 2.7682,
+        "mean_20day_excess_matched_pct": 2.2122,
+        "excess_matched_bootstrap_95pct_mean20d": [
+          -0.871,
+          5.1988
+        ],
+        "matched_newey_west": {
+          "p": 0.111936,
+          "z": 1.59
+        },
+        "invested_trade_count": 223,
+        "filled_pct": 92.92,
+        "fees_eur": 446,
+        "stop_exits": 0,
+        "trend_crash_review_exits": 0,
+        "periods": 24,
+        "period_outperformance_matched_pct": 45.83,
+        "mean_deployed_fraction_at_open": 0.9292
+      },
+      "momentum_limit": {
+        "capital_final_eur": 16319.94,
+        "return_pct": 63.199,
+        "cagr_pct": 30.347,
+        "max_period_end_drawdown_pct": -12.172,
+        "matched_ACWI_final_eur": 10191.17,
+        "excess_vs_matched_ACWI_eur": 6128.77,
+        "mean_20day_pct": 2.2182,
+        "mean_20day_excess_matched_pct": 2.123,
+        "excess_matched_bootstrap_95pct_mean20d": [
+          0.5928,
+          3.85
+        ],
+        "matched_newey_west": {
+          "p": 0.004918,
+          "z": 2.812
+        },
+        "invested_trade_count": 83,
+        "filled_pct": 34.58,
+        "fees_eur": 166,
+        "stop_exits": 0,
+        "trend_crash_review_exits": 0,
+        "periods": 24,
+        "period_outperformance_matched_pct": 58.33,
+        "mean_deployed_fraction_at_open": 0.3458
+      },
+      "momentum_limit_stop": {
+        "capital_final_eur": 16434.48,
+        "return_pct": 64.345,
+        "cagr_pct": 30.842,
+        "max_period_end_drawdown_pct": -10.449,
+        "matched_ACWI_final_eur": 10686.76,
+        "excess_vs_matched_ACWI_eur": 5747.72,
+        "mean_20day_pct": 2.2446,
+        "mean_20day_excess_matched_pct": 1.9589,
+        "excess_matched_bootstrap_95pct_mean20d": [
+          0.2759,
+          3.7174
+        ],
+        "matched_newey_west": {
+          "p": 0.016695,
+          "z": 2.393
+        },
+        "invested_trade_count": 83,
+        "filled_pct": 34.58,
+        "fees_eur": 166,
+        "stop_exits": 20,
+        "trend_crash_review_exits": 0,
+        "periods": 24,
+        "period_outperformance_matched_pct": 54.17,
+        "mean_deployed_fraction_at_open": 0.3458
+      },
+      "filtered_market": {
+        "capital_final_eur": 15319.03,
+        "return_pct": 53.19,
+        "cagr_pct": 25.959,
+        "max_period_end_drawdown_pct": -13.313,
+        "matched_ACWI_final_eur": 11719.97,
+        "excess_vs_matched_ACWI_eur": 3599.06,
+        "mean_20day_pct": 2.0333,
+        "mean_20day_excess_matched_pct": 1.3459,
+        "excess_matched_bootstrap_95pct_mean20d": [
+          -1.0606,
+          3.9625
+        ],
+        "matched_newey_west": {
+          "p": 0.278575,
+          "z": 1.084
+        },
+        "invested_trade_count": 209,
+        "filled_pct": 95.0,
+        "fees_eur": 418,
+        "stop_exits": 0,
+        "trend_crash_review_exits": 45,
+        "periods": 24,
+        "period_outperformance_matched_pct": 37.5,
+        "mean_deployed_fraction_at_open": 0.8708
+      },
+      "filtered_limit": {
+        "capital_final_eur": 10387.3,
+        "return_pct": 3.873,
+        "cagr_pct": 2.077,
+        "max_period_end_drawdown_pct": -6.854,
+        "matched_ACWI_final_eur": 10369.75,
+        "excess_vs_matched_ACWI_eur": 17.55,
+        "mean_20day_pct": 0.187,
+        "mean_20day_excess_matched_pct": 0.0313,
+        "excess_matched_bootstrap_95pct_mean20d": [
+          -0.6174,
+          0.7526
+        ],
+        "matched_newey_west": {
+          "p": 0.927537,
+          "z": 0.091
+        },
+        "invested_trade_count": 84,
+        "filled_pct": 38.18,
+        "fees_eur": 168,
+        "stop_exits": 0,
+        "trend_crash_review_exits": 25,
+        "periods": 24,
+        "period_outperformance_matched_pct": 33.33,
+        "mean_deployed_fraction_at_open": 0.35
+      },
+      "filtered_market_stop": {
+        "capital_final_eur": 14761.89,
+        "return_pct": 47.619,
+        "cagr_pct": 23.459,
+        "max_period_end_drawdown_pct": -14.692,
+        "matched_ACWI_final_eur": 11508.57,
+        "excess_vs_matched_ACWI_eur": 3253.32,
+        "mean_20day_pct": 1.8647,
+        "mean_20day_excess_matched_pct": 1.2596,
+        "excess_matched_bootstrap_95pct_mean20d": [
+          -1.1606,
+          3.8506
+        ],
+        "matched_newey_west": {
+          "p": 0.294623,
+          "z": 1.048
+        },
+        "invested_trade_count": 208,
+        "filled_pct": 94.55,
+        "fees_eur": 416,
+        "stop_exits": 61,
+        "trend_crash_review_exits": 25,
+        "periods": 24,
+        "period_outperformance_matched_pct": 37.5,
+        "mean_deployed_fraction_at_open": 0.8667
+      },
+      "filtered_limit_stop": {
+        "capital_final_eur": 9564.06,
+        "return_pct": -4.359,
+        "cagr_pct": -2.383,
+        "max_period_end_drawdown_pct": -7.821,
+        "matched_ACWI_final_eur": 10356.55,
+        "excess_vs_matched_ACWI_eur": -792.49,
+        "mean_20day_pct": -0.1591,
+        "mean_20day_excess_matched_pct": -0.3078,
+        "excess_matched_bootstrap_95pct_mean20d": [
+          -1.0254,
+          0.592
+        ],
+        "matched_newey_west": {
+          "p": 0.427116,
+          "z": -0.794
+        },
+        "invested_trade_count": 84,
+        "filled_pct": 38.18,
+        "fees_eur": 168,
+        "stop_exits": 26,
+        "trend_crash_review_exits": 17,
+        "periods": 24,
+        "period_outperformance_matched_pct": 29.17,
+        "mean_deployed_fraction_at_open": 0.35
+      }
+    }
+  },
+  "passive_ACWI": {
+    "one_time_buy_and_hold_end_eur": 17114.14,
+    "one_time_buy_and_hold_return_pct": 71.141,
+    "every_20d_repurchase_end_eur": 14155.13,
+    "every_20d_repurchase_return_pct": 41.551
+  },
+  "slippage_sensitivity": {
+    "filtered_market|slippage_0.0": 24236.49,
+    "filtered_limit|slippage_0.0": 10869.98,
+    "filtered_limit_stop|slippage_0.0": 9619.41,
+    "filtered_market|slippage_0.001": 21539.37,
+    "filtered_limit|slippage_0.001": 10463.49,
+    "filtered_limit_stop|slippage_0.001": 9266.51,
+    "filtered_market|slippage_0.003": 18807.07,
+    "filtered_limit|slippage_0.003": 9733.49,
+    "filtered_limit_stop|slippage_0.003": 8727.17
+  },
+  "research_cautions": [
+    "2026 survivors ONLY; historical bankruptcies, delistings, changing broker universe omitted",
+    "Sample of world tickers selected today; no academically valid full global stock universe",
+    "Yahoo adjusted OHLC can be revised later, and is not a point-in-time security master",
+    "5-session pending limit and 20-session max hold are assumptions not actually specified in app",
+    "Displayed app ATR levels are illustrative. Exit reviews are not automated actions in app",
+    "A backtest assuming automatic exit after warnings cannot be called returns of existing app",
+    "Daily OHLC cannot order events within day; same-day purchase/stop handled conservatively",
+    "Adjusted OHLC synthetic share units approximate splits/dividend reinvestment, not exact live orders",
+    "EUR historical reference FX, not broker quoted bid/ask at transaction instant",
+    "No Austrian KESt, no trading tax, market impact, fractional stock corporate-action settlement",
+    "Transaction fees 1 EUR per side and assumed 0.1pct slippage per side",
+    "No independent genuinely unseen period; 2024–26 labeled later only",
+    "Rolling/random samples overlapping; significance uses chronological 20-session blocks",
+    "At most 10 equal seats per block, cash on nonfilled orders; no interest on cash"
+  ],
+  "cost_research": "0.0%, 0.1%, 0.3% per side slippage; broker commission always 1 EUR/side",
+  "statistical_method": "paired per-20-session excess returns; 3-block circular bootstrap 2500 resamples and HAC Newey-West 3 lags. No multiple-testing discovery claim.",
+  "elapsed_seconds": 32.2,
+  "sources": {
+    "prices": "Yahoo Finance historical charts with current adjusted OHLC",
+    "FX": "Frankfurter 2020-2026, EUR base",
+    "universe": "Nasdaq Trader current and Adanos current listing universe",
+    "broker": "EUR1/order and 0.1% assumed slippage; not verified real historical Trade Republic availability"
+  }
+}

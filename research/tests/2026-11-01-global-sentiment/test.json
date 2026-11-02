@@ -1,0 +1,47 @@
+{
+  "id": "2026-11-01-global-sentiment",
+  "title": "Globaler Nachrichtenstimmungs-Pilot",
+  "date": "2026-11-01",
+  "period": "Lernen 2019–2021, Diagnose 2022, Test 2023–2025",
+  "strategy": "Sechs Nachrichtenmuster, Prognose der Folgekategorie sowie relativer Rendite und Handelsaktivität",
+  "prediction": "Nächste Archivwoche bzw. folgende Handelswoche",
+  "holding": {
+    "kind": "forecast_horizon_calendar_weeks",
+    "values": [
+      1
+    ],
+    "average_actual": null,
+    "optimized": false
+  },
+  "rebalance": "Kein validiertes Handelsportfolio; Wochen-Zielgrößen mit Informationspuffer",
+  "result": "Bessere Nachrichtenkategorien-Prognose; kein zusätzlicher zuverlässiger Kursrichtungsvorteil im Wochenziel.",
+  "limits": [
+    "Wöchentliche 15-Minuten-Stichprobe statt vollständigem Nachrichtenstrom",
+    "Artikelton ist keine direkte Anlegeremotion",
+    "Dünne und regional ungleiche Abdeckung",
+    "Kein Haltehorizont-Vergleich von Stunden bis Monaten"
+  ],
+  "repro": "Vollständiges Modellpaket mit Metadaten-/Kurs-Snapshots, Code, Vorhersagen und Prüfungen verfügbar.",
+  "schema_version": 1,
+  "archived_date": "2026-11-02",
+  "status": "completed_limited_scope",
+  "source_artifact": {
+    "filename": "Stimmungsmodell_Globaler_Pilot_2026.zip",
+    "url": "https://chatgpt.com/library?file_id=libfile_f3dbb35d015c8191856387bb0bb2ff16&account_id=personal",
+    "sha256": "6710f7fbf0580491a4329548fc0d472400e0efd670527797e23290c0fe1f93a8",
+    "bytes": 24358913,
+    "archive_root": "Stimmungsmodell_Globaler_Pilot_2026/"
+  },
+  "entry_report": "files/output/bericht.md",
+  "artifact_members": "ARTIFACT_MEMBERS.json",
+  "data_availability": "Complete original bundle remains accessible to the owner; repository retains code, reports, compact inputs and results. See member hashes, no reevaluation required.",
+  "holding_period_search_performed": false,
+  "not_tested": [
+    "Systematisch ausgewählte optimale Haltedauer je Strategie",
+    "Erfolg auf allen nicht geprüften Zeiträumen/Horizonten"
+  ],
+  "reproduction_status": "Vollständiges Modellpaket mit Metadaten-/Kurs-Snapshots, Code, Vorhersagen und Prüfungen verfügbar.",
+  "costs": "Unveränderte Parameter siehe Originalberichte; Gebührenmodelle sind nicht als tatsächliche Ausführungskosten verifiziert.",
+  "benchmark": "Unveränderte Benchmarkdefinition im Originalbericht nachlesen.",
+  "time_splits": "Originale zeitliche Aufteilung ist im eingefrorenen Bericht/Protokoll erhalten; keine neue Auswertung beim Archivieren."
+}

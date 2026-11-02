@@ -1,0 +1,10 @@
+{
+  "locked_at_utc": "2026-11-02T08:22:05.755951+00:00",
+  "previous_research_results_already_known": true,
+  "new_target_scores_not_inspected": true,
+  "sha256": {
+    "protocol.md": "b7596f06b9bba96ebc2cf0c3e3227c27b97d3a19d3ca41f7e23714e982a5696a",
+    "data_build.py": "a8b6689bb6d288441313b3af0d82a4006056eeb496c273c094eae00ec1f4893b",
+    "run_study.py": "5079831566a9f7afb1883475a56e3db06c112398f8a010ddb2e64a4c4a6b0843"
+  }
+}
