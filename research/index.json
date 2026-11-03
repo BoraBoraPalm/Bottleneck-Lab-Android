@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated": "2026-11-02",
+  "updated": "2026-11-03",
   "tests": [
     {
       "id": "2026-10-31-five-year-backtest",
@@ -267,7 +267,14 @@
         "sha256": "0a759f4ddc6df7096973f1f4b4c9891ab7bf16edfc62daf3396958465d4f22d4",
         "bytes": 55609895,
         "archive_root": "Haltedauer_Strategien_2026/"
-      }
+      },
+      "review_notes": [
+        {
+          "date": "2026-11-03",
+          "file": "REVIEW_2026-11-03.md",
+          "summary": "Keine Neuberechnung. Trainingsfenster 2019–2023 nutzen die März-2018-Kohorte vor ihrem Stichtag; auffällige Momentum-Volatilität 2014–2018 (vermutlich Kursausreißer) beeinflusste die Wahl für 2019; Momentum-Dauerwahl nicht signifikant (p Holm 0,295), Trend signifikant (0,006); passendes Vergleichsmaß gleichgewichtete Kohorte 17,51 %; alle archivierten Momentum-Tests nutzen den 42-Sitzungen-Abstand."
+        }
+      ]
     }
   ]
 }

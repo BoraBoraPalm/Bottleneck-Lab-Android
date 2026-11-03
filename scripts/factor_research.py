@@ -178,9 +178,13 @@ def factors_for_stock(stock, asof=None):
         except (ValueError,TypeError):assets_comparable=False
         if assets_comparable and number(assets) and assets > 0 and number(prior) and prior > 0:
             change = assets/prior-1
-            state = "green" if 0 <= change <= .05 else "yellow" if -.2 <= change <= .15 else "orange" if -.4 <= change <= .3 else "red"
+            # Same direction as the rank (Fama/French CMA, Cooper/Gulen/Schill):
+            # lower asset growth = more conservative, so colour and rank agree.
+            state = "green" if change <= .05 else "yellow" if change <= .15 else "orange" if change <= .3 else "red"
             reason = "Bilanzsumme zum Vorjahr: "+_percent(change)+"."
-            if change < 0:
+            if change < -.2:
+                reason += " Starke Schrumpfung: Verkäufe, Abspaltungen oder Sondereffekte zusätzlich prüfen."
+            elif change < 0:
                 reason += " Schrumpfung/Sondereffekte zusätzlich prüfen."
             _ok(records["investment"], -change, state, reason, {"asset_growth": change})
         v = stock.get("valuation_data") or {}

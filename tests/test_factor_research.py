@@ -68,9 +68,18 @@ class FactorDefinitionTests(unittest.TestCase):
         a=stock();a["fundamentals"]["prior_assets_end"]="2025-09-30"
         self.assertIsNone(f.factors_for_stock(a,ASOF)["investment"]["value"])
 
-    def test_strong_balance_shrinkage_is_not_automatically_green(self):
-        a=stock();a["fundamentals"]["assets"]=80
-        self.assertNotEqual(f.factors_for_stock(a,ASOF)["investment"]["state"],"green")
+    def test_investment_colour_follows_rank_direction(self):
+        order={"green":3,"yellow":2,"orange":1,"red":0}
+        results=[]
+        for assets in (40,80,95,104,110,125,140):
+            a=stock();a["fundamentals"]["assets"]=assets
+            results.append(f.factors_for_stock(a,ASOF)["investment"])
+        ranked=sorted(results,key=lambda r:-r["value"])
+        states=[order[r["state"]] for r in ranked]
+        self.assertEqual(states,sorted(states,reverse=True))
+        self.assertEqual(results[0]["state"],"green")
+        self.assertIn("Starke Schrumpfung",results[0]["reason"])
+        self.assertEqual(results[-1]["state"],"red")
 
     def test_value_rejects_quote_date_price_currency_or_future_update_mismatch(self):
         for key,value in (("price_date","2026-10-29"),("close",150),("currency","EUR"),

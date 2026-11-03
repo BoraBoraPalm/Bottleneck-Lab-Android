@@ -14,6 +14,12 @@ assert.equal(h.describe("trend","quarter").state,"match");
 assert.equal(h.describe("trend","half").state,"match");
 assert.equal(h.describe("trend","year").state,"other");
 assert.match(h.describe("lowRisk","year").short,/Prüftakt.*12 Monate.*Median.*6 Monate/);
+for(const horizon of Object.keys(h.horizons))
+  assert.equal(h.describe("lowRisk",horizon).state,"info","A rule below its benchmark at every duration never gets a matching-horizon signal");
+assert.match(h.describe("lowRisk").short,/unter dem Weltindex/);
+assert.match(h.describe("momentum").detail,/nicht gesichert/);
+assert.match(h.describe("trend").study,/gesichert/);
+assert.match(h.plan("year").text,/nicht gesichert/);
 assert.match(h.describe("momentum").detail,/6 von 7 Jahren/);
 assert.match(h.describe("trend").detail,/5 von 7 Jahren/);
 

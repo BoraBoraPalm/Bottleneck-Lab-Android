@@ -16,12 +16,12 @@ from collections import Counter
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import date, datetime, timedelta, timezone
 
-from build_snapshot import CURATED, read_url, quote
+from build_snapshot import CURATED, read_url, quote, momentum_12_2, MOMENTUM_SKIP
 from fx_eur import latest_eur_rates, add_eur_prices
 from global_universe import discover_global, grouped_batch, SOURCE
 from tr_at_universe import apply_tr_filter
 from trade_guidance import assign_decision,market_risk_from_quote
-from chart_history import chart_is_current,write_chart,chart_count
+from chart_history import chart_is_current,write_chart,chart_count,chart_file
 from sander_fundamentals import enrich_stocks as update_sander_fundamentals
 from growth_radar import enrich_growth
 from search_catalog import write_catalog
@@ -119,7 +119,7 @@ def discover(old):
     return known,details,errors
 
 CACHE_FIELDS=(
-  "ticker","close","currency","price_date","source","bars_count","momentum_12_2","momentum_basis",
+  "ticker","close","currency","price_date","source","bars_count","momentum_12_2","momentum_basis","momentum_skip_sessions",
   "avg_dollar_turnover_20d","avg_local_turnover_20d","last_checked_at",
   "sma200_ratio","sma200_native","crash_21_level_native","crash_peak_level_native","return_21d","drawdown_252d",
   "atr14_native","crash_warning","correction_warning",
@@ -143,8 +143,24 @@ def cached_quotes(old,known):
         # Never carry it forward as if it had been computed from adjusted prices.
         if cached.get("momentum_basis")!="Yahoo adjusted daily closes":
             cached["momentum_12_2"]=None
+        elif cached.get("momentum_skip_sessions")!=MOMENTUM_SKIP:
+            # Momentum cached under the earlier 42-session skip must not be
+            # ranked next to the current definition. Recompute it exactly from
+            # the stored adjusted chart when that chart ends on the same date.
+            cached["momentum_12_2"]=momentum_from_chart(x["ticker"],cached.get("price_date"))
+            cached["momentum_skip_sessions"]=MOMENTUM_SKIP if cached["momentum_12_2"] is not None else None
         existing[x["ticker"]]=cached
     return existing
+
+def momentum_from_chart(ticker,price_date):
+    """Chart points are adjusted closes times one constant, so ratios are exact."""
+    try:
+        with chart_file(ticker).open("r",encoding="utf-8") as f:
+            chart=json.load(f)
+        if chart.get("asof")!=price_date or chart.get("source")!="Yahoo Finance":return None
+        return momentum_12_2([float(p[1]) for p in chart.get("points",[])])
+    except (ValueError,OSError,TypeError,KeyError,IndexError):
+        return None
 
 def requested_batch(known,cache):
     slot=int(datetime.now(timezone.utc).timestamp()//21600)
@@ -161,6 +177,10 @@ def requested_batch(known,cache):
     missing_long_risk=sorted((s for s in cache.values()
         if s.get("source")=="Yahoo Finance" and not s.get("long_risk_basis")),
         key=lambda s:-(s.get("momentum_12_2") or 0))[:60]
+    # Refresh liquid names whose momentum still uses an outdated definition.
+    missing_momentum=sorted((s for s in cache.values()
+        if s.get("source")=="Yahoo Finance" and s.get("momentum_skip_sessions")!=MOMENTUM_SKIP),
+        key=lambda s:-(s.get("avg_local_turnover_20d") or 0))[:60]
     # Prioritize attractive researched symbols lacking static history.
     # They will get charts without re-fetching all 43k directory entries.
     missing_charts=sorted(
@@ -171,7 +191,7 @@ def requested_batch(known,cache):
     return list(dict.fromkeys(
         core+[x["ticker"] for x in extra]+missing_risk+
         [x["ticker"] for x in missing_charts]+[x["ticker"] for x in missing_growth]
-        +[x["ticker"] for x in missing_long_risk]))
+        +[x["ticker"] for x in missing_long_risk]+[x["ticker"] for x in missing_momentum]))
 
 def enrich(meta,raw,ticker):
     row=dict(raw)
