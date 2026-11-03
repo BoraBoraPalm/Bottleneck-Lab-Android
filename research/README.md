@@ -18,6 +18,7 @@ Hier liegen die relevanten Informationen der bisherigen empirischen Studien. **V
 ## Nachprüfungen
 
 - [03.11.2026 – Haltedauer-Studie und Momentum-Definition](tests/2026-11-02-holding-duration/REVIEW_2026-11-03.md): keine Neuberechnung. Alle archivierten Momentum-Tests verwenden den früheren 42-Sitzungen-Abstand; die App rechnet seit 03.11.2026 nach dem Literaturstandard mit 21 Sitzungen.
+- 03.11.2026 – übrige Studien (Fünfjahrestest, ATR, 12–2-Vergleich, unabhängige Regeln, akademische Faktoren, Behavioral, Nachrichtenstimmung, PCA/PLS): kein Korrekturbedarf. Ihre bekannten Verzerrungen (heutige überlebende Titel, Großkonzern-Kohorte, bekannte Testjahre) sind jeweils genannt. Da sie positive Ergebnisse begünstigen würden, bleiben die dort gefundenen fehlenden Vorteile stichhaltig. Die akademische Faktorstudie nutzt die French-Portfolios „Prior 12–2“ mit nur einem ausgelassenen Monat, also dieselbe Definition, die die App seit 03.11.2026 verwendet. Ihr Marktvergleich enthält korrekt Mkt-RF + RF.
 
 ## Schnellzugriff
 
