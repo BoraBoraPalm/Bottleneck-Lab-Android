@@ -8,14 +8,40 @@ import build_snapshot as q
 import market_pipeline as m
 
 class SimpleMarketTest(unittest.TestCase):
-    def test_momentum_requires_253_bars_and_excludes_recent_42(self):
+    def test_momentum_requires_253_bars_and_skips_only_recent_month(self):
         prices=[100.]*300
         before=q.momentum_12_2(prices)
-        for i in range(1,43):prices[-i]=1000.
+        for i in range(1,22):prices[-i]=1000.
         self.assertEqual(before,q.momentum_12_2(prices))
         self.assertIsNone(q.momentum_12_2([100.]*252))
-        prices[-43]=115
+        prices[-22]=115
         self.assertAlmostEqual(q.momentum_12_2(prices),.15,places=5)
+        # Month −2 (sessions 22–42 ago) belongs to the standard 12–2 window.
+        prices=[100.]*300;prices[-43]=115
+        self.assertAlmostEqual(q.momentum_12_2(prices),0,places=7)
+        prices=[100.]*300;prices[-253]=80
+        self.assertAlmostEqual(q.momentum_12_2(prices),.25,places=7)
+
+    def test_cached_old_momentum_definition_is_recomputed_or_dropped(self):
+        import tempfile,json as js
+        current=datetime.now(timezone.utc);day=current.date().isoformat()
+        base={"close":100.,"currency":"USD","avg_local_turnover_20d":50000000,
+              "momentum_12_2":5.0,"momentum_basis":"Yahoo adjusted daily closes",
+              "price_date":day,"source":"Yahoo Finance","last_checked_at":current.isoformat()}
+        closes=[50.]*280;closes[-253]=40.;closes[-22]=60.;closes[-1]=70.
+        points=[[(current.date()-timedelta(days=280-i)).isoformat(),c] for i,c in enumerate(closes)]
+        points[-1][0]=day
+        with tempfile.TemporaryDirectory() as tmp, patch("chart_history.ROOT",Path(tmp)):
+            (Path(tmp)/"OLD.json").write_text(js.dumps({"asof":day,"source":"Yahoo Finance","points":points}))
+            result=m.cached_quotes({"stocks":[{**base,"ticker":"OLD"},{**base,"ticker":"NOCHART"},
+                {**base,"ticker":"NEW","momentum_12_2":.3,"momentum_skip_sessions":q.MOMENTUM_SKIP}]},
+                {"OLD":{},"NOCHART":{},"NEW":{}})
+        self.assertAlmostEqual(result["OLD"]["momentum_12_2"],.5,places=7)
+        self.assertEqual(result["OLD"]["momentum_skip_sessions"],q.MOMENTUM_SKIP)
+        self.assertIsNone(result["NOCHART"]["momentum_12_2"])
+        self.assertIsNone(result["NOCHART"]["momentum_skip_sessions"])
+        self.assertEqual(result["NEW"]["momentum_12_2"],.3)
+        self.assertIn("NOCHART",m.requested_batch({"NOCHART":{}},result))
 
     def test_adjusted_momentum_ignores_share_split(self):
         today=datetime.now(timezone.utc).date()
@@ -30,6 +56,7 @@ class SimpleMarketTest(unittest.TestCase):
         self.assertIsNone(error)
         self.assertAlmostEqual(result["momentum_12_2"],0,places=6)
         self.assertEqual(result["momentum_basis"],"Yahoo adjusted daily closes")
+        self.assertEqual(result["momentum_skip_sessions"],21)
 
     def test_missing_adjustments_cannot_supply_momentum(self):
         current=datetime.now(timezone.utc)

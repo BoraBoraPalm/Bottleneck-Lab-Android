@@ -93,14 +93,20 @@ def fetch_stooq(symbol):
     return bars,"USD","Stooq US (unverified adjustment)"
 
 
+MOMENTUM_LOOKBACK=252
+# Standard academic 12–2 momentum (Fama/French "Prior 2–12", Jegadeesh/Titman):
+# months −12 … −2, i.e. only the most recent month (≈21 sessions) is skipped.
+# Until 2026-11-03 the app skipped 42 sessions (two months, a 10-month window).
+MOMENTUM_SKIP=21
+
 def momentum_12_2(closes):
-    """Simple total-price momentum, ending 42 trading sessions before today.
+    """Adjusted price return from 252 to 21 trading sessions before today.
 
     Requires >=253 closing prices. We deliberately never infer momentum from a
     shorter history or calculate a misleading normalized 0–100 buy score.
     """
-    if len(closes)<253:return None
-    old,new=closes[-253],closes[-43]
+    if len(closes)<MOMENTUM_LOOKBACK+1:return None
+    old,new=closes[-(MOMENTUM_LOOKBACK+1)],closes[-(MOMENTUM_SKIP+1)]
     if not old or not new or old<=0 or new<=0 or not math.isfinite(old) or not math.isfinite(new):return None
     return round(new/old-1,7)
 
@@ -133,6 +139,7 @@ def quote(symbol,theme):
                     "momentum_12_2":momentum_12_2(adjusted),
                     "chart_history":chart,
                     "momentum_basis":"Yahoo adjusted daily closes" if source=="Yahoo Finance" else "not verified",
+                    "momentum_skip_sessions":MOMENTUM_SKIP,
                     **context,**growth_context,**long_risk},None
         except Exception as e:
             errors.append(load.__name__+": "+str(e)[:140])

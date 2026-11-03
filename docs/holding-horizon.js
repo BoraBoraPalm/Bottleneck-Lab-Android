@@ -13,16 +13,16 @@
   const PROFILES=Object.freeze({
     momentum:{name:"12–2-Monats-Momentum",kind:"holding",preferred:["year"],
       short:"Prüftakt: meist ca. 12 Monate",
-      detail:"In der jährlichen Auswahl aus früheren Daten: 252 Handelssitzungen in 6 von 7 Jahren, einmal 120. Median der abgeschlossenen Trades: 252 Sitzungen, ungefähr ein Jahr. Das 12–2-Signal beschreibt den Kursrückblick, nicht die Haltedauer.",
-      study:"Kursregel, 2019–2025; Umschichtung zum gewählten Termin, kein individueller optimaler Verkaufstag."},
-    lowRisk:{name:"Geringe Kursschwankung",kind:"holding",preferred:["year"],
-      short:"Prüftakt: meist ca. 12 Monate · gehalten: Median ca. 6 Monate",
+      detail:"In der jährlichen Auswahl aus früheren Daten: 252 Handelssitzungen in 6 von 7 Jahren, einmal 120. Median der abgeschlossenen Trades: 252 Sitzungen, ungefähr ein Jahr. Das 12–2-Signal beschreibt den Kursrückblick, nicht die Haltedauer. Der Zusatznutzen dieser Dauerwahl ist statistisch nicht gesichert (p nach Holm 0,30).",
+      study:"Kursregel, 2019–2025; Umschichtung zum gewählten Termin, kein individueller optimaler Verkaufstag. 19,8 % pro Jahr gegenüber 17,5 % beim bloßen gleichgewichteten Halten derselben Aktien; der Abstand zum Weltindex kommt großteils von der Aktienauswahl. Die Studie nutzte noch die frühere Momentum-Variante ohne die letzten zwei Monate; die Wahl für 2019 beruht vermutlich teils auf einem auffälligen Kurswert 2014–2018."},
+    lowRisk:{name:"Geringe Kursschwankung",kind:"holding",preferred:["year"],belowBenchmark:true,
+      short:"Prüftakt: meist ca. 12 Monate · gehalten: Median ca. 6 Monate · bei jeder Dauer unter dem Weltindex",
       detail:"In der jährlichen Auswahl aus früheren Daten: 252 Sitzungen in 5 von 7 Jahren. Median abgeschlossener Trades: 120 Sitzungen, ungefähr sechs Monate. Prüfintervall und tatsächliche Haltung sind verschiedene Angaben. Die 252 Tage im Volatilitätsmerkmal sind dessen Rückblick.",
       study:"Kursregel, 2019–2025; auch mit angepasstem Intervall unter der ACWI-Benchmark."},
     trend:{name:"200-Tage-Trend",kind:"holding",preferred:["quarter","half"],
       short:"Prüftakt: ca. 3–6 Monate, meist 6 Monate",
       detail:"In der jährlichen Auswahl aus früheren Daten: 120 Handelssitzungen in 5 von 7 Jahren, zweimal 60. Median der abgeschlossenen Trades: 120 Sitzungen, ungefähr sechs Monate. Die 200 Tage des Trends sind dessen Berechnungsrückblick.",
-      study:"Kursregel, 2019–2025; die Dauerwahl verbesserte diese Regel gegenüber dem festen 20-Sitzungen-Takt, kein Nachweis künftiger Marktüberlegenheit."},
+      study:"Kursregel, 2019–2025; die Dauerwahl verbesserte diese Regel gegenüber dem festen 20-Sitzungen-Takt statistisch gesichert (p nach Holm 0,006), kein Nachweis künftiger Marktüberlegenheit. 21,6 % pro Jahr gegenüber 17,5 % beim bloßen gleichgewichteten Halten derselben Aktien."},
     sander:{name:"Hoch-Tief-Mut",kind:"unknown",preferred:[],short:"Haltedauer offen",
       detail:"Für unsere Sander-inspirierte Fundamental-Vorauswahl ist keine optimale Haltedauer ermittelt. Ein längerfristiger Ansatz allein bestimmt keinen geprüften Verkaufszeitpunkt.",study:"Exakte historische Fundamental- und Bewertungsdaten fehlen für den vollständigen App-Filter."},
     growth:{name:"Frühwachstum / Multibagger",kind:"unknown",preferred:[],short:"Haltedauer offen",
@@ -42,7 +42,9 @@
   function describe(key,horizon="all"){
     const p=own(PROFILES,key)?PROFILES[key]:null;
     if(!p)return {key,state:"open",label:"Haltedauer offen",short:"Haltedauer offen",detail:"Kein dokumentierter Test für diese Strategie.",study:""};
-    const h=normalize(horizon),state=p.kind!=="holding"?"open":h==="all"?"info":p.preferred.includes(h)?"match":"other";
+    // A rule that stayed below its benchmark at every tested duration only gets
+    // an informational hint, never a "matching horizon" signal.
+    const h=normalize(horizon),state=p.kind!=="holding"?"open":h==="all"||p.belowBenchmark?"info":p.preferred.includes(h)?"match":"other";
     const label={open:"Dauer offen",info:"Historischer Testhinweis",match:"Horizont im Testbereich",other:"Anderer oder ungeprüfter Horizont"}[state];
     return {...p,key,state,label};
   }
@@ -50,8 +52,8 @@
     const h=normalize(horizon),p=HORIZONS[h].proposal;
     if(h==="all")return {horizon:h,proposal:null,text:"Wähle deinen Anlagehorizont. Danach kannst du einen passenden Strategievorschlag übernehmen oder deine Häkchen selbst setzen."};
     if(p)return {horizon:h,proposal:p,text:h==="year"
-      ?"Für etwa zwölf Monate liefert der Momentum-Kurstest einen Zeitansatz. Auch geringe Kursschwankung hatte meist einen jährlichen Prüftakt. Der Vorschlag wählt Momentum allein."
-      :"Für etwa drei bis sechs Monate liefert der Trend-Kurstest einen Zeitansatz. Der Vorschlag wählt den 200-Tage-Trend allein."};
+      ?"Für etwa zwölf Monate liefert der Momentum-Kurstest einen Zeitansatz; der Vorteil dieser Dauerwahl ist aber statistisch nicht gesichert. Geringe Kursschwankung hatte zwar meist einen jährlichen Prüftakt, blieb aber bei jeder Dauer unter dem Weltindex. Der Vorschlag wählt Momentum allein."
+      :"Für etwa drei bis sechs Monate liefert der Trend-Kurstest einen Zeitansatz; hier ist der Vorteil der Dauerwahl statistisch gesichert. Der Vorschlag wählt den 200-Tage-Trend allein."};
     return {horizon:h,proposal:null,text:h==="short"
       ?"Für eine Haltung von 1–4 Wochen gibt es keinen belastbaren Zeitvorschlag für die aktuellen App-Strategien. Getestete Limit-/Stopp-Varianten waren andere Handelsregeln. Du kannst Strategien weiterhin selbst wählen."
       :"Über ein Jahr hinaus wurde keine feste optimale Haltedauer für die App-Strategien bestimmt. Weiterhalten kann sinnvoll zu prüfen sein; die Zeitspanne allein ist kein Nachweis. Du kannst Strategien selbst wählen."};

@@ -49,3 +49,13 @@ Jegadeesh & Titman (1993) untersuchten Momentum mit Haltedauern von drei bis zw�
 - Universelle zukünftige optimale mittlere Haltedauer, prospektive Validierung und vollständige historische App-Fundamentalfilter bleiben offen. Frühere bekannte Testjahre, revidierte Daten, lange Zielüberlappungen und globale Ausführungsannahmen verhindern den Anspruch absoluter Biasfreiheit.
 
 Neue Berechnungen nur für eine neue Frage, neue Daten oder konkrete Fehler. Zum Nachsehen Ergebnisse/Code/Daten aus dem archivierten Paket wiederverwenden.
+
+## Nachprüfung vom 03.11.2026
+
+Siehe [REVIEW_2026-11-03.md](tests/2026-11-02-holding-duration/REVIEW_2026-11-03.md). Kurzfassung:
+
+- Die Dauerwahlen für 2019–2023 lernen teils auf Jahren vor dem Kohortenstichtag 31.03.2018. Die Kohorte enthält dort vorwiegend spätere Gewinner, was lange Haltedauern und Momentum begünstigt.
+- Im Trainingsfenster 2014–2018 zeigen Momentum-Varianten bei 20/60/120 Sitzungen eine rund dreifach erhöhte Volatilität. Das ist vermutlich ein Kursausreißer, mangels Rohdaten im Repository aber nicht bestätigt. Er beeinflusste die Momentum-Wahl für 2019 (252 statt 120).
+- Signifikanter Zusatznutzen der Dauerwahl: Trend-Markt (p Holm 0,006) und Geringe Schwankung (0,030, aber unter ACWI). Nicht signifikant: Momentum-Markt (0,295) und Momentum-Weiterhalten (0,275).
+- Passender Vergleich ist die gleichgewichtete Kohorte mit 17,51 % CAGR, nicht nur der ACWI mit 13,65 %.
+- Alle archivierten Momentum-Ergebnisse nutzen „Kurs vor 42 / Kurs vor 252 Sitzungen“. Die App verwendet seit 03.11.2026 den Standard 21/252.

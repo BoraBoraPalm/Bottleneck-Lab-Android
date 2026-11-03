@@ -13,7 +13,11 @@ Hier liegen die relevanten Informationen der bisherigen empirischen Studien. **V
 | [Globaler Nachrichtenstimmungs-Pilot](tests/2026-11-01-global-sentiment) | Nächste Archivwoche bzw. folgende Handelswoche | Bessere Nachrichtenkategorien-Prognose; kein zusätzlicher zuverlässiger Kursrichtungsvorteil im Wochenziel. |
 | [PCA/PLS und gemeinsame historische Faktor-Zustände](tests/2026-11-02-pca-factor-states) | Vier Wochen primär, zwölf Wochen deskriptiv | Bei vier Wochen kein Modell mit geringerem MSE als Null-Mehrertragsprognose; zwölf Wochen ohne besseren Gesamt-MSE. |
 
-| [Haltedauer, Weiterhalten und Prognosehorizonte – systematische Folgestudie](tests/2026-11-02-holding-duration) | A:1–12Monate Aktualisierung; B:5–252Sitzungen; C:1–52Wochen | Tatsächlich durchgeführte vergangenheitsbasierte Intervallwahl; große Unterschiede, keine universelle optimale Dauer; Einzelpositionsrisiko beachten. |
+| [Haltedauer, Weiterhalten und Prognosehorizonte – systematische Folgestudie](tests/2026-11-02-holding-duration) | A:1–12Monate Aktualisierung; B:5–252Sitzungen; C:1–52Wochen | Tatsächlich durchgeführte vergangenheitsbasierte Intervallwahl; große Unterschiede, keine universelle optimale Dauer; Einzelpositionsrisiko beachten. **[Nachprüfung 03.11.2026](tests/2026-11-02-holding-duration/REVIEW_2026-11-03.md):** Universums- und vermutete Datenverzerrung im Training, Momentum-Dauerwahl nicht signifikant. |
+
+## Nachprüfungen
+
+- [03.11.2026 – Haltedauer-Studie und Momentum-Definition](tests/2026-11-02-holding-duration/REVIEW_2026-11-03.md): keine Neuberechnung. Alle archivierten Momentum-Tests verwenden den früheren 42-Sitzungen-Abstand; die App rechnet seit 03.11.2026 nach dem Literaturstandard mit 21 Sitzungen.
 
 ## Schnellzugriff
 
