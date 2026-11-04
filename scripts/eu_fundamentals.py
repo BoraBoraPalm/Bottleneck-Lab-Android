@@ -13,6 +13,8 @@ import gzip
 import json
 import math
 import re
+import threading
+import time
 from concurrent.futures import ThreadPoolExecutor
 from datetime import date, datetime, timedelta, timezone
 from urllib.error import HTTPError
@@ -74,6 +76,31 @@ def fetch_json(url, timeout=30, max_bytes=8_000_000):
         if len(raw) > MAX_REPORT_BYTES:
             raise RuntimeError("Response too large")
     return json.loads(raw)
+
+
+def polite(fetch, spacing=1.2, retry_wait=8.0, sleep=time.sleep, clock=time.monotonic):
+    """Serialise requests with a minimum gap and retry once after HTTP 429.
+
+    The run log showed filings.xbrl.org answering 429 to three parallel workers.
+    """
+    lock = threading.Lock()
+    last = [None]
+
+    def call(url, **kw):
+        for attempt in (0, 1):
+            with lock:
+                if last[0] is not None:
+                    wait = spacing - (clock() - last[0])
+                    if wait > 0:
+                        sleep(wait)
+                last[0] = clock()
+            try:
+                return fetch(url, **kw)
+            except HTTPError as exc:
+                if exc.code != 429 or attempt:
+                    raise
+                sleep(retry_wait)
+    return call
 
 
 def today_utc():
@@ -303,9 +330,10 @@ def _age(value, today):
         return None
 
 
-def enrich_eu_fundamentals(stocks, prior, fetch=fetch_json, maximum=DEFAULT_MAX, tr_isins=None, today=None):
-    """Attach ESEF annual data to EU/EEA stocks; bounded requests per run."""
+def enrich_eu_fundamentals(stocks, prior, fetch=None, maximum=DEFAULT_MAX, tr_isins=None, today=None):
+    """Attach ESEF annual data to EU/EEA stocks; bounded, serialised requests per run."""
     today = today or today_utc()
+    fetch = fetch or polite(fetch_json)
     old = {s.get("ticker"): s for s in (prior or {}).get("stocks", []) if isinstance(s, dict)}
     candidates = []
     for stock in stocks:
@@ -353,9 +381,11 @@ def enrich_eu_fundamentals(stocks, prior, fetch=fetch_json, maximum=DEFAULT_MAX,
     loaded = errors = 0
     results = {}
     samples = []
-    with ThreadPoolExecutor(max_workers=3) as pool:
+    with ThreadPoolExecutor(max_workers=1) as pool:
         for (stock, isin), (lei, result, outcome) in zip(queue, pool.map(work, queue)):
-            stock["eu_fundamentals_checked_at"] = today.isoformat()
+            # A rate-limited lookup is retried in the next run, not after the 3-day pause.
+            if "429" not in str(outcome.get("error", "")):
+                stock["eu_fundamentals_checked_at"] = today.isoformat()
             if lei:
                 stock["lei"] = lei
             kind = outcome.get("result", "error") + ("@" + outcome["stage"] if outcome.get("result") == "error" else "")

@@ -243,6 +243,38 @@ class Enrichment(unittest.TestCase):
         self.assertEqual(stocks[0]["eu_fundamentals_checked_at"], "2026-11-04")
 
 
+class Politeness(unittest.TestCase):
+    def test_spacing_and_single_retry_after_429(self):
+        from urllib.error import HTTPError
+        now = [0.0]
+        slept = []
+        def sleep(seconds):
+            slept.append(round(seconds, 2)); now[0] += seconds
+        answers = [HTTPError("u", 429, "Too Many Requests", {}, None), {"ok": 1}, {"ok": 2}]
+        def fetch(url, **kw):
+            answer = answers.pop(0)
+            if isinstance(answer, Exception):
+                raise answer
+            return answer
+        call = eu.polite(fetch, spacing=1.0, retry_wait=5.0, sleep=sleep, clock=lambda: now[0])
+        self.assertEqual(call("a"), {"ok": 1})
+        self.assertEqual(call("b"), {"ok": 2})
+        self.assertEqual(slept, [5.0, 1.0])
+        def always(url, **kw):
+            raise HTTPError("u", 429, "Too Many Requests", {}, None)
+        with self.assertRaises(HTTPError):
+            eu.polite(always, spacing=0, retry_wait=0, sleep=lambda s: None)("x")
+
+    def test_rate_limited_lookup_is_retried_next_run(self):
+        from urllib.error import HTTPError
+        def limited(url, **kw):
+            raise HTTPError(url, 429, "Too Many Requests", {}, None)
+        stock = {"ticker": "SAN.PA", "reference_isin": "FR0000120578", "eligible_liquid_ranking": True}
+        status = eu.enrich_eu_fundamentals([stock], {}, limited, today=TODAY)
+        self.assertEqual(status["errors"], 1)
+        self.assertNotIn("eu_fundamentals_checked_at", stock)
+
+
 class Integration(unittest.TestCase):
     def test_sec_step_keeps_esef_data_and_scores_it(self):
         fund = eu.annual_from_report(report(), LEI, FILING, TODAY)
