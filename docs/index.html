@@ -138,6 +138,7 @@ input:focus-visible,select:focus-visible,button:focus-visible,summary:focus-visi
 .stock-name .ticker{color:#a5f1df}
 .stock-price{text-align:right;font-size:19px;font-weight:760;white-space:nowrap;font-variant-numeric:tabular-nums}
 .stock-sub{font-size:12px;color:var(--muted);margin-top:5px;line-height:1.5}
+.adr-note{color:var(--warn)}
 .stock-bottom{display:flex;align-items:center;gap:6px;justify-content:space-between;flex-wrap:wrap;margin-top:10px}
 .momentum{color:#94d7cd;font-weight:750;font-variant-numeric:tabular-nums;font-size:13px}
 .details{padding:0 14px 14px;border-top:1px solid #365064;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
@@ -374,7 +375,7 @@ h1{font-size:27px}
 <script src="chart-widget.js?v=3"></script>
 <script src="fundamentals-widget.js?v=1"></script>
 <script src="growth-widget.js?v=1"></script>
-<script src="stock-search.js?v=1"></script>
+<script src="stock-search.js?v=2"></script>
 <script src="research-factors.js?v=1"></script>
 <script src="holding-horizon.js?v=1"></script>
 <script src="strategy-fit.js?v=3"></script>
@@ -500,6 +501,8 @@ function makeCard(s,mix,options={}){
   add(title,"span"," · "+(s.name||s.ticker));
   add(left,"div",regionOf(s)+" · "+(s.country||s.country_code||s.exchange||"Börse unbekannt")
     +(independent&&s.exchange?" · "+s.exchange:""),"stock-sub");
+  if(typeof StockSearch!=="undefined"&&StockSearch.depositaryReceipt(s))
+    add(left,"div","US-Hinterlegungsschein (ADR): ein Schein entspricht oft nicht genau einer Aktie der Heimatbörse, der Kurs ist daher nicht direkt vergleichbar.","stock-sub adr-note");
   const priceEl=add(top,"div",eur(s.reference_close_eur),"stock-price");
   const bottom=add(head,"div",null,"stock-bottom");
   let searchNote=null;

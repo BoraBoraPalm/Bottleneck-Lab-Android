@@ -216,7 +216,7 @@ const searchIndex=search.prepare([
 const first=query=>search.find(searchIndex,query).items[0]?.stock;
 assert.equal(first("nViDiA").ticker,"NVDA");
 assert.equal(first("nvda").name,"NVIDIA Corporation","Ticker-only quote names must not erase directory names");
-assert.equal(search.find(searchIndex,"NVDA").total,1,"An exact ticker must not add unrelated fuzzy names");
+assert.deepEqual(search.find(searchIndex,"NVDA").items.map(h=>h.stock.ticker),["NVDA","NVDA.DE"],"An exact ticker adds only the same ticker on other exchanges, no fuzzy names");
 assert.equal(first("US67066G1040").ticker,"NVDA");
 assert.equal(first("Micrsoft").ticker,"MSFT","Missing character tolerated");
 assert.equal(first("Mircosoft").ticker,"MSFT","Adjacent transposition tolerated");
@@ -238,6 +238,21 @@ assert.ok(match[1].includes('getStocks:()=>snapshot?.stocks||[]'),"Search must u
 assert.ok(match[1].includes('makeCard(stock,null,{independent:true,matchLabel})'),"Search cards must not display investment ranks");
 assert.ok(html.includes('role="tablist"')&&html.includes('role="search"')&&html.includes('type="submit">Suchen'));
 assert.ok(match[1].includes('"ArrowLeft","ArrowRight","Home","End"'),"Tabs need keyboard navigation");
+// Home listing before foreign lines/ADRs among equally good name matches.
+const sanofi=search.prepare([
+  {ticker:"SNY",name:"Sanofi",exchange:"NASDAQ",country_code:"FR",reference_isin:"US80105N1054"},
+  {ticker:"SAN.PA",name:"Sanofi SA",exchange:"EURONEXT",country_code:"FR",reference_isin:"FR0000120578"}],
+  [{ticker:"SNY",reference_close_eur:41}]);
+assert.equal(search.find(sanofi,"Sanofi").items[0].stock.ticker,"SAN.PA","home listing first even without stored quote");
+const bases=search.prepare([{ticker:"SANOFI.BO",name:"Sanofi India Ltd",country_code:"IN",reference_isin:"INE058A01010"},
+  {ticker:"SAN.PA",name:"Sanofi SA",country_code:"FR",reference_isin:"FR0000120578"},
+  {ticker:"SAP",name:"SAP SE ADR",country_code:"DE",reference_isin:"US8030542042"},
+  {ticker:"SAP.DE",name:"SAP SE O.N.",country_code:"DE",reference_isin:"DE0007164600"}],[]);
+assert.deepEqual(search.find(bases,"Sanofi").items.map(h=>h.stock.ticker),["SAN.PA","SANOFI.BO"],"a ticker base never hides name matches");
+assert.deepEqual(search.find(bases,"SAP").items.map(h=>h.stock.ticker),["SAP.DE","SAP"],"home listing before the ADR");
+assert.ok(search.depositaryReceipt({country_code:"FR",reference_isin:"US80105N1054"}));
+assert.ok(!search.depositaryReceipt({country_code:"US",reference_isin:"US0378331005"}));
+assert.ok(html.includes('StockSearch.depositaryReceipt(s)'),"ADR hint on cards");
 console.log("Independent search: strategy exclusion bypass, directory-only stocks, ticker/ISIN, aliases, accents, typos, transpositions and bounded results verified.");
 
 const research=require("../docs/research-factors.js");

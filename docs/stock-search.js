@@ -5,6 +5,24 @@
   const normalize=value=>String(value||"").toLocaleLowerCase("de-AT").replace(/ß/g,"ss")
     .normalize("NFKD").replace(/\p{M}/gu,"").replace(/[^\p{L}\p{N}]+/gu," ").trim().replace(/\s+/g," ");
   const compact=value=>normalize(value).replace(/ /g,"");
+  // Listing in the issuer's ISIN country (SAN.PA for Sanofi), not a foreign
+  // line or a US depositary receipt (SNY = ADR, 1/2 share).
+  const homeListing=stock=>{
+    const isin=String(stock.reference_isin||"").toUpperCase(),country=String(stock.country_code||"").toUpperCase();
+    return isin.length===12&&country.length===2&&isin.slice(0,2)===country;
+  };
+  // Trailing legal forms/share-class words do not distinguish companies:
+  // "Sanofi SA", "SIEMENS AG NA O.N." -> "sanofi", "siemens".
+  const LEGAL=new Set("sa ag se nv plc inc corp corporation ltd limited oyj abp ab asa spa sca sas kgaa gmbh bv na on o n inh adr ads".split(" "));
+  const core=name=>{
+    const words=name.split(" ");
+    while(words.length>1&&LEGAL.has(words[words.length-1]))words.pop();
+    return words.join(" ");
+  };
+  const depositaryReceipt=stock=>{
+    const isin=String(stock.reference_isin||"").toUpperCase(),country=String(stock.country_code||"").toUpperCase();
+    return isin.startsWith("US")&&country.length===2&&country!=="US";
+  };
   function prepare(catalog,stocks){
     const byTicker=new Map();
     for(const row of catalog||[]){
@@ -23,7 +41,7 @@
     return Array.from(byTicker.values(),stock=>{
       const name=normalize(stock.name),ticker=compact(stock.ticker);
       const alias=normalize(ALIASES[stock.ticker]);
-      return {stock,name,ticker,alias,isin:compact(stock.reference_isin||stock.tr_isin),
+      return {stock,name,core:core(name),ticker,base:compact(String(stock.ticker).split(".")[0]),alias,isin:compact(stock.reference_isin||stock.tr_isin),
         tokens:Array.from(new Set((name+" "+alias).trim().split(" "))).filter(Boolean).slice(0,25)};
     });
   }
@@ -48,14 +66,20 @@
   function find(index,query,limit=30){
     const q=normalize(String(query||"").slice(0,120)),cq=compact(q),terms=q.split(" ").filter(Boolean).slice(0,6);
     if(!q)return {items:[],total:0};
-    const exact=(index||[]).filter(row=>cq===row.ticker);
+    // An exact ticker lists only that ticker on all exchanges ("SAP" -> SAP,
+    // SAP.DE), home listing first; no fuzzy names.
+    const exact=(index||[]).some(row=>cq===row.ticker)
+      ?(index||[]).filter(row=>cq===row.ticker||cq===row.base)
+        .sort((a,b)=>Number(homeListing(b.stock))-Number(homeListing(a.stock))||Number(b.ticker===cq)-Number(a.ticker===cq))
+      :[];
     if(exact.length)return {items:exact.slice(0,Math.max(0,Math.min(75,limit))).map(row=>({stock:row.stock,score:1000,kind:"Börsenticker"})),total:exact.length};
     const hits=[];
     for(const row of index||[]){
       let score=0,kind="Name / Ticker";
       if(cq===row.ticker)score=1000;
       else if(cq&&cq===row.isin)score=990;
-      else if(q===row.name||q===row.alias)score=950;
+      else if(q===row.name||q===row.core||q===row.alias)score=950;
+      else if(cq&&cq===row.base)score=900;
       else if(q.length>=2&&row.ticker.startsWith(cq))score=850;
       else if(q.length>=2&&row.name.startsWith(q))score=800;
       else if(q.length>=2&&terms.every(term=>row.tokens.some(token=>token.startsWith(term))))score=750;
@@ -80,6 +104,7 @@
       if(score)hits.push({stock:row.stock,score,kind});
     }
     hits.sort((a,b)=>b.score-a.score
+      ||Number(homeListing(b.stock))-Number(homeListing(a.stock))
       ||Number(Number.isFinite(b.stock.reference_close_eur))-Number(Number.isFinite(a.stock.reference_close_eur))
       ||a.stock.ticker.localeCompare(b.stock.ticker));
     return {items:hits.slice(0,Math.max(0,Math.min(75,limit))),total:hits.length};
@@ -168,7 +193,7 @@
       search
     };
   }
-  const api={normalize,prepare,distance,find,create};
+  const api={normalize,prepare,distance,find,create,homeListing,depositaryReceipt};
   if(typeof module!=="undefined"&&module.exports)module.exports=api;
   root.StockSearch=api;
 })(typeof window!=="undefined"?window:globalThis);
