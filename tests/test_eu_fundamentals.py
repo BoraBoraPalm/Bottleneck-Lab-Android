@@ -132,6 +132,19 @@ class Lookups(unittest.TestCase):
         self.assertIsNone(eu.lei_for_isin("FR0000120578", lambda *a, **k: gleif()))
         self.assertIsNone(eu.lei_for_isin("FR0000120578", lambda *a, **k: gleif(LEI, "529900T8BM49AURSDO55")))
         self.assertEqual(eu.eea_isin("fr0000120578"), "FR0000120578")
+
+    def test_name_fallback_requires_one_exact_legal_name(self):
+        def search(url, **kw):
+            if url.startswith(eu.GLEIF):
+                return gleif()
+            self.assertIn("filter%5Bentity.legalAddress.country%5D=FI", url)
+            self.assertIn("filter%5Bfulltext%5D=Outokumpu", url)
+            return {"data": [{"id": LEI, "attributes": {"lei": LEI, "entity": {"legalName": {"name": "OUTOKUMPU OYJ"}}}},
+                             {"id": "5493001KJTIIGC8Y1R12", "attributes": {"lei": "5493001KJTIIGC8Y1R12",
+                              "entity": {"legalName": {"name": "Outokumpu Stainless Oy"}}}}]}
+        self.assertEqual(eu.lei_for_isin("FI0009002422", search, "Outokumpu Oyj"), LEI)
+        self.assertIsNone(eu.lei_for_isin("FI0009002422", search, "Outokumpu"), "no partial name match")
+        self.assertIsNone(eu.lei_for_isin("FI0009002422", lambda *a, **k: gleif()), "no name, no guess")
         for bad in ("US0378331005", "CH0012032048", "FR000012057", None):
             self.assertIsNone(eu.eea_isin(bad))
 
@@ -139,7 +152,9 @@ class Lookups(unittest.TestCase):
         rows = (filing_row("2024-12-31", url="/old.json"), filing_row("2025-12-31", errors=3, url="/err.json"),
                 filing_row("2025-12-31", errors=0, url="/new.json"), filing_row("2026-12-31", url="/future.json"),
                 {**filing_row("2025-12-31"), "json_url": None})
-        chosen = eu.latest_filing(LEI, lambda url, **k: filings(*rows), TODAY)
+        seen = []
+        chosen = eu.latest_filing(LEI, lambda url, **k: seen.append(url) or filings(*rows), TODAY)
+        self.assertTrue(seen[0].endswith("&sort=-period_end"))
         self.assertEqual(chosen["json_url"], "/new.json")
         self.assertEqual(chosen["period_end"], date(2025, 12, 31))
         self.assertEqual(chosen["added"], date(2026, 3, 1))
@@ -148,6 +163,14 @@ class Lookups(unittest.TestCase):
         def missing(url, **k):
             raise HTTPError(url, 404, "NOT FOUND", {}, None)
         self.assertIsNone(eu.latest_filing(LEI, missing, TODAY), "issuer unknown to the collection")
+        calls = []
+        def no_sort(url, **k):
+            calls.append(url)
+            if "sort=" in url:
+                raise HTTPError(url, 400, "BAD REQUEST", {}, None)
+            return filings(filing_row("2025-12-31"))
+        self.assertEqual(eu.latest_filing(LEI, no_sort, TODAY)["json_url"], "/a.json")
+        self.assertEqual(len(calls), 2, "falls back to the unsorted list")
 
     def test_old_report_is_not_downloaded(self):
         calls = []

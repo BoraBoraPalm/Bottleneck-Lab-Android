@@ -16,12 +16,15 @@ import re
 from concurrent.futures import ThreadPoolExecutor
 from datetime import date, datetime, timedelta, timezone
 from urllib.error import HTTPError
+from urllib.parse import quote
 from urllib.request import Request, urlopen
 
 from sander_fundamentals import _derived_metrics
 
 GLEIF = "https://api.gleif.org/api/v1/lei-records?filter%5Bisin%5D="
+GLEIF_SEARCH = "https://api.gleif.org/api/v1/lei-records?page%5Bsize%5D=10&filter%5Bfulltext%5D={name}&filter%5Bentity.legalAddress.country%5D={country}"
 FILINGS = "https://filings.xbrl.org/api/entities/{lei}/filings?page%5Bsize%5D=50"
+FILINGS_SORTED = FILINGS + "&sort=-period_end"
 SITE = "https://filings.xbrl.org"
 USER_AGENT = "Bottleneck Lab nonprofit research (github.com/BoraBoraPalm/Bottleneck-Lab-Android)"
 SOURCE = "ESEF-Jahresfinanzbericht (IFRS) · filings.xbrl.org"
@@ -82,19 +85,43 @@ def eea_isin(isin):
     return value if ISIN.fullmatch(value) and value[:2] in EEA else None
 
 
-def lei_for_isin(isin, fetch=fetch_json):
+def _plain_name(value):
+    return re.sub(r"\s+", " ", re.sub(r"[^\w ]+", " ", str(value or "").casefold())).strip()
+
+
+def lei_for_isin(isin, fetch=fetch_json, name=None):
     payload = fetch(GLEIF + isin, timeout=20, max_bytes=2_000_000)
     leis = {str((row.get("attributes") or {}).get("lei") or row.get("id") or "").upper()
             for row in payload.get("data") or [] if isinstance(row, dict)}
     leis = {value for value in leis if LEI.fullmatch(value)}
     # An ISIN must map to exactly one issuer; anything else stays unknown.
-    return leis.pop() if len(leis) == 1 else None
+    if len(leis) == 1:
+        return leis.pop()
+    if leis or not _plain_name(name):
+        return None
+    # GLEIF lacks many ISIN mappings: accept a legal-name match only if exactly
+    # one entity in the ISIN country has precisely this (punctuation-free) name.
+    wanted = _plain_name(name)
+    found = fetch(GLEIF_SEARCH.format(name=quote(str(name)), country=isin[:2]), timeout=20, max_bytes=2_000_000)
+    matches = set()
+    for row in found.get("data") or []:
+        attributes = (row or {}).get("attributes") or {}
+        legal = ((attributes.get("entity") or {}).get("legalName") or {}).get("name")
+        lei = str(attributes.get("lei") or row.get("id") or "").upper()
+        if LEI.fullmatch(lei) and _plain_name(legal) == wanted:
+            matches.add(lei)
+    return matches.pop() if len(matches) == 1 else None
 
 
 def latest_filing(lei, fetch=fetch_json, today=None):
     today = today or today_utc()
     try:
-        payload = fetch(FILINGS.format(lei=lei), timeout=30, max_bytes=4_000_000)
+        try:
+            payload = fetch(FILINGS_SORTED.format(lei=lei), timeout=30, max_bytes=4_000_000)
+        except HTTPError as exc:
+            if exc.code != 400:
+                raise
+            payload = fetch(FILINGS.format(lei=lei), timeout=30, max_bytes=4_000_000)
     except HTTPError as exc:
         if exc.code == 404:  # issuer not in the collection
             return None
@@ -239,11 +266,11 @@ def annual_from_report(report, lei, filing, today=None):
     return annual
 
 
-def load_annual(isin, lei=None, fetch=fetch_json, today=None, outcome=None):
+def load_annual(isin, lei=None, fetch=fetch_json, today=None, outcome=None, name=None):
     """Returns (lei, annual or None); ``outcome`` receives the stopping stage."""
     outcome = outcome if outcome is not None else {}
     outcome["stage"] = "gleif"
-    lei = lei or lei_for_isin(isin, fetch)
+    lei = lei or lei_for_isin(isin, fetch, name)
     if not lei:
         outcome["result"] = "no_lei"
         return None, None
@@ -316,7 +343,7 @@ def enrich_eu_fundamentals(stocks, prior, fetch=fetch_json, maximum=DEFAULT_MAX,
         stock, isin = item
         outcome = {}
         try:
-            lei, result = load_annual(isin, stock.get("lei"), fetch, today, outcome)
+            lei, result = load_annual(isin, stock.get("lei"), fetch, today, outcome, stock.get("name"))
             return lei, result, outcome
         except Exception as exc:
             outcome["result"] = "error"
@@ -333,7 +360,8 @@ def enrich_eu_fundamentals(stocks, prior, fetch=fetch_json, maximum=DEFAULT_MAX,
                 stock["lei"] = lei
             kind = outcome.get("result", "error") + ("@" + outcome["stage"] if outcome.get("result") == "error" else "")
             results[kind] = results.get(kind, 0) + 1
-            if kind != "loaded" and len(samples) < 6:
+            # One example per outcome first, then more, so every failure kind is visible.
+            if kind != "loaded" and (results[kind] == 1 or len(samples) < 6) and len(samples) < 10:
                 samples.append({"ticker": stock["ticker"], "isin": isin, **outcome})
             if outcome.get("result") == "error":
                 errors += 1
