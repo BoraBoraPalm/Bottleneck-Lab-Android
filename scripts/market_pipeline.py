@@ -40,6 +40,10 @@ TR_PROBE=int(os.getenv("BTL_TR_PER_RUN","250"))
 # Symbols Yahoo does not know (HTTP 404) are skipped for a while instead of
 # using a third of every run on them again.
 MISS_DAYS=30
+# Stocks loaded on demand in the search (logged by the optional Cloudflare
+# worker) are checked first and completely in the next run.
+QUOTE_WORKER=os.getenv("BTL_QUOTE_WORKER","https://bottleneck-lab-android.markus-schuster-dev.workers.dev")
+REQUESTED_MAX=150
 WORKERS=int(os.getenv("BTL_WORKERS","7"))
 MAX_AGE=timedelta(days=8)
 DATE_FMT="%Y-%m-%d"
@@ -189,6 +193,19 @@ def tr_priority(known,cache,tr_isins,limit=TR_PROBE):
     return sorted(listed,key=lambda t:(str((cache.get(t) or {}).get("last_checked_at") or ""),
         not home_listing(known[t]),zlib.crc32(t.encode()),t))[:limit]
 
+def requested_symbols(known,fetch=read_url,limit=REQUESTED_MAX):
+    """Symbols recently loaded in the search, newest first; empty if unavailable."""
+    try:
+        data=json.loads(fetch(QUOTE_WORKER+"/requested",timeout=15,max_bytes=500_000))
+    except Exception as exc:
+        print("Search log unavailable:",str(exc)[:120],flush=True)
+        return []
+    found=[]
+    for row in data.get("symbols") or []:
+        ticker=str((row or {}).get("symbol") or "")
+        if ticker in known and ticker not in found:found.append(ticker)
+    return found[:max(0,limit)]
+
 def recent_misses(old,today=None):
     today=today or datetime.now(timezone.utc).date()
     kept={}
@@ -200,11 +217,11 @@ def recent_misses(old,today=None):
         if isinstance(ticker,str) and 0<=age<MISS_DAYS:kept[ticker]=day
     return kept
 
-def requested_batch(known,cache,tr_isins=None,misses=None,slot=None):
+def requested_batch(known,cache,tr_isins=None,misses=None,slot=None,priority=None):
     # One new rotation slice per run (also for extra runs after a push).
     slot=int(datetime.now(timezone.utc).timestamp()//21600) if slot is None else slot
     pool={t:m for t,m in known.items() if t not in (misses or {})}
-    core=grouped_batch(pool,CURATED_SYMBOLS,slot,PROBE)+tr_priority(pool,cache,tr_isins)
+    core=list(priority or [])+grouped_batch(pool,CURATED_SYMBOLS,slot,PROBE)+tr_priority(pool,cache,tr_isins)
     # Repeat a small portion of recently scanned top momentum names only for
     # fresh dates, not because any evidence proves an alpha forecast.
     extra=sorted((s for s in cache.values() if s.get("momentum_12_2") is not None),
@@ -274,7 +291,8 @@ def main():
     misses=recent_misses(old)
     previous_slot=old.get("rotation_slot")
     slot=previous_slot+1 if isinstance(previous_slot,int) and previous_slot>=0 else int(time.time()//21600)
-    targets=requested_batch(known,cache,tr_reference["pdf_isins"],misses,slot)
+    requested=requested_symbols(known)
+    targets=requested_batch(known,cache,tr_reference["pdf_isins"],misses,slot,requested)
     checked=datetime.now(timezone.utc).isoformat().replace("+00:00","Z")
     success=0
     failures=Counter()
@@ -333,10 +351,10 @@ def main():
             and isinstance(momentum,(int,float)) and math.isfinite(momentum))
     # EU/EEA annual reports first; the SEC step keeps them and scores both.
     try:
-        eu_status=enrich_eu_fundamentals(stocks,old,tr_isins=tr_reference["pdf_isins"])
+        eu_status=enrich_eu_fundamentals(stocks,old,tr_isins=tr_reference["pdf_isins"],priority=set(requested))
     except Exception as exc:
         eu_status={"status":"unavailable","error":type(exc).__name__+": "+str(exc)[:160]}
-    sander_status=update_sander_fundamentals(stocks,old)
+    sander_status=update_sander_fundamentals(stocks,old,priority=requested)
     growth_status=enrich_growth(stocks,{
         "date":(market_quote or {}).get("price_date"),
         **{k:(market_quote or {}).get(k) for k in ("return_63d","return_126d","growth_price_basis")}})
@@ -404,7 +422,7 @@ def main():
         "TR_verified":tr["verified"],"sander_candidates":sander_status["qualified_candidates"],
         "sander_fundamentals":sander_status["with_verified_fundamentals"],"chart_files":chart_count(),
         "charts_updated":charts_written,"errors":len(errors),
-        "targets":len(targets),"success":success,"failures":dict(failures.most_common(8)),"skipped_misses":len(misses),"rotation_slot":slot,"failures_by_suffix":dict(miss_suffix.most_common(10)),
+        "targets":len(targets),"success":success,"failures":dict(failures.most_common(8)),"skipped_misses":len(misses),"requested":len(requested),"rotation_slot":slot,"failures_by_suffix":dict(miss_suffix.most_common(10)),
         "charts_pruned":charts_pruned,
         "eu":{k:eu_status.get(k) for k in ("eligible_eea_stocks","checked_this_run","reports_loaded","errors","results","samples","error","with_esef_fundamentals")},
         "duration_s":round(time.monotonic()-started,1)

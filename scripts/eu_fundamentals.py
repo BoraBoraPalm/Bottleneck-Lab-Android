@@ -330,7 +330,7 @@ def _age(value, today):
         return None
 
 
-def enrich_eu_fundamentals(stocks, prior, fetch=None, maximum=DEFAULT_MAX, tr_isins=None, today=None):
+def enrich_eu_fundamentals(stocks, prior, fetch=None, maximum=DEFAULT_MAX, tr_isins=None, today=None, priority=None):
     """Attach ESEF annual data to EU/EEA stocks; bounded, serialised requests per run."""
     today = today or today_utc()
     fetch = fetch or polite(fetch_json)
@@ -361,7 +361,9 @@ def enrich_eu_fundamentals(stocks, prior, fetch=None, maximum=DEFAULT_MAX, tr_is
         return not (attempted is not None and 0 <= attempted < RETRY_DAYS)
 
     listed = tr_isins or set()
+    wanted = priority or set()
     queue = sorted((c for c in candidates if due(c)), key=lambda c: (
+        c[0]["ticker"] not in wanted,                         # loaded in the search first
         bool(c[0].get("fundamentals")),                       # no data first
         not c[0].get("eligible_liquid_ranking"),              # tradable liquid names first
         c[1] not in listed,                                   # Trade Republic AT list first

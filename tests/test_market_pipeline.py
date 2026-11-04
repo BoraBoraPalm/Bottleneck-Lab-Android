@@ -68,6 +68,15 @@ class SimpleMarketTest(unittest.TestCase):
         self.assertNotEqual(m.grouped_batch(known,set(),7,1),m.grouped_batch(known,set(),8,1),"each run gets a new slice")
         self.assertNotIn("GONE.PA",batch);self.assertIn("OK.PA",batch)
 
+    def test_symbols_loaded_in_search_are_checked_first(self):
+        known={"SAN.PA":{"region":"Europa"},"VOE.VI":{"region":"Europa"}}
+        body=b'{"version":1,"symbols":[{"symbol":"SAN.PA","hits":2},{"symbol":"UNKNOWN.XX"},{"symbol":"SAN.PA"},{"symbol":"VOE.VI"}]}'
+        self.assertEqual(m.requested_symbols(known,lambda *a,**k:body),["SAN.PA","VOE.VI"])
+        def down(*a,**k):raise RuntimeError("HTTP 404")
+        self.assertEqual(m.requested_symbols(known,down),[])
+        batch=m.requested_batch(known,{},None,{"SAN.PA":"2026-11-01"},slot=1,priority=["SAN.PA"])
+        self.assertEqual(batch[0],"SAN.PA","requested symbols bypass the 404 pause and come first")
+
     def test_adjusted_momentum_ignores_share_split(self):
         today=datetime.now(timezone.utc).date()
         bars=[]

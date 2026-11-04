@@ -233,6 +233,13 @@ class Enrichment(unittest.TestCase):
         eu.enrich_eu_fundamentals(kept, {"stocks": [{"ticker": "SAN.PA", "fundamentals": old}]}, self.fetcher([]), maximum=0, today=TODAY)
         self.assertNotIn("fundamentals", kept, "older than KEEP_DAYS is dropped")
 
+    def test_search_requests_come_first(self):
+        calls = []
+        stocks = [self.stock("MC.PA", "FR0000121014", avg_turnover_20d_eur=9e9), self.stock()]
+        eu.enrich_eu_fundamentals(stocks, {}, self.fetcher(calls), maximum=1, today=TODAY, priority={"SAN.PA"})
+        self.assertIn("fundamentals", stocks[1])
+        self.assertNotIn("fundamentals", stocks[0])
+
     def test_errors_are_counted_not_raised(self):
         def broken(url, **kw):
             raise RuntimeError("HTTP 503")

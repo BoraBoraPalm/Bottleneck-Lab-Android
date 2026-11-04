@@ -331,7 +331,7 @@ def sander_screen(stock,fund):
     growth_score=100*max(0,min(1,(growth-MIN_GROWTH)/.35))
     return round(.5*dip+.25*margin_score+.25*growth_score,4)
 
-def enrich_stocks(stocks,prior,maximum=DEFAULT_MAX):
+def enrich_stocks(stocks,prior,maximum=DEFAULT_MAX,priority=None):
     """Rotate across ordinary stocks and dip candidates, preserving verified caches.
 
     A failed lookup is retried after two days rather than starving later symbols.
@@ -350,6 +350,11 @@ def enrich_stocks(stocks,prior,maximum=DEFAULT_MAX):
         -s["return_63d"] if _number(s.get("return_63d")) else 999,s["ticker"]))
     ordered=[]
     seen=set()
+    # Stocks loaded in the search come first, even if not (yet) liquid/eligible.
+    wanted=set(priority or [])
+    for stock in stocks:
+        if stock.get("ticker") in wanted and isinstance(stock.get("ticker"),str) and TICKER_RE.fullmatch(stock["ticker"]):
+            ordered.append(stock);seen.add(stock["ticker"])
     for pair in zip_longest(by_momentum,by_dip,by_growth):
         for stock in pair:
             if stock and stock["ticker"] not in seen:
