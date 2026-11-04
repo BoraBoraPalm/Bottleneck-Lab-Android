@@ -9,3 +9,5 @@ Kleiner Cloudflare Worker im Gratis-Tarif, der für die Aktiensuche einen einzel
 **Zwischenspeichern:** Der Worker liefert nur abgeschlossene Schlusskurse. Den Balken einer noch laufenden Sitzung lässt er weg. `expires` und `Cache-Control` gelten bis 30 Minuten nach dem nächsten regulären Handelsschluss, höchstens 24 Stunden. So lange verwendet der Browser die gespeicherte Antwort. Fehler werden nie zwischengespeichert.
 
 **Kosten:** Gratis-Tarif mit 100.000 Abrufen pro Tag. Ist das Limit erreicht, antwortet Cloudflare mit einem Fehler (1027); es wird nichts berechnet.
+
+**Deployment prüfen:** `https://bottleneck-lab-android.markus-schuster-dev.workers.dev/version` zeigt die ausgelieferte Fassung. `{"error":"path"}` bedeutet: Cloudflare liefert noch eine Version ohne diesen Endpunkt aus, das automatische Bauen aus GitHub ist dann nicht aktiv (Cloudflare → Settings → Build: Git-Verbindung und Branch `master` prüfen).
