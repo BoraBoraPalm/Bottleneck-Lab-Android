@@ -206,6 +206,15 @@ def requested_batch(known,cache,tr_isins=None):
         [x["ticker"] for x in missing_charts]+[x["ticker"] for x in missing_growth]
         +[x["ticker"] for x in missing_long_risk]+[x["ticker"] for x in missing_momentum]))
 
+def failure_kind(error):
+    """Short category of a failed quote for the run log (e.g. 'HTTP 404')."""
+    text=str(error or "")
+    code=re.search(r"HTTP(?: Error)? (\d{3})",text)
+    if code:return "HTTP "+code.group(1)
+    for marker in ("timed out","Too Many","No data","Response too large","KeyError","IndexError","TypeError","Not Found"):
+        if marker.lower() in text.lower():return marker
+    return text.split(":",2)[1].strip()[:40] if text.count(":")>=2 else text[:40] or "unknown"
+
 def enrich(meta,raw,ticker):
     row=dict(raw)
     details=meta[ticker]
@@ -238,6 +247,7 @@ def main():
     targets=requested_batch(known,cache,tr_reference["pdf_isins"])
     checked=datetime.now(timezone.utc).isoformat().replace("+00:00","Z")
     success=0
+    failures=Counter()
     charts_written=0
     with ThreadPoolExecutor(max_workers=WORKERS) as pool:
         futs={pool.submit(quote,t,SEED_NAMES.get(t) or CURATED.get(t) or "Global"):t for t in targets}
@@ -255,7 +265,9 @@ def main():
                 r["last_checked_at"]=checked
                 cache[t]=r
                 success+=1
-            elif error and len(errors)<30:errors.append(t+": "+str(error)[:135])
+            else:
+                failures[failure_kind(error)]+=1
+                if error and len(errors)<30:errors.append(t+": "+str(error)[:135])
     if len(cache)<25:raise RuntimeError("Fewer than 25 valid quotes; refusing publication")
     # Only prune when the previous cache was available; otherwise a single
     # failed read would delete the restored chart history.
@@ -356,6 +368,9 @@ def main():
         "TR_verified":tr["verified"],"sander_candidates":sander_status["qualified_candidates"],
         "sander_fundamentals":sander_status["with_verified_fundamentals"],"chart_files":chart_count(),
         "charts_updated":charts_written,"errors":len(errors),
+        "targets":len(targets),"success":success,"failures":dict(failures.most_common(8)),
+        "charts_pruned":charts_pruned,
+        "eu":{k:eu_status.get(k) for k in ("eligible_eea_stocks","checked_this_run","reports_loaded","errors","results","samples","error","with_esef_fundamentals")},
         "duration_s":round(time.monotonic()-started,1)
     }),flush=True)
 if __name__=="__main__":main()

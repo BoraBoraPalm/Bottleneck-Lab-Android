@@ -5,8 +5,9 @@
    storage or the HTTP cache instead of being requested again. */
 (function(root){
   "use strict";
-  const SERVICE="https://bottleneck-lab-android.markus-schuster-dev.workers.dev/quote?symbol=";
-  const STORAGE_KEY="bottleneck.live-quotes.v1",MAX_STORED=12;
+  // v=2: answers include trend/crash/ATR context; older cached answers are not reused.
+  const SERVICE="https://bottleneck-lab-android.markus-schuster-dev.workers.dev/quote?v=2&symbol=";
+  const STORAGE_KEY="bottleneck.live-quotes.v2",MAX_STORED=12;
   const TICKER=/^[A-Z0-9][A-Z0-9.\-]{0,19}$/;
   const memory=new Map(),pending=new Map();
   const finite=v=>typeof v==="number"&&Number.isFinite(v);
@@ -111,8 +112,64 @@
       momentum_12_2:n>=253?p[n-22][1]/p[n-253][1]-1:null
     };
   }
+  const round=(v,d)=>Math.round(v*10**d)/10**d;
+  // Port of trade_guidance.assign_decision (same thresholds and wording keys).
+  function decide(stock,market,now=Date.now()){
+    const m=stock.momentum_12_2,trend=stock.sma200_ratio,r21=stock.return_21d,dd=stock.drawdown_252d;
+    const price=stock.reference_close_eur,fx=stock.eur_per_unit,ref=stock.risk_reference_native;
+    if(![m,trend,r21,dd,price,fx,ref].every(finite)){
+      stock.entry_review="insufficient_data";stock.exit_review="insufficient_data";return stock;
+    }
+    const risk=market&&market.risk;
+    let entry="entry_review",exit="hold_review";
+    if(stock.crash_warning===true){entry="avoid_crash";exit="review_exit_crash";}
+    else if(trend<0){entry="wait_downtrend";exit="review_exit_trend";}
+    else if(m<=0)entry="wait_momentum";
+    else if(stock.correction_warning===true)entry="wait_correction";
+    else if(risk==="crash"||risk==="downtrend")entry="wait_market";
+    else if(risk==null)entry="market_unverified";
+    const today=Date.parse(new Date(now).toISOString().slice(0,10)+"T00:00:00Z");
+    const daysOld=(today-Date.parse(stock.price_date+"T00:00:00Z"))/86400000;
+    if(!(daysOld>=0&&daysOld<=4)){entry="stale_quote";exit="insufficient_data";}
+    stock.entry_review=entry;stock.exit_review=exit;
+    stock.risk_reference_eur=round(ref*fx,4);stock.entry_reference_eur=round(price,4);
+    const close=stock.close,atr=stock.atr14_native;
+    if(entry!=="stale_quote"&&finite(close)&&finite(atr)&&close>0&&atr>0
+       &&String(stock.context_basis||"").startsWith("Yahoo adjusted OHLC")){
+      const buy=close-atr,stop=buy-2.5*atr;
+      if(stop>0&&buy>0){
+        stock.model_buy_limit_eur=round(buy*fx,4);stock.model_initial_stop_eur=round(stop*fx,4);
+        stock.model_limit_rule="Last close - 1 ATR(14); initial stop = limit - 2.5 ATR(14)";
+      }
+    }
+    for(const [native,eur] of [["sma200_native","sma200_level_eur"],["crash_21_level_native","crash_21_level_eur"],["crash_peak_level_native","crash_peak_level_eur"]])
+      if(finite(stock[native])&&stock[native]>0)stock[eur]=round(stock[native]*fx,4);
+    return stock;
+  }
+  // A search hit enriched with the fetched series: price, EUR value, momentum,
+  // 12-month volatility, trend/crash/ATR context and the entry/exit review.
+  function enrich(stock,data,snapshot,now=Date.now()){
+    const p=data.points,n=p.length,rate=fxTable(snapshot)[data.currency];
+    const live={...stock,close:data.close,currency:data.currency,price_date:data.asof,source:"Yahoo Finance",
+      live_quote:{fetched:data.fetched||null,expires:data.expires},
+      momentum_12_2:n>=253?p[n-22][1]/p[n-253][1]-1:null,
+      momentum_basis:"Yahoo adjusted daily closes",momentum_skip_sessions:21,
+      avg_local_turnover_20d:finite(data.turnover)?data.turnover:null,...(data.context||{})};
+    if(n>=253){
+      const r=[];for(let i=n-252;i<n;i++)r.push(Math.log(p[i][1]/p[i-1][1]));
+      const mean=r.reduce((a,b)=>a+b,0)/r.length;
+      const sd=Math.sqrt(r.reduce((a,b)=>a+(b-mean)**2,0)/(r.length-1));
+      if(finite(sd)){live.volatility_252d=round(sd*Math.sqrt(252),8);live.long_risk_basis="Yahoo adjusted log returns; 252 sessions; annualised sqrt(252)";}
+    }
+    if(rate){
+      live.eur_per_unit=rate.eur_per_unit;live.fx_date=rate.fx_date;
+      live.reference_close_eur=round(data.close*rate.eur_per_unit,6);
+      if(finite(live.avg_local_turnover_20d))live.avg_turnover_20d_eur=round(live.avg_local_turnover_20d*rate.eur_per_unit,2);
+    }
+    return decide(live,snapshot&&snapshot.market_context,now);
+  }
   function clear(){memory.clear();pending.clear();}
-  const api={service:SERVICE,storageKey:STORAGE_KEY,validate,peek,load,fxTable,summary,clear};
+  const api={service:SERVICE,storageKey:STORAGE_KEY,validate,peek,load,fxTable,summary,decide,enrich,clear};
   if(typeof module!=="undefined"&&module.exports)module.exports=api;
   root.StockLiveQuote=api;
 })(typeof window!=="undefined"?window:globalThis);

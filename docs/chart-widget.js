@@ -164,7 +164,7 @@ const StockCharts=(()=>{
         try{
           data=checkedData(opts.data,stock.ticker);
           note.textContent="Bereinigte Schlusskurse, auf den letzten Kurs skaliert · "+data.currency
-            +" · direkt bei Yahoo Finance abgerufen. Ohne Modell-Kauf-/Stop-Linien.";
+            +" · direkt bei Yahoo Finance abgerufen. EUR-Linien mit aktuellem Referenzwechselkurs, keine Broker-Orders.";
           repaint();
         }catch(e){output.textContent="Kursreihe derzeit nicht verfügbar ("+String(e.message||e)+").";}
         return;

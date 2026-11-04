@@ -371,14 +371,14 @@ h1{font-size:27px}
 </details>
 <div class="footer">Bottleneck Lab · Stand der Daten siehe oben · keine Anlageberatung</div>
 </main>
-<script src="chart-widget.js?v=2"></script>
+<script src="chart-widget.js?v=3"></script>
 <script src="fundamentals-widget.js?v=1"></script>
 <script src="growth-widget.js?v=1"></script>
 <script src="stock-search.js?v=1"></script>
 <script src="research-factors.js?v=1"></script>
 <script src="holding-horizon.js?v=1"></script>
 <script src="strategy-fit.js?v=3"></script>
-<script src="live-quote.js?v=1"></script>
+<script src="live-quote.js?v=2"></script>
 <script>
 "use strict";
 const $=id=>document.getElementById(id);
@@ -481,6 +481,13 @@ function dataRows(){
 }
 function makeCard(s,mix,options={}){
   const independent=options.independent===true;
+  // Search hit without stored quote: use a series loaded on demand (memory or
+  // device storage) and derive the same price-based values as the pipeline.
+  let liveData=options.liveData||null;
+  if(independent&&!liveData&&!Number.isFinite(s.reference_close_eur)&&typeof StockLiveQuote!=="undefined")
+    liveData=StockLiveQuote.peek(s.ticker);
+  const base=s;
+  if(liveData)s=StockLiveQuote.enrich(s,liveData,snapshot);
   const article=add(document.createDocumentFragment(),"details",null,"stock");
   const head=add(article,"summary");
   const top=add(head,"div",null,"stock-top");
@@ -495,7 +502,13 @@ function makeCard(s,mix,options={}){
   let searchNote=null;
   if(independent){
     add(bottom,"span",options.matchLabel||"Suchtreffer","strategy-score");
-    searchNote=add(head,"div",Number.isFinite(s.reference_close_eur)
+    searchNote=add(head,"div",liveData
+      ?"Schlusskurs vom "+s.price_date+": "+fmt(s.close,2)+" "+s.currency
+        +(s.currency!=="EUR"&&Number.isFinite(s.reference_close_eur)?" ≈ "+eur(s.reference_close_eur)+" (Referenzwechselkurs vom "+(s.fx_date||"?")+")":"")
+        +". Direkt bei Yahoo Finance geladen, auf diesem Gerät gespeichert bis "
+        +new Date(liveData.expires).toLocaleString("de-AT",{dateStyle:"short",timeStyle:"short"})
+        +". Trend, Crash-Marken, Kauf-Limit/Stop-Loss und Einstieg/Ausstieg nach denselben Regeln wie im Datenlauf berechnet; Fundamentaldaten erst nach einem Datenlauf."
+      :Number.isFinite(s.reference_close_eur)
       ?"Einzeltitel · unabhängig von den Kandidaten-Filtern"
       :"Zu diesem Titel liegen noch keine geprüften Kursdaten vor.","search-note");
   }else{
@@ -551,7 +564,7 @@ function makeCard(s,mix,options={}){
   if(typeof StockResearch!=="undefined")StockResearch.render(article,s,independent?selectedSearchFits():activeFactors());
   const chartHost=add(article,"section",null,"chart-panel");
   chartHost.setAttribute("aria-label","Historischer Kursverlauf "+s.ticker);
-  let chartInstance=null,liveData=null;
+  let chartInstance=null;
   const openChart=()=>{
     if(article.open&&!chartInstance&&typeof StockCharts!=="undefined"){
       chartInstance=StockCharts.create(chartHost,s,{
@@ -560,7 +573,7 @@ function makeCard(s,mix,options={}){
     }
   };
   article.addEventListener("toggle",openChart);
-  if(independent&&searchNote&&!Number.isFinite(s.reference_close_eur)&&typeof StockLiveQuote!=="undefined"){
+  if(independent&&searchNote&&!liveData&&!Number.isFinite(s.reference_close_eur)&&typeof StockLiveQuote!=="undefined"){
     // Search hit without stored quote: optional on-demand daily close.
     const box=document.createElement("div");box.className="live-quote";
     searchNote.after(box);
@@ -569,31 +582,25 @@ function makeCard(s,mix,options={}){
     const state=add(box,"span",null,"live-quote-status");
     state.setAttribute("role","status");
     let loading=false;
+    let done=false;
     const showLive=data=>{
-      const q=StockLiveQuote.summary(data,StockLiveQuote.fxTable(snapshot));
-      const until=new Date(q.expires).toLocaleString("de-AT",{dateStyle:"short",timeStyle:"short"});
-      priceEl.textContent=Number.isFinite(q.eur)?"≈ "+eur(q.eur):fmt(q.close,2)+" "+q.currency;
-      searchNote.textContent="Schlusskurs vom "+q.asof+": "+fmt(q.close,2)+" "+q.currency
-        +(q.currency==="EUR"?"":Number.isFinite(q.eur)?" ≈ "+eur(q.eur)+" (Referenzwechselkurs"+(q.fx_date?" vom "+q.fx_date:"")+")":" · kein EUR-Referenzkurs")
-        +". Direkt bei Yahoo Finance abgerufen, auf diesem Gerät gespeichert bis "+until
-        +". Ohne Strategie-, Liquiditäts- oder Fundamentalprüfung.";
-      momentumEl.textContent=Number.isFinite(q.momentum_12_2)
-        ?"12–2-Momentum: "+fmt(q.momentum_12_2*100,1)+" % · aus der abgerufenen Kursreihe"
-        :"12–2-Momentum: Historie fehlt";
-      liveData=data;box.remove();
-      if(chartInstance){chartInstance.destroy();chartInstance=null;openChart();}
+      // Rebuild the whole card from the loaded series (chips, levels, chart).
+      done=true;
+      if(chartInstance){chartInstance.destroy();chartInstance=null;}
+      const fresh=makeCard(base,mix,{...options,liveData:data});
+      fresh.dataset.ticker=article.dataset.ticker||base.ticker;
+      fresh.open=article.open;
+      if(article.isConnected)article.replaceWith(fresh);
     };
     const fetchLive=async()=>{
-      if(loading||liveData)return;
+      if(loading||done)return;
       loading=true;button.disabled=true;state.textContent="Lade Kurs …";
       try{showLive(await StockLiveQuote.load(s.ticker));}
       catch(error){state.textContent=String(error.message||error);button.disabled=false;}
       finally{loading=false;}
     };
     button.addEventListener("click",event=>{event.preventDefault();event.stopPropagation();void fetchLive();});
-    const cached=StockLiveQuote.peek(s.ticker);
-    if(cached)showLive(cached);
-    else article.addEventListener("toggle",()=>{if(article.open)void fetchLive();});
+    article.addEventListener("toggle",()=>{if(article.open)void fetchLive();});
   }
   const detail=add(article,"div",null,"details");
   const items=[

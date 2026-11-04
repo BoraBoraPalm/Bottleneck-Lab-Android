@@ -129,7 +129,7 @@ console.log("Growth display: three independent components, incomplete evidence a
 
 
 // Chart must remain lazy: fetched after <details> is opened, never at app start.
-if(!html.includes('<script src="chart-widget.js?v=2"></script>')||
+if(!html.includes('<script src="chart-widget.js?v=3"></script>')||
    !match[1].includes('article.addEventListener("toggle"')||
    !match[1].includes('StockCharts.create(chartHost,s,')||
    !match[1].includes('showTradeLevels:()=>$("showTradeLevels").checked')){

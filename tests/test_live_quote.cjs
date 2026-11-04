@@ -81,9 +81,30 @@ const now=Date.parse("2026-11-04T12:00:00Z");
   // Card wiring: only search hits without stored quote, button does not toggle the card,
   // chart uses the fetched series.
   const html=fs.readFileSync("docs/index.html","utf8");
-  assert.ok(html.includes('<script src="live-quote.js?v=1"></script>'));
-  assert.ok(html.includes('if(independent&&searchNote&&!Number.isFinite(s.reference_close_eur)&&typeof StockLiveQuote!=="undefined")'));
+  assert.ok(html.includes('<script src="live-quote.js?v=2"></script>'));
+  assert.ok(html.includes('if(independent&&searchNote&&!liveData&&!Number.isFinite(s.reference_close_eur)&&typeof StockLiveQuote!=="undefined")'));
   assert.ok(html.includes('event.preventDefault();event.stopPropagation();void fetchLive();'));
   assert.ok(html.includes('showTradeLevels:()=>$("showTradeLevels").checked,data:liveData'));
+  assert.ok(html.includes('if(liveData)s=StockLiveQuote.enrich(s,liveData,snapshot);'));
+  assert.ok(html.includes('const fresh=makeCard(base,mix,{...options,liveData:data});'),"loaded card is rebuilt with all values");
+
+  // Enrichment: EUR values, volatility and the entry/exit review from the fetched context.
+  const ctx={sma200_ratio:.08,sma200_native:370,crash_21_level_native:330,crash_peak_level_native:310,return_21d:.02,
+    drawdown_252d:-.05,atr14_native:6,crash_warning:false,correction_warning:false,risk_reference_native:384,
+    context_basis:"Yahoo adjusted OHLC, signal after close"};
+  const data={...series("SAN.PA",{currency:"USD"}),context:ctx,turnover:5e6,asof:"2026-11-03"};
+  data.points[data.points.length-1][0]="2026-11-03";
+  const snap={fx_eur:{USD:{eur_per_unit:.9,fx_date:"2026-11-03"}},market_context:{risk:"normal"}};
+  const e=live.enrich({ticker:"SAN.PA",name:"Sanofi"},data,snap,Date.parse("2026-11-04T12:00:00Z"));
+  assert.equal(e.entry_review,"entry_review");assert.equal(e.exit_review,"hold_review");
+  assert.ok(Math.abs(e.model_buy_limit_eur-(399-6)*.9)<1e-6);
+  assert.ok(Math.abs(e.model_initial_stop_eur-(399-6-15)*.9)<1e-6);
+  assert.ok(Math.abs(e.sma200_level_eur-370*.9)<1e-6);
+  assert.equal(e.avg_turnover_20d_eur,4.5e6);
+  assert.ok(e.volatility_252d>0&&e.long_risk_basis.startsWith("Yahoo adjusted log returns"));
+  assert.equal(live.enrich({ticker:"SAN.PA"},data,{...snap,market_context:{risk:"crash"}},Date.parse("2026-11-04T12:00:00Z")).entry_review,"wait_market");
+  assert.equal(live.enrich({ticker:"SAN.PA"},data,snap,Date.parse("2026-11-12T12:00:00Z")).entry_review,"stale_quote");
+  assert.equal(live.enrich({ticker:"SAN.PA"},{...data,context:null},snap).entry_review,"insufficient_data");
+  assert.equal(live.enrich({ticker:"SAN.PA"},data,{}).reference_close_eur,undefined,"no invented EUR rate");
   console.log("Live search quotes: validation, reuse until expiry, shared requests, bounded device storage, honest errors, EUR conversion and card wiring verified.");
 })().catch(error=>{console.error(error);process.exit(1);});

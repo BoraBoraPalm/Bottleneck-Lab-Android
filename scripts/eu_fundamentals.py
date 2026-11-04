@@ -233,15 +233,30 @@ def annual_from_report(report, lei, filing, today=None):
     return annual
 
 
-def load_annual(isin, lei=None, fetch=fetch_json, today=None):
+def load_annual(isin, lei=None, fetch=fetch_json, today=None, outcome=None):
+    """Returns (lei, annual or None); ``outcome`` receives the stopping stage."""
+    outcome = outcome if outcome is not None else {}
+    outcome["stage"] = "gleif"
     lei = lei or lei_for_isin(isin, fetch)
     if not lei:
+        outcome["result"] = "no_lei"
         return None, None
+    outcome["stage"] = "filings"
     filing = latest_filing(lei, fetch, today)
     if not filing:
+        outcome["result"] = "no_filing"
         return lei, None
+    outcome["stage"] = "report"
     report = fetch(SITE + filing["json_url"], timeout=60, max_bytes=MAX_REPORT_BYTES)
-    return lei, annual_from_report(report, lei, filing, today)
+    outcome["stage"] = "parse"
+    annual = annual_from_report(report, lei, filing, today)
+    outcome["result"] = "loaded" if annual else "no_annual_figures"
+    if not annual:
+        outcome["detail"] = {"period_end": filing["period_end"].isoformat(),
+                             "facts": len(report.get("facts") or {}),
+                             "ifrs_prefixes": sorted(p for p, u in ((report.get("documentInfo") or {}).get("namespaces") or {}).items()
+                                                     if isinstance(u, str) and "ifrs" in u)[:3]}
+    return lei, annual
 
 
 def _age(value, today):
@@ -289,18 +304,28 @@ def enrich_eu_fundamentals(stocks, prior, fetch=fetch_json, maximum=DEFAULT_MAX,
 
     def work(item):
         stock, isin = item
+        outcome = {}
         try:
-            return load_annual(isin, stock.get("lei"), fetch, today)
+            lei, result = load_annual(isin, stock.get("lei"), fetch, today, outcome)
+            return lei, result, outcome
         except Exception as exc:
-            return stock.get("lei"), exc
+            outcome["result"] = "error"
+            outcome["error"] = type(exc).__name__ + ": " + str(exc)[:120]
+            return stock.get("lei"), None, outcome
 
     loaded = errors = 0
+    results = {}
+    samples = []
     with ThreadPoolExecutor(max_workers=3) as pool:
-        for (stock, _), (lei, result) in zip(queue, pool.map(work, queue)):
+        for (stock, isin), (lei, result, outcome) in zip(queue, pool.map(work, queue)):
             stock["eu_fundamentals_checked_at"] = today.isoformat()
             if lei:
                 stock["lei"] = lei
-            if isinstance(result, Exception):
+            kind = outcome.get("result", "error") + ("@" + outcome["stage"] if outcome.get("result") == "error" else "")
+            results[kind] = results.get(kind, 0) + 1
+            if kind != "loaded" and len(samples) < 6:
+                samples.append({"ticker": stock["ticker"], "isin": isin, **outcome})
+            if outcome.get("result") == "error":
                 errors += 1
             elif result:
                 result["checked_at"] = today.isoformat()
@@ -308,7 +333,7 @@ def enrich_eu_fundamentals(stocks, prior, fetch=fetch_json, maximum=DEFAULT_MAX,
                 loaded += 1
     return {"source": SOURCE, "lei_source": "GLEIF ISIN-LEI mapping",
             "eligible_eea_stocks": len(candidates), "checked_this_run": len(queue),
-            "reports_loaded": loaded, "errors": errors,
+            "reports_loaded": loaded, "errors": errors, "results": results, "samples": samples,
             "with_esef_fundamentals": sum(1 for s, _ in candidates
                                           if (s.get("fundamentals") or {}).get("provider") == "filings.xbrl.org"),
             "limitations": "Annual consolidated IFRS figures only; banks/insurers may lack revenue; "
