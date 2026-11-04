@@ -157,7 +157,9 @@ def factors_for_stock(stock, asof=None):
         effective = min(now, price_date)
     except (TypeError, ValueError):
         return records
-    annual = _annual_is_current(f, effective) and f.get("currency") == "USD"
+    # Gross profitability and asset growth are ratios of one report, so any
+    # single reporting currency works (SEC: USD, ESEF: e.g. EUR).
+    annual = _annual_is_current(f, effective) and bool(re.fullmatch(r"[A-Z]{3}", str(f.get("currency") or "")))
     financial = (re.search(r"financ|bank|insurance|versicherung|finanz|reit", (stock.get("stock_sector") or "")+" "+(stock.get("name") or ""), re.I)
                  or ((stock.get("valuation_data") or {}).get("classification") or {}).get("type")
                  in {"bank", "insurer", "capital_markets", "reit_equity", "reit_mortgage"})
@@ -205,7 +207,7 @@ def factors_for_stock(stock, asof=None):
             records["value"]["reason"] = "Datiertes, vergleichbares Kurs/Buchwert-Verhältnis fehlt."
     else:
         for key in ("quality", "value", "investment"):
-            records[key]["reason"] = "Aktueller USD-Jahresbericht mit passenden Angaben fehlt."
+            records[key]["reason"] = "Aktueller Jahresbericht mit passenden Angaben fehlt."
     records["earnings"] = earnings_momentum(stock, effective, now)
     return records
 

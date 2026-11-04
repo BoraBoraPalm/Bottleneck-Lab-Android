@@ -23,6 +23,7 @@ from tr_at_universe import apply_tr_filter,load_tr_reference
 from trade_guidance import assign_decision,market_risk_from_quote
 from chart_history import chart_is_current,write_chart,chart_count,chart_file,prune_charts
 from sander_fundamentals import enrich_stocks as update_sander_fundamentals
+from eu_fundamentals import enrich_eu_fundamentals
 from growth_radar import enrich_growth
 from search_catalog import write_catalog
 from factor_research import enrich_factors
@@ -284,6 +285,11 @@ def main():
             and s["avg_turnover_20d_eur"]>=2000000)
         s["eligible_global_ranking"]=bool(s["eligible_liquid_ranking"]
             and isinstance(momentum,(int,float)) and math.isfinite(momentum))
+    # EU/EEA annual reports first; the SEC step keeps them and scores both.
+    try:
+        eu_status=enrich_eu_fundamentals(stocks,old,tr_isins=tr_reference["pdf_isins"])
+    except Exception as exc:
+        eu_status={"status":"unavailable","error":type(exc).__name__+": "+str(exc)[:160]}
     sander_status=update_sander_fundamentals(stocks,old)
     growth_status=enrich_growth(stocks,{
         "date":(market_quote or {}).get("price_date"),
@@ -302,11 +308,12 @@ def main():
         "version":13,
         "factor_research_status":factor_status,
         "search_catalog_info":{"file":"search-index.json","listings":search_count},
-        "fundamentals_info":{"source":"SEC-XBRL annual USD statements; direct or TGMCharts",
-            "coverage":"Primarily US filers; verified partial reports remain partial",
+        "fundamentals_info":{"source":"SEC-XBRL annual USD statements (direct or TGMCharts) and ESEF IFRS annual reports (filings.xbrl.org)",
+            "coverage":"US filers and EU/EEA issuers with ESEF reports; verified partial reports remain partial",
             "with_annual_data":sander_status["with_verified_fundamentals"],
             "colour_method":"Own metric-level orientation thresholds, sector-dependent; no overall stock rating"},
         "sander_research_status":sander_status,
+        "eu_fundamentals_status":eu_status,
         "growth_research_status":growth_status,
         "chart_data_info":{"on_demand":True,"files":chart_count(),"written_this_run":charts_written,"pruned_this_run":charts_pruned,
                            "default_period":"3M","max_history":"up to 10y",

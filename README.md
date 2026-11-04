@@ -78,6 +78,16 @@ Grundlagen und Definitionen: [SEC – Geschäftsberichte lesen](https://www.sec.
 und [SEC – XBRL-APIs](https://www.sec.gov/search-filings/edgar-application-programming-interfaces).
 Die Farbgrenzen stammen von uns, nicht von der SEC oder Beate Sander.
 
+## EU-Fundamentaldaten aus ESEF-Jahresberichten
+
+Für Aktien mit einer ISIN aus der EU bzw. dem EWR (z. B. FR, DE, AT, NL) lädt die Pipeline je Lauf bis zu 25 offizielle ESEF-Jahresfinanzberichte. Seit 2021 müssen Emittenten an EU-Börsen diese maschinenlesbar nach IFRS veröffentlichen. Quelle ist die frei zugängliche Sammlung [filings.xbrl.org](https://filings.xbrl.org/about.html) von XBRL International; die ISIN wird über [GLEIF](https://www.gleif.org/) eindeutig der LEI des Emittenten zugeordnet.
+
+- Verwendet werden nur Werte des Konzerns (LEI des Emittenten) ohne Segment- oder sonstige Dimensionen: Jahreszeiträume von 335–385 Tagen, die am Berichtsstichtag enden, und Bilanzwerte genau zu diesem Stichtag. Vorjahreswerte stammen aus den Vergleichszahlen desselben Berichts.
+- Nettogewinn und Eigenkapital sind die Anteile der Eigentümer des Mutterunternehmens, wie bei den SEC-Feldern. Ist eine Kennzahl nicht getaggt (häufig: Gesamtverbindlichkeiten oder Bruttogewinn), bleibt sie leer; es wird nichts abgeleitet. Widersprüchliche doppelte Werte bleiben ebenfalls leer.
+- Beträge stehen in der Berichtswährung (meist EUR). Kennzahlen, Farben, Quality (Bruttogewinn/Bilanzsumme), konservatives Bilanzwachstum und der Hoch-Tief-Mut-Filter verwenden dieselben Regeln wie bei SEC-Daten. Value (datiertes KBV) und Quartalsdaten gibt es für diese Quelle nicht.
+- Als Berichtsdatum gilt das Aufnahmedatum in der Sammlung, nicht der offizielle Veröffentlichungstag. Geprüfte Berichte werden nach 21 Tagen erneut abgefragt und höchstens 60 Tage weitergeführt; nach einem erfolglosen Versuch wird drei Tage gewartet. Vorrang haben Aktien ohne Daten, liquide Titel und Aktien der Trade-Republic-AT-Liste.
+- Banken und Versicherungen weisen oft keinen klassischen Umsatz aus. Schweizer oder britische Unternehmen ohne EU-Notierung sind nicht enthalten.
+
 ## Frühwachstum / Multibagger-Kandidaten (zusätzliche Checkbox)
 
 Die Option funktioniert allein oder im bestehenden gleichgewichteten Strategie-Mix.

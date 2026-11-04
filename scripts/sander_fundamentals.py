@@ -358,7 +358,7 @@ def enrich_stocks(stocks,prior,maximum=DEFAULT_MAX):
     for stock in stocks:
         previous=old.get(stock.get("ticker"),{})
         cached=previous.get("fundamentals")
-        if isinstance(cached,dict):
+        if isinstance(cached,dict) and not isinstance(stock.get("fundamentals"),dict):
             try:
                 age=(today-date.fromisoformat(cached["checked_at"])).days
                 if 0<=age<=28:stock["fundamentals"]=cached

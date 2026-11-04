@@ -122,7 +122,7 @@
       add(section,"p",stock.fundamentals_checked_at
         ?"Für diese Aktie sind derzeit keine verifizierbaren Jahreszahlen verfügbar. Zuletzt geprüft: "+stock.fundamentals_checked_at+"."
         :"Für diese Aktie liegen noch keine verifizierten Jahreszahlen vor. Die Abdeckung wird bei den Datenaktualisierungen schrittweise erweitert.","fund-empty");
-      add(section,"p","Die aktuelle Quelle deckt vor allem US-Unternehmen ab. Fehlende Daten bleiben grau.","fund-note");
+      add(section,"p","Quellen: SEC-Berichte (US) und ESEF-Jahresfinanzberichte (EU/EWR, schrittweise). Fehlende Daten bleiben grau.","fund-note");
       return;
     }
     add(section,"p","Geschäftsjahr bis "+(f.fy_end||"unbekannt")+" · Zuletzt berichtet: "+(f.filed||"unbekannt"),"fund-date");
@@ -144,6 +144,10 @@
     if((f.source||"").includes("TGMCharts")){
       const link=add(source,"a"," · TGMCharts");
       link.href="https://tgmcharts.com/";link.target="_blank";link.rel="noopener noreferrer";
+    }
+    if(typeof f.report_url==="string"&&f.report_url.startsWith("https://filings.xbrl.org/")){
+      const link=add(source,"a"," · Originalbericht (ESEF)");
+      link.href=f.report_url;link.target="_blank";link.rel="noopener noreferrer";
     }
     if(Number.isInteger(f.cik)&&f.cik>0){
       const link=add(source,"a"," · SEC-Berichte");
