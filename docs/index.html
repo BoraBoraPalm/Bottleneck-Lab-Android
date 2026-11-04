@@ -49,6 +49,9 @@ a{color:#8bdecf;text-decoration-thickness:1px;text-underline-offset:3px}
 .fit-tile strong,.fit-tile span{display:block}
 .fit-tile span{margin-top:3px;font-weight:400}
 .search-note{font-size:12px;color:#c2d4e2;padding:9px 0 0;line-height:1.5}
+.live-quote{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-top:9px}
+.live-quote-button{min-height:42px}
+.live-quote-status{font-size:12px;color:#c2d4e2;line-height:1.5}
 @media(min-width:650px){.stock-search-results{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .horizon-panel{margin:16px 0 10px;padding:15px;border:1px solid #486a78;border-radius:12px;background:#112b39}
 .horizon-panel h2{font-size:16px;margin:0 0 10px}
@@ -340,7 +343,7 @@ h1{font-size:27px}
     </details>
   </div>
   <div id="stockSearchResults" class="stock-search-results" aria-label="Suchergebnisse"></div>
-  <p class="small muted">Das Verzeichnis umfasst mehr Aktien als die Kandidatenliste. Charts und Fundamentaldaten erscheinen, soweit sie bereits vorhanden sind. Ein Namensfund bestätigt keine Handelbarkeit bei Trade Republic.</p>
+  <p class="small muted">Das Verzeichnis umfasst mehr Aktien als die Kandidatenliste. Charts und Fundamentaldaten erscheinen, soweit sie bereits vorhanden sind. Fehlt ein gespeicherter Kurs, holt „Kurs jetzt laden“ (oder das Aufklappen) den letzten Tagesschlusskurs direkt nach und merkt ihn sich auf diesem Gerät bis nach dem nächsten Börsenschluss. Ein Namensfund bestätigt keine Handelbarkeit bei Trade Republic.</p>
 </section>
 
 <details class="disclosure">
@@ -368,13 +371,14 @@ h1{font-size:27px}
 </details>
 <div class="footer">Bottleneck Lab · Stand der Daten siehe oben · keine Anlageberatung</div>
 </main>
-<script src="chart-widget.js"></script>
+<script src="chart-widget.js?v=2"></script>
 <script src="fundamentals-widget.js?v=1"></script>
 <script src="growth-widget.js?v=1"></script>
 <script src="stock-search.js?v=1"></script>
 <script src="research-factors.js?v=1"></script>
 <script src="holding-horizon.js?v=1"></script>
 <script src="strategy-fit.js?v=3"></script>
+<script src="live-quote.js?v=1"></script>
 <script>
 "use strict";
 const $=id=>document.getElementById(id);
@@ -486,11 +490,12 @@ function makeCard(s,mix,options={}){
   add(title,"span"," · "+(s.name||s.ticker));
   add(left,"div",regionOf(s)+" · "+(s.country||s.country_code||s.exchange||"Börse unbekannt")
     +(independent&&s.exchange?" · "+s.exchange:""),"stock-sub");
-  add(top,"div",eur(s.reference_close_eur),"stock-price");
+  const priceEl=add(top,"div",eur(s.reference_close_eur),"stock-price");
   const bottom=add(head,"div",null,"stock-bottom");
+  let searchNote=null;
   if(independent){
     add(bottom,"span",options.matchLabel||"Suchtreffer","strategy-score");
-    add(head,"div",Number.isFinite(s.reference_close_eur)
+    searchNote=add(head,"div",Number.isFinite(s.reference_close_eur)
       ?"Einzeltitel · unabhängig von den Kandidaten-Filtern"
       :"Zu diesem Titel liegen noch keine geprüften Kursdaten vor.","search-note");
   }else{
@@ -498,7 +503,7 @@ function makeCard(s,mix,options={}){
     add(head,"div","Faktoranteile: "+mix.parts.map(p=>FACTORS[p.key].label+
       " "+fmt(p.score,0)+"/100").join(" · "),"factor-detail");
   }
-  add(head,"div",Number.isFinite(s.momentum_12_2)?"12–2-Momentum: "+fmt(s.momentum_12_2*100,1)+" %":"12–2-Momentum: Historie fehlt","momentum");
+  const momentumEl=add(head,"div",Number.isFinite(s.momentum_12_2)?"12–2-Momentum: "+fmt(s.momentum_12_2*100,1)+" %":"12–2-Momentum: Historie fehlt","momentum");
   const flags=add(bottom,"span",null,"marks");
   add(flags,"span",s.tr_at_listed===true?"TR-AT ISIN ✓":"TR-AT offen",
       "chip "+(s.tr_at_listed===true?"ok":"unknown"));
@@ -546,14 +551,50 @@ function makeCard(s,mix,options={}){
   if(typeof StockResearch!=="undefined")StockResearch.render(article,s,independent?selectedSearchFits():activeFactors());
   const chartHost=add(article,"section",null,"chart-panel");
   chartHost.setAttribute("aria-label","Historischer Kursverlauf "+s.ticker);
-  let chartInstance=null;
-  article.addEventListener("toggle",()=>{
+  let chartInstance=null,liveData=null;
+  const openChart=()=>{
     if(article.open&&!chartInstance&&typeof StockCharts!=="undefined"){
       chartInstance=StockCharts.create(chartHost,s,{
-        showTradeLevels:()=>$("showTradeLevels").checked
+        showTradeLevels:()=>$("showTradeLevels").checked,data:liveData
       });
     }
-  });
+  };
+  article.addEventListener("toggle",openChart);
+  if(independent&&searchNote&&!Number.isFinite(s.reference_close_eur)&&typeof StockLiveQuote!=="undefined"){
+    // Search hit without stored quote: optional on-demand daily close.
+    const box=document.createElement("div");box.className="live-quote";
+    searchNote.after(box);
+    const button=add(box,"button","Kurs jetzt laden","btn secondary live-quote-button");
+    button.type="button";
+    const state=add(box,"span",null,"live-quote-status");
+    state.setAttribute("role","status");
+    let loading=false;
+    const showLive=data=>{
+      const q=StockLiveQuote.summary(data,StockLiveQuote.fxTable(snapshot));
+      const until=new Date(q.expires).toLocaleString("de-AT",{dateStyle:"short",timeStyle:"short"});
+      priceEl.textContent=Number.isFinite(q.eur)?"≈ "+eur(q.eur):fmt(q.close,2)+" "+q.currency;
+      searchNote.textContent="Schlusskurs vom "+q.asof+": "+fmt(q.close,2)+" "+q.currency
+        +(q.currency==="EUR"?"":Number.isFinite(q.eur)?" ≈ "+eur(q.eur)+" (Referenzwechselkurs"+(q.fx_date?" vom "+q.fx_date:"")+")":" · kein EUR-Referenzkurs")
+        +". Direkt bei Yahoo Finance abgerufen, auf diesem Gerät gespeichert bis "+until
+        +". Ohne Strategie-, Liquiditäts- oder Fundamentalprüfung.";
+      momentumEl.textContent=Number.isFinite(q.momentum_12_2)
+        ?"12–2-Momentum: "+fmt(q.momentum_12_2*100,1)+" % · aus der abgerufenen Kursreihe"
+        :"12–2-Momentum: Historie fehlt";
+      liveData=data;box.remove();
+      if(chartInstance){chartInstance.destroy();chartInstance=null;openChart();}
+    };
+    const fetchLive=async()=>{
+      if(loading||liveData)return;
+      loading=true;button.disabled=true;state.textContent="Lade Kurs …";
+      try{showLive(await StockLiveQuote.load(s.ticker));}
+      catch(error){state.textContent=String(error.message||error);button.disabled=false;}
+      finally{loading=false;}
+    };
+    button.addEventListener("click",event=>{event.preventDefault();event.stopPropagation();void fetchLive();});
+    const cached=StockLiveQuote.peek(s.ticker);
+    if(cached)showLive(cached);
+    else article.addEventListener("toggle",()=>{if(article.open)void fetchLive();});
+  }
   const detail=add(article,"div",null,"details");
   const items=[
     ["Kursdatum",s.price_date||"unbekannt"],

@@ -314,6 +314,9 @@ def main():
         "entry_review_count":sum(s.get("entry_review")=="entry_review" and s["eligible_global_ranking"] for s in stocks),
         "exit_review_count":sum(s.get("exit_review","").startswith("review_exit") and s["eligible_global_ranking"] for s in stocks),
         "fx_missing_currencies":missing,
+        # Reference rates for search quotes loaded on demand in the browser.
+        "fx_eur":{c:{"eur_per_unit":round(v["eur_per_unit"],12),"fx_date":v["fx_date"]}
+                  for c,v in sorted(fx.items()) if isinstance(v,dict) and isinstance(v.get("eur_per_unit"),(int,float))},
         "tr_at_verification":tr,
         "stocks":stocks,
         "errors":errors[:25],

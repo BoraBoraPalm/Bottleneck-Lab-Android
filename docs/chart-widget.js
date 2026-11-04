@@ -159,6 +159,16 @@ const StockCharts=(()=>{
     container.replaceChildren(title,toolbar,output,legend,note);
     repaint();
     const load=async()=>{
+      if(opts.data){
+        // Series fetched on demand for a search hit (same format as charts/*.json).
+        try{
+          data=checkedData(opts.data,stock.ticker);
+          note.textContent="Bereinigte Schlusskurse, auf den letzten Kurs skaliert · "+data.currency
+            +" · direkt bei Yahoo Finance abgerufen. Ohne Modell-Kauf-/Stop-Linien.";
+          repaint();
+        }catch(e){output.textContent="Kursreihe derzeit nicht verfügbar ("+String(e.message||e)+").";}
+        return;
+      }
       if(!stock.chart_available){
         output.textContent="Für diese Aktie ist noch keine historische Kursreihe veröffentlicht. Sie wird bei den nächsten Datenaktualisierungen ergänzt.";
         return;

@@ -6,8 +6,8 @@ function exactly(pattern,count,name){
 }
 exactly(/<html(?:\s[^>]*)?>/gi,1,"HTML opening");
 exactly(/<\/html>/gi,1,"HTML closing");
-exactly(/<script(?:\s[^>]*)?>/gi,8,"JS opening (seven widgets and inline)");
-exactly(/<\/script>/gi,8,"JS closing (seven widgets and inline)");
+exactly(/<script(?:\s[^>]*)?>/gi,9,"JS opening (eight widgets and inline)");
+exactly(/<\/script>/gi,9,"JS closing (eight widgets and inline)");
 if(!/<\/html>\s*$/i.test(html))throw new Error("Code leaked after </html>");
 const match=html.match(/<script>([\s\S]*?)<\/script>/i);
 if(!match)throw new Error("Missing inline script");
@@ -129,7 +129,7 @@ console.log("Growth display: three independent components, incomplete evidence a
 
 
 // Chart must remain lazy: fetched after <details> is opened, never at app start.
-if(!html.includes('<script src="chart-widget.js"></script>')||
+if(!html.includes('<script src="chart-widget.js?v=2"></script>')||
    !match[1].includes('article.addEventListener("toggle"')||
    !match[1].includes('StockCharts.create(chartHost,s,')||
    !match[1].includes('showTradeLevels:()=>$("showTradeLevels").checked')){
@@ -306,3 +306,4 @@ assert.ok(!html.includes('ATR(14) relativ zum Kurs · experimentell'),"Short-ter
 console.log("Research factors: four independent rank inputs, missing-data exclusion, colour/date consistency, shared search fit and full-year low volatility verified.");
 
 require("../tests/test_holding_horizon.cjs");
+require("../tests/test_live_quote.cjs");

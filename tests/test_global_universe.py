@@ -33,6 +33,17 @@ class WorldCoverageTest(unittest.TestCase):
         for (ticker,ex),want in expected.items():
             self.assertEqual(g.yahoo_ticker(ticker,ex),want,(ticker,ex))
         self.assertIsNone(g.yahoo_ticker("MC","Euronext")) # ambiguous Paris/Amsterdam
+        # Home-market Euronext listings only: country and ISIN country agree.
+        self.assertEqual(g.yahoo_ticker("SAN","Euronext","FR","FR0000120578"),"SAN.PA")
+        self.assertEqual(g.yahoo_ticker("ABI","Euronext","BE","BE0974293251"),"ABI.BR")
+        self.assertEqual(g.yahoo_ticker("EDP","Euronext","PT","PTEDP0AM0009"),"EDP.LS")
+        self.assertIsNone(g.yahoo_ticker("XYZ","Euronext","FR","NL0000000001"))
+        self.assertIsNone(g.yahoo_ticker("XYZ","Euronext","NL","NL0000000001"))
+        self.assertIsNone(g.yahoo_ticker("XYZ","Euronext","ES","ES0000000001"))
+        self.assertIsNone(g.yahoo_ticker("SAN","Euronext","FR",""))
+        for (ticker,ex),want in {("VOE","VSE"):"VOE.VI",("ASML","AMS"):"ASML.AS",("CEZ","PSE_CZ"):"CEZ.PR",
+                                 ("OTP","BSE_HU"):"OTP.BD",("SNP","BVB"):"SNP.RO"}.items():
+            self.assertEqual(g.yahoo_ticker(ticker,ex),want,(ticker,ex))
         self.assertIsNone(g.yahoo_ticker("ABCD","UNKNOWN"))
         self.assertIsNone(g.yahoo_ticker("123","SSE"))
         self.assertIsNone(g.yahoo_ticker("ABC","NASDAQXX"))

@@ -28,8 +28,14 @@ VENUES={
     "BORSA ITALIANA":".MI","BURSA":".KL","ATHEX":".AT",
     "TADAWUL":".SAU","QSE":".QA","BVMT":".TN",
     "BMV":".MX","BVC":".CL","BCBA":".BA","IDX":".JK",
-    "SET":".BK","MYX":".KL","PSE":".PS","HOSE":".VN"
+    "SET":".BK","MYX":".KL","PSE":".PS","HOSE":".VN",
+    "VSE":".VI","AMS":".AS","PSE_CZ":".PR","BSE_HU":".BD","BVB":".RO"
 }
+# The source labels Paris, Brussels and Lisbon jointly as "Euronext". Map such a
+# row only to its home venue, i.e. when listing country and ISIN country agree.
+# Foreign issuers on Euronext and Dutch rows (Amsterdam has its own code AMS)
+# stay unmapped instead of guessing a venue.
+EURONEXT_HOME={"FR":".PA","BE":".BR","PT":".LS"}
 # Vendor names change; source exchanges that are ambiguous (e.g. generic
 # Euronext) deliberately require extra market metadata before using a suffix.
 US_VENUES={"NASDAQ","NYSE","NYSE ARCA","NYSE MKT","AMEX","BATS","CBOE"}
@@ -57,10 +63,11 @@ def region_of(country):
     if code in EUROPE:return "Europa"
     return "Unbekannt"
 
-def yahoo_ticker(symbol,exchange):
+def yahoo_ticker(symbol,exchange,country=None,isin=None):
     """Convert *supported venue* native symbol, never a generic same-ticker match."""
     ticker=str(symbol or "").strip().upper()
     venue=str(exchange or "").strip().upper()
+    home=str(country or "").strip().upper()
     if not SYMBOL.fullmatch(ticker):return None
     if ticker.isdigit() and len(ticker)>6:return None
     # Disallow unsupported symbols instead of constructing a potentially
@@ -69,6 +76,8 @@ def yahoo_ticker(symbol,exchange):
     if venue in US_VENUES:
         return base if base[0].isalpha() and len(base)<=11 else None
     suffix=VENUES.get(venue)
+    if venue=="EURONEXT" and home in EURONEXT_HOME and str(isin or "").strip().upper()[:2]==home:
+        suffix=EURONEXT_HOME[home]
     if not suffix:return None
     if venue=="HKEX" and ticker.isdigit():
         base=ticker.zfill(4) if len(ticker)<=4 else ticker
@@ -99,7 +108,7 @@ def ingest_global_csv(blob,minimum=2000):
         if identity in known_keys:continue
         known_keys.add(identity)
         listed[exchange]+=1
-        converted=yahoo_ticker(original,exchange)
+        converted=yahoo_ticker(original,exchange,row.get("country_code"),row.get("isin"))
         if not converted:
             unsupported[exchange]+=1
             continue
