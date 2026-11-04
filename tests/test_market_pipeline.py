@@ -48,7 +48,11 @@ class SimpleMarketTest(unittest.TestCase):
                "FRESH.PA":{"reference_isin":"FR0000000003"},"OTHER.L":{"reference_isin":"GB0000000004"}}
         cache={"OLD.DE":{"last_checked_at":"2026-11-01T00:00:00Z"},"FRESH.PA":{"last_checked_at":"2026-11-04T00:00:00Z"}}
         listed={"AT0000000001","DE0000000002","FR0000000003"}
+        for t,c in (("NEW.VI","AT"),("OLD.DE","DE"),("FRESH.PA","FR"),("OTHER.L","GB")):known[t]["country_code"]=c
         self.assertEqual(m.tr_priority(known,cache,listed,limit=3),["NEW.VI","OLD.DE","FRESH.PA"])
+        known["FOREIGN.F"]={"reference_isin":"AT0000000009","country_code":"DE"}
+        self.assertEqual(m.tr_priority(known,cache,listed|{"AT0000000009"},limit=2),["NEW.VI","FOREIGN.F"],
+                         "never-checked first; home listing before foreign line")
         self.assertEqual(m.tr_priority(known,cache,listed,limit=1),["NEW.VI"])
         self.assertEqual(m.tr_priority(known,cache,None),[])
         self.assertNotIn("OTHER.L",m.tr_priority(known,cache,listed))
@@ -60,7 +64,8 @@ class SimpleMarketTest(unittest.TestCase):
         misses=m.recent_misses(old,today)
         self.assertEqual(misses,{"GONE.PA":"2026-10-20"})
         known={"GONE.PA":{"reference_isin":"FR0000000001","region":"Europa"},"OK.PA":{"reference_isin":"FR0000000002","region":"Europa"}}
-        batch=m.requested_batch(known,{},{"FR0000000001","FR0000000002"},misses)
+        batch=m.requested_batch(known,{},{"FR0000000001","FR0000000002"},misses,slot=7)
+        self.assertNotEqual(m.grouped_batch(known,set(),7,1),m.grouped_batch(known,set(),8,1),"each run gets a new slice")
         self.assertNotIn("GONE.PA",batch);self.assertIn("OK.PA",batch)
 
     def test_adjusted_momentum_ignores_share_split(self):

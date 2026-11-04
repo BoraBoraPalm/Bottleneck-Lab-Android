@@ -12,6 +12,7 @@ import math
 import os
 import re
 import time
+import zlib
 from collections import Counter
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import date, datetime, timedelta, timezone
@@ -171,12 +172,22 @@ def momentum_from_chart(ticker,price_date):
     except (ValueError,OSError,TypeError,KeyError,IndexError):
         return None
 
+def home_listing(meta):
+    """Listing in the issuer's ISIN country (e.g. FR ISIN on Paris), not a foreign line."""
+    isin=str(meta.get("reference_isin") or "").upper()
+    return len(isin)==12 and isin[:2]==str(meta.get("country_code") or "").upper()
+
 def tr_priority(known,cache,tr_isins,limit=TR_PROBE):
-    """Directory stocks whose ISIN is in the official TR AT list, oldest check first."""
+    """Directory stocks whose ISIN is in the official TR AT list, oldest check first.
+
+    Home listings come before foreign secondary lines, which Yahoo often does
+    not carry; ties are spread across exchanges instead of alphabetically.
+    """
     if not tr_isins or limit<=0:return []
     listed=[t for t,meta in known.items()
             if str(meta.get("reference_isin") or "").upper() in tr_isins]
-    return sorted(listed,key=lambda t:(str((cache.get(t) or {}).get("last_checked_at") or ""),t))[:limit]
+    return sorted(listed,key=lambda t:(str((cache.get(t) or {}).get("last_checked_at") or ""),
+        not home_listing(known[t]),zlib.crc32(t.encode()),t))[:limit]
 
 def recent_misses(old,today=None):
     today=today or datetime.now(timezone.utc).date()
@@ -189,8 +200,9 @@ def recent_misses(old,today=None):
         if isinstance(ticker,str) and 0<=age<MISS_DAYS:kept[ticker]=day
     return kept
 
-def requested_batch(known,cache,tr_isins=None,misses=None):
-    slot=int(datetime.now(timezone.utc).timestamp()//21600)
+def requested_batch(known,cache,tr_isins=None,misses=None,slot=None):
+    # One new rotation slice per run (also for extra runs after a push).
+    slot=int(datetime.now(timezone.utc).timestamp()//21600) if slot is None else slot
     pool={t:m for t,m in known.items() if t not in (misses or {})}
     core=grouped_batch(pool,CURATED_SYMBOLS,slot,PROBE)+tr_priority(pool,cache,tr_isins)
     # Repeat a small portion of recently scanned top momentum names only for
@@ -260,10 +272,13 @@ def main():
     cache=cached_quotes(old,known)
     tr_reference=load_tr_reference()
     misses=recent_misses(old)
-    targets=requested_batch(known,cache,tr_reference["pdf_isins"],misses)
+    previous_slot=old.get("rotation_slot")
+    slot=previous_slot+1 if isinstance(previous_slot,int) and previous_slot>=0 else int(time.time()//21600)
+    targets=requested_batch(known,cache,tr_reference["pdf_isins"],misses,slot)
     checked=datetime.now(timezone.utc).isoformat().replace("+00:00","Z")
     success=0
     failures=Counter()
+    miss_suffix=Counter()
     charts_written=0
     with ThreadPoolExecutor(max_workers=WORKERS) as pool:
         futs={pool.submit(quote,t,SEED_NAMES.get(t) or CURATED.get(t) or "Global"):t for t in targets}
@@ -284,6 +299,7 @@ def main():
             else:
                 kind=failure_kind(error)
                 failures[kind]+=1
+                miss_suffix[(t.rsplit(".",1)[1] if "." in t else "US")+" "+kind]+=1
                 if kind=="HTTP 404" and t not in CURATED_SYMBOLS:misses[t]=datetime.now(timezone.utc).date().isoformat()
                 if error and len(errors)<30:errors.append(t+": "+str(error)[:135])
     if len(cache)<25:raise RuntimeError("Fewer than 25 valid quotes; refusing publication")
@@ -368,6 +384,7 @@ def main():
         "exit_review_count":sum(s.get("exit_review","").startswith("review_exit") and s["eligible_global_ranking"] for s in stocks),
         "fx_missing_currencies":missing,
         "quote_misses":{t:d for t,d in sorted(misses.items()) if t in known},
+        "rotation_slot":slot,
         # Reference rates for search quotes loaded on demand in the browser.
         "fx_eur":{c:{"eur_per_unit":round(v["eur_per_unit"],12),"fx_date":v["fx_date"]}
                   for c,v in sorted(fx.items()) if isinstance(v,dict) and isinstance(v.get("eur_per_unit"),(int,float))},
@@ -387,7 +404,7 @@ def main():
         "TR_verified":tr["verified"],"sander_candidates":sander_status["qualified_candidates"],
         "sander_fundamentals":sander_status["with_verified_fundamentals"],"chart_files":chart_count(),
         "charts_updated":charts_written,"errors":len(errors),
-        "targets":len(targets),"success":success,"failures":dict(failures.most_common(8)),"skipped_misses":len(misses),
+        "targets":len(targets),"success":success,"failures":dict(failures.most_common(8)),"skipped_misses":len(misses),"rotation_slot":slot,"failures_by_suffix":dict(miss_suffix.most_common(10)),
         "charts_pruned":charts_pruned,
         "eu":{k:eu_status.get(k) for k in ("eligible_eea_stocks","checked_this_run","reports_loaded","errors","results","samples","error","with_esef_fundamentals")},
         "duration_s":round(time.monotonic()-started,1)
