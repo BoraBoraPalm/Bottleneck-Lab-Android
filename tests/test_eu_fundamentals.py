@@ -117,7 +117,9 @@ class ReportParsing(unittest.TestCase):
         self.assertEqual(fallback["net_income"], 6800e6, "total profit only if the parent share is untagged")
 
     def test_unusable_reports_are_rejected(self):
-        self.assertIsNone(eu.annual_from_report(report(), LEI, {**FILING, "period_end": date(2024, 3, 31)}, TODAY))
+        self.assertIsNone(eu.annual_from_report(report(), LEI, {**FILING, "period_end": date(2024, 9, 30)}, TODAY))
+        older = eu.annual_from_report(report(), LEI, {**FILING, "period_end": date(2025, 3, 31)}, TODAY)
+        self.assertIsNone(older, "facts end 2025-12-31, not on the stated period end")
         two = report(facts={"usd": fact("ifrs-full:Assets", 1e9, END, unit="iso4217:USD")})
         self.assertIsNone(eu.annual_from_report(two, LEI, FILING, TODAY), "mixed reporting currencies")
         self.assertIsNone(eu.annual_from_report(report(), "5493001KJTIIGC8Y1R12", FILING, TODAY), "facts of another LEI only")
@@ -179,7 +181,7 @@ class Lookups(unittest.TestCase):
             if url.startswith(eu.GLEIF):
                 return gleif(LEI)
             if "/api/entities/" in url:
-                return filings(filing_row("2023-12-31", added="2024-04-01 10:00:00"))
+                return filings(filing_row("2023-06-30", added="2024-04-01 10:00:00"))
             raise AssertionError("report must not be downloaded")
         outcome = {}
         self.assertEqual(eu.load_annual("FR0000120578", None, fetch, TODAY, outcome), (LEI, None))

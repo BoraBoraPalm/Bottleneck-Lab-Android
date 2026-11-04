@@ -35,7 +35,10 @@ DEFAULT_MAX = 25
 REFRESH_DAYS = 21      # re-check a verified report after three weeks
 KEEP_DAYS = 60         # keep a verified report this long if re-checks fail
 RETRY_DAYS = 3         # wait after an unsuccessful lookup
-MAX_REPORT_AGE = 550   # same staleness limit as the display
+# Same outer limit as the SEC path (760 days). Reports older than 550 days are
+# shown for information only: display and factors suspend their ratings, as
+# the collection sometimes lacks the newest report (e.g. EssilorLuxottica).
+MAX_REPORT_AGE = 760
 MAX_REPORT_BYTES = 60_000_000
 EEA = {"AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IE", "IT",
        "LV", "LT", "LU", "MT", "NL", "PL", "PT", "RO", "SK", "SI", "ES", "SE", "NO", "IS", "LI"}
