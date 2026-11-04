@@ -61,6 +61,8 @@ assert.equal((await worker.fetch(new Request("https://w.example/quote?symbol=X",
 for(const bad of ["","../x","a/b","https://x","A B","X".repeat(21)])
   assert.equal((await worker.fetch(new Request("https://w.example/quote?symbol="+encodeURIComponent(bad)))).status,400,bad);
 assert.equal((await worker.fetch(new Request("https://w.example/other"))).status,404);
+const version=await worker.fetch(new Request("https://w.example/version"));
+assert.equal(version.status,200);assert.ok((await version.json()).features.includes("context"));
 assert.equal((await worker.fetch(new Request("https://w.example/quote?symbol=SAP.DE",{method:"POST"}))).status,405);
 const direct=await worker.fetch(new Request("https://w.example/quote?symbol=SAP.DE"));
 assert.equal(direct.status,200);assert.equal(direct.headers.get("access-control-allow-origin"),null);

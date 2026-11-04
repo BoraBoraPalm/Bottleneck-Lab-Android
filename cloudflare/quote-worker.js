@@ -8,6 +8,7 @@
 const SITE = "https://boraborapalm.github.io";
 const SYMBOL = /^[A-Z0-9][A-Z0-9.\-]{0,19}$/;
 const SETTLE = 1800; // Sekunden nach Handelsschluss, bis der Schlusskurs als final gilt
+export const VERSION = "2026-11-04.3"; // /version zeigt, welche Fassung Cloudflare ausliefert
 
 export default {
   async fetch(request) {
@@ -17,6 +18,7 @@ export default {
     if (request.method === "OPTIONS") return reply(null, 204, cors);
     if (request.method !== "GET") return reply({ error: "method" }, 405, cors);
     const url = new URL(request.url);
+    if (url.pathname === "/version") return reply({ version: VERSION, features: ["context", "turnover", "expires"] }, 200, cors);
     if (url.pathname !== "/quote") return reply({ error: "path" }, 404, cors);
     const symbol = (url.searchParams.get("symbol") || "").toUpperCase();
     if (!SYMBOL.test(symbol)) return reply({ error: "symbol" }, 400, cors);
