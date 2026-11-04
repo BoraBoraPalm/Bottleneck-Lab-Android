@@ -1,0 +1,9 @@
+// Cloudflare Workers Builds: deploys cloudflare/quote-worker.js automatically
+// on every push to master. The name must match the Worker (project) name in
+// the Cloudflare dashboard. The app works without this worker.
+{
+  "name": "bottleneck-lab-android",
+  "main": "cloudflare/quote-worker.js",
+  "compatibility_date": "2026-09-01",
+  "workers_dev": true
+}
