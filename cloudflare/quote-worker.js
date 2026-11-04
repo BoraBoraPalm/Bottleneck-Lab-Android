@@ -8,17 +8,55 @@
 const SITE = "https://boraborapalm.github.io";
 const SYMBOL = /^[A-Z0-9][A-Z0-9.\-]{0,19}$/;
 const SETTLE = 1800; // Sekunden nach Handelsschluss, bis der Schlusskurs als final gilt
-export const VERSION = "2026-11-04.3"; // /version zeigt, welche Fassung Cloudflare ausliefert
+export const VERSION = "2026-11-04.4"; // /version zeigt, welche Fassung Cloudflare ausliefert
+const LOG_DAYS = 45, LOG_SIZE = 500;
+
+// Merkt sich, welche Aktien in der Suche geladen wurden (Durable Object mit
+// SQLite, Gratis-Tarif). Der GitHub-Datenlauf liest /requested und prüft diese
+// Aktien zuerst vollständig, mit Fundamentaldaten. Nur Börsensymbole, keine
+// Personen- oder Gerätedaten.
+export class RequestLog {
+  constructor(ctx) {
+    this.sql = ctx.storage.sql;
+    this.sql.exec("CREATE TABLE IF NOT EXISTS requested (symbol TEXT PRIMARY KEY, last INTEGER NOT NULL, hits INTEGER NOT NULL)");
+  }
+  async fetch(request) {
+    const url = new URL(request.url), now = Date.now();
+    if (url.pathname === "/add") {
+      const symbol = url.searchParams.get("symbol") || "";
+      if (!SYMBOL.test(symbol)) return new Response("symbol", { status: 400 });
+      this.sql.exec("INSERT INTO requested (symbol, last, hits) VALUES (?, ?, 1) ON CONFLICT(symbol) DO UPDATE SET last = excluded.last, hits = hits + 1", symbol, now);
+      this.sql.exec("DELETE FROM requested WHERE last < ?", now - LOG_DAYS * 86400000);
+      this.sql.exec("DELETE FROM requested WHERE symbol NOT IN (SELECT symbol FROM requested ORDER BY last DESC LIMIT ?)", LOG_SIZE);
+      return new Response("ok");
+    }
+    if (url.pathname === "/list") {
+      const rows = this.sql.exec("SELECT symbol, last, hits FROM requested ORDER BY last DESC LIMIT ?", LOG_SIZE).toArray();
+      return Response.json({ version: 1, days: LOG_DAYS,
+        symbols: rows.map(r => ({ symbol: r.symbol, last: new Date(r.last).toISOString(), hits: r.hits })) });
+    }
+    return new Response("path", { status: 404 });
+  }
+}
+
+const requestLog = env => env && env.REQUESTS ? env.REQUESTS.get(env.REQUESTS.idFromName("search-log")) : null;
 
 export default {
-  async fetch(request) {
+  async fetch(request, env, ctx) {
     const origin = request.headers.get("Origin");
     if (origin && origin !== SITE) return reply({ error: "origin" }, 403, null);
     const cors = origin ? SITE : null;
     if (request.method === "OPTIONS") return reply(null, 204, cors);
     if (request.method !== "GET") return reply({ error: "method" }, 405, cors);
     const url = new URL(request.url);
-    if (url.pathname === "/version") return reply({ version: VERSION, features: ["context", "turnover", "expires"] }, 200, cors);
+    if (url.pathname === "/version")
+      return reply({ version: VERSION, features: ["context", "turnover", "expires"].concat(requestLog(env) ? ["requested"] : []) }, 200, cors);
+    if (url.pathname === "/requested") {
+      const log = requestLog(env);
+      if (!log) return reply({ version: 1, symbols: [] }, 200, cors);
+      const listed = await log.fetch("https://log/list");
+      return reply(await listed.json(), listed.status, cors);
+    }
     if (url.pathname !== "/quote") return reply({ error: "path" }, 404, cors);
     const symbol = (url.searchParams.get("symbol") || "").toUpperCase();
     if (!SYMBOL.test(symbol)) return reply({ error: "symbol" }, 400, cors);
@@ -30,7 +68,11 @@ export default {
           { headers: { "User-Agent": "Mozilla/5.0 (compatible; BottleneckLab/1.0)", Accept: "application/json" } });
         if (!upstream.ok) { status = "upstream_" + upstream.status; continue; }
         const chart = convert(symbol, await upstream.json(), Date.now() / 1000);
-        if (chart) return reply(chart, 200, cors, chart.max_age);
+        if (chart) {
+          const log = requestLog(env);
+          if (log && ctx) ctx.waitUntil(log.fetch("https://log/add?symbol=" + encodeURIComponent(symbol)).catch(() => null));
+          return reply(chart, 200, cors, chart.max_age);
+        }
         status = "no_data";
       } catch (error) {
         status = "upstream_error";

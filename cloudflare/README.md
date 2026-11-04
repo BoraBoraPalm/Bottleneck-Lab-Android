@@ -4,6 +4,7 @@ Kleiner Cloudflare Worker im Gratis-Tarif, der für die Aktiensuche einen einzel
 
 - `quote-worker.js`: der Worker. Feste Zieladresse (Yahoo Chart), strenge Symbolprüfung, Browserzugriff nur von `https://boraborapalm.github.io`.
 - `../wrangler.jsonc` (im Hauptordner): Konfiguration für das automatische Deployment über Cloudflare Workers Builds. Projektname `bottleneck-lab-android`, Git branch `master`, Deploy command `npx wrangler deploy`, kein Build command.
+- `RequestLog` (Durable Object mit SQLite, Gratis-Tarif): merkt sich nur die Börsensymbole erfolgreich geladener Suchtreffer, höchstens 500 und höchstens 45 Tage. `/requested` gibt diese Liste aus; der GitHub-Datenlauf prüft diese Aktien zuerst vollständig (Kurse, EU-/US-Fundamentaldaten). Die Liste ist öffentlich abrufbar und enthält keine Personen- oder Gerätedaten.
 - Test: `node tests/test_quote_worker.mjs`
 
 **Zwischenspeichern:** Der Worker liefert nur abgeschlossene Schlusskurse. Den Balken einer noch laufenden Sitzung lässt er weg. `expires` und `Cache-Control` gelten bis 30 Minuten nach dem nächsten regulären Handelsschluss, höchstens 24 Stunden. So lange verwendet der Browser die gespeicherte Antwort. Fehler werden nie zwischengespeichert.

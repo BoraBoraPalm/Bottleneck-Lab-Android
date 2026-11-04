@@ -5,5 +5,9 @@
   "name": "bottleneck-lab-android",
   "main": "cloudflare/quote-worker.js",
   "compatibility_date": "2026-09-01",
-  "workers_dev": true
+  "workers_dev": true,
+  // Search log (symbols loaded on demand) for the next data run; SQLite-backed
+  // Durable Objects are part of the Workers Free plan.
+  "durable_objects": { "bindings": [{ "name": "REQUESTS", "class_name": "RequestLog" }] },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["RequestLog"] }]
 }
