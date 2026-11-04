@@ -35,7 +35,10 @@ OTHER="https://www.nasdaqtrader.com/dynamic/SymDir/otherlisted.txt"
 PROBE=int(os.getenv("BTL_NEW_PER_RUN","205"))
 # Additional directory stocks in Trade Republic's official AT list per run,
 # least recently checked first, so a TR user's search finds stored quotes.
-TR_PROBE=int(os.getenv("BTL_TR_PER_RUN","150"))
+TR_PROBE=int(os.getenv("BTL_TR_PER_RUN","250"))
+# Symbols Yahoo does not know (HTTP 404) are skipped for a while instead of
+# using a third of every run on them again.
+MISS_DAYS=30
 WORKERS=int(os.getenv("BTL_WORKERS","7"))
 MAX_AGE=timedelta(days=8)
 DATE_FMT="%Y-%m-%d"
@@ -175,9 +178,21 @@ def tr_priority(known,cache,tr_isins,limit=TR_PROBE):
             if str(meta.get("reference_isin") or "").upper() in tr_isins]
     return sorted(listed,key=lambda t:(str((cache.get(t) or {}).get("last_checked_at") or ""),t))[:limit]
 
-def requested_batch(known,cache,tr_isins=None):
+def recent_misses(old,today=None):
+    today=today or datetime.now(timezone.utc).date()
+    kept={}
+    for ticker,day in ((old or {}).get("quote_misses") or {}).items():
+        try:
+            age=(today-date.fromisoformat(day)).days
+        except (TypeError,ValueError):
+            continue
+        if isinstance(ticker,str) and 0<=age<MISS_DAYS:kept[ticker]=day
+    return kept
+
+def requested_batch(known,cache,tr_isins=None,misses=None):
     slot=int(datetime.now(timezone.utc).timestamp()//21600)
-    core=grouped_batch(known,CURATED_SYMBOLS,slot,PROBE)+tr_priority(known,cache,tr_isins)
+    pool={t:m for t,m in known.items() if t not in (misses or {})}
+    core=grouped_batch(pool,CURATED_SYMBOLS,slot,PROBE)+tr_priority(pool,cache,tr_isins)
     # Repeat a small portion of recently scanned top momentum names only for
     # fresh dates, not because any evidence proves an alpha forecast.
     extra=sorted((s for s in cache.values() if s.get("momentum_12_2") is not None),
@@ -244,7 +259,8 @@ def main():
     known,global_details,errors=discover(old)
     cache=cached_quotes(old,known)
     tr_reference=load_tr_reference()
-    targets=requested_batch(known,cache,tr_reference["pdf_isins"])
+    misses=recent_misses(old)
+    targets=requested_batch(known,cache,tr_reference["pdf_isins"],misses)
     checked=datetime.now(timezone.utc).isoformat().replace("+00:00","Z")
     success=0
     failures=Counter()
@@ -266,7 +282,9 @@ def main():
                 cache[t]=r
                 success+=1
             else:
-                failures[failure_kind(error)]+=1
+                kind=failure_kind(error)
+                failures[kind]+=1
+                if kind=="HTTP 404" and t not in CURATED_SYMBOLS:misses[t]=datetime.now(timezone.utc).date().isoformat()
                 if error and len(errors)<30:errors.append(t+": "+str(error)[:135])
     if len(cache)<25:raise RuntimeError("Fewer than 25 valid quotes; refusing publication")
     # Only prune when the previous cache was available; otherwise a single
@@ -349,6 +367,7 @@ def main():
         "entry_review_count":sum(s.get("entry_review")=="entry_review" and s["eligible_global_ranking"] for s in stocks),
         "exit_review_count":sum(s.get("exit_review","").startswith("review_exit") and s["eligible_global_ranking"] for s in stocks),
         "fx_missing_currencies":missing,
+        "quote_misses":{t:d for t,d in sorted(misses.items()) if t in known},
         # Reference rates for search quotes loaded on demand in the browser.
         "fx_eur":{c:{"eur_per_unit":round(v["eur_per_unit"],12),"fx_date":v["fx_date"]}
                   for c,v in sorted(fx.items()) if isinstance(v,dict) and isinstance(v.get("eur_per_unit"),(int,float))},
@@ -368,7 +387,7 @@ def main():
         "TR_verified":tr["verified"],"sander_candidates":sander_status["qualified_candidates"],
         "sander_fundamentals":sander_status["with_verified_fundamentals"],"chart_files":chart_count(),
         "charts_updated":charts_written,"errors":len(errors),
-        "targets":len(targets),"success":success,"failures":dict(failures.most_common(8)),
+        "targets":len(targets),"success":success,"failures":dict(failures.most_common(8)),"skipped_misses":len(misses),
         "charts_pruned":charts_pruned,
         "eu":{k:eu_status.get(k) for k in ("eligible_eea_stocks","checked_this_run","reports_loaded","errors","results","samples","error","with_esef_fundamentals")},
         "duration_s":round(time.monotonic()-started,1)

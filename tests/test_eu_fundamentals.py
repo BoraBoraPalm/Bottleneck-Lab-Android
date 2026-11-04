@@ -144,6 +144,24 @@ class Lookups(unittest.TestCase):
         self.assertEqual(chosen["period_end"], date(2025, 12, 31))
         self.assertEqual(chosen["added"], date(2026, 3, 1))
         self.assertIsNone(eu.latest_filing(LEI, lambda url, **k: filings(), TODAY))
+        from urllib.error import HTTPError
+        def missing(url, **k):
+            raise HTTPError(url, 404, "NOT FOUND", {}, None)
+        self.assertIsNone(eu.latest_filing(LEI, missing, TODAY), "issuer unknown to the collection")
+
+    def test_old_report_is_not_downloaded(self):
+        calls = []
+        def fetch(url, **kw):
+            calls.append(url)
+            if url.startswith(eu.GLEIF):
+                return gleif(LEI)
+            if "/api/entities/" in url:
+                return filings(filing_row("2023-12-31", added="2024-04-01 10:00:00"))
+            raise AssertionError("report must not be downloaded")
+        outcome = {}
+        self.assertEqual(eu.load_annual("FR0000120578", None, fetch, TODAY, outcome), (LEI, None))
+        self.assertEqual(outcome["result"], "report_too_old")
+        self.assertEqual(len(calls), 2)
 
 
 class Enrichment(unittest.TestCase):

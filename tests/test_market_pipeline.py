@@ -54,6 +54,15 @@ class SimpleMarketTest(unittest.TestCase):
         self.assertNotIn("OTHER.L",m.tr_priority(known,cache,listed))
         self.assertIn("NEW.VI",m.requested_batch(known,cache,listed))
 
+    def test_unknown_yahoo_symbols_are_skipped_for_thirty_days(self):
+        today=datetime(2026,11,4,tzinfo=timezone.utc).date()
+        old={"quote_misses":{"GONE.PA":"2026-10-20","OLD.PA":"2026-09-01","BAD":"x"}}
+        misses=m.recent_misses(old,today)
+        self.assertEqual(misses,{"GONE.PA":"2026-10-20"})
+        known={"GONE.PA":{"reference_isin":"FR0000000001","region":"Europa"},"OK.PA":{"reference_isin":"FR0000000002","region":"Europa"}}
+        batch=m.requested_batch(known,{},{"FR0000000001","FR0000000002"},misses)
+        self.assertNotIn("GONE.PA",batch);self.assertIn("OK.PA",batch)
+
     def test_adjusted_momentum_ignores_share_split(self):
         today=datetime.now(timezone.utc).date()
         bars=[]

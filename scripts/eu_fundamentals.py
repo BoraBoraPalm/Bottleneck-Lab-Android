@@ -15,6 +15,7 @@ import math
 import re
 from concurrent.futures import ThreadPoolExecutor
 from datetime import date, datetime, timedelta, timezone
+from urllib.error import HTTPError
 from urllib.request import Request, urlopen
 
 from sander_fundamentals import _derived_metrics
@@ -92,7 +93,12 @@ def lei_for_isin(isin, fetch=fetch_json):
 
 def latest_filing(lei, fetch=fetch_json, today=None):
     today = today or today_utc()
-    payload = fetch(FILINGS.format(lei=lei), timeout=30, max_bytes=4_000_000)
+    try:
+        payload = fetch(FILINGS.format(lei=lei), timeout=30, max_bytes=4_000_000)
+    except HTTPError as exc:
+        if exc.code == 404:  # issuer not in the collection
+            return None
+        raise
     choices = []
     for row in payload.get("data") or []:
         a = (row or {}).get("attributes") or {}
@@ -245,6 +251,10 @@ def load_annual(isin, lei=None, fetch=fetch_json, today=None, outcome=None):
     filing = latest_filing(lei, fetch, today)
     if not filing:
         outcome["result"] = "no_filing"
+        return lei, None
+    if ((today or today_utc()) - filing["period_end"]).days > MAX_REPORT_AGE:
+        outcome["result"] = "report_too_old"
+        outcome["detail"] = {"period_end": filing["period_end"].isoformat()}
         return lei, None
     outcome["stage"] = "report"
     report = fetch(SITE + filing["json_url"], timeout=60, max_bytes=MAX_REPORT_BYTES)
