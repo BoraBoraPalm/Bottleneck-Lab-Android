@@ -289,7 +289,7 @@ assert.equal(fitFor({...growthFit,growth_radar:{...growthFit.growth_radar,status
 const weakGrowth={...growthFit,growth_radar:{...growthFit.growth_radar,status:"criteria_not_met",revenue_acceleration:-.1}};
 assert.equal(fitFor(weakGrowth,"growth").state,"yellow");
 assert.ok(fitFor(weakGrowth,"growth").reason.includes("Beschleunigung"));
-assert.ok(match[1].includes('StockFit.render(head,s,selectedSearchFits(),{horizon:currentHorizon()})'),"Search cards must show selected per-strategy fit and the chosen time horizon");
+assert.ok(match[1].includes('StockFit.render(article,s,selectedSearchFits(),{horizon:currentHorizon()})'),"Search cards must show selected per-strategy fit and the chosen time horizon");
 assert.ok(match[1].includes('updateTimePlan();searchController.refresh(false);'),"Fit selections must update cards without filtering search results or rebuilding the directory");
 console.log("Strategy fit: five strategies, four labelled colours, grey missing/stale evidence, partial-rule explanations and live checkbox updates verified.");
 

@@ -545,7 +545,6 @@ function makeCard(s,mix,options={}){
   add(actions,"span",exitText[s.exit_review]||"Ausstieg ungeprüft",
       "chip "+((s.exit_review||"").startsWith("review_exit")?"action-sell":"unknown"));
   if(typeof StockFundamentals!=="undefined")StockFundamentals.preview(head,s);
-  if(independent&&typeof StockFit!=="undefined")StockFit.render(head,s,selectedSearchFits(),{horizon:currentHorizon()});
   if(!independent)StockHorizon.renderCard(head,activeFactors(),currentHorizon());
   const showGrowth=(independent?selectedSearchFits().includes("growth")&&Boolean(s.growth_radar?.quarters?.length):activeFactors().includes("growth"))
     &&typeof StockGrowth!=="undefined";
@@ -566,6 +565,9 @@ function makeCard(s,mix,options={}){
       "trade-footnote");
   }
   if(typeof StockFundamentals!=="undefined")StockFundamentals.render(article,s);
+  // Search cards: same compact head as candidates; strategy fit below the
+  // fundamentals boxes once the card is opened.
+  if(independent&&typeof StockFit!=="undefined")StockFit.render(article,s,selectedSearchFits(),{horizon:currentHorizon()});
   if(showGrowth)StockGrowth.render(article,s);
   if(typeof StockResearch!=="undefined")StockResearch.render(article,s,independent?selectedSearchFits():activeFactors());
   const chartHost=add(article,"section",null,"chart-panel");
