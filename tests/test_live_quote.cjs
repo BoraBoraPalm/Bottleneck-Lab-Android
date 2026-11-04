@@ -81,8 +81,11 @@ const now=Date.parse("2026-11-04T12:00:00Z");
   // Card wiring: only search hits without stored quote, button does not toggle the card,
   // chart uses the fetched series.
   const html=fs.readFileSync("docs/index.html","utf8");
-  assert.ok(html.includes('<script src="live-quote.js?v=2"></script>'));
-  assert.ok(html.includes('if(independent&&searchNote&&!liveData&&!Number.isFinite(s.reference_close_eur)&&typeof StockLiveQuote!=="undefined")'));
+  assert.ok(html.includes('<script src="live-quote.js?v=3"></script>'));
+  assert.ok(html.includes('const staleStored=Number.isFinite(s.reference_close_eur)&&s.entry_review==="stale_quote";'));
+  assert.ok(html.includes('if(wantsLive&&!liveData&&typeof StockLiveQuote!=="undefined"){'));
+  assert.ok(html.includes('(searchNote||momentumEl).after(box);'),"also candidate cards with a stale stored quote");
+  assert.ok(html.includes('const button=add(box,"button",staleStored?"Aktuellen Kurs laden":"Kurs jetzt laden"'),"button element, not a text tag");
   assert.ok(html.includes('event.preventDefault();event.stopPropagation();void fetchLive();'));
   assert.ok(html.includes('showTradeLevels:()=>$("showTradeLevels").checked,data:liveData'));
   assert.ok(html.includes('if(liveData)s=StockLiveQuote.enrich(s,liveData,snapshot);'));
@@ -106,5 +109,9 @@ const now=Date.parse("2026-11-04T12:00:00Z");
   assert.equal(live.enrich({ticker:"SAN.PA"},data,snap,Date.parse("2026-11-12T12:00:00Z")).entry_review,"stale_quote");
   assert.equal(live.enrich({ticker:"SAN.PA"},{...data,context:null},snap).entry_review,"insufficient_data");
   assert.equal(live.enrich({ticker:"SAN.PA"},data,{}).reference_close_eur,undefined,"no invented EUR rate");
+  const stale=live.enrich({ticker:"SAN.PA",price_date:"2026-10-29",entry_review:"stale_quote",model_buy_limit_eur:1,
+    fundamentals:{revenue:5}},data,{...snap},Date.parse("2026-11-04T12:00:00Z"));
+  assert.equal(stale.entry_review,"entry_review");assert.notEqual(stale.model_buy_limit_eur,1,"old levels replaced");
+  assert.equal(stale.fundamentals.revenue,5,"stored fundamentals kept");
   console.log("Live search quotes: validation, reuse until expiry, shared requests, bounded device storage, honest errors, EUR conversion and card wiring verified.");
 })().catch(error=>{console.error(error);process.exit(1);});

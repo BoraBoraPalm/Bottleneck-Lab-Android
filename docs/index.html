@@ -378,7 +378,7 @@ h1{font-size:27px}
 <script src="research-factors.js?v=1"></script>
 <script src="holding-horizon.js?v=1"></script>
 <script src="strategy-fit.js?v=3"></script>
-<script src="live-quote.js?v=2"></script>
+<script src="live-quote.js?v=3"></script>
 <script>
 "use strict";
 const $=id=>document.getElementById(id);
@@ -484,7 +484,10 @@ function makeCard(s,mix,options={}){
   // Search hit without stored quote: use a series loaded on demand (memory or
   // device storage) and derive the same price-based values as the pipeline.
   let liveData=options.liveData||null;
-  if(independent&&!liveData&&!Number.isFinite(s.reference_close_eur)&&typeof StockLiveQuote!=="undefined")
+  // Stored quote older than four days: no entry/exit levels; refresh on demand.
+  const staleStored=Number.isFinite(s.reference_close_eur)&&s.entry_review==="stale_quote";
+  const wantsLive=(independent&&!Number.isFinite(s.reference_close_eur))||staleStored;
+  if(wantsLive&&!liveData&&typeof StockLiveQuote!=="undefined")
     liveData=StockLiveQuote.peek(s.ticker);
   const base=s;
   if(liveData)s=StockLiveQuote.enrich(s,liveData,snapshot);
@@ -573,11 +576,13 @@ function makeCard(s,mix,options={}){
     }
   };
   article.addEventListener("toggle",openChart);
-  if(independent&&searchNote&&!liveData&&!Number.isFinite(s.reference_close_eur)&&typeof StockLiveQuote!=="undefined"){
-    // Search hit without stored quote: optional on-demand daily close.
+  if(wantsLive&&!liveData&&typeof StockLiveQuote!=="undefined"){
+    // Search hit without stored quote, or stored quote too old for levels:
+    // load the latest daily close on demand.
     const box=document.createElement("div");box.className="live-quote";
-    searchNote.after(box);
-    const button=add(box,"button","Kurs jetzt laden","btn secondary live-quote-button");
+    (searchNote||momentumEl).after(box);
+    const button=add(box,"button",staleStored?"Aktuellen Kurs laden":"Kurs jetzt laden","btn secondary live-quote-button");
+    if(staleStored)add(box,"span","Gespeicherter Kurs vom "+s.price_date+" ist zu alt für Kauf-Limit/Stop-Loss.","live-quote-status");
     button.type="button";
     const state=add(box,"span",null,"live-quote-status");
     state.setAttribute("role","status");

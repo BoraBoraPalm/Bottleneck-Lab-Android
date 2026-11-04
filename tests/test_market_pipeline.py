@@ -77,6 +77,15 @@ class SimpleMarketTest(unittest.TestCase):
         batch=m.requested_batch(known,{},None,{"SAN.PA":"2026-11-01"},slot=1,priority=["SAN.PA"])
         self.assertEqual(batch[0],"SAN.PA","requested symbols bypass the 404 pause and come first")
 
+    def test_stored_quotes_are_refreshed_before_they_turn_stale(self):
+        now=datetime.now(timezone.utc)
+        cache={"OLD.PA":{"ticker":"OLD.PA","last_checked_at":(now-timedelta(days=5)).isoformat()},
+               "MID.PA":{"ticker":"MID.PA","last_checked_at":(now-timedelta(days=3,hours=1)).isoformat()},
+               "NEW.PA":{"ticker":"NEW.PA","last_checked_at":(now-timedelta(hours=5)).isoformat()}}
+        batch=m.requested_batch({},cache,slot=1)
+        self.assertLess(batch.index("OLD.PA"),batch.index("MID.PA"),"oldest first")
+        self.assertNotIn("NEW.PA",batch)
+
     def test_adjusted_momentum_ignores_share_split(self):
         today=datetime.now(timezone.utc).date()
         bars=[]

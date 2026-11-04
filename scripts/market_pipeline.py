@@ -44,6 +44,10 @@ MISS_DAYS=30
 # worker) are checked first and completely in the next run.
 QUOTE_WORKER=os.getenv("BTL_QUOTE_WORKER","https://bottleneck-lab-android.markus-schuster-dev.workers.dev")
 REQUESTED_MAX=150
+# Entry/exit levels need a close at most four days old; refresh stored quotes
+# after three days, oldest first, so they do not lose Kauf-Limit/Stop-Loss.
+REFRESH_AFTER=timedelta(days=3)
+REFRESH_MAX=int(os.getenv("BTL_REFRESH_PER_RUN","350"))
 WORKERS=int(os.getenv("BTL_WORKERS","7"))
 MAX_AGE=timedelta(days=8)
 DATE_FMT="%Y-%m-%d"
@@ -221,7 +225,10 @@ def requested_batch(known,cache,tr_isins=None,misses=None,slot=None,priority=Non
     # One new rotation slice per run (also for extra runs after a push).
     slot=int(datetime.now(timezone.utc).timestamp()//21600) if slot is None else slot
     pool={t:m for t,m in known.items() if t not in (misses or {})}
-    core=list(priority or [])+grouped_batch(pool,CURATED_SYMBOLS,slot,PROBE)+tr_priority(pool,cache,tr_isins)
+    ageing=sorted((s for s in cache.values() if seconds_old(s.get("last_checked_at"))>=REFRESH_AFTER.total_seconds()),
+                  key=lambda s:(str(s.get("last_checked_at") or ""),s.get("ticker","")))[:REFRESH_MAX]
+    core=(list(priority or [])+[s["ticker"] for s in ageing if s.get("ticker")]
+          +grouped_batch(pool,CURATED_SYMBOLS,slot,PROBE)+tr_priority(pool,cache,tr_isins))
     # Repeat a small portion of recently scanned top momentum names only for
     # fresh dates, not because any evidence proves an alpha forecast.
     extra=sorted((s for s in cache.values() if s.get("momentum_12_2") is not None),
@@ -422,7 +429,8 @@ def main():
         "TR_verified":tr["verified"],"sander_candidates":sander_status["qualified_candidates"],
         "sander_fundamentals":sander_status["with_verified_fundamentals"],"chart_files":chart_count(),
         "charts_updated":charts_written,"errors":len(errors),
-        "targets":len(targets),"success":success,"failures":dict(failures.most_common(8)),"skipped_misses":len(misses),"requested":len(requested),"rotation_slot":slot,"failures_by_suffix":dict(miss_suffix.most_common(10)),
+        "targets":len(targets),"success":success,"failures":dict(failures.most_common(8)),"skipped_misses":len(misses),"requested":len(requested),
+        "entry_states":dict(Counter(s.get("entry_review") or "none" for s in stocks).most_common(10)),"rotation_slot":slot,"failures_by_suffix":dict(miss_suffix.most_common(10)),
         "charts_pruned":charts_pruned,
         "eu":{k:eu_status.get(k) for k in ("eligible_eea_stocks","checked_this_run","reports_loaded","errors","results","samples","error","with_esef_fundamentals")},
         "duration_s":round(time.monotonic()-started,1)

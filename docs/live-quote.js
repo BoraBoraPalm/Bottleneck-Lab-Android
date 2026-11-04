@@ -151,6 +151,8 @@
   function enrich(stock,data,snapshot,now=Date.now()){
     const p=data.points,n=p.length,rate=fxTable(snapshot)[data.currency];
     const live={...stock,close:data.close,currency:data.currency,price_date:data.asof,source:"Yahoo Finance",
+      // Stored levels belong to the old close; they are recalculated below.
+      model_buy_limit_eur:undefined,model_initial_stop_eur:undefined,model_limit_rule:undefined,
       live_quote:{fetched:data.fetched||null,expires:data.expires},
       momentum_12_2:n>=253?p[n-22][1]/p[n-253][1]-1:null,
       momentum_basis:"Yahoo adjusted daily closes",momentum_skip_sessions:21,
