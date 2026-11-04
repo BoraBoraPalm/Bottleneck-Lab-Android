@@ -67,3 +67,20 @@ def chart_is_current(symbol,price_date):
 def chart_count():
     if not ROOT.is_dir():return 0
     return len(list(ROOT.glob("*.json")))
+
+def prune_charts(keep):
+    """Delete chart files of stocks no longer in the published snapshot.
+
+    Without this the restored chart cache grows with every rotated stock until
+    the Pages site exceeds its size limit. Search hits without a stored chart
+    can load a series on demand instead.
+    """
+    if not ROOT.is_dir():return 0
+    removed=0
+    for path in list(ROOT.glob("*.json"))+list(ROOT.glob("*.tmp")):
+        if path.suffix==".json" and path.stem in keep:continue
+        try:
+            path.unlink();removed+=1
+        except OSError:
+            continue
+    return removed

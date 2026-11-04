@@ -43,6 +43,17 @@ class SimpleMarketTest(unittest.TestCase):
         self.assertEqual(result["NEW"]["momentum_12_2"],.3)
         self.assertIn("NOCHART",m.requested_batch({"NOCHART":{}},result))
 
+    def test_trade_republic_listed_stocks_get_priority_oldest_first(self):
+        known={"NEW.VI":{"reference_isin":"AT0000000001"},"OLD.DE":{"reference_isin":"DE0000000002"},
+               "FRESH.PA":{"reference_isin":"FR0000000003"},"OTHER.L":{"reference_isin":"GB0000000004"}}
+        cache={"OLD.DE":{"last_checked_at":"2026-11-01T00:00:00Z"},"FRESH.PA":{"last_checked_at":"2026-11-04T00:00:00Z"}}
+        listed={"AT0000000001","DE0000000002","FR0000000003"}
+        self.assertEqual(m.tr_priority(known,cache,listed,limit=3),["NEW.VI","OLD.DE","FRESH.PA"])
+        self.assertEqual(m.tr_priority(known,cache,listed,limit=1),["NEW.VI"])
+        self.assertEqual(m.tr_priority(known,cache,None),[])
+        self.assertNotIn("OTHER.L",m.tr_priority(known,cache,listed))
+        self.assertIn("NEW.VI",m.requested_batch(known,cache,listed))
+
     def test_adjusted_momentum_ignores_share_split(self):
         today=datetime.now(timezone.utc).date()
         bars=[]

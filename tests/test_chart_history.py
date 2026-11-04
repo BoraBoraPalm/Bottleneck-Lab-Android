@@ -26,6 +26,16 @@ class ChartHistoryTests(unittest.TestCase):
         self.assertIsNone(charts.chart_payload("7203.T",bars,"JPY","Stooq US (unverified adjustment)"))
         self.assertIsNone(charts.chart_payload("7203.T",[(*x[:5],None) for x in bars],"JPY","Yahoo Finance"))
 
+    def test_prune_keeps_only_published_stocks(self):
+        with tempfile.TemporaryDirectory() as temp,patch.object(charts,"ROOT",Path(temp)):
+            for name in ("KEEP.json","DROP.json","SAN.PA.json","broken.tmp"):
+                (Path(temp)/name).write_text("{}")
+            self.assertEqual(charts.prune_charts({"KEEP","SAN.PA"}),2)
+            self.assertEqual(sorted(p.name for p in Path(temp).iterdir()),["KEEP.json","SAN.PA.json"])
+            self.assertEqual(charts.chart_count(),2)
+        with tempfile.TemporaryDirectory() as temp,patch.object(charts,"ROOT",Path(temp)/"missing"):
+            self.assertEqual(charts.prune_charts(set()),0)
+
     def test_safe_filenames_and_current_cache(self):
         with tempfile.TemporaryDirectory() as temp,patch.object(charts,"ROOT",Path(temp)):
             result=charts.chart_payload("7203.T",self.fixture(),"JPY","Yahoo Finance")

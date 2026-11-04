@@ -62,4 +62,13 @@ class TestCurrencyAndBroker(unittest.TestCase):
         self.assertFalse(stocks[1]["tr_at_listed"])
         self.assertEqual(result["verified"],1)
 
+    def test_preloaded_reference_is_reused_without_download(self):
+        stocks=[{"ticker":"MU","reference_isin":"US5951121038"}]
+        reference={"pdf_isins":{"US5951121038"},"ids":{"MU":[("US5951121038","NASDAQ")]},
+                   "status":{"list_loaded":True,"mapping_loaded":True,"verified":0,"unknown":0}}
+        def no_fetch(*args,**kw):raise AssertionError("must not download twice")
+        result=tr_at_universe.apply_tr_filter(stocks,fetch=no_fetch,reference=reference)
+        self.assertEqual(result["verified"],1);self.assertTrue(stocks[0]["tr_at_listed"])
+        self.assertEqual(reference["status"]["verified"],0,"shared reference status is not mutated")
+
 if __name__=="__main__":unittest.main()

@@ -19,9 +19,9 @@ from datetime import date, datetime, timedelta, timezone
 from build_snapshot import CURATED, read_url, quote, momentum_12_2, MOMENTUM_SKIP
 from fx_eur import latest_eur_rates, add_eur_prices
 from global_universe import discover_global, grouped_batch, SOURCE
-from tr_at_universe import apply_tr_filter
+from tr_at_universe import apply_tr_filter,load_tr_reference
 from trade_guidance import assign_decision,market_risk_from_quote
-from chart_history import chart_is_current,write_chart,chart_count,chart_file
+from chart_history import chart_is_current,write_chart,chart_count,chart_file,prune_charts
 from sander_fundamentals import enrich_stocks as update_sander_fundamentals
 from growth_radar import enrich_growth
 from search_catalog import write_catalog
@@ -32,6 +32,9 @@ PAGES="https://boraborapalm.github.io/Bottleneck-Lab-Android/snapshot.json"
 NASDAQ="https://www.nasdaqtrader.com/dynamic/SymDir/nasdaqlisted.txt"
 OTHER="https://www.nasdaqtrader.com/dynamic/SymDir/otherlisted.txt"
 PROBE=int(os.getenv("BTL_NEW_PER_RUN","205"))
+# Additional directory stocks in Trade Republic's official AT list per run,
+# least recently checked first, so a TR user's search finds stored quotes.
+TR_PROBE=int(os.getenv("BTL_TR_PER_RUN","150"))
 WORKERS=int(os.getenv("BTL_WORKERS","7"))
 MAX_AGE=timedelta(days=8)
 DATE_FMT="%Y-%m-%d"
@@ -63,7 +66,9 @@ def seconds_old(ts):
 
 def previous_snapshot():
     try:
-        x=json.loads(read_url(PAGES+"?refresh="+str(int(time.time())),timeout=16,max_bytes=8000000))
+        # The snapshot is the quote/fundamental cache of the next run. A too
+        # small limit would silently drop the whole cache once it grows.
+        x=json.loads(read_url(PAGES+"?refresh="+str(int(time.time())),timeout=30,max_bytes=40_000_000))
         if not isinstance(x.get("stocks"),list):raise ValueError("Stocks not in snapshot")
         return x
     except Exception as exc:
@@ -162,9 +167,16 @@ def momentum_from_chart(ticker,price_date):
     except (ValueError,OSError,TypeError,KeyError,IndexError):
         return None
 
-def requested_batch(known,cache):
+def tr_priority(known,cache,tr_isins,limit=TR_PROBE):
+    """Directory stocks whose ISIN is in the official TR AT list, oldest check first."""
+    if not tr_isins or limit<=0:return []
+    listed=[t for t,meta in known.items()
+            if str(meta.get("reference_isin") or "").upper() in tr_isins]
+    return sorted(listed,key=lambda t:(str((cache.get(t) or {}).get("last_checked_at") or ""),t))[:limit]
+
+def requested_batch(known,cache,tr_isins=None):
     slot=int(datetime.now(timezone.utc).timestamp()//21600)
-    core=grouped_batch(known,CURATED_SYMBOLS,slot,PROBE)
+    core=grouped_batch(known,CURATED_SYMBOLS,slot,PROBE)+tr_priority(known,cache,tr_isins)
     # Repeat a small portion of recently scanned top momentum names only for
     # fresh dates, not because any evidence proves an alpha forecast.
     extra=sorted((s for s in cache.values() if s.get("momentum_12_2") is not None),
@@ -221,7 +233,8 @@ def main():
     old=previous_snapshot()
     known,global_details,errors=discover(old)
     cache=cached_quotes(old,known)
-    targets=requested_batch(known,cache)
+    tr_reference=load_tr_reference()
+    targets=requested_batch(known,cache,tr_reference["pdf_isins"])
     checked=datetime.now(timezone.utc).isoformat().replace("+00:00","Z")
     success=0
     charts_written=0
@@ -243,6 +256,9 @@ def main():
                 success+=1
             elif error and len(errors)<30:errors.append(t+": "+str(error)[:135])
     if len(cache)<25:raise RuntimeError("Fewer than 25 valid quotes; refusing publication")
+    # Only prune when the previous cache was available; otherwise a single
+    # failed read would delete the restored chart history.
+    charts_pruned=prune_charts(set(cache)) if old.get("stocks") else 0
     # ACWI is an observable global-ETF proxy for broad stock-market stress;
     # do not add it to the stock universe or imply it is the total world market.
     market_quote,market_error=quote("ACWI","Global market context")
@@ -276,7 +292,7 @@ def main():
     for stock in stocks:
         assign_decision(stock,market_context)
         stock["chart_available"]=chart_is_current(stock["ticker"],stock.get("price_date"))
-    tr=apply_tr_filter(stocks)
+    tr=apply_tr_filter(stocks,reference=tr_reference)
     stocks.sort(key=lambda s:(not s["eligible_global_ranking"],-(s.get("momentum_12_2") or -999),s["ticker"]))
     counts=Counter(s.get("region") or "Unbekannt" for s in known.values())
     have=Counter(s.get("region") or "Unbekannt" for s in stocks)
@@ -292,7 +308,7 @@ def main():
             "colour_method":"Own metric-level orientation thresholds, sector-dependent; no overall stock rating"},
         "sander_research_status":sander_status,
         "growth_research_status":growth_status,
-        "chart_data_info":{"on_demand":True,"files":chart_count(),"written_this_run":charts_written,
+        "chart_data_info":{"on_demand":True,"files":chart_count(),"written_this_run":charts_written,"pruned_this_run":charts_pruned,
                            "default_period":"3M","max_history":"up to 10y",
                            "reference_currency":"original listing currency"},
         "market_context":market_context,

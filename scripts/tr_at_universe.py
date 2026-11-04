@@ -75,7 +75,8 @@ def candidate_isins(ticker, identifiers):
     if len(unique)==1:return unique.pop()
     return None
 
-def apply_tr_filter(stocks, fetch=read_url):
+def load_tr_reference(fetch=read_url):
+    """Official AT list and identifier mapping, downloaded once per run."""
     timestamp=datetime.now(timezone.utc).isoformat().replace("+00:00","Z")
     status={"source":TR_AT_PDF,"mapping_source":IDENTIFIERS,"checked_at":timestamp,
             "list_loaded":False,"mapping_loaded":False,"verified":0,"unknown":0,
@@ -93,6 +94,12 @@ def apply_tr_filter(stocks, fetch=read_url):
         status["mapping_loaded"]=True
     except Exception as exc:
         status["error_mapping"]=type(exc).__name__+": "+str(exc)[:200]
+    return {"pdf_isins":pdf_isins,"ids":ids,"status":status}
+
+def apply_tr_filter(stocks, fetch=read_url, reference=None):
+    reference=reference or load_tr_reference(fetch)
+    pdf_isins,ids=reference["pdf_isins"],reference["ids"]
+    status=dict(reference["status"],verified=0,unknown=0)
     for row in stocks:
         row["tr_at_listed"]=False
         row["tr_verification"]="unverified"
