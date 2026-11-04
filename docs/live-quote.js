@@ -5,9 +5,10 @@
    storage or the HTTP cache instead of being requested again. */
 (function(root){
   "use strict";
-  // v=2: answers include trend/crash/ATR context; older cached answers are not reused.
-  const SERVICE="https://bottleneck-lab-android.markus-schuster-dev.workers.dev/quote?v=2&symbol=";
-  const STORAGE_KEY="bottleneck.live-quotes.v2",MAX_STORED=12;
+  // v=3: answers of the current worker (trend/crash/ATR context). Answers
+  // stored while an older worker was live are neither reused nor looked up.
+  const SERVICE="https://bottleneck-lab-android.markus-schuster-dev.workers.dev/quote?v=3&symbol=";
+  const STORAGE_KEY="bottleneck.live-quotes.v3",MAX_STORED=12;
   const TICKER=/^[A-Z0-9][A-Z0-9.\-]{0,19}$/;
   const memory=new Map(),pending=new Map();
   const finite=v=>typeof v==="number"&&Number.isFinite(v);
@@ -40,7 +41,8 @@
   }
   function peek(ticker,options={}){
     const now=options.now??Date.now(),storage=options.storage===undefined?defaultStorage():options.storage;
-    const fresh=entry=>entry&&Date.parse(entry.expires)>now;
+    // A long series without context comes from an outdated worker: refetch.
+    const fresh=entry=>entry&&Date.parse(entry.expires)>now&&!(Array.isArray(entry.points)&&entry.points.length>=253&&!entry.context);
     const held=memory.get(ticker);
     if(fresh(held))return held;
     if(!storage)return null;

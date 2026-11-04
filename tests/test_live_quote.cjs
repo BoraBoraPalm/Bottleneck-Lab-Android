@@ -11,7 +11,8 @@ function series(ticker,{days=300,expires="2026-11-05T17:00:00Z",currency="EUR"}=
   const start=Date.UTC(2025,0,1);
   for(let i=0;i<days;i++)points.push([new Date(start+i*86400000).toISOString().slice(0,10),100+i]);
   return {version:1,ticker,currency,asof:points.at(-1)[0],close:points.at(-1)[1],source:"Yahoo Finance",
-    basis:"adjusted close normalized to latest raw close",live:true,fetched:"2026-11-04T10:00:00Z",expires,max_age:3600,points};
+    basis:"adjusted close normalized to latest raw close",live:true,fetched:"2026-11-04T10:00:00Z",expires,max_age:3600,
+    context:{context_basis:"Yahoo adjusted OHLC, signal after close"},points};
 }
 function memoryStorage(){
   const map=new Map();
@@ -48,6 +49,17 @@ const now=Date.parse("2026-11-04T12:00:00Z");
   await Promise.all([live.load("SAN.PA",{fetch,storage:null,now}),live.load("SAN.PA",{fetch,storage:null,now})]);
   assert.equal(calls,1);
 
+  // A stored long series without context (outdated worker) is not reused.
+  live.clear();
+  const outdated=memoryStorage();calls=0;
+  await live.load("OLD.PA",{storage:outdated,now,fetch:async()=>{calls++;return {ok:true,status:200,json:async()=>({...series("OLD.PA"),context:null})};}});
+  live.clear();
+  await live.load("OLD.PA",{storage:outdated,now,fetch:async()=>{calls++;return {ok:true,status:200,json:async()=>({...series("OLD.PA"),context:{x:1}})};}});
+  assert.equal(calls,2,"series of 300 sessions without context is fetched again");
+  live.clear();
+  await live.load("OLD.PA",{storage:outdated,now,fetch:async()=>{calls++;throw Error("no fetch");}});
+  assert.equal(calls,2,"answer with context is reused");
+
   // Storage keeps at most twelve lookups and survives blocked storage.
   live.clear();
   const many=memoryStorage();
@@ -81,7 +93,7 @@ const now=Date.parse("2026-11-04T12:00:00Z");
   // Card wiring: only search hits without stored quote, button does not toggle the card,
   // chart uses the fetched series.
   const html=fs.readFileSync("docs/index.html","utf8");
-  assert.ok(html.includes('<script src="live-quote.js?v=3"></script>'));
+  assert.ok(html.includes('<script src="live-quote.js?v=4"></script>'));
   assert.ok(html.includes('const staleStored=Number.isFinite(s.reference_close_eur)&&s.entry_review==="stale_quote";'));
   assert.ok(html.includes('if(wantsLive&&!liveData&&typeof StockLiveQuote!=="undefined"){'));
   assert.ok(html.includes('(searchNote||momentumEl).after(box);'),"also candidate cards with a stale stored quote");
