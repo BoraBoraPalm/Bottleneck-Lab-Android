@@ -31,6 +31,47 @@ class TestCurrencyAndBroker(unittest.TestCase):
         got=fx_eur.latest_eur_rates(fake)
         self.assertAlmostEqual(got["X00"]["eur_per_unit"],0.8)
 
+    def test_subunits_and_previous_rates(self):
+        today=datetime(2026,11,8,tzinfo=timezone.utc).date()
+        fx={"EUR":{"eur_per_unit":1.0,"fx_date":"2026-11-08","source":"native EUR"},
+            "ILS":{"eur_per_unit":.25,"fx_date":"2026-11-06","source":"ref"},
+            "ZAR":{"eur_per_unit":.05,"fx_date":"2026-11-06","source":"ref"}}
+        fx_eur.add_subunits(fx)
+        self.assertAlmostEqual(fx["ILA"]["eur_per_unit"],.0025)
+        self.assertAlmostEqual(fx["ZAc"]["eur_per_unit"],.0005)
+        previous={"fx_eur":{"GBP":{"eur_per_unit":1.15,"fx_date":"2026-11-05"},
+                            "SAR":{"eur_per_unit":.23,"fx_date":"2026-11-02"},
+                            "ILS":{"eur_per_unit":.3,"fx_date":"2026-11-05"},
+                            "OLD":{"eur_per_unit":2.0,"fx_date":"2026-10-20"},
+                            "BAD":{"eur_per_unit":"x","fx_date":"2026-11-05"}}}
+        merged,reused=fx_eur.with_previous_rates(fx,previous,today=today)
+        self.assertEqual(reused,["GBP","SAR"],"only valid rates at most a week old")
+        self.assertEqual(merged["ILS"]["eur_per_unit"],.25,"today's rate wins")
+        self.assertAlmostEqual(merged["GBp"]["eur_per_unit"],.0115)
+        self.assertIn("previous run",merged["GBP"]["source"])
+        self.assertNotIn("OLD",merged)
+
+    def test_yahoo_fallback_for_missing_currencies(self):
+        today=datetime(2026,11,8,tzinfo=timezone.utc).date()
+        fx={"EUR":{"eur_per_unit":1.0,"fx_date":"2026-11-08","source":"native EUR"},
+            "USD":{"eur_per_unit":.9,"fx_date":"2026-11-06","source":"ref"}}
+        calls=[]
+        def fake(symbol):
+            calls.append(symbol)
+            if symbol=="TWDEUR=X":return [("2026-11-05",1,1,.027,0,None),("2026-11-06",1,1,.028,0,None)],"EUR","Yahoo"
+            if symbol=="KWDEUR=X":return [("2026-11-06",1,1,2.8,0,None)],"EUR","Yahoo"
+            if symbol=="SAREUR=X":return [("2026-10-01",1,1,.24,0,None)],"EUR","Yahoo"
+            raise RuntimeError("HTTP 404")
+        merged,used,failed=fx_eur.with_yahoo_rates(fx,{"USD","EUR","TWD","KWF","SAR","XXX",None,"GBp"},fetch=fake,today=today)
+        self.assertEqual(sorted(calls),["GBPEUR=X","KWDEUR=X","SAREUR=X","TWDEUR=X","XXXEUR=X"],"only currencies without a rate")
+        self.assertEqual(used,["KWD","TWD"])
+        self.assertEqual(sorted(failed),["GBP","SAR","XXX"],"stale and failed rates are reported, not used")
+        self.assertAlmostEqual(merged["TWD"]["eur_per_unit"],.028)
+        self.assertAlmostEqual(merged["KWF"]["eur_per_unit"],.0028,"fils from Kuwaiti dinar")
+        self.assertEqual(merged["USD"]["eur_per_unit"],.9,"reference rate is kept")
+        count,missing=fx_eur.add_eur_prices([{"ticker":"2330.TW","close":1000.0,"atr":10.0,"currency":"TWD"}],merged)
+        self.assertEqual((count,missing),(1,[]))
+
     def test_isin_join_requires_unambiguous_mapping(self):
         ids={"MU":[("US5951121038","NASDAQ")],
              "X":[("US0000000001","NASDAQ"),("US0000000002","NASDAQ")],

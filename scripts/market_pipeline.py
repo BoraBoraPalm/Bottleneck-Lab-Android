@@ -18,7 +18,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import date, datetime, timedelta, timezone
 
 from build_snapshot import CURATED, read_url, quote, momentum_12_2, MOMENTUM_SKIP
-from fx_eur import latest_eur_rates, add_eur_prices
+from fx_eur import latest_eur_rates, add_eur_prices, with_previous_rates, with_yahoo_rates
 from global_universe import discover_global, grouped_batch, SOURCE
 from tr_at_universe import apply_tr_filter,load_tr_reference
 from trade_guidance import assign_decision,market_risk_from_quote
@@ -337,11 +337,22 @@ def main():
     market_quote,market_error=quote("ACWI","Global market context")
     market_context=market_risk_from_quote(market_quote)
     if market_error:errors.append("Market context ACWI: "+str(market_error)[:140])
-    fx=latest_eur_rates()
+    try:
+        fx=latest_eur_rates()
+    except Exception as exc:
+        print("Live EUR rates unavailable:",str(exc)[:160],flush=True)
+        fx={"EUR":{"eur_per_unit":1.0,"fx_date":datetime.now(timezone.utc).date().isoformat(),"source":"native EUR"}}
     stocks=[enrich(known,v,t) for t,v in cache.items()]
+    # Currencies the reference provider lacks today: Yahoo's last FX close;
+    # still missing (outage): last run's rate for at most a week. Neither
+    # blocks the whole publication.
+    fx,fx_yahoo,fx_yahoo_failed=with_yahoo_rates(fx,{s.get("currency") for s in stocks})
+    fx,fx_reused=with_previous_rates(fx,old)
     n_fx,missing=add_eur_prices(stocks,fx)
     if n_fx<max(20,int(.80*len(stocks))):
-        raise RuntimeError("EUR FX coverage below 80%; last live website retained")
+        by_currency=Counter(s.get("currency") for s in stocks if s.get("currency") in missing)
+        raise RuntimeError("EUR FX coverage below 80%% (%d of %d; missing %s); last live website retained"
+                           %(n_fx,len(stocks),dict(by_currency.most_common(8))))
     now=datetime.now(timezone.utc)
     for s in stocks:
         val=s.get("avg_local_turnover_20d")
@@ -414,6 +425,8 @@ def main():
         "entry_review_count":sum(s.get("entry_review")=="entry_review" and s["eligible_global_ranking"] for s in stocks),
         "exit_review_count":sum(s.get("exit_review","").startswith("review_exit") and s["eligible_global_ranking"] for s in stocks),
         "fx_missing_currencies":missing,
+        "fx_reused_from_previous_run":fx_reused,
+        "fx_yahoo_fallback":fx_yahoo,"fx_yahoo_failed":fx_yahoo_failed,
         "quote_misses":{t:d for t,d in sorted(misses.items()) if t in known},
         "rotation_slot":slot,
         # Reference rates for search quotes loaded on demand in the browser.
@@ -438,6 +451,7 @@ def main():
         "targets":len(targets),"success":success,"failures":dict(failures.most_common(8)),"skipped_misses":len(misses),"benchmarks":benchmark_status,"requested":len(requested),
         "entry_states":dict(Counter(s.get("entry_review") or "none" for s in stocks).most_common(10)),"rotation_slot":slot,"failures_by_suffix":dict(miss_suffix.most_common(10)),
         "charts_pruned":charts_pruned,
+        "fx":{"rates":len(fx),"converted":n_fx,"missing":missing,"yahoo":fx_yahoo,"yahoo_failed":fx_yahoo_failed,"reused":fx_reused},
         "eu":{k:eu_status.get(k) for k in ("eligible_eea_stocks","checked_this_run","reports_loaded","errors","results","samples","error","with_esef_fundamentals")},
         "duration_s":round(time.monotonic()-started,1)
     }),flush=True)

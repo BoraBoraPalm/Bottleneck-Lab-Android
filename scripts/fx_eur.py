@@ -28,14 +28,70 @@ def latest_eur_rates(fetch=read_url, today=None):
         if not isinstance(curr,str) or len(curr)!=3 or not math.isfinite(rate) or rate<=0:continue
         if dated>today or today-dated>timedelta(days=CACHE_MAX_DAYS):continue
         result[curr]={"eur_per_unit":1/rate,"fx_date":dated.isoformat(),"source":"Frankfurter official-provider reference FX"}
-    # UK equity prices are frequently quoted in GBp (pence), not GBP (pounds).
-    if "GBP" in result:
-        gbp=result["GBP"]
-        result["GBp"]={"eur_per_unit":gbp["eur_per_unit"]/100,"fx_date":gbp["fx_date"],"source":"UK pence (1/100 GBP)"}
-        result["GBX"]={"eur_per_unit":gbp["eur_per_unit"]/100,"fx_date":gbp["fx_date"],"source":"UK pence GBX (1/100 GBP)"}
+    add_subunits(result)
     if len(result)<20:
         raise ValueError("Too few valid rates: "+str(len(result)))
     return result
+
+# Yahoo quotes some exchanges in sub-units: London pence (GBp/GBX),
+# Tel Aviv agorot (ILA), Johannesburg cents (ZAc), Kuwait fils (KWF).
+SUBUNITS={"GBp":("GBP",100,"UK pence (1/100 GBP)"),"GBX":("GBP",100,"UK pence GBX (1/100 GBP)"),
+          "ILA":("ILS",100,"Israeli agorot (1/100 ILS)"),"ZAc":("ZAR",100,"South African cents (1/100 ZAR)"),
+          "KWF":("KWD",1000,"Kuwaiti fils (1/1000 KWD)")}
+
+def add_subunits(result):
+    for sub,(main,divisor,label) in SUBUNITS.items():
+        if main in result and sub not in result:
+            base=result[main]
+            result[sub]={"eur_per_unit":base["eur_per_unit"]/divisor,"fx_date":base["fx_date"],"source":label}
+    return result
+
+def with_previous_rates(fx,previous,today=None,max_days=CACHE_MAX_DAYS):
+    """Fill currencies missing today from the previous snapshot (at most a week old)."""
+    today=today or datetime.now(timezone.utc).date()
+    merged=dict(fx or {})
+    reused=[]
+    for curr,val in ((previous or {}).get("fx_eur") or {}).items():
+        if curr in merged or not isinstance(val,dict):continue
+        try:
+            rate=float(val["eur_per_unit"]);dated=date.fromisoformat(val["fx_date"])
+        except (KeyError,TypeError,ValueError):
+            continue
+        if math.isfinite(rate) and rate>0 and timedelta(0)<=today-dated<=timedelta(days=max_days):
+            merged[curr]={"eur_per_unit":rate,"fx_date":dated.isoformat(),"source":"previous run (reference FX, "+dated.isoformat()+")"}
+            reused.append(curr)
+    return add_subunits(merged),sorted(reused)
+
+def needed_main_currencies(currencies,fx):
+    """Main currencies (ISO codes) behind stock currencies that have no rate yet."""
+    need=set()
+    for curr in currencies:
+        if not isinstance(curr,str) or curr in fx:continue
+        main=SUBUNITS[curr][0] if curr in SUBUNITS else curr
+        if len(main)==3 and main.isalpha() and main.isupper() and main not in fx:need.add(main)
+    return sorted(need)
+
+def with_yahoo_rates(fx,currencies,fetch=None,today=None,max_days=CACHE_MAX_DAYS,limit=25):
+    """Fallback for currencies the reference provider lacks: last Yahoo daily
+    close of <CUR>EUR=X, at most a week old. Returns (rates, used, failed)."""
+    today=today or datetime.now(timezone.utc).date()
+    if fetch is None:
+        from build_snapshot import fetch_yahoo as fetch
+    merged=dict(fx or {});used=[];failed={}
+    for main in needed_main_currencies(currencies,merged)[:limit]:
+        try:
+            bars,_,_=fetch(main+"EUR=X")
+            day,rate=None,None
+            for bar in reversed(bars):
+                if math.isfinite(bar[3]) and bar[3]>0:
+                    day,rate=date.fromisoformat(bar[0]),float(bar[3]);break
+            if rate is None or day>today or today-day>timedelta(days=max_days):
+                raise ValueError("no close within %d days"%max_days)
+            merged[main]={"eur_per_unit":rate,"fx_date":day.isoformat(),"source":"Yahoo Finance FX close %sEUR=X (fallback)"%main}
+            used.append(main)
+        except Exception as exc:
+            failed[main]=type(exc).__name__+": "+str(exc)[:80]
+    return add_subunits(merged),used,failed
 
 def add_eur_prices(stock_rows, fx_rates):
     converted=0
