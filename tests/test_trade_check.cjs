@@ -100,7 +100,7 @@ assert.equal(tc.countryOf({reference_isin:"AT0000937503",ticker:"VOE.VI"}),"AT")
 
 // 8) Page wiring.
 const html=fs.readFileSync("docs/index.html","utf8");
-assert.ok(html.includes('<script src="trade-check.js?v=1"></script>'));
+assert.ok(html.includes('<script src="trade-check.js?v=2"></script>'));
 assert.ok(html.includes('id="tabTradeCheck"')&&html.includes('id="tradeCheckPanel"'));
 assert.ok(html.includes('document.querySelector(".horizon-panel").hidden=view==="depot";'));
 const js=fs.readFileSync("docs/trade-check.js","utf8");

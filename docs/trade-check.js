@@ -327,8 +327,10 @@
 
       function syncOpen(){sellInput.disabled=openBox.checked;sellWrap.classList.toggle("tc-disabled",openBox.checked);}
       syncOpen();
-      if(finite(row.buyPrice))bpInput.value=String(row.buyPrice);
-      if(finite(row.sellPrice))spInput.value=String(row.sellPrice);
+      // Suggested closes are shown rounded (the exact close is used while the field is unedited).
+      const shown=(v,own)=>own?String(v):String(+v.toFixed(v<10?4:2));
+      if(finite(row.buyPrice))bpInput.value=shown(row.buyPrice,row.buyOwn);
+      if(finite(row.sellPrice))spInput.value=shown(row.sellPrice,row.sellOwn);
 
       async function refreshPrices(){
         if(!row.ticker||!row.buy){hint.textContent=row.ticker?"Kaufdatum eintragen – der Kaufkurs wird dann vorgeschlagen.":"";return;}
@@ -339,8 +341,6 @@
             {points:data.points,currency:data.currency,name:"x"},null);
           bpLabel.textContent="Kaufkurs ("+data.currency+")";spLabel.textContent="Verkaufskurs ("+data.currency+")";
           if(r.error){hint.textContent=r.error;return;}
-          // Shown rounded; the exact close is used as long as the field is not edited.
-          const shown=v=>String(+v.toFixed(v<10?4:2));
           if(!row.buyOwn){row.buyPrice=r.closeBuy;bpInput.value=shown(r.closeBuy);}
           if(!row.sellOwn){row.sellPrice=r.closeSell;spInput.value=shown(r.closeSell);}
           save();
