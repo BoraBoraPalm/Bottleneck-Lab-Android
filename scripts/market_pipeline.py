@@ -25,6 +25,7 @@ from trade_guidance import assign_decision,market_risk_from_quote
 from chart_history import chart_is_current,write_chart,chart_count,chart_file,prune_charts
 from sander_fundamentals import enrich_stocks as update_sander_fundamentals
 from eu_fundamentals import enrich_eu_fundamentals
+from benchmarks import publish_benchmarks
 from growth_radar import enrich_growth
 from search_catalog import write_catalog
 from factor_research import enrich_factors
@@ -375,10 +376,15 @@ def main():
     have=Counter(s.get("region") or "Unbekannt" for s in stocks)
     eligible=Counter(s.get("region") or "Unbekannt" for s in stocks if s["eligible_global_ranking"])
     search_count=write_catalog(known)
+    try:
+        benchmark_status=publish_benchmarks()
+    except Exception as exc:
+        benchmark_status={"available":0,"error":type(exc).__name__+": "+str(exc)[:160]}
     output={
         "version":13,
         "factor_research_status":factor_status,
         "search_catalog_info":{"file":"search-index.json","listings":search_count},
+        "benchmark_info":benchmark_status,
         "fundamentals_info":{"source":"SEC-XBRL annual USD statements (direct or TGMCharts) and ESEF IFRS annual reports (filings.xbrl.org)",
             "coverage":"US filers and EU/EEA issuers with ESEF reports; verified partial reports remain partial",
             "with_annual_data":sander_status["with_verified_fundamentals"],
@@ -429,7 +435,7 @@ def main():
         "TR_verified":tr["verified"],"sander_candidates":sander_status["qualified_candidates"],
         "sander_fundamentals":sander_status["with_verified_fundamentals"],"chart_files":chart_count(),
         "charts_updated":charts_written,"errors":len(errors),
-        "targets":len(targets),"success":success,"failures":dict(failures.most_common(8)),"skipped_misses":len(misses),"requested":len(requested),
+        "targets":len(targets),"success":success,"failures":dict(failures.most_common(8)),"skipped_misses":len(misses),"benchmarks":benchmark_status,"requested":len(requested),
         "entry_states":dict(Counter(s.get("entry_review") or "none" for s in stocks).most_common(10)),"rotation_slot":slot,"failures_by_suffix":dict(miss_suffix.most_common(10)),
         "charts_pruned":charts_pruned,
         "eu":{k:eu_status.get(k) for k in ("eligible_eea_stocks","checked_this_run","reports_loaded","errors","results","samples","error","with_esef_fundamentals")},

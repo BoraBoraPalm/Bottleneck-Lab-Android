@@ -6,8 +6,8 @@ function exactly(pattern,count,name){
 }
 exactly(/<html(?:\s[^>]*)?>/gi,1,"HTML opening");
 exactly(/<\/html>/gi,1,"HTML closing");
-exactly(/<script(?:\s[^>]*)?>/gi,9,"JS opening (eight widgets and inline)");
-exactly(/<\/script>/gi,9,"JS closing (eight widgets and inline)");
+exactly(/<script(?:\s[^>]*)?>/gi,10,"JS opening (nine widgets and inline)");
+exactly(/<\/script>/gi,10,"JS closing (nine widgets and inline)");
 if(!/<\/html>\s*$/i.test(html))throw new Error("Code leaked after </html>");
 const match=html.match(/<script>([\s\S]*?)<\/script>/i);
 if(!match)throw new Error("Missing inline script");
@@ -322,3 +322,4 @@ console.log("Research factors: four independent rank inputs, missing-data exclus
 
 require("../tests/test_holding_horizon.cjs");
 require("../tests/test_live_quote.cjs");
+require("../tests/test_trade_check.cjs");

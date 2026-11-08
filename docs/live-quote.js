@@ -5,11 +5,12 @@
    storage or the HTTP cache instead of being requested again. */
 (function(root){
   "use strict";
-  // v=3: answers of the current worker (trend/crash/ATR context). Answers
-  // stored while an older worker was live are neither reused nor looked up.
-  const SERVICE="https://bottleneck-lab-android.markus-schuster-dev.workers.dev/quote?v=3&symbol=";
-  const STORAGE_KEY="bottleneck.live-quotes.v3",MAX_STORED=12;
-  const TICKER=/^[A-Z0-9][A-Z0-9.\-]{0,19}$/;
+  // v=4: answers of the current worker (trend/crash/ATR context and raw
+  // closes). Answers stored from an older worker are neither reused nor looked up.
+  const SERVICE="https://bottleneck-lab-android.markus-schuster-dev.workers.dev/quote?v=4&symbol=";
+  const STORAGE_KEY="bottleneck.live-quotes.v4",MAX_STORED=20;
+  // Stocks/ETFs (SAP.DE), indices (^GDAXI) and exchange rates (USDEUR=X).
+  const TICKER=/^\^?[A-Z0-9][A-Z0-9.\-]{0,19}(=X)?$/;
   const memory=new Map(),pending=new Map();
   const finite=v=>typeof v==="number"&&Number.isFinite(v);
 
@@ -25,6 +26,8 @@
       previous=p[0];
     }
     if(previous!==data.asof)throw Error("Kursreihe und Stichtag stimmen nicht überein");
+    if(data.closes!==undefined&&(!Array.isArray(data.closes)||data.closes.length!==data.points.length||!data.closes.every(v=>finite(v)&&v>0)))
+      throw Error("Ungültige Schlusskurse");
     return data;
   }
   function readStore(storage){
@@ -42,7 +45,8 @@
   function peek(ticker,options={}){
     const now=options.now??Date.now(),storage=options.storage===undefined?defaultStorage():options.storage;
     // A long series without context comes from an outdated worker: refetch.
-    const fresh=entry=>entry&&Date.parse(entry.expires)>now&&!(Array.isArray(entry.points)&&entry.points.length>=253&&!entry.context);
+    const fresh=entry=>entry&&Date.parse(entry.expires)>now&&Array.isArray(entry.closes)
+      &&!(Array.isArray(entry.points)&&entry.points.length>=253&&!entry.context&&/^[A-Z0-9]/.test(entry.ticker)&&!String(entry.ticker).endsWith("=X"));
     const held=memory.get(ticker);
     if(fresh(held))return held;
     if(!storage)return null;

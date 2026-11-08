@@ -58,7 +58,11 @@ assert.equal(ok.status,200);assert.equal(ok.headers.get("access-control-allow-or
 assert.match(ok.headers.get("cache-control"),/^public, max-age=\d+$/);
 assert.match(calls[0],/^https:\/\/query1\.finance\.yahoo\.com\/v8\/finance\/chart\/SAN\.PA\?range=10y&interval=1d$/);
 assert.equal((await worker.fetch(new Request("https://w.example/quote?symbol=X",{headers:{Origin:"https://evil.example"}}))).status,403);
-for(const bad of ["","../x","a/b","https://x","A B","X".repeat(21)])
+for(const ok of ["^GDAXI","USDEUR=X","EXSA.DE"])
+  assert.equal((await worker.fetch(new Request("https://w.example/quote?symbol="+encodeURIComponent(ok)))).status,200,ok);
+const closesCheck=convert("SAN.PA",payload(40),lastBar+7200);
+assert.equal(closesCheck.closes.length,closesCheck.points.length);assert.equal(closesCheck.closes.at(-1),closesCheck.close);
+for(const bad of ["","../x","a/b","https://x","A B","X".repeat(21),"^^X","X=Y","=X"])
   assert.equal((await worker.fetch(new Request("https://w.example/quote?symbol="+encodeURIComponent(bad)))).status,400,bad);
 assert.equal((await worker.fetch(new Request("https://w.example/other"))).status,404);
 const version=await worker.fetch(new Request("https://w.example/version"));
@@ -89,6 +93,8 @@ globalThis.fetch=async()=>new Response(JSON.stringify(payload(40)),{status:200})
 await worker.fetch(new Request("https://w.example/quote?symbol=san.pa",{headers:{Origin:site}}),env,ctxStub);
 await worker.fetch(new Request("https://w.example/quote?symbol=SAN.PA"),env,ctxStub);
 await worker.fetch(new Request("https://w.example/quote?symbol=VOE.VI"),env,ctxStub);
+await worker.fetch(new Request("https://w.example/quote?symbol=%5EGDAXI"),env,ctxStub);
+await worker.fetch(new Request("https://w.example/quote?symbol=USDEUR%3DX"),env,ctxStub);
 await Promise.all(waits);
 const listed=await (await worker.fetch(new Request("https://w.example/requested"),env,ctxStub)).json();
 assert.deepEqual(listed.symbols.map(r=>r.symbol).sort(),["SAN.PA","VOE.VI"]);

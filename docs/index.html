@@ -139,6 +139,43 @@ input:focus-visible,select:focus-visible,button:focus-visible,summary:focus-visi
 .stock-price{text-align:right;font-size:19px;font-weight:760;white-space:nowrap;font-variant-numeric:tabular-nums}
 .stock-sub{font-size:12px;color:var(--muted);margin-top:5px;line-height:1.5}
 .adr-note{color:var(--warn)}
+.view-tab{font-size:14px;padding:0 6px}
+.tc-rows{display:grid;gap:12px;margin:12px 0}
+.tc-row{background:var(--panel2);border:1px solid var(--edge);border-radius:12px;padding:12px;display:grid;gap:9px}
+.tc-row-head{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.tc-remove{min-height:36px;padding:6px 10px}
+.tc-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.tc-row .field,.tc-bench .field{display:grid;gap:4px;font-size:12px;color:var(--muted)}
+.tc-row input[type=date],.tc-row input[type=number],.tc-row input[type=search],.tc-bench input[type=text]{width:100%;height:44px;min-width:0;background:#0e1e2d;border:1px solid #4c6578;border-radius:9px;color:var(--text);padding:0 10px;font:inherit;font-size:15px}
+.tc-row input:disabled{opacity:.45}
+.tc-open{display:flex;gap:8px;align-items:center;font-size:13px}
+.tc-open input{width:20px;height:20px}
+.tc-hint{margin:0}
+.tc-add{width:100%}
+.tc-bench{border:1px solid var(--edge);border-radius:12px;padding:10px 12px;margin:14px 0 10px;display:grid;gap:8px}
+.tc-bench legend{font-weight:700;padding:0 4px}
+.tc-radio{display:flex;gap:8px;align-items:flex-start;font-size:13px;line-height:1.45}
+.tc-radio input{margin-top:3px;width:18px;height:18px;flex:none}
+.tc-run{width:100%;min-height:48px;font-size:15px}
+.tc-results{display:grid;gap:12px;margin-top:10px}
+.tc-result,.tc-total{border:1px solid var(--edge);border-left-width:4px;border-radius:12px;padding:12px;background:var(--panel2)}
+.tc-result h3,.tc-total h3{margin:0 0 4px;font-size:15px}
+.tc-result p,.tc-total p{margin:4px 0}
+.tc-good{border-left-color:#5fd39b}.tc-bad{border-left-color:#ef8a7c}
+.tc-good .tc-verdict{color:#8ff0c0;font-weight:800}.tc-bad .tc-verdict{color:#ffb2a6;font-weight:800}
+.tc-figures{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0}
+.tc-figure{display:grid;gap:2px;background:#10202f;border-radius:9px;padding:8px}
+.tc-figure strong{font-size:18px}
+.tc-chart{width:100%;height:auto;margin-top:6px}
+.tc-base{stroke:#4c6578;stroke-dasharray:3 3}
+.tc-axis{fill:var(--muted);font-size:9px}
+.tc-line-stock{stroke:#56c9b7;stroke-width:2}
+.tc-line-bench{stroke:#e2bf88;stroke-width:1.6;stroke-dasharray:5 3}
+.tc-legend{display:flex;gap:14px;font-size:12px;color:var(--muted);margin-top:4px}
+.tc-key::before{content:"";display:inline-block;width:16px;height:3px;margin-right:6px;vertical-align:middle}
+.tc-key-stock::before{background:#56c9b7}.tc-key-bench::before{background:#e2bf88}
+.tc-info{margin-top:12px}.tc-info summary{cursor:pointer;font-size:13px}
+@media (max-width:360px){.tc-grid,.tc-figures{grid-template-columns:1fr}}
 .stock-bottom{display:flex;align-items:center;gap:6px;justify-content:space-between;flex-wrap:wrap;margin-top:10px}
 .momentum{color:#94d7cd;font-weight:750;font-variant-numeric:tabular-nums;font-size:13px}
 .details{padding:0 14px 14px;border-top:1px solid #365064;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
@@ -255,8 +292,9 @@ h1{font-size:27px}
 <nav class="view-tabs" role="tablist" aria-label="Ansicht wählen">
   <button id="tabCandidates" class="view-tab" type="button" role="tab" aria-selected="true" aria-controls="candidatesPanel">Kandidaten</button>
   <button id="tabStockSearch" class="view-tab" type="button" role="tab" aria-selected="false" aria-controls="stockSearchPanel" tabindex="-1">Aktiensuche</button>
+  <button id="tabTradeCheck" class="view-tab" type="button" role="tab" aria-selected="false" aria-controls="tradeCheckPanel" tabindex="-1">Depot-Check</button>
 </nav>
-<label class="switch" for="showTradeLevels">
+<label id="tradeLevelsSwitch" class="switch" for="showTradeLevels">
   <input id="showTradeLevels" type="checkbox">
   Kauf-Limit &amp; Stop-Loss anzeigen (optionale Modellwerte)
 </label>
@@ -310,6 +348,7 @@ h1{font-size:27px}
   <div class="explain"><strong>Hinweis:</strong> Bei mehreren aktivierten Faktoren werden gleichgewichtete Rangprozente (0–100) zu einem gemeinsamen Score kombiniert. Bei der Sander-Option müssen Gewinn, operativer Cashflow und Umsatzentwicklung aus einem Geschäftsbericht überprüfbar sein und ein deutlicher Kursrückgang vorliegen. Frühwachstum benötigt drei vergleichbare Quartale, beschleunigtes Umsatzwachstum, positiven Jahres-Cashflow und erste Kursstärke. Fehlende Daten schließen einen Titel aus dem gewählten Mix aus. Standardmäßig bleibt ausschließlich das 12–2-Monats-Momentum aktiv; die historische Mehr-Rendite einer Kombination ist nicht belegt. Kauf-/Ausstiegswarnungen sind separate, nicht validierte Kursregeln. EUR-Kurse sind keine ausführbaren Trade-Republic-Angebote.</div>
 </section>
 
+<section id="tradeCheckPanel" class="panel" role="tabpanel" aria-labelledby="tabTradeCheck" hidden></section>
 <section id="stockSearchPanel" class="panel" role="tabpanel" aria-labelledby="tabStockSearch" hidden>
   <h2>Aktie suchen</h2>
   <p class="muted small">Suche nach Firmennamen, Börsenticker oder ISIN. Auch ähnliche Schreibweisen werden berücksichtigt.</p>
@@ -379,7 +418,8 @@ h1{font-size:27px}
 <script src="research-factors.js?v=1"></script>
 <script src="holding-horizon.js?v=1"></script>
 <script src="strategy-fit.js?v=3"></script>
-<script src="live-quote.js?v=4"></script>
+<script src="live-quote.js?v=5"></script>
+<script src="trade-check.js?v=1"></script>
 <script>
 "use strict";
 const $=id=>document.getElementById(id);
@@ -804,29 +844,66 @@ $("showTradeLevels").addEventListener("change",()=>searchController.refresh(fals
 for(const input of document.querySelectorAll("#searchFitChoices input[data-fit]")){
   input.addEventListener("change",()=>{saveTimePlan();updateTimePlan();searchController.refresh(false);});
 }
-function setView(view,focus=false){
-  const searching=view==="search";
-  $("candidatesPanel").hidden=searching;
-  $("stockSearchPanel").hidden=!searching;
-  for(const [id,selected] of [["tabCandidates",!searching],["tabStockSearch",searching]]){
-    $(id).setAttribute("aria-selected",String(selected));
-    $(id).tabIndex=selected?0:-1;
-  }
-  if(searching)searchController.activate();
-  if(focus)$(searching?"tabStockSearch":"tabCandidates").focus();
-  history.replaceState(null,"",searching?"#search":"#candidates");
-  updateTimePlan();
-}
-for(const [id,view] of [["tabCandidates","candidates"],["tabStockSearch","search"]]){
-  $(id).addEventListener("click",()=>setView(view));
-  $(id).addEventListener("keydown",event=>{
-    if(!["ArrowLeft","ArrowRight","Home","End"].includes(event.key))return;
-    event.preventDefault();
-    const next=event.key==="Home"?"candidates":event.key==="End"?"search":view==="search"?"candidates":"search";
-    setView(next,true);
+const VIEWS=[["candidates","tabCandidates","candidatesPanel"],["search","tabStockSearch","stockSearchPanel"],["depot","tabTradeCheck","tradeCheckPanel"]];
+let tradeCheck=null;
+function openTradeCheck(){
+  if(tradeCheck||typeof StockTradeCheck==="undefined")return;
+  tradeCheck=StockTradeCheck.create($("tradeCheckPanel"),{
+    loadDirectory:async()=>{
+      const response=await fetch("search-index.json",{cache:"no-cache"});
+      if(!response.ok)throw Error("HTTP "+response.status);
+      const payload=await response.json();
+      return Array.isArray(payload.stocks)?payload.stocks:[];
+    },
+    prepare:rows=>StockSearch.prepare(rows,snapshot?.stocks||[]),
+    find:(index,query,limit)=>StockSearch.find(index,query,limit),
+    loadQuote:symbol=>StockLiveQuote.load(symbol),
+    loadBenchmarkIndex:async()=>{
+      const response=await fetch("benchmarks/index.json",{cache:"no-cache"});
+      if(!response.ok)throw Error("HTTP "+response.status);
+      return response.json();
+    },
+    // Verified series from the data run; the worker is the fallback.
+    loadBenchmark:async b=>{
+      try{
+        const response=await fetch("benchmarks/"+b.id+".json",{cache:"no-cache"});
+        if(response.ok){
+          const data=await response.json();
+          if(Array.isArray(data.points)&&data.points.length>30)return {points:data.points,currency:data.currency};
+        }
+      }catch{}
+      const data=await StockLiveQuote.load(b.symbol);
+      return {points:data.points,currency:data.currency};
+    }
   });
 }
-setView(location.hash==="#search"?"search":"candidates");
+function setView(view,focus=false){
+  if(!VIEWS.some(v=>v[0]===view))view="candidates";
+  for(const [name,tab,panel] of VIEWS){
+    const selected=name===view;
+    $(panel).hidden=!selected;
+    $(tab).setAttribute("aria-selected",String(selected));
+    $(tab).tabIndex=selected?0:-1;
+    if(selected&&focus)$(tab).focus();
+  }
+  // Time plan and model levels belong to the stock lists, not to the depot check.
+  document.querySelector(".horizon-panel").hidden=view==="depot";
+  $("tradeLevelsSwitch").hidden=view==="depot";
+  if(view==="search")searchController.activate();
+  if(view==="depot")openTradeCheck();
+  history.replaceState(null,"","#"+view);
+  updateTimePlan();
+}
+VIEWS.forEach(([view,tab],i)=>{
+  $(tab).addEventListener("click",()=>setView(view));
+  $(tab).addEventListener("keydown",event=>{
+    if(!["ArrowLeft","ArrowRight","Home","End"].includes(event.key))return;
+    event.preventDefault();
+    const j=event.key==="Home"?0:event.key==="End"?VIEWS.length-1:(i+(event.key==="ArrowRight"?1:VIEWS.length-1))%VIEWS.length;
+    setView(VIEWS[j][0],true);
+  });
+});
+setView(location.hash.slice(1)||"candidates");
 $("reload").addEventListener("click",load);
 load();
 </script>

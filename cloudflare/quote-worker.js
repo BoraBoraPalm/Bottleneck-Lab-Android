@@ -6,9 +6,10 @@
 // so lange darf die App die Antwort wiederverwenden. "context" enthält Trend-,
 // Crash- und ATR-Werte nach denselben Regeln wie scripts/trade_guidance.py.
 const SITE = "https://boraborapalm.github.io";
-const SYMBOL = /^[A-Z0-9][A-Z0-9.\-]{0,19}$/;
+// Aktien/ETFs (SAP.DE), Indizes (^GDAXI) und Wechselkurse (USDEUR=X).
+const SYMBOL = /^\^?[A-Z0-9][A-Z0-9.\-]{0,19}(=X)?$/;
 const SETTLE = 1800; // Sekunden nach Handelsschluss, bis der Schlusskurs als final gilt
-export const VERSION = "2026-11-04.4"; // /version zeigt, welche Fassung Cloudflare ausliefert
+export const VERSION = "2026-11-08.1"; // /version zeigt, welche Fassung Cloudflare ausliefert
 const LOG_DAYS = 45, LOG_SIZE = 500;
 
 // Merkt sich, welche Aktien in der Suche geladen wurden (Durable Object mit
@@ -50,7 +51,7 @@ export default {
     if (request.method !== "GET") return reply({ error: "method" }, 405, cors);
     const url = new URL(request.url);
     if (url.pathname === "/version")
-      return reply({ version: VERSION, features: ["context", "turnover", "expires"].concat(requestLog(env) ? ["requested"] : []) }, 200, cors);
+      return reply({ version: VERSION, features: ["context", "turnover", "expires", "closes", "index_fx"].concat(requestLog(env) ? ["requested"] : []) }, 200, cors);
     if (url.pathname === "/requested") {
       const log = requestLog(env);
       if (!log) return reply({ version: 1, symbols: [] }, 200, cors);
@@ -69,7 +70,7 @@ export default {
         if (!upstream.ok) { status = "upstream_" + upstream.status; continue; }
         const chart = convert(symbol, await upstream.json(), Date.now() / 1000);
         if (chart) {
-          const log = requestLog(env);
+          const log = /^[A-Z0-9]/.test(symbol) && !symbol.endsWith("=X") ? requestLog(env) : null; // only stocks
           if (log && ctx) ctx.waitUntil(log.fetch("https://log/add?symbol=" + encodeURIComponent(symbol)).catch(() => null));
           return reply(chart, 200, cors, chart.max_age);
         }
@@ -127,6 +128,7 @@ export function convert(symbol, data, now) {
     source: "Yahoo Finance", basis: "adjusted close normalized to latest raw close", live: true,
     fetched: new Date(now * 1000).toISOString(), expires: new Date((now + maxAge) * 1000).toISOString(), max_age: maxAge,
     context: priceContext(rows), turnover: turnover(rows),
+    closes: rows.map(r => r[1]), // unbereinigte Schlusskurse je Punkt (z. B. Kaufkurs am Kaufdatum)
     points: rows.map(([day, , adjusted]) => [day, Math.round(adjusted * scale * 1e6) / 1e6])
   };
 }

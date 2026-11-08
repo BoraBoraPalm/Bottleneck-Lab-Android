@@ -230,6 +230,16 @@ Beim Aufklappen wird der Kursverlauf **erst dann** geladen (kein externer Tradin
 
 Kauf-Limit- und Stop-Loss-Linien werden im Chart **nur bei aktiviertem Schalter „Kauf-Limit & Stop-Loss anzeigen“** eingeblendet. Da die Achse den Originalkurs der jeweiligen Börse zeigt, werden die vorhandenen EUR-Modellwerte mit dem **aktuellen Referenzwechselkurs** zurück in die Kurswährung umgerechnet; sie sind weder historische EUR-Kurse noch tatsächliche Broker-Orders. Die Chartreihe verwendet von Yahoo bezogene split-/dividendenbereinigte Schlusskurse, auf den letzten Originalschlusskurs skaliert. Die Modellgrenzen wurden in unseren bisherigen Tests nicht als gewinnsteigernd validiert.
 
+## Depot-Check (eigene Käufe gegen einen Benchmark)
+
+Im Reiter **Depot-Check** trägst du beliebig viele Positionen ein: Aktie (Name, Ticker oder ISIN), Kaufdatum und Verkaufsdatum oder „noch im Depot“, optional die Stückzahl. Kauf- und Verkaufskurs werden als Tagesschlusskurs vorgeschlagen (erster Handelstag ab dem Datum) und lassen sich mit den eigenen Kursen überschreiben. „+ Position hinzufügen“ legt weitere Zeilen an; alles bleibt nur auf dem Gerät gespeichert.
+
+„Mit Benchmark vergleichen“ wählt je Aktie automatisch den passenden Markt nach dem Land des Emittenten (z. B. DAX für deutsche, STOXX Europe 600 für übrige europäische, S&P 500 für US-Aktien, MSCI ACWI als Rückfall) oder nutzt einen manuell gewählten bzw. frei eingegebenen Benchmark (Yahoo-Symbol, z. B. `IWDA.AS` oder `^GDAXI`). Gezeigt werden Rendite der Aktie und des Benchmarks über dieselben Tage, beide in EUR und inklusive Dividenden, die Differenz in Prozentpunkten (Out- bzw. Underperformance), annualisierte Werte ab einem Jahr sowie der Zeitverlauf (100 = Kauftag). Bei mehreren Positionen vergleicht die Summe, was aus demselben Geld zu denselben Zeitpunkten im jeweiligen Benchmark geworden wäre; ohne Stückzahl zählt jede Position mit 1.000 €.
+
+- Rendite: bereinigte Schlusskurse (Dividenden wieder angelegt, Splits berücksichtigt), umgerechnet mit historischen Wechselkursen (`XXXEUR=X`; Pence, Agorot und Cent werden umgerechnet). Eigene Kurse ersetzen den Schlusskurs des Tages: bereinigte Rendite × (eigener Verkaufskurs / Schlusskurs) ÷ (eigener Kaufkurs / Schlusskurs).
+- Benchmarks: breite ETFs bzw. Performanceindizes inklusive Dividenden. Der Datenlauf lädt sie täglich nach `docs/benchmarks/` und prüft ihre Verfügbarkeit; die automatische Wahl nutzt nur verfügbare Reihen.
+- Grenzen: höchstens rund zehn Jahre zurück; Gebühren und Steuern sind nicht enthalten; vergangene Wertentwicklung ist keine Prognose.
+
 ## Kurs auf Knopfdruck in der Aktiensuche
 
 Hat ein Suchtreffer keinen gespeicherten Kurs, lädt **„Kurs jetzt laden“** (oder das Aufklappen der Karte) den letzten abgeschlossenen Tagesschlusskurs über einen optionalen Cloudflare Worker im Gratis-Tarif (`cloudflare/`). Angezeigt werden Schlusskurs mit Datum, EUR-Referenzwert, 12–2-Momentum aus der geladenen Reihe und der Kursverlauf, ausdrücklich ohne Strategie-, Liquiditäts- oder Fundamentalprüfung. Die Antwort gilt bis 30 Minuten nach dem nächsten regulären Börsenschluss und wird so lange auf dem Gerät wiederverwendet (Speicher, Browser-Cache, höchstens zwölf Abrufe). Fehler werden nie gespeichert. Ohne Worker funktioniert die App unverändert.

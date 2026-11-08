@@ -7,3 +7,4 @@ docs/charts/
 # Local research bundle caches (sources are referenced by immutable manifests).
 .research_cache/
 
+docs/benchmarks/

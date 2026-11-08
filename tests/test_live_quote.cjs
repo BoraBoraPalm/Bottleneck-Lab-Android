@@ -12,7 +12,7 @@ function series(ticker,{days=300,expires="2026-11-05T17:00:00Z",currency="EUR"}=
   for(let i=0;i<days;i++)points.push([new Date(start+i*86400000).toISOString().slice(0,10),100+i]);
   return {version:1,ticker,currency,asof:points.at(-1)[0],close:points.at(-1)[1],source:"Yahoo Finance",
     basis:"adjusted close normalized to latest raw close",live:true,fetched:"2026-11-04T10:00:00Z",expires,max_age:3600,
-    context:{context_basis:"Yahoo adjusted OHLC, signal after close"},points};
+    context:{context_basis:"Yahoo adjusted OHLC, signal after close"},points,closes:points.map(p=>p[1])};
 }
 function memoryStorage(){
   const map=new Map();
@@ -60,15 +60,30 @@ const now=Date.parse("2026-11-04T12:00:00Z");
   await live.load("OLD.PA",{storage:outdated,now,fetch:async()=>{calls++;throw Error("no fetch");}});
   assert.equal(calls,2,"answer with context is reused");
 
-  // Storage keeps at most twelve lookups and survives blocked storage.
+  // Indices and exchange rates are accepted symbols; answers without raw closes are refetched.
+  live.clear();
+  for(const sym of ["^GDAXI","USDEUR=X"]){
+    const d=series(sym);d.context=null;
+    assert.equal((await live.load(sym,{storage:null,now,fetch:async()=>({ok:true,status:200,json:async()=>d})})).ticker,sym);
+  }
+  live.clear();
+  const noCloses=memoryStorage();calls=0;
+  const plain=()=>{const d=series("NC.PA");delete d.closes;return d;};
+  await live.load("NC.PA",{storage:noCloses,now,fetch:async()=>{calls++;return {ok:true,status:200,json:async()=>plain()};}});
+  live.clear();
+  await live.load("NC.PA",{storage:noCloses,now,fetch:async()=>{calls++;return {ok:true,status:200,json:async()=>series("NC.PA")};}});
+  assert.equal(calls,2,"answer without raw closes is fetched again");
+  assert.throws(()=>live.validate({...series("X.PA"),closes:[1,2]},"X.PA"));
+
+  // Storage keeps at most twenty lookups and survives blocked storage.
   live.clear();
   const many=memoryStorage();
-  for(let i=0;i<15;i++){
+  for(let i=0;i<23;i++){
     const t="T"+i;
     await live.load(t,{storage:many,now,fetch:async()=>({ok:true,status:200,json:async()=>({...series(t),fetched:"2026-11-04T10:"+String(i).padStart(2,"0")+":00Z"})})});
   }
   const kept=Object.keys(JSON.parse(many.map.get(live.storageKey)).items);
-  assert.equal(kept.length,12);assert.ok(!kept.includes("T0")&&kept.includes("T14"),"oldest lookups are dropped");
+  assert.equal(kept.length,20);assert.ok(!kept.includes("T0")&&kept.includes("T22"),"oldest lookups are dropped");
   const blocked={getItem(){throw Error("blocked")},setItem(){throw Error("blocked")}};
   live.clear();
   assert.equal((await live.load("BLK.DE",{storage:blocked,now,fetch:async()=>({ok:true,status:200,json:async()=>series("BLK.DE")})})).ticker,"BLK.DE");
@@ -93,7 +108,7 @@ const now=Date.parse("2026-11-04T12:00:00Z");
   // Card wiring: only search hits without stored quote, button does not toggle the card,
   // chart uses the fetched series.
   const html=fs.readFileSync("docs/index.html","utf8");
-  assert.ok(html.includes('<script src="live-quote.js?v=4"></script>'));
+  assert.ok(html.includes('<script src="live-quote.js?v=5"></script>'));
   assert.ok(html.includes('const staleStored=Number.isFinite(s.reference_close_eur)&&s.entry_review==="stale_quote";'));
   assert.ok(html.includes('if(wantsLive&&!liveData&&typeof StockLiveQuote!=="undefined"){'));
   assert.ok(html.includes('(searchNote||momentumEl).after(box);'),"also candidate cards with a stale stored quote");
