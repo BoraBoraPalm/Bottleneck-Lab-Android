@@ -56,11 +56,19 @@ const site="https://boraborapalm.github.io";
 const ok=await worker.fetch(new Request("https://w.example/quote?symbol=san.pa",{headers:{Origin:site}}));
 assert.equal(ok.status,200);assert.equal(ok.headers.get("access-control-allow-origin"),site);
 assert.match(ok.headers.get("cache-control"),/^public, max-age=\d+$/);
-assert.match(calls[0],/^https:\/\/query1\.finance\.yahoo\.com\/v8\/finance\/chart\/SAN\.PA\?range=10y&interval=1d$/);
+assert.match(calls[0],/^https:\/\/query1\.finance\.yahoo\.com\/v8\/finance\/chart\/SAN\.PA\?range=10y&interval=1d&events=div%2Csplits$/);
 assert.equal((await worker.fetch(new Request("https://w.example/quote?symbol=X",{headers:{Origin:"https://evil.example"}}))).status,403);
 for(const ok of ["^GDAXI","USDEUR=X","EXSA.DE"])
   assert.equal((await worker.fetch(new Request("https://w.example/quote?symbol="+encodeURIComponent(ok)))).status,200,ok);
 const closesCheck=convert("SAN.PA",payload(40),lastBar+7200);
+assert.deepEqual(closesCheck.splits,[],"no split events");
+// Split events: factor numerator/denominator on the exchange's day; outside the series ignored.
+const withSplits=payload(40),r0=withSplits.chart.result[0];
+r0.events={splits:{a:{date:r0.timestamp[20],numerator:10,denominator:1,splitRatio:"10:1"},
+  b:{date:r0.timestamp[5],numerator:1,denominator:4,splitRatio:"1:4"},
+  c:{date:r0.timestamp[0]-86400*30,numerator:2,denominator:1},d:{date:r0.timestamp[7],numerator:1,denominator:1}}};
+const sc=convert("SAN.PA",withSplits,lastBar+7200);
+assert.deepEqual(sc.splits,[[sc.points[5][0],.25],[sc.points[20][0],10]]);
 assert.equal(closesCheck.closes.length,closesCheck.points.length);assert.equal(closesCheck.closes.at(-1),closesCheck.close);
 for(const bad of ["","../x","a/b","https://x","A B","X".repeat(21),"^^X","X=Y","=X"])
   assert.equal((await worker.fetch(new Request("https://w.example/quote?symbol="+encodeURIComponent(bad)))).status,400,bad);

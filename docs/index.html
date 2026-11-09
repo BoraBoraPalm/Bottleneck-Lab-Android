@@ -146,11 +146,12 @@ input:focus-visible,select:focus-visible,button:focus-visible,summary:focus-visi
 .tc-remove{min-height:36px;padding:6px 10px}
 .tc-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
 .tc-row .field,.tc-bench .field{display:grid;gap:4px;font-size:12px;color:var(--muted)}
-.tc-row input[type=date],.tc-row input[type=number],.tc-row input[type=search],.tc-bench input[type=text]{width:100%;height:44px;min-width:0;background:#0e1e2d;border:1px solid #4c6578;border-radius:9px;color:var(--text);padding:0 10px;font:inherit;font-size:15px}
+.tc-row input[type=date],.tc-row input[type=number],.tc-row input[type=search],.tc-bench input[type=text],.tc-bench input[type=number]{width:100%;height:44px;min-width:0;background:#0e1e2d;border:1px solid #4c6578;border-radius:9px;color:var(--text);padding:0 10px;font:inherit;font-size:15px}
 .tc-row input:disabled{opacity:.45}
 .tc-open{display:flex;gap:8px;align-items:center;font-size:13px}
 .tc-open input{width:20px;height:20px}
 .tc-hint{margin:0}
+.tc-bench p{margin:0}.tc-warn{color:#ffd39a}
 .tc-add{width:100%}
 .tc-bench{border:1px solid var(--edge);border-radius:12px;padding:10px 12px;margin:14px 0 10px;display:grid;gap:8px}
 .tc-bench legend{font-weight:700;padding:0 4px}
@@ -418,8 +419,8 @@ h1{font-size:27px}
 <script src="research-factors.js?v=1"></script>
 <script src="holding-horizon.js?v=1"></script>
 <script src="strategy-fit.js?v=3"></script>
-<script src="live-quote.js?v=5"></script>
-<script src="trade-check.js?v=2"></script>
+<script src="live-quote.js?v=6"></script>
+<script src="trade-check.js?v=3"></script>
 <script>
 "use strict";
 const $=id=>document.getElementById(id);
@@ -869,11 +870,18 @@ function openTradeCheck(){
         const response=await fetch("benchmarks/"+b.id+".json",{cache:"no-cache"});
         if(response.ok){
           const data=await response.json();
-          if(Array.isArray(data.points)&&data.points.length>30)return {points:data.points,currency:data.currency};
+          if(Array.isArray(data.points)&&data.points.length>30){
+            const meta=data.benchmark||{},out={points:data.points,currency:data.currency};
+            if(Array.isArray(data.closes)&&data.closes.length===data.points.length)out.closes=data.closes;
+            if(meta.symbol)out.symbol=meta.symbol;
+            if(Number.isFinite(meta.ter_percent))out.ter=meta.ter_percent;
+            if(meta.detail)out.detail=meta.detail;
+            return out;
+          }
         }
       }catch{}
       const data=await StockLiveQuote.load(b.symbol);
-      return {points:data.points,currency:data.currency};
+      return {points:data.points,currency:data.currency,closes:data.closes};
     }
   });
 }

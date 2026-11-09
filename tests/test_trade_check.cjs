@@ -98,11 +98,65 @@ assert.equal(pick({ticker:"XYZ.ZZ"}),"ACWI","unknown market: world");
 assert.equal(pick({ticker:"SAP.DE",country_code:"DE"},new Set(["ACWI","SPY"])),"ACWI","unavailable benchmark is skipped");
 assert.equal(tc.countryOf({reference_isin:"AT0000937503",ticker:"VOE.VI"}),"AT");
 
+// 9) Austrian dividend tax: each payout (jump of adjusted/raw on the ex-day) is reinvested only after 27.5 %.
+const payer=(y,at=300,currency="EUR")=>({currency,closes:D.map(()=>100),points:D.map((d,i)=>[d,i<at?100*(1-y):100])});
+const st=payer(.04);
+let g=tc.compute({buy:D[10],sell:D[500]},st,null,flat(1),null);
+let t=tc.compute({buy:D[10],sell:D[500]},st,null,flat(1),null,{taxRate:tc.KEST});
+close(g.stockEur,1/.96-1,"gross payout reinvested");
+close(t.stockEur,(1/.96)*(.96/(1-.04*.725))-1,"only 72.5 % of the payout reinvested");
+assert.equal(t.tax.stockEvents,1);close(t.tax.stockDrag,g.stockEur-t.stockEur);
+assert.equal(t.tax.benchApplied,false,"benchmark without raw closes: tax not applicable");
+assert.equal(tc.compute({buy:D[300],sell:D[500]},st,null,flat(1),null,{taxRate:tc.KEST}).tax.stockEvents,0,"bought on the ex-day: no payout");
+assert.equal(tc.compute({buy:D[10],sell:D[300]},st,null,flat(1),null,{taxRate:tc.KEST}).tax.stockEvents,1,"sold on the ex-day: payout received");
+const benchPayer={...payer(.02,400),name:"ETF"};
+t=tc.compute({buy:D[10],sell:D[500]},s,null,benchPayer,null,{taxRate:tc.KEST});
+assert.equal(t.tax.benchEvents,1);close(t.benchEur,(1/.98)*(.98/(1-.02*.725))-1);
+close(t.chart[t.chart.length-1][2],100*(1+t.benchEur),"time course ends at the taxed benchmark return");
+const noisy={...flat(100),closes:D.map(()=>100),points:D.map((d,i)=>[d,100+(i%2)*1e-6])};
+assert.equal(tc.taxPath(noisy.points,noisy.closes,.275).events.length,0,"rounding noise is no payout");
+
+// 10) Index (standard) = ETF plus its running costs; ETF mode = the ETF itself.
+const etfFlat={...flat(100),ter:0.2};
+const idx=tc.compute({buy:D[0],sell:D[599]},s,null,etfFlat,null,{index:true});
+close(idx.benchEur,Math.pow(1.002,idx.days/365.25)-1);assert.equal(idx.index.ter,.002);
+assert.equal(tc.compute({buy:D[0],sell:D[599]},s,null,etfFlat,null,{index:false}).benchEur,0);
+assert.equal(tc.compute({buy:D[0],sell:D[599]},s,null,flat(100),null,{index:true}).index,null,"unknown TER: no estimate");
+
+// 11) Order fees: in the stake, off the end value; sell fee only for sold positions; ETF benchmark alike.
+const fs10=tc.compute({buy:D[10],sell:D[400],buyPrice:100,sellPrice:120,shares:10,buyFee:1,sellFee:1},s,null,flat(1),null,{benchFees:true});
+const gross=tc.compute({buy:D[10],sell:D[400],buyPrice:100,sellPrice:120,shares:10},s,null,flat(1),null);
+close(fs10.invested,1001);close(fs10.endValue,1000*(1+gross.stockEur)-1);close(fs10.benchValue,999);
+close(fs10.stockEur,fs10.endValue/1001-1);assert.deepEqual(fs10.fees,{buy:1,sell:1,bench:true});
+const openFee=tc.compute({buy:D[10],open:true,buyFee:1,sellFee:1},s,null,flat(1),null,{benchFees:false});
+assert.equal(openFee.fees.sell,0,"still held: no sell fee");close(openFee.invested,1000);close(openFee.benchValue,1000,"index: no fees");
+close(openFee.endValue,999*(1+tc.compute({buy:D[10],open:true},s,null,flat(1),null).stockEur));
+assert.match(tc.compute({buy:D[10],open:true,buyFee:1000},s,null,flat(1),null).error,/Ordergebühren/);
+
+// 12) Splits: prices as traded before a split are suggested and recognised.
+const splitStock={...stockSeries(),splits:[[D[300],10],["2010-01-01",2]]};
+const plain=tc.compute({buy:D[10],sell:D[400]},stockSeries(),null,flat(1),null);
+const sp=tc.compute({buy:D[10],sell:D[400]},splitStock,null,flat(1),null);
+close(sp.closeBuy,splitStock.closes[10]*10,"suggested buy price as traded then");close(sp.closeSell,splitStock.closes[400]);
+close(sp.stockEur,plain.stockEur,"a split does not change the return");
+assert.deepEqual(sp.splits,[[D[300],10]]);assert.deepEqual(sp.splitsAfterBuy,[[D[300],10]]);
+const tradedOwn=tc.compute({buy:D[10],sell:D[400],buyPrice:splitStock.closes[10]*10*1.01,shares:5},splitStock,null,flat(1),null);
+const adjustedOwn=tc.compute({buy:D[10],sell:D[400],buyPrice:splitStock.closes[10]*1.01,shares:50},splitStock,null,flat(1),null);
+close(tradedOwn.stockEur,adjustedOwn.stockEur,"own price in either form gives the same return");
+assert.equal(tradedOwn.buyTraded,true);assert.equal(adjustedOwn.buyTraded,false);
+close(tradedOwn.invested,adjustedOwn.invested,"shares and price in the same form: same stake");
+close(tradedOwn.stockEur,plain.stockEur/1.01+(1/1.01-1),"1 % above the close");
+
+// 13) Manual ^ symbols: price indices are flagged.
+assert.match(tc.indexWarning("^GSPC"),/Kursindizes ohne Dividenden/);
+assert.match(tc.indexWarning("^gdaxi"),/Performanceindex/);
+assert.equal(tc.indexWarning("SPY"),null);
+
 // 8) Page wiring.
 const html=fs.readFileSync("docs/index.html","utf8");
-assert.ok(html.includes('<script src="trade-check.js?v=2"></script>'));
+assert.ok(html.includes('<script src="trade-check.js?v=3"></script>'));
 assert.ok(html.includes('id="tabTradeCheck"')&&html.includes('id="tradeCheckPanel"'));
 assert.ok(html.includes('document.querySelector(".horizon-panel").hidden=view==="depot";'));
 const js=fs.readFileSync("docs/trade-check.js","utf8");
 assert.ok(js.includes("try{storage.setItem(STORAGE_KEY"),"device storage wrapped in try/catch");
-console.log("Depot-Check: dividends/splits, own prices, EUR conversion incl. pence, benchmark days and choice, portfolio sum and page wiring verified.");
+console.log("Depot-Check: dividends/splits, own prices, EUR conversion incl. pence, benchmark days and choice, portfolio sum, dividend tax, index vs. ETF, order fees, split prices and page wiring verified.");

@@ -9,7 +9,7 @@ const SITE = "https://boraborapalm.github.io";
 // Aktien/ETFs (SAP.DE), Indizes (^GDAXI) und Wechselkurse (USDEUR=X).
 const SYMBOL = /^\^?[A-Z0-9][A-Z0-9.\-]{0,19}(=X)?$/;
 const SETTLE = 1800; // Sekunden nach Handelsschluss, bis der Schlusskurs als final gilt
-export const VERSION = "2026-11-08.1"; // /version zeigt, welche Fassung Cloudflare ausliefert
+export const VERSION = "2026-11-09.1"; // /version zeigt, welche Fassung Cloudflare ausliefert
 const LOG_DAYS = 45, LOG_SIZE = 500;
 
 // Merkt sich, welche Aktien in der Suche geladen wurden (Durable Object mit
@@ -51,7 +51,7 @@ export default {
     if (request.method !== "GET") return reply({ error: "method" }, 405, cors);
     const url = new URL(request.url);
     if (url.pathname === "/version")
-      return reply({ version: VERSION, features: ["context", "turnover", "expires", "closes", "index_fx"].concat(requestLog(env) ? ["requested"] : []) }, 200, cors);
+      return reply({ version: VERSION, features: ["context", "turnover", "expires", "closes", "index_fx", "splits"].concat(requestLog(env) ? ["requested"] : []) }, 200, cors);
     if (url.pathname === "/requested") {
       const log = requestLog(env);
       if (!log) return reply({ version: 1, symbols: [] }, 200, cors);
@@ -65,7 +65,7 @@ export default {
     for (const host of ["query1.finance.yahoo.com", "query2.finance.yahoo.com"]) {
       try {
         const upstream = await fetch(
-          `https://${host}/v8/finance/chart/${encodeURIComponent(symbol)}?range=10y&interval=1d`,
+          `https://${host}/v8/finance/chart/${encodeURIComponent(symbol)}?range=10y&interval=1d&events=div%2Csplits`,
           { headers: { "User-Agent": "Mozilla/5.0 (compatible; BottleneckLab/1.0)", Accept: "application/json" } });
         if (!upstream.ok) { status = "upstream_" + upstream.status; continue; }
         const chart = convert(symbol, await upstream.json(), Date.now() / 1000);
@@ -113,6 +113,18 @@ export function convert(symbol, data, now) {
   }
   if (rows.length < 30) return null;
   const last = rows[rows.length - 1], scale = last[1] / last[2];
+  // Yahoo's "close" is already split-adjusted. The split list lets the app show
+  // and accept prices as traded at the time (e.g. before a 10:1 split).
+  const splits = [];
+  const events = r.events && r.events.splits;
+  if (events && typeof events === "object") {
+    for (const e of Object.values(events)) {
+      const factor = e && e.numerator / e.denominator, day = e && Number.isFinite(e.date) ? isoDay(e.date, offset) : null;
+      if (day && Number.isFinite(factor) && factor > 0 && factor !== 1 && day > rows[0][0] && day <= last[0])
+        splits.push([day, Math.round(factor * 1e6) / 1e6]);
+    }
+    splits.sort((a, b) => a[0] < b[0] ? -1 : 1);
+  }
   if (!Number.isFinite(scale) || scale <= 0) return null;
   // Valid until the next close can be final: today's settle time, otherwise
   // the same time on the next day. Without session data: one hour.
@@ -128,7 +140,8 @@ export function convert(symbol, data, now) {
     source: "Yahoo Finance", basis: "adjusted close normalized to latest raw close", live: true,
     fetched: new Date(now * 1000).toISOString(), expires: new Date((now + maxAge) * 1000).toISOString(), max_age: maxAge,
     context: priceContext(rows), turnover: turnover(rows),
-    closes: rows.map(r => r[1]), // unbereinigte Schlusskurse je Punkt (z. B. Kaufkurs am Kaufdatum)
+    closes: rows.map(r => r[1]), // Schlusskurse je Punkt (nur splitbereinigt, ohne Dividenden)
+    splits, // [Tag, Faktor], z. B. ["2024-06-10", 10] für 10:1
     points: rows.map(([day, , adjusted]) => [day, Math.round(adjusted * scale * 1e6) / 1e6])
   };
 }

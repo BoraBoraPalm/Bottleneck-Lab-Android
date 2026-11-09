@@ -12,7 +12,7 @@ function series(ticker,{days=300,expires="2026-11-05T17:00:00Z",currency="EUR"}=
   for(let i=0;i<days;i++)points.push([new Date(start+i*86400000).toISOString().slice(0,10),100+i]);
   return {version:1,ticker,currency,asof:points.at(-1)[0],close:points.at(-1)[1],source:"Yahoo Finance",
     basis:"adjusted close normalized to latest raw close",live:true,fetched:"2026-11-04T10:00:00Z",expires,max_age:3600,
-    context:{context_basis:"Yahoo adjusted OHLC, signal after close"},points,closes:points.map(p=>p[1])};
+    context:{context_basis:"Yahoo adjusted OHLC, signal after close"},points,closes:points.map(p=>p[1]),splits:[]};
 }
 function memoryStorage(){
   const map=new Map();
@@ -74,6 +74,16 @@ const now=Date.parse("2026-11-04T12:00:00Z");
   await live.load("NC.PA",{storage:noCloses,now,fetch:async()=>{calls++;return {ok:true,status:200,json:async()=>series("NC.PA")};}});
   assert.equal(calls,2,"answer without raw closes is fetched again");
   assert.throws(()=>live.validate({...series("X.PA"),closes:[1,2]},"X.PA"));
+  // Answers of the previous worker (no split list) are fetched again; bad split lists are rejected.
+  live.clear();
+  const noSplits=memoryStorage();calls=0;
+  const unsplit=()=>{const d=series("NS.PA");delete d.splits;return d;};
+  await live.load("NS.PA",{storage:noSplits,now,fetch:async()=>{calls++;return {ok:true,status:200,json:async()=>unsplit()};}});
+  live.clear();
+  await live.load("NS.PA",{storage:noSplits,now,fetch:async()=>{calls++;return {ok:true,status:200,json:async()=>series("NS.PA")};}});
+  assert.equal(calls,2,"answer without split list is fetched again");
+  assert.throws(()=>live.validate({...series("X.PA"),splits:[["2025-02-01",-1]]},"X.PA"));
+  assert.ok(live.validate({...series("X.PA"),splits:[["2025-02-01",10]]},"X.PA"));
 
   // Storage keeps at most twenty lookups and survives blocked storage.
   live.clear();
@@ -108,7 +118,7 @@ const now=Date.parse("2026-11-04T12:00:00Z");
   // Card wiring: only search hits without stored quote, button does not toggle the card,
   // chart uses the fetched series.
   const html=fs.readFileSync("docs/index.html","utf8");
-  assert.ok(html.includes('<script src="live-quote.js?v=5"></script>'));
+  assert.ok(html.includes('<script src="live-quote.js?v=6"></script>'));
   assert.ok(html.includes('const staleStored=Number.isFinite(s.reference_close_eur)&&s.entry_review==="stale_quote";'));
   assert.ok(html.includes('if(wantsLive&&!liveData&&typeof StockLiveQuote!=="undefined"){'));
   assert.ok(html.includes('(searchNote||momentumEl).after(box);'),"also candidate cards with a stale stored quote");
