@@ -1,0 +1,58 @@
+name: Research · Strategy audit 2026-11 (research only)
+# Loads public research data and runs the archived study code. Never touches the app or Pages.
+on:
+  workflow_dispatch:
+  push:
+    branches: ['research/strategy-audit-**']
+    paths:
+      - 'research/tests/2026-11-14-strategy-audit/files/code/**'
+      - 'research/tests/2026-11-14-strategy-audit/files/protocol.md'
+      - '.github/workflows/research-strategy-audit.yml'
+permissions:
+  contents: read
+concurrency:
+  group: research-strategy-audit
+  cancel-in-progress: true
+env:
+  STUDY: research/tests/2026-11-14-strategy-audit/files
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Install pinned packages
+        run: python -m pip install -r "$STUDY/requirements.txt"
+      - name: Unit tests of the research library
+        run: |
+          if [ -f "$STUDY/code/test_lib.py" ]; then python -m unittest discover -s "$STUDY/code" -p 'test_*.py' -v; fi
+      - name: Download declared sources with SHA-256 manifest
+        run: python "$STUDY/code/fetch_data.py" --out "$RUNNER_TEMP/audit_data"
+      - name: Run the study
+        run: |
+          set -o pipefail
+          mkdir -p "$RUNNER_TEMP/audit_out"
+          echo "commit=$GITHUB_SHA run=$GITHUB_RUN_ID" > "$RUNNER_TEMP/audit_out/code_identity.txt"
+          sha256sum "$STUDY"/code/*.py "$STUDY/protocol.md" "$STUDY/requirements.txt" >> "$RUNNER_TEMP/audit_out/code_identity.txt"
+          if [ -f "$STUDY/code/run_all.py" ]; then
+            python -u "$STUDY/code/run_all.py" --data "$RUNNER_TEMP/audit_data" --out "$RUNNER_TEMP/audit_out" | tee "$RUNNER_TEMP/audit_out/run.log"
+          fi
+      - name: Keep results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: strategy-audit-results
+          path: ${{ runner.temp }}/audit_out
+          retention-days: 90
+          if-no-files-found: warn
+      - name: Keep downloaded inputs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: strategy-audit-inputs
+          path: ${{ runner.temp }}/audit_data
+          retention-days: 90
+          if-no-files-found: warn
