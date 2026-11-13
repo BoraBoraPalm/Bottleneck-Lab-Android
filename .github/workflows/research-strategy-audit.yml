@@ -1,5 +1,6 @@
 name: Research · Strategy audit 2026-11 (research only)
-# Loads public research data and runs the archived study code. Never touches the app or Pages.
+# Loads public research data once, freezes it as a release bundle and runs the archived study code.
+# Never touches the app or GitHub Pages.
 on:
   workflow_dispatch:
   push:
@@ -9,12 +10,14 @@ on:
       - 'research/tests/2026-11-14-strategy-audit/files/protocol.md'
       - '.github/workflows/research-strategy-audit.yml'
 permissions:
-  contents: read
+  contents: write   # only to attach the frozen input/result bundles to a pre-release
 concurrency:
   group: research-strategy-audit
   cancel-in-progress: true
 env:
   STUDY: research/tests/2026-11-14-strategy-audit/files
+  TAG: research-2026-11-14-strategy-audit
+  GH_TOKEN: ${{ github.token }}
 jobs:
   audit:
     runs-on: ubuntu-latest
@@ -27,32 +30,36 @@ jobs:
       - name: Install pinned packages
         run: python -m pip install -r "$STUDY/requirements.txt"
       - name: Unit tests of the research library
+        run: python -m unittest discover -s "$STUDY/code" -p 'test_*.py' -v
+      - name: Frozen inputs (downloaded once, afterwards the released bundle is reused)
         run: |
-          if [ -f "$STUDY/code/test_lib.py" ]; then python -m unittest discover -s "$STUDY/code" -p 'test_*.py' -v; fi
-      - name: Download declared sources with SHA-256 manifest
-        run: python "$STUDY/code/fetch_data.py" --out "$RUNNER_TEMP/audit_data"
+          set -e
+          mkdir -p "$RUNNER_TEMP/bundle"
+          if gh release download "$TAG" -p strategy-audit-inputs.zip -D "$RUNNER_TEMP" 2>/dev/null; then
+            echo "Reusing the released input bundle"
+          else
+            python "$STUDY/code/fetch_data.py" --out "$RUNNER_TEMP/raw"
+            python "$STUDY/code/prepare_inputs.py" --raw "$RUNNER_TEMP/raw" --out "$RUNNER_TEMP/bundle_new"
+            (cd "$RUNNER_TEMP/bundle_new" && zip -q -r -X "$RUNNER_TEMP/strategy-audit-inputs.zip" .)
+            gh release view "$TAG" >/dev/null 2>&1 || gh release create "$TAG" --prerelease --target "$GITHUB_SHA" \
+              --title "Forschungsdaten · Strategie-Audit 14.11.2026" \
+              --notes "Eingefrorene Eingabedaten und Ergebnisse der Studie research/tests/2026-11-14-strategy-audit. Kein App-Release. Quellen: Kenneth French Data Library, Open Source Asset Pricing (Chen/Zimmermann), Yahoo Finance (Monatsrenditen). Prüfsummen stehen im Studienordner."
+            gh release upload "$TAG" "$RUNNER_TEMP/strategy-audit-inputs.zip"
+          fi
+          unzip -q "$RUNNER_TEMP/strategy-audit-inputs.zip" -d "$RUNNER_TEMP/bundle"
+          sha256sum "$RUNNER_TEMP/strategy-audit-inputs.zip"
       - name: Run the study
         run: |
           set -o pipefail
           mkdir -p "$RUNNER_TEMP/audit_out"
           echo "commit=$GITHUB_SHA run=$GITHUB_RUN_ID" > "$RUNNER_TEMP/audit_out/code_identity.txt"
-          sha256sum "$STUDY"/code/*.py "$STUDY/protocol.md" "$STUDY/requirements.txt" >> "$RUNNER_TEMP/audit_out/code_identity.txt"
+          sha256sum "$STUDY"/code/*.py "$STUDY/protocol.md" "$STUDY/requirements.txt" "$RUNNER_TEMP/strategy-audit-inputs.zip" >> "$RUNNER_TEMP/audit_out/code_identity.txt"
           if [ -f "$STUDY/code/run_all.py" ]; then
-            python -u "$STUDY/code/run_all.py" --data "$RUNNER_TEMP/audit_data" --out "$RUNNER_TEMP/audit_out" | tee "$RUNNER_TEMP/audit_out/run.log"
+            python -u "$STUDY/code/run_all.py" --data "$RUNNER_TEMP/bundle" --out "$RUNNER_TEMP/audit_out" 2>&1 | tee "$RUNNER_TEMP/audit_out/run.log"
           fi
-      - name: Keep results
+      - name: Attach results to the research pre-release
         if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: strategy-audit-results
-          path: ${{ runner.temp }}/audit_out
-          retention-days: 90
-          if-no-files-found: warn
-      - name: Keep downloaded inputs
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: strategy-audit-inputs
-          path: ${{ runner.temp }}/audit_data
-          retention-days: 90
-          if-no-files-found: warn
+        run: |
+          cd "$RUNNER_TEMP/audit_out" && zip -q -r -X "$RUNNER_TEMP/strategy-audit-results.zip" . \
+            && gh release upload "$TAG" "$RUNNER_TEMP/strategy-audit-results.zip" --clobber \
+            && sha256sum "$RUNNER_TEMP/strategy-audit-results.zip"
