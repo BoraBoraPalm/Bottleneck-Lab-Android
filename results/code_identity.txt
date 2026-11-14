@@ -1,8 +1,14 @@
-commit=06fc4edbb579a19e38c52a03ccf3bdc49e90ed18 run=43531349250 inputs=bf0442e39274045af2e7bf2c37bbedbfbc910e13
+commit=d4ab0d0b7ff563e0aad2871dcf4b638640df7ab5 run=43533223573 inputs=8d1ba95bc39385dc3085f7430ff0a247c0207bd3
 680be2e1245f18785cfb149c1b25231607474acfa28118e10250b7e65d165d34  research/tests/2026-11-14-strategy-audit/files/code/fetch_data.py
+aacc2eec7da54acc22f49d4bde1f24786d846394210fadfb29d9924673431e07  research/tests/2026-11-14-strategy-audit/files/code/fetch_supplement.py
 e758ff1978fd3336a957b8fc1108ef875093004c282992640288de1601def161  research/tests/2026-11-14-strategy-audit/files/code/lib.py
+70252dcc8a1f68d2d3e33b2fe82ccbd5b7357e1377e2af83d2406cf37638de21  research/tests/2026-11-14-strategy-audit/files/code/mod_explore.py
+94be83e478013eb7969cff14e3630460751adb369139ce9435327e1346e2332d  research/tests/2026-11-14-strategy-audit/files/code/mod_factors.py
+e0df9e7526cac8d238bf763b0fc8a9c4aa8bfd3897a6be3fb8e666511efe00da  research/tests/2026-11-14-strategy-audit/files/code/mod_funds.py
+b62d952322ee51fc32cb57b8fa334a0e1af33accc2b5df7b4a8985e07a242fc7  research/tests/2026-11-14-strategy-audit/files/code/mod_rules.py
 718a35a4614ccee21a36d5fc7928655d15780519ce54d503b90c14272a096b9d  research/tests/2026-11-14-strategy-audit/files/code/prepare_inputs.py
+f8e79a6267e2a3fab1304c933f2be7327b613681d1f0812a61161780a377d0d0  research/tests/2026-11-14-strategy-audit/files/code/run_all.py
 2480030bd59e053c279c758732ff4ad12b48b1168d653ba430e43559c18a3791  research/tests/2026-11-14-strategy-audit/files/code/sources.py
 78fe1f9bdc17d28c3c6c02b8e85642c6e7b57c98f87e949ee4efd6ed0c07db12  research/tests/2026-11-14-strategy-audit/files/code/test_lib.py
-aaa78de0f8af584604cb44584c04742c0db5b1abe13d0da0da29ed39141500de  research/tests/2026-11-14-strategy-audit/files/protocol.md
+e4b948303130280024b30b29c3590b0a88622019aa3616846f1a577d50e66abd  research/tests/2026-11-14-strategy-audit/files/protocol.md
 3ebfbb0e6eb4609f095e3eee29ad78d906c974c7e432c34971a584eeea53327d  research/tests/2026-11-14-strategy-audit/files/requirements.txt

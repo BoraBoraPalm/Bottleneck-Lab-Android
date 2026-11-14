@@ -1,0 +1,163 @@
+{
+ "strategies_evaluated": 350,
+ "skipped_too_short": [],
+ "holm_family_size": 350,
+ "verdict_counts": {
+  "nicht belegt": 314,
+  "Evidenz dagegen": 22,
+  "Hinweise, nicht verlässlich": 13,
+  "verlässlich": 1
+ },
+ "verdict_by_module": {
+  "B": {
+   "Evidenz dagegen": 11,
+   "Hinweise, nicht verlässlich": 8,
+   "nicht belegt": 173,
+   "verlässlich": 0
+  },
+  "C1": {
+   "Evidenz dagegen": 2,
+   "Hinweise, nicht verlässlich": 0,
+   "nicht belegt": 6,
+   "verlässlich": 0
+  },
+  "C2": {
+   "Evidenz dagegen": 1,
+   "Hinweise, nicht verlässlich": 0,
+   "nicht belegt": 19,
+   "verlässlich": 0
+  },
+  "C3": {
+   "Evidenz dagegen": 0,
+   "Hinweise, nicht verlässlich": 0,
+   "nicht belegt": 32,
+   "verlässlich": 0
+  },
+  "C3-Regionen": {
+   "Evidenz dagegen": 0,
+   "Hinweise, nicht verlässlich": 5,
+   "nicht belegt": 29,
+   "verlässlich": 1
+  },
+  "C4": {
+   "Evidenz dagegen": 1,
+   "Hinweise, nicht verlässlich": 0,
+   "nicht belegt": 2,
+   "verlässlich": 0
+  },
+  "C5": {
+   "Evidenz dagegen": 7,
+   "Hinweise, nicht verlässlich": 0,
+   "nicht belegt": 53,
+   "verlässlich": 0
+  }
+ },
+ "criteria_pass_counts": {
+  "K1": 3,
+  "K2": 12,
+  "K3": 46,
+  "K4": 97,
+  "K6": 128
+ },
+ "nominal_p_below_5pct": 59,
+ "bh_below_5pct": 10,
+ "risk_reducing": [
+  "TF_MOM",
+  "TF_QVM",
+  "Asia_Pacific_ex_Japan_INV",
+  "T_SMA200",
+  "T_SMA10M",
+  "T_TSMOM12",
+  "T_VOL_1X",
+  "T_VOL_15X",
+  "IND_APPMIX",
+  "IND_APPMIX_3M",
+  "IND_TIMING",
+  "IND_DUALMOM",
+  "GEM",
+  "GTAA5",
+  "P6040"
+ ],
+ "osap": {
+  "signals": 179,
+  "missing_app_signals": [],
+  "with_both_periods": 177,
+  "mean_gross_active_insample": 0.01793885940052793,
+  "mean_gross_active_postpub": -0.008286696805172869,
+  "share_positive_gross_postpub": 0.4124293785310734,
+  "postpub_net_p_below_5pct": 5,
+  "postpub_net_holm_below_5pct": 0,
+  "insample_net_p_below_5pct": 47
+ },
+ "funds": {
+  "etf_missing": [
+   "AMOMX"
+  ],
+  "etf_excluded": [],
+  "etf_short": []
+ },
+ "c4_vs_world": {
+  "GEM": {
+   "first": "1997-05",
+   "last": "2026-09",
+   "cagr": 0.10654596851336429,
+   "bench_cagr": 0.08061853056598856,
+   "active": 0.023709833030578893,
+   "t": 1.0403669507196924,
+   "maxdd": -0.19867285536432222,
+   "bench_maxdd": -0.5476257416785117
+  },
+  "GTAA5": {
+   "first": "1997-04",
+   "last": "2026-09",
+   "cagr": 0.0665377264644893,
+   "bench_cagr": 0.08149238041100038,
+   "active": -0.01392428860514158,
+   "t": -0.5649148973117827,
+   "maxdd": -0.12636448749283102,
+   "bench_maxdd": -0.5476257416785119
+  },
+  "P6040": {
+   "first": "1996-05",
+   "last": "2026-09",
+   "cagr": 0.08017607290562179,
+   "bench_cagr": 0.08193475156877583,
+   "active": -0.0016268167488114338,
+   "t": -0.10604758530025224,
+   "maxdd": -0.3253139232210903,
+   "bench_maxdd": -0.5476257416785119
+  }
+ },
+ "c4_vs_6040": {
+  "GEM": {
+   "first": "1997-05",
+   "last": "2026-09",
+   "cagr": 0.10654596851336429,
+   "bench_cagr": 0.077030034752259,
+   "active": 0.027036138509696554,
+   "t": 1.573381086752579,
+   "maxdd": -0.19867285536432222,
+   "bench_maxdd": -0.32531392322109043
+  },
+  "GTAA5": {
+   "first": "1997-04",
+   "last": "2026-09",
+   "cagr": 0.0665377264644893,
+   "bench_cagr": 0.07829642189923303,
+   "active": -0.010964776229620955,
+   "t": -0.7235833135131913,
+   "maxdd": -0.12636448749283102,
+   "bench_maxdd": -0.3253139232210901
+  }
+ },
+ "data_end": {
+  "french": "2026-09"
+ },
+ "exploratory": {},
+ "environment": {
+  "python": "3.13.18",
+  "numpy": "2.5.3",
+  "pandas": "3.0.5"
+ },
+ "runtime_seconds": 27.5
+}
