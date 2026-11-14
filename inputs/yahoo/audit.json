@@ -1,0 +1,1593 @@
+{
+ "ACWI": {
+  "currency": "USD",
+  "type": "ETF",
+  "name": "iShares MSCI ACWI ETF",
+  "first": "2008-03-28",
+  "last": "2026-11-13",
+  "days": 4689,
+  "max_abs_daily_move": 0.12413363061496785,
+  "moves_over_12pct": [
+   [
+    "2008-10-13",
+    0.1241
+   ]
+  ]
+ },
+ "AGG": {
+  "currency": "USD",
+  "type": "ETF",
+  "name": "iShares Core U.S. Aggregate Bond ETF",
+  "first": "2003-09-29",
+  "last": "2026-11-13",
+  "days": 5820,
+  "max_abs_daily_move": 0.06839575489583993,
+  "moves_over_12pct": []
+ },
+ "AMOMX": {
+  "error": "KeyError: 'timestamp'"
+ },
+ "AQMIX": {
+  "currency": "USD",
+  "type": "MUTUALFUND",
+  "name": "AQR Managed Futures Strategy I",
+  "first": "2010-01-05",
+  "last": "2026-11-12",
+  "days": 4241,
+  "max_abs_daily_move": 0.051671700080978544,
+  "moves_over_12pct": []
+ },
+ "AVUV": {
+  "currency": "USD",
+  "type": "ETF",
+  "name": "Avantis US Small Cap Value ETF",
+  "first": "2019-09-26",
+  "last": "2026-11-13",
+  "days": 1794,
+  "max_abs_daily_move": 0.12690474358163484,
+  "moves_over_12pct": [
+   [
+    "2020-03-16",
+    -0.1269
+   ]
+  ]
+ },
+ "BIL": {
+  "currency": "USD",
+  "type": "ETF",
+  "name": "State Street SPDR Bloomberg 1-3 Month T-Bill ETF",
+  "first": "2007-05-30",
+  "last": "2026-11-13",
+  "days": 4898,
+  "max_abs_daily_move": 0.00435115782795048,
+  "moves_over_12pct": []
+ },
+ "COWZ": {
+  "currency": "USD",
+  "type": "ETF",
+  "name": "Pacer US Cash Cows 100 ETF",
+  "first": "2016-12-22",
+  "last": "2026-11-13",
+  "days": 2487,
+  "max_abs_daily_move": 0.11092373725544835,
+  "moves_over_12pct": []
+ },
+ "DBC": {
+  "currency": "USD",
+  "type": "ETF",
+  "name": "Invesco DB Commodity Index Tracking Fund",
+  "first": "2006-02-06",
+  "last": "2026-11-13",
+  "days": 5227,
+  "max_abs_daily_move": 0.07944429064906289,
+  "moves_over_12pct": []
+ },
+ "DBMF": {
+  "currency": "USD",
+  "type": "ETF",
+  "name": "iMGP DBi Managed Futures Strategy ETF",
+  "first": "2019-05-08",
+  "last": "2026-11-13",
+  "days": 1892,
+  "max_abs_daily_move": 0.04128834013774607,
+  "moves_over_12pct": []
+ },
+ "DFLVX": {
+  "currency": "USD",
+  "type": "MUTUALFUND",
+  "name": "DFA US Large Cap Value I",
+  "first": "1993-02-18",
+  "last": "2026-11-12",
+  "days": 8493,
+  "max_abs_daily_move": 0.12874261627562134,
+  "moves_over_12pct": [
+   [
+    "2008-10-13",
+    0.1287
+   ],
+   [
+    "2020-03-16",
+    -0.1287
+   ]
+  ]
+ },
+ "DFSVX": {
+  "currency": "USD",
+  "type": "MUTUALFUND",
+  "name": "DFA U.S. Small Cap Value I",
+  "first": "1993-02-26",
+  "last": "2026-11-12",
+  "days": 8487,
+  "max_abs_daily_move": 0.13043496221323947,
+  "moves_over_12pct": [
+   [
+    "2020-03-16",
+    -0.1304
+   ],
+   [
+    "2020-03-18",
+    -0.1261
+   ]
+  ]
+ },
+ "DVY": {
+  "currency": "USD",
+  "type": "ETF",
+  "name": "iShares Select Dividend ETF",
+  "first": "2003-11-07",
+  "last": "2026-11-13",
+  "days": 5791,
+  "max_abs_daily_move": 0.11434560564057183,
+  "moves_over_12pct": []
+ },
+ "EEM": {
+  "currency": "USD",
+  "type": "ETF",
+  "name": "iShares MSCI Emerging Markets ETF",
+  "first": "2003-04-14",
+  "last": "2026-11-13",
+  "days": 5936,
+  "max_abs_daily_move": 0.22769841384030243,
+  "moves_over_12pct": [
+   [
+    "2008-09-19",
+    0.1245
+   ],
+   [
+    "2008-10-13",
+    0.2277
+   ],
+   [
+    "2008-10-15",
+    -0.1617
+   ],
+   [
+    "2008-10-28",
+    0.2093
+   ],
+   [
+    "2008-10-30",
+    0.135
+   ],
+   [
+    "2008-11-05",
+    -0.1273
+   ],
+   [
+    "2008-11-13",
+    0.1385
+   ],
+   [
+    "2008-11-21",
+    0.144
+   ],
+   [
+    "2020-03-16",
+    -0.1248
+   ]
+  ]
+ },
+ "EFA": {
+  "currency": "USD",
+  "type": "ETF",
+  "name": "iShares MSCI EAFE ETF",
+  "first": "2001-08-27",
+  "last": "2026-11-13",
+  "days": 6342,
+  "max_abs_daily_move": 0.1588763194691456,
+  "moves_over_12pct": [
+   [
+    "2008-10-13",
+    0.1589
+   ],
+   [
+    "2008-10-28",
+    0.1378
+   ]
+  ]
+ },
+ "EFAV": {
+  "currency": "USD",
+  "type": "ETF",
+  "name": "iShares MSCI EAFE Min Vol Factor ETF",
+  "first": "2011-10-20",
+  "last": "2026-11-13",
+  "days": 3789,
+  "max_abs_daily_move": 0.11227314366036745,
+  "moves_over_12pct": []
+ },
+ "EFV": {
+  "currency": "USD",
+  "type": "ETF",
+  "name": "iShares MSCI EAFE Value ETF",
+  "first": "2005-08-05",
+  "last": "2026-11-13",
+  "days": 5353,
+  "max_abs_daily_move": 0.15745346910137092,
+  "moves_over_12pct": [
+   [
+    "2008-09-29",
+    -0.1276
+   ],
+   [
+    "2008-10-13",
+    0.1575
+   ]
+  ]
+ },
+ "EUNL.DE": {
+  "currency": "EUR",
+  "type": "ETF",
+  "name": "iShares Core MSCI World UCITS ETF USD (Acc)",
+  "first": "2009-09-25",
+  "last": "2026-11-12",
+  "days": 4351,
+  "max_abs_daily_move": 0.09645889339561242,
+  "moves_over_12pct": []
+ },
+ "EXSA.DE": {
+  "currency": "EUR",
+  "type": "ETF",
+  "name": "iShares STOXX Europe 600 UCITS ETF (DE) EUR (Dist)",
+  "first": "2008-01-02",
+  "last": "2026-11-12",
+  "days": 4791,
+  "max_abs_daily_move": 0.1225943254892018,
+  "moves_over_12pct": [
+   [
+    "2020-03-12",
+    -0.1226
+   ]
+  ]
+ },
+ "FNDX": {
+  "currency": "USD",
+  "type": "ETF",
+  "name": "Schwab Fundamental U.S. Large Company ETF",
+  "first": "2013-08-15",
+  "last": "2026-11-13",
+  "days": 3333,
+  "max_abs_daily_move": 0.11684031673335671,
+  "moves_over_12pct": []
+ },
+ "GLD": {
+  "currency": "USD",
+  "type": "ETF",
+  "name": "SPDR Gold Shares",
+  "first": "2004-11-18",
+  "last": "2026-11-13",
+  "days": 5532,
+  "max_abs_daily_move": 0.11290530102327678,
+  "moves_over_12pct": []
+ },
+ "GMOM": {
+  "currency": "USD",
+  "type": "ETF",
+  "name": "Cambria Global Momentum ETF",
+  "first": "2018-12-19",
+  "last": "2026-11-13",
+  "days": 1987,
+  "max_abs_daily_move": 0.0530592415925506,
+  "moves_over_12pct": []
+ },
+ "IEF": {
+  "currency": "USD",
+  "type": "ETF",
+  "name": "iShares 7-10 Year Treasury Bond ETF",
+  "first": "2002-07-30",
+  "last": "2026-11-13",
+  "days": 6114,
+  "max_abs_daily_move": 0.03426278761174273,
+  "moves_over_12pct": []
+ },
+ "IJR": {
+  "currency": "USD",
+  "type": "ETF",
+  "name": "iShares Core S&P Small-Cap ETF",
+  "first": "2000-05-26",
+  "last": "2026-11-13",
+  "days": 6657,
+  "max_abs_daily_move": 0.11768643011576807,
+  "moves_over_12pct": []
+ },
+ "IJS": {
+  "currency": "USD",
+  "type": "ETF",
+  "name": "iShares S&P Small-Cap 600 Value ETF",
+  "first": "2000-07-28",
+  "last": "2026-11-13",
+  "days": 6614,
+  "max_abs_daily_move": 0.1239665664552625,
+  "moves_over_12pct": [
+   [
+    "2008-12-01",
+    -0.124
+   ]
+  ]
+ },
+ "IMOM": {
+  "currency": "USD",
+  "type": "ETF",
+  "name": "Alpha Architect International Quantitative Momentum ETF",
+  "first": "2015-12-23",
+  "last": "2026-11-13",
+  "days": 2739,
+  "max_abs_daily_move": 0.10475317324918354,
+  "moves_over_12pct": []
+ },
+ "IMTM": {
+  "currency": "USD",
+  "type": "ETF",
+  "name": "iShares MSCI Intl Momentum Factor ETF",
+  "first": "2015-01-27",
+  "last": "2026-11-13",
+  "days": 2969,
+  "max_abs_daily_move": 0.25651968490883514,
+  "moves_over_12pct": [
+   [
+    "2015-02-12",
+    -0.1588
+   ],
+   [
+    "2015-02-13",
+    0.2565
+   ]
+  ]
+ },
+ "IQLT": {
+  "currency": "USD",
+  "type": "ETF",
+  "name": "iShares MSCI Intl Quality Factor ETF",
+  "first": "2015-01-21",
+  "last": "2026-11-13",
+  "days": 2973,
+  "max_abs_daily_move": 0.10093451526051112,
+  "moves_over_12pct": []
+ },
+ "IQQ0.DE": {
+  "currency": "EUR",
+  "type": "ETF",
+  "name": "iShares Edge MSCI World Minimum Volatility UCITS ETF USD (Acc)",
+  "first": "2012-11-30",
+  "last": "2026-11-12",
+  "days": 3537,
+  "max_abs_daily_move": 0.29755032664716863,
+  "moves_over_12pct": [
+   [
+    "2013-02-18",
+    -0.249
+   ],
+   [
+    "2013-03-06",
+    0.2976
+   ],
+   [
+    "2013-04-18",
+    -0.2349
+   ],
+   [
+    "2017-06-05",
+    0.1272
+   ],
+   [
+    "2025-10-24",
+    0.161
+   ],
+   [
+    "2025-10-27",
+    -0.1377
+   ]
+  ]
+ },
+ "IS3Q.DE": {
+  "currency": "EUR",
+  "type": "ETF",
+  "name": "iShares Edge MSCI World Quality Factor UCITS ETF USD (Acc)",
+  "first": "2014-10-06",
+  "last": "2026-11-12",
+  "days": 3073,
+  "max_abs_daily_move": 0.30329314198635515,
+  "moves_over_12pct": [
+   [
+    "2014-10-14",
+    -0.2066
+   ],
+   [
+    "2014-10-15",
+    0.2494
+   ],
+   [
+    "2014-10-16",
+    -0.2264
+   ],
+   [
+    "2014-10-21",
+    0.3033
+   ],
+   [
+    "2014-10-22",
+    -0.207
+   ],
+   [
+    "2014-10-30",
+    0.2814
+   ],
+   [
+    "2014-11-03",
+    -0.2029
+   ],
+   [
+    "2014-11-21",
+    0.2568
+   ],
+   [
+    "2014-11-24",
+    -0.1952
+   ],
+   [
+    "2017-06-05",
+    0.1278
+   ]
+  ]
+ },
+ "IS3R.DE": {
+  "currency": "EUR",
+  "type": "ETF",
+  "name": "iShares Edge MSCI World Momentum Factor UCITS ETF USD (Acc)",
+  "first": "2014-10-06",
+  "last": "2026-11-12",
+  "days": 3073,
+  "max_abs_daily_move": 0.3118240356445312,
+  "moves_over_12pct": [
+   [
+    "2014-10-14",
+    -0.206
+   ],
+   [
+    "2014-10-15",
+    0.2421
+   ],
+   [
+    "2014-10-20",
+    -0.2154
+   ],
+   [
+    "2014-10-21",
+    0.3118
+   ],
+   [
+    "2014-10-22",
+    -0.2052
+   ],
+   [
+    "2014-10-30",
+    0.2803
+   ],
+   [
+    "2014-11-03",
+    -0.2
+   ],
+   [
+    "2014-11-21",
+    0.2607
+   ],
+   [
+    "2014-11-24",
+    -0.193
+   ],
+   [
+    "2014-12-01",
+    0.2322
+   ],
+   [
+    "2014-12-02",
+    -0.1903
+   ],
+   [
+    "2015-05-08",
+    0.1424
+   ],
+   [
+    "2017-06-05",
+    0.1267
+   ]
+  ]
+ },
+ "IS3S.DE": {
+  "currency": "EUR",
+  "type": "ETF",
+  "name": "iShares Edge MSCI World Value Factor UCITS ETF USD (Acc)",
+  "first": "2014-10-06",
+  "last": "2026-11-12",
+  "days": 3073,
+  "max_abs_daily_move": 0.2874293009440103,
+  "moves_over_12pct": [
+   [
+    "2014-10-14",
+    -0.2119
+   ],
+   [
+    "2014-10-15",
+    0.2493
+   ],
+   [
+    "2014-10-20",
+    -0.2098
+   ],
+   [
+    "2014-10-22",
+    0.2874
+   ],
+   [
+    "2014-10-23",
+    -0.2025
+   ],
+   [
+    "2014-11-21",
+    0.2631
+   ],
+   [
+    "2014-11-24",
+    -0.1933
+   ],
+   [
+    "2017-06-05",
+    0.1251
+   ]
+  ]
+ },
+ "IS3T.DE": {
+  "currency": "EUR",
+  "type": "ETF",
+  "name": "iShares MSCI World Mid-Cap Equal Weight UCITS ETF",
+  "first": "2014-10-06",
+  "last": "2026-11-12",
+  "days": 3073,
+  "max_abs_daily_move": 0.2965732479373704,
+  "moves_over_12pct": [
+   [
+    "2014-10-14",
+    -0.2087
+   ],
+   [
+    "2014-10-15",
+    0.259
+   ],
+   [
+    "2014-10-20",
+    -0.2093
+   ],
+   [
+    "2014-10-21",
+    0.2966
+   ],
+   [
+    "2014-10-23",
+    -0.2025
+   ],
+   [
+    "2014-10-31",
+    0.2733
+   ],
+   [
+    "2014-11-03",
+    -0.1929
+   ],
+   [
+    "2014-11-05",
+    0.26
+   ],
+   [
+    "2014-11-06",
+    -0.1941
+   ],
+   [
+    "2014-11-21",
+    0.2608
+   ],
+   [
+    "2014-11-24",
+    -0.1956
+   ],
+   [
+    "2014-12-01",
+    0.2354
+   ],
+   [
+    "2014-12-02",
+    -0.1914
+   ],
+   [
+    "2015-05-08",
+    0.1406
+   ],
+   [
+    "2017-06-05",
+    0.1261
+   ]
+  ]
+ },
+ "ISPA.DE": {
+  "currency": "EUR",
+  "type": "ETF",
+  "name": "iShares STOXX Global Select Dividend 100 UCITS ETF (DE) EUR (Dist)",
+  "first": "2009-09-25",
+  "last": "2026-11-12",
+  "days": 4351,
+  "max_abs_daily_move": 0.10901637474132841,
+  "moves_over_12pct": []
+ },
+ "IUSN.DE": {
+  "currency": "EUR",
+  "type": "ETF",
+  "name": "iShares MSCI World Small Cap UCITS ETF USD (Acc)",
+  "first": "2018-04-26",
+  "last": "2026-11-12",
+  "days": 2171,
+  "max_abs_daily_move": 0.1113136301485732,
+  "moves_over_12pct": []
+ },
+ "IVAL": {
+  "currency": "USD",
+  "type": "ETF",
+  "name": "Alpha Architect International Quantitative Value ETF",
+  "first": "2014-12-17",
+  "last": "2026-11-13",
+  "days": 2995,
+  "max_abs_daily_move": 0.11266956582763255,
+  "moves_over_12pct": []
+ },
+ "IVLU": {
+  "currency": "USD",
+  "type": "ETF",
+  "name": "iShares Edge MSCI Intl Value Factor ETF",
+  "first": "2015-07-15",
+  "last": "2026-11-13",
+  "days": 2852,
+  "max_abs_daily_move": 0.11739586484356435,
+  "moves_over_12pct": []
+ },
+ "IWD": {
+  "currency": "USD",
+  "type": "ETF",
+  "name": "iShares Russell 1000 Value ETF",
+  "first": "2000-05-26",
+  "last": "2026-11-13",
+  "days": 6657,
+  "max_abs_daily_move": 0.12830641328928327,
+  "moves_over_12pct": [
+   [
+    "2008-10-13",
+    0.1283
+   ]
+  ]
+ },
+ "IWM": {
+  "currency": "USD",
+  "type": "ETF",
+  "name": "iShares Russell 2000 ETF",
+  "first": "2000-05-26",
+  "last": "2026-11-13",
+  "days": 6657,
+  "max_abs_daily_move": 0.13266936484045855,
+  "moves_over_12pct": [
+   [
+    "2020-03-16",
+    -0.1327
+   ]
+  ]
+ },
+ "KMLM": {
+  "currency": "USD",
+  "type": "ETF",
+  "name": "KraneShares Mount Lucas Managed Futures Index Strategy ETF",
+  "first": "2020-12-02",
+  "last": "2026-11-13",
+  "days": 1495,
+  "max_abs_daily_move": 0.05181622589577817,
+  "moves_over_12pct": []
+ },
+ "MOAT": {
+  "currency": "USD",
+  "type": "ETF",
+  "name": "VanEck Morningstar Wide Moat ETF",
+  "first": "2012-04-25",
+  "last": "2026-11-13",
+  "days": 3661,
+  "max_abs_daily_move": 0.09767130754156406,
+  "moves_over_12pct": []
+ },
+ "MTUM": {
+  "currency": "USD",
+  "type": "ETF",
+  "name": "iShares MSCI USA Momentum Factor ETF",
+  "first": "2013-04-18",
+  "last": "2026-11-13",
+  "days": 3416,
+  "max_abs_daily_move": 0.12365212023992034,
+  "moves_over_12pct": [
+   [
+    "2020-03-16",
+    -0.1237
+   ]
+  ]
+ },
+ "NOBL": {
+  "currency": "USD",
+  "type": "ETF",
+  "name": "ProShares S&P 500 Dividend Aristocrats ETF",
+  "first": "2013-10-10",
+  "last": "2026-11-13",
+  "days": 3294,
+  "max_abs_daily_move": 0.10172484037971419,
+  "moves_over_12pct": []
+ },
+ "PDP": {
+  "currency": "USD",
+  "type": "ETF",
+  "name": "Invesco Dorsey Wright Momentum ETF",
+  "first": "2007-03-01",
+  "last": "2026-11-13",
+  "days": 4960,
+  "max_abs_daily_move": 0.13619298532333146,
+  "moves_over_12pct": [
+   [
+    "2020-03-16",
+    -0.1362
+   ]
+  ]
+ },
+ "PKW": {
+  "currency": "USD",
+  "type": "ETF",
+  "name": "Invesco BuyBack Achievers ETF",
+  "first": "2006-12-20",
+  "last": "2026-11-13",
+  "days": 5006,
+  "max_abs_daily_move": 0.12056731927377573,
+  "moves_over_12pct": [
+   [
+    "2020-03-16",
+    -0.1206
+   ]
+  ]
+ },
+ "PRF": {
+  "currency": "USD",
+  "type": "ETF",
+  "name": "Invesco RAFI US 1000 ETF",
+  "first": "2005-12-20",
+  "last": "2026-11-13",
+  "days": 5258,
+  "max_abs_daily_move": 0.11668369774686216,
+  "moves_over_12pct": []
+ },
+ "QMOM": {
+  "currency": "USD",
+  "type": "ETF",
+  "name": "Alpha Architect U.S. Quantitative Momentum ETF",
+  "first": "2015-12-02",
+  "last": "2026-11-13",
+  "days": 2754,
+  "max_abs_daily_move": 0.14670326178008497,
+  "moves_over_12pct": [
+   [
+    "2020-03-16",
+    -0.1467
+   ]
+  ]
+ },
+ "QUAL": {
+  "currency": "USD",
+  "type": "ETF",
+  "name": "iShares MSCI USA Quality Factor ETF",
+  "first": "2013-07-18",
+  "last": "2026-11-13",
+  "days": 3353,
+  "max_abs_daily_move": 0.10363702773127392,
+  "moves_over_12pct": []
+ },
+ "QVAL": {
+  "currency": "USD",
+  "type": "ETF",
+  "name": "Alpha Architect U.S. Quantitative Value ETF",
+  "first": "2014-10-22",
+  "last": "2026-11-13",
+  "days": 3034,
+  "max_abs_daily_move": 0.119202207380119,
+  "moves_over_12pct": []
+ },
+ "RSP": {
+  "currency": "USD",
+  "type": "ETF",
+  "name": "Invesco S&P 500 Equal Weight ETF",
+  "first": "2003-05-01",
+  "last": "2026-11-13",
+  "days": 5924,
+  "max_abs_daily_move": 0.12041564369674884,
+  "moves_over_12pct": [
+   [
+    "2020-03-16",
+    -0.1204
+   ]
+  ]
+ },
+ "SCHD": {
+  "currency": "USD",
+  "type": "ETF",
+  "name": "Schwab U.S. Dividend Equity ETF",
+  "first": "2011-10-20",
+  "last": "2026-11-13",
+  "days": 3789,
+  "max_abs_daily_move": 0.09946239850076333,
+  "moves_over_12pct": []
+ },
+ "SCZ": {
+  "currency": "USD",
+  "type": "ETF",
+  "name": "iShares MSCI EAFE Small-Cap ETF",
+  "first": "2007-12-12",
+  "last": "2026-11-13",
+  "days": 4761,
+  "max_abs_daily_move": 0.14000911013378037,
+  "moves_over_12pct": [
+   [
+    "2008-10-28",
+    0.14
+   ]
+  ]
+ },
+ "SDY": {
+  "currency": "USD",
+  "type": "ETF",
+  "name": "State Street SPDR S&P Dividend ETF",
+  "first": "2005-11-15",
+  "last": "2026-11-13",
+  "days": 5282,
+  "max_abs_daily_move": 0.11264668170152858,
+  "moves_over_12pct": []
+ },
+ "SHY": {
+  "currency": "USD",
+  "type": "ETF",
+  "name": "iShares 1-3 Year Treasury Bond ETF",
+  "first": "2002-07-30",
+  "last": "2026-11-13",
+  "days": 6114,
+  "max_abs_daily_move": 0.009974271439108007,
+  "moves_over_12pct": []
+ },
+ "SIZE": {
+  "currency": "USD",
+  "type": "ETF",
+  "name": "iShares MSCI USA Size Factor ETF",
+  "first": "2013-04-18",
+  "last": "2026-11-13",
+  "days": 3416,
+  "max_abs_daily_move": 0.1359464742727694,
+  "moves_over_12pct": [
+   [
+    "2020-03-16",
+    -0.1359
+   ]
+  ]
+ },
+ "SPHQ": {
+  "currency": "USD",
+  "type": "ETF",
+  "name": "Invesco S&P 500 Quality ETF",
+  "first": "2005-12-06",
+  "last": "2026-11-13",
+  "days": 5268,
+  "max_abs_daily_move": 0.12890908751377816,
+  "moves_over_12pct": [
+   [
+    "2008-10-13",
+    0.1289
+   ]
+  ]
+ },
+ "SPLV": {
+  "currency": "USD",
+  "type": "ETF",
+  "name": "Invesco S&P 500 Low Volatility ETF",
+  "first": "2011-05-05",
+  "last": "2026-11-13",
+  "days": 3906,
+  "max_abs_daily_move": 0.12389001255212173,
+  "moves_over_12pct": [
+   [
+    "2020-03-16",
+    -0.1239
+   ]
+  ]
+ },
+ "SPMO": {
+  "currency": "USD",
+  "type": "ETF",
+  "name": "Invesco S&P 500 Momentum ETF",
+  "first": "2015-10-12",
+  "last": "2026-11-13",
+  "days": 2790,
+  "max_abs_daily_move": 0.15353673439933524,
+  "moves_over_12pct": [
+   [
+    "2020-03-16",
+    -0.1535
+   ]
+  ]
+ },
+ "SPY": {
+  "currency": "USD",
+  "type": "ETF",
+  "name": "State Street SPDR S&P 500 ETF Trust",
+  "first": "1993-01-29",
+  "last": "2026-11-13",
+  "days": 8507,
+  "max_abs_daily_move": 0.14519772418730614,
+  "moves_over_12pct": [
+   [
+    "2008-10-13",
+    0.1452
+   ]
+  ]
+ },
+ "SXR8.DE": {
+  "currency": "EUR",
+  "type": "ETF",
+  "name": "iShares Core S&P 500 UCITS ETF USD (Acc)",
+  "first": "2010-05-19",
+  "last": "2026-11-12",
+  "days": 4189,
+  "max_abs_daily_move": 0.24641567964568756,
+  "moves_over_12pct": [
+   [
+    "2010-11-01",
+    -0.2464
+   ]
+  ]
+ },
+ "SYLD": {
+  "currency": "USD",
+  "type": "ETF",
+  "name": "Cambria Shareholder Yield ETF",
+  "first": "2013-05-14",
+  "last": "2026-11-13",
+  "days": 3398,
+  "max_abs_daily_move": 0.12155456726617486,
+  "moves_over_12pct": [
+   [
+    "2020-03-24",
+    0.1216
+   ]
+  ]
+ },
+ "TDIV.AS": {
+  "currency": "EUR",
+  "type": "ETF",
+  "name": "VanEck Morningstar Developed Markets Dividend Leaders UCITS ETF",
+  "first": "2016-05-23",
+  "last": "2026-11-12",
+  "days": 2683,
+  "max_abs_daily_move": 0.11060823208182546,
+  "moves_over_12pct": []
+ },
+ "TLT": {
+  "currency": "USD",
+  "type": "ETF",
+  "name": "iShares 20+ Year Treasury Bond ETF",
+  "first": "2002-07-30",
+  "last": "2026-11-13",
+  "days": 6114,
+  "max_abs_daily_move": 0.07519480078290397,
+  "moves_over_12pct": []
+ },
+ "USMV": {
+  "currency": "USD",
+  "type": "ETF",
+  "name": "iShares MSCI USA Min Vol Factor ETF",
+  "first": "2011-10-20",
+  "last": "2026-11-13",
+  "days": 3789,
+  "max_abs_daily_move": 0.10081690391250464,
+  "moves_over_12pct": []
+ },
+ "VBMFX": {
+  "currency": "USD",
+  "type": "MUTUALFUND",
+  "name": "Vanguard Total Bond Market Index Inv",
+  "first": "1986-12-11",
+  "last": "2026-11-12",
+  "days": 10057,
+  "max_abs_daily_move": 0.04223690819407322,
+  "moves_over_12pct": []
+ },
+ "VBR": {
+  "currency": "USD",
+  "type": "ETF",
+  "name": "Vanguard Morningstar Small-Cap Value ETF",
+  "first": "2004-01-30",
+  "last": "2026-11-13",
+  "days": 5735,
+  "max_abs_daily_move": 0.1334703265294731,
+  "moves_over_12pct": [
+   [
+    "2008-12-01",
+    -0.1331
+   ],
+   [
+    "2020-03-16",
+    -0.1335
+   ]
+  ]
+ },
+ "VEIEX": {
+  "currency": "USD",
+  "type": "MUTUALFUND",
+  "name": "Vanguard Emerging Mkts Stock Idx Inv",
+  "first": "1994-05-04",
+  "last": "2026-11-12",
+  "days": 8188,
+  "max_abs_daily_move": 0.14655799701361572,
+  "moves_over_12pct": [
+   [
+    "2008-10-13",
+    0.1466
+   ],
+   [
+    "2008-10-28",
+    0.1325
+   ]
+  ]
+ },
+ "VFINX": {
+  "currency": "USD",
+  "type": "MUTUALFUND",
+  "name": "Vanguard 500 Index Investor",
+  "first": "1980-01-02",
+  "last": "2026-11-12",
+  "days": 11813,
+  "max_abs_daily_move": 0.20464936678971235,
+  "moves_over_12pct": [
+   [
+    "1987-10-19",
+    -0.2046
+   ]
+  ]
+ },
+ "VFISX": {
+  "currency": "USD",
+  "type": "MUTUALFUND",
+  "name": "Vanguard Short-Term Treasury Inv",
+  "first": "1991-10-28",
+  "last": "2026-11-12",
+  "days": 8824,
+  "max_abs_daily_move": 0.010455986557552421,
+  "moves_over_12pct": []
+ },
+ "VFITX": {
+  "currency": "USD",
+  "type": "MUTUALFUND",
+  "name": "Vanguard Interm-Term Treasury Inv",
+  "first": "1991-10-28",
+  "last": "2026-11-12",
+  "days": 8824,
+  "max_abs_daily_move": 0.031558022474065806,
+  "moves_over_12pct": []
+ },
+ "VGSIX": {
+  "currency": "USD",
+  "type": "MUTUALFUND",
+  "name": "Vanguard Real Estate Index Investor",
+  "first": "1996-05-13",
+  "last": "2026-11-12",
+  "days": 7676,
+  "max_abs_daily_move": 0.19321373153930643,
+  "moves_over_12pct": [
+   [
+    "2008-10-10",
+    0.1399
+   ],
+   [
+    "2008-10-15",
+    -0.1264
+   ],
+   [
+    "2008-10-28",
+    0.1698
+   ],
+   [
+    "2008-11-19",
+    -0.1305
+   ],
+   [
+    "2008-11-24",
+    0.1844
+   ],
+   [
+    "2008-12-01",
+    -0.1932
+   ],
+   [
+    "2008-12-02",
+    0.1343
+   ],
+   [
+    "2008-12-11",
+    -0.1498
+   ],
+   [
+    "2008-12-16",
+    0.1404
+   ],
+   [
+    "2009-03-10",
+    0.1448
+   ],
+   [
+    "2009-03-23",
+    0.1688
+   ],
+   [
+    "2009-04-09",
+    0.1326
+   ],
+   [
+    "2020-03-16",
+    -0.1795
+   ]
+  ]
+ },
+ "VGTSX": {
+  "currency": "USD",
+  "type": "MUTUALFUND",
+  "name": "Vanguard Total Intl Stock Index Inv",
+  "first": "1996-04-29",
+  "last": "2026-11-12",
+  "days": 7686,
+  "max_abs_daily_move": 0.12140891079025229,
+  "moves_over_12pct": [
+   [
+    "2008-10-13",
+    0.1214
+   ]
+  ]
+ },
+ "VGWD.DE": {
+  "currency": "EUR",
+  "type": "ETF",
+  "name": "Vanguard FTSE All-World High Dividend Yield UCITS ETF USD Distributing",
+  "first": "2017-10-26",
+  "last": "2026-11-12",
+  "days": 2296,
+  "max_abs_daily_move": 0.0952552107953899,
+  "moves_over_12pct": []
+ },
+ "VIG": {
+  "currency": "USD",
+  "type": "ETF",
+  "name": "Vanguard Dividend Appreciation Index Fund ETF Shares",
+  "first": "2006-05-02",
+  "last": "2026-11-13",
+  "days": 5168,
+  "max_abs_daily_move": 0.10663836496941825,
+  "moves_over_12pct": []
+ },
+ "VLUE": {
+  "currency": "USD",
+  "type": "ETF",
+  "name": "iShares MSCI USA Value Factor ETF",
+  "first": "2013-04-18",
+  "last": "2026-11-13",
+  "days": 3416,
+  "max_abs_daily_move": 0.12687855505952128,
+  "moves_over_12pct": [
+   [
+    "2020-03-16",
+    -0.1269
+   ]
+  ]
+ },
+ "VNQ": {
+  "currency": "USD",
+  "type": "ETF",
+  "name": "Vanguard Real Estate Index Fund ETF Shares",
+  "first": "2004-09-29",
+  "last": "2026-11-13",
+  "days": 5568,
+  "max_abs_daily_move": 0.19513730974951538,
+  "moves_over_12pct": [
+   [
+    "2008-10-15",
+    -0.1283
+   ],
+   [
+    "2008-10-28",
+    0.1564
+   ],
+   [
+    "2008-11-19",
+    -0.1343
+   ],
+   [
+    "2008-11-24",
+    0.1701
+   ],
+   [
+    "2008-12-01",
+    -0.1951
+   ],
+   [
+    "2008-12-02",
+    0.1328
+   ],
+   [
+    "2008-12-11",
+    -0.1427
+   ],
+   [
+    "2008-12-16",
+    0.1224
+   ],
+   [
+    "2009-03-10",
+    0.1392
+   ],
+   [
+    "2009-03-23",
+    0.1617
+   ],
+   [
+    "2009-04-09",
+    0.134
+   ],
+   [
+    "2020-03-16",
+    -0.1773
+   ]
+  ]
+ },
+ "VT": {
+  "currency": "USD",
+  "type": "ETF",
+  "name": "Vanguard Total World Stock Index Fund ETF Shares",
+  "first": "2008-06-26",
+  "last": "2026-11-13",
+  "days": 4626,
+  "max_abs_daily_move": 0.13453329040270856,
+  "moves_over_12pct": [
+   [
+    "2008-10-13",
+    0.1345
+   ],
+   [
+    "2008-10-15",
+    -0.1214
+   ]
+  ]
+ },
+ "VTI": {
+  "currency": "USD",
+  "type": "ETF",
+  "name": "Vanguard Morningstar Total Stock Market ETF",
+  "first": "2001-06-15",
+  "last": "2026-11-13",
+  "days": 6392,
+  "max_abs_daily_move": 0.12829761137189188,
+  "moves_over_12pct": [
+   [
+    "2008-10-13",
+    0.1283
+   ]
+  ]
+ },
+ "VTV": {
+  "currency": "USD",
+  "type": "ETF",
+  "name": "Vanguard Morningstar Value ETF",
+  "first": "2004-01-30",
+  "last": "2026-11-13",
+  "days": 5735,
+  "max_abs_daily_move": 0.11078416421898518,
+  "moves_over_12pct": []
+ },
+ "VUSTX": {
+  "currency": "USD",
+  "type": "MUTUALFUND",
+  "name": "Vanguard Long-Term Treasury Inv",
+  "first": "1986-05-19",
+  "last": "2026-11-12",
+  "days": 10201,
+  "max_abs_daily_move": 0.07756757838884631,
+  "moves_over_12pct": []
+ },
+ "VWCE.DE": {
+  "currency": "EUR",
+  "type": "ETF",
+  "name": "Vanguard FTSE All-World UCITS ETF USD Accumulation",
+  "first": "2019-07-29",
+  "last": "2026-11-12",
+  "days": 1855,
+  "max_abs_daily_move": 0.09405937614119286,
+  "moves_over_12pct": []
+ },
+ "WTMF": {
+  "currency": "USD",
+  "type": "ETF",
+  "name": "WisdomTree Managed Futures Strategy Fund",
+  "first": "2011-01-05",
+  "last": "2026-11-13",
+  "days": 3989,
+  "max_abs_daily_move": 0.04580182568613855,
+  "moves_over_12pct": []
+ },
+ "XDEB.DE": {
+  "currency": "EUR",
+  "type": "ETF",
+  "name": "Xtrackers MSCI World Minimum Volatility UCITS ETF 1C",
+  "first": "2014-09-05",
+  "last": "2026-11-12",
+  "days": 3094,
+  "max_abs_daily_move": 0.2703078640253098,
+  "moves_over_12pct": [
+   [
+    "2014-09-25",
+    -0.2204
+   ],
+   [
+    "2014-09-30",
+    0.2703
+   ],
+   [
+    "2014-10-01",
+    -0.21
+   ],
+   [
+    "2014-10-31",
+    0.2682
+   ],
+   [
+    "2014-11-03",
+    -0.1953
+   ],
+   [
+    "2014-11-05",
+    0.2591
+   ],
+   [
+    "2014-11-06",
+    -0.1936
+   ],
+   [
+    "2017-06-05",
+    0.1271
+   ],
+   [
+    "2025-10-24",
+    0.1606
+   ],
+   [
+    "2025-10-27",
+    -0.1384
+   ]
+  ]
+ },
+ "XDEM.DE": {
+  "currency": "EUR",
+  "type": "ETF",
+  "name": "Xtrackers MSCI World Momentum UCITS ETF 1C",
+  "first": "2014-09-05",
+  "last": "2026-11-12",
+  "days": 3094,
+  "max_abs_daily_move": 0.2947889003352815,
+  "moves_over_12pct": [
+   [
+    "2014-09-25",
+    -0.2207
+   ],
+   [
+    "2014-09-30",
+    0.2687
+   ],
+   [
+    "2014-10-01",
+    -0.2118
+   ],
+   [
+    "2014-10-08",
+    0.2616
+   ],
+   [
+    "2014-10-09",
+    -0.2161
+   ],
+   [
+    "2014-10-21",
+    0.2948
+   ],
+   [
+    "2014-10-23",
+    -0.1994
+   ],
+   [
+    "2014-10-31",
+    0.2738
+   ],
+   [
+    "2014-11-03",
+    -0.1952
+   ],
+   [
+    "2014-11-04",
+    0.2357
+   ],
+   [
+    "2014-11-06",
+    -0.1939
+   ],
+   [
+    "2017-06-05",
+    0.1269
+   ],
+   [
+    "2025-10-24",
+    0.1687
+   ],
+   [
+    "2025-10-27",
+    -0.1331
+   ]
+  ]
+ },
+ "XDEQ.DE": {
+  "currency": "EUR",
+  "type": "ETF",
+  "name": "Xtrackers MSCI World Quality UCITS ETF 1C",
+  "first": "2014-09-11",
+  "last": "2026-11-12",
+  "days": 3090,
+  "max_abs_daily_move": 0.23982351365246335,
+  "moves_over_12pct": [
+   [
+    "2014-09-25",
+    -0.222
+   ],
+   [
+    "2014-10-07",
+    0.2398
+   ],
+   [
+    "2014-10-08",
+    -0.2132
+   ],
+   [
+    "2017-06-05",
+    0.1267
+   ],
+   [
+    "2025-10-24",
+    0.1661
+   ],
+   [
+    "2025-10-27",
+    -0.133
+   ]
+  ]
+ },
+ "XDEV.DE": {
+  "currency": "EUR",
+  "type": "ETF",
+  "name": "Xtrackers MSCI World Value UCITS ETF 1C",
+  "first": "2014-09-11",
+  "last": "2026-11-12",
+  "days": 3090,
+  "max_abs_daily_move": 0.29624733266015557,
+  "moves_over_12pct": [
+   [
+    "2014-09-22",
+    -0.224
+   ],
+   [
+    "2014-09-30",
+    0.2702
+   ],
+   [
+    "2014-10-01",
+    -0.2123
+   ],
+   [
+    "2014-10-08",
+    0.2636
+   ],
+   [
+    "2014-10-09",
+    -0.2074
+   ],
+   [
+    "2014-10-10",
+    0.2273
+   ],
+   [
+    "2014-10-13",
+    -0.2109
+   ],
+   [
+    "2014-10-21",
+    0.2962
+   ],
+   [
+    "2014-10-23",
+    -0.2011
+   ],
+   [
+    "2014-10-31",
+    0.2712
+   ],
+   [
+    "2014-11-03",
+    -0.1968
+   ],
+   [
+    "2017-06-05",
+    0.1234
+   ],
+   [
+    "2025-10-24",
+    0.1706
+   ],
+   [
+    "2025-10-27",
+    -0.1291
+   ]
+  ]
+ },
+ "XMMO": {
+  "currency": "USD",
+  "type": "ETF",
+  "name": "Invesco S&P MidCap Momentum ETF",
+  "first": "2005-03-03",
+  "last": "2026-11-13",
+  "days": 5461,
+  "max_abs_daily_move": 0.14179122568047164,
+  "moves_over_12pct": [
+   [
+    "2008-10-13",
+    0.1418
+   ],
+   [
+    "2020-03-16",
+    -0.1393
+   ]
+  ]
+ },
+ "ZPRV.DE": {
+  "currency": "EUR",
+  "type": "ETF",
+  "name": "State Street SPDR MSCI USA Small Cap Value Weighted UCITS ETF USD Acc",
+  "first": "2015-02-18",
+  "last": "2026-11-12",
+  "days": 2981,
+  "max_abs_daily_move": 0.11993380159288303,
+  "moves_over_12pct": []
+ }
+}
