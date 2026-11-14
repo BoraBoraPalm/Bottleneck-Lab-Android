@@ -113,7 +113,7 @@ def main() -> None:
     rets = pd.concat({"US_MARKT": info["market"], "T_BILL": info["rf"], **{e["id"]: e["r"] for e in reg.items}}, axis=1)
     rets.sort_index().to_csv(O / "strategy_returns.csv.gz", float_format="%.6f")
     explore = {}
-    if a.supplement and (Path(a.supplement) / "manifest.json").is_file():
+    if a.supplement and all((Path(a.supplement) / f).is_file() for f in ("stock_px.parquet", "sec_frames.parquet", "em_monthly_returns.csv")):
         import mod_explore
         explore = mod_explore.run(D, Path(a.supplement), O, info["market"], info["rf"])
     both = scan.dropna(subset=["insample_gross_active", "postpub_gross_active"])

@@ -51,12 +51,13 @@ jobs:
             git push -q origin "HEAD:refs/heads/$DATA_BRANCH"
           fi
           # exploratory supplement (declared after the main results): loaded once, then reused
-          if [ ! -f "$RUNNER_TEMP/data/supplement/manifest.json" ] && [ -f "$GITHUB_WORKSPACE/$STUDY/code/fetch_supplement.py" ]; then
+          if [ ! -f "$RUNNER_TEMP/data/supplement/sec_frames.parquet" ] && [ -f "$GITHUB_WORKSPACE/$STUDY/code/fetch_supplement.py" ]; then
             cd "$RUNNER_TEMP/data"
             python "$GITHUB_WORKSPACE/$STUDY/code/fetch_supplement.py" --out supplement
             git add -A supplement
-            git commit -q -m "Exploratory supplement inputs (code $GITHUB_SHA)"
+            git commit -q -m "Exploratory supplement inputs (code $GITHUB_SHA)" || true
             git push -q origin "HEAD:refs/heads/$DATA_BRANCH"
+            cd "$GITHUB_WORKSPACE"
           fi
       - name: Run the study
         run: |
