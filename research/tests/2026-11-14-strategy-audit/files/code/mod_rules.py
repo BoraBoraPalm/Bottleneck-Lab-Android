@@ -98,8 +98,8 @@ def market_timing(D: Path, reg) -> None:
                      + ("; Hebel für Privatanleger kaum umsetzbar, keine Steuerrechnung" if key == "T_VOL_15X" else ""))
 
 
-def industry_rotation(D: Path, reg) -> None:
-    R = lib.french_table(D / "french/30_Industry_Portfolios_daily_CSV.zip", "daily")
+def industry_rotation(D: Path, reg, path: Path | None = None, K: int = 6, prefix: str = "IND", module: str = "C2") -> None:
+    R = lib.french_table(path or D / "french/30_Industry_Portfolios_daily_CSV.zip", "daily")
     ff = lib.french_table(D / "french/F-F_Research_Data_Factors_daily_CSV.zip").reindex(R.index)
     assert not R.isna().any().any() and not ff.isna().any().any()
     P, PM, PC = (1 + R).cumprod(), (1 + ff["Mkt-RF"] + ff["RF"]).cumprod(), (1 + ff["RF"]).cumprod()
@@ -115,7 +115,7 @@ def industry_rotation(D: Path, reg) -> None:
     vol, dd = at(np.log1p(R).rolling(252).std() * math.sqrt(252)), at(P / P.rolling(252).max() - 1)
     bill12 = pd.Series((PC / PC.shift(252) - 1).values[sig_pos[:-1]], HP.index)
     ok = mom122.notna().all(axis=1) & vol.notna().all(axis=1)
-    K = 6
+    NI = P.shape[1]
 
     def top(score: pd.DataFrame) -> pd.DataFrame:
         return (score.rank(axis=1, ascending=False, method="first") <= K).astype(float) / K
@@ -136,9 +136,9 @@ def industry_rotation(D: Path, reg) -> None:
         "IND_DIP": (dipw, "Branchen 15–55 % unter dem 52-Wochen-Hoch (Kursteil von Hoch-Tief-Mut)", "sander", "252 Handelstage", (1,)),
         "IND_RAM": (top(mom122 / vol), "Branchen-Momentum 12–2 je Schwankung", "riskmom", "252 Handelstage", (1,)),
         "IND_APPMIX": (top((pct(mom122) + pct(smar) + pct(-vol)) / 3), "App-Mix auf Branchen: Momentum + Trend + geringe Schwankung", "mix", "252/200 Handelstage", (1, 3, 12)),
-        "IND_TIMING": ((smar >= 0).astype(float) / P.shape[1], "Alle 30 Branchen, jede nur über ihrer 200-Tage-Linie", "entryexit", "200 Handelstage", (1,)),
+        "IND_TIMING": ((smar >= 0).astype(float) / P.shape[1], f"Alle {NI} Branchen, jede nur über ihrer 200-Tage-Linie", "entryexit", "200 Handelstage", (1,)),
         "IND_DUALMOM": (dual, "Branchen-Momentum mit T-Bill-Filter (Dual Momentum)", "momentum", "252 Handelstage", (1,)),
-        "IND_EW": (pd.DataFrame(1 / P.shape[1], HP.index, P.columns), "Alle 30 Branchen gleichgewichtet", "", "–", (1,)),
+        "IND_EW": (pd.DataFrame(1 / P.shape[1], HP.index, P.columns), f"Alle {NI} Branchen gleichgewichtet", "", "–", (1,)),
     }
     freq_name = {1: "monatlich", 3: "vierteljährlich", 12: "jährlich"}
     for key, (W, label, app_key, look, freqs) in specs.items():
@@ -148,10 +148,10 @@ def industry_rotation(D: Path, reg) -> None:
             cash = 1 - Wf.sum(axis=1)
             turn = (Wf.diff().abs().sum(axis=1) + cash.diff().abs()).fillna(0) / 2
             r = (Wf * HP.loc[Wf.index]).sum(axis=1) + cash * rf_c2.loc[Wf.index] - 2 * FEE * turn
-            sid = key if f == 1 else f"{key}_{f}M"
-            reg.add(id=sid, module="C2", family="Branchenrotation", app=app_key, label=label + ("" if f == 1 else f", {freq_name[f]}e Umschichtung"),
+            sid = (key if f == 1 else f"{key}_{f}M").replace("IND_", prefix + "_", 1)
+            reg.add(id=sid, module=module, family="Branchenrotation", app=app_key, label=label + ("" if f == 1 else f", {freq_name[f]}e Umschichtung"),
                     r=r, m=m_c2, rf=rf_c2, cost=0.0, turnover=float(12 * turn.mean()), exact=True, lookback=look, rebalance=freq_name[f],
-                    note=f"Ø {Wf.gt(0).sum(axis=1).mean():.1f} Branchen, Umschlag {12 * turn.mean():.0%} p. a., Ø Kasse {cash.mean():.0%}")
+                    note=f"je {K} von {NI}; Ø {Wf.gt(0).sum(axis=1).mean():.1f} Branchen, Umschlag {12 * turn.mean():.0%} p. a., Ø Kasse {cash.mean():.0%}")
 
 
 def run(D: Path, reg) -> None:

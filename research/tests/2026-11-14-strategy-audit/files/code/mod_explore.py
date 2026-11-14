@@ -139,6 +139,19 @@ def stocks(D: Path, S: Path, rf: pd.Series) -> tuple[pd.DataFrame, pd.DataFrame,
         "S_LOWAG": (top(-F["ag"], 0.2, E & F["ag"].notna()), "Geringstes Bilanzwachstum: unterstes Fünftel", (1,)),
         "S_QUAL_MOM": (top((pct(F["gpa"], hasf) + pct(mom, hasf)) / 2, 0.1, hasf), "Quality + Momentum (Rangmittel): oberstes Zehntel", (1,)),
     }
+    sector_file = S / "sectors.json"
+    if sector_file.is_file():
+        sector = pd.Series(json.loads(sector_file.read_text())).reindex(px.columns)
+        secmom = pd.DataFrame(np.nan, index=months, columns=px.columns)
+        for name in sector.dropna().unique():
+            cols = sector.index[sector == name]
+            inside = mom[cols].where(E[cols])
+            secmom[cols] = np.repeat(inside.median(axis=1).where(inside.notna().sum(axis=1) >= 8).values[:, None], len(cols), axis=1)
+        hass = E & secmom.notna()
+        best3 = secmom.where(hass).rank(axis=1, method="dense", ascending=False) <= 3
+        rules["S_SECTOR3"] = (best3 & hass, "Branchen-Momentum: alle Aktien der 3 stärksten von 11 Sektoren", (1, 3))
+        rules["S_SECTOR_MOM"] = (top((pct(mom, hass) + pct(secmom, hass)) / 2, 0.1, hass),
+                                 "Momentum + Branchen-Momentum (Rangmittel wie im App-Mixer): oberstes Zehntel", (1, 3, 12))
     n_all = E.sum(axis=1)
     W_all = E.div(n_all, axis=0).astype(float)
     ewu = (W_all * ret).sum(axis=1)
@@ -153,17 +166,17 @@ def stocks(D: Path, S: Path, rf: pd.Series) -> tuple[pd.DataFrame, pd.DataFrame,
             continue
         for f in freqs:
             sel = (mask & E)
-            if f == 12:
-                sel = sel.astype(float).where(pd.Series(months.month == 12, months), axis=0).ffill().fillna(0).astype(bool) & px.notna()
+            if f > 1:
+                sel = sel.astype(float).where(pd.Series(months.month % f == 0, months), axis=0).ffill().fillna(0).astype(bool) & px.notna()
             n = sel.sum(axis=1)
             W = sel.div(n.where(n > 0), axis=0).astype(float).fillna(0.0)
             W[n == 0] = W_all[n == 0]
             turn = W.diff().abs().sum(axis=1).fillna(0) / 2
             r = pd.Series(((W * ret).sum(axis=1) - 2 * FEE_STOCK * turn).values, hold_index).iloc[:-1]
-            if f == 12:
+            if f > 1:
                 r = r[r.index >= pd.Period("2011-01", "M")]
             a, b = lib.versus(r, bench, rf), lib.versus(r, spy, rf)
-            rows.append({"id": key if f == 1 else key + "_12M", "label": label + ("" if f == 1 else ", jährliche Auswahl"),
+            rows.append({"id": key if f == 1 else f"{key}_{f}M", "label": label + {1: "", 3: ", vierteljährliche Auswahl", 12: ", jährliche Auswahl"}[f],
                          "avg_names": float(n[n > 0].mean()) if (n > 0).any() else 0.0, "months_without_names": int((n == 0).sum()),
                          "turnover_pa": float(12 * turn.mean()), **{k: a.get(k) for k in KEYS},
                          "sharpe": a.get("sharpe"), "bench_sharpe": a.get("bench_sharpe"),
@@ -178,7 +191,30 @@ def stocks(D: Path, S: Path, rf: pd.Series) -> tuple[pd.DataFrame, pd.DataFrame,
     return pd.DataFrame(rows), cov, notes
 
 
+def coarse_industries(D: Path, S: Path) -> pd.DataFrame:
+    """Industry rotation with 12 broad groups (3 held), the granularity of the app's sector field."""
+    import mod_rules
+
+    class Sink:
+        items: list = []
+
+        def add(self, **kw):
+            self.items.append(kw)
+
+    sink = Sink()
+    mod_rules.industry_rotation(D, sink, path=S / "12_Industry_Portfolios_daily_CSV.zip", K=3, prefix="IND12", module="E")
+    rows = []
+    for e in sink.items:
+        full, hold = lib.versus(e["r"], e["m"], e["rf"], start="1963-07"), lib.versus(e["r"], e["m"], e["rf"], start="2000-01")
+        recent = lib.versus(e["r"], e["m"], e["rf"], start=str(pd.Period(full["last"], "M") - 179))
+        rows.append({"id": e["id"], "label": e["label"], "note": e["note"], **{k: full.get(k) for k in KEYS + ("win10", "win10_recent", "sharpe", "bench_sharpe")},
+                     "since2000_active": hold.get("active"), "since2000_t": hold.get("t"), "last15y_active": recent.get("active")})
+    return pd.DataFrame(rows)
+
+
 def run(D: Path, S: Path, O: Path, m: pd.Series, rf: pd.Series) -> dict:
+    if (S / "12_Industry_Portfolios_daily_CSV.zip").is_file():
+        coarse_industries(D, S).to_csv(O / "exploratory_sectors.csv", index=False, float_format="%.6g")
     em, em_notes = emerging(D, S, rf)
     em.to_csv(O / "exploratory_emerging.csv", index=False, float_format="%.6g")
     st, cov, st_notes = stocks(D, S, rf)

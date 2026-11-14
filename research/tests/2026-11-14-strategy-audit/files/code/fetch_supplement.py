@@ -26,6 +26,8 @@ ALIAS = {"FB": "META", "ANTM": "ELV", "FISV": "FI", "ABC": "COR", "PKI": "RVTY",
          "CDAY": "DAY", "DISCA": "WBD", "VIAC": "PARA", "SYMC": "GEN", "NLOK": "GEN", "WYN": "TNL", "HCP": "DOC", "CBS": "PARA",
          "KFT": "MDLZ", "COH": "TPR", "DLPH": "APTV", "BBT": "TFC", "MYL": "VTRS", "FBHS": "FBIN", "GPS": "GAP", "HFC": "DINO"}
 CIK_MIRROR = "https://raw.githubusercontent.com/jadchaar/sec-cik-mapper/main/mappings/stocks/ticker_to_cik.json"
+FRENCH12 = "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/12_Industry_Portfolios_daily_CSV.zip"
+ADANOS = "https://raw.githubusercontent.com/adanos-software/free-ticker-database/main/data/core_listings.csv"
 EM_FUNDS = ["VEIEX", "EEM", "DFEVX", "DFEMX", "DFCEX", "EEMO", "EMGF", "FNDE", "PXH", "DEM", "DGS", "EDIV", "EEMV", "AVEM",
             "AVES", "QEMM", "TLTE", "JPEM", "GEM", "EUNM.DE", "IS3N.DE", "5MVL.DE", "EUNZ.DE", "PSRM.DE", "WTEI.DE"]
 DURATION = ["NetIncomeLoss", "NetCashProvidedByUsedInOperatingActivities", "Revenues",
@@ -126,6 +128,20 @@ def main() -> None:
         pd.DataFrame(cols).sort_index().to_csv(out / "em_monthly_returns.csv", float_format="%.8f")
         (out / "em_audit.json").write_text(json.dumps(em_audit, indent=1))
         man["em_funds"] = {s: a.get("first", a.get("error")) for s, a in em_audit.items()}
+    # 2b) coarse industries (French, 12 groups, daily) and today's sector of each index member (app directory)
+    if not (out / "12_Industry_Portfolios_daily_CSV.zip").is_file():
+        raw = get(FRENCH12, BROWSER)
+        note("french_12_industries_daily", FRENCH12, raw)
+        (out / "12_Industry_Portfolios_daily_CSV.zip").write_bytes(raw)
+    if not (out / "sectors.json").is_file():
+        raw = get(ADANOS, BROWSER, timeout=120)
+        note("adanos_core_listings", ADANOS, raw)
+        d = pd.read_csv(io.BytesIO(raw), dtype=str).fillna("")
+        d = d[(d.asset_type == "Stock") & (d.country_code == "US") & (d.stock_sector != "")]
+        sec = dict(zip(d.ticker.str.upper(), d.stock_sector))
+        names = list(pd.read_parquet(out / "stock_px.parquet").columns)
+        (out / "sectors.json").write_text(json.dumps({t: sec[ALIAS.get(t, t)] for t in names if ALIAS.get(t, t) in sec}))
+        man["sectors"] = {"members_with_sector": sum(ALIAS.get(t, t) in sec for t in names), "members": len(names)}
     # 3) SEC annual frames for the members
     if not (out / "sec_frames.parquet").is_file():
         try:
@@ -162,7 +178,7 @@ def main() -> None:
         except Exception as e:  # noqa: BLE001 - recorded; the next run retries this part only
             man["sec_error"] = str(e)[:200]
     mf.write_text(json.dumps(man, indent=1))
-    print(json.dumps({k: man.get(k) for k in ("stocks", "em_funds", "sec", "sec_error")}, indent=1)[:2500])
+    print(json.dumps({k: man.get(k) for k in ("stocks", "sectors", "sec", "sec_error")}, indent=1)[:2500])
 
 
 if __name__ == "__main__":
