@@ -325,7 +325,8 @@ console.log("Research factors: four independent rank inputs, missing-data exclus
 assert.ok(html.indexOf('<script src="evidence-data.js?v=1"></script>')>0
   &&html.indexOf('<script src="evidence-data.js?v=1"></script>')<html.indexOf('<script src="evidence.js?v=1"></script>'));
 assert.ok(match[1].includes('StockEvidence.render($("evidenceBody"));')&&match[1].includes('StockEvidence.decorate($("strategyChoices"));'));
-assert.ok(match[1].includes('$("evidencePanel").hidden=view==="depot";'));
+assert.ok(match[1].includes('$("evidencePanel").hidden=view==="depot"||typeof StockEvidence==="undefined";'));
+assert.ok(match[1].includes('if(typeof StockEvidence!=="undefined")StockEvidence.render($("evidenceBody"));'),"The lists must survive a missing evidence file");
 assert.ok(!/verlässlich besser|sichere Überrendite|garantiert/i.test(html.replace(/keine?[^.]{0,80}(verlässlich|sichere)/gi,"")),"No promise of reliable outperformance");
 require("../tests/test_evidence.cjs");
 require("../tests/test_holding_horizon.cjs");

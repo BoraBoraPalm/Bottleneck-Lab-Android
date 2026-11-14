@@ -844,10 +844,12 @@ function updateTimePlan(){
   $("candidateTimePlan").textContent=candidate.title+". "+candidate.text;
   $("searchTimePlan").textContent=search.title+". "+search.text;
   StockHorizon.decorate($("strategyChoices"),h);StockHorizon.decorate($("searchFitChoices"),h);
-  StockEvidence.decorate($("strategyChoices"));
+  if(typeof StockEvidence!=="undefined")StockEvidence.decorate($("strategyChoices"));
 }
 restoreTimePlan();
-StockEvidence.render($("evidenceBody"));
+// The evidence panel is informative only: the lists must keep working if its files fail to load.
+if(typeof StockEvidence!=="undefined")StockEvidence.render($("evidenceBody"));
+else $("evidencePanel").hidden=true;
 $("investmentHorizon").addEventListener("change",()=>{
   $("horizonApplyStatus").textContent="";saveTimePlan();render();searchController?.refresh(false);
 });
@@ -919,7 +921,7 @@ function setView(view,focus=false){
   }
   // Time plan and model levels belong to the stock lists, not to the depot check.
   document.querySelector(".horizon-panel").hidden=view==="depot";
-  $("evidencePanel").hidden=view==="depot";
+  $("evidencePanel").hidden=view==="depot"||typeof StockEvidence==="undefined";
   $("tradeLevelsSwitch").hidden=view==="depot";
   if(view==="search")searchController.activate();
   if(view==="depot")openTradeCheck();
