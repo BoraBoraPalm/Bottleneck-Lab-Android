@@ -1,0 +1,8 @@
+commit=06fc4edbb579a19e38c52a03ccf3bdc49e90ed18 run=43531349250 inputs=bf0442e39274045af2e7bf2c37bbedbfbc910e13
+680be2e1245f18785cfb149c1b25231607474acfa28118e10250b7e65d165d34  research/tests/2026-11-14-strategy-audit/files/code/fetch_data.py
+e758ff1978fd3336a957b8fc1108ef875093004c282992640288de1601def161  research/tests/2026-11-14-strategy-audit/files/code/lib.py
+718a35a4614ccee21a36d5fc7928655d15780519ce54d503b90c14272a096b9d  research/tests/2026-11-14-strategy-audit/files/code/prepare_inputs.py
+2480030bd59e053c279c758732ff4ad12b48b1168d653ba430e43559c18a3791  research/tests/2026-11-14-strategy-audit/files/code/sources.py
+78fe1f9bdc17d28c3c6c02b8e85642c6e7b57c98f87e949ee4efd6ed0c07db12  research/tests/2026-11-14-strategy-audit/files/code/test_lib.py
+aaa78de0f8af584604cb44584c04742c0db5b1abe13d0da0da29ed39141500de  research/tests/2026-11-14-strategy-audit/files/protocol.md
+3ebfbb0e6eb4609f095e3eee29ad78d906c974c7e432c34971a584eeea53327d  research/tests/2026-11-14-strategy-audit/files/requirements.txt
