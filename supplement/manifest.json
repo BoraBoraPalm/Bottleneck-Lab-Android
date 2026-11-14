@@ -41,9 +41,16 @@
    "bytes": 213994,
    "sha256": "b0ace0fd4d3b74836396e8e24e9bcbd8f2fca09afbcc2e6a34c2d6cb49bb9ef6",
    "fetched_utc": "2026-11-14T00:50:43Z"
+  },
+  {
+   "name": "ticker_to_cik_mirror",
+   "url": "https://raw.githubusercontent.com/jadchaar/sec-cik-mapper/main/mappings/stocks/ticker_to_cik.json",
+   "bytes": 213994,
+   "sha256": "b0ace0fd4d3b74836396e8e24e9bcbd8f2fca09afbcc2e6a34c2d6cb49bb9ef6",
+   "fetched_utc": "2026-11-14T01:01:52Z"
   }
  ],
- "updated_utc": "2026-11-14T00:50:43Z",
+ "updated_utc": "2026-11-14T01:01:52Z",
  "stocks": {
   "index_tickers_since_2009": 858,
   "with_prices": 654
