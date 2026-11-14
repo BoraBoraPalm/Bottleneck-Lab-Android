@@ -68,6 +68,7 @@ jobs:
           sha256sum "$STUDY"/code/*.py "$STUDY/protocol.md" "$STUDY/requirements.txt" >> "$OUT/code_identity.txt"
           if [ -f "$STUDY/code/run_all.py" ]; then
             python -u "$STUDY/code/run_all.py" --data "$RUNNER_TEMP/data/inputs" --supplement "$RUNNER_TEMP/data/supplement" --out "$OUT" 2>&1 | tee "$OUT/run.log"
+            python "$STUDY/code/make_report.py" --out "$OUT"
           fi
       - name: Commit results to the data branch
         if: always()
