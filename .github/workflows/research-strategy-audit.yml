@@ -50,6 +50,14 @@ jobs:
             git commit -q -m "Frozen inputs of the strategy audit (code $GITHUB_SHA)"
             git push -q origin "HEAD:refs/heads/$DATA_BRANCH"
           fi
+          # exploratory supplement (declared after the main results): loaded once, then reused
+          if [ ! -f "$RUNNER_TEMP/data/supplement/manifest.json" ] && [ -f "$GITHUB_WORKSPACE/$STUDY/code/fetch_supplement.py" ]; then
+            cd "$RUNNER_TEMP/data"
+            python "$GITHUB_WORKSPACE/$STUDY/code/fetch_supplement.py" --out supplement
+            git add -A supplement
+            git commit -q -m "Exploratory supplement inputs (code $GITHUB_SHA)"
+            git push -q origin "HEAD:refs/heads/$DATA_BRANCH"
+          fi
       - name: Run the study
         run: |
           set -o pipefail
@@ -58,7 +66,7 @@ jobs:
           echo "commit=$GITHUB_SHA run=$GITHUB_RUN_ID inputs=$(git -C "$RUNNER_TEMP/data" log -1 --format=%H -- inputs)" > "$OUT/code_identity.txt"
           sha256sum "$STUDY"/code/*.py "$STUDY/protocol.md" "$STUDY/requirements.txt" >> "$OUT/code_identity.txt"
           if [ -f "$STUDY/code/run_all.py" ]; then
-            python -u "$STUDY/code/run_all.py" --data "$RUNNER_TEMP/data/inputs" --out "$OUT" 2>&1 | tee "$OUT/run.log"
+            python -u "$STUDY/code/run_all.py" --data "$RUNNER_TEMP/data/inputs" --supplement "$RUNNER_TEMP/data/supplement" --out "$OUT" 2>&1 | tee "$OUT/run.log"
           fi
       - name: Commit results to the data branch
         if: always()
