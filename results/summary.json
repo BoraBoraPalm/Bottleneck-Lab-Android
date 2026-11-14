@@ -82,8 +82,8 @@
   "signals": 179,
   "missing_app_signals": [],
   "with_both_periods": 177,
-  "mean_gross_active_insample": 0.01793885940052793,
-  "mean_gross_active_postpub": -0.008286696805172869,
+  "mean_gross_active_insample": 0.017938864736063785,
+  "mean_gross_active_postpub": -0.008286691000029937,
   "share_positive_gross_postpub": 0.4124293785310734,
   "postpub_net_p_below_5pct": 5,
   "postpub_net_holm_below_5pct": 0,
@@ -103,7 +103,7 @@
    "cagr": 0.10654596851336429,
    "bench_cagr": 0.08061853056598856,
    "active": 0.023709833030578893,
-   "t": 1.0403669507196924,
+   "t": 1.0403669507196922,
    "maxdd": -0.19867285536432222,
    "bench_maxdd": -0.5476257416785117
   },
@@ -123,7 +123,7 @@
    "cagr": 0.08017607290562179,
    "bench_cagr": 0.08193475156877583,
    "active": -0.0016268167488114338,
-   "t": -0.10604758530025224,
+   "t": -0.10604758530025225,
    "maxdd": -0.3253139232210903,
    "bench_maxdd": -0.5476257416785119
   }
@@ -134,8 +134,8 @@
    "last": "2026-09",
    "cagr": 0.10654596851336429,
    "bench_cagr": 0.077030034752259,
-   "active": 0.027036138509696554,
-   "t": 1.573381086752579,
+   "active": 0.027036138509696557,
+   "t": 1.5733810867525793,
    "maxdd": -0.19867285536432222,
    "bench_maxdd": -0.32531392322109043
   },
@@ -144,8 +144,8 @@
    "last": "2026-09",
    "cagr": 0.0665377264644893,
    "bench_cagr": 0.07829642189923303,
-   "active": -0.010964776229620955,
-   "t": -0.7235833135131913,
+   "active": -0.010964776229620957,
+   "t": -0.7235833135131914,
    "maxdd": -0.12636448749283102,
    "bench_maxdd": -0.3253139232210901
   }
@@ -153,11 +153,47 @@
  "data_end": {
   "french": "2026-09"
  },
- "exploratory": {},
+ "exploratory": {
+  "emerging": {
+   "missing": [
+    "PSRM.DE"
+   ],
+   "excluded": []
+  },
+  "stocks": {
+   "universe_equal_weight_vs_spy": {
+    "first": "2011-01",
+    "last": "2026-09",
+    "months": 189,
+    "cagr": 0.12655451417849983,
+    "bench_cagr": 0.14104605753203936,
+    "active": -0.012781563756963772,
+    "t": -1.0720611906232693,
+    "p": 0.8581537255700418,
+    "maxdd": -0.26979749384422,
+    "bench_maxdd": -0.2392716054900278,
+    "win5": 0.2692307692307692
+   },
+   "positions_without_later_price": 497,
+   "members_in_price_file": 654,
+   "excluded_for_daily_jump_over_200pct": [
+    "CBS",
+    "CPWR",
+    "EP",
+    "EQ",
+    "MI",
+    "PARA",
+    "POM",
+    "STI",
+    "VIAC"
+   ],
+   "annual_facts_available": false
+  }
+ },
  "environment": {
   "python": "3.13.18",
   "numpy": "2.5.3",
   "pandas": "3.0.5"
  },
- "runtime_seconds": 27.5
+ "runtime_seconds": 34.7
 }
