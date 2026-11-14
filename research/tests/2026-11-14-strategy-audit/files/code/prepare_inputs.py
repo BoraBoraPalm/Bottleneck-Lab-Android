@@ -50,7 +50,8 @@ def yahoo_compact(src: Path, dst: Path) -> dict:
                           "name": meta.get("longName") or meta.get("shortName"),
                           "first": str(px.index[0].date()), "last": str(px.index[-1].date()), "days": int(len(px)),
                           "max_abs_daily_move": float(daily.abs().max()),
-                          "moves_over_25pct": [str(d.date()) for d in daily.index[daily.abs() > 0.25]][:20]}
+                          "moves_over_12pct": [[str(d.date()), round(float(v), 4)]
+                                               for d, v in daily[daily.abs() > 0.12].items()][:60]}
         except Exception as e:  # noqa: BLE001 - recorded, symbol skipped
             audit[sym] = {"error": f"{type(e).__name__}: {str(e)[:120]}"}
     pd.DataFrame(cols).sort_index().to_csv(dst / "monthly_returns.csv", float_format="%.8f")

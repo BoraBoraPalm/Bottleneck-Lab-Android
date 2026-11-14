@@ -44,15 +44,19 @@ def french_sections(path) -> list[tuple[str, pd.DataFrame]]:
     return out
 
 
-def french_table(path, contains: str | None = None) -> pd.DataFrame:
-    """One return table in decimals with a monthly PeriodIndex or a daily DatetimeIndex."""
+def french_table(path, kind: str | None = None) -> pd.DataFrame:
+    """One return table in decimals with a monthly PeriodIndex or a daily DatetimeIndex.
+
+    kind=None: first table (factor files). kind="monthly"/"daily": first value-weighted return
+    table of that frequency (the source spells the heading in several ways).
+    """
     secs = french_sections(path)
-    if contains is None:
+    if kind is None:
         df = secs[0][1]
     else:
-        hits = [d for t, d in secs if contains.lower() in t.lower()]
+        hits = [d for t, d in secs if "value weight" in t.lower() and kind in t.lower()]
         if not hits:
-            raise KeyError(f"{Path(path).name}: no table with {contains!r}; have {[t for t, _ in secs]}")
+            raise KeyError(f"{Path(path).name}: no value-weighted {kind} table; have {[t for t, _ in secs]}")
         df = hits[0]
     keys = list(df.index)
     if all(len(k) == 6 for k in keys):
@@ -64,10 +68,6 @@ def french_table(path, contains: str | None = None) -> pd.DataFrame:
     out = df.copy() / 100.0
     out.index = idx
     return out[~out.index.duplicated()]
-
-
-VW_M = "Average Value Weighted Returns -- Monthly"
-VW_D = "Average Value Weighted Returns -- Daily"
 
 
 def pick(df: pd.DataFrame, *tokens: str) -> pd.Series:

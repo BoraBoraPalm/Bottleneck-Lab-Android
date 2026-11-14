@@ -32,7 +32,7 @@ class ParsingTest(unittest.TestCase):
             p = Path(d) / "x.zip"
             with zipfile.ZipFile(p, "w") as z:
                 z.writestr("x.csv", FRENCH)
-            t = lib.french_table(p, lib.VW_M)
+            t = lib.french_table(p, "monthly")
             self.assertEqual(list(t.columns), ["SMALL LoBM", "BIG HiBM"])
             self.assertEqual(str(t.index[1]), "1926-08")
             self.assertAlmostEqual(t.iloc[0, 0], 0.01)

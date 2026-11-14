@@ -18,6 +18,7 @@ env:
   STUDY: research/tests/2026-11-14-strategy-audit/files
   TAG: research-2026-11-14-strategy-audit
   GH_TOKEN: ${{ github.token }}
+  GH_REPO: ${{ github.repository }}
 jobs:
   audit:
     runs-on: ubuntu-latest
@@ -35,25 +36,25 @@ jobs:
         run: |
           set -e
           mkdir -p "$RUNNER_TEMP/bundle"
-          if gh release download "$TAG" -p strategy-audit-inputs.zip -D "$RUNNER_TEMP" 2>/dev/null; then
+          if gh release download "$TAG" -p strategy-audit-inputs-v2.zip -D "$RUNNER_TEMP" 2>/dev/null; then
             echo "Reusing the released input bundle"
           else
             python "$STUDY/code/fetch_data.py" --out "$RUNNER_TEMP/raw"
             python "$STUDY/code/prepare_inputs.py" --raw "$RUNNER_TEMP/raw" --out "$RUNNER_TEMP/bundle_new"
-            (cd "$RUNNER_TEMP/bundle_new" && zip -q -r -X "$RUNNER_TEMP/strategy-audit-inputs.zip" .)
+            (cd "$RUNNER_TEMP/bundle_new" && zip -q -r -X "$RUNNER_TEMP/strategy-audit-inputs-v2.zip" .)
             gh release view "$TAG" >/dev/null 2>&1 || gh release create "$TAG" --prerelease --target "$GITHUB_SHA" \
               --title "Forschungsdaten · Strategie-Audit 14.11.2026" \
               --notes "Eingefrorene Eingabedaten und Ergebnisse der Studie research/tests/2026-11-14-strategy-audit. Kein App-Release. Quellen: Kenneth French Data Library, Open Source Asset Pricing (Chen/Zimmermann), Yahoo Finance (Monatsrenditen). Prüfsummen stehen im Studienordner."
-            gh release upload "$TAG" "$RUNNER_TEMP/strategy-audit-inputs.zip"
+            gh release upload "$TAG" "$RUNNER_TEMP/strategy-audit-inputs-v2.zip"
           fi
-          unzip -q "$RUNNER_TEMP/strategy-audit-inputs.zip" -d "$RUNNER_TEMP/bundle"
-          sha256sum "$RUNNER_TEMP/strategy-audit-inputs.zip"
+          unzip -q "$RUNNER_TEMP/strategy-audit-inputs-v2.zip" -d "$RUNNER_TEMP/bundle"
+          sha256sum "$RUNNER_TEMP/strategy-audit-inputs-v2.zip"
       - name: Run the study
         run: |
           set -o pipefail
           mkdir -p "$RUNNER_TEMP/audit_out"
           echo "commit=$GITHUB_SHA run=$GITHUB_RUN_ID" > "$RUNNER_TEMP/audit_out/code_identity.txt"
-          sha256sum "$STUDY"/code/*.py "$STUDY/protocol.md" "$STUDY/requirements.txt" "$RUNNER_TEMP/strategy-audit-inputs.zip" >> "$RUNNER_TEMP/audit_out/code_identity.txt"
+          sha256sum "$STUDY"/code/*.py "$STUDY/protocol.md" "$STUDY/requirements.txt" "$RUNNER_TEMP/strategy-audit-inputs-v2.zip" >> "$RUNNER_TEMP/audit_out/code_identity.txt"
           if [ -f "$STUDY/code/run_all.py" ]; then
             python -u "$STUDY/code/run_all.py" --data "$RUNNER_TEMP/bundle" --out "$RUNNER_TEMP/audit_out" 2>&1 | tee "$RUNNER_TEMP/audit_out/run.log"
           fi
