@@ -13,9 +13,30 @@
    "bytes": 213994,
    "sha256": "b0ace0fd4d3b74836396e8e24e9bcbd8f2fca09afbcc2e6a34c2d6cb49bb9ef6",
    "fetched_utc": "2026-11-14T00:40:12Z"
+  },
+  {
+   "name": "french_12_industries_daily",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/12_Industry_Portfolios_daily_CSV.zip",
+   "bytes": 1094305,
+   "sha256": "d11f87b42f301ea931d1ddc823d3e2125aba4c8310eeeec43f96554e98b1ebb4",
+   "fetched_utc": "2026-11-14T00:45:36Z"
+  },
+  {
+   "name": "adanos_core_listings",
+   "url": "https://raw.githubusercontent.com/adanos-software/free-ticker-database/main/data/core_listings.csv",
+   "bytes": 9282955,
+   "sha256": "88e751d196bd586d76e01531cb512c0fbbf17fa1f74071f46c80f651d7acfed1",
+   "fetched_utc": "2026-11-14T00:45:36Z"
+  },
+  {
+   "name": "ticker_to_cik_mirror",
+   "url": "https://raw.githubusercontent.com/jadchaar/sec-cik-mapper/main/mappings/stocks/ticker_to_cik.json",
+   "bytes": 213994,
+   "sha256": "b0ace0fd4d3b74836396e8e24e9bcbd8f2fca09afbcc2e6a34c2d6cb49bb9ef6",
+   "fetched_utc": "2026-11-14T00:45:36Z"
   }
  ],
- "updated_utc": "2026-11-14T00:40:12Z",
+ "updated_utc": "2026-11-14T00:45:36Z",
  "stocks": {
   "index_tickers_since_2009": 858,
   "with_prices": 654
@@ -47,5 +68,9 @@
   "PSRM.DE": "HTTPError: HTTP Error 404: Not Found",
   "WTEI.DE": "2015-03-03"
  },
- "sec_error": "data.sec.gov refuses this host: NetIncomeLoss/CY2009: HTTPError: HTTP Error 403: Forbidden"
+ "sec_error": "data.sec.gov refuses this host: NetIncomeLoss/CY2009: HTTPError: HTTP Error 403: Forbidden",
+ "sectors": {
+  "members_with_sector": 596,
+  "members": 654
+ }
 }
