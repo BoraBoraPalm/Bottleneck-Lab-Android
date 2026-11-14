@@ -36,6 +36,17 @@ class SandScreenTest(unittest.TestCase):
         self.assertEqual(f["filed"],"2025-11-04")
         self.assertTrue(s.sander_screen(share(),f)>0)
 
+    def test_score_ranks_fundamentals_and_ignores_depth_of_the_fall(self):
+        # Since the strategy audit of 2026-11-14 a deeper fall no longer raises the score.
+        f=s.fundamental_quality(company(),asof=date(2026,10,31))
+        shallow,deep=s.sander_screen(share(drop=-.16),f),s.sander_screen(share(drop=-.54),f)
+        self.assertEqual(shallow,deep)
+        margin=100*(18/110-.03)/.17
+        growth=100*(.10+.10)/.35
+        self.assertAlmostEqual(shallow,.5*margin+.5*growth,places=3)
+        weaker={**f,"profit_margin":.05,"revenue_growth_yoy":0.0}
+        self.assertLess(s.sander_screen(share(),weaker),shallow)
+
     def test_negative_cfo_rejected(self):
         f=s.fundamental_quality(company(cfo=-1),asof=date(2026,10,31))
         self.assertFalse(f["quality_ok"])

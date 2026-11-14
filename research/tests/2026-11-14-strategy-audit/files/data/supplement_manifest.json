@@ -1,0 +1,83 @@
+{
+ "sources": [
+  {
+   "name": "sp500_membership",
+   "url": "https://raw.githubusercontent.com/fja05680/sp500/master/S%26P%20500%20Historical%20Components%20%26%20Changes%20(Updated).csv",
+   "bytes": 5530907,
+   "sha256": "36326709d46d6cd25834de5df457b16f5f96fad3a06b9beac28f7b88aa0b0d54",
+   "fetched_utc": "2026-11-14T00:18:15Z"
+  },
+  {
+   "name": "ticker_to_cik_mirror",
+   "url": "https://raw.githubusercontent.com/jadchaar/sec-cik-mapper/main/mappings/stocks/ticker_to_cik.json",
+   "bytes": 213994,
+   "sha256": "b0ace0fd4d3b74836396e8e24e9bcbd8f2fca09afbcc2e6a34c2d6cb49bb9ef6",
+   "fetched_utc": "2026-11-14T00:40:12Z"
+  },
+  {
+   "name": "french_12_industries_daily",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/12_Industry_Portfolios_daily_CSV.zip",
+   "bytes": 1094305,
+   "sha256": "d11f87b42f301ea931d1ddc823d3e2125aba4c8310eeeec43f96554e98b1ebb4",
+   "fetched_utc": "2026-11-14T00:45:36Z"
+  },
+  {
+   "name": "adanos_core_listings",
+   "url": "https://raw.githubusercontent.com/adanos-software/free-ticker-database/main/data/core_listings.csv",
+   "bytes": 9282955,
+   "sha256": "88e751d196bd586d76e01531cb512c0fbbf17fa1f74071f46c80f651d7acfed1",
+   "fetched_utc": "2026-11-14T00:45:36Z"
+  },
+  {
+   "name": "ticker_to_cik_mirror",
+   "url": "https://raw.githubusercontent.com/jadchaar/sec-cik-mapper/main/mappings/stocks/ticker_to_cik.json",
+   "bytes": 213994,
+   "sha256": "b0ace0fd4d3b74836396e8e24e9bcbd8f2fca09afbcc2e6a34c2d6cb49bb9ef6",
+   "fetched_utc": "2026-11-14T00:45:36Z"
+  },
+  {
+   "name": "ticker_to_cik_mirror",
+   "url": "https://raw.githubusercontent.com/jadchaar/sec-cik-mapper/main/mappings/stocks/ticker_to_cik.json",
+   "bytes": 213994,
+   "sha256": "b0ace0fd4d3b74836396e8e24e9bcbd8f2fca09afbcc2e6a34c2d6cb49bb9ef6",
+   "fetched_utc": "2026-11-14T00:50:43Z"
+  }
+ ],
+ "updated_utc": "2026-11-14T00:50:43Z",
+ "stocks": {
+  "index_tickers_since_2009": 858,
+  "with_prices": 654
+ },
+ "em_funds": {
+  "VEIEX": "1994-05-04",
+  "EEM": "2003-04-14",
+  "DFEVX": "1998-03-31",
+  "DFEMX": "1994-04-22",
+  "DFCEX": "2005-04-08",
+  "EEMO": "2012-02-24",
+  "EMGF": "2015-12-18",
+  "FNDE": "2013-08-15",
+  "PXH": "2007-09-28",
+  "DEM": "2007-07-13",
+  "DGS": "2007-10-30",
+  "EDIV": "2011-02-24",
+  "EEMV": "2011-10-20",
+  "AVEM": "2019-09-19",
+  "AVES": "2021-09-30",
+  "QEMM": "2014-06-05",
+  "TLTE": "2012-10-02",
+  "JPEM": "2015-01-09",
+  "GEM": "2015-09-29",
+  "EUNM.DE": "2009-10-20",
+  "IS3N.DE": "2014-06-11",
+  "5MVL.DE": "2018-12-06",
+  "EUNZ.DE": "2012-11-30",
+  "PSRM.DE": "HTTPError: HTTP Error 404: Not Found",
+  "WTEI.DE": "2015-03-03"
+ },
+ "sec_error": "data.sec.gov refuses this host: NetIncomeLoss/CY2009: HTTPError: HTTP Error 403: Forbidden",
+ "sectors": {
+  "members_with_sector": 596,
+  "members": 654
+ }
+}

@@ -325,11 +325,13 @@ def sander_screen(stock,fund):
     growth=fund.get("revenue_growth_yoy")
     if not all(isinstance(v,(int,float)) and math.isfinite(v) for v in (margin,growth)):
         return None
-    # More pronounced price dips + stronger fundamental metrics; not valuation.
-    dip=100*(abs(dd)-MIN_DISCOUNT)/(MAX_DISCOUNT-MIN_DISCOUNT)
+    # The dip only qualifies. Until 2026-11-14 its depth made up half of the score.
+    # The archived strategy audit (research/tests/2026-11-14-strategy-audit) found that
+    # deeper fallers kept lagging, so only the fundamental metrics rank now. Not valuation,
+    # and not validated as profitable either.
     margin_score=100*max(0,min(1,(margin-MIN_PROFIT_MARGIN)/.17))
     growth_score=100*max(0,min(1,(growth-MIN_GROWTH)/.35))
-    return round(.5*dip+.25*margin_score+.25*growth_score,4)
+    return round(.5*margin_score+.5*growth_score,4)
 
 def enrich_stocks(stocks,prior,maximum=DEFAULT_MAX,priority=None):
     """Rotate across ordinary stocks and dip candidates, preserving verified caches.
@@ -440,7 +442,7 @@ def enrich_stocks(stocks,prior,maximum=DEFAULT_MAX,priority=None):
             if stock["sander_score"] is not None:qualified+=1
     return {"name":"Beate Sander-inspirierte Kursrückgang-/Qualitätsauswahl",
         "source":"SEC EDGAR XBRL US-GAAP, direct API or TGMCharts filing statement relay (10-K)",
-        "method":"15–55% under 252-day high; positive net income and operating cash flow, >=3% net margin, >=-10% revenue YoY; 50% drawdown, 25% margin, 25% growth score",
+        "method":"15–55% under 252-day high; positive net income and operating cash flow, >=3% net margin, >=-10% revenue YoY; score since 2026-11-14: 50% margin, 50% revenue growth, depth of the fall not scored",
         "checked_this_run":len(targets),"facts_downloaded":succeeded,
         "no_usable_facts":len(targets)-succeeded,
         "with_verified_fundamentals":with_fund,"qualified_candidates":qualified,

@@ -6,8 +6,8 @@ function exactly(pattern,count,name){
 }
 exactly(/<html(?:\s[^>]*)?>/gi,1,"HTML opening");
 exactly(/<\/html>/gi,1,"HTML closing");
-exactly(/<script(?:\s[^>]*)?>/gi,10,"JS opening (nine widgets and inline)");
-exactly(/<\/script>/gi,10,"JS closing (nine widgets and inline)");
+exactly(/<script(?:\s[^>]*)?>/gi,12,"JS opening (eleven widgets and inline)");
+exactly(/<\/script>/gi,12,"JS closing (eleven widgets and inline)");
 if(!/<\/html>\s*$/i.test(html))throw new Error("Code leaked after </html>");
 const match=html.match(/<script>([\s\S]*?)<\/script>/i);
 if(!match)throw new Error("Missing inline script");
@@ -16,7 +16,8 @@ for(const id of ["universe","quoted","eligible","search","region","scope","trOnl
   "tabCandidates","tabStockSearch","candidatesPanel","stockSearchPanel","stockSearchForm",
   "stockSearchInput","stockSearchButton","stockSearchStatus","stockSearchResults","stockSearchSuggestions",
   "searchFitChoices","factorQuality","factorValue","factorEarnings","factorInvestment",
-  "count","results","empty","status","reload","factorMomentum","factorLowRisk","factorTrend","factorSander","factorGrowth","strategySummary","showTradeLevels"]){
+  "count","results","empty","status","reload","factorMomentum","factorLowRisk","factorTrend","factorSander","factorGrowth","strategySummary","showTradeLevels",
+  "evidencePanel","evidenceBody"]){
   if(!html.includes('id="'+id+'"'))throw new Error("UI control missing: "+id);
 }
 if(html.includes("<iframe")||html.includes('data-tab=')||html.includes("ATR-Stop")||html.includes("strategie-study.json"))
@@ -320,6 +321,13 @@ assert.ok(html.includes('StockResearch.render(article,s,independent?selectedSear
 assert.ok(!html.includes('ATR(14) relativ zum Kurs · experimentell'),"Short-term ATR must not masquerade as the revised low-risk factor");
 console.log("Research factors: four independent rank inputs, missing-data exclusion, colour/date consistency, shared search fit and full-year low volatility verified.");
 
+// Evidence labels of the archived strategy audit: scripts in dependency order, rendered once, chips on every candidate strategy.
+assert.ok(html.indexOf('<script src="evidence-data.js?v=1"></script>')>0
+  &&html.indexOf('<script src="evidence-data.js?v=1"></script>')<html.indexOf('<script src="evidence.js?v=1"></script>'));
+assert.ok(match[1].includes('StockEvidence.render($("evidenceBody"));')&&match[1].includes('StockEvidence.decorate($("strategyChoices"));'));
+assert.ok(match[1].includes('$("evidencePanel").hidden=view==="depot";'));
+assert.ok(!/verlässlich besser|sichere Überrendite|garantiert/i.test(html.replace(/keine?[^.]{0,80}(verlässlich|sichere)/gi,"")),"No promise of reliable outperformance");
+require("../tests/test_evidence.cjs");
 require("../tests/test_holding_horizon.cjs");
 require("../tests/test_live_quote.cjs");
 require("../tests/test_trade_check.cjs");

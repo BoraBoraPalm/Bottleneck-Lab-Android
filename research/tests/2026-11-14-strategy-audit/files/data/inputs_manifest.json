@@ -1,0 +1,1667 @@
+{
+ "created_utc": "2026-11-14T00:02:25Z",
+ "osap_commit": "ad1dfba5a6d80c4ce53ce6b8127f5a949dda1e40",
+ "files": [
+  {
+   "kind": "french",
+   "name": "F-F_Research_Data_Factors",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/F-F_Research_Data_Factors_CSV.zip",
+   "file": "F-F_Research_Data_Factors_CSV.zip",
+   "bytes": 13078,
+   "sha256": "b03d39e4bb253dda0f14893db3b78e64b40b8d6549a0fc0fd4111dae84c98618",
+   "fetched_utc": "2026-11-14T00:02:06Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "F-F_Research_Data_Factors_daily",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/F-F_Research_Data_Factors_daily_CSV.zip",
+   "file": "F-F_Research_Data_Factors_daily_CSV.zip",
+   "bytes": 178326,
+   "sha256": "96c23b88e651cbfff3740a53f8225e59ee39893371e96385a1d8125ec2cd9c89",
+   "fetched_utc": "2026-11-14T00:02:06Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "F-F_Research_Data_5_Factors_2x3",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/F-F_Research_Data_5_Factors_2x3_CSV.zip",
+   "file": "F-F_Research_Data_5_Factors_2x3_CSV.zip",
+   "bytes": 11971,
+   "sha256": "17d7a575e71d6764a70ddec3f8d887756c0eebf3a60f64d6ba95d2adde3fed26",
+   "fetched_utc": "2026-11-14T00:02:06Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "F-F_Momentum_Factor",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/F-F_Momentum_Factor_CSV.zip",
+   "file": "F-F_Momentum_Factor_CSV.zip",
+   "bytes": 5603,
+   "sha256": "27ed60e5b2caa9ea334a261cddfa864a9926f6bf45e9677c95dfd835c5abb315",
+   "fetched_utc": "2026-11-14T00:02:06Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "Portfolios_Formed_on_ME",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/Portfolios_Formed_on_ME_CSV.zip",
+   "file": "Portfolios_Formed_on_ME_CSV.zip",
+   "bytes": 200897,
+   "sha256": "05a799e6fcea1c6f185d4ce4b5faf8f8c73e031b74f563774bec7abd74843cfc",
+   "fetched_utc": "2026-11-14T00:02:06Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "Portfolios_Formed_on_BE-ME",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/Portfolios_Formed_on_BE-ME_CSV.zip",
+   "file": "Portfolios_Formed_on_BE-ME_CSV.zip",
+   "bytes": 218775,
+   "sha256": "211a32e84a6992160317715076cb1b79ff067a4d9738e704678ddc63f29195de",
+   "fetched_utc": "2026-11-14T00:02:06Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "Portfolios_Formed_on_OP",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/Portfolios_Formed_on_OP_CSV.zip",
+   "file": "Portfolios_Formed_on_OP_CSV.zip",
+   "bytes": 135350,
+   "sha256": "2bdf5bdbe9e8231d37b8607de6361fc51213487e763e1bc855f7cd3c055183cf",
+   "fetched_utc": "2026-11-14T00:02:07Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "Portfolios_Formed_on_INV",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/Portfolios_Formed_on_INV_CSV.zip",
+   "file": "Portfolios_Formed_on_INV_CSV.zip",
+   "bytes": 135809,
+   "sha256": "691a47c0043d8ab6839ebd5aec47181ffed59b5bc80775b985da4bd5de117b0e",
+   "fetched_utc": "2026-11-14T00:02:07Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "Portfolios_Formed_on_E-P",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/Portfolios_Formed_on_E-P_CSV.zip",
+   "file": "Portfolios_Formed_on_E-P_CSV.zip",
+   "bytes": 163925,
+   "sha256": "cf609cb700cb8b4d63aa40d6b06a1579b956213adb59c83bb4d6523b9e359a28",
+   "fetched_utc": "2026-11-14T00:02:07Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "Portfolios_Formed_on_CF-P",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/Portfolios_Formed_on_CF-P_CSV.zip",
+   "file": "Portfolios_Formed_on_CF-P_CSV.zip",
+   "bytes": 164489,
+   "sha256": "209bb9311a641d028e5026f6c2bd727e97a4ce2fd2e08c4392fea0311f0a32e6",
+   "fetched_utc": "2026-11-14T00:02:07Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "Portfolios_Formed_on_D-P",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/Portfolios_Formed_on_D-P_CSV.zip",
+   "file": "Portfolios_Formed_on_D-P_CSV.zip",
+   "bytes": 202402,
+   "sha256": "427c4f967135bf2a411cde0a630b6360274691daed908d720c1d729dd7638cb9",
+   "fetched_utc": "2026-11-14T00:02:07Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "Portfolios_Formed_on_AC",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/Portfolios_Formed_on_AC_CSV.zip",
+   "file": "Portfolios_Formed_on_AC_CSV.zip",
+   "bytes": 114843,
+   "sha256": "98d4733e85d23a841503d151c67d559d2b2f79029bf4443e8d29af65f82ad723",
+   "fetched_utc": "2026-11-14T00:02:07Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "Portfolios_Formed_on_BETA",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/Portfolios_Formed_on_BETA_CSV.zip",
+   "file": "Portfolios_Formed_on_BETA_CSV.zip",
+   "bytes": 116326,
+   "sha256": "23e0f94cb5c65fdd25b0becff4875f28ec4bc18976c9d2027a1abe38a00194c7",
+   "fetched_utc": "2026-11-14T00:02:07Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "Portfolios_Formed_on_NI",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/Portfolios_Formed_on_NI_CSV.zip",
+   "file": "Portfolios_Formed_on_NI_CSV.zip",
+   "bytes": 127610,
+   "sha256": "341cff586603b6bf9b89f5d03e5e8996618eaf83d7309ca95598744a9208f970",
+   "fetched_utc": "2026-11-14T00:02:08Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "Portfolios_Formed_on_VAR",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/Portfolios_Formed_on_VAR_CSV.zip",
+   "file": "Portfolios_Formed_on_VAR_CSV.zip",
+   "bytes": 147699,
+   "sha256": "8050738aaf7afa1ec0a37fdd8012720b49600159adda39061d098cc8d34a71c6",
+   "fetched_utc": "2026-11-14T00:02:08Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "Portfolios_Formed_on_RESVAR",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/Portfolios_Formed_on_RESVAR_CSV.zip",
+   "file": "Portfolios_Formed_on_RESVAR_CSV.zip",
+   "bytes": 146817,
+   "sha256": "b1702ba01a9de7ce7d4ee21c7ddbace93df5da791a6ebfa67998959fe232b9b2",
+   "fetched_utc": "2026-11-14T00:02:08Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "6_Portfolios_2x3",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/6_Portfolios_2x3_CSV.zip",
+   "file": "6_Portfolios_2x3_CSV.zip",
+   "bytes": 149549,
+   "sha256": "28d382168866a2f424bf32da868b08895c31c954cbad948f88606cd4ef73db58",
+   "fetched_utc": "2026-11-14T00:02:08Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "6_Portfolios_ME_OP_2x3",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/6_Portfolios_ME_OP_2x3_CSV.zip",
+   "file": "6_Portfolios_ME_OP_2x3_CSV.zip",
+   "bytes": 106098,
+   "sha256": "c266e7f9b59c13a9a5cbe9f8d646ffa78334e2d95fa7d7b05cdc027ce8c29240",
+   "fetched_utc": "2026-11-14T00:02:08Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "6_Portfolios_ME_INV_2x3",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/6_Portfolios_ME_INV_2x3_CSV.zip",
+   "file": "6_Portfolios_ME_INV_2x3_CSV.zip",
+   "bytes": 106063,
+   "sha256": "7d58209ce6cf8d137100a32969520926074a711e79e26aa14209929bf1a5698f",
+   "fetched_utc": "2026-11-14T00:02:08Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "6_Portfolios_ME_Prior_12_2",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/6_Portfolios_ME_Prior_12_2_CSV.zip",
+   "file": "6_Portfolios_ME_Prior_12_2_CSV.zip",
+   "bytes": 122033,
+   "sha256": "e973a50bf2c2f3738132e6efa05533fb7a473c18995aa36899a493904842bfee",
+   "fetched_utc": "2026-11-14T00:02:08Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "10_Portfolios_Prior_12_2",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/10_Portfolios_Prior_12_2_CSV.zip",
+   "file": "10_Portfolios_Prior_12_2_CSV.zip",
+   "bytes": 119215,
+   "sha256": "688467caa28578a8dca70698537c4f03c406b246350b6f3e9c396e15e1e7964f",
+   "fetched_utc": "2026-11-14T00:02:08Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "10_Portfolios_Prior_1_0",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/10_Portfolios_Prior_1_0_CSV.zip",
+   "file": "10_Portfolios_Prior_1_0_CSV.zip",
+   "bytes": 120824,
+   "sha256": "9c82ae7be156e5958933b4c8b2a5c54d61191f02477f067929ff7b72f0127893",
+   "fetched_utc": "2026-11-14T00:02:09Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "10_Portfolios_Prior_60_13",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/10_Portfolios_Prior_60_13_CSV.zip",
+   "file": "10_Portfolios_Prior_60_13_CSV.zip",
+   "bytes": 113662,
+   "sha256": "189fa43d7291d9dbafa0b9347546152bbf6b3f37aef397ca18a6dadb5369e826",
+   "fetched_utc": "2026-11-14T00:02:09Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "30_Industry_Portfolios",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/30_Industry_Portfolios_CSV.zip",
+   "file": "30_Industry_Portfolios_CSV.zip",
+   "bytes": 314458,
+   "sha256": "0d98de64bf37979080834b4d6809fee9b7882f64d823f3881d61593241633c11",
+   "fetched_utc": "2026-11-14T00:02:09Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "30_Industry_Portfolios_daily",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/30_Industry_Portfolios_daily_CSV.zip",
+   "file": "30_Industry_Portfolios_daily_CSV.zip",
+   "bytes": 2599584,
+   "sha256": "e9278f00793c8b6d59f2ef6fd813af97d02ec601bfe8a835b111c6b65c1b24c6",
+   "fetched_utc": "2026-11-14T00:02:09Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "49_Industry_Portfolios",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/49_Industry_Portfolios_CSV.zip",
+   "file": "49_Industry_Portfolios_CSV.zip",
+   "bytes": 489861,
+   "sha256": "d1a3b0b9896e1e633ed2aa85e24ca144d7998f8ab2ff344e2379383ebeb7b836",
+   "fetched_utc": "2026-11-14T00:02:09Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "Developed_5_Factors",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/Developed_5_Factors_CSV.zip",
+   "file": "Developed_5_Factors_CSV.zip",
+   "bytes": 6813,
+   "sha256": "954580906c3ae6fc1870677e40dfbe5a94a6cf188be5330c896f2fc578d9f0ba",
+   "fetched_utc": "2026-11-14T00:02:09Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "Developed_Mom_Factor",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/Developed_Mom_Factor_CSV.zip",
+   "file": "Developed_Mom_Factor_CSV.zip",
+   "bytes": 2268,
+   "sha256": "2df8248dbf01cb9c1d172a7409eb6e61bfabc4a4c29c599697637df7c4de746e",
+   "fetched_utc": "2026-11-14T00:02:10Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "Developed_6_Portfolios_ME_BE-ME",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/Developed_6_Portfolios_ME_BE-ME_CSV.zip",
+   "file": "Developed_6_Portfolios_ME_BE-ME_CSV.zip",
+   "bytes": 30077,
+   "sha256": "9939f10bb4d553b6df3bdc7db5e3b81a8661c00eecc3a33911c0ca46f3725100",
+   "fetched_utc": "2026-11-14T00:02:10Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "Developed_6_Portfolios_ME_OP",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/Developed_6_Portfolios_ME_OP_CSV.zip",
+   "file": "Developed_6_Portfolios_ME_OP_CSV.zip",
+   "bytes": 29984,
+   "sha256": "7e988cb4aebe316e8e1ed59dfa92265b02c086dc46936ecbca4b78587f75d998",
+   "fetched_utc": "2026-11-14T00:02:10Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "Developed_6_Portfolios_ME_INV",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/Developed_6_Portfolios_ME_INV_CSV.zip",
+   "file": "Developed_6_Portfolios_ME_INV_CSV.zip",
+   "bytes": 29950,
+   "sha256": "0a57336df2bccfbaf0333ca35b62791c5f60a47c5b86b6ca316a05f2f55dc59b",
+   "fetched_utc": "2026-11-14T00:02:10Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "Developed_6_Portfolios_ME_Prior_12_2",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/Developed_6_Portfolios_ME_Prior_12_2_CSV.zip",
+   "file": "Developed_6_Portfolios_ME_Prior_12_2_CSV.zip",
+   "bytes": 30665,
+   "sha256": "aacd8cc7b0de991ffd2274bdb47e680a09916fa8d3f99d60eb7b60f0bf604f70",
+   "fetched_utc": "2026-11-14T00:02:10Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "Developed_ex_US_5_Factors",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/Developed_ex_US_5_Factors_CSV.zip",
+   "file": "Developed_ex_US_5_Factors_CSV.zip",
+   "bytes": 6792,
+   "sha256": "532ca092a479841a81b1c5619e0b7e23cd629f1f27ad491f442c8dc6833baeef",
+   "fetched_utc": "2026-11-14T00:02:10Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "Developed_ex_US_Mom_Factor",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/Developed_ex_US_Mom_Factor_CSV.zip",
+   "file": "Developed_ex_US_Mom_Factor_CSV.zip",
+   "bytes": 2243,
+   "sha256": "7f74b4af425042ea1734e64372309d9be785fba65fe52922c79061ca8dc4a60a",
+   "fetched_utc": "2026-11-14T00:02:10Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "Developed_ex_US_6_Portfolios_ME_BE-ME",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/Developed_ex_US_6_Portfolios_ME_BE-ME_CSV.zip",
+   "file": "Developed_ex_US_6_Portfolios_ME_BE-ME_CSV.zip",
+   "bytes": 29444,
+   "sha256": "b594b59477019aa96185020e33f871e9a0f63b53c007a572f281b92300910627",
+   "fetched_utc": "2026-11-14T00:02:10Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "Developed_ex_US_6_Portfolios_ME_OP",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/Developed_ex_US_6_Portfolios_ME_OP_CSV.zip",
+   "file": "Developed_ex_US_6_Portfolios_ME_OP_CSV.zip",
+   "bytes": 29369,
+   "sha256": "99cabaa2721a0ea6622eac62927a57986aee33f49cccea59484283b2ff6e5d12",
+   "fetched_utc": "2026-11-14T00:02:10Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "Developed_ex_US_6_Portfolios_ME_INV",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/Developed_ex_US_6_Portfolios_ME_INV_CSV.zip",
+   "file": "Developed_ex_US_6_Portfolios_ME_INV_CSV.zip",
+   "bytes": 29410,
+   "sha256": "3e26a4a50f86776d9b96c1180a1af8c32cd93ba023c58266444fbb9d11236a87",
+   "fetched_utc": "2026-11-14T00:02:10Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "Developed_ex_US_6_Portfolios_ME_Prior_12_2",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/Developed_ex_US_6_Portfolios_ME_Prior_12_2_CSV.zip",
+   "file": "Developed_ex_US_6_Portfolios_ME_Prior_12_2_CSV.zip",
+   "bytes": 30215,
+   "sha256": "192b892d08d1e28b71d96b0aa686b23ac75ee23d1ba0754c4513f38c2e3fb274",
+   "fetched_utc": "2026-11-14T00:02:10Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "Europe_5_Factors",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/Europe_5_Factors_CSV.zip",
+   "file": "Europe_5_Factors_CSV.zip",
+   "bytes": 6818,
+   "sha256": "87c61cc3311a4e541f623a3532af4e93be033a1897cdf664e2b549348eee9bcb",
+   "fetched_utc": "2026-11-14T00:02:11Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "Europe_Mom_Factor",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/Europe_Mom_Factor_CSV.zip",
+   "file": "Europe_Mom_Factor_CSV.zip",
+   "bytes": 2247,
+   "sha256": "ac254c7011515cc8b3c280dbe374fe8d05b6c5a5603cd7b17101c9fb2e3bdaa0",
+   "fetched_utc": "2026-11-14T00:02:11Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "Europe_6_Portfolios_ME_BE-ME",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/Europe_6_Portfolios_ME_BE-ME_CSV.zip",
+   "file": "Europe_6_Portfolios_ME_BE-ME_CSV.zip",
+   "bytes": 29118,
+   "sha256": "b86ecd408aaae18f2fb903540bfcda4d042fa70b71589c72594ccab770a590f3",
+   "fetched_utc": "2026-11-14T00:02:11Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "Europe_6_Portfolios_ME_OP",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/Europe_6_Portfolios_ME_OP_CSV.zip",
+   "file": "Europe_6_Portfolios_ME_OP_CSV.zip",
+   "bytes": 29041,
+   "sha256": "f1bc70df923f8feb734bcb17ff57ab5d17bc06dd24122d46634189e01de6d091",
+   "fetched_utc": "2026-11-14T00:02:11Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "Europe_6_Portfolios_ME_INV",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/Europe_6_Portfolios_ME_INV_CSV.zip",
+   "file": "Europe_6_Portfolios_ME_INV_CSV.zip",
+   "bytes": 29044,
+   "sha256": "895dc2a32d3e915b10c4e56cd3307d0c10112ec2ed0676f5f420132c445c061e",
+   "fetched_utc": "2026-11-14T00:02:11Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "Europe_6_Portfolios_ME_Prior_12_2",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/Europe_6_Portfolios_ME_Prior_12_2_CSV.zip",
+   "file": "Europe_6_Portfolios_ME_Prior_12_2_CSV.zip",
+   "bytes": 30038,
+   "sha256": "6b8dff6bff3c01382c702517759830812bc229dc61c91cd2909be5b5ca1fe952",
+   "fetched_utc": "2026-11-14T00:02:11Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "Japan_5_Factors",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/Japan_5_Factors_CSV.zip",
+   "file": "Japan_5_Factors_CSV.zip",
+   "bytes": 6980,
+   "sha256": "3e8416a0130e2a7bb1b42a49f987865b3d1e7de930affcfc191a70b4088effb2",
+   "fetched_utc": "2026-11-14T00:02:11Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "Japan_Mom_Factor",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/Japan_Mom_Factor_CSV.zip",
+   "file": "Japan_Mom_Factor_CSV.zip",
+   "bytes": 2251,
+   "sha256": "beb4fc53d4b34f8d21db104706854fd24610332609c6275373345597f6e1808b",
+   "fetched_utc": "2026-11-14T00:02:11Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "Japan_6_Portfolios_ME_BE-ME",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/Japan_6_Portfolios_ME_BE-ME_CSV.zip",
+   "file": "Japan_6_Portfolios_ME_BE-ME_CSV.zip",
+   "bytes": 27677,
+   "sha256": "112f451f354d7bf516d980b0cf6c56485e4f12f81d837b6c2335bcf62f40f06e",
+   "fetched_utc": "2026-11-14T00:02:11Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "Japan_6_Portfolios_ME_OP",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/Japan_6_Portfolios_ME_OP_CSV.zip",
+   "file": "Japan_6_Portfolios_ME_OP_CSV.zip",
+   "bytes": 27564,
+   "sha256": "921ae5f64c905e2da784768706f31b9e1820c1e4135e1cbf152eadf68cbbe122",
+   "fetched_utc": "2026-11-14T00:02:11Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "Japan_6_Portfolios_ME_INV",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/Japan_6_Portfolios_ME_INV_CSV.zip",
+   "file": "Japan_6_Portfolios_ME_INV_CSV.zip",
+   "bytes": 27481,
+   "sha256": "2353338b9b9c975fa52a47e94bc47bea792f13e8f68cc8a88446089ebc729ca4",
+   "fetched_utc": "2026-11-14T00:02:11Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "Japan_6_Portfolios_ME_Prior_12_2",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/Japan_6_Portfolios_ME_Prior_12_2_CSV.zip",
+   "file": "Japan_6_Portfolios_ME_Prior_12_2_CSV.zip",
+   "bytes": 29444,
+   "sha256": "5d1d2603f80a3f865b6402fecbd793bc6eec136712aabd332610c1441dec88e6",
+   "fetched_utc": "2026-11-14T00:02:11Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "Asia_Pacific_ex_Japan_5_Factors",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/Asia_Pacific_ex_Japan_5_Factors_CSV.zip",
+   "file": "Asia_Pacific_ex_Japan_5_Factors_CSV.zip",
+   "bytes": 6975,
+   "sha256": "e1e58b7e13422bb05fa752c185689dba8407c934f74288774708c7d319364634",
+   "fetched_utc": "2026-11-14T00:02:12Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "Asia_Pacific_ex_Japan_MOM_Factor",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/Asia_Pacific_ex_Japan_MOM_Factor_CSV.zip",
+   "file": "Asia_Pacific_ex_Japan_MOM_Factor_CSV.zip",
+   "bytes": 2276,
+   "sha256": "d0792c1f08cb7becde2c94ee24b432e8c21430aa9f406bdb1e9463f6ece35b96",
+   "fetched_utc": "2026-11-14T00:02:12Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "Asia_Pacific_ex_Japan_6_Portfolios_ME_BE-ME",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/Asia_Pacific_ex_Japan_6_Portfolios_ME_BE-ME_CSV.zip",
+   "file": "Asia_Pacific_ex_Japan_6_Portfolios_ME_BE-ME_CSV.zip",
+   "bytes": 28040,
+   "sha256": "00b77147072bdacd7e0fe68959ea3e526a2b20fb05786df208601b8ff4a174c8",
+   "fetched_utc": "2026-11-14T00:02:12Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "Asia_Pacific_ex_Japan_6_Portfolios_ME_OP",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/Asia_Pacific_ex_Japan_6_Portfolios_ME_OP_CSV.zip",
+   "file": "Asia_Pacific_ex_Japan_6_Portfolios_ME_OP_CSV.zip",
+   "bytes": 28082,
+   "sha256": "a46dccd005bc4689abddd207adb696123c425b4f31d1917e25385cb8ac55d96c",
+   "fetched_utc": "2026-11-14T00:02:12Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "Asia_Pacific_ex_Japan_6_Portfolios_ME_INV",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/Asia_Pacific_ex_Japan_6_Portfolios_ME_INV_CSV.zip",
+   "file": "Asia_Pacific_ex_Japan_6_Portfolios_ME_INV_CSV.zip",
+   "bytes": 28214,
+   "sha256": "1aad60eff992db581287c99d0b48d87163252bc7a4b5a6bcf90ef865d34e2e87",
+   "fetched_utc": "2026-11-14T00:02:12Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "Asia_Pacific_ex_Japan_6_Portfolios_ME_Prior_12_2",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/Asia_Pacific_ex_Japan_6_Portfolios_ME_Prior_12_2_CSV.zip",
+   "file": "Asia_Pacific_ex_Japan_6_Portfolios_ME_Prior_12_2_CSV.zip",
+   "bytes": 29289,
+   "sha256": "29a12141fb8aca7e70bf0536bbf79139ac5c456b41424e2b966559262f037207",
+   "fetched_utc": "2026-11-14T00:02:12Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "North_America_5_Factors",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/North_America_5_Factors_CSV.zip",
+   "file": "North_America_5_Factors_CSV.zip",
+   "bytes": 6934,
+   "sha256": "7708e618f41d4bd03ad61b9113f292c0a5ebeff1525f1604fe21c899f7d145ec",
+   "fetched_utc": "2026-11-14T00:02:12Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "North_America_Mom_Factor",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/North_America_Mom_Factor_CSV.zip",
+   "file": "North_America_Mom_Factor_CSV.zip",
+   "bytes": 2264,
+   "sha256": "d750cc8a23da322704f6617f1603f7f01effe21c681df6c76823946ca385e361",
+   "fetched_utc": "2026-11-14T00:02:12Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "North_America_6_Portfolios_ME_BE-ME",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/North_America_6_Portfolios_ME_BE-ME_CSV.zip",
+   "file": "North_America_6_Portfolios_ME_BE-ME_CSV.zip",
+   "bytes": 30130,
+   "sha256": "3e1b4c979d9e2cc96b49c41053e2d275fca61cd1ce00646f832bd35f9263346f",
+   "fetched_utc": "2026-11-14T00:02:12Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "North_America_6_Portfolios_ME_OP",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/North_America_6_Portfolios_ME_OP_CSV.zip",
+   "file": "North_America_6_Portfolios_ME_OP_CSV.zip",
+   "bytes": 29917,
+   "sha256": "3b17148702eb2b7527345cb673236b143ac69c1a09e9c1e3c31f3dec1ad6d511",
+   "fetched_utc": "2026-11-14T00:02:12Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "North_America_6_Portfolios_ME_INV",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/North_America_6_Portfolios_ME_INV_CSV.zip",
+   "file": "North_America_6_Portfolios_ME_INV_CSV.zip",
+   "bytes": 29898,
+   "sha256": "e79cfb51b721ef5399b19c4506977a51cc710a97fa20d7964865d294edf3b6d4",
+   "fetched_utc": "2026-11-14T00:02:12Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "North_America_6_Portfolios_ME_Prior_12_2",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/North_America_6_Portfolios_ME_Prior_12_2_CSV.zip",
+   "file": "North_America_6_Portfolios_ME_Prior_12_2_CSV.zip",
+   "bytes": 30619,
+   "sha256": "3d74ad1a61fa1a1d1f2365e72a6261eefb00ee3483fdac9601fb59b449f2e1d3",
+   "fetched_utc": "2026-11-14T00:02:13Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "Emerging_5_Factors",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/Emerging_5_Factors_CSV.zip",
+   "file": "Emerging_5_Factors_CSV.zip",
+   "bytes": 6989,
+   "sha256": "0573fd60948178daad54f577a6c87d1e5a183dfdc4a1a89ced3991cc95fd8ad3",
+   "fetched_utc": "2026-11-14T00:02:13Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "Emerging_MOM_Factor",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/Emerging_MOM_Factor_CSV.zip",
+   "file": "Emerging_MOM_Factor_CSV.zip",
+   "bytes": 2275,
+   "sha256": "c3dfecb604fe55c8b99b15988a1d1146372cea52da0a33d24c55f68779227ced",
+   "fetched_utc": "2026-11-14T00:02:13Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "Emerging_Markets_6_Portfolios_ME_BE-ME",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/Emerging_Markets_6_Portfolios_ME_BE-ME_CSV.zip",
+   "file": "Emerging_Markets_6_Portfolios_ME_BE-ME_CSV.zip",
+   "bytes": 28795,
+   "sha256": "5e65ca2083509a3ddbf070181d0b56d546446818ee98cc8d4b05b468b3a74ade",
+   "fetched_utc": "2026-11-14T00:02:13Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "Emerging_Markets_6_Portfolios_ME_OP",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/Emerging_Markets_6_Portfolios_ME_OP_CSV.zip",
+   "file": "Emerging_Markets_6_Portfolios_ME_OP_CSV.zip",
+   "bytes": 27311,
+   "sha256": "5b579f400eba1f802936a3ba1f7f150c0841724eb370cb16087e1dff5156a06b",
+   "fetched_utc": "2026-11-14T00:02:13Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "Emerging_Markets_6_Portfolios_ME_INV",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/Emerging_Markets_6_Portfolios_ME_INV_CSV.zip",
+   "file": "Emerging_Markets_6_Portfolios_ME_INV_CSV.zip",
+   "bytes": 26667,
+   "sha256": "b7a07545be16b5839fa7d7dc3f4b19fd09c73a1e176fbe9cf9db43e52c83bd57",
+   "fetched_utc": "2026-11-14T00:02:13Z",
+   "ok": true
+  },
+  {
+   "kind": "french",
+   "name": "Emerging_Markets_6_Portfolios_ME_Prior_12_2",
+   "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/Emerging_Markets_6_Portfolios_ME_Prior_12_2_CSV.zip",
+   "file": "Emerging_Markets_6_Portfolios_ME_Prior_12_2_CSV.zip",
+   "bytes": 30087,
+   "sha256": "68dbc3f6800879bfcb7b48adbbd7754e25983a5f0c12774b589a5e703285cf5c",
+   "fetched_utc": "2026-11-14T00:02:13Z",
+   "ok": true
+  },
+  {
+   "kind": "osap",
+   "name": "PredictorAltPorts_QuintilesVW.parquet",
+   "url": "https://huggingface.co/datasets/OpenSourceAP/CrossSection/resolve/ad1dfba5a6d80c4ce53ce6b8127f5a949dda1e40/Portfolios/Full%20Sets%20Alt/PredictorAltPorts_QuintilesVW.parquet",
+   "file": "PredictorAltPorts_QuintilesVW.parquet",
+   "bytes": 13896457,
+   "sha256": "1c3f424e8b5839226d88b856daed888567f7e5d760a47fc4849ebc65ecd04c93",
+   "fetched_utc": "2026-11-14T00:02:14Z",
+   "ok": true,
+   "matches_archived_2026_11_01_hash": true
+  },
+  {
+   "kind": "osap",
+   "name": "PredictorAltPorts_LiqScreen_ME_gt_NYSE20pct.parquet",
+   "url": "https://huggingface.co/datasets/OpenSourceAP/CrossSection/resolve/ad1dfba5a6d80c4ce53ce6b8127f5a949dda1e40/Portfolios/Full%20Sets%20Alt/PredictorAltPorts_LiqScreen_ME_gt_NYSE20pct.parquet",
+   "file": "PredictorAltPorts_LiqScreen_ME_gt_NYSE20pct.parquet",
+   "bytes": 18770749,
+   "sha256": "fcd2ae4053d7262868f5531be051ab6039161f7422091651116cf4a6990f3734",
+   "fetched_utc": "2026-11-14T00:02:14Z",
+   "ok": true,
+   "matches_archived_2026_11_01_hash": true
+  },
+  {
+   "kind": "osap",
+   "name": "SignalDoc.csv",
+   "url": "https://huggingface.co/datasets/OpenSourceAP/CrossSection/resolve/ad1dfba5a6d80c4ce53ce6b8127f5a949dda1e40/SignalDoc.csv",
+   "file": "SignalDoc.csv",
+   "bytes": 183100,
+   "sha256": "0ceb11020c2138c2477b732948beaac2e67ccaad8428753e3a79af2bb5ea0178",
+   "fetched_utc": "2026-11-14T00:02:13Z",
+   "ok": true,
+   "matches_archived_2026_11_01_hash": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "ACWI",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/ACWI?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "ACWI.json",
+   "bytes": 506951,
+   "sha256": "e482b00e54afc8384fb869a9bd0edb709dfa7d11fc3cda44e277ece6782c4f2d",
+   "fetched_utc": "2026-11-14T00:02:14Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "AGG",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/AGG?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "AGG.json",
+   "bytes": 644726,
+   "sha256": "08fadcc62cc4cae5d3ac39ae9d8788ab8c949cd2073ce766c795c6d9f4d53f46",
+   "fetched_utc": "2026-11-14T00:02:14Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "AMOMX",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/AMOMX?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "AMOMX.json",
+   "bytes": 1060,
+   "sha256": "303a94cb2a9d85dc429e0eeb2ff292315fb76d51f816194be5e3eea5fbef89c7",
+   "fetched_utc": "2026-11-14T00:02:14Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "AQMIX",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/AQMIX?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "AQMIX.json",
+   "bytes": 430707,
+   "sha256": "6e24d3c97833a381717f12f84a2114f65967eb1991dc02a216129015f9f94f30",
+   "fetched_utc": "2026-11-14T00:02:14Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "AVUV",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/AVUV?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "AVUV.json",
+   "bytes": 191817,
+   "sha256": "52905200f6255f656ca9dfbbe03e9008b4126df91ce6b89117c28b196ce2c4b9",
+   "fetched_utc": "2026-11-14T00:02:14Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "BIL",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/BIL?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "BIL.json",
+   "bytes": 523172,
+   "sha256": "627c8b7c94791ecb65820ad3fdb041ee98c33f10eda4abac7af3c0d9becd6e93",
+   "fetched_utc": "2026-11-14T00:02:15Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "COWZ",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/COWZ?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "COWZ.json",
+   "bytes": 271331,
+   "sha256": "fad4ca470794fa0074aa75ab489de91b70d129090d4bb2cfe0aed7ea5fa11d4b",
+   "fetched_utc": "2026-11-14T00:02:15Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "DBC",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/DBC?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "DBC.json",
+   "bytes": 573500,
+   "sha256": "309c0aa495ee1ff98d81edbf51aa2a633d3b5f20200bad61a4c885aa52cd7403",
+   "fetched_utc": "2026-11-14T00:02:15Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "DBMF",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/DBMF?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "DBMF.json",
+   "bytes": 206474,
+   "sha256": "c0383e3a3fa74696dd53065c7d1fdf14ae592734b2129f1c9c9eb2f1ebcbd96d",
+   "fetched_utc": "2026-11-14T00:02:15Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "DFLVX",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/DFLVX?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "DFLVX.json",
+   "bytes": 884372,
+   "sha256": "dc4971476857d6e28f3f6d7dfe21d271790aafacdde766201a2540fa4bd1a0c2",
+   "fetched_utc": "2026-11-14T00:02:15Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "DFSVX",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/DFSVX?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "DFSVX.json",
+   "bytes": 882838,
+   "sha256": "3ae4e215bb1e9f9e7d4d0bb5714e3c35e0f822b9a029b9f7b0cb6ce929695a8f",
+   "fetched_utc": "2026-11-14T00:02:15Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "DVY",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/DVY?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "DVY.json",
+   "bytes": 623568,
+   "sha256": "385c00ae21bf44dd93abe543e06fc16e7757252d450045186c3117023b2e3588",
+   "fetched_utc": "2026-11-14T00:02:15Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "EEM",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/EEM?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "EEM.json",
+   "bytes": 655348,
+   "sha256": "4c95ba01ed3a5b58c7726c449a8c9b81b7b29a48b31834e18b855fa3481f15ff",
+   "fetched_utc": "2026-11-14T00:02:15Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "EFA",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/EFA?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "EFA.json",
+   "bytes": 689111,
+   "sha256": "c02bd8420e4d8f9120d9370cc0fb4bb4a0d8f430643293ed7cf0274122066cd1",
+   "fetched_utc": "2026-11-14T00:02:16Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "EFAV",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/EFAV?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "EFAV.json",
+   "bytes": 402501,
+   "sha256": "bb9849a4ffb7124fcf142d9a9c3dbf116f41fda49335627c3313a31e7ff24d52",
+   "fetched_utc": "2026-11-14T00:02:16Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "EFV",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/EFV?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "EFV.json",
+   "bytes": 587454,
+   "sha256": "220bcc77e957de264515b41264f112b713b5ea640ecbf0f3cebaf1ee7b66d0fe",
+   "fetched_utc": "2026-11-14T00:02:16Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "EUNL.DE",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/EUNL.DE?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "EUNL.DE.json",
+   "bytes": 464440,
+   "sha256": "0a8b30d6482e522d760b4e041c7fd4541e43f367662825e17ad5bbdf9877f466",
+   "fetched_utc": "2026-11-14T00:02:16Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "EXSA.DE",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/EXSA.DE?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "EXSA.DE.json",
+   "bytes": 518820,
+   "sha256": "c67119bd0ed72ec3b1dbb9179429780d90e62b512e0a56feaef44d91869e3db6",
+   "fetched_utc": "2026-11-14T00:02:16Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "FNDX",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/FNDX?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "FNDX.json",
+   "bytes": 371040,
+   "sha256": "0f43b57860ed34062a28cfff576a48c45bdc45aec0997da01564c62117f5f1f6",
+   "fetched_utc": "2026-11-14T00:02:16Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "GLD",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/GLD?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "GLD.json",
+   "bytes": 604426,
+   "sha256": "1a610a6c318129ede8f6ba630bae17fa8398871170626237416ef0c9658d000d",
+   "fetched_utc": "2026-11-14T00:02:16Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "GMOM",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/GMOM?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "GMOM.json",
+   "bytes": 215890,
+   "sha256": "c54e4684c18b71f839992b4eefbd53554f7e403d5337f87879f3e8f6e7f3ffc0",
+   "fetched_utc": "2026-11-14T00:02:16Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "IEF",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/IEF?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "IEF.json",
+   "bytes": 671061,
+   "sha256": "93c9716c76d77c7d9e6912d7e0e71aee806267395d1fd46d192866ebc0512d6f",
+   "fetched_utc": "2026-11-14T00:02:17Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "IJR",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/IJR?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "IJR.json",
+   "bytes": 729087,
+   "sha256": "8d6d73f77f5417446fd1f34b91d4e09c7c54b7995a37c36fddc5d5fd6448bf15",
+   "fetched_utc": "2026-11-14T00:02:17Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "IJS",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/IJS?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "IJS.json",
+   "bytes": 708176,
+   "sha256": "7bd3908b65103f8f2362568d708b58e73471300246aceb58533bee41e98e228d",
+   "fetched_utc": "2026-11-14T00:02:17Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "IMOM",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/IMOM?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "IMOM.json",
+   "bytes": 294950,
+   "sha256": "274d423bea59b0bcb23434e24dcfc074a5932d7ede4295dd32be7b4a9e3f31f7",
+   "fetched_utc": "2026-11-14T00:02:17Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "IMTM",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/IMTM?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "IMTM.json",
+   "bytes": 320920,
+   "sha256": "6136707c1ccd9332f8789c0fccf929af15add54e0d3f2aaf4e49cbf3ca1983c2",
+   "fetched_utc": "2026-11-14T00:02:17Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "IQLT",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/IQLT?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "IQLT.json",
+   "bytes": 323205,
+   "sha256": "e23549755706faf3fc470628bdab7436beafd133951191645133a899df580534",
+   "fetched_utc": "2026-11-14T00:02:17Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "IQQ0.DE",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/IQQ0.DE?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "IQQ0.DE.json",
+   "bytes": 374794,
+   "sha256": "45c1996d34668bd9462b4f727795873cdedbe32a5aa1ccf83960b7bfa6024f0a",
+   "fetched_utc": "2026-11-14T00:02:17Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "IS3Q.DE",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/IS3Q.DE?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "IS3Q.DE.json",
+   "bytes": 325900,
+   "sha256": "77ea292f90f772f0a27e4d144dbd1598961b217bbc0a53123b23ff3d3ba5584e",
+   "fetched_utc": "2026-11-14T00:02:17Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "IS3R.DE",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/IS3R.DE?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "IS3R.DE.json",
+   "bytes": 325164,
+   "sha256": "fa745e0321c1c54aa97fa9e0ba159d5cad5e4dadfab2a0ae33250a3d8b6ea231",
+   "fetched_utc": "2026-11-14T00:02:18Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "IS3S.DE",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/IS3S.DE?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "IS3S.DE.json",
+   "bytes": 328217,
+   "sha256": "7947dcf485870153034896cdbd1879471d3a085dbf17264063158876a5ef8bbf",
+   "fetched_utc": "2026-11-14T00:02:18Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "IS3T.DE",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/IS3T.DE?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "IS3T.DE.json",
+   "bytes": 327695,
+   "sha256": "7fc1548644fddb09eb299f4237b5ed4bfe069203607f8ce3ec9aa88322a27a85",
+   "fetched_utc": "2026-11-14T00:02:18Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "ISPA.DE",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/ISPA.DE?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "ISPA.DE.json",
+   "bytes": 472866,
+   "sha256": "963c532e250ff823beadec53bd9e127aa861ad485b49e77678eeff3378958b10",
+   "fetched_utc": "2026-11-14T00:02:18Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "IUSN.DE",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/IUSN.DE?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "IUSN.DE.json",
+   "bytes": 233937,
+   "sha256": "543e1d9d8490a8b3ff76bef6032eda3bfaa26d6b59cc64aec183866066102efe",
+   "fetched_utc": "2026-11-14T00:02:18Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "IVAL",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/IVAL?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "IVAL.json",
+   "bytes": 323894,
+   "sha256": "bce95357ed0524d0fc97cd897f679f288613f35d535ee5baa45ffffc3015a4f6",
+   "fetched_utc": "2026-11-14T00:02:18Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "IVLU",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/IVLU?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "IVLU.json",
+   "bytes": 311677,
+   "sha256": "621a23fd23f8fe1d4b0cd7082d98a4038b09be507d5e801d3995f7499aa9f39e",
+   "fetched_utc": "2026-11-14T00:02:18Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "IWD",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/IWD?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "IWD.json",
+   "bytes": 718108,
+   "sha256": "5d2e5a382ac82d4d22a52edb444ec3897c45fa3510f77e2242063eb9edb9b975",
+   "fetched_utc": "2026-11-14T00:02:18Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "IWM",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/IWM?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "IWM.json",
+   "bytes": 722502,
+   "sha256": "c40ed4725a6fd126a7cc5289228bb47c2e8140140c456519b9ee1e6fc1dae466",
+   "fetched_utc": "2026-11-14T00:02:19Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "KMLM",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/KMLM?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "KMLM.json",
+   "bytes": 161720,
+   "sha256": "76246a959bdbcbd95ca717be46aab39a63620f051545d5cded3aa2e8ebf48e79",
+   "fetched_utc": "2026-11-14T00:02:19Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "MOAT",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/MOAT?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "MOAT.json",
+   "bytes": 393335,
+   "sha256": "63cf84f672c0f652513ecd5da662b14d30708286d1351a1cefd86d0490486dd3",
+   "fetched_utc": "2026-11-14T00:02:19Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "MTUM",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/MTUM?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "MTUM.json",
+   "bytes": 375466,
+   "sha256": "139e4a01a1055154ae77ba478614da20fba2b4dde4619359e7c1cd2603789a4b",
+   "fetched_utc": "2026-11-14T00:02:19Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "NOBL",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/NOBL?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "NOBL.json",
+   "bytes": 359552,
+   "sha256": "5941827a00e235be83fc4bcd870dccd2c93973f52b59578597ecb7ac3840c8ff",
+   "fetched_utc": "2026-11-14T00:02:19Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "PDP",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/PDP?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "PDP.json",
+   "bytes": 532606,
+   "sha256": "9f62682fafbfd4f3b98c19bb09758cde96b47a65c52d5c916a51f37f675d91f4",
+   "fetched_utc": "2026-11-14T00:02:19Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "PKW",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/PKW?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "PKW.json",
+   "bytes": 538259,
+   "sha256": "b89fb2b1552f7ce6be2d6ced88a793398a632ac6b07aceeaab92f75d398160f6",
+   "fetched_utc": "2026-11-14T00:02:19Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "PRF",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/PRF?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "PRF.json",
+   "bytes": 582660,
+   "sha256": "0a266f65c97a9c51ef587d0e241eeea51e6c7fe1ef578c5ef78ccdfc3497ff0f",
+   "fetched_utc": "2026-11-14T00:02:19Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "QMOM",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/QMOM?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "QMOM.json",
+   "bytes": 293399,
+   "sha256": "59b96fdb56659f21a1fbaa9f805898d70909664d8fbe4b41b8e1a60407e9b0ae",
+   "fetched_utc": "2026-11-14T00:02:20Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "QUAL",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/QUAL?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "QUAL.json",
+   "bytes": 370494,
+   "sha256": "0fbd61be31b43f650105c973fa56f731c50c094360dfc642d535edbb2804a72e",
+   "fetched_utc": "2026-11-14T00:02:20Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "QVAL",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/QVAL?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "QVAL.json",
+   "bytes": 327811,
+   "sha256": "982c68f4b77fb3d8c6bbe23a1fd1d38721197b945c64783f037c197015808283",
+   "fetched_utc": "2026-11-14T00:02:20Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "RSP",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/RSP?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "RSP.json",
+   "bytes": 642942,
+   "sha256": "6cc8dd035d7f448f3d4d8cc8d99b52b09a0a8f7eba89de772f270d5338279e0f",
+   "fetched_utc": "2026-11-14T00:02:20Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "SCHD",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/SCHD?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "SCHD.json",
+   "bytes": 424582,
+   "sha256": "14d20e21c7a91bab38fbda92a32ce02781f0bdf734f52cbc2fc5bd4cca0cdc37",
+   "fetched_utc": "2026-11-14T00:02:20Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "SCZ",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/SCZ?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "SCZ.json",
+   "bytes": 512744,
+   "sha256": "aacd346f21e3e6741aaa1b074484daf4c781ee48f8bd05f903608b78f1ec3d3b",
+   "fetched_utc": "2026-11-14T00:02:20Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "SDY",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/SDY?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "SDY.json",
+   "bytes": 569136,
+   "sha256": "aeafb39590fd43b34efb55b1e90c159833ac1dec3a7286925f56b1ec21cf3c7a",
+   "fetched_utc": "2026-11-14T00:02:20Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "SHY",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/SHY?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "SHY.json",
+   "bytes": 660346,
+   "sha256": "bca5f06999d10d77f5df0f14e868da3d51034f2648ac704ea65e9651995ade25",
+   "fetched_utc": "2026-11-14T00:02:21Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "SIZE",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/SIZE?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "SIZE.json",
+   "bytes": 364221,
+   "sha256": "78e1d739f06b808e83171ab61edfed025cc3cddebe87f299888eab09567cd811",
+   "fetched_utc": "2026-11-14T00:02:21Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "SPHQ",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/SPHQ?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "SPHQ.json",
+   "bytes": 571133,
+   "sha256": "d1d96563ed7997e6f6089e977c960a8a9397ac4d5acc7ed04ce1739abbf015ac",
+   "fetched_utc": "2026-11-14T00:02:21Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "SPLV",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/SPLV?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "SPLV.json",
+   "bytes": 432636,
+   "sha256": "6908392109666a462a3f72901e7ff72f0328f7deaaa881ba2486070b74a6f82b",
+   "fetched_utc": "2026-11-14T00:02:21Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "SPMO",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/SPMO?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "SPMO.json",
+   "bytes": 299525,
+   "sha256": "73cb564cd72513fae362aa5d2774768fefc995505bf9ce3d48f4c0b9f3019868",
+   "fetched_utc": "2026-11-14T00:02:21Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "SPY",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/SPY?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "SPY.json",
+   "bytes": 860435,
+   "sha256": "aa3e86a381e5706cb6b86e987b6f4f207bcb073db8627004a31380ae18b16d8d",
+   "fetched_utc": "2026-11-14T00:02:21Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "SXR8.DE",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/SXR8.DE?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "SXR8.DE.json",
+   "bytes": 437076,
+   "sha256": "085bcdee658afc2063b3638a1cc0c1dfb15a69f0e957f0f168cb993ebd756baa",
+   "fetched_utc": "2026-11-14T00:02:21Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "SYLD",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/SYLD?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "SYLD.json",
+   "bytes": 362683,
+   "sha256": "9e46818a11b2e410ff2b52b18141c70741705c1b994fa1b3323aa946a730feef",
+   "fetched_utc": "2026-11-14T00:02:21Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "TDIV.AS",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/TDIV.AS?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "TDIV.AS.json",
+   "bytes": 284803,
+   "sha256": "ea842754650a7178cebde163982766bc3eeb342194f50162e13670de43906da6",
+   "fetched_utc": "2026-11-14T00:02:22Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "TLT",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/TLT?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "TLT.json",
+   "bytes": 676363,
+   "sha256": "838acb7244f5d86d9aef981580c55d8502f9a70ad9e58938a1781efa9ccd6379",
+   "fetched_utc": "2026-11-14T00:02:22Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "USMV",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/USMV?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "USMV.json",
+   "bytes": 410244,
+   "sha256": "a1e7aa1f43c5ef87ddb61337dc4842b83b8941ba5216df2e69fc6ea130d3ca04",
+   "fetched_utc": "2026-11-14T00:02:22Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "VBMFX",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/VBMFX?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "VBMFX.json",
+   "bytes": 1048113,
+   "sha256": "096574aed572a7883c6318512c8b76126c236dbdf7790568f324364e574475b5",
+   "fetched_utc": "2026-11-14T00:02:22Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "VBR",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/VBR?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "VBR.json",
+   "bytes": 616058,
+   "sha256": "2769cf8240e70861737beb95a080f0976a082ed64123c163166e318ac8cf3239",
+   "fetched_utc": "2026-11-14T00:02:22Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "VEIEX",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/VEIEX?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "VEIEX.json",
+   "bytes": 852884,
+   "sha256": "d2698335c9c15422d881518423079bd6a525bc22d4fbb02c86a630dcdab448ea",
+   "fetched_utc": "2026-11-14T00:02:22Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "VFINX",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/VFINX?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "VFINX.json",
+   "bytes": 1222134,
+   "sha256": "0196b3fb15ff0e1acda49a210afdf3acb21790ce6744e10d44a9c29ac4a1a8e7",
+   "fetched_utc": "2026-11-14T00:02:23Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "VFISX",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/VFISX?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "VFISX.json",
+   "bytes": 930640,
+   "sha256": "25032b4ac29042c1f7dbdfde07ac3b79e4000cbea14e97887f3cecfb214c2dde",
+   "fetched_utc": "2026-11-14T00:02:23Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "VFITX",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/VFITX?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "VFITX.json",
+   "bytes": 933193,
+   "sha256": "3137caa865421a320c742e0c95c6578689d2c55318da7b5a7a5a91e9e6b2f575",
+   "fetched_utc": "2026-11-14T00:02:23Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "VGSIX",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/VGSIX?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "VGSIX.json",
+   "bytes": 805217,
+   "sha256": "25bff1aabfad8cfa67ebd7807737f44df2558a9227d1455edcef39aab53e2e6d",
+   "fetched_utc": "2026-11-14T00:02:23Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "VGTSX",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/VGTSX?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "VGTSX.json",
+   "bytes": 800161,
+   "sha256": "9f2a2f7f9b4ebb9fd7715d9363db483b6ceef5282ef153c9a944778bfdc17fd9",
+   "fetched_utc": "2026-11-14T00:02:23Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "VGWD.DE",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/VGWD.DE?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "VGWD.DE.json",
+   "bytes": 244985,
+   "sha256": "9bb1d80d14f47d7e5a8725206d0021dcdfc8752a0db36bf5389b718b3bb7f238",
+   "fetched_utc": "2026-11-14T00:02:23Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "VIG",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/VIG?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "VIG.json",
+   "bytes": 560083,
+   "sha256": "8989a757fd21f0a8ffa0f0142922120d75da994f722bf0a02efb1aeffcf242d3",
+   "fetched_utc": "2026-11-14T00:02:23Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "VLUE",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/VLUE?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "VLUE.json",
+   "bytes": 366225,
+   "sha256": "dbf93ab13601c641ad8083b20686ea771cbdc3a8dc8dfbb312d5581f1dca3905",
+   "fetched_utc": "2026-11-14T00:02:23Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "VNQ",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/VNQ?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "VNQ.json",
+   "bytes": 596957,
+   "sha256": "efe7009b2d6ae957e0831628e752389414da9eb4c21c8bf5c0282236aba6f863",
+   "fetched_utc": "2026-11-14T00:02:24Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "VT",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/VT?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "VT.json",
+   "bytes": 498650,
+   "sha256": "212b89efb526987ed200aca2b7a62ce449deacabe872c2fb3dbedef91b962395",
+   "fetched_utc": "2026-11-14T00:02:24Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "VTI",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/VTI?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "VTI.json",
+   "bytes": 689625,
+   "sha256": "33a92a9b19cac4017d094e739143574b1d51de93ca9d14c0ecf8a52f0733d26c",
+   "fetched_utc": "2026-11-14T00:02:24Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "VTV",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/VTV?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "VTV.json",
+   "bytes": 621740,
+   "sha256": "4b826899bc73e63803e767934031d498326e086a53cf2118f9d6b02a6fe7657d",
+   "fetched_utc": "2026-11-14T00:02:24Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "VUSTX",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/VUSTX?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "VUSTX.json",
+   "bytes": 1072997,
+   "sha256": "03f9b24473a1a2f2e95e9dde08deb57b2b869dec5596a87aa24adc0adee9da05",
+   "fetched_utc": "2026-11-14T00:02:24Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "VWCE.DE",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/VWCE.DE?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "VWCE.DE.json",
+   "bytes": 196756,
+   "sha256": "1b86fbc248f4e161e98e91384a761a6ffc725359cdaba79924d6a848461f308b",
+   "fetched_utc": "2026-11-14T00:02:24Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "WTMF",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/WTMF?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "WTMF.json",
+   "bytes": 426268,
+   "sha256": "5346c8906b4b15b0d28343b22e909d4f17bdd62c9e0112274564df5b0308b7b8",
+   "fetched_utc": "2026-11-14T00:02:24Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "XDEB.DE",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/XDEB.DE?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "XDEB.DE.json",
+   "bytes": 328932,
+   "sha256": "d53fb898e6524b0121f361694ef6a9f96a8cf33a5bd6a825cc1eb1eed62fd7a9",
+   "fetched_utc": "2026-11-14T00:02:25Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "XDEM.DE",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/XDEM.DE?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "XDEM.DE.json",
+   "bytes": 326441,
+   "sha256": "715e437351c2774bd9bd37148654db2350611fd3f17a0dd20f817f1ec5e3d5b8",
+   "fetched_utc": "2026-11-14T00:02:25Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "XDEQ.DE",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/XDEQ.DE?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "XDEQ.DE.json",
+   "bytes": 325055,
+   "sha256": "f8f761524503b212681f9d0e5cdd16fbe2533518e4a7d77a848bed8be73653ef",
+   "fetched_utc": "2026-11-14T00:02:25Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "XDEV.DE",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/XDEV.DE?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "XDEV.DE.json",
+   "bytes": 329536,
+   "sha256": "14e4a04996e97754da7d915e40a6d10f2d05ee10bb372ab97bd322285d92f25c",
+   "fetched_utc": "2026-11-14T00:02:25Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "XMMO",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/XMMO?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "XMMO.json",
+   "bytes": 587217,
+   "sha256": "e2226449685292bab8a135ecffd06a190c83b71d89ab118d3991bda5526730f7",
+   "fetched_utc": "2026-11-14T00:02:25Z",
+   "ok": true
+  },
+  {
+   "kind": "yahoo",
+   "name": "ZPRV.DE",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/ZPRV.DE?period1=0&period2=1794614525&interval=1d&events=div%2Csplits",
+   "file": "ZPRV.DE.json",
+   "bytes": 313253,
+   "sha256": "002e9ac05257c147cc7b95bce6da496a78610570dddca0119de539e8b91efabb",
+   "fetched_utc": "2026-11-14T00:02:25Z",
+   "ok": true
+  }
+ ],
+ "failed": [],
+ "compact": {
+  "osap": {
+   "vw": {
+    "columns": [
+     "signalname",
+     "port",
+     "date",
+     "ret",
+     "signallag",
+     "Nlong",
+     "Nshort"
+    ],
+    "rows": 890161,
+    "signals": 179,
+    "ports": [
+     "01",
+     "02",
+     "03",
+     "04",
+     "05",
+     "LS"
+    ],
+    "long_port_by_signal_sample": {
+     "AM": "05",
+     "AOP": "05",
+     "AbnormalAccruals": "05",
+     "Accruals": "05",
+     "Activism1": "05",
+     "Activism2": "05",
+     "AdExp": "05",
+     "AgeIPO": "05"
+    }
+   },
+   "liq": {
+    "columns": [
+     "signalname",
+     "port",
+     "date",
+     "ret",
+     "signallag",
+     "Nlong",
+     "Nshort"
+    ],
+    "rows": 1238068,
+    "signals": 212,
+    "ports": [
+     "01",
+     "02",
+     "03",
+     "04",
+     "05",
+     "06",
+     "07",
+     "08",
+     "09",
+     "10",
+     "LS"
+    ],
+    "long_port_by_signal_sample": {
+     "AM": "05",
+     "AOP": "05",
+     "AbnormalAccruals": "10",
+     "Accruals": "10",
+     "AccrualsBM": "02",
+     "Activism1": "04",
+     "Activism2": "04",
+     "AdExp": "05"
+    }
+   }
+  },
+  "yahoo": {
+   "symbols": 86,
+   "errors": [
+    "AMOMX"
+   ]
+  }
+ }
+}

@@ -1,0 +1,5192 @@
+{
+"A": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.1686810287719691,
+"yahoo": "A"
+},
+"AABA": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"AAL": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.5873609030515823,
+"yahoo": "AAL"
+},
+"AAP": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.5704247592523692,
+"yahoo": "AAP"
+},
+"AAPL": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.17919530366231107,
+"yahoo": "AAPL"
+},
+"ABBV": {
+"first": "2013-01-02",
+"last": "2026-11-13",
+"days": 3489,
+"max_abs_daily_move": 0.16252389133899137,
+"yahoo": "ABBV"
+},
+"ABC": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.17378224290881927,
+"yahoo": "COR"
+},
+"ABMD": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"ABNB": {
+"first": "2020-12-10",
+"last": "2026-11-13",
+"days": 1489,
+"max_abs_daily_move": 0.17429443445628579,
+"yahoo": "ABNB"
+},
+"ABT": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.10936020216108644,
+"yahoo": "ABT"
+},
+"ACGL": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.1687519548811891,
+"yahoo": "ACGL"
+},
+"ACN": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.1796679375542286,
+"yahoo": "ACN"
+},
+"ACS": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"ADBE": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.1903460477175336,
+"yahoo": "ADBE"
+},
+"ADI": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.1838762963040792,
+"yahoo": "ADI"
+},
+"ADM": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.24197102694946937,
+"yahoo": "ADM"
+},
+"ADP": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.1525257335339737,
+"yahoo": "ADP"
+},
+"ADS": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.35428761073943904,
+"yahoo": "BFH"
+},
+"ADSK": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.1619852851418888,
+"yahoo": "ADSK"
+},
+"ADT": {
+"first": "2018-01-19",
+"last": "2026-11-13",
+"days": 2218,
+"max_abs_daily_move": 0.565621299881391,
+"yahoo": "ADT"
+},
+"AEE": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.17801322220423343,
+"yahoo": "AEE"
+},
+"AEP": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.13214301166203435,
+"yahoo": "AEP"
+},
+"AES": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.2829048554190936,
+"yahoo": "AES"
+},
+"AET": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"AFL": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.3686243148706575,
+"yahoo": "AFL"
+},
+"AGN": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"AIG": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.6600004856154968,
+"yahoo": "AIG"
+},
+"AIV": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.27555460738313875,
+"yahoo": "AIV"
+},
+"AIZ": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.2493338624319026,
+"yahoo": "AIZ"
+},
+"AJG": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.22348463019855747,
+"yahoo": "AJG"
+},
+"AKAM": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.2658325788281397,
+"yahoo": "AKAM"
+},
+"AKS": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"ALB": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.19910561918436387,
+"yahoo": "ALB"
+},
+"ALGN": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.3662622691693168,
+"yahoo": "ALGN"
+},
+"ALK": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.31284897914204857,
+"yahoo": "ALK"
+},
+"ALL": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.21686749765602475,
+"yahoo": "ALL"
+},
+"ALLE": {
+"first": "2013-11-18",
+"last": "2026-11-13",
+"days": 3267,
+"max_abs_daily_move": 0.1243459712043824,
+"yahoo": "ALLE"
+},
+"ALTR": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"ALXN": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"AMAT": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.20357666174797773,
+"yahoo": "AMAT"
+},
+"AMCR": {
+"first": "2012-05-15",
+"last": "2026-11-13",
+"days": 3647,
+"max_abs_daily_move": 0.20344760408991602,
+"yahoo": "AMCR"
+},
+"AMD": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.5229008335186689,
+"yahoo": "AMD"
+},
+"AME": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.1671535520318692,
+"yahoo": "AME"
+},
+"AMG": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.23567544283384723,
+"yahoo": "AMG"
+},
+"AMGN": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.139192272047157,
+"yahoo": "AMGN"
+},
+"AMP": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.2780924892721681,
+"yahoo": "AMP"
+},
+"AMT": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.20219858431290794,
+"yahoo": "AMT"
+},
+"AMTM": {
+"first": "2024-09-24",
+"last": "2026-11-13",
+"days": 538,
+"max_abs_daily_move": 0.2563303429742736,
+"yahoo": "AMTM"
+},
+"AMZN": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.2679507371356278,
+"yahoo": "AMZN"
+},
+"AN": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.22147653745179818,
+"yahoo": "AN"
+},
+"ANDV": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"ANET": {
+"first": "2014-06-06",
+"last": "2026-11-13",
+"days": 3130,
+"max_abs_daily_move": 0.24234371549038125,
+"yahoo": "ANET"
+},
+"ANF": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.3754000460949849,
+"yahoo": "ANF"
+},
+"ANRZQ": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"ANSS": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"ANTM": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.18413580279525288,
+"yahoo": "ELV"
+},
+"AON": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.16703144528350677,
+"yahoo": "AON"
+},
+"AOS": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.14578244592068845,
+"yahoo": "AOS"
+},
+"APA": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.5386473719612638,
+"yahoo": "APA"
+},
+"APC": {
+"error": "fewer than 260 closes"
+},
+"APD": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.15551777463357663,
+"yahoo": "APD"
+},
+"APH": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.1624075667328988,
+"yahoo": "APH"
+},
+"APO": {
+"first": "2011-03-30",
+"last": "2026-11-13",
+"days": 3931,
+"max_abs_daily_move": 0.26237246654665425,
+"yahoo": "APO"
+},
+"APOL": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"APP": {
+"first": "2021-04-15",
+"last": "2026-11-13",
+"days": 1404,
+"max_abs_daily_move": 0.4626519983128876,
+"yahoo": "APP"
+},
+"APTV": {
+"first": "2011-11-17",
+"last": "2026-11-13",
+"days": 3769,
+"max_abs_daily_move": 0.3055268415784145,
+"yahoo": "APTV"
+},
+"ARE": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.2414181813602122,
+"yahoo": "ARE"
+},
+"ARES": {
+"first": "2014-05-02",
+"last": "2026-11-13",
+"days": 3154,
+"max_abs_daily_move": 0.1840598254043917,
+"yahoo": "ARES"
+},
+"ARG": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"ARNC": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"ATGE": {
+"error": "'timestamp'"
+},
+"ATI": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.31135968138857684,
+"yahoo": "ATI"
+},
+"ATO": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.15382146502646554,
+"yahoo": "ATO"
+},
+"ATVI": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"AVB": {
+"error": "fewer than 260 closes"
+},
+"AVGO": {
+"first": "2009-08-06",
+"last": "2026-11-13",
+"days": 4346,
+"max_abs_daily_move": 0.24432659503763676,
+"yahoo": "AVGO"
+},
+"AVP": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"AVY": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.22869872305258832,
+"yahoo": "AVY"
+},
+"AWK": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.1657272336275324,
+"yahoo": "AWK"
+},
+"AXON": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.3680297354936479,
+"yahoo": "AXON"
+},
+"AXP": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.21882301842569185,
+"yahoo": "AXP"
+},
+"AYE": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"AYI": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.1821892355913728,
+"yahoo": "AYI"
+},
+"AZO": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.1593711714787006,
+"yahoo": "AZO"
+},
+"BA": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.24318605379189218,
+"yahoo": "BA"
+},
+"BAC": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.3526912446294317,
+"yahoo": "BAC"
+},
+"BALL": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.18582613751856558,
+"yahoo": "BALL"
+},
+"BAX": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.2242424458640957,
+"yahoo": "BAX"
+},
+"BBBY": {
+"error": "fewer than 260 closes"
+},
+"BBT": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.2361258444061909,
+"yahoo": "TFC"
+},
+"BBWI": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.3904033781113865,
+"yahoo": "BBWI"
+},
+"BBY": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.28586625615805317,
+"yahoo": "BBY"
+},
+"BCR": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"BDK": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"BDX": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.1813221811087916,
+"yahoo": "BDX"
+},
+"BEAM": {
+"first": "2020-02-06",
+"last": "2026-11-13",
+"days": 1703,
+"max_abs_daily_move": 0.2589385657910088,
+"yahoo": "BEAM"
+},
+"BEN": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.1611470593177564,
+"yahoo": "BEN"
+},
+"BF.B": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.17921680879782287,
+"yahoo": "BF-B"
+},
+"BG": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.20380948807600918,
+"yahoo": "BG"
+},
+"BHF": {
+"first": "2017-07-17",
+"last": "2026-11-13",
+"days": 2347,
+"max_abs_daily_move": 0.29298976831486034,
+"yahoo": "BHF"
+},
+"BHGE": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.26981739034166896,
+"yahoo": "BKR"
+},
+"BIG": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"BIIB": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.4397393335959552,
+"yahoo": "BIIB"
+},
+"BIO": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.20503369819193118,
+"yahoo": "BIO"
+},
+"BJS": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"BK": {
+"error": "'timestamp'"
+},
+"BKNG": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.21949111061404092,
+"yahoo": "BKNG"
+},
+"BKR": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.2698170976316743,
+"yahoo": "BKR"
+},
+"BLDR": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.6768115267986972,
+"yahoo": "BLDR"
+},
+"BLK": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.1956093859797572,
+"yahoo": "BLK"
+},
+"BLL": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.18582615818634085,
+"yahoo": "BALL"
+},
+"BMC": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"BMS": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"BMY": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.1598509463999639,
+"yahoo": "BMY"
+},
+"BNI": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"BNY": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.27157787846963266,
+"yahoo": "BNY"
+},
+"BR": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.1331745013122856,
+"yahoo": "BR"
+},
+"BRCM": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"BRK.B": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.1926406399179328,
+"yahoo": "BRK-B"
+},
+"BRO": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.1265061041917641,
+"yahoo": "BRO"
+},
+"BSX": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.2612859561149343,
+"yahoo": "BSX"
+},
+"BTUUQ": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"BWA": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.22827718666220398,
+"yahoo": "BWA"
+},
+"BX": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.3827960142650244,
+"yahoo": "BX"
+},
+"BXLT": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"BXP": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.23931604503787773,
+"yahoo": "BXP"
+},
+"C": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.5782486622174836,
+"yahoo": "C"
+},
+"CA": {
+"error": "'timestamp'"
+},
+"CAG": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.16534895575122366,
+"yahoo": "CAG"
+},
+"CAH": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.21423052462507175,
+"yahoo": "CAH"
+},
+"CAM": {
+"first": "2025-10-06",
+"last": "2026-11-13",
+"days": 280,
+"max_abs_daily_move": 0.006787311096497772,
+"yahoo": "CAM"
+},
+"CARR": {
+"first": "2020-03-19",
+"last": "2026-11-13",
+"days": 1674,
+"max_abs_daily_move": 0.2740963935861189,
+"yahoo": "CARR"
+},
+"CASY": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.2706564642842204,
+"yahoo": "CASY"
+},
+"CAT": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.14722875259694268,
+"yahoo": "CAT"
+},
+"CB": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.20753236382068185,
+"yahoo": "CB"
+},
+"CBE": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"CBOE": {
+"first": "2010-06-15",
+"last": "2026-11-13",
+"days": 4131,
+"max_abs_daily_move": 0.14332491374310752,
+"yahoo": "CBOE"
+},
+"CBRE": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.6400000254313152,
+"yahoo": "CBRE"
+},
+"CBS": {
+"first": "2021-02-12",
+"last": "2026-11-13",
+"days": 1444,
+"max_abs_daily_move": 6.90588188435381,
+"yahoo": "PARA"
+},
+"CCE": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"CCEP": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.3284667670109578,
+"yahoo": "CCEP"
+},
+"CCI": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.18056924156074516,
+"yahoo": "CCI"
+},
+"CCL": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.3929088951991968,
+"yahoo": "CCL"
+},
+"CDAY": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"CDNS": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.3076923255500388,
+"yahoo": "CDNS"
+},
+"CDW": {
+"first": "2013-06-27",
+"last": "2026-11-13",
+"days": 3367,
+"max_abs_daily_move": 0.2032163989923007,
+"yahoo": "CDW"
+},
+"CE": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.27374317847347596,
+"yahoo": "CE"
+},
+"CEG": {
+"first": "2022-01-19",
+"last": "2026-11-13",
+"days": 1211,
+"max_abs_daily_move": 0.2515993712431801,
+"yahoo": "CEG"
+},
+"CELG": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"CEPH": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"CERN": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"CF": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.3456675907314253,
+"yahoo": "CF"
+},
+"CFG": {
+"first": "2014-09-24",
+"last": "2026-11-13",
+"days": 3054,
+"max_abs_daily_move": 0.2176668936486985,
+"yahoo": "CFG"
+},
+"CFN": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"CHD": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.13668769010050097,
+"yahoo": "CHD"
+},
+"CHK": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"CHRW": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.19709362635583694,
+"yahoo": "CHRW"
+},
+"CHTR": {
+"first": "2010-01-05",
+"last": "2026-11-13",
+"days": 4242,
+"max_abs_daily_move": 0.25498384567682997,
+"yahoo": "CHTR"
+},
+"CI": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.23539989799961636,
+"yahoo": "CI"
+},
+"CIEN": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.2678372442661796,
+"yahoo": "CIEN"
+},
+"CINF": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.20067605693164148,
+"yahoo": "CINF"
+},
+"CITGQ": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"CL": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.12608256699436238,
+"yahoo": "CL"
+},
+"CLF": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.3941367725545528,
+"yahoo": "CLF"
+},
+"CLX": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.14473199855309882,
+"yahoo": "CLX"
+},
+"CMA": {
+"error": "'timestamp'"
+},
+"CMCSA": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.24522723432053617,
+"yahoo": "CMCSA"
+},
+"CMCSK": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"CME": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.19799509093489498,
+"yahoo": "CME"
+},
+"CMG": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.24440383101690033,
+"yahoo": "CMG"
+},
+"CMI": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.22069435099531653,
+"yahoo": "CMI"
+},
+"CMS": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.1381913212852548,
+"yahoo": "CMS"
+},
+"CNC": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.40370701024843814,
+"yahoo": "CNC"
+},
+"CNP": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.19742779550855993,
+"yahoo": "CNP"
+},
+"CNX": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.2824427640686078,
+"yahoo": "CNX"
+},
+"COF": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.26430054215541743,
+"yahoo": "COF"
+},
+"COG": {
+"error": "'timestamp'"
+},
+"COHR": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.29865980859648267,
+"yahoo": "COHR"
+},
+"COIN": {
+"first": "2021-04-14",
+"last": "2026-11-13",
+"days": 1405,
+"max_abs_daily_move": 0.3111465701986482,
+"yahoo": "COIN"
+},
+"COL": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"COO": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.21124742104438876,
+"yahoo": "COO"
+},
+"COP": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.252138318166661,
+"yahoo": "COP"
+},
+"COR": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.17378224290881927,
+"yahoo": "COR"
+},
+"COST": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.12451321966056272,
+"yahoo": "COST"
+},
+"COTY": {
+"first": "2013-06-13",
+"last": "2026-11-13",
+"days": 3377,
+"max_abs_daily_move": 0.3215297627264715,
+"yahoo": "COTY"
+},
+"COV": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"CPAY": {
+"first": "2010-12-15",
+"last": "2026-11-13",
+"days": 4003,
+"max_abs_daily_move": 0.1594502365667796,
+"yahoo": "CPAY"
+},
+"CPB": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.12366150887399241,
+"yahoo": "CPB"
+},
+"CPGX": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"CPRI": {
+"first": "2011-12-15",
+"last": "2026-11-13",
+"days": 3750,
+"max_abs_daily_move": 0.5573533827028556,
+"yahoo": "CPRI"
+},
+"CPRT": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.1735284925053333,
+"yahoo": "CPRT"
+},
+"CPT": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.22397310683353022,
+"yahoo": "CPT"
+},
+"CPWR": {
+"first": "2008-06-02",
+"last": "2026-11-12",
+"days": 4643,
+"max_abs_daily_move": 21.000000436557468,
+"yahoo": "CPWR"
+},
+"CRH": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.19788937888871727,
+"yahoo": "CRH"
+},
+"CRL": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.281297248261264,
+"yahoo": "CRL"
+},
+"CRM": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.26044887448855847,
+"yahoo": "CRM"
+},
+"CRWD": {
+"first": "2019-06-12",
+"last": "2026-11-13",
+"days": 1868,
+"max_abs_daily_move": 0.2049900387962671,
+"yahoo": "CRWD"
+},
+"CSCO": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.16210737749426662,
+"yahoo": "CSCO"
+},
+"CSGP": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.17205339237756756,
+"yahoo": "CSGP"
+},
+"CSRA": {
+"error": "fewer than 260 closes"
+},
+"CSX": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.23400197286636026,
+"yahoo": "CSX"
+},
+"CTAS": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.16860975880771978,
+"yahoo": "CTAS"
+},
+"CTL": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.9305019944773418,
+"yahoo": "LUMN"
+},
+"CTLT": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"CTRA": {
+"error": "'timestamp'"
+},
+"CTSH": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.19178889307860636,
+"yahoo": "CTSH"
+},
+"CTVA": {
+"first": "2019-05-24",
+"last": "2026-11-13",
+"days": 1880,
+"max_abs_daily_move": 0.24299840852657084,
+"yahoo": "CTVA"
+},
+"CTX": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"CTXS": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"CVC": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"CVG": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"CVH": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"CVNA": {
+"first": "2017-04-28",
+"last": "2026-11-13",
+"days": 2401,
+"max_abs_daily_move": 0.5602061422645068,
+"yahoo": "CVNA"
+},
+"CVS": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.20138310746269372,
+"yahoo": "CVS"
+},
+"CVX": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.22740682806230317,
+"yahoo": "CVX"
+},
+"CXO": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"CZR": {
+"first": "2014-09-22",
+"last": "2026-11-13",
+"days": 3056,
+"max_abs_daily_move": 0.4415709574369837,
+"yahoo": "CZR"
+},
+"D": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.17232336371086476,
+"yahoo": "D"
+},
+"DAL": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.26552386498288993,
+"yahoo": "DAL"
+},
+"DASH": {
+"first": "2020-12-09",
+"last": "2026-11-13",
+"days": 1490,
+"max_abs_daily_move": 0.22149112419781192,
+"yahoo": "DASH"
+},
+"DAY": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"DD": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.1902746674444602,
+"yahoo": "DD"
+},
+"DDOG": {
+"first": "2019-09-19",
+"last": "2026-11-13",
+"days": 1799,
+"max_abs_daily_move": 0.3132696883335939,
+"yahoo": "DDOG"
+},
+"DE": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.15692381061025906,
+"yahoo": "DE"
+},
+"DECK": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.25381515716060987,
+"yahoo": "DECK"
+},
+"DELL": {
+"first": "2016-08-17",
+"last": "2026-11-13",
+"days": 2576,
+"max_abs_daily_move": 0.32758242323733655,
+"yahoo": "DELL"
+},
+"DF": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"DFS": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"DG": {
+"first": "2009-11-13",
+"last": "2026-11-13",
+"days": 4276,
+"max_abs_daily_move": 0.32146332785226506,
+"yahoo": "DG"
+},
+"DGX": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.1259175975979152,
+"yahoo": "DGX"
+},
+"DHI": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.38000045252035664,
+"yahoo": "DHI"
+},
+"DHR": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.6121844815719828,
+"yahoo": "DHR"
+},
+"DIS": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.15972201045449874,
+"yahoo": "DIS"
+},
+"DISCA": {
+"error": "fewer than 260 closes"
+},
+"DISCK": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"DISH": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"DLR": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.20270201941383936,
+"yahoo": "DLR"
+},
+"DLTR": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.22155541720172878,
+"yahoo": "DLTR"
+},
+"DNB": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"DNR": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"DO": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"DOC": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.22834363802783142,
+"yahoo": "DOC"
+},
+"DOV": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.16308542890494127,
+"yahoo": "DOV"
+},
+"DOW": {
+"first": "2019-03-20",
+"last": "2026-11-13",
+"days": 1926,
+"max_abs_daily_move": 0.2165767643783234,
+"yahoo": "DOW"
+},
+"DPZ": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.25600794925109716,
+"yahoo": "DPZ"
+},
+"DRE": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"DRI": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.31342937695572703,
+"yahoo": "DRI"
+},
+"DTE": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.13905026896551165,
+"yahoo": "DTE"
+},
+"DTV": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"DUK": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.13305636097231033,
+"yahoo": "DUK"
+},
+"DVA": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.2709043833020429,
+"yahoo": "DVA"
+},
+"DVN": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.37397158841048517,
+"yahoo": "DVN"
+},
+"DWDP": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"DXC": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.4207574995808079,
+"yahoo": "DXC"
+},
+"DXCM": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.5025125604058627,
+"yahoo": "DXCM"
+},
+"DYN": {
+"first": "2020-09-17",
+"last": "2026-11-13",
+"days": 1548,
+"max_abs_daily_move": 0.4117990006696888,
+"yahoo": "DYN"
+},
+"EA": {
+"error": "fewer than 260 closes"
+},
+"EBAY": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.18295523476887876,
+"yahoo": "EBAY"
+},
+"ECHO": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.7024765850287811,
+"yahoo": "ECHO"
+},
+"ECL": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.22160990552734838,
+"yahoo": "ECL"
+},
+"ED": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.18013826169681324,
+"yahoo": "ED"
+},
+"EFX": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.1494055569304904,
+"yahoo": "EFX"
+},
+"EG": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.21909448528190145,
+"yahoo": "EG"
+},
+"EIX": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.23072541545697778,
+"yahoo": "EIX"
+},
+"EKDKQ": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"EL": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.2089502062056514,
+"yahoo": "EL"
+},
+"ELV": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.18413547237076644,
+"yahoo": "ELV"
+},
+"EMC": {
+"first": "2023-05-15",
+"last": "2026-11-13",
+"days": 880,
+"max_abs_daily_move": 0.08200261116146801,
+"yahoo": "EMC"
+},
+"EME": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.19315076218223415,
+"yahoo": "EME"
+},
+"EMN": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.2086984214455414,
+"yahoo": "EMN"
+},
+"EMR": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.1895719040664703,
+"yahoo": "EMR"
+},
+"ENDP": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"ENPH": {
+"first": "2012-03-30",
+"last": "2026-11-13",
+"days": 3678,
+"max_abs_daily_move": 0.4244461993762014,
+"yahoo": "ENPH"
+},
+"EOG": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.32007244935050383,
+"yahoo": "EOG"
+},
+"EP": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 4.090909140169128,
+"yahoo": "EP"
+},
+"EPAM": {
+"first": "2012-02-08",
+"last": "2026-11-13",
+"days": 3714,
+"max_abs_daily_move": 0.45676331883276866,
+"yahoo": "EPAM"
+},
+"EQ": {
+"first": "2018-10-12",
+"last": "2026-11-13",
+"days": 2033,
+"max_abs_daily_move": 7.307209882337817,
+"yahoo": "EQ"
+},
+"EQIX": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.33066902098534645,
+"yahoo": "EQIX"
+},
+"EQR": {
+"error": "fewer than 260 closes"
+},
+"EQT": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.3731986100517797,
+"yahoo": "EQT"
+},
+"ERIE": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.18019432772700328,
+"yahoo": "ERIE"
+},
+"ES": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.1479992667469754,
+"yahoo": "ES"
+},
+"ESRX": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"ESS": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.1970622384186993,
+"yahoo": "ESS"
+},
+"ESV": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"ETFC": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"ETN": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.23264665011839436,
+"yahoo": "ETN"
+},
+"ETR": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.15729141393096446,
+"yahoo": "ETR"
+},
+"ETSY": {
+"first": "2015-04-16",
+"last": "2026-11-13",
+"days": 2914,
+"max_abs_daily_move": 0.30600116707524116,
+"yahoo": "ETSY"
+},
+"EVHC": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"EVRG": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.1606025271597865,
+"yahoo": "EVRG"
+},
+"EW": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.31339847201516924,
+"yahoo": "EW"
+},
+"EXC": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.17994103529961714,
+"yahoo": "EXC"
+},
+"EXE": {
+"first": "2021-02-10",
+"last": "2026-11-13",
+"days": 1448,
+"max_abs_daily_move": 0.09772105481201976,
+"yahoo": "EXE"
+},
+"EXPD": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.1796876430607024,
+"yahoo": "EXPD"
+},
+"EXPE": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.3355570331971792,
+"yahoo": "EXPE"
+},
+"EXR": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.24480723062184095,
+"yahoo": "EXR"
+},
+"F": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.29518097347872607,
+"yahoo": "F"
+},
+"FANG": {
+"first": "2012-10-12",
+"last": "2026-11-13",
+"days": 3542,
+"max_abs_daily_move": 0.44645793559726676,
+"yahoo": "FANG"
+},
+"FAST": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.17150241563907986,
+"yahoo": "FAST"
+},
+"FB": {
+"first": "2012-05-18",
+"last": "2026-11-13",
+"days": 3644,
+"max_abs_daily_move": 0.29611486698754463,
+"yahoo": "META"
+},
+"FBHS": {
+"first": "2011-09-16",
+"last": "2026-11-13",
+"days": 3813,
+"max_abs_daily_move": 0.17624390201943152,
+"yahoo": "FBIN"
+},
+"FCPT": {
+"first": "2015-11-10",
+"last": "2026-11-13",
+"days": 2769,
+"max_abs_daily_move": 0.37811995855656666,
+"yahoo": "FCPT"
+},
+"FCX": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.296845889707841,
+"yahoo": "FCX"
+},
+"FDO": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"FDS": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.1512398448691643,
+"yahoo": "FDS"
+},
+"FDX": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.21403818498790905,
+"yahoo": "FDX"
+},
+"FDXF": {
+"error": "fewer than 260 closes"
+},
+"FE": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.2090509793290728,
+"yahoo": "FE"
+},
+"FERG": {
+"first": "2010-01-05",
+"last": "2026-11-13",
+"days": 4242,
+"max_abs_daily_move": 0.32410530025163653,
+"yahoo": "FERG"
+},
+"FFIV": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.21350336874219766,
+"yahoo": "FFIV"
+},
+"FHN": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.3566992175168444,
+"yahoo": "FHN"
+},
+"FI": {
+"error": "'timestamp'"
+},
+"FICO": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.310994532527866,
+"yahoo": "FICO"
+},
+"FII": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"FIS": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.28048333292756467,
+"yahoo": "FIS"
+},
+"FISV": {
+"error": "'timestamp'"
+},
+"FITB": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.6036594471683021,
+"yahoo": "FITB"
+},
+"FIX": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.2571302358870958,
+"yahoo": "FIX"
+},
+"FL": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"FLEX": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.3968895799948964,
+"yahoo": "FLEX"
+},
+"FLIR": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"FLR": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.761764589148,
+"yahoo": "FLR"
+},
+"FLS": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.30934297519661613,
+"yahoo": "FLS"
+},
+"FLT": {
+"first": "2010-12-15",
+"last": "2026-11-13",
+"days": 4003,
+"max_abs_daily_move": 0.1594502365667796,
+"yahoo": "CPAY"
+},
+"FMC": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.46522040545832943,
+"yahoo": "FMC"
+},
+"FOSL": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.877212321345626,
+"yahoo": "FOSL"
+},
+"FOX": {
+"first": "2019-03-13",
+"last": "2026-11-13",
+"days": 1931,
+"max_abs_daily_move": 0.15215537848501892,
+"yahoo": "FOX"
+},
+"FOXA": {
+"first": "2019-03-12",
+"last": "2026-11-13",
+"days": 1932,
+"max_abs_daily_move": 0.1684130431696219,
+"yahoo": "FOXA"
+},
+"FRC": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"FRT": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.32902890183694344,
+"yahoo": "FRT"
+},
+"FRX": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"FSLR": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.4552513735872288,
+"yahoo": "FSLR"
+},
+"FTI": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.2626984429139685,
+"yahoo": "FTI"
+},
+"FTNT": {
+"first": "2009-11-18",
+"last": "2026-11-13",
+"days": 4273,
+"max_abs_daily_move": 0.2530012288916046,
+"yahoo": "FTNT"
+},
+"FTR": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"FTV": {
+"first": "2016-07-05",
+"last": "2026-11-13",
+"days": 2607,
+"max_abs_daily_move": 0.18828822395201028,
+"yahoo": "FTV"
+},
+"GAS": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"GD": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.11727601825091649,
+"yahoo": "GD"
+},
+"GDDY": {
+"first": "2015-03-31",
+"last": "2026-11-13",
+"days": 2925,
+"max_abs_daily_move": 0.30749998092651376,
+"yahoo": "GDDY"
+},
+"GE": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.19703083068018423,
+"yahoo": "GE"
+},
+"GEHC": {
+"first": "2022-12-15",
+"last": "2026-11-13",
+"days": 982,
+"max_abs_daily_move": 0.15958340763065082,
+"yahoo": "GEHC"
+},
+"GEN": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.33104852840176224,
+"yahoo": "GEN"
+},
+"GENZ": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.21913587180793903,
+"yahoo": "GENZ"
+},
+"GEV": {
+"first": "2024-03-27",
+"last": "2026-11-13",
+"days": 662,
+"max_abs_daily_move": 0.21520121082102062,
+"yahoo": "GEV"
+},
+"GGP": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"GHC": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.18758053047192857,
+"yahoo": "GHC"
+},
+"GILD": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.14338441908859978,
+"yahoo": "GILD"
+},
+"GIS": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.11783449688467118,
+"yahoo": "GIS"
+},
+"GL": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.5314018490479424,
+"yahoo": "GL"
+},
+"GLW": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.1640350547423235,
+"yahoo": "GLW"
+},
+"GM": {
+"first": "2010-11-18",
+"last": "2026-11-13",
+"days": 4021,
+"max_abs_daily_move": 0.1994315742557431,
+"yahoo": "GM"
+},
+"GMCR": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"GME": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 1.3483580199952216,
+"yahoo": "GME"
+},
+"GNRC": {
+"first": "2010-02-11",
+"last": "2026-11-13",
+"days": 4216,
+"max_abs_daily_move": 0.2539062531899463,
+"yahoo": "GNRC"
+},
+"GNW": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.8888889919092653,
+"yahoo": "GNW"
+},
+"GOOG": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.1605241908196544,
+"yahoo": "GOOG"
+},
+"GOOGL": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.1625840673646004,
+"yahoo": "GOOGL"
+},
+"GPC": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.20968418706757097,
+"yahoo": "GPC"
+},
+"GPN": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.21676564814579713,
+"yahoo": "GPN"
+},
+"GPS": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.3057789534313202,
+"yahoo": "GAP"
+},
+"GR": {
+"error": "'timestamp'"
+},
+"GRMN": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.23841021814047525,
+"yahoo": "GRMN"
+},
+"GS": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.2646780830508646,
+"yahoo": "GS"
+},
+"GT": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.2741490386796094,
+"yahoo": "GT"
+},
+"GWW": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.18531294316047675,
+"yahoo": "GWW"
+},
+"HAL": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.37643474352420114,
+"yahoo": "HAL"
+},
+"HAR": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"HAS": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.21669539991578635,
+"yahoo": "HAS"
+},
+"HBAN": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.5007409210902802,
+"yahoo": "HBAN"
+},
+"HBI": {
+"error": "'timestamp'"
+},
+"HCA": {
+"first": "2011-03-10",
+"last": "2026-11-13",
+"days": 3945,
+"max_abs_daily_move": 0.22559825819871304,
+"yahoo": "HCA"
+},
+"HCBK": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"HCP": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.2283437623924186,
+"yahoo": "DOC"
+},
+"HD": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.19793833836782782,
+"yahoo": "HD"
+},
+"HES": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"HFC": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.2840070379026689,
+"yahoo": "DINO"
+},
+"HIG": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 1.0235785209596227,
+"yahoo": "HIG"
+},
+"HII": {
+"first": "2011-03-22",
+"last": "2026-11-13",
+"days": 3937,
+"max_abs_daily_move": 0.26160718948377015,
+"yahoo": "HII"
+},
+"HLT": {
+"first": "2013-12-12",
+"last": "2026-11-13",
+"days": 3250,
+"max_abs_daily_move": 0.14050770507589605,
+"yahoo": "HLT"
+},
+"HNZ": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"HOG": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.2698823980014613,
+"yahoo": "HOG"
+},
+"HOLX": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"HON": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.15068350809421505,
+"yahoo": "HON"
+},
+"HONA": {
+"error": "fewer than 260 closes"
+},
+"HOOD": {
+"first": "2021-07-29",
+"last": "2026-11-13",
+"days": 1331,
+"max_abs_daily_move": 0.5040598405375005,
+"yahoo": "HOOD"
+},
+"HOT": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"HP": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.3293479173596584,
+"yahoo": "HP"
+},
+"HPE": {
+"first": "2015-10-19",
+"last": "2026-11-13",
+"days": 2785,
+"max_abs_daily_move": 0.19468089655546117,
+"yahoo": "HPE"
+},
+"HPQ": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.20027093537452323,
+"yahoo": "HPQ"
+},
+"HRB": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.23772170693450279,
+"yahoo": "HRB"
+},
+"HRL": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.14563701472338475,
+"yahoo": "HRL"
+},
+"HRS": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.14299410849808658,
+"yahoo": "LHX"
+},
+"HSH": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"HSIC": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.10782799019981604,
+"yahoo": "HSIC"
+},
+"HSP": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"HST": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.30028600130853933,
+"yahoo": "HST"
+},
+"HSY": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.16831415941755767,
+"yahoo": "HSY"
+},
+"HUBB": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.20114588818290402,
+"yahoo": "HUBB"
+},
+"HUM": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.23951651300087706,
+"yahoo": "HUM"
+},
+"HWM": {
+"first": "2016-11-01",
+"last": "2026-11-13",
+"days": 2523,
+"max_abs_daily_move": 0.2635532610888929,
+"yahoo": "HWM"
+},
+"IBKR": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.19161484465492895,
+"yahoo": "IBKR"
+},
+"IBM": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.2520758865732249,
+"yahoo": "IBM"
+},
+"ICE": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.4079945073359377,
+"yahoo": "ICE"
+},
+"IDXX": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.27493755333054404,
+"yahoo": "IDXX"
+},
+"IEX": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.13486170802812003,
+"yahoo": "IEX"
+},
+"IFF": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.1936769231685398,
+"yahoo": "IFF"
+},
+"IGT": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"ILMN": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.46325284200128247,
+"yahoo": "ILMN"
+},
+"INCY": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.33481484872323497,
+"yahoo": "INCY"
+},
+"INFO": {
+"first": "2024-10-10",
+"last": "2026-11-13",
+"days": 526,
+"max_abs_daily_move": 0.09845103716335935,
+"yahoo": "INFO"
+},
+"INTC": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.2857608085782668,
+"yahoo": "INTC"
+},
+"INTU": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.20080107577556383,
+"yahoo": "INTU"
+},
+"INVH": {
+"first": "2017-02-01",
+"last": "2026-11-13",
+"days": 2461,
+"max_abs_daily_move": 0.23548965809269906,
+"yahoo": "INVH"
+},
+"IP": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.21883591458866936,
+"yahoo": "IP"
+},
+"IPG": {
+"error": "'timestamp'"
+},
+"IPGP": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.37035968149308673,
+"yahoo": "IPGP"
+},
+"IQV": {
+"first": "2013-05-09",
+"last": "2026-11-13",
+"days": 3401,
+"max_abs_daily_move": 0.1787870971854082,
+"yahoo": "IQV"
+},
+"IR": {
+"first": "2017-05-12",
+"last": "2026-11-13",
+"days": 2391,
+"max_abs_daily_move": 0.16048950418794639,
+"yahoo": "IR"
+},
+"IRM": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.2005374882287667,
+"yahoo": "IRM"
+},
+"ISRG": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.26844919894226904,
+"yahoo": "ISRG"
+},
+"IT": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.2755486951199517,
+"yahoo": "IT"
+},
+"ITT": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.2433073918497417,
+"yahoo": "ITT"
+},
+"ITW": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.1660597667469388,
+"yahoo": "ITW"
+},
+"IVZ": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.2805107915493672,
+"yahoo": "IVZ"
+},
+"J": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.2160424839129158,
+"yahoo": "J"
+},
+"JAVA": {
+"first": "2021-10-05",
+"last": "2026-11-13",
+"days": 1284,
+"max_abs_daily_move": 0.0663264736761211,
+"yahoo": "JAVA"
+},
+"JBHT": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.2214220233809714,
+"yahoo": "JBHT"
+},
+"JBL": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.364829425126751,
+"yahoo": "JBL"
+},
+"JCI": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.19321513902559784,
+"yahoo": "JCI"
+},
+"JCP": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"JEC": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.21604310048142983,
+"yahoo": "J"
+},
+"JEF": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.20731656510051888,
+"yahoo": "JEF"
+},
+"JKHY": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.13131249013791346,
+"yahoo": "JKHY"
+},
+"JNJ": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.12229189385888306,
+"yahoo": "JNJ"
+},
+"JNPR": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"JNS": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"JOY": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"JPM": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.25096750920796285,
+"yahoo": "JPM"
+},
+"JWN": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"K": {
+"error": "'timestamp'"
+},
+"KBH": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.37621152390745194,
+"yahoo": "KBH"
+},
+"KDP": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.22394172748543562,
+"yahoo": "KDP"
+},
+"KEY": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.5425251581868831,
+"yahoo": "KEY"
+},
+"KEYS": {
+"first": "2014-10-20",
+"last": "2026-11-13",
+"days": 3036,
+"max_abs_daily_move": 0.23053065708705356,
+"yahoo": "KEYS"
+},
+"KG": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.44044334455054,
+"yahoo": "KG"
+},
+"KHC": {
+"first": "2015-07-06",
+"last": "2026-11-13",
+"days": 2859,
+"max_abs_daily_move": 0.2745953171248866,
+"yahoo": "KHC"
+},
+"KIM": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.3368798443251164,
+"yahoo": "KIM"
+},
+"KKR": {
+"first": "2010-07-15",
+"last": "2026-11-13",
+"days": 4110,
+"max_abs_daily_move": 0.18054096008908327,
+"yahoo": "KKR"
+},
+"KLAC": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.18789454362795732,
+"yahoo": "KLAC"
+},
+"KMB": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.14568546850805408,
+"yahoo": "KMB"
+},
+"KMI": {
+"first": "2011-02-11",
+"last": "2026-11-13",
+"days": 3963,
+"max_abs_daily_move": 0.21044318639862947,
+"yahoo": "KMI"
+},
+"KMX": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.24600781019775153,
+"yahoo": "KMX"
+},
+"KO": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.13879537804385267,
+"yahoo": "KO"
+},
+"KORS": {
+"first": "2011-12-15",
+"last": "2026-11-13",
+"days": 3750,
+"max_abs_daily_move": 0.5573533827028556,
+"yahoo": "CPRI"
+},
+"KR": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.188903546023505,
+"yahoo": "KR"
+},
+"KRFT": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"KSS": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.42530204286815043,
+"yahoo": "KSS"
+},
+"KSU": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"KVUE": {
+"error": "fewer than 260 closes"
+},
+"L": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.23639834176046115,
+"yahoo": "L"
+},
+"LB": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.3904035821273959,
+"yahoo": "BBWI"
+},
+"LDOS": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.18405189861878768,
+"yahoo": "LDOS"
+},
+"LEG": {
+"error": "fewer than 260 closes"
+},
+"LEN": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.316593325813985,
+"yahoo": "LEN"
+},
+"LH": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.19275596649013282,
+"yahoo": "LH"
+},
+"LHX": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.1429938297293334,
+"yahoo": "LHX"
+},
+"LIFE": {
+"error": "fewer than 260 closes"
+},
+"LII": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.20968181073489744,
+"yahoo": "LII"
+},
+"LIN": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.14862172053695222,
+"yahoo": "LIN"
+},
+"LITE": {
+"first": "2015-07-23",
+"last": "2026-11-13",
+"days": 2846,
+"max_abs_daily_move": 0.3297587222762022,
+"yahoo": "LITE"
+},
+"LKQ": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.22474407616288639,
+"yahoo": "LKQ"
+},
+"LLL": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"LLTC": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"LLY": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.1567976658905752,
+"yahoo": "LLY"
+},
+"LM": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"LMT": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.12761606302421913,
+"yahoo": "LMT"
+},
+"LNC": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.43669909799995343,
+"yahoo": "LNC"
+},
+"LNT": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.1502674231497625,
+"yahoo": "LNT"
+},
+"LO": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"LOW": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.24769395846019504,
+"yahoo": "LOW"
+},
+"LRCX": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.20312977039895141,
+"yahoo": "LRCX"
+},
+"LSI": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"LULU": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.32313576502048436,
+"yahoo": "LULU"
+},
+"LUMN": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.9305019944773418,
+"yahoo": "LUMN"
+},
+"LUV": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.18697988317062886,
+"yahoo": "LUV"
+},
+"LVLT": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"LVS": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.7999997051486707,
+"yahoo": "LVS"
+},
+"LW": {
+"first": "2016-11-10",
+"last": "2026-11-13",
+"days": 2516,
+"max_abs_daily_move": 0.28237103426389354,
+"yahoo": "LW"
+},
+"LXK": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"LYB": {
+"first": "2010-04-28",
+"last": "2026-11-13",
+"days": 4164,
+"max_abs_daily_move": 0.254910454993839,
+"yahoo": "LYB"
+},
+"LYV": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.32446809353845696,
+"yahoo": "LYV"
+},
+"M": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.2117381384440058,
+"yahoo": "M"
+},
+"MA": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.1831254013693766,
+"yahoo": "MA"
+},
+"MAA": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.23047600682250025,
+"yahoo": "MAA"
+},
+"MAC": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.317744397154893,
+"yahoo": "MAC"
+},
+"MAR": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.19482023749670407,
+"yahoo": "MAR"
+},
+"MAS": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.18256131532594289,
+"yahoo": "MAS"
+},
+"MAT": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.249762555014013,
+"yahoo": "MAT"
+},
+"MBI": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.8184281640110611,
+"yahoo": "MBI"
+},
+"MCD": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.1812539793061827,
+"yahoo": "MCD"
+},
+"MCHP": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.2705151707016551,
+"yahoo": "MCHP"
+},
+"MCK": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.2267290566536314,
+"yahoo": "MCK"
+},
+"MCO": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.1857169492137587,
+"yahoo": "MCO"
+},
+"MDLZ": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.11429704925359463,
+"yahoo": "MDLZ"
+},
+"MDP": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"MDT": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.13234463992446166,
+"yahoo": "MDT"
+},
+"MEE": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"MET": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.28000006095224683,
+"yahoo": "MET"
+},
+"META": {
+"first": "2012-05-18",
+"last": "2026-11-13",
+"days": 3644,
+"max_abs_daily_move": 0.29611467058443597,
+"yahoo": "META"
+},
+"MFE": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"MGM": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.48089114882058603,
+"yahoo": "MGM"
+},
+"MHK": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.29561079839738325,
+"yahoo": "MHK"
+},
+"MHS": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"MI": {
+"first": "2015-11-25",
+"last": "2026-11-13",
+"days": 2758,
+"max_abs_daily_move": 95.4285720041994,
+"yahoo": "MI"
+},
+"MIL": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"MJN": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"MKC": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.1522803307987357,
+"yahoo": "MKC"
+},
+"MKTX": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.32947977651241755,
+"yahoo": "MKTX"
+},
+"MLM": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.17441472424262527,
+"yahoo": "MLM"
+},
+"MMC": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"MMI": {
+"first": "2013-10-31",
+"last": "2026-11-13",
+"days": 3279,
+"max_abs_daily_move": 0.28457453879512706,
+"yahoo": "MMI"
+},
+"MMM": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.22990627946034148,
+"yahoo": "MMM"
+},
+"MNK": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"MNST": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.30481512798856136,
+"yahoo": "MNST"
+},
+"MO": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.16375305544424257,
+"yahoo": "MO"
+},
+"MOH": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.3101707958123332,
+"yahoo": "MOH"
+},
+"MOLX": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"MON": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"MOS": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.4126797027581941,
+"yahoo": "MOS"
+},
+"MPC": {
+"first": "2011-06-24",
+"last": "2026-11-13",
+"days": 3871,
+"max_abs_daily_move": 0.2700892401390109,
+"yahoo": "MPC"
+},
+"MPWR": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.2342978205517281,
+"yahoo": "MPWR"
+},
+"MRK": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.12650873216582736,
+"yahoo": "MRK"
+},
+"MRNA": {
+"first": "2018-12-07",
+"last": "2026-11-13",
+"days": 1995,
+"max_abs_daily_move": 1.7696951623021624,
+"yahoo": "MRNA"
+},
+"MRO": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"MRSH": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.14430824038217915,
+"yahoo": "MRSH"
+},
+"MRVL": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.32520636744048725,
+"yahoo": "MRVL"
+},
+"MS": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.8698352142556092,
+"yahoo": "MS"
+},
+"MSCI": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.26828620117066415,
+"yahoo": "MSCI"
+},
+"MSFT": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.18604617957190617,
+"yahoo": "MSFT"
+},
+"MSI": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.1901707231059131,
+"yahoo": "MSI"
+},
+"MTB": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.2509589315150913,
+"yahoo": "MTB"
+},
+"MTCH": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.24164518422068548,
+"yahoo": "MTCH"
+},
+"MTD": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.22683756774213326,
+"yahoo": "MTD"
+},
+"MTW": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.33405636348306333,
+"yahoo": "MTW"
+},
+"MU": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.23443224033818688,
+"yahoo": "MU"
+},
+"MUR": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.42496830873248526,
+"yahoo": "MUR"
+},
+"MWV": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"MWW": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"MXIM": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"MYL": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.24277851928880323,
+"yahoo": "VTRS"
+},
+"NAVI": {
+"first": "2014-04-17",
+"last": "2026-11-13",
+"days": 3164,
+"max_abs_daily_move": 0.25600054188897814,
+"yahoo": "NAVI"
+},
+"NBL": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"NBR": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.5109371928501172,
+"yahoo": "NBR"
+},
+"NCLH": {
+"first": "2013-01-18",
+"last": "2026-11-13",
+"days": 3477,
+"max_abs_daily_move": 0.4219234634452791,
+"yahoo": "NCLH"
+},
+"NDAQ": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.17468995033978052,
+"yahoo": "NDAQ"
+},
+"NDSN": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.23728604626951333,
+"yahoo": "NDSN"
+},
+"NE": {
+"first": "2021-06-09",
+"last": "2026-11-13",
+"days": 1366,
+"max_abs_daily_move": 0.14967449912863073,
+"yahoo": "NE"
+},
+"NEE": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.1394283479712799,
+"yahoo": "NEE"
+},
+"NEM": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.25173945074407134,
+"yahoo": "NEM"
+},
+"NFLX": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.42223507313003394,
+"yahoo": "NFLX"
+},
+"NFX": {
+"error": "fewer than 260 closes"
+},
+"NI": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.17335252299786696,
+"yahoo": "NI"
+},
+"NKE": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.199808887151239,
+"yahoo": "NKE"
+},
+"NKTR": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 1.5628931719817682,
+"yahoo": "NKTR"
+},
+"NLOK": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.3310487289576486,
+"yahoo": "GEN"
+},
+"NLSN": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"NOC": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.13457547156169902,
+"yahoo": "NOC"
+},
+"NOV": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.2895407828586958,
+"yahoo": "NOV"
+},
+"NOVL": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"NOW": {
+"first": "2012-06-29",
+"last": "2026-11-13",
+"days": 3615,
+"max_abs_daily_move": 0.2694998028238872,
+"yahoo": "NOW"
+},
+"NRG": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.29386536120660756,
+"yahoo": "NRG"
+},
+"NSC": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.17959284790769203,
+"yahoo": "NSC"
+},
+"NSM": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"NTAP": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.22394660506674047,
+"yahoo": "NTAP"
+},
+"NTRS": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.30912756664746777,
+"yahoo": "NTRS"
+},
+"NUE": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.2777239636315487,
+"yahoo": "NUE"
+},
+"NVDA": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.3072655298174447,
+"yahoo": "NVDA"
+},
+"NVLS": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"NVR": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.21079999551005746,
+"yahoo": "NVR"
+},
+"NWL": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.40536272243172666,
+"yahoo": "NWL"
+},
+"NWS": {
+"first": "2013-06-19",
+"last": "2026-11-13",
+"days": 3373,
+"max_abs_daily_move": 0.1455222496135673,
+"yahoo": "NWS"
+},
+"NWSA": {
+"first": "2013-06-19",
+"last": "2026-11-13",
+"days": 3373,
+"max_abs_daily_move": 0.13557478067312534,
+"yahoo": "NWSA"
+},
+"NXPI": {
+"first": "2010-08-06",
+"last": "2026-11-13",
+"days": 4094,
+"max_abs_daily_move": 0.2554797490184664,
+"yahoo": "NXPI"
+},
+"NYT": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.2434459552818613,
+"yahoo": "NYT"
+},
+"NYX": {
+"error": "'timestamp'"
+},
+"O": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.249304889236173,
+"yahoo": "O"
+},
+"ODFL": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.23780888457573823,
+"yahoo": "ODFL"
+},
+"ODP": {
+"error": "'timestamp'"
+},
+"OGN": {
+"first": "2021-05-14",
+"last": "2026-11-13",
+"days": 1383,
+"max_abs_daily_move": 0.30930222404293795,
+"yahoo": "OGN"
+},
+"OI": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.32123509824233,
+"yahoo": "OI"
+},
+"OKE": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.37755248928809715,
+"yahoo": "OKE"
+},
+"OMC": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.15364882469853902,
+"yahoo": "OMC"
+},
+"ON": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.2683982969936636,
+"yahoo": "ON"
+},
+"ORCL": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.3594881951906188,
+"yahoo": "ORCL"
+},
+"ORLY": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.18892064630223082,
+"yahoo": "ORLY"
+},
+"OTIS": {
+"first": "2020-03-19",
+"last": "2026-11-13",
+"days": 1674,
+"max_abs_daily_move": 0.12377465767340434,
+"yahoo": "OTIS"
+},
+"OXY": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.520138061432746,
+"yahoo": "OXY"
+},
+"PANW": {
+"first": "2012-07-20",
+"last": "2026-11-13",
+"days": 3601,
+"max_abs_daily_move": 0.2844109267085455,
+"yahoo": "PANW"
+},
+"PARA": {
+"first": "2021-02-12",
+"last": "2026-11-13",
+"days": 1444,
+"max_abs_daily_move": 6.90588188435381,
+"yahoo": "PARA"
+},
+"PAYC": {
+"first": "2014-04-15",
+"last": "2026-11-13",
+"days": 3166,
+"max_abs_daily_move": 0.38486340059800184,
+"yahoo": "PAYC"
+},
+"PAYX": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.1948016334105067,
+"yahoo": "PAYX"
+},
+"PBCT": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"PBG": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"PBI": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.8100929814261177,
+"yahoo": "PBI"
+},
+"PCAR": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.18842512494496466,
+"yahoo": "PCAR"
+},
+"PCG": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.7459324720642588,
+"yahoo": "PCG"
+},
+"PCL": {
+"first": "2025-08-05",
+"last": "2026-11-12",
+"days": 322,
+"max_abs_daily_move": 0.019555495656259136,
+"yahoo": "PCL"
+},
+"PCP": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"PDCO": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"PEAK": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.22834364212417835,
+"yahoo": "DOC"
+},
+"PEG": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.17126917517084705,
+"yahoo": "PEG"
+},
+"PENN": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.4479638128995823,
+"yahoo": "PENN"
+},
+"PEP": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.1293661498419214,
+"yahoo": "PEP"
+},
+"PETM": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"PFE": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.10855184033798326,
+"yahoo": "PFE"
+},
+"PFG": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.4076245683043187,
+"yahoo": "PFG"
+},
+"PG": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.12009046942919088,
+"yahoo": "PG"
+},
+"PGN": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"PGR": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.2397372460644065,
+"yahoo": "PGR"
+},
+"PH": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.18419401178624262,
+"yahoo": "PH"
+},
+"PHM": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.24464466399939178,
+"yahoo": "PHM"
+},
+"PKG": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.20114979875811323,
+"yahoo": "PKG"
+},
+"PKI": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.19903894748143536,
+"yahoo": "RVTY"
+},
+"PLD": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.3007915970065971,
+"yahoo": "PLD"
+},
+"PLL": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"PLTR": {
+"first": "2020-09-30",
+"last": "2026-11-13",
+"days": 1539,
+"max_abs_daily_move": 0.30801445797701255,
+"yahoo": "PLTR"
+},
+"PM": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.1557569835522702,
+"yahoo": "PM"
+},
+"PNC": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.4139581661928957,
+"yahoo": "PNC"
+},
+"PNR": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.18205693362503705,
+"yahoo": "PNR"
+},
+"PNW": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.16501152092702298,
+"yahoo": "PNW"
+},
+"PODD": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.3424657911339458,
+"yahoo": "PODD"
+},
+"POM": {
+"first": "2025-10-08",
+"last": "2026-11-13",
+"days": 278,
+"max_abs_daily_move": 3.526315629081293,
+"yahoo": "POM"
+},
+"POOL": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.26962589206780363,
+"yahoo": "POOL"
+},
+"PPG": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.14834822551176874,
+"yahoo": "PPG"
+},
+"PPL": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.14800003466278522,
+"yahoo": "PPL"
+},
+"PRGO": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.2927806483806732,
+"yahoo": "PRGO"
+},
+"PRU": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.3825074684112295,
+"yahoo": "PRU"
+},
+"PSA": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.20283709414366013,
+"yahoo": "PSA"
+},
+"PSKY": {
+"error": "fewer than 260 closes"
+},
+"PSX": {
+"first": "2012-04-12",
+"last": "2026-11-13",
+"days": 3670,
+"max_abs_daily_move": 0.22172230532615278,
+"yahoo": "PSX"
+},
+"PTC": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.3348607660647409,
+"yahoo": "PTC"
+},
+"PTV": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"PVH": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.28138110785283454,
+"yahoo": "PVH"
+},
+"PWR": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.2850057370817679,
+"yahoo": "PWR"
+},
+"PX": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"PXD": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"PYPL": {
+"first": "2015-07-06",
+"last": "2026-11-13",
+"days": 2859,
+"max_abs_daily_move": 0.24590434996448185,
+"yahoo": "PYPL"
+},
+"Q": {
+"first": "2025-10-27",
+"last": "2026-11-13",
+"days": 265,
+"max_abs_daily_move": 0.09866877745549929,
+"yahoo": "Q"
+},
+"QCOM": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.23207416706279727,
+"yahoo": "QCOM"
+},
+"QEP": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"QLGC": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"QRVO": {
+"error": "fewer than 260 closes"
+},
+"R": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.17963494952255543,
+"yahoo": "R"
+},
+"RAI": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"RCL": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.31778227086655353,
+"yahoo": "RCL"
+},
+"RDC": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"RDDT": {
+"first": "2024-03-21",
+"last": "2026-11-13",
+"days": 666,
+"max_abs_daily_move": 0.41974560906118974,
+"yahoo": "RDDT"
+},
+"RE": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.21909482284789283,
+"yahoo": "EG"
+},
+"REG": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.349779498048133,
+"yahoo": "REG"
+},
+"REGN": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.28596081758522685,
+"yahoo": "REGN"
+},
+"RF": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.48409829938393534,
+"yahoo": "RF"
+},
+"RHI": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.27759321646746793,
+"yahoo": "RHI"
+},
+"RHT": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"RIG": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.5060241266680594,
+"yahoo": "RIG"
+},
+"RJF": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.24633408940022483,
+"yahoo": "RJF"
+},
+"RL": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.2216165809632008,
+"yahoo": "RL"
+},
+"RMD": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.1938619491305198,
+"yahoo": "RMD"
+},
+"ROK": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.17583689830518034,
+"yahoo": "ROK"
+},
+"ROL": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.1923080129198036,
+"yahoo": "ROL"
+},
+"ROP": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.2553294136415367,
+"yahoo": "ROP"
+},
+"ROST": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.22470341511930614,
+"yahoo": "ROST"
+},
+"RRC": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.362318648779105,
+"yahoo": "RRC"
+},
+"RRD": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"RSG": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.16658524707617905,
+"yahoo": "RSG"
+},
+"RSHCQ": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"RTN": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"RTX": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.15757140326746688,
+"yahoo": "RTX"
+},
+"RVTY": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.19903917814667094,
+"yahoo": "RVTY"
+},
+"RX": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"S": {
+"first": "2021-06-30",
+"last": "2026-11-13",
+"days": 1351,
+"max_abs_daily_move": 0.35135135010738505,
+"yahoo": "S"
+},
+"SATS": {
+"error": "fewer than 260 closes"
+},
+"SBAC": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.25607242152143095,
+"yahoo": "SBAC"
+},
+"SBNY": {
+"first": "2024-08-15",
+"last": "2026-11-12",
+"days": 564,
+"max_abs_daily_move": 0.6666666666666667,
+"yahoo": "SBNY"
+},
+"SBUX": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.2449695525618738,
+"yahoo": "SBUX"
+},
+"SCG": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"SCHW": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.1965030802894987,
+"yahoo": "SCHW"
+},
+"SE": {
+"first": "2017-10-20",
+"last": "2026-11-13",
+"days": 2279,
+"max_abs_daily_move": 0.36048040199247144,
+"yahoo": "SE"
+},
+"SEDG": {
+"first": "2015-03-26",
+"last": "2026-11-13",
+"days": 2928,
+"max_abs_daily_move": 0.3344453568468011,
+"yahoo": "SEDG"
+},
+"SEE": {
+"error": "'timestamp'"
+},
+"SGP": {
+"error": "fewer than 260 closes"
+},
+"SHLD": {
+"first": "2023-09-14",
+"last": "2026-11-13",
+"days": 796,
+"max_abs_daily_move": 0.07737853721093468,
+"yahoo": "SHLD"
+},
+"SHW": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.18677007689229252,
+"yahoo": "SHW"
+},
+"SIAL": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"SIG": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.4020478571254247,
+"yahoo": "SIG"
+},
+"SII": {
+"first": "2010-02-22",
+"last": "2026-11-13",
+"days": 4210,
+"max_abs_daily_move": 0.2516125993057621,
+"yahoo": "SII"
+},
+"SIVB": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"SJM": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.15592318081194412,
+"yahoo": "SJM"
+},
+"SLB": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.27421386177858864,
+"yahoo": "SLB"
+},
+"SLG": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.4084505612376652,
+"yahoo": "SLG"
+},
+"SLM": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.34976529351269914,
+"yahoo": "SLM"
+},
+"SMCI": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.4112149865900697,
+"yahoo": "SMCI"
+},
+"SNA": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.11874573183012105,
+"yahoo": "SNA"
+},
+"SNDK": {
+"first": "2025-02-13",
+"last": "2026-11-13",
+"days": 441,
+"max_abs_daily_move": 0.28649384891801044,
+"yahoo": "SNDK"
+},
+"SNI": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"SNPS": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.3583731788271417,
+"yahoo": "SNPS"
+},
+"SO": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.1877364754065578,
+"yahoo": "SO"
+},
+"SOLS": {
+"first": "2025-10-20",
+"last": "2026-11-13",
+"days": 270,
+"max_abs_daily_move": 0.17476486193663177,
+"yahoo": "SOLS"
+},
+"SOLV": {
+"first": "2024-03-26",
+"last": "2026-11-13",
+"days": 663,
+"max_abs_daily_move": 0.09543784603825589,
+"yahoo": "SOLV"
+},
+"SPG": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.27869353268968156,
+"yahoo": "SPG"
+},
+"SPGI": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.23842303295463996,
+"yahoo": "SPGI"
+},
+"SPLS": {
+"error": "fewer than 260 closes"
+},
+"SRCL": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"SRE": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.18972229285280995,
+"yahoo": "SRE"
+},
+"STE": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.13228523986275498,
+"yahoo": "STE"
+},
+"STI": {
+"first": "2022-05-02",
+"last": "2026-11-13",
+"days": 1140,
+"max_abs_daily_move": 3.5059522334049786,
+"yahoo": "STI"
+},
+"STJ": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"STLD": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.22822012186480256,
+"yahoo": "STLD"
+},
+"STR": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"STT": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.5903715393731064,
+"yahoo": "STT"
+},
+"STX": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.27860756457742575,
+"yahoo": "STX"
+},
+"STZ": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.3723342128468832,
+"yahoo": "STZ"
+},
+"SUN": {
+"first": "2012-09-20",
+"last": "2026-11-13",
+"days": 3558,
+"max_abs_daily_move": 0.25733439966299687,
+"yahoo": "SUN"
+},
+"SUNEQ": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"SVU": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"SW": {
+"first": "2008-06-17",
+"last": "2026-11-13",
+"days": 4633,
+"max_abs_daily_move": 0.4210526637123877,
+"yahoo": "SW"
+},
+"SWK": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.2532277527615645,
+"yahoo": "SWK"
+},
+"SWKS": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.3486055705565987,
+"yahoo": "SWKS"
+},
+"SWN": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"SWY": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"SYF": {
+"first": "2014-07-31",
+"last": "2026-11-13",
+"days": 3092,
+"max_abs_daily_move": 0.2602567393260836,
+"yahoo": "SYF"
+},
+"SYK": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.14495341274960416,
+"yahoo": "SYK"
+},
+"SYMC": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.33104879642193075,
+"yahoo": "GEN"
+},
+"SYY": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.21106082249979707,
+"yahoo": "SYY"
+},
+"T": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.16280039873185337,
+"yahoo": "T"
+},
+"TAP": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.15401780098168094,
+"yahoo": "TAP"
+},
+"TDC": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.3707949307537235,
+"yahoo": "TDC"
+},
+"TDG": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.24402956685635502,
+"yahoo": "TDG"
+},
+"TDY": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.2288704765229077,
+"yahoo": "TDY"
+},
+"TE": {
+"first": "2020-01-10",
+"last": "2026-11-13",
+"days": 1721,
+"max_abs_daily_move": 0.6666667423551078,
+"yahoo": "TE"
+},
+"TECH": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.20074718031854388,
+"yahoo": "TECH"
+},
+"TEG": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"TEL": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.15826183239498004,
+"yahoo": "TEL"
+},
+"TER": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.22410537187193313,
+"yahoo": "TER"
+},
+"TFC": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.23612461835011422,
+"yahoo": "TFC"
+},
+"TFX": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.21685522736987017,
+"yahoo": "TFX"
+},
+"TGNA": {
+"error": "'timestamp'"
+},
+"TGT": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.24930316771023908,
+"yahoo": "TGT"
+},
+"THC": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.5501165861304631,
+"yahoo": "THC"
+},
+"TIE": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"TIF": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"TJX": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.20399469637317358,
+"yahoo": "TJX"
+},
+"TKO": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.4345209046697772,
+"yahoo": "TKO"
+},
+"TLAB": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"TMK": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.5314018490479424,
+"yahoo": "GL"
+},
+"TMO": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.16898317411489572,
+"yahoo": "TMO"
+},
+"TMUS": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.36783405909827804,
+"yahoo": "TMUS"
+},
+"TPL": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.2996648952518046,
+"yahoo": "TPL"
+},
+"TPR": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.2967866624050286,
+"yahoo": "TPR"
+},
+"TRGP": {
+"first": "2010-12-07",
+"last": "2026-11-13",
+"days": 4009,
+"max_abs_daily_move": 0.5290740974657662,
+"yahoo": "TRGP"
+},
+"TRIP": {
+"first": "2011-12-07",
+"last": "2026-11-13",
+"days": 3756,
+"max_abs_daily_move": 0.2872841376111641,
+"yahoo": "TRIP"
+},
+"TRMB": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.213980804581545,
+"yahoo": "TRMB"
+},
+"TROW": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.1816721455307222,
+"yahoo": "TROW"
+},
+"TRV": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.2555558116553376,
+"yahoo": "TRV"
+},
+"TSCO": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.17141059510028556,
+"yahoo": "TSCO"
+},
+"TSLA": {
+"first": "2010-06-29",
+"last": "2026-11-13",
+"days": 4121,
+"max_abs_daily_move": 0.24395075824616308,
+"yahoo": "TSLA"
+},
+"TSN": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.23617316416309364,
+"yahoo": "TSN"
+},
+"TSS": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"TT": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.1566048863683549,
+"yahoo": "TT"
+},
+"TTD": {
+"first": "2016-09-21",
+"last": "2026-11-13",
+"days": 2552,
+"max_abs_daily_move": 0.4339086306534776,
+"yahoo": "TTD"
+},
+"TTWO": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.29120881712072455,
+"yahoo": "TTWO"
+},
+"TWC": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"TWTR": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"TWX": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"TXN": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.19432097222987887,
+"yahoo": "TXN"
+},
+"TXT": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.48847408499828293,
+"yahoo": "TXT"
+},
+"TYL": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.1538982798970615,
+"yahoo": "TYL"
+},
+"UA": {
+"first": "2016-03-23",
+"last": "2026-11-13",
+"days": 2678,
+"max_abs_daily_move": 0.258841203179632,
+"yahoo": "UA"
+},
+"UAA": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.27707525344719963,
+"yahoo": "UAA"
+},
+"UAL": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.6853707882089919,
+"yahoo": "UAL"
+},
+"UBER": {
+"first": "2019-05-10",
+"last": "2026-11-13",
+"days": 1890,
+"max_abs_daily_move": 0.38259110614382497,
+"yahoo": "UBER"
+},
+"UDR": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.19035006151244993,
+"yahoo": "UDR"
+},
+"UHS": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.2533609538628079,
+"yahoo": "UHS"
+},
+"ULTA": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.2955104841374617,
+"yahoo": "ULTA"
+},
+"UNH": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.347550661211379,
+"yahoo": "UNH"
+},
+"UNM": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.29633179312891,
+"yahoo": "UNM"
+},
+"UNP": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.1400889473435647,
+"yahoo": "UNP"
+},
+"UPS": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.14375784931376412,
+"yahoo": "UPS"
+},
+"URBN": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.22835572078514654,
+"yahoo": "URBN"
+},
+"URI": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.30548317079041754,
+"yahoo": "URI"
+},
+"USB": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.22841177022211512,
+"yahoo": "USB"
+},
+"UTX": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.1575719960534394,
+"yahoo": "RTX"
+},
+"V": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.14997295626510554,
+"yahoo": "V"
+},
+"VAR": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"VEEV": {
+"first": "2013-10-16",
+"last": "2026-11-13",
+"days": 3290,
+"max_abs_daily_move": 0.21321503842645428,
+"yahoo": "VEEV"
+},
+"VFC": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.2873703774901172,
+"yahoo": "VFC"
+},
+"VIAB": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"VIAC": {
+"first": "2021-02-12",
+"last": "2026-11-13",
+"days": 1444,
+"max_abs_daily_move": 6.90588188435381,
+"yahoo": "PARA"
+},
+"VIAV": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.26938092879522135,
+"yahoo": "VIAV"
+},
+"VICI": {
+"first": "2018-01-02",
+"last": "2026-11-13",
+"days": 2230,
+"max_abs_daily_move": 0.28636355949368086,
+"yahoo": "VICI"
+},
+"VLO": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.3120252381342281,
+"yahoo": "VLO"
+},
+"VLTO": {
+"first": "2023-10-04",
+"last": "2026-11-13",
+"days": 782,
+"max_abs_daily_move": 0.06809655543073379,
+"yahoo": "VLTO"
+},
+"VMC": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.18417775135583248,
+"yahoo": "VMC"
+},
+"VMRK": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.23550106169805707,
+"yahoo": "VMRK"
+},
+"VNO": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.2739545764547011,
+"yahoo": "VNO"
+},
+"VNT": {
+"first": "2020-09-24",
+"last": "2026-11-13",
+"days": 1543,
+"max_abs_daily_move": 0.15582081007253779,
+"yahoo": "VNT"
+},
+"VRSK": {
+"first": "2009-10-07",
+"last": "2026-11-13",
+"days": 4303,
+"max_abs_daily_move": 0.13286036586164518,
+"yahoo": "VRSK"
+},
+"VRSN": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.17201706327493205,
+"yahoo": "VRSN"
+},
+"VRT": {
+"first": "2018-08-02",
+"last": "2026-11-13",
+"days": 2083,
+"max_abs_daily_move": 0.36739900367387546,
+"yahoo": "VRT"
+},
+"VRTX": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.6190656365324336,
+"yahoo": "VRTX"
+},
+"VST": {
+"first": "2016-10-05",
+"last": "2026-11-13",
+"days": 2542,
+"max_abs_daily_move": 0.2827167542851651,
+"yahoo": "VST"
+},
+"VTR": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.2859285483047467,
+"yahoo": "VTR"
+},
+"VTRS": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.2427784396895758,
+"yahoo": "VTRS"
+},
+"VZ": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.14632417277485232,
+"yahoo": "VZ"
+},
+"WAB": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.18221682919964788,
+"yahoo": "WAB"
+},
+"WAT": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.19838447899953038,
+"yahoo": "WAT"
+},
+"WBA": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"WBD": {
+"error": "fewer than 260 closes"
+},
+"WCG": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"WDAY": {
+"first": "2012-10-12",
+"last": "2026-11-13",
+"days": 3542,
+"max_abs_daily_move": 0.1867658719328209,
+"yahoo": "WDAY"
+},
+"WDC": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.20942392588024017,
+"yahoo": "WDC"
+},
+"WEC": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.18051100024419686,
+"yahoo": "WEC"
+},
+"WELL": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.24395455365723095,
+"yahoo": "WELL"
+},
+"WFC": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.32764515125663896,
+"yahoo": "WFC"
+},
+"WFM": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"WHR": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.2957019836821788,
+"yahoo": "WHR"
+},
+"WIN": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"WLTW": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.19015426757905074,
+"yahoo": "WTW"
+},
+"WM": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.17973613592430748,
+"yahoo": "WM"
+},
+"WMB": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.3481308837467203,
+"yahoo": "WMB"
+},
+"WMT": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.11708536785072199,
+"yahoo": "WMT"
+},
+"WPX": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"WRB": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.16239880331807255,
+"yahoo": "WRB"
+},
+"WRK": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"WSM": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.39669414006894366,
+"yahoo": "WSM"
+},
+"WST": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.3821832412280146,
+"yahoo": "WST"
+},
+"WTW": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.19015407614121438,
+"yahoo": "WTW"
+},
+"WU": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.29001680412017017,
+"yahoo": "WU"
+},
+"WY": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.2531552015141174,
+"yahoo": "WY"
+},
+"WYE": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"WYND": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"WYNN": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.29892427750890804,
+"yahoo": "WYNN"
+},
+"X": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"XEC": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"XEL": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.12691839855299247,
+"yahoo": "XEL"
+},
+"XL": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"XLNX": {
+"error": "HTTPError: HTTP Error 404: Not Found"
+},
+"XOM": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.17190451671311502,
+"yahoo": "XOM"
+},
+"XRAY": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.280233444232047,
+"yahoo": "XRAY"
+},
+"XRX": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.4331208451887958,
+"yahoo": "XRX"
+},
+"XTO": {
+"error": "'timestamp'"
+},
+"XYL": {
+"first": "2011-10-13",
+"last": "2026-11-13",
+"days": 3794,
+"max_abs_daily_move": 0.14209162561861077,
+"yahoo": "XYL"
+},
+"XYZ": {
+"first": "2015-11-19",
+"last": "2026-11-13",
+"days": 2762,
+"max_abs_daily_move": 0.2856153690367952,
+"yahoo": "XYZ"
+},
+"YUM": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.23248386510712438,
+"yahoo": "YUM"
+},
+"ZBH": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.15579737182887188,
+"yahoo": "ZBH"
+},
+"ZBRA": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.26467551792190824,
+"yahoo": "ZBRA"
+},
+"ZION": {
+"first": "2008-06-02",
+"last": "2026-11-13",
+"days": 4644,
+"max_abs_daily_move": 0.27556793736902785,
+"yahoo": "ZION"
+},
+"ZTS": {
+"first": "2013-02-01",
+"last": "2026-11-13",
+"days": 3468,
+"max_abs_daily_move": 0.21497933869929076,
+"yahoo": "ZTS"
+}
+}
