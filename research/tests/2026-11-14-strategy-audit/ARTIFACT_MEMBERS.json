@@ -1,0 +1,721 @@
+[
+  {
+    "archive_path": "inputs/french/10_Portfolios_Prior_12_2_CSV.zip",
+    "relative_path": "inputs/french/10_Portfolios_Prior_12_2_CSV.zip",
+    "bytes": 119215,
+    "sha256": "688467caa28578a8dca70698537c4f03c406b246350b6f3e9c396e15e1e7964f",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/10_Portfolios_Prior_1_0_CSV.zip",
+    "relative_path": "inputs/french/10_Portfolios_Prior_1_0_CSV.zip",
+    "bytes": 120824,
+    "sha256": "9c82ae7be156e5958933b4c8b2a5c54d61191f02477f067929ff7b72f0127893",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/10_Portfolios_Prior_60_13_CSV.zip",
+    "relative_path": "inputs/french/10_Portfolios_Prior_60_13_CSV.zip",
+    "bytes": 113662,
+    "sha256": "189fa43d7291d9dbafa0b9347546152bbf6b3f37aef397ca18a6dadb5369e826",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/30_Industry_Portfolios_CSV.zip",
+    "relative_path": "inputs/french/30_Industry_Portfolios_CSV.zip",
+    "bytes": 314458,
+    "sha256": "0d98de64bf37979080834b4d6809fee9b7882f64d823f3881d61593241633c11",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/30_Industry_Portfolios_daily_CSV.zip",
+    "relative_path": "inputs/french/30_Industry_Portfolios_daily_CSV.zip",
+    "bytes": 2599584,
+    "sha256": "e9278f00793c8b6d59f2ef6fd813af97d02ec601bfe8a835b111c6b65c1b24c6",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/49_Industry_Portfolios_CSV.zip",
+    "relative_path": "inputs/french/49_Industry_Portfolios_CSV.zip",
+    "bytes": 489861,
+    "sha256": "d1a3b0b9896e1e633ed2aa85e24ca144d7998f8ab2ff344e2379383ebeb7b836",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/6_Portfolios_2x3_CSV.zip",
+    "relative_path": "inputs/french/6_Portfolios_2x3_CSV.zip",
+    "bytes": 149549,
+    "sha256": "28d382168866a2f424bf32da868b08895c31c954cbad948f88606cd4ef73db58",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/6_Portfolios_ME_INV_2x3_CSV.zip",
+    "relative_path": "inputs/french/6_Portfolios_ME_INV_2x3_CSV.zip",
+    "bytes": 106063,
+    "sha256": "7d58209ce6cf8d137100a32969520926074a711e79e26aa14209929bf1a5698f",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/6_Portfolios_ME_OP_2x3_CSV.zip",
+    "relative_path": "inputs/french/6_Portfolios_ME_OP_2x3_CSV.zip",
+    "bytes": 106098,
+    "sha256": "c266e7f9b59c13a9a5cbe9f8d646ffa78334e2d95fa7d7b05cdc027ce8c29240",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/6_Portfolios_ME_Prior_12_2_CSV.zip",
+    "relative_path": "inputs/french/6_Portfolios_ME_Prior_12_2_CSV.zip",
+    "bytes": 122033,
+    "sha256": "e973a50bf2c2f3738132e6efa05533fb7a473c18995aa36899a493904842bfee",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/Asia_Pacific_ex_Japan_5_Factors_CSV.zip",
+    "relative_path": "inputs/french/Asia_Pacific_ex_Japan_5_Factors_CSV.zip",
+    "bytes": 6975,
+    "sha256": "e1e58b7e13422bb05fa752c185689dba8407c934f74288774708c7d319364634",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/Asia_Pacific_ex_Japan_6_Portfolios_ME_BE-ME_CSV.zip",
+    "relative_path": "inputs/french/Asia_Pacific_ex_Japan_6_Portfolios_ME_BE-ME_CSV.zip",
+    "bytes": 28040,
+    "sha256": "00b77147072bdacd7e0fe68959ea3e526a2b20fb05786df208601b8ff4a174c8",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/Asia_Pacific_ex_Japan_6_Portfolios_ME_INV_CSV.zip",
+    "relative_path": "inputs/french/Asia_Pacific_ex_Japan_6_Portfolios_ME_INV_CSV.zip",
+    "bytes": 28214,
+    "sha256": "1aad60eff992db581287c99d0b48d87163252bc7a4b5a6bcf90ef865d34e2e87",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/Asia_Pacific_ex_Japan_6_Portfolios_ME_OP_CSV.zip",
+    "relative_path": "inputs/french/Asia_Pacific_ex_Japan_6_Portfolios_ME_OP_CSV.zip",
+    "bytes": 28082,
+    "sha256": "a46dccd005bc4689abddd207adb696123c425b4f31d1917e25385cb8ac55d96c",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/Asia_Pacific_ex_Japan_6_Portfolios_ME_Prior_12_2_CSV.zip",
+    "relative_path": "inputs/french/Asia_Pacific_ex_Japan_6_Portfolios_ME_Prior_12_2_CSV.zip",
+    "bytes": 29289,
+    "sha256": "29a12141fb8aca7e70bf0536bbf79139ac5c456b41424e2b966559262f037207",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/Asia_Pacific_ex_Japan_MOM_Factor_CSV.zip",
+    "relative_path": "inputs/french/Asia_Pacific_ex_Japan_MOM_Factor_CSV.zip",
+    "bytes": 2276,
+    "sha256": "d0792c1f08cb7becde2c94ee24b432e8c21430aa9f406bdb1e9463f6ece35b96",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/Developed_5_Factors_CSV.zip",
+    "relative_path": "inputs/french/Developed_5_Factors_CSV.zip",
+    "bytes": 6813,
+    "sha256": "954580906c3ae6fc1870677e40dfbe5a94a6cf188be5330c896f2fc578d9f0ba",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/Developed_6_Portfolios_ME_BE-ME_CSV.zip",
+    "relative_path": "inputs/french/Developed_6_Portfolios_ME_BE-ME_CSV.zip",
+    "bytes": 30077,
+    "sha256": "9939f10bb4d553b6df3bdc7db5e3b81a8661c00eecc3a33911c0ca46f3725100",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/Developed_6_Portfolios_ME_INV_CSV.zip",
+    "relative_path": "inputs/french/Developed_6_Portfolios_ME_INV_CSV.zip",
+    "bytes": 29950,
+    "sha256": "0a57336df2bccfbaf0333ca35b62791c5f60a47c5b86b6ca316a05f2f55dc59b",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/Developed_6_Portfolios_ME_OP_CSV.zip",
+    "relative_path": "inputs/french/Developed_6_Portfolios_ME_OP_CSV.zip",
+    "bytes": 29984,
+    "sha256": "7e988cb4aebe316e8e1ed59dfa92265b02c086dc46936ecbca4b78587f75d998",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/Developed_6_Portfolios_ME_Prior_12_2_CSV.zip",
+    "relative_path": "inputs/french/Developed_6_Portfolios_ME_Prior_12_2_CSV.zip",
+    "bytes": 30665,
+    "sha256": "aacd8cc7b0de991ffd2274bdb47e680a09916fa8d3f99d60eb7b60f0bf604f70",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/Developed_Mom_Factor_CSV.zip",
+    "relative_path": "inputs/french/Developed_Mom_Factor_CSV.zip",
+    "bytes": 2268,
+    "sha256": "2df8248dbf01cb9c1d172a7409eb6e61bfabc4a4c29c599697637df7c4de746e",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/Developed_ex_US_5_Factors_CSV.zip",
+    "relative_path": "inputs/french/Developed_ex_US_5_Factors_CSV.zip",
+    "bytes": 6792,
+    "sha256": "532ca092a479841a81b1c5619e0b7e23cd629f1f27ad491f442c8dc6833baeef",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/Developed_ex_US_6_Portfolios_ME_BE-ME_CSV.zip",
+    "relative_path": "inputs/french/Developed_ex_US_6_Portfolios_ME_BE-ME_CSV.zip",
+    "bytes": 29444,
+    "sha256": "b594b59477019aa96185020e33f871e9a0f63b53c007a572f281b92300910627",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/Developed_ex_US_6_Portfolios_ME_INV_CSV.zip",
+    "relative_path": "inputs/french/Developed_ex_US_6_Portfolios_ME_INV_CSV.zip",
+    "bytes": 29410,
+    "sha256": "3e26a4a50f86776d9b96c1180a1af8c32cd93ba023c58266444fbb9d11236a87",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/Developed_ex_US_6_Portfolios_ME_OP_CSV.zip",
+    "relative_path": "inputs/french/Developed_ex_US_6_Portfolios_ME_OP_CSV.zip",
+    "bytes": 29369,
+    "sha256": "99cabaa2721a0ea6622eac62927a57986aee33f49cccea59484283b2ff6e5d12",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/Developed_ex_US_6_Portfolios_ME_Prior_12_2_CSV.zip",
+    "relative_path": "inputs/french/Developed_ex_US_6_Portfolios_ME_Prior_12_2_CSV.zip",
+    "bytes": 30215,
+    "sha256": "192b892d08d1e28b71d96b0aa686b23ac75ee23d1ba0754c4513f38c2e3fb274",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/Developed_ex_US_Mom_Factor_CSV.zip",
+    "relative_path": "inputs/french/Developed_ex_US_Mom_Factor_CSV.zip",
+    "bytes": 2243,
+    "sha256": "7f74b4af425042ea1734e64372309d9be785fba65fe52922c79061ca8dc4a60a",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/Emerging_5_Factors_CSV.zip",
+    "relative_path": "inputs/french/Emerging_5_Factors_CSV.zip",
+    "bytes": 6989,
+    "sha256": "0573fd60948178daad54f577a6c87d1e5a183dfdc4a1a89ced3991cc95fd8ad3",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/Emerging_MOM_Factor_CSV.zip",
+    "relative_path": "inputs/french/Emerging_MOM_Factor_CSV.zip",
+    "bytes": 2275,
+    "sha256": "c3dfecb604fe55c8b99b15988a1d1146372cea52da0a33d24c55f68779227ced",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/Emerging_Markets_6_Portfolios_ME_BE-ME_CSV.zip",
+    "relative_path": "inputs/french/Emerging_Markets_6_Portfolios_ME_BE-ME_CSV.zip",
+    "bytes": 28795,
+    "sha256": "5e65ca2083509a3ddbf070181d0b56d546446818ee98cc8d4b05b468b3a74ade",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/Emerging_Markets_6_Portfolios_ME_INV_CSV.zip",
+    "relative_path": "inputs/french/Emerging_Markets_6_Portfolios_ME_INV_CSV.zip",
+    "bytes": 26667,
+    "sha256": "b7a07545be16b5839fa7d7dc3f4b19fd09c73a1e176fbe9cf9db43e52c83bd57",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/Emerging_Markets_6_Portfolios_ME_OP_CSV.zip",
+    "relative_path": "inputs/french/Emerging_Markets_6_Portfolios_ME_OP_CSV.zip",
+    "bytes": 27311,
+    "sha256": "5b579f400eba1f802936a3ba1f7f150c0841724eb370cb16087e1dff5156a06b",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/Emerging_Markets_6_Portfolios_ME_Prior_12_2_CSV.zip",
+    "relative_path": "inputs/french/Emerging_Markets_6_Portfolios_ME_Prior_12_2_CSV.zip",
+    "bytes": 30087,
+    "sha256": "68dbc3f6800879bfcb7b48adbbd7754e25983a5f0c12774b589a5e703285cf5c",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/Europe_5_Factors_CSV.zip",
+    "relative_path": "inputs/french/Europe_5_Factors_CSV.zip",
+    "bytes": 6818,
+    "sha256": "87c61cc3311a4e541f623a3532af4e93be033a1897cdf664e2b549348eee9bcb",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/Europe_6_Portfolios_ME_BE-ME_CSV.zip",
+    "relative_path": "inputs/french/Europe_6_Portfolios_ME_BE-ME_CSV.zip",
+    "bytes": 29118,
+    "sha256": "b86ecd408aaae18f2fb903540bfcda4d042fa70b71589c72594ccab770a590f3",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/Europe_6_Portfolios_ME_INV_CSV.zip",
+    "relative_path": "inputs/french/Europe_6_Portfolios_ME_INV_CSV.zip",
+    "bytes": 29044,
+    "sha256": "895dc2a32d3e915b10c4e56cd3307d0c10112ec2ed0676f5f420132c445c061e",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/Europe_6_Portfolios_ME_OP_CSV.zip",
+    "relative_path": "inputs/french/Europe_6_Portfolios_ME_OP_CSV.zip",
+    "bytes": 29041,
+    "sha256": "f1bc70df923f8feb734bcb17ff57ab5d17bc06dd24122d46634189e01de6d091",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/Europe_6_Portfolios_ME_Prior_12_2_CSV.zip",
+    "relative_path": "inputs/french/Europe_6_Portfolios_ME_Prior_12_2_CSV.zip",
+    "bytes": 30038,
+    "sha256": "6b8dff6bff3c01382c702517759830812bc229dc61c91cd2909be5b5ca1fe952",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/Europe_Mom_Factor_CSV.zip",
+    "relative_path": "inputs/french/Europe_Mom_Factor_CSV.zip",
+    "bytes": 2247,
+    "sha256": "ac254c7011515cc8b3c280dbe374fe8d05b6c5a5603cd7b17101c9fb2e3bdaa0",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/F-F_Momentum_Factor_CSV.zip",
+    "relative_path": "inputs/french/F-F_Momentum_Factor_CSV.zip",
+    "bytes": 5603,
+    "sha256": "27ed60e5b2caa9ea334a261cddfa864a9926f6bf45e9677c95dfd835c5abb315",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/F-F_Research_Data_5_Factors_2x3_CSV.zip",
+    "relative_path": "inputs/french/F-F_Research_Data_5_Factors_2x3_CSV.zip",
+    "bytes": 11971,
+    "sha256": "17d7a575e71d6764a70ddec3f8d887756c0eebf3a60f64d6ba95d2adde3fed26",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/F-F_Research_Data_Factors_CSV.zip",
+    "relative_path": "inputs/french/F-F_Research_Data_Factors_CSV.zip",
+    "bytes": 13078,
+    "sha256": "b03d39e4bb253dda0f14893db3b78e64b40b8d6549a0fc0fd4111dae84c98618",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/F-F_Research_Data_Factors_daily_CSV.zip",
+    "relative_path": "inputs/french/F-F_Research_Data_Factors_daily_CSV.zip",
+    "bytes": 178326,
+    "sha256": "96c23b88e651cbfff3740a53f8225e59ee39893371e96385a1d8125ec2cd9c89",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/Japan_5_Factors_CSV.zip",
+    "relative_path": "inputs/french/Japan_5_Factors_CSV.zip",
+    "bytes": 6980,
+    "sha256": "3e8416a0130e2a7bb1b42a49f987865b3d1e7de930affcfc191a70b4088effb2",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/Japan_6_Portfolios_ME_BE-ME_CSV.zip",
+    "relative_path": "inputs/french/Japan_6_Portfolios_ME_BE-ME_CSV.zip",
+    "bytes": 27677,
+    "sha256": "112f451f354d7bf516d980b0cf6c56485e4f12f81d837b6c2335bcf62f40f06e",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/Japan_6_Portfolios_ME_INV_CSV.zip",
+    "relative_path": "inputs/french/Japan_6_Portfolios_ME_INV_CSV.zip",
+    "bytes": 27481,
+    "sha256": "2353338b9b9c975fa52a47e94bc47bea792f13e8f68cc8a88446089ebc729ca4",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/Japan_6_Portfolios_ME_OP_CSV.zip",
+    "relative_path": "inputs/french/Japan_6_Portfolios_ME_OP_CSV.zip",
+    "bytes": 27564,
+    "sha256": "921ae5f64c905e2da784768706f31b9e1820c1e4135e1cbf152eadf68cbbe122",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/Japan_6_Portfolios_ME_Prior_12_2_CSV.zip",
+    "relative_path": "inputs/french/Japan_6_Portfolios_ME_Prior_12_2_CSV.zip",
+    "bytes": 29444,
+    "sha256": "5d1d2603f80a3f865b6402fecbd793bc6eec136712aabd332610c1441dec88e6",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/Japan_Mom_Factor_CSV.zip",
+    "relative_path": "inputs/french/Japan_Mom_Factor_CSV.zip",
+    "bytes": 2251,
+    "sha256": "beb4fc53d4b34f8d21db104706854fd24610332609c6275373345597f6e1808b",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/North_America_5_Factors_CSV.zip",
+    "relative_path": "inputs/french/North_America_5_Factors_CSV.zip",
+    "bytes": 6934,
+    "sha256": "7708e618f41d4bd03ad61b9113f292c0a5ebeff1525f1604fe21c899f7d145ec",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/North_America_6_Portfolios_ME_BE-ME_CSV.zip",
+    "relative_path": "inputs/french/North_America_6_Portfolios_ME_BE-ME_CSV.zip",
+    "bytes": 30130,
+    "sha256": "3e1b4c979d9e2cc96b49c41053e2d275fca61cd1ce00646f832bd35f9263346f",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/North_America_6_Portfolios_ME_INV_CSV.zip",
+    "relative_path": "inputs/french/North_America_6_Portfolios_ME_INV_CSV.zip",
+    "bytes": 29898,
+    "sha256": "e79cfb51b721ef5399b19c4506977a51cc710a97fa20d7964865d294edf3b6d4",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/North_America_6_Portfolios_ME_OP_CSV.zip",
+    "relative_path": "inputs/french/North_America_6_Portfolios_ME_OP_CSV.zip",
+    "bytes": 29917,
+    "sha256": "3b17148702eb2b7527345cb673236b143ac69c1a09e9c1e3c31f3dec1ad6d511",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/North_America_6_Portfolios_ME_Prior_12_2_CSV.zip",
+    "relative_path": "inputs/french/North_America_6_Portfolios_ME_Prior_12_2_CSV.zip",
+    "bytes": 30619,
+    "sha256": "3d74ad1a61fa1a1d1f2365e72a6261eefb00ee3483fdac9601fb59b449f2e1d3",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/North_America_Mom_Factor_CSV.zip",
+    "relative_path": "inputs/french/North_America_Mom_Factor_CSV.zip",
+    "bytes": 2264,
+    "sha256": "d750cc8a23da322704f6617f1603f7f01effe21c681df6c76823946ca385e361",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/Portfolios_Formed_on_AC_CSV.zip",
+    "relative_path": "inputs/french/Portfolios_Formed_on_AC_CSV.zip",
+    "bytes": 114843,
+    "sha256": "98d4733e85d23a841503d151c67d559d2b2f79029bf4443e8d29af65f82ad723",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/Portfolios_Formed_on_BE-ME_CSV.zip",
+    "relative_path": "inputs/french/Portfolios_Formed_on_BE-ME_CSV.zip",
+    "bytes": 218775,
+    "sha256": "211a32e84a6992160317715076cb1b79ff067a4d9738e704678ddc63f29195de",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/Portfolios_Formed_on_BETA_CSV.zip",
+    "relative_path": "inputs/french/Portfolios_Formed_on_BETA_CSV.zip",
+    "bytes": 116326,
+    "sha256": "23e0f94cb5c65fdd25b0becff4875f28ec4bc18976c9d2027a1abe38a00194c7",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/Portfolios_Formed_on_CF-P_CSV.zip",
+    "relative_path": "inputs/french/Portfolios_Formed_on_CF-P_CSV.zip",
+    "bytes": 164489,
+    "sha256": "209bb9311a641d028e5026f6c2bd727e97a4ce2fd2e08c4392fea0311f0a32e6",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/Portfolios_Formed_on_D-P_CSV.zip",
+    "relative_path": "inputs/french/Portfolios_Formed_on_D-P_CSV.zip",
+    "bytes": 202402,
+    "sha256": "427c4f967135bf2a411cde0a630b6360274691daed908d720c1d729dd7638cb9",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/Portfolios_Formed_on_E-P_CSV.zip",
+    "relative_path": "inputs/french/Portfolios_Formed_on_E-P_CSV.zip",
+    "bytes": 163925,
+    "sha256": "cf609cb700cb8b4d63aa40d6b06a1579b956213adb59c83bb4d6523b9e359a28",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/Portfolios_Formed_on_INV_CSV.zip",
+    "relative_path": "inputs/french/Portfolios_Formed_on_INV_CSV.zip",
+    "bytes": 135809,
+    "sha256": "691a47c0043d8ab6839ebd5aec47181ffed59b5bc80775b985da4bd5de117b0e",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/Portfolios_Formed_on_ME_CSV.zip",
+    "relative_path": "inputs/french/Portfolios_Formed_on_ME_CSV.zip",
+    "bytes": 200897,
+    "sha256": "05a799e6fcea1c6f185d4ce4b5faf8f8c73e031b74f563774bec7abd74843cfc",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/Portfolios_Formed_on_NI_CSV.zip",
+    "relative_path": "inputs/french/Portfolios_Formed_on_NI_CSV.zip",
+    "bytes": 127610,
+    "sha256": "341cff586603b6bf9b89f5d03e5e8996618eaf83d7309ca95598744a9208f970",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/Portfolios_Formed_on_OP_CSV.zip",
+    "relative_path": "inputs/french/Portfolios_Formed_on_OP_CSV.zip",
+    "bytes": 135350,
+    "sha256": "2bdf5bdbe9e8231d37b8607de6361fc51213487e763e1bc855f7cd3c055183cf",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/Portfolios_Formed_on_RESVAR_CSV.zip",
+    "relative_path": "inputs/french/Portfolios_Formed_on_RESVAR_CSV.zip",
+    "bytes": 146817,
+    "sha256": "b1702ba01a9de7ce7d4ee21c7ddbace93df5da791a6ebfa67998959fe232b9b2",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/french/Portfolios_Formed_on_VAR_CSV.zip",
+    "relative_path": "inputs/french/Portfolios_Formed_on_VAR_CSV.zip",
+    "bytes": 147699,
+    "sha256": "8050738aaf7afa1ec0a37fdd8012720b49600159adda39061d098cc8d34a71c6",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/manifest.json",
+    "relative_path": "inputs/manifest.json",
+    "bytes": 60512,
+    "sha256": "77f6f546317f55887672a72ae7d7d8881c6a6950b3c6e692e0fcb554561aea46",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-14-strategy-audit/files/data/inputs_manifest.json"
+  },
+  {
+    "archive_path": "inputs/osap/SignalDoc.csv",
+    "relative_path": "inputs/osap/SignalDoc.csv",
+    "bytes": 183100,
+    "sha256": "0ceb11020c2138c2477b732948beaac2e67ccaad8428753e3a79af2bb5ea0178",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/osap/long_liq.parquet",
+    "relative_path": "inputs/osap/long_liq.parquet",
+    "bytes": 1013845,
+    "sha256": "cae063593dc33ebab604d59a7f92ba1f8744faee9bc9b512c51799c757aa01a5",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/osap/long_vw.parquet",
+    "relative_path": "inputs/osap/long_vw.parquet",
+    "bytes": 861157,
+    "sha256": "9d7244032df2408db841024ac46cb37d28c5815c1bd5c7a9820ae2f5c481cdc4",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/osap/nlong_vw.parquet",
+    "relative_path": "inputs/osap/nlong_vw.parquet",
+    "bytes": 409553,
+    "sha256": "d87184843a1d7101062742aca50846d26cc11b2c971dd69c6c8875c15e5e4301",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/osap/short_vw.parquet",
+    "relative_path": "inputs/osap/short_vw.parquet",
+    "bytes": 861800,
+    "sha256": "b7a6009513da3b0e4043f03dea69811de1356edfb30eebaf41378176c8c85596",
+    "in_repository": false
+  },
+  {
+    "archive_path": "inputs/yahoo/audit.json",
+    "relative_path": "inputs/yahoo/audit.json",
+    "bytes": 27815,
+    "sha256": "2d0a76500b7c0731c84809f3da5b893ccc47e82f9fae51db13bffa02c962a73e",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-14-strategy-audit/files/data/yahoo_audit.json"
+  },
+  {
+    "archive_path": "inputs/yahoo/monthly_returns.csv",
+    "relative_path": "inputs/yahoo/monthly_returns.csv",
+    "bytes": 254974,
+    "sha256": "ab04822a2aea40997c360357355e50a8fb6b12d28c670e5ec1e7f99ac4dfb1be",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-14-strategy-audit/files/data/yahoo_monthly_returns.csv"
+  },
+  {
+    "archive_path": "results/all_strategies.csv",
+    "relative_path": "results/all_strategies.csv",
+    "bytes": 291463,
+    "sha256": "8feabb9fa5a3cf43e127986554f3c694f4f7f156031832d2103feeec9888d903",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-14-strategy-audit/files/output/all_strategies.csv"
+  },
+  {
+    "archive_path": "results/code_identity.txt",
+    "relative_path": "results/code_identity.txt",
+    "bytes": 2088,
+    "sha256": "bb39c7a8629b27c0f254bf0ec28a7e77f29435548e55eb2440c1b4b8aa055671",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-14-strategy-audit/files/output/code_identity.txt"
+  },
+  {
+    "archive_path": "results/exploratory_emerging.csv",
+    "relative_path": "results/exploratory_emerging.csv",
+    "bytes": 7421,
+    "sha256": "0184bd815c62039c965817a0d5fd6b991e955a60010c5ee3830dac994eddb073",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-14-strategy-audit/files/output/exploratory_emerging.csv"
+  },
+  {
+    "archive_path": "results/exploratory_sectors.csv",
+    "relative_path": "results/exploratory_sectors.csv",
+    "bytes": 6112,
+    "sha256": "27ed319f3039681b1b6853e292a967b636e6d94f314349ae5e173bc33e68d3c6",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-14-strategy-audit/files/output/exploratory_sectors.csv"
+  },
+  {
+    "archive_path": "results/exploratory_stocks.csv",
+    "relative_path": "results/exploratory_stocks.csv",
+    "bytes": 3169,
+    "sha256": "4176a0662cad078c7f08bdc201658694bfac2bdb4e0e3fbbb423d1eefa2d87ac",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-14-strategy-audit/files/output/exploratory_stocks.csv"
+  },
+  {
+    "archive_path": "results/exploratory_stocks_coverage.csv",
+    "relative_path": "results/exploratory_stocks_coverage.csv",
+    "bytes": 371,
+    "sha256": "1a1f32162f5ebb6f681670c027f20edc014e4cbf58dd01c3a246b804ff377da3",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-14-strategy-audit/files/output/exploratory_stocks_coverage.csv"
+  },
+  {
+    "archive_path": "results/osap_scan.csv",
+    "relative_path": "results/osap_scan.csv",
+    "bytes": 43337,
+    "sha256": "07e864063df0be67723f62a5566ce00ba35363bf0484d2f0cab2e5da1faec62c",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-14-strategy-audit/files/output/osap_scan.csv"
+  },
+  {
+    "archive_path": "results/run.log",
+    "relative_path": "results/run.log",
+    "bytes": 349,
+    "sha256": "25e93775f8b10f476824a5306cb23b4751bd637afedace758941990ac997c0a4",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-14-strategy-audit/files/output/run.log"
+  },
+  {
+    "archive_path": "results/strategy_returns.csv.gz",
+    "relative_path": "results/strategy_returns.csv.gz",
+    "bytes": 813254,
+    "sha256": "7bb1adf830d05d4bdade0dcaeca5ce99091d46213c557a1e4332b860255ddc67",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-14-strategy-audit/files/output/strategy_returns.csv.gz"
+  },
+  {
+    "archive_path": "results/summary.json",
+    "relative_path": "results/summary.json",
+    "bytes": 4222,
+    "sha256": "0d59cbaae7af167563e83ea2fc327da2fdf47f0fbacfb4636f4edb4d012d97c9",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-14-strategy-audit/files/output/summary.json"
+  },
+  {
+    "archive_path": "results/tabellen.md",
+    "relative_path": "results/tabellen.md",
+    "bytes": 59589,
+    "sha256": "a0380e03ef8567d96b7e444b0452398b419caa8dcf8950e14be6b241e0c3161b",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-14-strategy-audit/files/output/tabellen.md"
+  },
+  {
+    "archive_path": "results/tax_hurdle.csv",
+    "relative_path": "results/tax_hurdle.csv",
+    "bytes": 556,
+    "sha256": "0ded75427bc0841708346bf78ab42178649f03f370aebe776a3ae1ffecf94a24",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-14-strategy-audit/files/output/tax_hurdle.csv"
+  },
+  {
+    "archive_path": "supplement/12_Industry_Portfolios_daily_CSV.zip",
+    "relative_path": "supplement/12_Industry_Portfolios_daily_CSV.zip",
+    "bytes": 1094305,
+    "sha256": "d11f87b42f301ea931d1ddc823d3e2125aba4c8310eeeec43f96554e98b1ebb4",
+    "in_repository": false
+  },
+  {
+    "archive_path": "supplement/em_audit.json",
+    "relative_path": "supplement/em_audit.json",
+    "bytes": 4035,
+    "sha256": "ace6438ed07d5d29e8d78c2a340216c971a875bc756d565f089fb817ad0eee28",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-14-strategy-audit/files/data/em_audit.json"
+  },
+  {
+    "archive_path": "supplement/em_monthly_returns.csv",
+    "relative_path": "supplement/em_monthly_returns.csv",
+    "bytes": 61300,
+    "sha256": "5ef4b8ad3016bf3d2d56bc32af7476a40a82c643e245e789b73688e4ce0b8ec2",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-14-strategy-audit/files/data/em_monthly_returns.csv"
+  },
+  {
+    "archive_path": "supplement/manifest.json",
+    "relative_path": "supplement/manifest.json",
+    "bytes": 3375,
+    "sha256": "c8e921b87094f5dd6f64e1ee37c3bb4be1f633f121b3bb6e52fdee03af62e6ae",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-14-strategy-audit/files/data/supplement_manifest.json"
+  },
+  {
+    "archive_path": "supplement/sectors.json",
+    "relative_path": "supplement/sectors.json",
+    "bytes": 15128,
+    "sha256": "c02f87cbb69f09728795d858092600f1a4cc3e07e67c20e1eeb8570b89b1efd7",
+    "in_repository": false
+  },
+  {
+    "archive_path": "supplement/sp500_membership.csv.gz",
+    "relative_path": "supplement/sp500_membership.csv.gz",
+    "bytes": 21832,
+    "sha256": "b6dba9cdd8626357de40ba654301c1990793fa4e66351573de503e67f18b4c20",
+    "in_repository": false
+  },
+  {
+    "archive_path": "supplement/stock_audit.json",
+    "relative_path": "supplement/stock_audit.json",
+    "bytes": 95861,
+    "sha256": "3153ee106e6cb5c17de9c68b000ce8c3c50bd394b02a7cf06045e7af868e6d97",
+    "in_repository": true,
+    "repository_path": "research/tests/2026-11-14-strategy-audit/files/data/stock_audit.json"
+  },
+  {
+    "archive_path": "supplement/stock_dd.parquet",
+    "relative_path": "supplement/stock_dd.parquet",
+    "bytes": 923930,
+    "sha256": "be58a03fc68a42ea9f75e73aa65a5f2421283114715aa61ebe0baba946d27ad8",
+    "in_repository": false
+  },
+  {
+    "archive_path": "supplement/stock_mom.parquet",
+    "relative_path": "supplement/stock_mom.parquet",
+    "bytes": 959811,
+    "sha256": "9e77a2f07c6d8ea9ff075d24b4f957823b886c0993479c3913bc483dd86637df",
+    "in_repository": false
+  },
+  {
+    "archive_path": "supplement/stock_px.parquet",
+    "relative_path": "supplement/stock_px.parquet",
+    "bytes": 964413,
+    "sha256": "94fc45387fdf97fa4317e09dac8229dcb1323dbd4f037a478eb4b8f5973cd6cc",
+    "in_repository": false
+  },
+  {
+    "archive_path": "supplement/stock_sma.parquet",
+    "relative_path": "supplement/stock_sma.parquet",
+    "bytes": 969186,
+    "sha256": "c0c661232e05054bdeaa85fe1f77621ba98a2bc9945f702d4db057a2a40eb727",
+    "in_repository": false
+  },
+  {
+    "archive_path": "supplement/stock_vol.parquet",
+    "relative_path": "supplement/stock_vol.parquet",
+    "bytes": 926160,
+    "sha256": "7a29fbe03c28993666b9c8456da8a61f60dcddbf6c76c9a38189d00bb6df14d1",
+    "in_repository": false
+  }
+]

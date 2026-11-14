@@ -9,7 +9,14 @@ def main():
  for s in index['tests']:
   folder=ROOT/'research/tests'/s['id'];meta=json.loads((folder/'test.json').read_text());assert meta['id']==s['id'];assert (folder/'README.md').is_file()
   for key in ['holding','prediction','rebalance','holding_period_search_performed','source_artifact','limits','reproduction_status','time_splits','costs','benchmark']:assert key in meta,(s['id'],key)
-  artifact=meta['source_artifact'];assert len(artifact['sha256'])==64;assert artifact['url'].startswith('https://chatgpt.com/library?file_id=')
+  artifact=meta['source_artifact'];assert len(artifact['sha256'])==64
+  if artifact.get('kind')=='git_tree':
+   # Package kept as one commit of a data branch of this repository: the recorded SHA-256 covers the canonical member list.
+   assert len(artifact['commit'])==40 and artifact['url']=='https://github.com/BoraBoraPalm/Bottleneck-Lab-Android/tree/'+artifact['commit'],s['id']
+   listed=json.loads((folder/'ARTIFACT_MEMBERS.json').read_text())
+   canon=json.dumps(sorted([m['archive_path'],m['bytes'],m['sha256']] for m in listed),separators=(',',':')).encode()
+   assert hashlib.sha256(canon).hexdigest()==artifact['sha256'],(s['id'],'member list changed');assert sum(m['bytes'] for m in listed)==artifact['bytes']
+  else:assert artifact['url'].startswith('https://chatgpt.com/library?file_id=')
   assert (folder/meta['entry_report']).is_file(),(s['id'],'Missing entry report')
   for member in json.loads((folder/'ARTIFACT_MEMBERS.json').read_text()):
    if not member['in_repository']:continue

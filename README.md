@@ -6,15 +6,34 @@ Ein mobiles, bewusst einfaches Recherchewerkzeug für weltweite Aktien:
 zwei Reiter für Strategie-Kandidaten und eine unabhängige Aktiensuche,
 dazu Regionsfilter und ein optionaler Trade-Republic-AT-Filter für die Kandidaten.
 
+## Was die Daten sagen (Prüfung vom 14.11.2026)
+
+Alle Strategien der App und rund 340 weitere wurden nach einem vorab festgelegten Protokoll gegen den Markt geprüft: [Strategie-Audit](research/tests/2026-11-14-strategy-audit). **Keine schlägt den Markt verlässlich.** Die App zeigt deshalb an jeder Strategie, was die Daten hergeben, und im Feld „Was sagen die Daten?“ die Zahlen dazu.
+
+| Strategie | Einordnung in der App |
+| --- | --- |
+| 12–2-Momentum, 200-Tage-Trend, Quality | Hinweise, nicht gesichert |
+| Value, Bilanzwachstum, Gewinnmomentum | kein Mehrertrag belegt |
+| Geringe Kursschwankung | kein Mehrertrag, weniger Schwankung |
+| Frühwachstum | nicht prüfbar |
+| Hoch-Tief-Mut | Gegenwind beim Kursteil; Gesamtregel ungeprüft |
+
+- Veröffentlichte Signale verloren ihren Vorsprung nach der Veröffentlichung im Mittel vollständig (+1,8 → −0,8 Prozentpunkte pro Jahr).
+- Die Ein-/Ausstiegsregel verkleinerte auf dem US-Markt den größten Einbruch von −50 % auf −28 % und kostete 1,9 Prozentpunkte Rendite pro Jahr.
+- Wer sein Depot einmal pro Jahr mit Gewinn umschichtet, verliert durch die KESt rund 1,1 Prozentpunkte pro Jahr gegenüber Kaufen und Halten.
+- Getestet und nicht eingebaut: Momentum je Schwankung, Branchen-Momentum, Nähe zum 52-Wochen-Hoch und Markt-Timing.
+
+Die Zahlen in der App stammen aus `docs/evidence-data.js`. Diese Datei erzeugt `research/tests/2026-11-14-strategy-audit/files/code/export_app_evidence.py` aus den archivierten Ergebnissen; `tests/test_evidence.cjs` vergleicht beide.
+
 ## Was die App zeigt
 
 - Aktien von unterstützten internationalen Börsen, ergänzt durch offizielle US-Börsenverzeichnisse
 - **Reiter „Aktiensuche“:** eigenes Suchfeld mit Suchbutton und Enter, unabhängig von Strategie, Liquiditäts-/Momentumvorauswahl, Region und TR-AT-Filter. Durchsucht das gesamte verfügbare Namensverzeichnis sowie alle vorhandenen Kursdatensätze, mit antippbaren Vorschlägen, Ticker-/ISIN-Treffern, Akzentnormalisierung und begrenzter Tippfehlertoleranz einschließlich benachbarter Buchstabenvertauschungen. Auch Unternehmen ohne Kursdaten werden als Verzeichnistreffer gefunden und entsprechend gekennzeichnet. Charts und Fundamentaldaten bleiben bei vorhandenen Daten aufklappbar; ein Suchtreffer erhält keinen Strategie-Rang. „Kandidaten filtern“ bleibt ein lokaler Filter innerhalb der Kandidatenliste.
 - Echte, datierte Tageskurse als **indikativ nach EUR umgerechnete Referenzwerte**
 - Per Checkbox kombinierbare Ranglisten-Faktoren: **12–2-Monats-Momentum** (Standard; bereinigte Kursrendite von 252 bis 21 Handelstage vor dem Stichtag, also wie bei Jegadeesh/Titman und Fama/French nur ohne den jüngsten Monat – bis 03.11.2026 wurden 42 Handelstage ausgelassen), **geringe annualisierte Renditeschwankung über 252 Handelstage** und **Abstand zum 200-Tage-Trend**. Bei mehreren Häkchen werden die Rangprozente 0–100 gleichgewichtet gemittelt. Fehlende Kennzahlen schließen Aktien aus dem Mix aus, statt geschätzte Nullen einzufügen. Mindestens ein Faktor bleibt ausgewählt.
-- Zusätzlich optional: **„Hoch-Tief-Mut · Sander-inspiriert“**. Diese Auswahl zeigt *tatsächlich geprüfte* Aktien mit 15–55 % Rückgang vom 252-Handelstage-Hoch, positivem Nettoergebnis, positivem operativem Cashflow, ≥3 % Nettomarge und mindestens −10 % Umsatzentwicklung im jüngsten prüfbaren Jahresabschluss. Finanzdaten stammen aus aktuellen **SEC EDGAR XBRL 10-K-Berichten**, daher derzeit überwiegend US-Emittenten. Score: 50 % relativer Rückgang, 25 % Gewinnmarge und 25 % Umsatzentwicklung. Unternehmensdaten und Geschäftsjahr werden im aufgeklappten Kandidaten angezeigt. Fehlen Unternehmensdaten, wird die Aktie **nicht** als Sander-Kandidat ausgegeben. Kann separat oder mit Momentum/Renditevolatilität/Trend kombiniert werden.
-- **Interpretation:** Dies ist eine explizit *eigene* mechanische Teilannäherung an Beate Sanders Hoch-Tief-Mut-Ansatz, **keine exakte Umsetzung**. Deren wichtige Bestandteile langfristige Diversifikation, Dividenden, Unternehmensbewertung, überzeugendes Geschäftsmodell und Teilverkäufe sind nicht automatisiert. Auch ein starker Rückgang ist kein Beweis für eine günstige Bewertung. Keine belegte Überrendite aus dieser konkreten Screening-Regel.
-- Momentum, Gross Profitability, Value, konservatives Investment und Gewinnüberraschungen haben eine wissenschaftliche Faktorgrundlage. Unsere konkreten Datenwege, Farbgrenzen, Auswahl und Kombination sind **nicht** historisch als renditesteigernd validiert. Auch längerfristige Low Volatility ist nicht mit einem gehebelten Long/Short-Low-Beta-Portfolio gleichzusetzen.
+- Zusätzlich optional: **„Hoch-Tief-Mut · Sander-inspiriert“**. Diese Auswahl zeigt *tatsächlich geprüfte* Aktien mit 15–55 % Rückgang vom 252-Handelstage-Hoch, positivem Nettoergebnis, positivem operativem Cashflow, ≥3 % Nettomarge und mindestens −10 % Umsatzentwicklung im jüngsten prüfbaren Jahresabschluss. Finanzdaten stammen aus aktuellen **SEC EDGAR XBRL 10-K-Berichten**, daher derzeit überwiegend US-Emittenten. Score seit 14.11.2026: je 50 % Gewinnmarge und Umsatzentwicklung. Die Tiefe des Rückgangs zählt nicht mehr (bis dahin 50 %), weil stärker gefallene Aktien in der Prüfung vom 14.11.2026 im Mittel weiter zurückblieben. Unternehmensdaten und Geschäftsjahr werden im aufgeklappten Kandidaten angezeigt. Fehlen Unternehmensdaten, wird die Aktie **nicht** als Sander-Kandidat ausgegeben. Kann separat oder mit Momentum/Renditevolatilität/Trend kombiniert werden.
+- **Interpretation:** Dies ist eine explizit *eigene* mechanische Teilannäherung an Beate Sanders Hoch-Tief-Mut-Ansatz, **keine exakte Umsetzung**. Deren wichtige Bestandteile langfristige Diversifikation, Dividenden, Unternehmensbewertung, überzeugendes Geschäftsmodell und Teilverkäufe sind nicht automatisiert. Auch ein starker Rückgang ist kein Beweis für eine günstige Bewertung. Keine belegte Überrendite aus dieser konkreten Screening-Regel; der Kursteil allein lag in drei Datensätzen hinter dem Markt.
+- Momentum, Gross Profitability, Value, konservatives Investment und Gewinnüberraschungen haben eine wissenschaftliche Faktorgrundlage. Unsere konkreten Datenwege, Farbgrenzen, Auswahl und Kombination sind **nicht** historisch als renditesteigernd validiert; die Prüfung vom 14.11.2026 fand für keine Strategie einen gesicherten Vorteil. Auch längerfristige Low Volatility ist nicht mit einem gehebelten Long/Short-Low-Beta-Portfolio gleichzusetzen.
 - Nur Titel mit einer EUR-Referenznotierung ab 2 € und durchschnittlich mindestens 2 Mio. € täglichen 20-Tage-Handelsumsatz, sofern die Daten existieren
 - „Auswahl“: bis zu 20 Kandidaten nach dem gewählten Faktor-Mix mit höchstens vier je Region; „Alle geprüften“: bis zu 75 Treffer der Filter
 - Trade Republic Österreich: nur eindeutige ISIN-Treffer in der offiziellen Instrumentenliste (keine Echtzeit-Handelsfreigabe)
@@ -292,5 +311,5 @@ Frühere Reiter, deren alte **nicht validierte** Kauf-/Stop-Signalmodelle, Forsc
 
 ## Dokumentierte Forschungs- und Strategietests
 
-Die bisherigen Studien sind unter [research/tests](research/tests) mit eigenem Ordner pro Test dokumentiert. [research/README.md](research/README.md) bietet den Index und die aktuell geltenden Grenzen; [die Haltedauer-Prüfung](research/HOLDING_PERIODS.md) trennt Signalrückblick, Prognosehorizont, tatsächliche Haltedauer und Rebalancing. Die ursprünglichen Ergebnisse sind archiviert, damit sie vor weiteren Berechnungen nachgelesen werden können.
+Die bisherigen Studien sind unter [research/tests](research/tests) mit eigenem Ordner pro Test dokumentiert, zuletzt das [Strategie-Audit vom 14.11.2026](research/tests/2026-11-14-strategy-audit). Dessen Workflow `.github/workflows/research-strategy-audit.yml` läuft nur von Hand oder auf Forschungs-Branches und verändert die Website nicht. [research/README.md](research/README.md) bietet den Index und die aktuell geltenden Grenzen; [die Haltedauer-Prüfung](research/HOLDING_PERIODS.md) trennt Signalrückblick, Prognosehorizont, tatsächliche Haltedauer und Rebalancing. Die ursprünglichen Ergebnisse sind archiviert, damit sie vor weiteren Berechnungen nachgelesen werden können.
 

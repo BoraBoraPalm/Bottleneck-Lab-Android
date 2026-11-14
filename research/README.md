@@ -15,6 +15,8 @@ Hier liegen die relevanten Informationen der bisherigen empirischen Studien. **V
 
 | [Haltedauer, Weiterhalten und Prognosehorizonte – systematische Folgestudie](tests/2026-11-02-holding-duration) | A:1–12Monate Aktualisierung; B:5–252Sitzungen; C:1–52Wochen | Tatsächlich durchgeführte vergangenheitsbasierte Intervallwahl; große Unterschiede, keine universelle optimale Dauer; Einzelpositionsrisiko beachten. **[Nachprüfung 03.11.2026](tests/2026-11-02-holding-duration/REVIEW_2026-11-03.md):** Universums- und vermutete Datenverzerrung im Training, Momentum-Dauerwahl nicht signifikant. |
 
+| [Strategie-Audit und Suche nach verlässlicher Outperformance](tests/2026-11-14-strategy-audit) | Realisierte Portfoliorenditen bis zum nächsten Auswahltermin; feste Rhythmen 1/3/12 Monate nebeneinander, keine Dauerwahl | 350 Strategien nach vorab festgelegtem Protokoll: keine schlägt den US-Markt verlässlich. Hinweise für Momentum, Trend und Quality; Gegenwind für den Kursteil von Hoch-Tief-Mut. Die App zeigt seither je Strategie die Einordnung. |
+
 ## Nachprüfungen
 
 - [03.11.2026 – Haltedauer-Studie und Momentum-Definition](tests/2026-11-02-holding-duration/REVIEW_2026-11-03.md): keine Neuberechnung. Alle archivierten Momentum-Tests verwenden den früheren 42-Sitzungen-Abstand; die App rechnet seit 03.11.2026 nach dem Literaturstandard mit 21 Sitzungen.
@@ -32,7 +34,7 @@ Hier liegen die relevanten Informationen der bisherigen empirischen Studien. **V
 
 Pro Test: README mit Frage und Reichweite, `test.json`, unveränderte Berichte/Protokolle, vorhandene Skripte und kompakte Ergebnis-/Eingabedateien unter `files/`, sowie ein vollständiges Mitglieder-/SHA-256-Manifest des ursprünglichen Datenpakets. Abbildungen werden mitgeführt, wenn sie kompakt sind.
 
-Große Kurs-/Nachrichten-/Modell-/Trade-Dateien werden über den genauen vollständigen Datenpaketverweis plus Prüfsumme erhalten. Sie sind nicht neu herunterzuladen oder auszuwerten: das vorhandene Paket lässt sich direkt verifizieren und entpacken. Die Verweise benötigen den Zugang des Eigentümers. Bei älteren Studien ohne mitgelieferten Originalcode wird diese Lücke ausdrücklich genannt; kein Code wurde nachträglich als ursprünglich verwendet ausgegeben.
+Große Kurs-/Nachrichten-/Modell-/Trade-Dateien werden über den genauen vollständigen Datenpaketverweis plus Prüfsumme erhalten. Ab der Studie vom 14.11.2026 kann das Paket auch ein Commit eines Daten-Branches dieses Repositorys sein (`research-data/…`); die Prüfsumme deckt dann die vollständige Mitgliederliste ab. Sie sind nicht neu herunterzuladen oder auszuwerten: das vorhandene Paket lässt sich direkt verifizieren und entpacken. Die Verweise benötigen den Zugang des Eigentümers. Bei älteren Studien ohne mitgelieferten Originalcode wird diese Lücke ausdrücklich genannt; kein Code wurde nachträglich als ursprünglich verwendet ausgegeben.
 
 ## Arbeitsregel für alle künftigen Tests
 

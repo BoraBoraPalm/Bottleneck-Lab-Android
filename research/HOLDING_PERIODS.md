@@ -59,3 +59,19 @@ Siehe [REVIEW_2026-11-03.md](tests/2026-11-02-holding-duration/REVIEW_2026-11-03
 - Signifikanter Zusatznutzen der Dauerwahl: Trend-Markt (p Holm 0,006) und Geringe Schwankung (0,030, aber unter ACWI). Nicht signifikant: Momentum-Markt (0,295) und Momentum-Weiterhalten (0,275).
 - Passender Vergleich ist die gleichgewichtete Kohorte mit 17,51 % CAGR, nicht nur der ACWI mit 13,65 %.
 - Alle archivierten Momentum-Ergebnisse nutzen „Kurs vor 42 / Kurs vor 252 Sitzungen“. Die App verwendet seit 03.11.2026 den Standard 21/252.
+
+## Ergänzung aus dem Strategie-Audit vom 14.11.2026
+
+Siehe [Bericht](tests/2026-11-14-strategy-audit/files/bericht.md). **Keine vergangenheitsbasierte Dauerwahl**; feste Rhythmen wurden nebeneinander berichtet, alle Varianten stehen in den Ergebnisdateien.
+
+| Regel | Daten | monatlich | vierteljährlich | jährlich |
+| --- | --- | --- | --- | --- |
+| Branchen-Momentum 12–2 (30 Branchen, je 6) | 1963–2026 | +3,9 | +3,5 | +0,3 |
+| Branchen-Momentum 12–2 (12 Branchen, je 3; explorativ) | 1963–2026 | +2,0 | +3,0 | +0,1 |
+| Branchen nach Abstand zur 200-Tage-Linie (30 Branchen) | 1963–2026 | +3,3 | +3,1 | +2,9 |
+| Branchen mit geringster Schwankung (30 Branchen) | 1963–2026 | −0,4 | −0,5 | +0,3 |
+| Momentum, oberstes Zehntel der S&P-500-Aktien (explorativ) | 2011–2026 | +1,0 | – | +2,7 |
+
+Abstand zum Markt in Prozentpunkten pro Jahr nach Kosten. Signalrückblick (252 bis 21 Handelstage bzw. 200 und 252 Tage) und Umschichtungsrhythmus sind getrennte Größen; gehalten wird bis zum nächsten Auswahltermin, ohne Stopps. Keiner der Unterschiede zwischen den Rhythmen ist statistisch gesichert. Bei Branchen verschwand der Momentum-Vorsprung mit jährlicher Umschichtung; an Einzelaktien lag die jährliche Auswahl vorn, vor allem wegen der niedrigeren Kosten. Das bestätigt keine der beiden Richtungen als Optimum.
+
+Neu ist die Steuerseite: Im Modell der österreichischen KESt kostet ein vollständiger Depotumschlag pro Jahr rund 1,1 Prozentpunkte pro Jahr gegenüber Kaufen und Halten, 30 % Umschlag rund 0,5. Kürzere Rhythmen müssen diesen Nachteil zusätzlich verdienen.

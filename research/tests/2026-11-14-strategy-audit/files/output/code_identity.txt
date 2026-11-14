@@ -1,4 +1,5 @@
-commit=bd5b2e5d1693e44987f43a0dd67a6a1ac7bf6176 run=43536790833 inputs=dd325bd5e991daca471dc1d17aed539a09c6f4e0
+commit=3e69fdef577e98253ebfd6cdf124a0bde7fd34c8 run=43537924799 inputs=bd35c372e834e1f8303805365ff3240f4de0fca9
+da7a27ee06076f87aafae821cad700d7e7bf7a5302e9ce5298dcdb8978c3ac0d  research/tests/2026-11-14-strategy-audit/files/code/export_app_evidence.py
 680be2e1245f18785cfb149c1b25231607474acfa28118e10250b7e65d165d34  research/tests/2026-11-14-strategy-audit/files/code/fetch_data.py
 3bdbee2f481c074a2bc7017807c3df3a3feef781659bffd92c4ee849c40e7800  research/tests/2026-11-14-strategy-audit/files/code/fetch_supplement.py
 e758ff1978fd3336a957b8fc1108ef875093004c282992640288de1601def161  research/tests/2026-11-14-strategy-audit/files/code/lib.py
@@ -11,5 +12,5 @@ e0df9e7526cac8d238bf763b0fc8a9c4aa8bfd3897a6be3fb8e666511efe00da  research/tests
 96d5dc495935e8240b411f986fef5b9a773a6800ad09e22215bcc5c2551ac5e6  research/tests/2026-11-14-strategy-audit/files/code/run_all.py
 2480030bd59e053c279c758732ff4ad12b48b1168d653ba430e43559c18a3791  research/tests/2026-11-14-strategy-audit/files/code/sources.py
 78fe1f9bdc17d28c3c6c02b8e85642c6e7b57c98f87e949ee4efd6ed0c07db12  research/tests/2026-11-14-strategy-audit/files/code/test_lib.py
-f49252d460f6779b1a5e6863be2e37142a37a36c7684ff61bc33edc7e17db443  research/tests/2026-11-14-strategy-audit/files/protocol.md
+1dede2c97f5b3dd6747482a9807d8316ced9434c3b632a092b6854c1fe8c9814  research/tests/2026-11-14-strategy-audit/files/protocol.md
 3ebfbb0e6eb4609f095e3eee29ad78d906c974c7e432c34971a584eeea53327d  research/tests/2026-11-14-strategy-audit/files/requirements.txt

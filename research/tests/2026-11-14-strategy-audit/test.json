@@ -1,0 +1,70 @@
+{
+  "id": "2026-11-14-strategy-audit",
+  "title": "Strategie-Audit und Suche nach verlässlicher Outperformance",
+  "date": "2026-11-14",
+  "schema_version": 1,
+  "status": "completed_limited_scope",
+  "period": "US-Portfolios 1963-07 bis 2026-09 (kursbasierte Regeln zusätzlich ab 1927); Signale bis 2025-12; Regionen ab 1990; echte Produkte seit Auflage bis 2026-09; Einzelaktien 2011 bis 2026-09",
+  "strategy": "350 Strategien: 9 App-Strategien über nächstliegende veröffentlichte Portfolios, 179 OSAP-Signale, 8 Timing-Regeln, 20 Branchenrotationen, 32 Faktor-Portfolios und -Mischungen, 35 Regionenportfolios, 3 Anlageklassen-Regeln, 60 echte Produkte; explorativ: Schwellenländer, App-Kursregeln an S&P-500-Aktien, 12 Branchen",
+  "prediction": "Keine Prognose; Vergleich realisierter Portfoliorenditen mit dem Markt nach Kosten",
+  "signal_lookback": "Je Strategie in files/output/all_strategies.csv (Spalte lookback); App-Definitionen: Momentum 252 bis 21 Handelstage, Trend 200 Tage, Schwankung 252 Tage, Rückgang vom 252-Tage-Hoch",
+  "holding": {
+    "kind": "until_next_selection",
+    "values_months": [
+      1,
+      3,
+      12
+    ],
+    "source_portfolios": "Regeln der jeweiligen Quelle",
+    "individual_stock_holding_observable": false,
+    "average_actual": null,
+    "optimized": false,
+    "note": "Feste Rhythmen nebeneinander berichtet (C2: 1/3/12 Monate; Einzelaktien: 1/3/12 Monate), keine Auswahl aus vergangenen Daten"
+  },
+  "rebalance": {
+    "source_portfolios": "monatlich, viertel-/halbjährlich oder jährlich laut Quelle (Spalte rebalance)",
+    "timing": "tägliche oder monatliche Prüfung, Handel zum Schlusskurs des Folgetags",
+    "industries": "Signal am Monatsende, Handel am ersten Handelstag danach",
+    "funds_and_stocks": "Signal und Ausführung zum Monatsschluss"
+  },
+  "exit_policy": "Nächster Auswahltermin; bei Timing-Regeln Signalverlust. Keine Stopps.",
+  "holding_period_search_performed": false,
+  "holding_search_scope": "Keine vergangenheitsbasierte Dauerwahl. Rhythmusvarianten vollständig berichtet.",
+  "time_splits": "Gesamtzeitraum ab 1963-07; Kontrollzeitraum ab 2000-01 bzw. ab dem Jahr nach der Veröffentlichung eines Signals; jüngster Zeitraum = letzte 180 Monate. Protokoll vor dem Laden der Daten festgelegt (Commit 9bdf955). Alle Jahre historisch bekannt.",
+  "costs": "Selbst gebaute Regeln: tatsächlicher Umschlag x 0,1 % je Seite (Einzelaktien 0,2 %). Quellportfolios: pauschal 0,3/0,5/1,0 % p. a. nach Neubildungsrhythmus, kurzfristige Umkehr 3 %, Nebenwerte doppelt. Steuer: Modell der österreichischen KESt 27,5 % über rollierende 20-Jahres-Fenster.",
+  "benchmark": "US-Gesamtmarkt (French Mkt-RF + RF); French-Regionenmarkt; SPY, EFA, EUNL.DE für echte Produkte; im Einzelaktien-Test die Gleichgewichtung aller auswertbaren S&P-500-Mitglieder und SPY",
+  "multiple_testing": "Holm über alle 350 Strategien; Benjamini-Hochberg ergänzend; explorative Teile außerhalb der Familie",
+  "result": "Keine Strategie schlägt den US-Markt verlässlich. Einstufungen: 1 verlässlich (Mix Quality + Value + Momentum in Schwellenländern, nur auf dem Papier; bei 2 % Kosten +0,7 statt +2,7 Prozentpunkte p. a.), 13 Hinweise, 314 nicht belegt, 22 Evidenz dagegen. Veröffentlichte Signale: +1,8 in der Originalstichprobe, -0,8 nach Veröffentlichung. Kursteil von Hoch-Tief-Mut an S&P-500-Aktien 2011-2026: -4,3 Prozentpunkte p. a.",
+  "limits": [
+    "Bekannte historische Jahre; kein Beweis für die Zukunft",
+    "Kosten pauschal angenommen, Steuer-Modell vereinfacht",
+    "Revidierte French-/Yahoo-Daten; erste sechs Monate jedes Produkts verworfen; geschlossene Produkte fehlen",
+    "Einzelaktien-Test nur mit heute noch geführten Kursen (Überlebensverzerrung zugunsten der Strategien)",
+    "Explorative Teile nach Sichtung der Hauptergebnisse festgelegt",
+    "Quellportfolios sind keine Einzelaktien-Empfehlungen; die App-Rangliste ist mit keinem geprüften Portfolio identisch"
+  ],
+  "not_tested": [
+    "Hoch-Tief-Mut mit Qualitätsfilter, Bruttogewinn/Bilanzsumme und Bilanzwachstum an Einzelaktien (geplant, SEC-Daten aus GitHub Actions nicht abrufbar)",
+    "Value nach Kurs/Buchwert, Gewinn-Quartalsmodell und Frühwachstum der App (keine zeitpunktgetreuen freien Daten)",
+    "Stopps und ATR-Limits",
+    "Prospektive Prüfung nach dem 14.11.2026"
+  ],
+  "reproduction_status": "Vollständig reproduzierbar: Code, Protokoll, Paketversionen und Ergebnisse im Repository; Eingabepaket auf dem Daten-Branch. Rechnung in GitHub Actions und lokal mit byte-gleichen Ergebnisdateien. Zwei archivierte Studien exakt nachgerechnet.",
+  "code_identity": "commit=3e69fdef577e98253ebfd6cdf124a0bde7fd34c8 run=43537924799 inputs=bd35c372e834e1f8303805365ff3240f4de0fca9",
+  "source_artifact": {
+    "kind": "git_tree",
+    "filename": "research-data/2026-11-14-strategy-audit",
+    "url": "https://github.com/BoraBoraPalm/Bottleneck-Lab-Android/tree/802d80a122c9df8a49955f03f44ac747b6c8456f",
+    "commit": "802d80a122c9df8a49955f03f44ac747b6c8456f",
+    "sha256": "9d897aa85b1de11c165ae60a66479ca8192971142112823926a233fd4787c0a0",
+    "sha256_of": "kanonische Liste [Pfad, Bytes, SHA-256] aller Dateien des Commits, siehe research/tools/check_archive.py",
+    "bytes": 18148985,
+    "archive_root": ""
+  },
+  "entry_report": "files/bericht.md",
+  "artifact_members": "ARTIFACT_MEMBERS.json",
+  "data_availability": "Kompakte Eingaben (Monatsrenditen, Manifeste, Prüflisten) und alle Ergebnisse im Repository. French-Originaldateien, verdichtete OSAP-Portfolios und Kursfelder der S&P-500-Mitglieder auf dem Daten-Branch; Quell-URLs und SHA-256 jedes Abrufs in den Manifesten.",
+  "corrections": "Keine Ergebniskorrektur. Protokolländerungen vor der ersten Auswertung und die nachträglich festgelegten explorativen Teile stehen in files/protocol.md.",
+  "app_changed": true,
+  "app_changes": "Evidenz-Hinweise je Strategie und Feld 'Was sagen die Daten?' (docs/evidence.js, docs/evidence-data.js); Hoch-Tief-Mut-Score ohne Tiefe des Rückgangs; geringe Schwankung als defensive Wahl beschrieben"
+}

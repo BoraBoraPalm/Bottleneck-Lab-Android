@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated": "2026-11-03",
+  "updated": "2026-11-14",
   "tests": [
     {
       "id": "2026-10-31-five-year-backtest",
@@ -275,6 +275,46 @@
           "summary": "Keine Neuberechnung. Trainingsfenster 2019–2023 nutzen die März-2018-Kohorte vor ihrem Stichtag; auffällige Momentum-Volatilität 2014–2018 (vermutlich Kursausreißer) beeinflusste die Wahl für 2019; Momentum-Dauerwahl nicht signifikant (p Holm 0,295), Trend signifikant (0,006); passendes Vergleichsmaß gleichgewichtete Kohorte 17,51 %; alle archivierten Momentum-Tests nutzen den 42-Sitzungen-Abstand."
         }
       ]
+    },
+    {
+      "id": "2026-11-14-strategy-audit",
+      "title": "Strategie-Audit und Suche nach verlässlicher Outperformance",
+      "date": "2026-11-14",
+      "status": "completed_limited_scope",
+      "period": "US-Portfolios 1963-07 bis 2026-09 (kursbasierte Regeln zusätzlich ab 1927); Signale bis 2025-12; Regionen ab 1990; echte Produkte seit Auflage bis 2026-09; Einzelaktien 2011 bis 2026-09",
+      "prediction": "Keine Prognose; Vergleich realisierter Portfoliorenditen mit dem Markt nach Kosten",
+      "holding": {
+        "kind": "until_next_selection",
+        "values_months": [
+          1,
+          3,
+          12
+        ],
+        "source_portfolios": "Regeln der jeweiligen Quelle",
+        "individual_stock_holding_observable": false,
+        "average_actual": null,
+        "optimized": false,
+        "note": "Feste Rhythmen nebeneinander berichtet (C2: 1/3/12 Monate; Einzelaktien: 1/3/12 Monate), keine Auswahl aus vergangenen Daten"
+      },
+      "rebalance": {
+        "source_portfolios": "monatlich, viertel-/halbjährlich oder jährlich laut Quelle (Spalte rebalance)",
+        "timing": "tägliche oder monatliche Prüfung, Handel zum Schlusskurs des Folgetags",
+        "industries": "Signal am Monatsende, Handel am ersten Handelstag danach",
+        "funds_and_stocks": "Signal und Ausführung zum Monatsschluss"
+      },
+      "result": "Keine Strategie schlägt den US-Markt verlässlich. Einstufungen: 1 verlässlich (Mix Quality + Value + Momentum in Schwellenländern, nur auf dem Papier; bei 2 % Kosten +0,7 statt +2,7 Prozentpunkte p. a.), 13 Hinweise, 314 nicht belegt, 22 Evidenz dagegen. Veröffentlichte Signale: +1,8 in der Originalstichprobe, -0,8 nach Veröffentlichung. Kursteil von Hoch-Tief-Mut an S&P-500-Aktien 2011-2026: -4,3 Prozentpunkte p. a.",
+      "holding_period_search_performed": false,
+      "holding_search_scope": "Keine vergangenheitsbasierte Dauerwahl. Rhythmusvarianten vollständig berichtet.",
+      "source_artifact": {
+        "kind": "git_tree",
+        "filename": "research-data/2026-11-14-strategy-audit",
+        "url": "https://github.com/BoraBoraPalm/Bottleneck-Lab-Android/tree/802d80a122c9df8a49955f03f44ac747b6c8456f",
+        "commit": "802d80a122c9df8a49955f03f44ac747b6c8456f",
+        "sha256": "9d897aa85b1de11c165ae60a66479ca8192971142112823926a233fd4787c0a0",
+        "sha256_of": "kanonische Liste [Pfad, Bytes, SHA-256] aller Dateien des Commits, siehe research/tools/check_archive.py",
+        "bytes": 18148985,
+        "archive_root": ""
+      }
     }
   ]
 }
