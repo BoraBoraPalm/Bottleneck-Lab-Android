@@ -1,4 +1,4 @@
-commit=46ab0b9670a01fd5da62a2e3ae7a309f83658173 run=43537963017 inputs=7f662e13b329ec0dd107cf911b640bb6b11837c2
+commit=3e69fdef577e98253ebfd6cdf124a0bde7fd34c8 run=43537924799 inputs=bd35c372e834e1f8303805365ff3240f4de0fca9
 da7a27ee06076f87aafae821cad700d7e7bf7a5302e9ce5298dcdb8978c3ac0d  research/tests/2026-11-14-strategy-audit/files/code/export_app_evidence.py
 680be2e1245f18785cfb149c1b25231607474acfa28118e10250b7e65d165d34  research/tests/2026-11-14-strategy-audit/files/code/fetch_data.py
 3bdbee2f481c074a2bc7017807c3df3a3feef781659bffd92c4ee849c40e7800  research/tests/2026-11-14-strategy-audit/files/code/fetch_supplement.py

@@ -1,4 +1,4 @@
 factors registered: 259
 + rules: 287
 + funds: 350
-{"strategies_evaluated": 350, "verdict_counts": {"nicht belegt": 314, "Evidenz dagegen": 22, "Hinweise, nicht verlässlich": 13, "verlässlich": 1}, "criteria_pass_counts": {"K1": 3, "K2": 12, "K3": 46, "K4": 97, "K6": 128}, "nominal_p_below_5pct": 59, "bh_below_5pct": 10, "runtime_seconds": 18.9}
+{"strategies_evaluated": 350, "verdict_counts": {"nicht belegt": 314, "Evidenz dagegen": 22, "Hinweise, nicht verlässlich": 13, "verlässlich": 1}, "criteria_pass_counts": {"K1": 3, "K2": 12, "K3": 46, "K4": 97, "K6": 128}, "nominal_p_below_5pct": 59, "bh_below_5pct": 10, "runtime_seconds": 22.4}
