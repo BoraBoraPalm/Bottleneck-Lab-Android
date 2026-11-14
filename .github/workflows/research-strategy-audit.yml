@@ -1,5 +1,5 @@
 name: Research · Strategy audit 2026-11 (research only)
-# Loads public research data once, freezes it as a release bundle and runs the archived study code.
+# Loads public research data once, freezes it on a data branch and runs the archived study code.
 # Never touches the app or GitHub Pages.
 on:
   workflow_dispatch:
@@ -10,15 +10,13 @@ on:
       - 'research/tests/2026-11-14-strategy-audit/files/protocol.md'
       - '.github/workflows/research-strategy-audit.yml'
 permissions:
-  contents: write   # only to attach the frozen input/result bundles to a pre-release
+  contents: write   # only to commit inputs/results to the data branch below
 concurrency:
   group: research-strategy-audit
   cancel-in-progress: true
 env:
   STUDY: research/tests/2026-11-14-strategy-audit/files
-  TAG: research-2026-11-14-strategy-audit
-  GH_TOKEN: ${{ github.token }}
-  GH_REPO: ${{ github.repository }}
+  DATA_BRANCH: research-data/2026-11-14-strategy-audit
 jobs:
   audit:
     runs-on: ubuntu-latest
@@ -32,35 +30,41 @@ jobs:
         run: python -m pip install -r "$STUDY/requirements.txt"
       - name: Unit tests of the research library
         run: python -m unittest discover -s "$STUDY/code" -p 'test_*.py' -v
-      - name: Frozen inputs (downloaded once, afterwards the released bundle is reused)
+      - name: Frozen inputs (downloaded once, afterwards the data branch is reused)
         run: |
           set -e
-          mkdir -p "$RUNNER_TEMP/bundle"
-          if gh release download "$TAG" -p strategy-audit-inputs-v2.zip -D "$RUNNER_TEMP" 2>/dev/null; then
-            echo "Reusing the released input bundle"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git ls-remote --exit-code --heads origin "$DATA_BRANCH" >/dev/null; then
+            git fetch --depth=1 origin "$DATA_BRANCH"
+            git worktree add --detach "$RUNNER_TEMP/data" FETCH_HEAD
+            echo "Reusing frozen inputs from $(git -C "$RUNNER_TEMP/data" rev-parse HEAD)"
           else
             python "$STUDY/code/fetch_data.py" --out "$RUNNER_TEMP/raw"
-            python "$STUDY/code/prepare_inputs.py" --raw "$RUNNER_TEMP/raw" --out "$RUNNER_TEMP/bundle_new"
-            (cd "$RUNNER_TEMP/bundle_new" && zip -q -r -X "$RUNNER_TEMP/strategy-audit-inputs-v2.zip" .)
-            gh release view "$TAG" >/dev/null 2>&1 || gh release create "$TAG" --prerelease --target "$GITHUB_SHA" \
-              --title "Forschungsdaten · Strategie-Audit 14.11.2026" \
-              --notes "Eingefrorene Eingabedaten und Ergebnisse der Studie research/tests/2026-11-14-strategy-audit. Kein App-Release. Quellen: Kenneth French Data Library, Open Source Asset Pricing (Chen/Zimmermann), Yahoo Finance (Monatsrenditen). Prüfsummen stehen im Studienordner."
-            gh release upload "$TAG" "$RUNNER_TEMP/strategy-audit-inputs-v2.zip"
+            git worktree add --detach "$RUNNER_TEMP/data"
+            cd "$RUNNER_TEMP/data"
+            git checkout -q --orphan "$DATA_BRANCH"
+            git rm -rfq .
+            python "$GITHUB_WORKSPACE/$STUDY/code/prepare_inputs.py" --raw "$RUNNER_TEMP/raw" --out inputs
+            git add -A inputs
+            git commit -q -m "Frozen inputs of the strategy audit (code $GITHUB_SHA)"
+            git push -q origin "HEAD:refs/heads/$DATA_BRANCH"
           fi
-          unzip -q "$RUNNER_TEMP/strategy-audit-inputs-v2.zip" -d "$RUNNER_TEMP/bundle"
-          sha256sum "$RUNNER_TEMP/strategy-audit-inputs-v2.zip"
       - name: Run the study
         run: |
           set -o pipefail
-          mkdir -p "$RUNNER_TEMP/audit_out"
-          echo "commit=$GITHUB_SHA run=$GITHUB_RUN_ID" > "$RUNNER_TEMP/audit_out/code_identity.txt"
-          sha256sum "$STUDY"/code/*.py "$STUDY/protocol.md" "$STUDY/requirements.txt" "$RUNNER_TEMP/strategy-audit-inputs-v2.zip" >> "$RUNNER_TEMP/audit_out/code_identity.txt"
+          OUT="$RUNNER_TEMP/data/results"
+          rm -rf "$OUT" && mkdir -p "$OUT"
+          echo "commit=$GITHUB_SHA run=$GITHUB_RUN_ID inputs=$(git -C "$RUNNER_TEMP/data" log -1 --format=%H -- inputs)" > "$OUT/code_identity.txt"
+          sha256sum "$STUDY"/code/*.py "$STUDY/protocol.md" "$STUDY/requirements.txt" >> "$OUT/code_identity.txt"
           if [ -f "$STUDY/code/run_all.py" ]; then
-            python -u "$STUDY/code/run_all.py" --data "$RUNNER_TEMP/bundle" --out "$RUNNER_TEMP/audit_out" 2>&1 | tee "$RUNNER_TEMP/audit_out/run.log"
+            python -u "$STUDY/code/run_all.py" --data "$RUNNER_TEMP/data/inputs" --out "$OUT" 2>&1 | tee "$OUT/run.log"
           fi
-      - name: Attach results to the research pre-release
+      - name: Commit results to the data branch
         if: always()
         run: |
-          cd "$RUNNER_TEMP/audit_out" && zip -q -r -X "$RUNNER_TEMP/strategy-audit-results.zip" . \
-            && gh release upload "$TAG" "$RUNNER_TEMP/strategy-audit-results.zip" --clobber \
-            && sha256sum "$RUNNER_TEMP/strategy-audit-results.zip"
+          cd "$RUNNER_TEMP/data"
+          git add -A results
+          git commit -q -m "Results of run $GITHUB_RUN_ID (code $GITHUB_SHA)" || echo "nothing to commit"
+          git push -q origin "HEAD:refs/heads/$DATA_BRANCH"
+          git log --oneline | head -3
