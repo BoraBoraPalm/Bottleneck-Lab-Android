@@ -25,6 +25,7 @@ ALIAS = {"FB": "META", "ANTM": "ELV", "FISV": "FI", "ABC": "COR", "PKI": "RVTY",
          "CBG": "CBRE", "BHGE": "BKR", "UTX": "RTX", "LB": "BBWI", "ADS": "BFH", "RE": "EG", "FLT": "CPAY", "PEAK": "DOC",
          "CDAY": "DAY", "DISCA": "WBD", "VIAC": "PARA", "SYMC": "GEN", "NLOK": "GEN", "WYN": "TNL", "HCP": "DOC", "CBS": "PARA",
          "KFT": "MDLZ", "COH": "TPR", "DLPH": "APTV", "BBT": "TFC", "MYL": "VTRS", "FBHS": "FBIN", "GPS": "GAP", "HFC": "DINO"}
+CIK_MIRROR = "https://raw.githubusercontent.com/jadchaar/sec-cik-mapper/main/mappings/stocks/ticker_to_cik.json"
 EM_FUNDS = ["VEIEX", "EEM", "DFEVX", "DFEMX", "DFCEX", "EEMO", "EMGF", "FNDE", "PXH", "DEM", "DGS", "EDIV", "EEMV", "AVEM",
             "AVES", "QEMM", "TLTE", "JPEM", "GEM", "EUNM.DE", "IS3N.DE", "5MVL.DE", "EUNZ.DE", "PSRM.DE", "WTEI.DE"]
 DURATION = ["NetIncomeLoss", "NetCashProvidedByUsedInOperatingActivities", "Revenues",
@@ -129,9 +130,14 @@ def main() -> None:
     if not (out / "sec_frames.parquet").is_file():
         try:
             names = list(pd.read_parquet(out / "stock_px.parquet").columns)
-            raw = get("https://www.sec.gov/files/company_tickers.json", SEC)
-            note("sec_company_tickers", "https://www.sec.gov/files/company_tickers.json", raw)
-            cik_of = {v["ticker"].upper(): int(v["cik_str"]) for v in json.loads(raw).values()}
+            try:   # www.sec.gov refuses GitHub-hosted runners; a public mirror of the same list is tried first
+                raw = get(CIK_MIRROR, BROWSER)
+                note("ticker_to_cik_mirror", CIK_MIRROR, raw)
+                cik_of = {k.upper(): int(v) for k, v in json.loads(raw).items()}
+            except Exception:  # noqa: BLE001
+                raw = get("https://www.sec.gov/files/company_tickers.json", SEC)
+                note("sec_company_tickers", "https://www.sec.gov/files/company_tickers.json", raw)
+                cik_of = {v["ticker"].upper(): int(v["cik_str"]) for v in json.loads(raw).values()}
             cik_by_ticker = {t: cik_of[ALIAS.get(t, t).replace(".", "-")] for t in names if ALIAS.get(t, t).replace(".", "-") in cik_of}
             wanted = set(cik_by_ticker.values())
             rows, failed = [], []
