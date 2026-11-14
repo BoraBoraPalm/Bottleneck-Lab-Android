@@ -82,27 +82,33 @@ def stocks(D: Path, S: Path, rf: pd.Series) -> tuple[pd.DataFrame, pd.DataFrame,
     gone = px.notna() & nxt.isna()
     ret = nxt.where(~gone, 0.0)                      # no later price: counted as flat, see notes
     E = M & px.notna() & mom.notna() & vol.notna() & sma.notna()
+    audit = json.loads((S / "stock_audit.json").read_text())
+    glitch = [t for t in px.columns if audit.get(t, {}).get("max_abs_daily_move", 0) > 2.0]   # reused tickers / bad ticks
+    E[glitch] = False
     # ---- annual SEC facts, usable 120 days after the fiscal year end and for at most 550 days
-    facts = pd.read_parquet(S / "sec_frames.parquet")
-    facts["end"] = pd.to_datetime(facts["end"])
-    dur = facts[facts.concept != "Assets"].copy()
-    dur = dur[(dur.end - pd.to_datetime(dur.start)).dt.days.between(340, 380)]
-    wide = dur.pivot_table(index=["cik", "end"], columns="concept", values="val", aggfunc="first")
-    rev_cols = [c for c in ("Revenues", "RevenueFromContractWithCustomerExcludingAssessedTax",
-                            "RevenueFromContractWithCustomerIncludingAssessedTax", "SalesRevenueNet") if c in wide.columns]
-    wide["rev"] = wide[rev_cols].bfill(axis=1).iloc[:, 0]
-    wide = wide.join(facts[facts.concept == "Assets"].groupby(["cik", "end"]).val.first().rename("assets")).reset_index().sort_values(["cik", "end"])
-    near = wide.groupby("cik").end.diff().dt.days.between(350, 380)
-    wide["rev_prev"] = wide.groupby("cik").rev.shift().where(near)
-    wide["assets_prev"] = wide.groupby("cik").assets.shift().where(near)
-    wide["avail"] = (wide.end + pd.Timedelta(days=120)).dt.to_period("M")
-    wide["margin"] = wide.NetIncomeLoss / wide.rev.where(wide.rev > 0)
-    wide["growth"] = wide.rev / wide.rev_prev.where(wide.rev_prev > 0) - 1
-    wide["gpa"] = wide.get("GrossProfit") / wide.assets.where(wide.assets > 0)
-    wide["ag"] = wide.assets / wide.assets_prev.where(wide.assets_prev > 0) - 1
-    wide = wide.rename(columns={"NetIncomeLoss": "ni", "NetCashProvidedByUsedInOperatingActivities": "cfo"})
-    cik_map = json.loads((S / "cik_map.json").read_text())
-    by_cik = {c: g.drop_duplicates("avail", keep="last").set_index("avail") for c, g in wide.groupby("cik")}
+    have_facts = (S / "sec_frames.parquet").is_file()
+    by_cik, cik_map = {}, {}
+    if have_facts:
+        facts = pd.read_parquet(S / "sec_frames.parquet")
+        facts["end"] = pd.to_datetime(facts["end"])
+        dur = facts[facts.concept != "Assets"].copy()
+        dur = dur[(dur.end - pd.to_datetime(dur.start)).dt.days.between(340, 380)]
+        wide = dur.pivot_table(index=["cik", "end"], columns="concept", values="val", aggfunc="first")
+        rev_cols = [c for c in ("Revenues", "RevenueFromContractWithCustomerExcludingAssessedTax",
+                                "RevenueFromContractWithCustomerIncludingAssessedTax", "SalesRevenueNet") if c in wide.columns]
+        wide["rev"] = wide[rev_cols].bfill(axis=1).iloc[:, 0]
+        wide = wide.join(facts[facts.concept == "Assets"].groupby(["cik", "end"]).val.first().rename("assets")).reset_index().sort_values(["cik", "end"])
+        near = wide.groupby("cik").end.diff().dt.days.between(350, 380)
+        wide["rev_prev"] = wide.groupby("cik").rev.shift().where(near)
+        wide["assets_prev"] = wide.groupby("cik").assets.shift().where(near)
+        wide["avail"] = (wide.end + pd.Timedelta(days=120)).dt.to_period("M")
+        wide["margin"] = wide.NetIncomeLoss / wide.rev.where(wide.rev > 0)
+        wide["growth"] = wide.rev / wide.rev_prev.where(wide.rev_prev > 0) - 1
+        wide["gpa"] = wide.get("GrossProfit") / wide.assets.where(wide.assets > 0)
+        wide["ag"] = wide.assets / wide.assets_prev.where(wide.assets_prev > 0) - 1
+        wide = wide.rename(columns={"NetIncomeLoss": "ni", "NetCashProvidedByUsedInOperatingActivities": "cfo"})
+        cik_map = json.loads((S / "cik_map.json").read_text())
+        by_cik = {c: g.drop_duplicates("avail", keep="last").set_index("avail") for c, g in wide.groupby("cik")}
     F = {k: pd.DataFrame(np.nan, index=months, columns=px.columns) for k in ("ni", "cfo", "margin", "growth", "gpa", "ag")}
     for t in px.columns:
         g = by_cik.get(cik_map.get(t))
@@ -111,7 +117,7 @@ def stocks(D: Path, S: Path, rf: pd.Series) -> tuple[pd.DataFrame, pd.DataFrame,
         for k in F:
             F[k][t] = g[k].reindex(months, method="ffill", limit=14).values
     # ---- rules
-    dip = dd.between(-0.55, -0.15)
+    dip = (dd >= -0.55) & (dd <= -0.15)
     qual = (F["ni"] > 0) & (F["cfo"] > 0) & (F["margin"] >= 0.03) & (F["growth"] >= -0.10)
     score = (0.5 * 100 * (dd.abs() - 0.15) / 0.40 + 0.25 * 100 * ((F["margin"] - 0.03) / 0.17).clip(0, 1)
              + 0.25 * 100 * ((F["growth"] + 0.10) / 0.35).clip(0, 1))
@@ -141,7 +147,10 @@ def stocks(D: Path, S: Path, rf: pd.Series) -> tuple[pd.DataFrame, pd.DataFrame,
     spy.index = pd.PeriodIndex(spy.index, freq="M")
     bench = pd.Series(ewu.values, hold_index).iloc[:-1]
     rows = []
+    needs_facts = {"S_SANDER", "S_SANDER_TOP10", "S_QUALFILTER", "S_GPA", "S_LOWAG", "S_QUAL_MOM"}
     for key, (mask, label, freqs) in rules.items():
+        if key in needs_facts and not have_facts:
+            continue
         for f in freqs:
             sel = (mask & E)
             if f == 12:
@@ -164,7 +173,8 @@ def stocks(D: Path, S: Path, rf: pd.Series) -> tuple[pd.DataFrame, pd.DataFrame,
     cov = yr.groupby(yr.index.year).mean().round(0)
     v = lib.versus(bench, spy, rf)
     notes = {"universe_equal_weight_vs_spy": {k: v.get(k) for k in KEYS}, "positions_without_later_price": int((gone & E).sum().sum()),
-             "members_in_price_file": int(px.shape[1])}
+             "members_in_price_file": int(px.shape[1]), "excluded_for_daily_jump_over_200pct": glitch,
+             "annual_facts_available": bool(have_facts)}
     return pd.DataFrame(rows), cov, notes
 
 

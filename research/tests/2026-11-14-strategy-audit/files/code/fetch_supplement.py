@@ -42,7 +42,7 @@ def get(url: str, headers: dict, tries: int = 3, timeout: int = 60) -> bytes:
                 return r.read()
         except Exception as e:  # noqa: BLE001
             last = e
-            if getattr(e, "code", None) == 404:
+            if getattr(e, "code", None) in (403, 404):
                 break
             time.sleep(1.5 + 3 * i)
     raise RuntimeError(f"{type(last).__name__}: {str(last)[:120]}")
@@ -150,6 +150,8 @@ def main() -> None:
                             rows.append((concept, frame, d["cik"], d.get("start"), d["end"], float(d["val"])))
                 except Exception as e:  # noqa: BLE001
                     failed.append(f"{concept}/{frame}: {str(e)[:60]}")
+                    if len(failed) >= 4 and not rows:
+                        raise RuntimeError("data.sec.gov refuses this host: " + failed[0])
                 time.sleep(0.15)
             man["sec"] = {"frames_requested": len(jobs), "frames_failed": failed[:40], "frames_failed_count": len(failed),
                           "rows": len(rows), "members_with_cik": len(cik_by_ticker)}
