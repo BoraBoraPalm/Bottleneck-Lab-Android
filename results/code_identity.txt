@@ -1,7 +1,8 @@
-commit=739a30c0c7ab5d853ce33d1a1880becd27e03717 run=43536296481 inputs=a436e551df2ac108ceba4136477b7b6075e71c1c
+commit=bd5b2e5d1693e44987f43a0dd67a6a1ac7bf6176 run=43536790833 inputs=dd325bd5e991daca471dc1d17aed539a09c6f4e0
 680be2e1245f18785cfb149c1b25231607474acfa28118e10250b7e65d165d34  research/tests/2026-11-14-strategy-audit/files/code/fetch_data.py
 3bdbee2f481c074a2bc7017807c3df3a3feef781659bffd92c4ee849c40e7800  research/tests/2026-11-14-strategy-audit/files/code/fetch_supplement.py
 e758ff1978fd3336a957b8fc1108ef875093004c282992640288de1601def161  research/tests/2026-11-14-strategy-audit/files/code/lib.py
+9ca0ed579ff861ad15f10b4e3cecb55885d11f10b6d93ce1d3127eb621952545  research/tests/2026-11-14-strategy-audit/files/code/make_report.py
 937b9528bfe8d964b6e4cea8509f9c51b0196e7b4275ad779cda93dcadb85cc6  research/tests/2026-11-14-strategy-audit/files/code/mod_explore.py
 94be83e478013eb7969cff14e3630460751adb369139ce9435327e1346e2332d  research/tests/2026-11-14-strategy-audit/files/code/mod_factors.py
 e0df9e7526cac8d238bf763b0fc8a9c4aa8bfd3897a6be3fb8e666511efe00da  research/tests/2026-11-14-strategy-audit/files/code/mod_funds.py
